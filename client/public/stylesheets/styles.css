@@ -50,7 +50,7 @@ a.backto {
 
 /* =============================  colours ============================= */
 a, p.inline-errors {
-	color:#D4205D;
+	color:#2E6DBF;
 }
 body span.cal_sheet span.month {
 	background:#87cd29;
@@ -87,9 +87,14 @@ a:hover {
 .hide {
 	visibility:hidden;
 }
-#wrapper, #nav, #login_slide_bar_inside, #header_inside {
+#wrapper, #header_inside {
 	width:940px;
 	margin:0 auto;
+}
+#header_right {
+  float: left;
+  margin-left: 20px;
+  width: 740px;
 }
 table {}
 td, th {
@@ -996,12 +1001,7 @@ h1#site_logo a:active {
 
 
 #user_links {
-	float:right;
-	margin:0px 0;
-	width:450px;
-}
-#home #user_links {
-	margin: 0 180px 0 0;
+	float:left;
 }
 #user_links p {
 	margin:0;
@@ -1010,7 +1010,7 @@ h1#site_logo a:active {
 	display: block;
 	padding: 10px;
 	background: #fff;
-	float: right;
+	float: left;
 }
 
 #member_login_bttn {
@@ -1046,6 +1046,7 @@ fb.fb_login_not_logged_in.FB_login_button {
 	background: #fff;
 	padding: 0;
 	color: #666;
+	border: 1px solid #EEEEEE;
 }
 input#search_field {
 	background:none repeat scroll 0 0 #FFFFFF;
@@ -1079,6 +1080,8 @@ input#search_icon {
 #nav {
 	height:45px;
 	padding: 0px 0 0;
+	float: left;
+	clear: both;
 }
 #nav ul {
 	display:block;
@@ -1096,26 +1099,26 @@ input#search_icon {
 
 }
 #nav ul li a {
-	color:#FFFFFF;
 	display:block;
 	float:left;
 	height:20px;
 	margin:5px 5px 0 0;
 	padding:4px 7px 7px;
-	font: 17px/27px 'QuicksandBold', Arial, sans-serif;
-	text-transform: uppercase;
+  font-size: 20px;
+  font-weight: bold;	
 }
 #nav ul li a:hover, .section_2 #nav ul li#link_news a, .controller_enquiries.action_new #nav ul li#link_contact_us a {	
 	text-decoration:none;
-	color: #D4205D;
+	color: #81BCD6;
 }
 #nav ul li.active a, #home #nav ul li#link_home a {
-	color: #D4205D;
+	color: #81BCD6;
 }
 
 /* ====================  homepage  ===================== */
 div.big_message {
 	float:left;
+	clear: both;
 	margin:0 0 30px;
 }
 .big_message h1 {
@@ -1229,7 +1232,25 @@ a#facebook_link {
 	width: 243px;
 	height: 37px;
 	text-indent: -9000em;
-	
+}
+
+.homepage_box {
+  float: left;
+  width: 450px;
+}
+#what_we_do_box {
+  margin-right: 20px;
+}
+.homepage_box .bx_h, .homepage_box .bx_in {
+  width: 100%;
+}
+.homepage_box li .list_image {
+  float: left;
+  margin-right: 10px;
+}
+.homepage_box li .list_right {
+  float: left;
+  width: 80%;
 }
 /* ====================  Inside pages  ===================== */
 

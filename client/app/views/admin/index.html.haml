@@ -1,0 +1,71 @@
+-title 'Dashboard'
+#admin_dashboard
+  #admin_content.dash_col
+    %h2
+      Content
+    #dash_sections_and_pages.dash_item
+      %h3
+        Sections &amp; pages
+      %ul
+        %li
+          %a{ :href => "/sections" }
+            List sections
+        %li
+          %a{ :href => "/sections/new" }
+            Add a section          
+        %li
+          %a{ :href => "/pages/new" }
+            Add a page
+    #dash_blogs.dash_item
+      %h3
+        Blog
+      %ul
+        %li=link_to("Add a blog post", new_blog_path)
+        %li=link_to("List blog posts", blog_blog_posts_path(Blog.main))
+    #dash_images.dash_item
+      %h3
+        Images
+      %ul
+        %li
+          %a{ :href => "/photo_albums" }
+            List photo albums
+        %li
+          %a{ :href => "/photo_albums/new" }
+            Add a photo album
+        %li
+          %a{ :href => "/photos/new" }
+            Add an image
+  #dash_technical_stuff.dash_col
+    %h2
+      Technical stuff
+    #dash_enquiries.dash_item
+      %h3
+        Enquiries
+      %ul
+        %li
+          %a{ :href => "/enquiries" }
+            List enquiries                                
+  #dash_membership.dash_col
+    %h2
+      Membership
+    #dash_members.dash_item
+      %h3
+        Members
+      %ul
+        %li
+          %a{ :href => "/members" }
+            List members
+        %li
+          %a{ :href => "/reports/new?name=members" }
+            Members report
+            
+-if false
+  %ul.tabs_container
+    -@admin_tabs.each do |tab|
+      =admin_tab_heading(tab, @selected_tab)
+  %br.clear
+  #admin_tab_content
+    %ul
+      -@selected_tab.links.each do |link|
+        %li{:id => link.name.parameterize('_')}
+          =link_to link.name, link.url

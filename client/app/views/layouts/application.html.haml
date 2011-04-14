@@ -31,12 +31,6 @@
           });
         });
   - body_tag do
-    #top
-      =render :partial => 'layouts/nav'
-    -unless current_page?(new_session_path)
-      #login_slide_bar
-        #login_slide_bar_inside
-          =render :partial=>'sessions/form'
     #wrapper
       #header
         =render :partial => 'layouts/header'
