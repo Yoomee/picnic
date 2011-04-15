@@ -2153,6 +2153,12 @@ p.nextLink {
 	width:250px;
 	height:300px;
 }
+#index_view .item_left {
+  margin-left: 0px;
+}
+#index_view .item_right {
+  margin-right: 0px;
+}
 a.moreLink {
 	background:transparent url(/images/more_bttn.png) no-repeat scroll 0 0;
 	display:block;
@@ -3063,8 +3069,41 @@ h3.blog_post_date{
   padding: 0 5px;
 }
 
+
 #page_subnav .pt_bx_in ul {
   border: 0;
   list-style-type: none;
   padding: 0;
+}
+
+/*========== Superhero ==========*/
+.superhero {
+  width:136px;
+  padding:10px 20px 20px;
+  border:2px dotted #C0C0C0;
+}
+
+.superhero h4 {
+  margin:0 0 5px;
+  font-weight:normal;
+  text-shadow: 0 1px 1px #D8D8D8;
+}
+
+.superhero a {
+  color:black;
+}
+
+.superhero a:hover {
+  text-decoration:none;
+}
+
+.superhero a:hover h3 {
+  text-decoration:underline;
+}
+
+
+.superhero img {
+  width:134px;
+  height:134px;
+  border:1px solid #C0C0C0;
 }

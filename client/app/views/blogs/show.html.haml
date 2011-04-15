@@ -16,7 +16,13 @@
           -BlogPostCategory.projects.each do |project|
             %li=link_to_self project
       %br.clear
-    
+  -unless true || BlogPost.tags.empty?
+    .pt_bx
+      .pt_bx_h Ad hoc tags
+      .pt_bx_in
+        %ul
+          -BlogPost.tags.each do |tag|
+            %li=link_to_self tag
 -if @blog_posts.empty?
   %p
     There are currently no blog posts in this blog. 
