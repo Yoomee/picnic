@@ -34,9 +34,7 @@ h1.page_title, .title, .left_col h2, #other_stuff h2, .call_to_action, #donate, 
 	border-radius:3px;
 	
 }
-.big_message h1 {
-	text-shadow:0 1px 1px #FFFFFF;
-}
+
 .bx_h {
 	-moz-box-shadow:0 0 2px #666666;
 	-webkit-box-shadow:0 0 2px #666666;
@@ -171,6 +169,14 @@ p.flash_error {
 }
 .ui-datepicker {
 	z-index: 20;
+}
+ul.lst {
+  list-style:none;
+}
+ul.lst li{
+  margin-left:0;
+  float: left;
+  clear: both;
 }
 /* =============================  button styles ============================= */
 /* general large button*/
@@ -994,13 +1000,16 @@ h1#site_logo a:active {
 /* =======  cycle  ====== */
 .cycle_frame {
 	position:relative;
+	border:1px solid #9C9C9C;
 }
 .cycle {}
 .cycle_nav {
-	background:url(/images/ipad_smoke.png) repeat-x;
+	/*background:url(/images/ipad_smoke.png) repeat-x;*/
+	background:#979797;
+	opacity:0.5;;
 	bottom:0;
 	float:left;
-	height:60px;
+	height:40px;
 	left:0;
 	position:absolute;
 	width:100%;
@@ -1012,8 +1021,8 @@ h1#site_logo a:active {
 	float: left;
 	font-size: 15px;
 	color:#fff;
-	padding: 10px 15px;
-	margin: 10px 5px 0;
+	padding: 5px 15px;
+	margin: 5px 5px 0;
 	
 	 -moz-border-radius:10px;
      -webkit-border-radius:10px;
@@ -1135,8 +1144,8 @@ input#search_icon {
   font-size: 20px;
   font-weight: bold;	
 }
-#nav ul li a:hover, #nav ul li.active a, #subnav ul li a:hover, #subnav ul li.active a {	
-	text-decoration:none;
+#nav ul li.active a, #subnav ul li.active a, #page_subnav ul li.active a {
+  text-decoration:none;
 	color: #81BCD6;
 }
 #subnav ul li a {
@@ -1153,11 +1162,16 @@ div.big_message {
 	float:left;
 	clear: both;
 	margin:0 0 30px;
+	border:2px dotted #C0C0C0;
+  padding:40px;
+  width:856px;
 }
 .big_message h1 {
-	font-size:20px;
-	line-height:25px;
-	margin:0 0 10px;
+  font-size: 27px;
+  line-height: 36px;
+  margin: 0 0 10px;
+  text-shadow: 0 1px 1px #D8D8D8;
+  font-weight: normal;
 }
 .big_message_left {
 	float:left;
@@ -1168,10 +1182,10 @@ div.big_message {
 #big_message_right {
 	float:right;
 	height:260px;
-	width:640px;
+	width:500px;
 }
 #big_message_right img {
-	width:640px;
+	width:500px;
 	float:left;
 }
 #big_message_right div {
@@ -1181,7 +1195,7 @@ div.big_message {
 	float:left;
 	height:260px;
 	overflow:hidden;
-	width:640px;
+	width:500px;
 }
 div.home_bx {
 	clear:none;
@@ -1269,7 +1283,16 @@ a#facebook_link {
 
 .homepage_box {
   float: left;
-  width: 450px;
+  width: 416px;
+  height: 358px;
+  border:2px dotted #C0C0C0;
+  padding:20px;
+  overflow:hidden;
+}
+
+.homepage_box h3 {
+  font-weight:normal;
+  text-shadow: 0 1px 1px #D8D8D8;
 }
 #what_we_do_box {
   margin-right: 20px;
@@ -1287,6 +1310,10 @@ a#facebook_link {
 .homepage_box li .list_right {
   float: left;
   width: 80%;
+}
+.homepage_box li .list_right a{
+  width:100%
+  float:left;
 }
 /* ====================  Inside pages  ===================== */
 
@@ -2709,8 +2736,23 @@ li.news_feed_item_hovering a.trash {
 	display:block;
 	float:left;
 }
+#page_subnav {
+  float: left;
+  margin-right: 20px;
+  width: 180px;  
+  min-height: 300px;
+}
+#page_subnav ul {
+  border: 1px solid #CCCCCC;
+  padding: 15px 15px 10px 15px;
+  float: left;
+  width: 148px;
+}
+#page_subnav li {
+  margin-bottom: 5px;
+}
 #page_content {
-
+  float: left;
 }
 div#page_related_col {
 	clear:left;
