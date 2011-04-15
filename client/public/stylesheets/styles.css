@@ -3049,6 +3049,22 @@ h3.blog_post_date{
 	border-radius:10px;
 }
 
+/*========== prototype styles ==========*/
+.pt_bx {
+	border:2px dotted #C0C0C0;
+	margin: 0 0 20px 0;
+}
 
+.pt_bx_h {
+  float: right;
+  font-style: italic;
+  margin: -10px 5px 10px;
+  background: white;
+  padding: 0 5px;
+}
 
-
+#page_subnav .pt_bx_in ul {
+  border: 0;
+  list-style-type: none;
+  padding: 0;
+}
