@@ -106,14 +106,38 @@ td, th {
   font-size: 12px;
   padding: 5px;
 }
-div.details {
-	border-top:1px dashed #BBBBBB;
-	clear:left;
-	color:#666666;
-	font-size:11px;
-	margin-top:20px;
-	padding:5px 0 0;
+
+div.details, .options_panel {
+  border-top:1px solid #d8e2ee;
+  clear:left;
+  color:#fff;
+  font-size:11px;
+  margin-top:20px;
+  padding:7px 0 0;
+  float: left;
+  width: 100%;
+  background: #fff;
 }
+div.details *, .options_panel * {
+	float: left;
+	clear: none;
+}
+div.details a, .options_panel a {
+	display: block;
+	padding: 3px 8px;
+	background: #edf2f7;
+	margin: 0 10px 0 0;
+	
+	border-radius:10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;		
+}
+div.details a:hover, .options_panel a:hover {
+	text-decoration: none;
+	background: #2bb9f2;
+	color: #fff;	
+}
+
 p.flash_notice {
 	background: #FFFFAA;
 	padding:0px 10px;
@@ -1833,7 +1857,7 @@ ul.action_links li {
 
 #footer {
 	clear:both;
-	margin:0px 0;
+	margin: 20px 0;
 	padding:0;
 	position:relative;
 	float: left;
