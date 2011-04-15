@@ -1,0 +1,7 @@
+#nav
+  %ul
+    =li_with_active(current_page?(home_path), link_to("Home", home_path))
+    =li_with_active_slug(:about_us, link_to_slug("About", :about_us))
+    =li_with_active_slug(:our_work, link_to_slug("Our work", :our_work))
+    =li_with_active(viewing_blog?, link_to("Blog", Blog.main))
+    =li_with_active(false, link_to("Get involved", "#"))

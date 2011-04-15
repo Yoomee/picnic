@@ -1,0 +1,5 @@
+-if !current_root_section.nil?
+  #subnav
+    %ul
+      -current_root_section.all_children.each do |page_or_section|
+        =li_with_active(viewing_page_or_section?(page_or_section), link_to_self(page_or_section))
