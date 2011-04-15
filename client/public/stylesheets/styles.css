@@ -2082,37 +2082,23 @@ p.nextLink {
 #all_content ul li a {}
 
 /* ====================  latest stories  ===================== */
-#latestStoriesList {
+#index_view {
 	float: left;
 }
-h3#latest_stories_intro {
+#index_view h3 {
 	display:block;
 	font-size:17px;
 	font-weight:normal;
-	margin:0 0 25px;
+	margin:0 0 10px;
 	width:700px;
 }
-.item {
-	border-bottom:1px solid #CCCCCC;
-	clear:both;
+#index_view .item {
+	border:1px solid #CCCCCC;
 	float:left;
-	margin:0 0 17px;
-	padding:0 0 17px;
-	width:750px;
-}
-.text {
-	float:right;
-	width:540px;
-	margin: 0 0 10px;
-}
-.text h3 {
-	font-size:18px;
-	line-height:18px;
-	margin:0 0 10px;
-}
-.text h3 a {}
-.text p {
-	margin:0 0 10px;
+	margin:10px 15px;
+	padding:15px;
+	width:250px;
+	height:300px;
 }
 a.moreLink {
 	background:transparent url(/images/more_bttn.png) no-repeat scroll 0 0;
@@ -2130,15 +2116,14 @@ a.item_img {
 	display:block;
 	float:left;
 	height:140px;
-	margin:0 20px 0 0;
+	margin:0 0 10px 0;
 	overflow:hidden;
 	padding:0;
 	text-indent:-9000em;
-	width:190px;
+	width:250px;
 }
 a.item_img img {
 	float:left;
-	margin:  0 0 0 -40px;
 }
 
 /* ============================= Message inbox ========================== */
