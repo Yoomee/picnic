@@ -11,3 +11,4 @@
 /vendor/plugins/tramlines_walls
 /vendor/plugins/tramlines_blog
 config.ru
+.DS_Store
