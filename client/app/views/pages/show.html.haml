@@ -11,10 +11,14 @@
       %p#page_status=@page.status_string
     =render :partial => 'content', :locals => {:page => @page}
   #page_right_col
-    =snippet(@page, :call_to_action)
     -if @page.has_photo?
       #article_image
-        = photo_for(@page, '140x')
+        =photo_for(@page, '140x')
+    =snippet(@page, :call_to_action)
+  -if @page.has_related_items?
+    #related_content
+      %h2.title Related content
+      =render_related_items(@page)
 -options_panel do
   ="Tagged #{in_tags(@page)}" unless @page.tags.empty?
   =link_if_allowed 'Edit section', edit_section_proc(@page.section)
