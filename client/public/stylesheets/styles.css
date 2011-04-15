@@ -973,7 +973,7 @@ div#top {
 
 }
 h1#site_logo {
-	margin:0;
+  margin: 10px 0 0;
 	float: left;
 } 
 h1#site_logo a {
