@@ -1244,6 +1244,9 @@ a#facebook_link {
 .homepage_box .bx_h, .homepage_box .bx_in {
   width: 100%;
 }
+.homepage_box li {
+  height: 80px;
+}
 .homepage_box li .list_image {
   float: left;
   margin-right: 10px;
@@ -1828,6 +1831,13 @@ ul.action_links li {
 	position:relative;
 	float: left;
 	width: 945px;
+}
+#footer .footer_box {
+  float: left;
+  margin-right: 30px;
+}
+#footer .footer_box_right {
+  float: right;
 }
 #copyright {
 
