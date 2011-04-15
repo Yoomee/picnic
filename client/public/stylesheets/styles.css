@@ -3060,6 +3060,7 @@ h3.blog_post_date{
   width:136px;
   padding:10px 20px 20px;
   border:2px dotted #C0C0C0;
+  float:left;
 }
 
 .superhero h4 {
