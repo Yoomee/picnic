@@ -172,6 +172,14 @@ p.flash_error {
 .ui-datepicker {
 	z-index: 20;
 }
+ul.lst {
+  list-style:none;
+}
+ul.lst li{
+  margin-left:0;
+  float: left;
+  clear: both;
+}
 /* =============================  button styles ============================= */
 /* general large button*/
 input[type="submit"], a.bttn_l, .formtastic input[type="submit"], .formtastic  a.bttn_l {
@@ -1135,8 +1143,8 @@ input#search_icon {
   font-size: 20px;
   font-weight: bold;	
 }
-#nav ul li a:hover, #nav ul li.active a, #subnav ul li a:hover, #subnav ul li.active a {	
-	text-decoration:none;
+#nav ul li.active a, #subnav ul li.active a, #page_subnav ul li.active a {
+  text-decoration:none;
 	color: #81BCD6;
 }
 #subnav ul li a {
@@ -2709,8 +2717,23 @@ li.news_feed_item_hovering a.trash {
 	display:block;
 	float:left;
 }
+#page_subnav {
+  float: left;
+  margin-right: 20px;
+  width: 180px;  
+  min-height: 300px;
+}
+#page_subnav ul {
+  border: 1px solid #CCCCCC;
+  padding: 15px 15px 10px 15px;
+  float: left;
+  width: 148px;
+}
+#page_subnav li {
+  margin-bottom: 5px;
+}
 #page_content {
-
+  float: left;
 }
 div#page_related_col {
 	clear:left;
