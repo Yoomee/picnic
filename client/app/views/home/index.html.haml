@@ -20,10 +20,8 @@
       = link_to 'More about us here', {:controller => 'page', :action => 'show', :id => '2'}, :class => 'read_more'
   #big_message_right.cycle_frame
     .cycle
-      %div
-        =image_tag 'photo.jpg'
-      %div
-        =image_tag 'photo_2.jpg'
+      -3.times do
+        %div=image_tag('holding.png', :height => 260, :width =>  640)
     .cycle_nav
       =link_to 'Next', '#', :class => 'cycle_next'
 #what_we_do_box.homepage_box
