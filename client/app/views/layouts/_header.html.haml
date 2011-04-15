@@ -13,10 +13,6 @@
     %form{ :action => "/search/results", :method => "post" }
       %input#search_field{ :name => "term", :type => "text", :value => "Search", :onfocus => "var element = document.getElementById('search_field');element.value='';" }
       %input#search_icon{ :name => "commit", :title => "search", :value => "search" }      
-  #nav
-    %ul
-      %li=link_to("Home", home_path)
-      %li=link_to_slug("About", :about_us)
-      %li=link_to_slug("Our work", :our_work)
-      %li=link_to("Blog", Blog.main)
-      %li=link_to("Get involved", "#")
+  =render("layouts/nav")
+  =render("layouts/subnav")
+    
