@@ -2153,6 +2153,12 @@ p.nextLink {
 	width:250px;
 	height:300px;
 }
+#index_view .item_left {
+  margin-left: 0px;
+}
+#index_view .item_right {
+  margin-right: 0px;
+}
 a.moreLink {
 	background:transparent url(/images/more_bttn.png) no-repeat scroll 0 0;
 	display:block;

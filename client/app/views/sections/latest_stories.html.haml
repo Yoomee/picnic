@@ -3,8 +3,8 @@
   %p.section_description
     =@section.description
 #index_view
-  -@pages_sections.each do |page_section|
-    .item
+  -@pages_sections.each_with_col_name do |page_section, col_name|
+    .item{:class => "item_#{col_name}"}
       %h3=link_to page_section, page_section
       =link_to(photo_for(page_section, "250x140!"), page_section, :class => 'item_img')
       %p=strip_tags description_for(page_section, :length => 140)
