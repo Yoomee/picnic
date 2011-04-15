@@ -3122,3 +3122,56 @@ h3.blog_post_date{
 	font-size: 14px;
 	line-height: 100%;
 }
+
+/*========== Superhero ==========*/
+.superhero {
+  width:136px;
+  padding:10px 20px 20px;
+  border:2px dotted #C0C0C0;
+  float:left;
+}
+
+.superhero h4 {
+  margin:0 0 5px;
+  font-weight:normal;
+  text-shadow: 0 1px 1px #D8D8D8;
+}
+
+.superhero a {
+  color:black;
+}
+
+.superhero a:hover {
+  text-decoration:none;
+}
+
+.superhero a:hover h3 {
+  text-decoration:underline;
+}
+
+
+.superhero img {
+  width:134px;
+  height:134px;
+  border:1px solid #C0C0C0;
+}
+
+
+/*========== prototype styles ==========*/
+.pt_bx {
+	border:2px dotted #C0C0C0;
+	margin: 0 0 20px 0;
+}
+
+.pt_bx_h {
+  float: right;
+  font-style: italic;
+  margin: -10px 5px 10px;
+  background: white;
+  padding: 0 5px;
+}
+#page_subnav .pt_bx_in ul {
+  border: 0;
+  list-style-type: none;
+  padding: 0;
+}
