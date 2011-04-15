@@ -977,12 +977,14 @@ h1#site_logo {
 	float: left;
 } 
 h1#site_logo a {
-	background:url("/images/logo.png") no-repeat scroll -2px 0 transparent;
-	display:block;
 	height:70px;
 	margin:15px 0 0 0px;
 	width: 180px;
 	text-indent:-9000em;
+}
+h1#site_logo img {
+	height:70px; 
+	width: 180px;	
 }
 #home h1#site_logo a {
 }
