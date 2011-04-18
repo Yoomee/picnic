@@ -105,7 +105,7 @@ td, th {
   padding: 5px;
 }
 
-div.details, .options_panel {
+.options_panel {
   border-top:1px solid #d8e2ee;
   clear:left;
   color:#fff;
@@ -116,11 +116,11 @@ div.details, .options_panel {
   width: 100%;
   background: #fff;
 }
-div.details *, .options_panel * {
+.options_panel * {
 	float: left;
 	clear: none;
 }
-div.details a, .options_panel a {
+.options_panel a {
 	display: block;
 	padding: 3px 8px;
 	background: #edf2f7;
@@ -130,7 +130,7 @@ div.details a, .options_panel a {
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px;		
 }
-div.details a:hover, .options_panel a:hover {
+.options_panel a:hover {
 	text-decoration: none;
 	background: #2bb9f2;
 	color: #fff;	
@@ -177,6 +177,9 @@ ul.lst li{
   margin-left:0;
   float: left;
   clear: both;
+}
+.labelified {
+	color:gray;
 }
 /* =============================  button styles ============================= */
 /* general large button*/
@@ -1732,7 +1735,7 @@ p.post_admin a {
 
 
 /* ====== info messages for boxes without content (empty profiles etc)====== */
-p.nothing_yet, .intro, #intro, #flash_notice {
+.intro, #intro, #flash_notice {
 	background:url(/images/flash_notice.jpg) bottom left no-repeat;
 	color:#666;
 	padding:10px 30px 30px;
@@ -2932,6 +2935,7 @@ div.article_image {
 }
 
 /* ===================================  Blog ======================================== */
+
 .blog{
 	margin-bottom: 30px;
 }
@@ -2955,14 +2959,19 @@ h3.blog_date{
 }
 
 /* ====================  Blog Post ===================== */
-.blog_post{
-	margin-bottom: 30px;
+.blog_post {
+  margin-bottom: 30px;
 }
 .blog_post_image{
 	float:left;
-	margin-top:10px;
 	text-align:center;
 	width:110px;
+}
+body.controller_blog_posts .blog_post_image {
+  width:180px;  
+}
+body.controller_blog_posts .blog_post {
+  margin: 0;
 }
 .blog_post_details{
 	float:left;
@@ -2976,6 +2985,68 @@ h3.blog_post_date{
 	margin-bottom:5px;
 	margin-top:-10px;
 }
+
+#blog_share_links {
+	float:left;
+  margin:20px 0 20px 0px;
+  padding: 10px;
+	width:590px;
+	border-top: 2px solid #999;
+	background: #f0f3f7;
+}
+#blog_share_links .digg a {
+	background-image:url(/images/icons/digg.gif);
+}
+#blog_share_links .twitter a {
+	background-image:url(/images/icons/twitter.gif);
+}
+#blog_share_links .reddit a {
+	background-image:url(/images/icons/reddit.gif);
+}
+#blog_share_links .facebook a {
+	background-image:url(/images/icons/facebook.gif);
+}
+#blog_share_links .stumbleupon a {
+	background-image:url(/images/icons/stumbleupon.gif);
+}
+#blog_share_links ul {
+	margin:0;
+}
+#blog_share_links li {
+	float:left;
+	list-style-type:none;
+	list-style-image: none;
+	margin:0;
+	width:95px;
+}
+#blog_share_links a {
+	background:transparent url(/images/icons/delicious.gif) no-repeat scroll 0 5px;
+	display:block;
+	float:left;
+	margin:0;
+	padding:4px 23px 4px 20px;
+}
+.blog_post .details {
+  float: left;
+  clear: none;
+}
+.blog_post .details .filed_under span, .blog_post .details .filed_under ul {
+  float :left;
+  margin-right: 5px;
+}
+.blog_post .details .filed_under li {
+  float: left;
+  clear: none;
+}
+.blog_post .details ul li a {
+  -moz-border-radius: 10px 10px 10px 10px;
+  background: none repeat scroll 0 0 #EDF2F7;
+  display: block;
+  margin: 0 10px 0 0;
+  padding: 3px 8px;
+}
+
+
 /* ====================  blog comments  ===================== */
 .comment_wrapper {
 	background:#F5F5F5 none repeat scroll 0 0;
@@ -3005,7 +3076,29 @@ h3.blog_post_date{
 	height:100px;
 	width:505px;
 }
-
+.blog_post_comments {
+  float: left;
+  margin-left: 195px;
+}
+.blog_post_comments .wall_content .bx_h {
+  width: 580px;
+}
+.blog_post_comments .wall_post_text_input {
+  width: 600px;
+}
+.wall_content .bx_h {
+  margin-bottom: 10px;
+}
+.wall_post_left {
+  width: 50px;
+  margin-right: 10px;
+  float: left;
+}
+.wall_post_right {
+  width: 550px;
+  float: left;
+  width: 450px;
+}
 
 /*================ Share Page ======================*/
 .share{

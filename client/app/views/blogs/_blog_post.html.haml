@@ -7,7 +7,7 @@
     %h3.blog_post_date
       =blog_post.created_at.strftime '%d.%m.%y'
     %p
-      =truncate(blog_post.text, 200)
+      =truncate(strip_tags(blog_post.text), :length => 190)
       %br
       %strong
         =link_to "Read more...", blog_post

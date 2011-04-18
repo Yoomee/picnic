@@ -1,0 +1,25 @@
+#page_subnav
+  -unless BlogPostCategory.non_projects.empty?
+    .pt_bx
+      .pt_bx_h Themes
+      .pt_bx_in
+        %ul
+          -BlogPostCategory.non_projects.each do |theme|
+            =li_with_active(@blog_post_category==theme, link_to_self(theme))
+      %br.clear
+  -unless BlogPostCategory.projects.empty?
+    .pt_bx
+      .pt_bx_h Projects
+      .pt_bx_in
+        %ul
+          -BlogPostCategory.projects.each do |project|
+            %li=link_to_self project
+      %br.clear
+  -unless BlogPost.tags.empty?
+    .pt_bx
+      .pt_bx_h Ad hoc tags
+      .pt_bx_in
+        %ul
+          -BlogPost.tags.each do |tag|
+            %li=link_to tag, '#'
+      %br.clear
