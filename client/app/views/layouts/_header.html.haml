@@ -2,17 +2,16 @@
   =link_to image_tag("holding.png"), home_path
 #header_right
   #user_links
-    =link_to("Members", "#")
+    =link_to("Blog", Blog.main)
     -if logged_in?
       =link_if_allowed('Admin', admin_proc)
-      =link_to('Logout', session_path, :method => :delete)
       %strong=link_to_self(@logged_in_member)
+      =link_to('Logout', session_path, :method => :delete)
     -else
-      =link_to('login', new_session_path)
+      =link_to('Login', new_session_path)
   #search_box
     %form{ :action => "/search/results", :method => "post" }
       %input#search_field{ :name => "term", :type => "text", :value => "Search", :onfocus => "var element = document.getElementById('search_field');element.value='';" }
       %input#search_icon{ :name => "commit", :title => "search", :value => "search" }      
   =render("layouts/nav")
   =render("layouts/subnav")
-    

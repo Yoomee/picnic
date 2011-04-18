@@ -30,11 +30,11 @@
         =link_to(image_for(page), page, :class => "list_image")
         .list_right
           =link_to_self(page)
-          =description_for(page, :length => 150)
+          =truncate(strip_tags(page.has_snippet?(:summary) ? page.snippet_summary : page.text), :length => 150)
 #latest_blog_posts.homepage_box
   %h3 Latest
   %ul.bx_lst
     -@latest_blog_posts.first(3).each do |blog_post|
       %li
         =link_to_self(blog_post)
-        =description_for(blog_post, :length => 150)
+        =truncate(strip_tags(blog_post.text), :length => 150)
