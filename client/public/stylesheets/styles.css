@@ -2979,6 +2979,7 @@ h3.blog_date{
 }
 #blog_post_authors .pt_bx_in {
   padding: 10px;
+  min-height: 70px;
 }
 #blog_post_authors li {
   float: none;
