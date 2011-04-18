@@ -2959,24 +2959,54 @@ h3.blog_date{
 }
 
 /* ====================  Blog Post ===================== */
+
+#blog_content {
+  float: left;
+  width: 740px;
+}
+#blog_post_category_intro {
+  width: 100%;
+  float: left;
+  clear: both;
+  margin-bottom: 10px;
+}
+#blog_post_list, #single_blog_post {
+  float: left;
+}
+#blog_post_authors {
+  float: right;
+  width: 175px;
+}
+#blog_post_authors .pt_bx_in {
+  padding: 10px;
+}
+#blog_post_authors li {
+  float: none;
+}
+#blog_post_authors .author_image {
+  float: right;
+  margin-left: 5px;
+  clear: right;
+}
+#blog_post_authors .author_detail {
+  float: left;
+}
 .blog_post {
   margin-bottom: 30px;
 }
 .blog_post_image{
 	float:left;
 	text-align:center;
-	width:110px;
+	width:100px;
 }
-body.controller_blog_posts .blog_post_image {
-  width:180px;  
-}
-body.controller_blog_posts .blog_post {
-  margin: 0;
-}
-.blog_post_details{
+.blog_post_details {
 	float:left;
 	margin-left:15px;
-	width:580px;
+	width:450px;
+}
+#single_blog_post .single_blog_post_image, #single_blog_post .single_blog_post_details {
+ clear: both;
+ width: 550px;
 }
 h3.blog_post_date{
 	color:#666666;
@@ -2990,7 +3020,6 @@ h3.blog_post_date{
 	float:left;
   margin:20px 0 20px 0px;
   padding: 10px;
-	width:590px;
 	border-top: 2px solid #999;
 	background: #f0f3f7;
 }
@@ -3017,14 +3046,13 @@ h3.blog_post_date{
 	list-style-type:none;
 	list-style-image: none;
 	margin:0;
-	width:95px;
 }
 #blog_share_links a {
 	background:transparent url(/images/icons/delicious.gif) no-repeat scroll 0 5px;
 	display:block;
 	float:left;
 	margin:0;
-	padding:4px 23px 4px 20px;
+	padding:4px 20px 4px 20px;
 }
 .blog_post .details {
   float: left;
@@ -3045,7 +3073,6 @@ h3.blog_post_date{
   margin: 0 10px 0 0;
   padding: 3px 8px;
 }
-
 
 /* ====================  blog comments  ===================== */
 .comment_wrapper {
