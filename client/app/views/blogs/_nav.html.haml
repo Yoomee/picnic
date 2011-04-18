@@ -13,7 +13,7 @@
       .pt_bx_in
         %ul
           -BlogPostCategory.projects.each do |project|
-            %li=link_to_self project
+            =li_with_active(@blog_post_category==project, link_to_self(project))
       %br.clear
   -unless BlogPost.tags.empty?
     .pt_bx
