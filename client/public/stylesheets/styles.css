@@ -2847,7 +2847,9 @@ li.news_feed_item_hovering a.trash {
   border: 1px solid #CCCCCC;
   padding: 15px 15px 10px 15px;
   float: left;
+  margin: 0 0 20px;
   width: 148px;
+  
 }
 #page_subnav li {
   margin-bottom: 5px;
@@ -2911,6 +2913,10 @@ a.backto {
 	margin:0 0 20px;
 	padding:0 0 20px;
 	max-width:440px;
+}
+#page_left_col h4 {
+	color: #592051;
+	
 }
 #pull_quote_large_image {
 	background:none repeat scroll 0 0 #CCCCCC;
@@ -3338,9 +3344,7 @@ h3.blog_post_date{
 .superhero {
   width:136px;
   padding:10px 20px 20px;
-  position: absolute;
-  bottom: 60px;
-  left: 0;
+
   float:left;
   
     border-radius:4px;
