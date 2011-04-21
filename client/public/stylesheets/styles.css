@@ -1,6 +1,7 @@
 /* @override 
 	http://localhost:3000/stylesheets/client/styles.css
 	http://wearev.yoomee.com/stylesheets/client/styles.css?1303396083
+	http://wearev.yoomee.com/stylesheets/client/styles.css?1303399104
 */
 
 /* the tramlines vanilla stylesheet */
@@ -2232,6 +2233,7 @@ p.nextLink {
 	margin:10px 15px;
 	padding:15px;
 	width:250px;
+	height: 310px;
 	color: #888;
 
 	
@@ -2250,9 +2252,11 @@ p.nextLink {
 }
 #index_view .item_left {
   margin-left: 0px;
+  height: 310px;
 }
 #index_view .item_right {
   margin-right: 0px;
+  height: 310px;
 }
 a.moreLink {
 	background:transparent url(/images/more_bttn.png) no-repeat scroll 0 0;
