@@ -1,4 +1,4 @@
--if !current_root_section.nil?
+-if !current_root_section.nil? && !current_root_section.slug_is?(:misc)
   #subnav
     %ul
       -current_root_section.all_children.each do |page_or_section|

@@ -17,10 +17,12 @@
     = javascript_include_tag 'jrails'
     = javascript_include_tag 'jquery.cycle'
     = javascript_include_tag 'tramlines'
-    
+    = javascript_include_tag 'jquery.labelify'
+
+    = stylesheet_link_tag 'http://fast.fonts.com/cssapi/4d18a55f-896a-46c9-a509-6b06d325e32c.css'
     = stylesheet_link_tag 'client/styles'
     = stylesheet_link_tag 'jquery-ui'
-    = formtastic_stylesheet_link_tag
+    =# formtastic_stylesheet_link_tag
     =yield :head
     -unless current_page?(new_session_path)
       :javascript

@@ -1,0 +1,29 @@
+-title Blog.main.name
+
+=render("blogs/nav")
+#blog_content
+  %p=link_to("&larr; View all posts", Blog.main)
+  =render("blog_post_categories/intro", :blog_post_category => @blog_post_category)
+  -if @blog_post_category.blog_posts.empty?
+    %p
+      There are no blogs posts filed under
+      ="#{@blog_post_category.name}."
+  -else
+    #blog_post_list
+      -@blog_post_category.blog_posts.each do |blog_post|
+        =render("blogs/blog_post", :blog_post => blog_post, :blog_post_category => @blog_post_category)
+    #blog_post_authors
+      .pt_bx
+        .pt_bx_h Authors
+        .pt_bx_in
+          %ul.lst
+            -Member.is_admin.limit(4).each do |member|
+              %li
+                =link_to(image_for(member, "30x30#"))
+                =link_to_self(member)
+        
+    
+-options_panel do
+  =back_link
+  =link_if_allowed "Manage blog categories", blog_post_categories_proc
+  =link_if_allowed "New Blog Post", new_blog_blog_post_proc(@blog)

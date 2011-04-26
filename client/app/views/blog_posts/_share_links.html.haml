@@ -1,0 +1,10 @@
+#blog_share_links
+  %strong
+    Share on...
+  %ul
+    %li.twitter=link_to("Twitter", "http://twitter.com/home?status=#{blog_post.title} #{site_url}#{blog_post_path(blog_post)}", :target => "_blank")
+    %li.facebook=link_to("Facebook", "http://www.facebook.com/sharer.php?u=#{site_url}#{blog_post_path(blog_post)}", :target => "_blank")
+    %li.digg=link_to("Digg", "http://digg.com/submit?url=#{site_url}#{blog_post_path(blog_post)}", :target => "_blank")
+    %li.delicious=link_to("Delicious", "http://del.icio.us/post?url=#{site_url}#{blog_post_path(blog_post)}", :target => "_blank")
+    %li.reddit=link_to("reddit", "http://reddit.com/submit?url=#{site_url}#{blog_post_path(blog_post)}", :target => "_blank")
+    %li.stumbleupon=link_to("StumbleUpon", "http://www.stumbleupon.com/submit?url=#{site_url}#{blog_post_path(blog_post)}", :target => "_blank")

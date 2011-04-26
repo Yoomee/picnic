@@ -23,6 +23,7 @@
         %li=link_to("Add a blog post", new_blog_path)
         %li=link_to("List blog posts", blog_blog_posts_path(Blog.main))
         %li=link_to("List blog post categories", blog_post_categories_path)
+        %li=link_to("Edit blog", edit_blog_path(Blog.main))
     #dash_images.dash_item
       %h3
         Images
