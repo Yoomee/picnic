@@ -1,19 +1,19 @@
 development:
   username: root
   adapter: mysql
-  database: vcorp_development
+  database: picnic_development
   host: localhost
   password: ''
 test:
   username: root
   adapter: mysql
-  database: vcorp_test
+  database: picnic_test
   host: localhost
   password: ''
 production: 
   username: root
   adapter: mysql
-  database: vcorp_production
+  database: picnic_production
   host: localhost
   password: ''
 

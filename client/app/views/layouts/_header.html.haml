@@ -7,7 +7,6 @@
         %input#search_field{ :name => "term", :type => "text", :value => "Search", :onfocus => "var element = document.getElementById('search_field');element.value='';" }
         %input#search_icon{ :name => "commit", :title => "search", :value => "search" }      
     #user_links
-      =link_to("Blog", Blog.main)
       -if logged_in?
         =link_if_allowed('Admin', admin_proc)
         %strong=link_to_self(@logged_in_member)
