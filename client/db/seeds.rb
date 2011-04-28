@@ -1,0 +1,1 @@
+Section.create!(:name => 'PICNIC11', :slug => :picnic11, :view => 'normal', :weight => 0)
