@@ -5,7 +5,6 @@
       -@page.section.all_children.each do |page_or_section|
         =li_with_active(viewing_page_or_section?(page_or_section), link_to_self(page_or_section))
 
-  =render_superhero
 #page_content
   #page_left_col
     %h1=@page.title

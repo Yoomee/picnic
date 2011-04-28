@@ -1002,7 +1002,7 @@ h1#site_logo a {
 	font-size: 45px;
 	color: black;
 	text-decoration: none;
-	margin: 40px 0 0 20px;
+	margin: 20px 0 0 0px;
 	display: block;
 }
 
@@ -1055,7 +1055,7 @@ h1#site_logo a:active {
 #user_links p {
 	margin:0;
 }
-#user_links a {
+#user_links a.button {
 	display: block;
 	padding: 10px;
 	background: #e8e8e8;
@@ -1068,6 +1068,21 @@ h1#site_logo a:active {
 	text-align: center;
 	font-weight: bold;
 	font-size: 20px;
+}
+#user_links .panel {
+  float: left;
+  font-weight: bold;
+  padding: 20px;
+  background: #e8e8e8;
+  margin: 20px 0;
+}
+#user_links .panel a {
+  margin: 0 10px;
+}
+.logged_in_as {
+  float: left;
+  font-weight: bold;
+  margin: 40px 10px;
 }
 
 #member_login_bttn {
@@ -1145,12 +1160,9 @@ input#search_icon {
 
 }
 #subnav {
-	border-top: 1px solid #d8e2ee;
-  float: right;
-  width: 720px;
   clear: both;
-  padding: 0 0 0 20px;
-  margin: 0 0 20px;
+  float: left;
+  margin: 30px 0;
 }
 #nav ul, #subnav ul {
 	display:block;
@@ -1182,7 +1194,7 @@ input#search_icon {
 
 	float:left;
 	margin:0px 0px 0 0;
-	padding:13px 20px;
+	padding:13px 40px 13px 0;
   color: #bbb;
 }
 #nav ul li a:hover {
@@ -1196,18 +1208,18 @@ input#search_icon {
 }
 #nav ul li.active a, #subnav ul li.active a, #page_subnav ul li.active a {
   text-decoration:none;
-	color: #bbb;
-	background: #f1f1f1;
+	color: black;
 }
 #subnav ul li a {
   display:block;
 	float:left;
 	height:20px;
 	margin:0px 10px 0 0;
-	padding:6px 7px 0;
+	padding:6px 14px 0 0;
  	font-weight: bold;
  	font-size: 14px;
  	font-family:'Avant Garde Gothic ITCW01Bks','Avant Garde Gothic ITCW01Dm';
+ 	color: #c0c0c0;
 }
 #top_box {
 	float: right;

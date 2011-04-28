@@ -4,9 +4,15 @@
   #top_box
     #user_links
       -if logged_in?
-        =link_if_allowed('Admin', admin_proc)
-        %strong=link_to_self(@logged_in_member)
-        =link_to('Logout', session_path, :method => :delete)
+        .logged_in_as
+          Logged in as
+          =link_to_self(logged_in_member)
+        .panel
+          -link_to logged_in_member do
+            =image_for(logged_in_member, '20x') 
+            My profile
+          =link_if_allowed('Admin', admin_proc)
+          =link_to('Logout', session_path, :method => :delete)
       -else
-        =link_to('Login', new_session_path)
-        =link_to("Signup", new_member_path)
+        =link_to('Login', new_session_path, :class => 'button')
+        =link_to("Signup", new_member_path, :class => 'button')

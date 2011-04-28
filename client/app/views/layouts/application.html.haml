@@ -45,7 +45,7 @@
         =render("layouts/subnav")
       #main.content
         =render_flash
-        -unless hide_page_title?
+        -unless true && hide_page_title?
           %h1#page_title=page_title
         = @content_for_layout
         %br.clear
