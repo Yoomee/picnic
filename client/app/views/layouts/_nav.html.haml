@@ -1,7 +1,6 @@
 #nav
   %ul
-    =li_with_active(current_page?(home_path), link_to("Home", home_path))
-    =li_with_active_slug(:about_us, link_to_slug("About", :about_us))
-    =li_with_active_slug(:our_work, link_to_slug("Our work", :our_work))
-    =li_with_active_slug(:get_involved, link_to_slug("Get involved", :get_involved))
-    =li_with_active_slug(:contact_us, link_to_slug("Contact us", :contact_us))
+    =li_with_active(current_page?(home_path), link_to("NewsNetwork", home_path))
+    =li_with_active_slug(:club, link_to_slug("Club", :club))
+    =li_with_active_slug(:picnic11, link_to_slug("PICNIC11", :picnic11))
+    =li_with_active_slug(:about, link_to_slug("About", :about))
