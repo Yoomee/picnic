@@ -40,3 +40,8 @@ scm = git
 path = vendor
 repository = git://git.yoomee.com:4321/tramlines/vendor.git
 scm = git
+
+[vendor/plugins/tramlines_facebook]
+path = vendor/plugins/tramlines_facebook
+scm = git
+repository = git://git.yoomee.com:4321/plugins/tramlines_facebook.git

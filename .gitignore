@@ -10,3 +10,4 @@
 /vendor
 config.ru
 .DS_Store
+/vendor/plugins/tramlines_facebook

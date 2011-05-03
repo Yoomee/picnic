@@ -14,28 +14,23 @@
     %meta{ :name => "info", :content => "#{page_title}#{page_subtitle}" }
     %link{ :href => "/images/favicon.ico", :rel => "shortcut icon" }
     = google_javascripts :jquery, :jqueryui
-    = javascript_include_tag 'jrails'
-    = javascript_include_tag 'jquery.cycle'
-    = javascript_include_tag 'tramlines'
-    = javascript_include_tag 'jquery.labelify'
-    =javascript_include_tag 'jquery.fancy_box/jquery.fancybox-1.3.1.pack'
-    =javascript_include_tag 'jquery.fancy_box/jquery.easing-1.3.pack.js'
-    =javascript_include_tag 'jquery.fancy_box/jquery.mousewheel-3.0.2.pack.js'
-    =javascript_include_tag 'client/load_fancybox'
-    =stylesheet_link_tag 'jquery.fancybox'
+    = javascript_include_tag 'jrails', 'jquery.cycle', 'tramlines', 'jquery.labelify', 'jquery.fancy_box/jquery.fancybox-1.3.1.pack', 'jquery.fancy_box/jquery.easing-1.3.pack.js', 'jquery.fancy_box/jquery.mousewheel-3.0.2.pack.js', 'client/load_fancybox', :cache => true
+    
+    = javascript_include_tag "http://connect.facebook.net/en_US/all.js"
+
     = stylesheet_link_tag 'http://fast.fonts.com/cssapi/4d18a55f-896a-46c9-a509-6b06d325e32c.css'
-    = stylesheet_link_tag 'client/styles'
-    = stylesheet_link_tag 'jquery-ui'
+    = stylesheet_link_tag 'client/styles', 'jquery.fancybox', 'jquery-ui', :cache => true
     =# formtastic_stylesheet_link_tag
     =yield :head
-    -unless current_page?(new_session_path)
-      :javascript
-        $(document).ready(function(){    
-          $("#member_login_bttn").click(function () {
-            $("#login_slide_bar").slideToggle("slow");
-            $("#member_login_bttn").toggleClass("open");
-          });
+    :javascript
+      $(document).ready(function() {
+        FB.init({
+          appId  : '#{Facebooker2.app_id}',
+          status : true, // check login status
+          cookie : true, // enable cookies to allow the server to access the session
+          xfbml  : true  // parse XFBML
         });
+      });
   - body_tag do
     #wrapper
       #header
@@ -55,3 +50,4 @@
         %br.clear
       #footer
         =render :partial => 'layouts/footer'
+    %div{:id => "fb-root"}        

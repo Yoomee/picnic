@@ -1,7 +1,7 @@
 module ClientHelper
   
-  def render_superhero
-    render 'home/superhero'
+  def viewing_club?
+    current_page?(club_path) || current_page?(register_new_member_path)
   end
   
 end
