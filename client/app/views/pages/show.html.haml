@@ -15,6 +15,7 @@
     -if @page.has_photo?
       #article_image
         =photo_for(@page, '140x')
+      =snippet(@page, :photo_caption)
     =snippet(@page, :call_to_action)
   -if @page.has_related_items?
     #related_content

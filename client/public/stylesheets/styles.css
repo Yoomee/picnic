@@ -2884,6 +2884,11 @@ li.news_feed_item_hovering a.trash {
   position: relative;
   z-index: 100;
 }
+#page_right_col .photo_caption p {
+  color: black;
+  font-weight: bold;
+  width: 100%;
+}
 #page_subnav li a {
   color: black;
 }
@@ -3012,11 +3017,13 @@ a.backto {
 	width:230px;
 }
 .call_to_action {
-	background: #D4205D url(/images/call_to_action.png) no-repeat bottom left;
+	background: white;
 	padding: 15px 10px 40px 10px;
-	color: #FFFFFF;
 	float: left;
-	width: 285px;
+	width: 260px;
+}
+#page_right_col .call_to_action p {
+  color: black;
 }
 body #main .call_to_action * {
 	text-transform: none;
