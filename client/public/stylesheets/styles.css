@@ -2889,6 +2889,23 @@ li.news_feed_item_hovering a.trash {
   font-weight: bold;
   width: 100%;
 }
+.page_share ul {
+  clear: left;
+  padding: 0;
+  list-style-type: none;
+}
+
+.page_share ul li {
+  clear: left;
+  padding: 0;
+  margin:0;
+}
+.page_share h2 {
+  font-size: 13px;
+}
+.page_share ul li a {
+  color: black;
+}
 #page_subnav li a {
   color: black;
 }
@@ -2990,7 +3007,6 @@ a.backto {
 	width:280px;
 }
 #page_right_col * {
-	color:#FFFFFF;
 	float:left;
 }
 .pull_quote {

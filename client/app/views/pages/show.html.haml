@@ -1,3 +1,8 @@
+-content_for(:head) do
+  :javascript
+    $(document).ready(function() {
+      $('a#share_as_email').fancybox();
+    });
 -hide_page_title
 #page_subnav
   -if !@page.section.root?
@@ -17,6 +22,15 @@
         =photo_for(@page, '140x')
       =snippet(@page, :photo_caption)
     =snippet(@page, :call_to_action)
+    .page_share
+      %h2 Share
+      %ul
+        %li
+          =link_to "Facebook", "http://facebook.com/sharer.php?u=#{page_url(@page, :host => site_host)}", :popup => ['popUpWindow','height=350,width=600'] 
+        %li
+          =link_to "Twitter", "http://twitter.com/home?status=#{@page.title} - #{page_url(@page, :host => site_host)}", :target => "_blank"
+        %li
+          =link_to 'Email', {:controller => 'share', :action => 'new', :model_name => 'page', :id => @page.id, :as_email => true}, :id => 'share_as_email'
   -if @page.has_related_items?
     #related_content
       %h2.title Related content
@@ -28,5 +42,5 @@
   =link_if_allowed 'Add page', new_section_page_proc(@page.section)
   =link_if_allowed 'Edit page', edit_page_proc(@page)
   =link_if_allowed 'Delete page', page_proc(@page), :method => :delete, :confirm => 'Are you sure you want to delete this page?'
-  =render_share_link
+  =#render_share_link
   =yield(:options_panel)
