@@ -57,7 +57,7 @@ body span.cal_sheet span.month {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	color:#592051;
+	color:black;
 	font-family:'Avant Garde Gothic ITCW01Bd', arial, snas-serif;
 	-webkit-font-smoothing: antialiased;
 	
@@ -2869,8 +2869,7 @@ li.news_feed_item_hovering a.trash {
   min-height: 300px;
 }
 #page_subnav ul {
-  border: 1px solid #CCCCCC;
-  padding: 15px 15px 10px 15px;
+  padding: 15px 0 10px 0;
   float: left;
   margin: 0 0 20px;
   width: 148px;
@@ -2878,6 +2877,15 @@ li.news_feed_item_hovering a.trash {
 }
 #page_subnav li {
   margin-bottom: 5px;
+}
+#page_subnav li.active {
+  width: 202px;
+  background: white url(/images/selected_border.png) right no-repeat;
+  position: relative;
+  z-index: 100;
+}
+#page_subnav li a {
+  color: black;
 }
 #page_content {
   float: left;
@@ -2926,12 +2934,13 @@ a.backto {
 }
 
 #page_left_col {
+  border: 2px dashed black;
 	float:left;
 	height:auto;
 	margin-right:20px;
-	padding:0;
+	padding:10px;
 	color: #888888;
-	width:420px;
+	width:400px;
 }
 #page_left_col img {
 	float:left;
