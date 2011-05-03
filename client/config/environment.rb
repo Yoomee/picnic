@@ -4,10 +4,9 @@ class ClientEnvironment
     
     def setup(config)
       config.gem 'searchlogic'
+      config.gem 'facebooker2'      
     end
     
   end
-  
-  
-  
+    
 end

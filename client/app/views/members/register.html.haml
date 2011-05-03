@@ -1,0 +1,53 @@
+-content_for(:head) do
+  :javascript
+    var FBLogin = {
+      process: function() {
+        FB.getLoginStatus(function(response) {
+          if (response.session) {
+            #{redirect_to_fb_create}
+          } else {
+            #{show_denied_fb_perms_message}
+          }
+        });
+      }
+    }
+    
+-title "Register for PICNIC", :hidden => true
+
+#register_picnic_club.register_box
+  %h2 Register for the PICNIC Club
+  .register_box_inner
+    %p
+      Registration is easy with one of these service. Just click on the service you would like to register with and we will automatically create you a PICNIC profile:
+    .register_services
+      .register_service#facebook
+        -fb_login(:text => "Facebook Connect", :perms => "email") do
+          FBLogin.process();
+      .register_service#twitter
+        -fb_login(:text => "Twitter", :perms => "email") do
+          FBLogin.process();
+      .register_service#linkedin
+        -fb_login(:text => "LinkedIn", :perms => "email") do
+          FBLogin.process();
+    -form_tag("#") do
+      .inputs
+        =label_tag("email_address", "Or just enter your email address")
+        =text_field_tag("email_address")
+      =submit_tag("Next")
+    
+#register_picnic_11.register_box
+  %h2 Register for PICNIC11
+  .register_box_inner
+    %p
+      If you would like to register for the PICNIC11 conference then please enter your details below:
+    -form_tag("#") do
+      .inputs
+        =label_tag("email_address")
+        =text_field_tag("email_address")
+      =submit_tag("Next")
+    %p
+      Click
+      =link_to("here", "#")
+      to see the booking information, pricing and discounts.
+-options_panel do
+  =back_link

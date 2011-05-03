@@ -1,0 +1,12 @@
+-title "Club", :hidden => true
+
+#club_intro
+  =holding_image("500x300")
+  .club_intro_right
+    %h3 Picnic Club
+    %p
+      Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit.
+    %p=link_to("Sign up", register_new_member_path, :class => "club_sign_up_link")
+    
+-options_panel do
+  =back_link

@@ -3190,3 +3190,57 @@ div.article_image {
   list-style-type: none;
   padding: 0;
 }
+
+/*========== Club ==========*/
+
+#club_intro {
+  float: left;
+  clear: both;
+  margin-top: 20px;
+}
+#club_intro img {
+  float: left;
+  margin-right: 20px;
+}
+#club_intro .club_sign_up_link {
+  font-size: 17px;
+}
+#club_intro .club_intro_right {
+  float: left;
+  width: 300px;
+}
+
+/*========== Register ==========*/
+
+.register_box {
+  margin-top: 40px;
+  float: left;
+  clear: both;
+}
+.register_box .register_services {
+  float: left;
+  clear: both;
+  margin-bottom: 20px;
+}
+.register_box .register_services .register_service {
+  float: left;
+  margin-right: 10px;
+}
+.register_box_inner {
+  background-color: #E8E8E8;  
+  width: 500px;
+  padding: 20px;    
+}
+.register_box p, .register_box_inner, .register_box h2 {
+  float: left;
+  clear: both;
+}
+.register_box input[type="submit"] {
+  float: right;
+  clear: both;
+}
+.register_box form {
+  float: left;
+  clear: both;
+  width: 100%;
+}
