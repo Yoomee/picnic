@@ -26,9 +26,9 @@
       %h2 Share
       %ul
         %li
-          =link_to "Facebook", "http://facebook.com/sharer.php?u=#{page_url(@page, :host => site_host)}", :popup => ['popUpWindow','height=350,width=600'] 
+          =link_to "Facebook", "http://facebook.com/sharer.php?u=#{site_url}#{page_path(@page, :host => site_host)}", :popup => ['popUpWindow','height=350,width=600'] 
         %li
-          =link_to "Twitter", "http://twitter.com/home?status=#{@page.title} - #{page_url(@page, :host => site_host)}", :target => "_blank"
+          =link_to "Twitter", "http://twitter.com/home?status=#{@page.title} - #{site_url}#{page_path(@page, :host => site_host)}", :target => "_blank"
         %li
           =link_to 'Email', {:controller => 'share', :action => 'new', :model_name => 'page', :id => @page.id, :as_email => true}, :id => 'share_as_email'
   -if @page.has_related_items?
