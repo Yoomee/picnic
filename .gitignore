@@ -8,6 +8,8 @@
 /test
 /tmp
 /vendor
-config.ru
-.DS_Store
+/vendor/plugins/event_calendar
+/vendor/plugins/tramlines_events
 /vendor/plugins/tramlines_facebook
+.DS_Store
+config.ru

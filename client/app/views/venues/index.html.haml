@@ -1,0 +1,14 @@
+-title "Venues"
+-if @venues.empty?
+  %p.intro
+    There are no venues currently on the system. Click
+    =link_to 'here', new_venue_path
+    to create one.
+-else
+  %p.intro
+    The following venues are on the system. Click one to view more details.
+  %ul.lst
+    -@venues.each do |venue|
+      =link_to_self venue
+-options_panel do
+  =link_if_allowed 'New venue', new_venue_proc

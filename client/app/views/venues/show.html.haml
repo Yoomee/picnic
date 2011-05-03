@@ -1,0 +1,6 @@
+-title @venue
+%p
+  TODO Add list of events at this venue
+-options_panel do
+  =link_if_allowed "Edit venue", edit_venue_proc(@venue)
+  =link_if_allowed "Delete venue", venue_proc(@venue), :method => :delete, :confirm => "Are you sure? All the events at this venue will be deleted."

@@ -29,6 +29,15 @@
         %li
           %a{ :href => "/photos/new" }
             Add an image
+    #dash_images.dash_item
+      %h3
+        Events
+      %ul
+        %li
+          =link_to 'List venues', venues_path
+        %li
+          =link_to 'Add a venue', new_venue_path
+    
   #dash_technical_stuff.dash_col
     %h2
       Technical stuff
