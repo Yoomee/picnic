@@ -65,3 +65,23 @@ repository = git://git.yoomee.com:4321/plugins/tramlines_locations.git
 path = vendor/plugins/tramlines_badges
 scm = git
 repository = git://git.yoomee.com:4321/plugins/tramlines_badges.git
+
+[vendor/plugins/tramlines_shouts]
+path = vendor/plugins/tramlines_shouts
+scm = git
+repository = git://git.yoomee.com:4321/plugins/tramlines_shouts.git
+
+[vendor/plugins/tramlines_walls]
+path = vendor/plugins/tramlines_walls
+scm = git
+repository = git://git.yoomee.com:4321/plugins/tramlines_walls.git
+
+[vendor/plugins/tramlines_notifications]
+path = vendor/plugins/tramlines_notifications
+scm = git
+repository = git://git.yoomee.com:4321/plugins/tramlines_notifications.git
+
+[vendor/plugins/tramlines_ratings]
+path = vendor/plugins/tramlines_ratings
+scm = git
+repository = git://git.yoomee.com:4321/plugins/tramlines_ratings.git

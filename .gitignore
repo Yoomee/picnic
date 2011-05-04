@@ -15,3 +15,7 @@
 .DS_Store
 config.ru
 /vendor/plugins/tramlines_badges
+/vendor/plugins/tramlines_shouts
+/vendor/plugins/tramlines_walls
+/vendor/plugins/tramlines_notifications
+/vendor/plugins/tramlines_ratings

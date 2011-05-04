@@ -1,0 +1,15 @@
+.left_col
+  .story_author
+    =image_for(@shout.member, "50x50#")
+    =link_to_self(@shout.member)
+.right_col
+  -if @shout.has_video?
+    =@shout.attachable.reformatted_html(:width => 600, :height => 400)
+  -elsif @shout.has_photo?
+    =image_for(@shout.attachable, "600x600#")
+  =simple_format(@shout.text)
+
+-options_panel do
+  =back_link
+  =link_if_allowed("Edit story", edit_shout_proc(@shout))
+  =link_if_allowed("Delete story", @shout, :method => :delete, :confirm => "Are you sure?")
