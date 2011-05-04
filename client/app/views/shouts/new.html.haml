@@ -1,0 +1,5 @@
+-if admin_logged_in?
+  -title "New Story"
+  =render "enhanced_form", :shout => @shout
+-else
+  =render "form", :shout => @shout

@@ -1,0 +1,10 @@
+-title "Edit story"
+
+-if admin_logged_in?
+  =render("shouts/enhanced_form", :shout => @shout)
+-else
+  =render("shouts/form", :shout => @shout)
+
+-options_panel do
+  =back_link
+  =link_if_allowed("Delete", @shout, :method => :delete, :confirm => "Are you sure?")
