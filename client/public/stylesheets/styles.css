@@ -1618,12 +1618,26 @@ span.cal_sheet span.day {
 #login_email_or_username, #login_password {
 	float: left;
 	clear: both;
-	width: 180px;
+	width: 200px;
 	padding: 6px 10px;
+}
+#login_password {
+  margin-bottom: 0;
+}
+#forgotten_password {
+  float: right;
+  clear: both;
+  font-size: 11px;
+  margin-top: 3px;
 }
 input#login_bttn {
 	margin: 17px 0 0;
 	clear: left;
+}
+#login_services {
+  float: left;
+  clear: both;
+  margin-bottom: 20px;
 }
 
 /* login slide bar */
@@ -2965,6 +2979,9 @@ a.backto {
 	color: #888888;
 	width:400px;
 }
+body.page_the_team #page_left_col {
+  width: 696px;
+}
 #page_left_col img {
 	float:left;
 	margin:0 0 20px;
@@ -2972,8 +2989,27 @@ a.backto {
 	max-width:440px;
 }
 #page_left_col h4 {
-	color: #592051;
-	
+	color: #592051;	
+}
+#member_grid {
+  clear: both;
+  float: left;
+  width: 720px;
+}
+#member_grid li {
+  float: left;
+  clear: none;
+  margin-top: 10px;
+}
+#member_grid li.left_column {
+  clear: left;
+  margin: 10px 12px 0 0;
+}
+#member_grid li.middle_column {
+  margin: 10px 12px 0 12px;
+}
+#member_grid li.right_column {
+  margin: 10px 0 0 12px;
 }
 #pull_quote_large_image {
 	background:none repeat scroll 0 0 #CCCCCC;
@@ -3276,4 +3312,15 @@ div.article_image {
   float: left;
   clear: both;
   width: 100%;
+}
+
+/*========== Badges ==========*/
+
+#unawarded_badges {
+  width: 400px;
+}
+#unawarded_badges_links {
+  float: left;
+  clear: both;
+  margin-top: 20px;
 }

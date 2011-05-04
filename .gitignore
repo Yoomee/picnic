@@ -14,3 +14,4 @@
 /vendor/plugins/tramlines_locations
 .DS_Store
 config.ru
+/vendor/plugins/tramlines_badges
