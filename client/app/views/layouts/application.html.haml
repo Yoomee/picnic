@@ -14,12 +14,12 @@
     %meta{ :name => "info", :content => "#{page_title}#{page_subtitle}" }
     %link{ :href => "/images/favicon.ico", :rel => "shortcut icon" }
     = google_javascripts :jquery, :jqueryui
-    = javascript_include_tag 'jrails', 'jquery.cycle', 'tramlines', 'jquery.labelify', 'jquery.fancy_box/jquery.fancybox-1.3.1.pack', 'jquery.fancy_box/jquery.easing-1.3.pack.js', 'jquery.fancy_box/jquery.mousewheel-3.0.2.pack.js', 'client/load_fancybox', :cache => true
+    = javascript_include_tag 'jrails', 'jquery.cycle', 'tramlines', 'jquery.labelify', 'jquery.fancy_box/jquery.fancybox-1.3.1.pack', 'jquery.fancy_box/jquery.easing-1.3.pack.js', 'jquery.fancy_box/jquery.mousewheel-3.0.2.pack.js', 'client/load_fancybox', 'client/css3-mediaqueries.js', :cache => true
     
     = javascript_include_tag "http://connect.facebook.net/en_US/all.js"
 
-    = stylesheet_link_tag 'http://fast.fonts.com/cssapi/4d18a55f-896a-46c9-a509-6b06d325e32c.css'
-    = stylesheet_link_tag 'client/styles', 'jquery.fancybox', 'jquery-ui', :cache => true
+    = stylesheet_link_tag 'http://fast.fonts.com/cssapi/f1269106-f262-440b-b3ce-93423b2eaf06.css'
+    = stylesheet_link_tag 'jquery.fancybox', 'jquery-ui', 'client/1140.css', 'client/styles', :cache => true
     =# formtastic_stylesheet_link_tag
     =yield :head
     :javascript
@@ -33,21 +33,28 @@
       });
   - body_tag do
     #wrapper
-      #header
+      #header.container
         =render :partial => 'layouts/header'
-      #subheader
-        #search_box
-          %form{ :action => "/search/results", :method => "post" }
-            %input#search_field{ :name => "term", :type => "text", :value => "Search", :onfocus => "var element = document.getElementById('search_field');element.value='';" }
-            %input#search_icon{ :name => "commit", :title => "search", :value => "search" }      
-        =render("layouts/nav")
-        =render("layouts/subnav")
-      #main.content
-        =render_flash
-        -unless true && hide_page_title?
-          %h1#page_title=page_title
-        = @content_for_layout
-        %br.clear
+      #subheader.container
+        .row
+          .sevencol
+            =render("layouts/nav")
+          #search_box_outer.fivecol.last    
+            #search_box
+              %form{ :action => "/search/results", :method => "post" }
+                %input#search_field{ :name => "term", :type => "text", :value => "Search", :onfocus => "var element = document.getElementById('search_field');element.value='';" }
+                %input#search_icon{ :name => "commit", :title => "search", :value => "search" }      
+          .twelvecol      
+            =render("layouts/subnav")
+      #main.content.container
+        .row
+          .twelvecol
+            =render_flash
+          .twelvecol  
+            -unless true && hide_page_title?
+              %h1#page_title=page_title
+        .row      
+          = @content_for_layout
       #footer
         =render :partial => 'layouts/footer'
     %div{:id => "fb-root"}        

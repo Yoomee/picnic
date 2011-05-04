@@ -8,25 +8,53 @@
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outline:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 /* ===============================  text styles ================================ */
-body, textarea, input {font:13px/1.5 'Helvetica Neue',Arial,'Liberation Sans',FreeSans,sans-serif}a:focus{outline:1px dotted invert}hr{border:0 #ccc solid;border-top-width:1px;clear:both;height:0}h1{font-size:25px}h2{font-size:23px}h3{font-size:21px}h4{font-size:19px}h5{font-size:17px}h6{font-size:15px}ol{list-style:decimal}ul{list-style:disc}li{margin-left:30px}p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset{margin-bottom:10px}
+body, textarea, input {font:14px/1.5 'Helvetica Neue',Arial,'Liberation Sans',FreeSans,sans-serif}a:focus{outline:1px dotted invert}hr{border:0 #ccc solid;border-top-width:1px;clear:both;height:0}h1{font-size:25px}h2{font-size:23px}h3{font-size:21px}h4{font-size:19px}h5{font-size:17px}h6{font-size:15px}ol{list-style:decimal}ul{list-style:disc}li{margin-left:30px}p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset{margin-bottom:10px}
 
-/* ===========  @font face ==========
+/* ============================== */
+/* ! Layout for desktop version   */
+/* ============================== */
 
-@font-face {
-	font-family: 'QuicksandLight';
-	src: url('/client/type/Quicksand_Light-webfont.eot');
-	src: local('☺'), url('/client/type/Quicksand_Light-webfont.woff') format('woff'), url('/client/type/Quicksand_Light-webfont.ttf') format('truetype'), url('/client/type/Quicksand_Light-webfont.svg#webfont') format('svg');
-	font-weight: normal;
-	font-style: normal;
+	body {
+		
+	}
+	
+
+/* ============================= */
+/* ! Layout for mobile version   */
+/* ============================= */
+
+@media handheld, only screen and (max-width: 767px) {
+	#page_subnav {
+	width: 100%;
+	font-size: 19px;
+	
+	}
+	#search_box_outer {
+	width: 95%;
+	}
+	#search_box_outer #search_box {
+	width: 98%;
+	padding: 2%;
 }
-
-h1.page_title, .title, .left_col h2, #other_stuff h2, .call_to_action, #donate, .section_2 h1, h1#main_page_title, #contact_us_form h3, .dash_col h2  {
-	font: 18px/27px 'QuicksandBold', Arial, sans-serif;
-	text-transform: uppercase;
-	font-weight: normal;
+#search_field {
 	
 }
- */
+
+}
+
+
+/* ========================================== */
+/* ! Provide higher res assets for iPhone 4   */
+/* ========================================== */
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) { 
+	
+/*	.logo {
+		background: url(logo2x.jpg) no-repeat;
+		background-size: 212px 303px;
+	}*/
+
+}
 
 /* ======================  CSS3 regularly used stuff ================== */
 
@@ -58,8 +86,8 @@ body span.cal_sheet span.month {
 
 h1, h2, h3, h4, h5, h6 {
 	color:black;
-	font-family:'Avant Garde Gothic ITCW01Bd', arial, snas-serif;
-	-webkit-font-smoothing: antialiased;
+	font-family:'VAG Rounded W02 Black', arial, snas-serif;
+
 	
 }
 
@@ -69,7 +97,8 @@ body {
 	margin:0;
 	float:left;
 	width:100%;
-	font-family:'Avant Garde Gothic ITCW01Bk', Arial, sans-serif;
+    font-family:'VAG Rounded W02 Light', arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
 
 }
 #main {
@@ -92,14 +121,9 @@ a:hover {
 .hide {
 	visibility:hidden;
 }
-#wrapper, #header_inside {
-	width:940px;
-	margin:0 auto;
-}
+
 #header_right {
-  float: left;
-  margin-left: 20px;
-  width: 727px;
+	
 }
 table {}
 td, th {
@@ -961,7 +985,6 @@ div#top {
 }
 #header {
 	height:160px;
-	width:100%;
 	margin: 0;
 }
 #header_inside {
@@ -1049,10 +1072,6 @@ h1#site_logo a:active {
 }
 
 
-
-#user_links {
-	float:right;
-}
 #user_links p {
 	margin:0;
 }
@@ -1060,7 +1079,7 @@ h1#site_logo a:active {
 	display: block;
 	padding: 10px;
 	background: #e8e8e8;
-	float: left;
+	float: right;
 	margin: 13px 0 0 10px;
 	height: 40px;
 	line-height: 40px;
@@ -1069,6 +1088,10 @@ h1#site_logo a:active {
 	text-align: center;
 	font-weight: bold;
 	font-size: 20px;
+	
+	border-radius:3px;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
 }
 #user_links .panel {
   float: left;
@@ -1112,11 +1135,10 @@ fb.fb_login_not_logged_in.FB_login_button {
 	float: right;	
 }
 #search_box {
-  clear: right;
-	float:right;
 	height:26px;
-	margin:16px 20px 0 20px;
+	margin:0;
 	width:245px;
+	float: right;
 	background: #fff;
 	padding: 0;
 	color: #666;
@@ -1152,7 +1174,6 @@ input#search_icon {
 
 /* ====================  navigation  ===================== */
 #nav {
-	float: left;
 	border-radius:4px;
 	-webkit-border-radius:4px;
 	-moz-border-radius:4px;
@@ -1181,7 +1202,7 @@ input#search_icon {
 	text-indent:0;
 }
 #nav ul li {
-	font-family:'Avant Garde Gothic ITCW01Bd', arial, snas-serif;
+
 	-webkit-font-smoothing: antialiased;
 
 	float: left;
@@ -1199,8 +1220,8 @@ input#search_icon {
   color: #bbb;
 }
 #nav ul li a:hover {
+	color: #666;
 	text-decoration: none;
-	background: #f1f1f1;
 	
 	 -webkit-transition: .3s ease-in;
      -moz-transition: .3s ease-in;
@@ -1219,14 +1240,9 @@ input#search_icon {
 	padding:6px 14px 0 0;
  	font-weight: bold;
  	font-size: 14px;
- 	font-family:'Avant Garde Gothic ITCW01Bks','Avant Garde Gothic ITCW01Dm';
  	color: #c0c0c0;
 }
-#top_box {
-	float: right;
-	height: 73px;
-	
-}
+
 /* ====================  homepage  ===================== */
 div.big_message {
 	float:left;
@@ -1483,7 +1499,7 @@ h5.article_intro {
 	font-size: 21px;
 	line-height: 140%;
 	color: #777;
-	font-family:'Avant Garde Gothic ITCW01Bk', Arial, sans-serif;
+	font-family:'VAG Rounded W02 Thin', Arial, sans-serif;
 	
 
 	
@@ -2880,24 +2896,32 @@ li.news_feed_item_hovering a.trash {
 #page_subnav {
   float: left;
   margin-right: 20px;
-  width: 180px;  
-  min-height: 300px;
+
 }
 #page_subnav ul {
   padding: 15px 0 10px 0;
   float: left;
   margin: 0 0 20px;
-  width: 148px;
   
 }
 #page_subnav li {
   margin-bottom: 5px;
+
 }
 #page_subnav li.active {
-  width: 202px;
-  background: white url(/images/selected_border.png) right no-repeat;
+
+  
   position: relative;
   z-index: 100;
+  
+
+}
+#page_subnav li.active a {
+	background: #e8e8e8;
+	
+	  -webkit-border-radius:3px;
+  -moz-border-radius:3px;
+  border-radius:3px;
 }
 #page_right_col .photo_caption p {
   color: black;
@@ -2923,10 +2947,10 @@ li.news_feed_item_hovering a.trash {
 }
 #page_subnav li a {
   color: black;
+  padding: 0 7px;
+
 }
-#page_content {
-  float: left;
-}
+
 div#page_related_col {
 	clear:left;
 	float:left;
@@ -2971,13 +2995,9 @@ a.backto {
 }
 
 #page_left_col {
-  border: 2px dashed black;
-	float:left;
-	height:auto;
-	margin-right:20px;
-	padding:10px;
+
 	color: #888888;
-	width:400px;
+
 }
 body.page_the_team #page_left_col {
   width: 696px;
@@ -2989,7 +3009,7 @@ body.page_the_team #page_left_col {
 	max-width:440px;
 }
 #page_left_col h4 {
-	color: #592051;	
+
 }
 #member_grid {
   clear: both;
@@ -3031,7 +3051,7 @@ body.page_the_team #page_left_col {
 #page_right_col {	
 	float:left;
 	margin:0;
-	width:280px;
+
 }
 #article_image {
 	float:left;
@@ -3041,7 +3061,6 @@ body.page_the_team #page_left_col {
 	min-height:165px;
 	padding:0;
 	text-indent:10px;
-	width:280px;
 }
 #page_right_col * {
 	float:left;
@@ -3073,7 +3092,7 @@ body.page_the_team #page_left_col {
 	background: white;
 	padding: 15px 10px 40px 10px;
 	float: left;
-	width: 260px;
+
 }
 #page_right_col .call_to_action p {
   color: black;
@@ -3113,7 +3132,6 @@ div.article_image {
 	border-bottom-color:#fff;
 }
 #page_right_col img{
-	width:280px;
 }
 
 #pull_quote_large h3 {
