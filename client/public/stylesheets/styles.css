@@ -3286,12 +3286,12 @@ div.article_image {
   float: left;
   clear: both;
 }
-.register_box .register_services {
+.register_box .auth_links {
   float: left;
   clear: both;
   margin-bottom: 20px;
 }
-.register_box .register_services .register_service {
+.auth_links .auth_link {
   float: left;
   margin-right: 10px;
 }

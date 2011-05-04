@@ -51,10 +51,10 @@ path = vendor/plugins/tramlines_events
 scm = git
 repository = git://git.yoomee.com:4321/plugins/tramlines_events.git
 
-[vendor/plugins/tramlines_facebook]
-path = vendor/plugins/tramlines_facebook
+[vendor/plugins/tramlines_auth]
+path = vendor/plugins/tramlines_auth
 scm = git
-repository = git://git.yoomee.com:4321/plugins/tramlines_facebook.git
+repository = git://git.yoomee.com:4321/plugins/tramlines_auth.git
 
 [vendor/plugins/tramlines_locations]
 path = vendor/plugins/tramlines_locations

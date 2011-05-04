@@ -19,16 +19,7 @@
   .register_box_inner
     %p
       Registration is easy with one of these service. Just click on the service you would like to register with and we will automatically create you a PICNIC profile:
-    .register_services
-      .register_service#facebook
-        -fb_login(:text => "Facebook Connect", :perms => "email") do
-          FBLogin.process();
-      .register_service#twitter
-        -fb_login(:text => "Twitter", :perms => "email") do
-          FBLogin.process();
-      .register_service#linkedin
-        -fb_login(:text => "LinkedIn", :perms => "email") do
-          FBLogin.process();
+    =render("sessions/auth_links")
     -form_tag("#") do
       .inputs
         =label_tag("email_address", "Or just enter your email address")

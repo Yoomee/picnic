@@ -10,7 +10,7 @@
 /vendor
 /vendor/plugins/event_calendar
 /vendor/plugins/tramlines_events
-/vendor/plugins/tramlines_facebook
+/vendor/plugins/tramlines_auth
 /vendor/plugins/tramlines_locations
 .DS_Store
 config.ru
