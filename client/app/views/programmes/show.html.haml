@@ -44,9 +44,9 @@
                   .prog_col.first=link_to_self(venue)
                   -(9..19).each do |hour|
                     .prog_col{:class => "#{'last' if hour == 19}"}
-                      -sessions.starts_in_hour(hour).each do |session|
-                        =link_to(session, :class => 'session') do
-                          %b=session
+                      -sessions.select{|s| s.starts_at.hour == hour}.each do |session|
+                        -link_to(session, :class => 'session') do
+                          =session
       .arrow
         =link_to_function("&rang;", "Programme.goForward()", :id => "go_forward_link", :style => "display:#{@date.day > 15 ? 'none' : 'block'}")
       
