@@ -195,6 +195,12 @@ ul.lst li{
   float: right;
   clear: both;
 }
+.subrow {
+  width: 100%;
+  float: left;
+  clear: both;
+  margin-bottom: 20px;
+}
 /* =============================  button styles ============================= */
 /* general large button*/
 input[type="submit"], a.bttn_l, .formtastic input[type="submit"], .formtastic  a.bttn_l {
@@ -3585,7 +3591,7 @@ a.tag {
 }
 
 .timetable .hours .prog_col {
-  border-top:none;
+  border-color:#CCC;
   height:20px;
   background: #CCC;
 }
@@ -3596,9 +3602,8 @@ a.tag {
 }
 
 .timetable .session {
-  border-left:1px solid gray;
-  border-right:1px solid gray;
   height:100%;
+  color:#353535;
 }
 
 
@@ -3611,9 +3616,10 @@ a.tag {
 
 .prog_col {
   float: left;
-  width: 80px;
+  width: 79px;
   height: 90px;
   border-bottom:1px solid #CCC;
+  border-left:1px dashed #EEE;
 }
 
 .prog_row .first {
@@ -3621,6 +3627,7 @@ a.tag {
   font-size:16px;
   width:115px;
   padding-left:5px;
+  border-left:none;
 }
 
 
@@ -3673,6 +3680,16 @@ dt {
 .shout .shout_themes {
   margin-top: 20px;
 }
+.shout .shout_links {
+  width: 100%;
+}
+.shout .shout_links a {
+  float: left;
+  margin-right: 10px;
+}
+.shout .shout_links a.shout_view_link {
+  float: right;
+}
 
 /*========== Tags ==========*/
 
@@ -3694,12 +3711,32 @@ dt {
   float: left;
   width: 30%;
   margin: 0 5% 0 0;
+  height: 350px;
 }
 
 .controller_browse .right .story {
   margin-right: 0;
 }
 
+.controller_browse .left .story {
+  clear: left;
+}
+
+/*========== news network themes ==========*/
+.controller_tags .theme {
+  float: left;
+  width: 30%;
+  margin: 0 5% 0 0;
+  height: 350px;
+}
+
+.controller_tags .right .theme {
+  margin-right: 0;
+}
+
+.controller_tags .left .theme {
+  clear: left;
+}
 
 /* ============================= */
 /* ! Layout for mobile version   */
@@ -3747,7 +3784,3 @@ dt {
 }
 
 
-
-.controller_browse .right .story {
-  margin-right: 0;
-}
