@@ -17,8 +17,6 @@ body, textarea, input {font:14px/1.5 'Helvetica Neue',Arial,'Liberation Sans',Fr
 	body {
 		
 	}
-	
-
 
 /* ======================  CSS3 regularly used stuff ================== */
 
@@ -3539,6 +3537,109 @@ a.tag {
 
 
 
+
+/*========== Programme ==========*/
+
+
+
+#programme_wrapper .arrow {
+  width:66px;
+  float:left;
+  min-height:200px;
+  text-align:center;
+  margin-top:150px;
+}
+
+#programme_wrapper .arrow a {
+  font-size:150px;
+  color:#ccc;
+}
+#programme_wrapper .arrow a:hover {
+  text-decoration:none;
+  color:#333;
+}
+
+
+
+#timetable_outer {
+  border:2px solid black;
+  float:left;
+  width:1000px;
+  height:600px;
+  top:0px;
+  left:0px;
+  overflow-y:auto;
+  overflow-x:hidden;
+  
+  position:relative;
+}
+#timetable_inner {
+  position:absolute;
+  width:3000px;
+  float:left;
+}
+
+.timetable {
+  float:left;
+  width:1000px;
+}
+
+.timetable .hours .prog_col {
+  border-top:none;
+  height:20px;
+  background: #CCC;
+}
+
+.timetable .hours .hour {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.timetable .session {
+  border-left:1px solid gray;
+  border-right:1px solid gray;
+  height:100%;
+}
+
+
+
+.prog_row {
+  width: 1000px;
+  clear:both;
+  float:left;
+}
+
+.prog_col {
+  float: left;
+  width: 80px;
+  height: 90px;
+  border-bottom:1px solid #CCC;
+}
+
+.prog_row .first {
+  font-weight:bold;
+  font-size:16px;
+  width:115px;
+  padding-left:5px;
+}
+
+
+
+
+
+/*========== Session show ==========*/
+
+dt {
+  float:left;
+  clear:both;
+  font-weight:bold;
+  margin-right:5px;
+  width:60px;
+}
+ dd {
+  float:left;
+}
+
 /*========== Shouts ==========*/
 
 .shout {
@@ -3587,6 +3688,19 @@ a.tag {
 	border-radius:5px;
 }
 
+
+/*========== browse news network ==========*/
+.controller_browse .story {
+  float: left;
+  width: 30%;
+  margin: 0 5% 0 0;
+}
+
+.controller_browse .right .story {
+  margin-right: 0;
+}
+
+
 /* ============================= */
 /* ! Layout for mobile version   */
 /* ============================= */
@@ -3633,12 +3747,6 @@ a.tag {
 }
 
 
-/*========== browse news network ==========*/
-.controller_browse .story {
-  float: left;
-  width: 30%;
-  margin: 0 5% 0 0;
-}
 
 .controller_browse .right .story {
   margin-right: 0;

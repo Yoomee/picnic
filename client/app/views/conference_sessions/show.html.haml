@@ -1,0 +1,17 @@
+-title @conference_session
+.row
+  .sixcol
+    %p=@conference_session.description
+  .fourcol.last
+    %dl
+      %dt Day
+      %dd=conference_day(@conference_session.starts_at)
+      %dt Time
+      %dd=conference_session_time(@conference_session)
+      %dt Venue
+      %dd=link_to_self(@conference_session.venue)
+.row
+  .twelvecol
+    -options_panel do
+      =link_if_allowed "Edit session", edit_conference_session_proc(@conference_session)
+      =link_if_allowed "Delete session", conference_session_proc(@conference_session), :method => :delete, :confirm => "Are you sure?"
