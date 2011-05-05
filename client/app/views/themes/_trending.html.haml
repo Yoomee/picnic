@@ -1,0 +1,6 @@
+#trending_themes.twocol
+  %h4 Trending themes
+  %ul.lst
+    -Tag.all.each do |tag|
+      %li
+        =link_to_self tag, :class=>'tag'

@@ -191,8 +191,18 @@ ul.lst li{
 .labelified {
 	color:gray;
 }
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
 .flcb {
   float: left;
+  clear: both;
+}
+.frcb {
+  float: right;
   clear: both;
 }
 /* =============================  button styles ============================= */
@@ -1958,6 +1968,7 @@ p.post_admin a {
   text-align: center;
   width: 60px;
   margin-right: 10px;
+  font-size: 12px;  
 }
 .profile_photo img {}
 
@@ -3090,6 +3101,8 @@ a.backto {
   float: left;
   clear: none;
   margin-top: 10px;
+  text-align: center;
+  width: 100px;  
 }
 #member_grid li.left_column {
   clear: left;
@@ -3526,37 +3539,83 @@ a.tag {
 
 
 
+/*========== Shouts ==========*/
+
+.shout {
+  width: 100%;
+}
+.shout_left {
+  width: 80%;
+  float: left;
+	border:2px dotted #C0C0C0;  
+}
+.shout_right {
+  float: left;
+}
+.shout_right_inner {
+  margin: 0 20px 0 20px;
+}
+.shout_left_inner {
+  float: left;  
+  margin: 10px;
+}
+.shout .shout_title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.shout .shout_comments_link {
+	background: url(/images/comments.png) no-repeat;
+	text-indent:-9000em;
+	width: 42px;
+	height: 42px;
+}
+.shout .shout_themes {
+  margin-top: 20px;
+}
+
+/*========== Tags ==========*/
+
+.themes_list li {
+  margin: 5px 5px 5px 0;
+}
+.tag {
+  padding: 5px 8px;
+  background-color: #ccc;
+  color: #000;
+  -moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+}
 
 /* ============================= */
 /* ! Layout for mobile version   */
 /* ============================= */
 
 @media handheld, only screen and (max-width: 767px) {
+  
 	#page_subnav {
-	width: 100%;
-	font-size: 19px;
-	
+  	width: 100%;
+  	font-size: 19px;
 	}
 	#search_box_outer {
-	width: 95%;
-	display: none;
+  	width: 95%;
+  	display: none;
 	}
-	
 	body #user_links .panel {
-	position: absolute;
-	top: 0;
-	right: 0;
-	margin: 0;
-}
+  	position: absolute;
+  	top: 0;
+  	right: 0;
+  	margin: 0;
+  }
 	body h1#site_logo a {
-	margin: 70px 0 0;
-}
-#user_links .button {
-	width: 80px;
-	padding: 5px ;
-	font-size: 16px;
-}
-
+	  margin: 70px 0 0;
+  }
+  #user_links .button {
+  	width: 80px;
+  	padding: 5px ;
+  	font-size: 16px;
+  }
+  
 }
 
 
@@ -3571,4 +3630,16 @@ a.tag {
 		background-size: 212px 303px;
 	}*/
 
+}
+
+
+/*========== browse news network ==========*/
+.controller_browse .story {
+  float: left;
+  width: 30%;
+  margin: 0 5% 0 0;
+}
+
+.controller_browse .right .story {
+  margin-right: 0;
 }
