@@ -37,6 +37,7 @@
             =link_to_box(badge, info_badge_path(badge))
     #members_shouts.flcb
       %h3="#{forename_or_your(@member).capitalize} posts"
+      =render_shouts(@member)
   .twocol.last
     #member_links
       %ul.lst
