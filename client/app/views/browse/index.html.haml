@@ -1,0 +1,5 @@
+.row
+  =render :partial => 'themes/trending'
+  .eightcol
+    -@stories.each do |story|
+      =render "story", :story => story

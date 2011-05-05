@@ -2,7 +2,7 @@
   #subnav
     %ul
       -if in_news_network?
-        =li_with_active(false, link_to("Browse"))
+        =li_with_active(current_page?(browse_path), link_to("Browse", browse_path))
         =li_with_active(false, link_to("Themes"))
         =li_with_active(current_page?(correspondents_path), link_to("Correspondents", correspondents_path))
       -else
