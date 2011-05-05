@@ -6,10 +6,7 @@
     %p
       Not a member? Register
       =link_to 'here', new_member_url
-  #login_services
-    .login_service.facebook
-      -fb_login(:text => "Facebook Connect", :perms => "email") do
-        FBLogin.process();
+  =render("sessions/auth_links")
   -form_tag session_url do
     #login_form
       %p.login_email
