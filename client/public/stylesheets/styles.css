@@ -17,8 +17,6 @@ body, textarea, input {font:14px/1.5 'Helvetica Neue',Arial,'Liberation Sans',Fr
 	body {
 		
 	}
-	
-
 
 /* ======================  CSS3 regularly used stuff ================== */
 
@@ -191,8 +189,18 @@ ul.lst li{
 .labelified {
 	color:gray;
 }
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
 .flcb {
   float: left;
+  clear: both;
+}
+.frcb {
+  float: right;
   clear: both;
 }
 /* =============================  button styles ============================= */
@@ -1195,7 +1203,7 @@ input#search_icon {
 #subnav {
   clear: both;
   float: left;
-  margin: 0px 0 30px;
+  margin: 0px 0 0px;
   padding: 10px 0 10px;
   width: 100%;
 
@@ -1264,6 +1272,11 @@ input#search_icon {
  	font-size: 16px;
  	color: #000;
 
+}
+
+#main_container {
+	margin-top: 30px;
+	
 }
 
 /* ====================  homepage  ===================== */
@@ -1953,6 +1966,7 @@ p.post_admin a {
   text-align: center;
   width: 60px;
   margin-right: 10px;
+  font-size: 12px;  
 }
 .profile_photo img {}
 
@@ -3085,6 +3099,8 @@ a.backto {
   float: left;
   clear: none;
   margin-top: 10px;
+  text-align: center;
+  width: 100px;  
 }
 #member_grid li.left_column {
   clear: left;
@@ -3352,13 +3368,13 @@ div.page_share {
 /*========== Club ==========*/
 
 #club_intro {
-  float: left;
-  clear: both;
-  margin-top: 20px;
+
+
+
 }
 #club_intro img {
   float: left;
-  margin-right: 20px;
+  margin-bottom: 20px;
 }
 #club_intro .club_sign_up_link {
   font-size: 17px;
@@ -3402,8 +3418,6 @@ div.page_share {
   clear: both;
   width: 100%;
 }
-
-/*========== Badges ==========*/
 
 /*========== Badges ==========*/
 
@@ -3494,6 +3508,197 @@ body.controller_badges .badge_photo {
   clear: both;
   margin-top: 20px;
 }
+/*====================== Newsnetwork home ====================*/
+
+#map_canvas {
+	margin-bottom: 20px;
+	
+}
+
+a.tag {
+	display: block;
+	padding: 4px 8px;
+	line-height: 100%;
+	background: #e8e8e8;
+	float: left;
+	margin: 0 0 5px;
+	
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	border-radius:3px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/*========== Programme ==========*/
+
+
+
+#programme_wrapper .arrow {
+  width:66px;
+  float:left;
+  min-height:200px;
+  text-align:center;
+  margin-top:150px;
+}
+
+#programme_wrapper .arrow a {
+  font-size:150px;
+  color:#ccc;
+}
+#programme_wrapper .arrow a:hover {
+  text-decoration:none;
+  color:#333;
+}
+
+
+
+#timetable_outer {
+  border:2px solid black;
+  float:left;
+  width:1000px;
+  height:600px;
+  top:0px;
+  left:0px;
+  overflow-y:auto;
+  overflow-x:hidden;
+  
+  position:relative;
+}
+#timetable_inner {
+  position:absolute;
+  width:3000px;
+  float:left;
+}
+
+.timetable {
+  float:left;
+  width:1000px;
+}
+
+.timetable .hours .prog_col {
+  border-top:none;
+  height:20px;
+  background: #CCC;
+}
+
+.timetable .hours .hour {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.timetable .session {
+  border-left:1px solid gray;
+  border-right:1px solid gray;
+  height:100%;
+}
+
+
+
+.prog_row {
+  width: 1000px;
+  clear:both;
+  float:left;
+}
+
+.prog_col {
+  float: left;
+  width: 80px;
+  height: 90px;
+  border-bottom:1px solid #CCC;
+}
+
+.prog_row .first {
+  font-weight:bold;
+  font-size:16px;
+  width:115px;
+  padding-left:5px;
+}
+
+
+
+
+
+/*========== Session show ==========*/
+
+dt {
+  float:left;
+  clear:both;
+  font-weight:bold;
+  margin-right:5px;
+  width:60px;
+}
+ dd {
+  float:left;
+}
+
+/*========== Shouts ==========*/
+
+.shout {
+  width: 100%;
+}
+.shout_left {
+  width: 80%;
+  float: left;
+	border:2px dotted #C0C0C0;  
+}
+.shout_right {
+  float: left;
+}
+.shout_right_inner {
+  margin: 0 20px 0 20px;
+}
+.shout_left_inner {
+  float: left;  
+  margin: 10px;
+}
+.shout .shout_title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.shout .shout_comments_link {
+	background: url(/images/comments.png) no-repeat;
+	text-indent:-9000em;
+	width: 42px;
+	height: 42px;
+}
+.shout .shout_themes {
+  margin-top: 20px;
+}
+
+/*========== Tags ==========*/
+
+.themes_list li {
+  margin: 5px 5px 5px 0;
+}
+.tag {
+  padding: 5px 8px;
+  background-color: #ccc;
+  color: #000;
+  -moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+}
+
+
+/*========== browse news network ==========*/
+.controller_browse .story {
+  float: left;
+  width: 30%;
+  margin: 0 5% 0 0;
+}
+
+.controller_browse .right .story {
+  margin-right: 0;
+}
 
 
 /* ============================= */
@@ -3501,31 +3706,30 @@ body.controller_badges .badge_photo {
 /* ============================= */
 
 @media handheld, only screen and (max-width: 767px) {
+  
 	#page_subnav {
-	width: 100%;
-	font-size: 19px;
-	
+  	width: 100%;
+  	font-size: 19px;
 	}
 	#search_box_outer {
-	width: 95%;
-	display: none;
+  	width: 95%;
+  	display: none;
 	}
-	
 	body #user_links .panel {
-	position: absolute;
-	top: 0;
-	right: 0;
-	margin: 0;
-}
+  	position: absolute;
+  	top: 0;
+  	right: 0;
+  	margin: 0;
+  }
 	body h1#site_logo a {
-	margin: 70px 0 0;
-}
-#user_links .button {
-	width: 80px;
-	padding: 5px ;
-	font-size: 16px;
-}
-
+	  margin: 70px 0 0;
+  }
+  #user_links .button {
+  	width: 80px;
+  	padding: 5px ;
+  	font-size: 16px;
+  }
+  
 }
 
 
@@ -3543,12 +3747,6 @@ body.controller_badges .badge_photo {
 }
 
 
-/*========== browse news network ==========*/
-.controller_browse .story {
-  float: left;
-  width: 30%;
-  margin: 0 5% 0 0;
-}
 
 .controller_browse .right .story {
   margin-right: 0;

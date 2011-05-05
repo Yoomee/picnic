@@ -1,0 +1,54 @@
+-content_for :head do
+  :javascript
+    var Programme = {
+      goForward: function() {
+        var left = $('#timetable_inner').position().left;
+        if (left > -2000){
+          console.log(left);
+          left -= 1000;
+          console.log(left);
+          $('#timetable_inner').animate({'left':left}, 1000, 'easeInOutCirc');
+          $('#go_back_link').show();
+          if (left < -1000){$('#go_forward_link').hide();}
+        }
+      },
+      goBack: function() {
+        var left = $('#timetable_inner').position().left;
+        if (left < 0){
+          left += 1000;
+          $('#timetable_inner').animate({'left':left}, 1000, 'easeInOutCirc');
+          $('#go_forward_link').show();
+          if (left > -1000){$('#go_back_link').hide();}
+        }
+      }
+    };
+
+-title "Programme", :hidden => true
+.row
+  .twelvecol.last
+    #programme_wrapper
+      .arrow
+        =link_to_function("&lang;", "Programme.goBack()", :id => "go_back_link", :style => "display:#{@date.day < 15 ? 'none' : 'block'}")
+      #timetable_outer
+        #timetable_inner{:style => "left:#{(14-@date.day)*1000}px;"}
+          -(Date.parse("2011-09-14")..Date.parse("2011-09-16")).each do |date|
+            .timetable{:id => "timetable_#{date.day}"}
+              .prog_row.hours
+                .prog_col.first
+                -(9..19).each do |hour|
+                  .prog_col{:class => "#{'last' if hour == 19}"}
+                    %span.hour="%02d:00" % hour
+              -@venues.each do |venue|
+                -sessions = venue.sessions.on_date(date)
+                .prog_row
+                  .prog_col.first=link_to_self(venue)
+                  -(9..19).each do |hour|
+                    .prog_col{:class => "#{'last' if hour == 19}"}
+                      -sessions.starts_in_hour(hour).each do |session|
+                        =link_to(session, :class => 'session') do
+                          %b=session
+      .arrow
+        =link_to_function("&rang;", "Programme.goForward()", :id => "go_forward_link", :style => "display:#{@date.day > 15 ? 'none' : 'block'}")
+      
+
+  
