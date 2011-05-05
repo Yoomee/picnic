@@ -1,0 +1,17 @@
+.row
+  =render :partial => 'themes/trending'
+  .tencol.last
+    .row
+      .fourcol
+        %h2.tag
+          =@tag
+        %p.tag_description
+          Maecenas quis tortor arcu. Vivamus rutrum nunc non neque consectetur quis placerat neque lobortis. Nam vestibulum, arcu sodales 
+      .eightcol.last
+        =image_for(@tag, '616x500')
+    .row
+      %h5
+        Stories
+      -@stories.each_with_col_name do |story, column_name|
+        %div{:class => column_name}
+          =render "browse/story", :story => story
