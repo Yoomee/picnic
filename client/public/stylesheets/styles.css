@@ -3694,12 +3694,16 @@ dt {
   float: left;
   width: 30%;
   margin: 0 5% 0 0;
+  height: 350px;
 }
 
 .controller_browse .right .story {
   margin-right: 0;
 }
 
+.controller_browse .left .story {
+  clear: left;
+}
 
 /* ============================= */
 /* ! Layout for mobile version   */
@@ -3747,7 +3751,3 @@ dt {
 }
 
 
-
-.controller_browse .right .story {
-  margin-right: 0;
-}
