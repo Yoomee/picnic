@@ -40,6 +40,8 @@
       #related_content
         %h2.title Related content
         =render_related_items(@page)
+
+.row        
   -options_panel do
     =back_link
     ="Tagged #{in_tags(@page)}" unless @page.tags.empty?

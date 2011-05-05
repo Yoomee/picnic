@@ -1,28 +1,51 @@
--if false
-  .footer_box
-    Other
-    %strong v
-    sites
-    %br
-    =link_to("vinspired.com", "http://vinspired.com", :target => "_blank")
-    %br
-    =link_to("Big Society's Big Mouth", "http://bigsocietysbigmouth.org", :target => "_blank")
-  .footer_box
-    Get social
-    %br
-    =link_to("Facebook", "#")
-    %br
-    =link_to("Twitter", "#")
-    %br
-    =link_to("YouTube", "#")
-  .footer_box_right
-    =link_to("v Network", "#")
-    %br
-    =link_to_slug("Contact us", :contact_us)
-    %br
-    =link_to("Site map", sections_path)
-    %br
-    \&copy;
-    %strong v
-    2011 Registered Charity No. 1113255
-  =#link_to("site by", "http://www.yoomee.com", :id => "siteby")
+.row
+  #footer_sitemap.twelvecol.last
+    %h2
+      Sitemap
+  #newsnetwork.sitemap_list.twocol
+    %h3=link_to 'Newsnetwork', '#'
+    %ul 
+      %li
+        =link_to 'Press room', '#'
+      %li
+        =link_to 'Press releases', '#'
+      %li
+        =link_to 'Contact', '#'
+      %li
+        =link_to 'Registration', '#'
+  #club.sitemap_list.twocol
+    %h3=link_to 'Club', '#'
+    %ul 
+      %li
+        =link_to 'Intro', '#'
+      %li
+        =link_to 'Sessions', '#'
+      %li
+        =link_to 'Themes', '#'
+      %li
+        =link_to 'Registration', '#'
+  #picnic_section.sitemap_list.twocol
+    %h3=link_to 'PICNIC11', '#'
+    %ul 
+      %li
+        =link_to 'Intro', '#'
+      %li
+        =link_to 'Sessions', '#'
+      %li
+        =link_to 'Themes', '#'
+      %li
+        =link_to 'Registration', '#'
+  #about.sitemap_list.twocol
+    %h3=link_to 'About', '#'
+    %ul 
+      %li
+        =link_to 'History', '#'
+      %li
+        =link_to 'Press room', '#'
+      %li
+        =link_to 'Press releases', '#'
+      %li
+        =link_to 'Contact', '#'        
+  #footer_copyright.twelvecol.last
+    %p
+      ©2010 PICNIC. All rights reserved.      
