@@ -1,0 +1,13 @@
+.row
+  .eightcol
+    =google_map([], :width => "100%")
+.row
+  #trending_themes.twocol
+    %h4 Trending themes
+    %ul.lst
+      -Tag.all.each do |tag|
+        %li
+          =link_to_self tag
+  .shout_wall.tencol.last
+    %h4 Stories
+    

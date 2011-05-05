@@ -1,25 +1,53 @@
-- hide_page_title
+-title @member.full_name, :hidden => true
 .row
-  #left_column.eightcol
+  .twocol
     #profile.bx
       .profile_photo
         - if @member == @logged_in_member
           =link_to image_for(@member, '140x'), :controller => 'member', :action => 'setphoto', :id => @logged_in_member
         - else
           =image_for(@member, '140x')
-      .profile_info
-        %h1
-          = @member.full_name
-      %br.clear
-  #right_column.fourcol
-    #options.group_section.bx
-      .bx_in
-        %ul.action_links
-        = render_photos_box(@member)
-%br.clear
-.row
-  .twelvecol
-    - options_panel do
-      = link_if_allowed "Edit", edit_member_proc(@member)
-      = link_to_box_if_allowed "Award badge", unawarded_member_badges_proc(@member)
+    -if @member
+    .themes_list
+      %h3="#{forename_or_your(@member).capitalize} themes"
+      %ul.lst
+        -Tag.limit(4).each do |tag|
+          =link_to_tag(tag)
+  .eightcol
+    .profile_info.flcb
+      %h1=@member.full_name
+      =read_more_truncate(@member.bio)
+    #member_themes.themes_list.flcb
+      %h3="About the real #{@member.forename}"
+      %ul.lst
+        -Tag.limit(4).each do |tag|
+          =link_to_tag(tag)
+    #member_location
+      -# default to sheffield just for the moment
+      -location = @member.has_location? ? @member.location : Location.new(:lat => "53.3830548", :lng => "-1.4647953", :country => "UK", :city => "Sheffield")
+      %h3 Location:
+      %p=render_address(location)
+      =google_map(location, :width => 300, :height => 200)
+    #member_badges
+      %h3="#{pluralize(84, 'club point')}"
+      %ul.lst
+        -@member.badges.each do |badge|
+          %li
+            =link_to_box(image_for(badge, "60x60"), info_badge_path(badge))
+            =link_to_box(badge, info_badge_path(badge))
+    #members_shouts.flcb
+      %h3="#{forename_or_your(@member).capitalize} posts"
+  .twocol.last
+    #member_links
+      %ul.lst
+        %li=link_to("Add as friend", "#", :class => "bttn_l")
+        %li=link_to("Introduce to...", "#", :class => "bttn_l")
+        %li=link_to("Chat online now", "#", :class => "bttn_l")
+        %li=link_to("Private message", "#", :class => "bttn_l")
   
+.row
+  -options_panel do
+    =back_link
+    =link_if_allowed "Edit", edit_member_proc(@member)
+    =link_to_box_if_allowed "Award badge", unawarded_member_badges_proc(@member)
+
