@@ -47,11 +47,11 @@
         =render("layouts/subnav")
       #main.content
         #main_container.container 
-          -unless true && hide_page_title?
+          -unless hide_page_title?
             .row
               .twelvecol                
                 %h1#page_title=page_title
-          = @content_for_layout
+          =content_for_layout
       #footer.container
         =render :partial => 'layouts/footer'
     %div{:id => "fb-root"}        
