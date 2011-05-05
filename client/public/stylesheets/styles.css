@@ -93,7 +93,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* =============================  general styles ============================= */
 body {
-	color:#333;
+
 	margin:0;
 	float:left;
 	width:100%;
@@ -1501,7 +1501,6 @@ h5.article_intro {
 	font-weight: normal;
 	font-size: 21px;
 	line-height: 140%;
-	color: #777;
 	font-family:'VAG Rounded W02 Thin', Arial, sans-serif;
 	
 
@@ -2999,7 +2998,6 @@ a.backto {
 
 #page_left_col {
 
-	color: #888888;
 
 }
 body.page_the_team #page_left_col {
@@ -3103,7 +3101,7 @@ body.page_the_team #page_left_col {
 body #main .call_to_action * {
 	text-transform: none;
 	font-weight: normal;
-	font-size: 18px;
+
 }
 #main .call_to_action a {
 	color: #fff;
