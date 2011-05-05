@@ -36,9 +36,9 @@
         =render :partial => 'layouts/header'
       #subheader.container
         .row
-          .sevencol
+          .ninecol
             =render("layouts/nav")
-          #search_box_outer.fivecol.last    
+          #search_box_outer.threecol.last    
             #search_box
               %form{ :action => "/search/results", :method => "post" }
                 %input#search_field{ :name => "term", :type => "text", :value => "Search", :onfocus => "var element = document.getElementById('search_field');element.value='';" }
@@ -48,8 +48,6 @@
       #main.content
         .container
           .row
-            .twelvecol
-              =render_flash
             .twelvecol  
               -unless true && hide_page_title?
                 %h1#page_title=page_title
