@@ -1,5 +1,10 @@
--if !current_root_section.nil?
+
+-if !current_root_section.nil? && (current_root_section.page_and_section_descendant_generations > 1)
   #subnav
     %ul
       -current_root_section.all_children.each do |page_or_section|
         =li_with_active(viewing_page_or_section?(page_or_section), link_to_self(page_or_section))
+      %li.right_subnav_link
+        =link_to_slug("Contact", "contact")
+      %li.right_subnav_link
+        =link_to_slug("Press room", "press-room")
