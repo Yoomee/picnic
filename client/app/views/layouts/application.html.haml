@@ -36,14 +36,15 @@
       #header.container
         =render :partial => 'layouts/header'
       #subheader.container
-        .row
+        #nav_line.row
           .ninecol
             =render("layouts/nav")
           #search_box_outer.threecol.last    
             #search_box
               %form{ :action => "/search/results", :method => "post" }
                 %input#search_field{ :name => "term", :type => "text", :value => "Search", :onfocus => "var element = document.getElementById('search_field');element.value='';" }
-                %input#search_icon{ :name => "commit", :title => "search", :value => "search" }      
+                %input#search_icon{ :name => "commit", :title => "search", :value => "search" }
+        .row            
           .twelvecol
             =render("layouts/subnav")
       #main.content
