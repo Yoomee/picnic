@@ -13,7 +13,10 @@
         .shout_images.flcb
           .shout_image{:class => "#{shout.attachable_type.underscore}_shout_image"}
             =render_shout_attachable(shout)
-      =link_to("View full post &rarr;", shout, :class => "shout_view_link frcb")
+      .shout_links.flcb
+        =link_if_allowed("Edit", edit_shout_proc(shout))
+        =link_if_allowed("Delete", shout, :method => :delete, :confirm => "Are you sure?")
+        =link_to("View full post &rarr;", shout, :class => "shout_view_link")
   .shout_right
     .shout_right_inner
       =link_to(pluralize(shout.comments.count, 'comment'), shout, :class => "shout_comments_link flcb")
@@ -21,4 +24,3 @@
         %ul.lst
           -Tag.limit(3).each do |tag|
             =link_to_tag(tag)
-    

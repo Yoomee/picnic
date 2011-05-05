@@ -1,5 +1,6 @@
 .story
   -link_to story do
-    =image_for(story, '200x150')
+    =image_for(story, '282x200')
     %h5 Caption
-    %p Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.
+    %p
+      =strip_tags(description_for(story))

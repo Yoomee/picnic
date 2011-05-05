@@ -1,6 +1,6 @@
 .row
   =render :partial => 'themes/trending'
-  .eightcol
+  .tencol.last
     -@stories.each_with_col_name do |story, column_name|
       %div{:class => column_name}
         =render "story", :story => story

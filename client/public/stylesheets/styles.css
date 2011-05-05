@@ -203,6 +203,12 @@ ul.lst li{
   float: right;
   clear: both;
 }
+.subrow {
+  width: 100%;
+  float: left;
+  clear: both;
+  margin-bottom: 20px;
+}
 /* =============================  button styles ============================= */
 /* general large button*/
 input[type="submit"], a.bttn_l, .formtastic input[type="submit"], .formtastic  a.bttn_l {
@@ -3673,6 +3679,16 @@ dt {
 .shout .shout_themes {
   margin-top: 20px;
 }
+.shout .shout_links {
+  width: 100%;
+}
+.shout .shout_links a {
+  float: left;
+  margin-right: 10px;
+}
+.shout .shout_links a.shout_view_link {
+  float: right;
+}
 
 /*========== Tags ==========*/
 
@@ -3694,12 +3710,16 @@ dt {
   float: left;
   width: 30%;
   margin: 0 5% 0 0;
+  height: 350px;
 }
 
 .controller_browse .right .story {
   margin-right: 0;
 }
 
+.controller_browse .left .story {
+  clear: left;
+}
 
 /* ============================= */
 /* ! Layout for mobile version   */
@@ -3747,7 +3767,3 @@ dt {
 }
 
 
-
-.controller_browse .right .story {
-  margin-right: 0;
-}
