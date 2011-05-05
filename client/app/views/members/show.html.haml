@@ -1,3 +1,4 @@
+-not_content_row
 -title @member.full_name, :hidden => true
 .row
   .twocol
@@ -15,9 +16,9 @@
   .eightcol
     .profile_info.subrow
       %h1=@member.full_name
-      =read_more_truncate(@member.bio)
+      =read_more_truncate(@member.bio, :length => 500)
     #member_themes.themes_list.subrow
-      %h3="About the real #{@member.forename}"
+      %strong="About the real #{@member.forename}"
       %ul.lst
         -Tag.limit(4).each do |tag|
           =link_to_tag(tag)
@@ -25,11 +26,11 @@
       #member_location
         -# default to sheffield just for the moment
         -location = @member.has_location? ? @member.location : Location.new(:lat => "53.3830548", :lng => "-1.4647953", :country => "UK", :city => "Sheffield")
-        %h3 Location:
+        %strong Location:
         %p=render_address(location)
         =google_map(location, :width => 300, :height => 200)
       #member_badges
-        %h3="#{pluralize(84, 'club point')}"
+        %strong="#{pluralize(84, 'club point')}"
         %ul.lst
           -@member.badges.each do |badge|
             %li
