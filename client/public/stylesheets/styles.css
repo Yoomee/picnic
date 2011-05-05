@@ -316,7 +316,10 @@ input, textarea {
 	float: left;
 	margin: 0 7px 5px 0;
 	font-weight: bold;	
-	
+}
+.formtastic label span{
+  font-weight: normal;
+  font-size: 12px;
 }
 .formtastic span.cke_skin_kama {
 	float: left;
