@@ -5,7 +5,5 @@ Tramlines.add_plugin(:locations)
 Tramlines.add_plugin(:badges)
 Tramlines.add_plugin(:shouts)
 Tramlines.add_plugin(:walls)
-
 Tramlines.add_plugin(:notifications)
-
 Tramlines.add_plugin(:ratings)
