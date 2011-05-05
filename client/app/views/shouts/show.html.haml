@@ -2,6 +2,10 @@
   .story_author
     =image_for(@shout.member, "50x50#")
     =link_to_self(@shout.member)
+  %ul.lst.tags
+    -@shout.tags.each do |tag|
+      %li
+        =link_to_self(tag.to_tag)
 .right_col
   -if @shout.has_video?
     =@shout.attachable.reformatted_html(:width => 600, :height => 400)

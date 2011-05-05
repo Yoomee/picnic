@@ -43,7 +43,7 @@
               %form{ :action => "/search/results", :method => "post" }
                 %input#search_field{ :name => "term", :type => "text", :value => "Search", :onfocus => "var element = document.getElementById('search_field');element.value='';" }
                 %input#search_icon{ :name => "commit", :title => "search", :value => "search" }      
-          .twelvecol      
+          .twelvecol
             =render("layouts/subnav")
       #main.content
         .container
