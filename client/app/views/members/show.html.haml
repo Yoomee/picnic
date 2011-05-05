@@ -45,6 +45,22 @@
         %li=link_to("Introduce to...", "#", :class => "bttn_l")
         %li=link_to("Chat online now", "#", :class => "bttn_l")
         %li=link_to("Private message", "#", :class => "bttn_l")
+  .shout_wall
+    -@member.shouts.latest.each do |shout|
+      .row
+        .twocol
+        .shout.sevencol
+          %h5
+            -link_to shout do
+              =shout.created_at.strftime('%e %B:') 
+              Lorem ipsum dolor sit amet.
+          =simple_format shout.text
+        .shout_details.threecol.last
+          =image_for(shout.member, '50x50')
+          =link_to_self shout.member
+          .tags
+            -shout.tags.each do |tag|
+              =link_to_self tag.to_tag, :class => 'tag'
 .row
   -options_panel do
     =back_link

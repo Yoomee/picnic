@@ -3789,4 +3789,12 @@ dt {
 
 }
 
-
+.shout_wall .shout {
+  border: 1px dashed black;
+  padding: 5px;
+  margin: 0 10px 30px 0;
+  float: left
+}
+.shout_details .tags {
+  margin-top: 10px;
+}

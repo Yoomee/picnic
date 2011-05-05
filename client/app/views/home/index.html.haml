@@ -7,4 +7,17 @@
   =render :partial => 'themes/trending'
   .shout_wall.tencol.last
     %h4 Stories
-  
+    -Shout.latest.each do |shout|
+      .row
+        .shout.ninecol
+          %h5
+            -link_to shout do
+              =shout.created_at.strftime('%e %B:') 
+              Lorem ipsum dolor sit amet.
+          =simple_format shout.text
+        .shout_details.threecol.last
+          =image_for(shout.member, '50x50')
+          =link_to_self shout.member
+          .tags
+            -shout.tags.each do |tag|
+              =link_to_self tag.to_tag, :class => 'tag'
