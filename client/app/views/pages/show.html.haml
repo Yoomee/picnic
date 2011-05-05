@@ -11,7 +11,7 @@
       %ul.lst
         -@page.section.all_children.each do |page_or_section|
           =li_with_active(viewing_page_or_section?(page_or_section), link_to_self(page_or_section))
-  #page_content.fivecol
+  #page_content{:class => "#{@page.slug_in?(%w{the_team advisors correspondents picnic11_speakers}) ? 'eightcol last' : 'fivecol'}"}
     #page_left_col
       %h1=@page.title
       -unless @page.published?
@@ -19,7 +19,7 @@
       =render('content', :page => @page)
     =render_slug(@page.slug)
 
-  -if !@page.slug_in?(%w{the_team advisors correspondents})
+  -if !@page.slug_in?(%w{the_team advisors correspondents picnic11_speakers})
     #page_right_col.fivecol.last
       -if @page.has_photo?
         #article_image

@@ -9,7 +9,7 @@
           =image_for(@member, '140x')
     -if @member
     .themes_list
-      %h2="#{forename_or_your(@member).capitalize} themes"
+      %h3="#{forename_or_your(@member).capitalize} themes"
       %ul.lst
         -Tag.limit(4).each do |tag|
           =link_to_tag(tag)
@@ -18,23 +18,25 @@
       %h1=@member.full_name
       =read_more_truncate(@member.bio)
     #member_themes.themes_list.flcb
-      %h2="About the real #{@member.forename}"
+      %h3="About the real #{@member.forename}"
       %ul.lst
         -Tag.limit(4).each do |tag|
           =link_to_tag(tag)
     #member_location
       -# default to sheffield just for the moment
       -location = @member.has_location? ? @member.location : Location.new(:lat => "53.3830548", :lng => "-1.4647953", :country => "UK", :city => "Sheffield")
-      %h2 Location:
+      %h3 Location:
       %p=render_address(location)
       =google_map(location, :width => 300, :height => 200)
     #member_badges
-      %h2="#{pluralize(84, 'club point')}"
+      %h3="#{pluralize(84, 'club point')}"
       %ul.lst
         -@member.badges.each do |badge|
           %li
             =link_to_box(image_for(badge, "60x60"), info_badge_path(badge))
             =link_to_box(badge, info_badge_path(badge))
+    #members_shouts.flcb
+      %h3="#{forename_or_your(@member).capitalize} posts"
   .twocol.last
     #member_links
       %ul.lst

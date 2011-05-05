@@ -1,0 +1,7 @@
+#member_grid
+  %ul.lst
+    -members.each_with_col_name(6) do |member, col_name|
+      %li{:class => "#{col_name}_column"}
+        =link_to(image_for(member, "100x100#"), member, :class => 'member_grid_image')
+        .member_grid_info
+          =link_to_self(member)
