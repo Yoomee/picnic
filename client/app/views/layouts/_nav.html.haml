@@ -1,6 +1,6 @@
 #nav
   %ul
-    =li_with_active(current_page?(home_path), link_to("NewsNetwork", home_path))
+    =li_with_active(in_news_network?, link_to("NewsNetwork", home_path))
     =li_with_active(viewing_club?, link_to("Club", club_path))
     =li_with_active_slug(:picnic11, link_to_slug("PICNIC11", :picnic11))
     =li_with_active_slug(:about, link_to_slug("About", :about_us))

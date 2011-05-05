@@ -17,45 +17,6 @@ body, textarea, input {font:14px/1.5 'Helvetica Neue',Arial,'Liberation Sans',Fr
 	body {
 		
 	}
-	
-
-/* ============================= */
-/* ! Layout for mobile version   */
-/* ============================= */
-
-@media handheld, only screen and (max-width: 767px) {
-
-	#page_subnav {
-	width: 100%;
-	font-size: 19px;
-	
-	}
-	#search_box_outer {
-	width: 95%;
-	}
-	#search_box_outer #search_box {
-	width: 98%;
-	padding: 2%;
-  }
-  #search_field {
-	
-  }
-
-}
-
-
-/* ========================================== */
-/* ! Provide higher res assets for iPhone 4   */
-/* ========================================== */
-
-@media only screen and (-webkit-min-device-pixel-ratio: 2) { 
-	
-/*	.logo {
-		background: url(logo2x.jpg) no-repeat;
-		background-size: 212px 303px;
-	}*/
-
-}
 
 /* ======================  CSS3 regularly used stuff ================== */
 
@@ -79,7 +40,7 @@ a.backto {
 
 /* =============================  colours ============================= */
 a, p.inline-errors {
-	color:#592051;
+	color:#777;
 }
 body span.cal_sheet span.month {
 	background:#87cd29;
@@ -87,20 +48,32 @@ body span.cal_sheet span.month {
 
 h1, h2, h3, h4, h5, h6 {
 	color:black;
-	font-family:'VAG Rounded W02 Black', arial, snas-serif;
+	font-family:'VAG Rounded W02 Bold', arial, snas-serif;
 
 	
 }
 
 /* =============================  general styles ============================= */
+ul.sitemap {
+}
+ul.sitemap li {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 body {
 
 	margin:0;
 	float:left;
 	width:100%;
+
+}
+body, textarea, input {
     font-family:'VAG Rounded W02 Light', arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
-
+	
+}
+strong {
+	font-family:'VAG Rounded W02 Bold', arial, sans-serif;
 }
 #main {
 	clear: both;
@@ -138,14 +111,13 @@ td, th {
 }
 
 .options_panel {
-  border-top:1px solid #d8e2ee;
+  border-top: 1px solid #f5f5f5;
   clear:left;
   color:#fff;
-  font-size:11px;
+
   margin-top:20px;
-  padding:7px 0 0;
-  float: left;
-  width: 100%;
+  padding-top:10px;
+
   background: #fff;
 }
 .options_panel * {
@@ -154,20 +126,24 @@ td, th {
 }
 .options_panel a {
 	display: block;
-	padding: 3px 8px;
-	background: #edf2f7;
+	padding: 3px 3px;
 	margin: 0 10px 0 0;
+
+
 	
-	border-radius:10px;
-	-moz-border-radius:10px;
-	-webkit-border-radius:10px;		
+	border-radius:2px;
+	-moz-border-radius:2px;
+	-webkit-border-radius:2px;		
 }
 .options_panel a:hover {
-	text-decoration: none;
-	background: #2bb9f2;
-	color: #fff;	
-}
 
+}
+p#notice {
+	text-align: center;
+	border-bottom: 2px solid #000;
+	padding: 10px 0;
+	font-size: 16px;
+}
 p.flash_notice {
 	background: #FFFFAA;
 	padding:0px 10px;
@@ -212,6 +188,20 @@ ul.lst li{
 }
 .labelified {
 	color:gray;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.flcb {
+  float: left;
+  clear: both;
+}
+.frcb {
+  float: right;
+  clear: both;
 }
 /* =============================  button styles ============================= */
 /* general large button*/
@@ -303,8 +293,8 @@ a.bttn_l:hover, .join_activity_link:hover {
 /* ===================================  form styles ================================== */
 input, textarea {
 	border:1px solid #999999;
-	font-family:'Helvetica Neue',Arial,'Liberation Sans',FreeSans,sans-serif;
 	font-size:14px;
+	color: #666;
 	padding:5px;
 	margin-bottom:15px;
 	
@@ -987,9 +977,9 @@ div#top {
 	float:left;
 	width:100%;
 }
-#header {
-	height:160px;
-	margin: 0;
+#header .row {
+	min-height:140px;
+
 }
 #header_inside {
 	clear: both;
@@ -1017,20 +1007,23 @@ div#top {
 
 }
 h1#site_logo {
-  margin: 10px 0 0;
+  margin: 0px 0 0;
 	float: left;
 } 
 h1#site_logo a {
 /*	height:95px;
 	margin:15px 0 0 20px;
-	width: 160px;
-	text-indent:-9000em;
+	width: 160px;*/
+	
 	display: block;
-	background: url(/images/v_logo.png) no-repeat;*/
+	background: url(/images/picnic_logo.png) no-repeat -12px -15px;
+	width: 205px;
+	height: 60px;
+	text-indent:-9000em;
 	font-size: 45px;
 	color: black;
 	text-decoration: none;
-	margin: 20px 0 0 0px;
+	margin: 40px 0 0 0px;
 	display: block;
 }
 
@@ -1079,12 +1072,12 @@ h1#site_logo a:active {
 #user_links p {
 	margin:0;
 }
-#user_links a.button {
+#user_links .button {
 	display: block;
 	padding: 10px;
 	background: #e8e8e8;
 	float: right;
-	margin: 13px 0 0 10px;
+	margin: 20px 0 0 10px;
 	height: 40px;
 	line-height: 40px;
 	color: black;
@@ -1098,19 +1091,35 @@ h1#site_logo a:active {
 	-moz-border-radius:3px;
 }
 #user_links .panel {
-  float: left;
+  float: right;
   font-weight: bold;
-  padding: 20px;
-  background: #e8e8e8;
-  margin: 20px 0;
+  padding: 0px;
+
+  margin: 30px 0 0;
+  width: 100%;
 }
 #user_links .panel a {
   margin: 0 10px;
 }
+#user_links .panel a img {
+	margin-top: 0px;
+	float: left;
+}
+div.logged_in_panel {
+	float: right;
+	background: #e8e8e8;
+	padding: 10px;
+	
+	border-radius:3px;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+}
+
 .logged_in_as {
-  float: left;
+  float: right;
   font-weight: bold;
-  margin: 40px 10px;
+  margin: 0px;
+  padding: 10px 10px 0;
 }
 
 #member_login_bttn {
@@ -1185,10 +1194,21 @@ input#search_icon {
 	padding: 0;
 
 }
+
+#nav_line {
+	border-bottom: 3px solid #f5f5f5;
+	
+}
+
 #subnav {
   clear: both;
   float: left;
   margin: 0px 0 30px;
+  padding: 10px 0 10px;
+  width: 100%;
+
+  
+  border-bottom: 1px solid #f5f5f5;
 }
 #nav ul, #subnav ul {
 	display:block;
@@ -1199,6 +1219,7 @@ input#search_icon {
 	text-indent:0;
 		font-size: 20px;
 	line-height: 20px;
+	width: 100%;
 }
 #nav ul li, #subnav ul li {
 	float:left;
@@ -1213,6 +1234,8 @@ input#search_icon {
 }
 #nav ul li a {
 	display:block;
+	font-size: 26px;
+	color: #000;
 	
 	border-radius:5px;
 	-webkit-border-radius:5px;
@@ -1221,7 +1244,7 @@ input#search_icon {
 	float:left;
 	margin:0px 0px 0 0;
 	padding:13px 40px 13px 0;
-  color: #bbb;
+
 }
 #nav ul li a:hover {
 	color: #666;
@@ -1234,17 +1257,21 @@ input#search_icon {
 }
 #nav ul li.active a, #subnav ul li.active a, #page_subnav ul li.active a {
   text-decoration:none;
-	color: black;
+
+	font-family:'VAG Rounded W02 Bold', arial, snas-serif;
+
+	
 }
 #subnav ul li a {
   display:block;
 	float:left;
 	height:20px;
 	margin:0px 10px 0 0;
-	padding:6px 14px 0 0;
+	padding:0px 14px 0 0;
  	font-weight: bold;
- 	font-size: 14px;
- 	color: #c0c0c0;
+ 	font-size: 16px;
+ 	color: #000;
+
 }
 
 /* ====================  homepage  ===================== */
@@ -1615,7 +1642,7 @@ span.cal_sheet span.day {
 /* ==================== login form ===================== */
 
 #login_wrapper {
-	width: 800px;
+	width: 400px;
 	margin: 20px 0 0;
 }
 #login_intro h2 {
@@ -1722,11 +1749,11 @@ input#login_bttn {
 /* ====== structure ====== */
 #left_column {
 	float:left;
-	width:540px;
+
 }
 #right_column {
 	float:right;
-	width:380px;
+
 }
 /* ====== .bx- standard box style ====== */
 .bx {
@@ -1735,11 +1762,11 @@ input#login_bttn {
 	margin:0 0 20px;
 }
 .bx_in, .bx_h {
-	width:350px;
+	width:100%;
 	float:left;
 	clear:both;
 	margin:0; 
-	padding:10px 15px;
+
 }
 .bx_h {
 	background:url("/images/bx_h.png") repeat-x scroll 0 0 #E8E8E8;
@@ -1897,9 +1924,44 @@ p.post_admin a {
 	float:left;
 	width:140px;
 }
+#member_links {
+  float: right;
+  width: 100%;
+}
+#member_links li {
+  width: 100%;
+}
+#member_links a {
+  width: 85%;
+  font-size: 15px;
+  padding: 5px 8px;
+}
 .profile_info {
-	float:right;
-	width:380px;
+	width: 100%;
+}
+#member_themes {
+  width: 100%;
+}
+#member_themes li {
+  float: left;
+  clear: none;
+  margin-right: 10px;
+}
+#member_location {
+  float: left;
+  width: 50%;
+}
+#member_badges {
+  float: left;
+  width: 50%;
+}
+#member_badges li {
+  float: left;
+  clear: none;
+  text-align: center;
+  width: 60px;
+  margin-right: 10px;
+  font-size: 12px;  
 }
 .profile_photo img {}
 
@@ -1938,6 +2000,7 @@ p.post_admin a {
 #about_me  h3 {
 	font-size:14px;
 }
+
 /* ====== Stuff I like tabs (under profile picture)- optional ====== */
 #stuff ul.tabbernav {
 	border:medium none;
@@ -2024,20 +2087,22 @@ ul.action_links li {
 
 #footer {
 	clear:both;
-	margin: 20px 0;
-	padding:0;
+
 	position:relative;
-	float: left;
-	width: 945px;
 }
-#footer .footer_box {
-  float: left;
-  margin-right: 30px;
+
+#footer_copyright {
+	border-top: 3px solid #f5f5f5;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	padding-top: 10px;
+
 }
-#footer .footer_box_right {
-  float: right;
-}
-#copyright {
+#footer_sitemap {
+	border-top: 3px solid #f5f5f5;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	padding-top: 10px;
 
 }
 div#footer_links {
@@ -2063,6 +2128,15 @@ div#footer_links {
 #footer_links ul li a {
 	float: left;
 	margin: 5px 10px 0 0;
+}
+
+.sitemap_list li {
+	list-style: none;
+	margin: 0;
+	
+}
+.sitemap_list {
+	margin-bottom: 20px;
 }
 
 #footer_links ul li#site_feedback a {
@@ -2898,18 +2972,22 @@ li.news_feed_item_hovering a.trash {
 }
 #page_subnav {
   float: left;
-  margin-right: 20px;
+
 
 }
 #page_subnav ul {
 
   float: left;
   margin: 0 0 20px;
+  width: 100%;
   
 }
 #page_subnav li {
   margin-bottom: 5px;
 
+}
+#subnav li.right_subnav_link {
+	float: right;
 }
 #page_subnav li.active {
 
@@ -2942,10 +3020,10 @@ li.news_feed_item_hovering a.trash {
   font-size: 13px;
 }
 .page_share ul li a {
-  color: black;
+
 }
 #page_subnav li a {
-    color: #bbb;
+	color: #000;
 
   padding: 0;
 
@@ -2998,9 +3076,6 @@ a.backto {
 
 
 }
-body.page_the_team #page_left_col {
-  width: 696px;
-}
 #page_left_col img {
 	float:left;
 	margin:0 0 20px;
@@ -3019,6 +3094,8 @@ body.page_the_team #page_left_col {
   float: left;
   clear: none;
   margin-top: 10px;
+  text-align: center;
+  width: 100px;  
 }
 #member_grid li.left_column {
   clear: left;
@@ -3048,8 +3125,7 @@ body.page_the_team #page_left_col {
 	width:590px;
 }
 #page_right_col {	
-	float:left;
-	margin:0;
+
 
 }
 #article_image {
@@ -3089,7 +3165,8 @@ body.page_the_team #page_left_col {
 }
 .call_to_action {
 	background: white;
-	padding: 15px 10px 40px 10px;
+	padding: 0;
+	margin: 20px 0;
 	float: left;
 
 }
@@ -3339,6 +3416,85 @@ div.page_share {
 
 /*========== Badges ==========*/
 
+#badge_announcement_wrapper {
+  width: 600px;
+}
+#badge_announcement_wrapper .badge_announcement_title {
+  width: 100%;
+  background-color: #eee; 
+  border-bottom: 1px solid #ccc;
+  text-align: center;  
+  padding: 10px 0;
+}
+#badge_announcements {
+  height:  200px;  
+  width:   600px;  
+  padding: 0;  
+  margin:  0;
+}
+#badge_announcements .badge_announcement {
+  padding: 20px;
+  height: 160px;
+  width: 560px;
+  top:  0; 
+  left: 0
+}
+#badge_announcements .badge_announcement .badge_image {
+  float: left;
+  margin-right: 20px;
+}
+#badge_announcements .badge_announcement .badge_info {
+  float: left;
+  width: 400px;
+}
+#badge_announcements .badge_announcement .badge_info h3 {
+  border-bottom: solid 1px #ccc;
+  padding: 10px 0;
+}
+#badge_announcements .badge_announcement .badge_info .badge_description {
+  font-size: 16px;
+  overflow-y: auto;
+  height: 140px;
+}
+#badge_announcement_links {
+  float: right;
+  font-size: 24px;
+  margin: 20px 40px 0 0;
+}
+#badge_list .small_list_item {
+  float:left;
+  clear:none;
+  width:440px;
+  margin-bottom:10px;
+  line-height: 60px;  
+}
+
+#badge_list .small_list_item img {
+  float:left;
+  clear:none;
+}
+
+#badge_list .small_list_item a.title {
+  font-size:16px;
+  margin:10px 0 0 10px;
+  width:370px;
+  color:#143645;
+  font-weight:bold;
+}
+
+#badge_list .small_list_item a.title:hover {
+  text-decoration:none;
+}
+
+body.controller_badges .badge_info {
+  float: left;
+  margin: 20px 0;
+}
+body.controller_badges .badge_photo {
+  float: left;
+  margin-right: 20px;
+}
+
 #unawarded_badges {
   width: 400px;
 }
@@ -3450,4 +3606,112 @@ dt {
  dd {
   float:left;
 }
+
+/*========== Shouts ==========*/
+
+.shout {
+  width: 100%;
+}
+.shout_left {
+  width: 80%;
+  float: left;
+	border:2px dotted #C0C0C0;  
+}
+.shout_right {
+  float: left;
+}
+.shout_right_inner {
+  margin: 0 20px 0 20px;
+}
+.shout_left_inner {
+  float: left;  
+  margin: 10px;
+}
+.shout .shout_title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.shout .shout_comments_link {
+	background: url(/images/comments.png) no-repeat;
+	text-indent:-9000em;
+	width: 42px;
+	height: 42px;
+}
+.shout .shout_themes {
+  margin-top: 20px;
+}
+
+/*========== Tags ==========*/
+
+.themes_list li {
+  margin: 5px 5px 5px 0;
+}
+.tag {
+  padding: 5px 8px;
+  background-color: #ccc;
+  color: #000;
+  -moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+}
+
+
+/*========== browse news network ==========*/
+.controller_browse .story {
+  float: left;
+  width: 30%;
+  margin: 0 5% 0 0;
+}
+
+.controller_browse .right .story {
+  margin-right: 0;
+}
+
+
+/* ============================= */
+/* ! Layout for mobile version   */
+/* ============================= */
+
+@media handheld, only screen and (max-width: 767px) {
+  
+	#page_subnav {
+  	width: 100%;
+  	font-size: 19px;
+	}
+	#search_box_outer {
+  	width: 95%;
+  	display: none;
+	}
+	body #user_links .panel {
+  	position: absolute;
+  	top: 0;
+  	right: 0;
+  	margin: 0;
+  }
+	body h1#site_logo a {
+	  margin: 70px 0 0;
+  }
+  #user_links .button {
+  	width: 80px;
+  	padding: 5px ;
+  	font-size: 16px;
+  }
+  
+}
+
+
+/* ========================================== */
+/* ! Provide higher res assets for iPhone 4   */
+/* ========================================== */
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) { 
+	
+/*	.logo {
+		background: url(logo2x.jpg) no-repeat;
+		background-size: 212px 303px;
+	}*/
+
+}
+
+
 

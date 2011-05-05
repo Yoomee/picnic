@@ -4,5 +4,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :venues
   map.resources :conference_sessions
   map.resource :programme
+  map.resources :tags, :as => "themes"
+  map.correspondents '/correspondents', :controller => 'correspondents'
+  map.browse '/browse', :controller => 'browse'
   
 end
