@@ -16,6 +16,10 @@ Shout.class_eval do
     attachable.try(:has_image?)
   end
   
+  def image
+    attachable.try(:image)
+  end
+  
   def default_image(image_attr)
     self.class::default_image
   end
