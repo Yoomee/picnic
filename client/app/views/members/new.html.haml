@@ -1,17 +1,3 @@
--content_for(:head) do
-  :javascript
-    var FBLogin = {
-      process: function() {
-        FB.getLoginStatus(function(response) {
-          if (response.session) {
-            #{redirect_to_fb_create}
-          } else {
-            #{show_denied_fb_perms_message}
-          }
-        });
-      }
-    }
-    
 -title "Register for PICNIC", :hidden => true
 
 #register_picnic_club.register_box
