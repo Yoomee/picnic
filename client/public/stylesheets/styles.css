@@ -19,42 +19,6 @@ body, textarea, input {font:14px/1.5 'Helvetica Neue',Arial,'Liberation Sans',Fr
 	}
 	
 
-/* ============================= */
-/* ! Layout for mobile version   */
-/* ============================= */
-
-@media handheld, only screen and (max-width: 767px) {
-	#page_subnav {
-	width: 100%;
-	font-size: 19px;
-	
-	}
-	#search_box_outer {
-	width: 95%;
-	}
-	#search_box_outer #search_box {
-	width: 98%;
-	padding: 2%;
-}
-#search_field {
-	
-}
-
-}
-
-
-/* ========================================== */
-/* ! Provide higher res assets for iPhone 4   */
-/* ========================================== */
-
-@media only screen and (-webkit-min-device-pixel-ratio: 2) { 
-	
-/*	.logo {
-		background: url(logo2x.jpg) no-repeat;
-		background-size: 212px 303px;
-	}*/
-
-}
 
 /* ======================  CSS3 regularly used stuff ================== */
 
@@ -86,7 +50,7 @@ body span.cal_sheet span.month {
 
 h1, h2, h3, h4, h5, h6 {
 	color:black;
-	font-family:'VAG Rounded W02 Black', arial, snas-serif;
+	font-family:'VAG Rounded W02 Bold', arial, snas-serif;
 
 	
 }
@@ -1100,7 +1064,7 @@ h1#site_logo a:active {
 #user_links p {
 	margin:0;
 }
-#user_links a.button {
+#user_links .button {
 	display: block;
 	padding: 10px;
 	background: #e8e8e8;
@@ -1222,6 +1186,12 @@ input#search_icon {
 	padding: 0;
 
 }
+
+#nav_line {
+	border-bottom: 3px solid #f5f5f5;
+	
+}
+
 #subnav {
   clear: both;
   float: left;
@@ -1229,7 +1199,7 @@ input#search_icon {
   padding: 10px 0 10px;
   width: 100%;
 
-  border-top: 3px solid #f5f5f5;
+  
   border-bottom: 1px solid #f5f5f5;
 }
 #nav ul, #subnav ul {
@@ -3523,4 +3493,51 @@ body.controller_badges .badge_photo {
   float: left;
   clear: both;
   margin-top: 20px;
+}
+
+
+/* ============================= */
+/* ! Layout for mobile version   */
+/* ============================= */
+
+@media handheld, only screen and (max-width: 767px) {
+	#page_subnav {
+	width: 100%;
+	font-size: 19px;
+	
+	}
+	#search_box_outer {
+	width: 95%;
+	display: none;
+	}
+	
+	body #user_links .panel {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+}
+	body h1#site_logo a {
+	margin: 70px 0 0;
+}
+#user_links .button {
+	width: 80px;
+	padding: 5px ;
+	font-size: 16px;
+}
+
+}
+
+
+/* ========================================== */
+/* ! Provide higher res assets for iPhone 4   */
+/* ========================================== */
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) { 
+	
+/*	.logo {
+		background: url(logo2x.jpg) no-repeat;
+		background-size: 212px 303px;
+	}*/
+
 }
