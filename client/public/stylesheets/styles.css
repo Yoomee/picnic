@@ -3541,3 +3541,15 @@ body.controller_badges .badge_photo {
 	}*/
 
 }
+
+
+/*========== browse news network ==========*/
+.controller_browse .story {
+  float: left;
+  width: 30%;
+  margin: 0 5% 0 0;
+}
+
+.controller_browse .right .story {
+  margin-right: 0;
+}
