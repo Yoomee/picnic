@@ -21,7 +21,7 @@
     =render_slug(@page.slug)
   
   -if !@page.slug_in?(%w{the_team advisors correspondents})
-    #page_right_col.fivecol
+    #page_right_col.fivecol.last
       -if @page.has_photo?
         #article_image
           =photo_for(@page, '450x')
