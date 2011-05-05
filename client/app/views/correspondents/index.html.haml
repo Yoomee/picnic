@@ -1,0 +1,14 @@
+.row
+  -content_for(:head) do
+    :javascript
+      $(document).ready(function() {
+        $('a#share_as_email').fancybox();
+      });
+  -title 'Correspondents'
+  -hide_page_title
+  #page_subnav.twocol
+    Correspondent filters to go here
+  #page_content{:class => "eightcol last"}
+    #page_left_col
+      %h1 Correspondents
+      =render("members/grid", :members => @correspondents)
