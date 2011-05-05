@@ -220,6 +220,10 @@ ul.lst li{
 .labelified {
 	color:gray;
 }
+.flcb {
+  float: left;
+  clear: both;
+}
 /* =============================  button styles ============================= */
 /* general large button*/
 input[type="submit"], a.bttn_l, .formtastic input[type="submit"], .formtastic  a.bttn_l {
@@ -1906,9 +1910,27 @@ p.post_admin a {
 	float:left;
 	width:140px;
 }
+#member_links {
+  float: right;
+  width: 100%;
+}
+#member_links li {
+  width: 100%;
+}
+#member_links a {
+  width: 85%;
+  font-size: 15px;
+  padding: 5px 8px;
+}
 .profile_info {
-	float:right;
-	width:380px;
+	float:left;
+	clear: both;
+	width: 100%;
+}
+#member_themes li {
+  float: left;
+  clear: none;
+  margin-right: 10px;
 }
 .profile_photo img {}
 
@@ -1947,6 +1969,7 @@ p.post_admin a {
 #about_me  h3 {
 	font-size:14px;
 }
+
 /* ====== Stuff I like tabs (under profile picture)- optional ====== */
 #stuff ul.tabbernav {
 	border:medium none;
