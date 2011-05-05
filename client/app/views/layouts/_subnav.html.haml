@@ -3,3 +3,6 @@
     %ul
       -current_root_section.all_children.each do |page_or_section|
         =li_with_active(viewing_page_or_section?(page_or_section), link_to_self(page_or_section))
+      -if current_root_section.slug == "picnic11"
+        =li_with_active(controller_name == "programmes", link_to("Programme", programme_path))
+      
