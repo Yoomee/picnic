@@ -5,7 +5,7 @@
         %ul
           -if in_news_network?
             =li_with_active(current_page?(browse_path), link_to("Browse", browse_path))
-            =li_with_active(false, link_to("Themes"))
+            =li_with_active(current_page?(themes_path), link_to("Themes", themes_path))
             =li_with_active(current_page?(correspondents_path), link_to("Correspondents", correspondents_path))
           -else
             -current_root_section.all_children.each do |page_or_section|
