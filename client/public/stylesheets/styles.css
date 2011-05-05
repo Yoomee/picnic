@@ -1187,7 +1187,7 @@ input#search_icon {
 #subnav {
   clear: both;
   float: left;
-  margin: 30px 0;
+  margin: 0px 0 30px;
 }
 #nav ul, #subnav ul {
 	display:block;
@@ -2901,7 +2901,7 @@ li.news_feed_item_hovering a.trash {
 
 }
 #page_subnav ul {
-  padding: 15px 0 10px 0;
+
   float: left;
   margin: 0 0 20px;
   
@@ -2919,11 +2919,7 @@ li.news_feed_item_hovering a.trash {
 
 }
 #page_subnav li.active a {
-	background: #e8e8e8;
-	
-	  -webkit-border-radius:3px;
-  -moz-border-radius:3px;
-  border-radius:3px;
+
 }
 #page_right_col .photo_caption p {
   color: black;
@@ -2948,8 +2944,9 @@ li.news_feed_item_hovering a.trash {
   color: black;
 }
 #page_subnav li a {
-  color: black;
-  padding: 0 7px;
+    color: #bbb;
+
+  padding: 0;
 
 }
 
@@ -3142,6 +3139,12 @@ div.article_image {
 	font-weight:normal;
 	margin:0;    
 }
+
+div.page_share {
+	margin: 20px 0 0;
+	
+}
+
 
 /*================ Share Page ======================*/
 .share{

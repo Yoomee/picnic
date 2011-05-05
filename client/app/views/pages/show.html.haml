@@ -5,41 +5,42 @@
     });
 -title @page.title
 -hide_page_title
-#page_subnav.twocol
-  -if !@page.section.root?
-    %ul.lst
-      -@page.section.all_children.each do |page_or_section|
-        =li_with_active(viewing_page_or_section?(page_or_section), link_to_self(page_or_section))
+.row
+  #page_subnav.twocol
+    -if !@page.section.root?
+      %ul.lst
+        -@page.section.all_children.each do |page_or_section|
+          =li_with_active(viewing_page_or_section?(page_or_section), link_to_self(page_or_section))
 
-#page_content.fivecol
-  #page_left_col
-    %h1=@page.title
-    -unless @page.published?
-      %p#page_status=@page.status_string
-    =render('content', :page => @page)
-  =render_slug(@page.slug)
+  #page_content.fivecol
+    #page_left_col
+      %h1=@page.title
+      -unless @page.published?
+        %p#page_status=@page.status_string
+      =render('content', :page => @page)
+    =render_slug(@page.slug)
   
--if !@page.slug_in?(%w{the_team advisors correspondents})
-  #page_right_col.fivecol
-    -if @page.has_photo?
-      #article_image
-        =photo_for(@page, '450x')
-      =snippet(@page, :photo_caption)
-    =snippet(@page, :call_to_action)
-    .page_share
-      %h2 Share
-      %ul
-        %li
-          =link_to "Facebook", "http://facebook.com/sharer.php?u=#{site_url}#{page_path(@page, :host => site_host)}", :popup => ['popUpWindow','height=350,width=600'] 
-        %li
-          =#link_to_function "Twitter", "http://twitter.com/home?status=#{@page.title} - #{site_url}#{page_path(@page, :host => site_host)}", :target => "_blank"
-          =link_to_function "Twitter", "(function(){window.twttr=window.twttr||{};var D=550,A=450,C=screen.height,B=screen.width,H=Math.round((B/2)-(D/2)),G=0,F=document,E;if(C>A){G=Math.round((C/2)-(A/2))}window.twttr.shareWin=window.open('http://twitter.com/share','',',left='+H+',top='+G+',width='+D+',height='+A+',personalbar=0,toolbar=0,scrollbars=1,resizable=1');E=F.createElement('script');E.src='http://platform.twitter.com/bookmarklets/share.js?v=1';F.getElementsByTagName('head')[0].appendChild(E)}())"
-        %li
-          =link_to 'Email', {:controller => 'share', :action => 'new', :model_name => 'page', :id => @page.id, :as_email => true}, :id => 'share_as_email'
-  -if @page.has_related_items?
-    #related_content
-      %h2.title Related content
-      =render_related_items(@page)
+  -if !@page.slug_in?(%w{the_team advisors correspondents})
+    #page_right_col.fivecol
+      -if @page.has_photo?
+        #article_image
+          =photo_for(@page, '450x')
+        =snippet(@page, :photo_caption)
+      =snippet(@page, :call_to_action)
+      .page_share
+        %h2 Share
+        %ul
+          %li
+            =link_to "Facebook", "http://facebook.com/sharer.php?u=#{site_url}#{page_path(@page, :host => site_host)}", :popup => ['popUpWindow','height=350,width=600'] 
+          %li
+            =#link_to_function "Twitter", "http://twitter.com/home?status=#{@page.title} - #{site_url}#{page_path(@page, :host => site_host)}", :target => "_blank"
+            =link_to_function "Twitter", "(function(){window.twttr=window.twttr||{};var D=550,A=450,C=screen.height,B=screen.width,H=Math.round((B/2)-(D/2)),G=0,F=document,E;if(C>A){G=Math.round((C/2)-(A/2))}window.twttr.shareWin=window.open('http://twitter.com/share','',',left='+H+',top='+G+',width='+D+',height='+A+',personalbar=0,toolbar=0,scrollbars=1,resizable=1');E=F.createElement('script');E.src='http://platform.twitter.com/bookmarklets/share.js?v=1';F.getElementsByTagName('head')[0].appendChild(E)}())"
+          %li
+            =link_to 'Email', {:controller => 'share', :action => 'new', :model_name => 'page', :id => @page.id, :as_email => true}, :id => 'share_as_email'
+    -if @page.has_related_items?
+      #related_content
+        %h2.title Related content
+        =render_related_items(@page)
 -options_panel do
   =back_link
   ="Tagged #{in_tags(@page)}" unless @page.tags.empty?
