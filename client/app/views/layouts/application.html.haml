@@ -44,16 +44,13 @@
               %form{ :action => "/search/results", :method => "post" }
                 %input#search_field{ :name => "term", :type => "text", :value => "Search", :onfocus => "var element = document.getElementById('search_field');element.value='';" }
                 %input#search_icon{ :name => "commit", :title => "search", :value => "search" }
-        .row            
-          .twelvecol
-            =render("layouts/subnav")
+        =render("layouts/subnav")
       #main.content
-        .container
-          .row
-            .twelvecol  
-              -unless true && hide_page_title?
+        #main_container.container 
+          -unless true && hide_page_title?
+            .row
+              .twelvecol                
                 %h1#page_title=page_title
-        .container      
           = @content_for_layout
       #footer.container
         =render :partial => 'layouts/footer'
