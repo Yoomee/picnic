@@ -3706,18 +3706,18 @@ dt {
 
 
 /*========== browse news network ==========*/
-.controller_browse .story {
+.controller_browse .story, .controller_tags .story {
   float: left;
   width: 30%;
   margin: 0 5% 0 0;
   height: 350px;
 }
 
-.controller_browse .right .story {
+.controller_browse .right .story, .controller_tags .right .story {
   margin-right: 0;
 }
 
-.controller_browse .left .story {
+.controller_browse .left .story, .controller_tags .left .story {
   clear: left;
 }
 
@@ -3727,6 +3727,12 @@ dt {
   width: 30%;
   margin: 0 5% 0 0;
   height: 350px;
+}
+.controller_tags h2.tag {
+  float: left;
+}
+.controller_tags p.tag_description {
+  clear: left;
 }
 
 .controller_tags .right .theme {
