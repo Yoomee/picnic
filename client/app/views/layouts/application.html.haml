@@ -45,15 +45,16 @@
                 %input#search_icon{ :name => "commit", :title => "search", :value => "search" }      
           .twelvecol      
             =render("layouts/subnav")
-      #main.content.container
-        .row
-          .twelvecol
-            =render_flash
-          .twelvecol  
-            -unless true && hide_page_title?
-              %h1#page_title=page_title
-        .row      
+      #main.content
+        .container
+          .row
+            .twelvecol
+              =render_flash
+            .twelvecol  
+              -unless true && hide_page_title?
+                %h1#page_title=page_title
+        .container      
           = @content_for_layout
-      #footer
+      #footer.container
         =render :partial => 'layouts/footer'
     %div{:id => "fb-root"}        
