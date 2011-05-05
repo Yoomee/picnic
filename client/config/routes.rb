@@ -7,5 +7,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :tags, :as => "themes"
   map.correspondents '/correspondents', :controller => 'correspondents'
   map.browse '/browse', :controller => 'browse'
+  map.themes '/themes', :controller => 'tags'
   
 end

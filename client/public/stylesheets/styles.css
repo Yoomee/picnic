@@ -3722,6 +3722,22 @@ dt {
   clear: left;
 }
 
+/*========== news network themes ==========*/
+.controller_tags .theme {
+  float: left;
+  width: 30%;
+  margin: 0 5% 0 0;
+  height: 350px;
+}
+
+.controller_tags .right .theme {
+  margin-right: 0;
+}
+
+.controller_tags .left .theme {
+  clear: left;
+}
+
 /* ============================= */
 /* ! Layout for mobile version   */
 /* ============================= */
