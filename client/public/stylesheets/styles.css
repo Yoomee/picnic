@@ -10,14 +10,6 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 /* ===============================  text styles ================================ */
 body, textarea, input {font:14px/1.5 'Helvetica Neue',Arial,'Liberation Sans',FreeSans,sans-serif}a:focus{outline:1px dotted invert}hr{border:0 #ccc solid;border-top-width:1px;clear:both;height:0}h1{font-size:25px}h2{font-size:23px}h3{font-size:21px}h4{font-size:19px}h5{font-size:17px}h6{font-size:15px}ol{list-style:decimal}ul{list-style:disc}li{margin-left:30px}p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset{margin-bottom:10px}
 
-/* ============================== */
-/* ! Layout for desktop version   */
-/* ============================== */
-
-	body {
-		
-	}
-
 /* ======================  CSS3 regularly used stuff ================== */
 
 #main, input, #footer_links, .bx_h, #news_feed_older_btn, .bx_h a, button, .bttn, .pull_quote, div#page_related_col, a.backto, #search_box, #nav ul li a {
@@ -300,7 +292,7 @@ a.bttn_l:hover, .join_activity_link:hover {
 input, textarea {
 	border:1px solid #999999;
 	font-size:14px;
-	color: #666;
+	color: #000;
 	padding:5px;
 	margin-bottom:15px;
 	
@@ -1928,9 +1920,11 @@ p.post_admin a {
 
 /* ========== profile styles =========== */
 #profile {}
-#profile h1 {
+h1.profile_title {
+	font-size: 30px;
 	margin:0;
 }
+
 .profile_photo {
 	float:left;
 	width:140px;
@@ -1952,6 +1946,12 @@ p.post_admin a {
 }
 #member_themes {
   width: 100%;
+}
+h3.profile_title {
+	font-size: 20px;
+	margin-bottom: 0;
+	font-family:'VAG Rounded W02 Light', arial, sans-serif;
+
 }
 #member_themes li {
   float: left;
