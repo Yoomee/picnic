@@ -1195,7 +1195,7 @@ input#search_icon {
 #subnav {
   clear: both;
   float: left;
-  margin: 0px 0 30px;
+  margin: 0px 0 0px;
   padding: 10px 0 10px;
   width: 100%;
 
@@ -1264,6 +1264,11 @@ input#search_icon {
  	font-size: 16px;
  	color: #000;
 
+}
+
+#main_container {
+	margin-top: 30px;
+	
 }
 
 /* ====================  homepage  ===================== */
@@ -3352,13 +3357,13 @@ div.page_share {
 /*========== Club ==========*/
 
 #club_intro {
-  float: left;
-  clear: both;
-  margin-top: 20px;
+
+
+
 }
 #club_intro img {
   float: left;
-  margin-right: 20px;
+  margin-bottom: 20px;
 }
 #club_intro .club_sign_up_link {
   font-size: 17px;
@@ -3402,8 +3407,6 @@ div.page_share {
   clear: both;
   width: 100%;
 }
-
-/*========== Badges ==========*/
 
 /*========== Badges ==========*/
 
@@ -3494,6 +3497,34 @@ body.controller_badges .badge_photo {
   clear: both;
   margin-top: 20px;
 }
+/*====================== Newsnetwork home ====================*/
+
+#map_canvas {
+	margin-bottom: 20px;
+	
+}
+
+a.tag {
+	display: block;
+	padding: 4px 8px;
+	line-height: 100%;
+	background: #e8e8e8;
+	float: left;
+	margin: 0 0 5px;
+	
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	border-radius:3px;
+}
+
+
+
+
+
+
+
+
+
 
 
 /* ============================= */
