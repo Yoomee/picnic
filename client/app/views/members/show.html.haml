@@ -1,21 +1,22 @@
 - hide_page_title
-#left_column
+.twocol
   #profile.bx
     .profile_photo
       - if @member == @logged_in_member
         =link_to image_for(@member, '140x'), :controller => 'member', :action => 'setphoto', :id => @logged_in_member
       - else
         =image_for(@member, '140x')
-    .profile_info
-      %h1
-        = @member.full_name
-    %br.clear
-#right_column
-  #options.group_section.bx
-    .bx_in
-      %ul.action_links
-      = render_photos_box(@member)
-%br.clear
+.tencol.last
+  .profile_info
+    %h1=@member.full_name
+    =read_more_truncate(@member.bio)
+  #member_links
+    %ul.lst
+      %li=link_to("Add as friend", "#", :class => "bttn_l")
+      %li=link_to("Introduce to...", "#", :class => "bttn_l")
+      %li=link_to("Chat online now", "#", :class => "bttn_l")
+      %li=link_to("Private message", "#", :class => "bttn_l")
+
 - options_panel do
   = link_if_allowed "Edit", edit_member_proc(@member)
   = link_to_box_if_allowed "Award badge", unawarded_member_badges_proc(@member)

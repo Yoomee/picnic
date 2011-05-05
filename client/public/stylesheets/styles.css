@@ -1897,8 +1897,16 @@ p.post_admin a {
 	width:140px;
 }
 .profile_info {
-	float:right;
-	width:380px;
+	float:left;
+	width: 500px;
+}
+#member_links {
+  float: right;
+}
+#member_links a {
+  width: 150px;
+  font-size: 15px;
+  padding: 5px 8px;
 }
 .profile_photo img {}
 
@@ -1937,6 +1945,7 @@ p.post_admin a {
 #about_me  h3 {
 	font-size:14px;
 }
+
 /* ====== Stuff I like tabs (under profile picture)- optional ====== */
 #stuff ul.tabbernav {
 	border:medium none;
