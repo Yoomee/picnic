@@ -4,7 +4,6 @@
 .shout.flcb{:id => "shout_#{shout.id}", :class => (show_member ? 'with_member_details' : 'without_member_details')}
   .shout_left
     .shout_left_inner
-      =#link_to(image_for(shout.member, "50x50#"), shout.member, :class => "shout_member_image") if shout.member
       .shout_title.flcb
         =link_to "#{shout.pretty_date}: Lorem ipsum dolor sit amet", shout
       .shout_text.flcb

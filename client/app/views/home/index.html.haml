@@ -48,9 +48,15 @@
     
 -no_content_row
 -title 'NewsNetwork', :hidden => true
-.row
-  .eightcol
-    =google_map([], :width => "100%", :height => 300, :zoom => 1, :map_options => "scrollwheel:false,mapTypeControl:false,streetViewControl:false", :other => "styleIt(map);")
+.row.map_row
+  .ninecol
+    =google_map([], :width => 844, :height => 350, :centre => [30, 0], :zoom => 2, :map_options => "scrollwheel:false,mapTypeControl:false,streetViewControl:false", :other => "styleIt(map);")
+  .threecol.map_banner.last
+    %h2 Latest
+    =image_for Shout.new, '200x'
+    %h3 Caption
+    %p
+      Donec congue lacinia dui, a porttitor lectus condimentum laoreet. Nunc eu.
 .row
   =render :partial => 'themes/trending'
   .tencol.last

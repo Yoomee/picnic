@@ -3517,8 +3517,6 @@ body.controller_badges .badge_photo {
 /*====================== Newsnetwork home ====================*/
 
 #map_canvas {
-	margin-bottom: 20px;
-	
 }
 
 a.tag {
@@ -3533,9 +3531,13 @@ a.tag {
 	-moz-border-radius:3px;
 	border-radius:3px;
 }
-
-
-
+.map_row {
+  background: lightgray;
+  margin-bottom: 40px;
+}
+.map_row h2 {
+  margin-top: 20px;
+}
 
 
 
@@ -3654,8 +3656,9 @@ dt {
   width: 100%;
   margin-bottom: 20px;
 }
+
 .with_member_details .shout_left {
-  width: 65%;
+  width: 68%;
 }
 .without_member_details .shout_left {
   width: 80%;
@@ -3667,8 +3670,9 @@ dt {
 .shout_right {
   float: left;
 }
+
 .with_member_details .shout_right {
-  width: 34%;
+  width: 31%;
 }
 .without_member_details .shout_right {
   width: 19%;
