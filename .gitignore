@@ -19,3 +19,4 @@ config.ru
 /vendor/plugins/tramlines_walls
 /vendor/plugins/tramlines_notifications
 /vendor/plugins/tramlines_ratings
+/vendor/plugins/tramlines_adverts

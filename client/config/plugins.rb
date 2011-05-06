@@ -7,3 +7,5 @@ Tramlines.add_plugin(:shouts)
 Tramlines.add_plugin(:walls)
 Tramlines.add_plugin(:notifications)
 Tramlines.add_plugin(:ratings)
+
+Tramlines.add_plugin(:adverts)
