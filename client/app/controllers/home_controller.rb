@@ -1,7 +1,7 @@
 HomeController.class_eval do
 
   helper_method :splash_page_advert
-  after_filter :set_seen_flash_page, :only => :index
+  #after_filter :set_seen_splash_page, :only => :index
 
   def index
     redirect_to news_network_path if !show_splash_page?
