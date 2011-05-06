@@ -3,6 +3,7 @@
 -semantic_fields_for section do |fields|
   -fields.inputs do
     =fields.input :parent, :collection => (Section.all - [section]) if possible_parent_sections?(section)
+    =#fields.grouped_collection_select(:parent_id, Section.root, :children, :name, :id, :name)
     =fields.input :name
     =fields.input :view, :as => :radio, :collection => Section::VIEW_OPTIONS, :help => 'Please select how the section should be displayed'
     %li=fields.photo_browser_button :photo    
