@@ -3093,30 +3093,33 @@ a.backto {
 	padding:0 0 20px;
 	max-width:440px;
 }
+#page_left_col #member_grid img {
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+  float: none;
+}
 #page_left_col h4 {
 
 }
 #member_grid {
   clear: both;
   float: left;
-  width: 720px;
+  width: 100%;
 }
 #member_grid li {
   float: left;
   clear: none;
   margin-top: 10px;
+  margin-right: 2%;
   text-align: center;
-  width: 100px;  
+  width: 13.8%;  
 }
 #member_grid li.left_column {
   clear: left;
-  margin: 10px 12px 0 0;
-}
-#member_grid li.middle_column {
-  margin: 10px 12px 0 12px;
 }
 #member_grid li.right_column {
-  margin: 10px 0 0 12px;
+  margin-right: 0;
 }
 #pull_quote_large_image {
 	background:none repeat scroll 0 0 #CCCCCC;
