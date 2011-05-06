@@ -32,6 +32,7 @@
             =shout_title(@shout)
           .shout_text.flcb
             =@shout.text
+        =render_shout_comments(@shout, :button_label => "Post")
       .shout_right
         .shout_right_inner
           -# default to sheffield just for the moment
@@ -50,8 +51,6 @@
               %li=link_to("Facebook", "#")
               %li=link_to("Twitter", "#")
               %li=link_to("Email", "#")
-    .subrow
-      =render_shout_comments(@shout, :button_label => "Post")
 .row
   -options_panel do
     =back_link
