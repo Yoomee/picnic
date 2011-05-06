@@ -3742,6 +3742,7 @@ a.tag {
 	-webkit-box-shadow:5px 5px 5px #666666;
 	box-shadow:5px 5px 5px #666666;
   border:1px solid #CCC;
+  top:-1px;
 }
 
 .timetable .closing {
