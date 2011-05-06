@@ -37,7 +37,12 @@
               =link_to_box(image_for(badge, "60x60"), info_badge_path(badge))
               =link_to_box(badge, info_badge_path(badge))
     #members_shouts.subrow
-      %h3.profile_title="#{forename_or_your(@member).capitalize} posts"
+      %h3.profile_title.fl="#{forename_or_your(@member).capitalize} posts"
+      .stories_filter
+        Showing:
+        %ul
+          =li_with_active true, link_to('Latest', '#')
+          =li_with_active false, link_to('Popular', '#')
       -if @member.profile_shouts.empty?
         %p="#{forename_or_you(@member, "hasn't")} got any posts yet."
       -else
