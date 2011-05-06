@@ -6,7 +6,7 @@
     .shout_left_inner
       =#link_to(image_for(shout.member, "50x50#"), shout.member, :class => "shout_member_image") if shout.member
       .shout_title.flcb
-        ="#{shout.pretty_date}: Lorem ipsum dolor sit amet"
+        =link_to(shout_title(shout), shout)
       .shout_text.flcb
         =read_more_truncate(shout.text, :length => 300)
       -if shout.attachable
