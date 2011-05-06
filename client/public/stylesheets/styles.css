@@ -1,6 +1,7 @@
 /* @override 
 	http://localhost:3000/stylesheets/client/styles.css
 	http://picnic.yoomee.com/stylesheets/client/styles.css?1304692474
+	http://picnic.yoomee.com/stylesheets/client/styles.css?1304694546
 */
 
 /* the tramlines vanilla stylesheet */
@@ -4004,6 +4005,41 @@ ul.page_lst li.active a {
   clear: left;
 }
 
+/*========== Splash page ==========*/
+.splash_inner {
+  -moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius: 20px;
+  position: relative;
+}
+.splash .advert {
+
+}
+.splash_inner .heading {
+  line-height: 40px;
+
+}
+.splash_inner .heading a {
+  color: black;
+}
+.splash_inner .heading h2 {
+  font-size: 40px;
+}
+
+.splash .advert img {
+
+}
+.splash .tag_line {
+  font-size: 40px;
+  bottom: 220px;
+  left: 40px;
+  right: 150px;
+  position: absolute;
+}
+.splash .tag_line a {
+  color: white;
+}
+
 /* ============================= */
 /* ! Layout for mobile version   */
 /* ============================= */
@@ -4029,11 +4065,27 @@ ul.page_lst li.active a {
   }
   #user_links .button {
   	width: 80px;
-  	padding: 5px ;
-  	font-size: 16px;
+  	padding: 4px ;
+  	font-size: 15px;
+  	margin: 0 10px 0 0;
   }
+  .splash .tag_line {
+  font-size: 20px;
+  bottom: 60px;
+ } 
+ .splash_inner .heading .fr {
+	float: left;
+}
+  #user_links {
+	position: absolute;
+	top: 0;
+	right: 0;
+	
+}
+  
   
 }
+
 
 
 /* ========================================== */
@@ -4047,42 +4099,4 @@ ul.page_lst li.active a {
 		background-size: 212px 303px;
 	}*/
 
-}
-
-/*========== Splash page ==========*/
-.splash_inner {
-  -moz-border-radius:3px;
-	-webkit-border-radius:3px;
-	border-radius: 20px;
-  border: 2px solid gray;
-  position: relative;
-}
-.splash .advert {
-  text-align: center;
-}
-.splash_inner .heading {
-  line-height: 40px;
-  margin: 20px auto 10px;
-  width: 1000px;
-}
-.splash_inner .heading a {
-  color: black;
-}
-.splash_inner .heading h2 {
-  font-size: 40px;
-}
-
-.splash .advert img {
-  padding: 20px;
-}
-.splash .tag_line {
-  font-size: 40px;
-  bottom: 150px;
-  left: 150px;
-  right: 150px;
-  position: absolute;
-}
-.splash .tag_line a {
-  color: white;
-}
 }
