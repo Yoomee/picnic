@@ -3,15 +3,19 @@
     $(document).ready(function() {
       $('.session').hover(
         function(){
-          $(this).addClass('hover');
-          $(this).animate({'width':189,'height':129}, 250, 'easeInOutCirc');
+          if (!$(this).hasClass('hover')){
+            $(this).addClass('hover');
+            $(this).animate({'width':189,'height':129}, 250, 'easeInOutCirc');
+          }
         },
         function(){
-          $(this).addClass('closing');
-          $(this).animate({'width':69,'height':80},  250, 'easeInOutCirc', function(){
-            $(this).removeClass('hover');
-            $(this).removeClass('closing');
-          });
+          if ($(this).hasClass('hover') && !$(this).hasClass('closing')){        
+            $(this).addClass('closing');
+            $(this).animate({'width':69,'height':80},  250, 'easeInOutCirc', function(){
+              $(this).removeClass('hover');
+              $(this).removeClass('closing');
+            });
+          }
         }
       );  
     });
@@ -44,7 +48,7 @@
   .twelvecol
     #prog_days
       -(Date.parse("2011-09-14")..Date.parse("2011-09-16")).each do |date|
-        =link_to_function(date.strftime("%a %e %B"), "Programme.scrollTo(#{date.day - 13})", :class =>"prog_day")
+        =link_to_function(date.strftime("%A %e %B"), "Programme.scrollTo(#{date.day - 13})", :class =>"prog_day")
       #active_border{:style => "left:#{(@date.day-14)*333}px;"}
     #prog_wrapper
       -#.arrow=link_to_function("<", "Programme.scroll(false)", :id => "go_back_link", :style => "display:#{@date.day < 15 ? 'none' : 'block'}")

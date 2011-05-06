@@ -3555,6 +3555,12 @@ a.tag {
   margin-left: 350px;
 }
 
+.controller_members .stories_filter {
+  float:right;
+  margin-left:0;
+  margin-right:150px;
+}
+
 .stories_filter ul li, .stories_filter ul {
   display: inline;
 }
@@ -3643,9 +3649,9 @@ a.tag {
 #venues_col  {
   width:120px;
   float:left;
-  margin-top:21px;
+  margin-top:22px;
   border-top:1px solid #CCC;
-  height:582px;
+  height:581px;
 }
 
 #venues_col .venue_row {
@@ -3698,7 +3704,8 @@ a.tag {
 
 
 .timetable .hours {
-  border:none;
+  border-bottom:1px solid #CCC;
+  float:left;
 }
 .timetable .hours .hour {
   border-color:#000;
@@ -3935,7 +3942,11 @@ li.wall_post {
 /*  TODO: remove this */
 
 .shout_comments_count {
-  display: none;
+  margin-bottom: 10px;
+}
+.shout_comments_count a {
+  margin-left: 10px;
+  font-size: 12px;
 }
 
 /*========== Tags ==========*/
