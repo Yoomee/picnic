@@ -3679,6 +3679,7 @@ dt {
 
 .shout {
   width: 100%;
+  margin-bottom: 20px;
 }
 .shout_left {
   width: 80%;
@@ -3825,4 +3826,7 @@ dt {
 }
 .shout_details .tags {
   margin-top: 10px;
+}
+.shout_details .tags .tag {
+  margin-right: 10px;
 }
