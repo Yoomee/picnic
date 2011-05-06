@@ -1,5 +1,6 @@
 /* @override 
 	http://localhost:3000/stylesheets/client/styles.css
+	http://picnic.yoomee.com/stylesheets/client/styles.css?1304692474
 */
 
 /* the tramlines vanilla stylesheet */
@@ -1256,7 +1257,7 @@ input#search_icon {
 #nav ul li.active a, #subnav ul li.active a, #page_subnav ul li.active a {
   text-decoration:none;
 
-	font-family:'VAG Rounded W02 Bold', arial, snas-serif;
+	font-family:'VAG Rounded W02 Bold', arial, sans-serif;
 
 	
 }
@@ -3537,13 +3538,16 @@ a.tag {
 	border-radius:3px;
 }
 .map_row {
-  background: lightgray;
+  background: #e8e8e8;
   margin-bottom: 40px;
 }
 .map_row h2 {
   margin-top: 20px;
 }
-
+.map_row .ninecol {
+	overflow: hidden;
+	height: 350px;
+}
 .stories_filter {
   margin-left: 350px;
 }
@@ -3553,7 +3557,7 @@ a.tag {
 }
 .stories_filter ul li.active a {
   color: black;
-  font-weight: bold;
+  	font-family:'VAG Rounded W02 Bold', arial, sans-serif;
 }
 
 
@@ -3776,23 +3780,27 @@ dt {
 }
 .shout_left {
   float: left;
-  border: 1px dashed #000;
+  border-top: 3px solid #e8e8e8;
+
 }
 body.controller_shouts .shout_left {
   width: 60%;
 }
 .shout_right {
   float: left;
+  width: 35%;
+  margin: 0 0 0 5%;
+  overflow: hidden;
 }
 
 .with_member_details .shout_right {
-  width: 31%;
+  width: 27%;
 }
 .without_member_details .shout_right {
-  width: 19%;
+  width: 15%;
 }
 .shout_right_inner {
-  margin: 0 0 0 20px;
+  margin: 0 0 0 0px;
 }
 .shout_right_inner_details {
   width: 50%;
@@ -3800,11 +3808,16 @@ body.controller_shouts .shout_left {
 }
 .shout_left_inner {
   float: left;  
-  margin: 10px;
+  margin: 10px 0;
 }
 .shout_title {
   font-weight: bold;
   margin-bottom: 10px;
+  font-size: 18px;
+ 
+}
+.shout_title a {
+	color: #000;
 }
 .shout .shout_comments_link {
 	background: url(/images/comments.png) no-repeat;
