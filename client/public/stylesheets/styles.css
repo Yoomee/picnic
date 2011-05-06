@@ -3924,6 +3924,12 @@ li.wall_post {
   margin-left: 5px;
 }
 
+/*  TODO: remove this */
+
+.shout_comments_count {
+  display: none;
+}
+
 /*========== Tags ==========*/
 
 .themes_list li {
