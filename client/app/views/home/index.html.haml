@@ -67,5 +67,10 @@
 .row
   =render :partial => 'themes/trending'
   .tencol.last
-    %h4 Stories
+    %h4.flcb Stories
+    .fl.stories_filter
+      Showing:
+      %ul
+        =li_with_active true, link_to('Latest')
+        =li_with_active false, link_to('Popular')
     =render_shouts(:latest)

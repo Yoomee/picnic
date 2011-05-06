@@ -3541,6 +3541,17 @@ a.tag {
   margin-top: 20px;
 }
 
+.stories_filter {
+  margin-left: 350px;
+}
+
+.stories_filter ul li, .stories_filter ul {
+  display: inline;
+}
+.stories_filter ul li.active a {
+  color: black;
+  font-weight: bold;
+}
 
 
 
