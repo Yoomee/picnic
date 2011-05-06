@@ -18,7 +18,7 @@
         ]
       },
       {
-        featureType: "poi.park",
+        featureType: "poi",
         elementType: "geometry",
         stylers: [
           { lightness: +100 }
@@ -31,7 +31,14 @@
           { saturation: -100 },
           { hue: "#333333" }
         ]
-      }
+      },
+      {
+         featureType: "administrative",
+         elementType: "geometry",
+         stylers: [
+           { lightness: 100 }
+         ]
+       }
     ];
 
 
@@ -50,7 +57,7 @@
 -title 'NewsNetwork', :hidden => true
 .row
   .eightcol
-    =google_map([], :width => "100%", :height => 300, :zoom => 1, :map_options => "scrollwheel:false,mapTypeControl:false,streetViewControl:false", :other => "styleIt(map);")
+    =google_map([], :width => "100%", :height => 300, :zoom => 1, :map_options => "scrollwheel:false,disableDefaultUI:true", :other => "styleIt(map);")
 .row
   =render :partial => 'themes/trending'
   .tencol.last

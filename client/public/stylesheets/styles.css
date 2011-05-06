@@ -3516,9 +3516,14 @@ body.controller_badges .badge_photo {
 }
 /*====================== Newsnetwork home ====================*/
 
-#map_canvas {
+.controller_home #map_canvas {
 	margin-bottom: 20px;
-	
+}
+
+.controller_home #map_canvas a, .controller_home #map_canvas span {
+  color:#ffffff !important;
+  text-shadow:0 1px 0 #A0A0A0;   
+  
 }
 
 a.tag {
