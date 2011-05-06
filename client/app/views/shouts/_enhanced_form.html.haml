@@ -6,6 +6,7 @@
     =hidden_field_tag :redirect_to, params[:redirect_to]
     -form.inputs do
       =form.input :title
+      =form.input :permalink_name, :label => "Permalink <span>(a pretty url for the page)</span>"
       =form.input :text, :as => :ck_text, :label => "Text", :input_html => {:cols => 35, :rows => 4, :class => "shout_text_input", :tabindex => 1}
       =form.input :tag_list, :label => "Themes", :help => "Please enter any themes which this story relates too (separated by commas)"
       =form.input :attach_type, :as => :hidden

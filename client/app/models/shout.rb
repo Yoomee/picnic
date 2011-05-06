@@ -3,6 +3,7 @@ Shout.class_eval do
   include TramlinesImages
   
   has_location
+  has_permalink
   
   def has_image?
     attachable.try(:has_image?)
