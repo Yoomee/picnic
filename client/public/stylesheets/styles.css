@@ -3516,7 +3516,9 @@ body.controller_badges .badge_photo {
 }
 /*====================== Newsnetwork home ====================*/
 
-#map_canvas {
+.controller_home #map_canvas a, .controller_home #map_canvas span {
+  color:#ffffff !important;
+  text-shadow:0 1px 0 #A0A0A0;   
 }
 
 a.tag {
@@ -3548,7 +3550,34 @@ a.tag {
 
 /*========== Programme ==========*/
 
+#programme_days {
+  width:1000px;
+  margin-left: 66px;
+  position:relative;
+}
+#programme_days .programme_day{
+  width:333px;
+  float:left;
+  padding:5px 0px;
+  text-align:center;
+  font-size:14px;
+}
+#programme_days #active_border{
+  border:2px solid #E8E8E8;
+  border-bottom:none;
+  width:334px;
+  position:absolute;
+  height:42px;
+  top:0px;
+  left:0px;
+}
 
+
+#programme_wrapper {
+  clear:both;
+  float:left;
+  margin-bottom:40px;
+}
 
 #programme_wrapper .arrow {
   width:66px;
@@ -3559,9 +3588,9 @@ a.tag {
 }
 
 #programme_wrapper .arrow a {
-  font-size:150px;
+  font-size:46px;
+  width:;
   color:#ccc;
-	font-family: 'Helvetica Neue', arial, sans-serif;
 }
 #programme_wrapper .arrow a:hover {
   text-decoration:none;
@@ -3571,7 +3600,7 @@ a.tag {
 
 
 #timetable_outer {
-  border:2px solid black;
+  border:2px solid #E8E8E8;
   float:left;
   width:1000px;
   height:600px;
@@ -3594,9 +3623,9 @@ a.tag {
 }
 
 .timetable .hours .prog_col {
-  border-color:#CCC;
+  border-color:#E8E8E8;
   height:20px;
-  background: #CCC;
+  background: #E8E8E8;
 }
 
 .timetable .hours .hour {
@@ -3665,7 +3694,10 @@ dt {
 }
 .shout_left {
   float: left;
-	border:2px dotted #C0C0C0;  
+  border: 1px dashed #000;
+}
+body.controller_shouts .shout_left {
+  width: 60%;
 }
 .shout_right {
   float: left;
@@ -3678,7 +3710,7 @@ dt {
   width: 19%;
 }
 .shout_right_inner {
-  margin: 0 20px 0 20px;
+  margin: 0 0 0 20px;
 }
 .shout_right_inner_details {
   width: 50%;
@@ -3688,7 +3720,7 @@ dt {
   float: left;  
   margin: 10px;
 }
-.shout .shout_title {
+.shout_title {
   font-weight: bold;
   margin-bottom: 10px;
 }
@@ -3710,6 +3742,35 @@ dt {
 }
 .shout .shout_links a.shout_view_link {
   float: right;
+}
+.shout_author_image {
+  float: left;
+  margin-right: 20px;
+}
+.shout_author_name {
+  font-weight: bold;
+  float: left;
+}
+.shout_address {
+  width: 50%;
+  float: left;
+}
+.shout_share {
+  float: right;
+}
+.shout_related h3 {
+  margin-bottom: 10px;
+}
+span.shout_type_label {
+	float: left;
+}
+.attachable_preview {
+  float: left;
+  clear: both;
+}
+.attachable_preview img, .attachable_preview .remove_link {
+  float: left;
+  clear: both;
 }
 
 /*========== Tags ==========*/

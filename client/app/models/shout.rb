@@ -1,5 +1,7 @@
 Shout.class_eval do
   
+  has_location
+  
   class << self
     
     def default_image(image_attr = 'image')
@@ -24,5 +26,12 @@ Shout.class_eval do
     self.class::default_image
   end
   
+  def related_shouts
+    Shout.random.limit(3)
+  end
+  
+  def to_s
+    title || ''
+  end
   
 end

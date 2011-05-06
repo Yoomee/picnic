@@ -18,4 +18,9 @@ module ClientHelper
     session.ends_at.blank? ? start : "#{start} - #{session.ends_at.strftime("%H:%M")}"
   end
   
+  def shout_title(shout)
+    out = shout.pretty_date
+    shout.title.blank? ? out : "#{out}: #{shout.title}"
+  end
+  
 end
