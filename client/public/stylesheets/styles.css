@@ -3799,3 +3799,6 @@ dt {
 .shout_details .tags {
   margin-top: 10px;
 }
+.shout_details .tags .tag {
+  margin-right: 10px;
+}
