@@ -3,21 +3,22 @@
     var Programme = {
       day: #{@date.day - 13},
       scroll: function(forward) {
-        var newDay = Programme.day;
         if (forward && (Programme.day < 3)){
-          newDay = Programme.day + 1;
+          Programme.scrollTo(Programme.day + 1);
         } else if (!forward && (Programme.day > 1)) {
-          newDay = Programme.day - 1;
+          Programme.scrollTo(Programme.day - 1);
         }
-        if (newDay != Programme.day) {
-          $('#timetable_inner').animate({'left':(1 - newDay) * 1000}, 1000, 'easeInOutCirc');
-          $('#active_border').animate({'left':(newDay - 1) * 333}, 1000, 'easeInOutCirc');
-          switch(newDay){
-            case 1:$('#go_back_link').fadeOut('slow');break;
+      },
+      scrollTo: function(day) {
+        if ((day > 0) && (day < 4) && (day != Programme.day) ) {
+          $('#active_border').animate({'left':(day - 1) * 293}, 1000, 'easeInOutCirc');
+          $('#timetable_inner').animate({'left':(1 - day)*1000}, 1000, 'easeInOutCirc');
+          switch(day){
+            case 1:$('#go_back_link').fadeOut(  'slow');break;
             case 2:$('#go_back_link:hidden').fadeIn('slow');$('#go_forward_link:hidden').fadeIn('slow');break;
             case 3:$('#go_forward_link').fadeOut('slow');break;
           }
-          Programme.day = newDay;
+          Programme.day = day;
         }
       }
     };
@@ -26,14 +27,12 @@
 -title "Programme", :hidden => true
 .row
   .twelvecol.last
-    #programme_days
+    #prog_days
       -(Date.parse("2011-09-14")..Date.parse("2011-09-16")).each do |date|
-        .programme_day
-          =date.strftime("%a %e %B")
+        =link_to_function(date.strftime("%a %e %B"), "Programme.scrollTo(#{date.day - 13})", :class =>"prog_day")
       #active_border{:style => "left:#{(@date.day-14)*333}px;"}
-    #programme_wrapper
-      .arrow
-        =link_to_function("<", "Programme.scroll(false)", :id => "go_back_link", :style => "display:#{@date.day < 15 ? 'none' : 'block'}")
+    #prog_wrapper
+      -#.arrow=link_to_function("<", "Programme.scroll(false)", :id => "go_back_link", :style => "display:#{@date.day < 15 ? 'none' : 'block'}")
       #timetable_outer
         #timetable_inner{:style => "left:#{(14-@date.day)*1000}px;"}
           -(Date.parse("2011-09-14")..Date.parse("2011-09-16")).each do |date|
@@ -47,13 +46,10 @@
                 -sessions = venue.sessions.on_date(date)
                 .prog_row
                   .prog_col.first=link_to_self(venue)
-                  -(9..19).each do |hour|
-                    .prog_col{:class => "#{'last' if hour == 19}"}
-                      -sessions.select{|s| s.starts_at.hour == hour}.each do |session|
-                        -link_to(session, :class => 'session') do
-                          =session
-      .arrow
-        =link_to_function(">", "Programme.scroll(true)", :id => "go_forward_link", :style => "display:#{@date.day > 15 ? 'none' : 'block'}")
+                  -sessions.each do |session|
+                    -link_to(session, :class => 'session', :style => "left:#{120 + (session.starts_at.hour - 9)*80}px") do
+                      =session                  
+      -#.arrow=link_to_function(">", "Programme.scroll(true)", :id => "go_forward_link", :style => "display:#{@date.day > 15 ? 'none' : 'block'}")
       
 
   

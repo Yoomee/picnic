@@ -3516,27 +3516,42 @@ body.controller_badges .badge_photo {
 }
 /*====================== Newsnetwork home ====================*/
 
-#map_canvas {
-	margin-bottom: 20px;
-	
+.controller_home #map_canvas a, .controller_home #map_canvas span {
+  color:#ffffff !important;
+  text-shadow:0 1px 0 #A0A0A0;   
 }
 
 a.tag {
 	display: block;
-	padding: 4px 8px;
+	padding: 10px 20px;
 	line-height: 100%;
 	background: #e8e8e8;
 	float: left;
-	margin: 0 0 5px;
+	margin: 0 0 10px;
 	
 	-webkit-border-radius:3px;
 	-moz-border-radius:3px;
 	border-radius:3px;
 }
+.map_row {
+  background: lightgray;
+  margin-bottom: 40px;
+}
+.map_row h2 {
+  margin-top: 20px;
+}
 
+.stories_filter {
+  margin-left: 350px;
+}
 
-
-
+.stories_filter ul li, .stories_filter ul {
+  display: inline;
+}
+.stories_filter ul li.active a {
+  color: black;
+  font-weight: bold;
+}
 
 
 
@@ -3546,57 +3561,90 @@ a.tag {
 
 /*========== Programme ==========*/
 
-#programme_days {
-  width:1000px;
-  margin-left: 66px;
+#prog_days {
+  width:880px;
+  margin-left: 120px;
   position:relative;
 }
-#programme_days .programme_day{
-  width:333px;
+#prog_days .prog_day{
+  width:293px;
   float:left;
-  padding:5px 0px;
+  padding:5px 0px 3px;
   text-align:center;
   font-size:14px;
+  color:black;
 }
-#programme_days #active_border{
-  border:2px solid #E8E8E8;
+#prog_days #active_border{
+  border:2px solid #000;
   border-bottom:none;
-  width:334px;
+  width:294px;
   position:absolute;
   height:42px;
   top:0px;
   left:0px;
+  
+	-moz-border-radius-topleft:3px;
+  -moz-border-radius-topright:3px;
+  -webkit-border-top-right-radius:3px;
+  -webkit-border-top-left-radius:3px;
+  border-top-right-radius:3px;
+  border-top-left-radius:3px;
 }
 
 
-#programme_wrapper {
+#prog_wrapper {
   clear:both;
   float:left;
   margin-bottom:40px;
 }
 
-#programme_wrapper .arrow {
+#prog_wrapper .arrow {
   width:66px;
   float:left;
-  min-height:200px;
   text-align:center;
-  margin-top:150px;
+  height:600px;
+  
 }
 
-#programme_wrapper .arrow a {
+#prog_wrapper .arrow a {
   font-size:46px;
-  width:;
+  width:100%;
   color:#ccc;
+  padding-top:200px;
+  height:400px;
+  float:left;
 }
-#programme_wrapper .arrow a:hover {
+#prog_wrapper .arrow a:hover {
   text-decoration:none;
   color:#333;
 }
 
 
+.prog_row {
+  width: 1000px;
+  clear:both;
+  float:left;
+  border-bottom:1px solid #CCC;
+  position:relative;
+}
+
+.prog_col {
+  float: left;
+  width: 80px;
+}
+
+.prog_row .first {
+  font-weight:bold;
+  font-size:16px;
+  width:115px;
+  padding-left:5px;
+  border-left:none;
+  height:90px;
+}
+
 
 #timetable_outer {
-  border:2px solid #E8E8E8;
+  border:2px solid #000;
   float:left;
   width:1000px;
   height:600px;
@@ -3606,56 +3654,55 @@ a.tag {
   overflow-x:hidden;
   
   position:relative;
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px;
+  border-radius:3px;
+
 }
 #timetable_inner {
   position:absolute;
   width:3000px;
-  float:left;
+  float:left;  
 }
 
 .timetable {
   float:left;
   width:1000px;
+  background:url(/images/timetable.png) repeat-y;
+  height:600px;
 }
 
+.timetable a{
+  color: #000;
+}
+
+
+.timetable .hours {
+  border:none;
+}
 .timetable .hours .prog_col {
-  border-color:#E8E8E8;
+  border-color:#000;
   height:20px;
-  background: #E8E8E8;
+  background: #000;
 }
 
 .timetable .hours .hour {
-  font-weight: bold;
   font-size: 14px;
+  color:#fff;
 }
 
 .timetable .session {
-  height:100%;
-  color:#353535;
-}
-
-
-
-.prog_row {
-  width: 1000px;
-  clear:both;
+  width:120px;
+  height:80px;
   float:left;
-}
-
-.prog_col {
-  float: left;
-  width: 79px;
-  height: 90px;
-  border-bottom:1px solid #CCC;
-  border-left:1px dashed #EEE;
-}
-
-.prog_row .first {
-  font-weight:bold;
-  font-size:16px;
-  width:115px;
-  padding-left:5px;
-  border-left:none;
+  border-left:1px solid #CCC;
+  border-right:1px solid #CCC;
+  position:absolute;
+  padding:5px;
+  top:0;
+  left:0;
+  background-color:#EEE;
+  background-color:rgba(200,200,200,0.1);
 }
 
 
@@ -3681,8 +3728,14 @@ dt {
   width: 100%;
   margin-bottom: 20px;
 }
-.shout_left {
+
+.with_member_details .shout_left {
+  width: 68%;
+}
+.without_member_details .shout_left {
   width: 80%;
+}
+.shout_left {
   float: left;
   border: 1px dashed #000;
 }
@@ -3692,8 +3745,19 @@ body.controller_shouts .shout_left {
 .shout_right {
   float: left;
 }
+
+.with_member_details .shout_right {
+  width: 31%;
+}
+.without_member_details .shout_right {
+  width: 19%;
+}
 .shout_right_inner {
   margin: 0 0 0 20px;
+}
+.shout_right_inner_details {
+  width: 50%;
+  margin-left: 30px;
 }
 .shout_left_inner {
   float: left;  
@@ -3789,6 +3853,20 @@ form.tag {
 .controller_browse .left .story, .controller_tags .left .story {
   clear: left;
 }
+.browse_list {
+  margin: 20px 0 40px 0;
+  width: 100%;
+}
+ul.page_lst {
+  display: inline;
+}
+ul.page_lst li {
+  display: inline;
+  margin: 5px;
+}
+ul.page_lst li.active a {
+  color: black;
+}
 
 /*========== news network themes ==========*/
 .controller_tags .theme {
@@ -3855,17 +3933,4 @@ form.tag {
 		background-size: 212px 303px;
 	}*/
 
-}
-
-.shout_wall .shout {
-  border: 1px dashed black;
-  padding: 5px;
-  margin: 0 10px 30px 0;
-  float: left
-}
-.shout_details .tags {
-  margin-top: 10px;
-}
-.shout_details .tags .tag {
-  margin-right: 10px;
 }

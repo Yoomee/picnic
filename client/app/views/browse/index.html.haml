@@ -2,6 +2,20 @@
 .row
   =render :partial => 'themes/trending'
   .tencol.last
-    -@stories.each_with_col_name do |story, column_name|
-      %div{:class => column_name}
-        =render "story", :story => story
+    .fl.stories_filter
+      Stories:
+      %ul
+        =li_with_active true, link_to('Latest')
+        =li_with_active false, link_to('Popular')
+        =li_with_active false, link_to('Most comments')
+        =li_with_active false, link_to('Editors pick')
+        =li_with_active false, link_to('Most viewed')
+    .flcb.browse_list
+      -@stories.each_with_col_name do |story, column_name|
+        %div{:class => column_name}
+          =render "story", :story => story
+    .flcb
+      Page:
+      %ul.page_lst
+        -11.times do |n|
+          =li_with_active n == 0, link_to(n + 1)

@@ -17,7 +17,7 @@ Shout.class_eval do
   end
   
   def to_s
-    title || ""
+    title || ''
   end
   
 end
