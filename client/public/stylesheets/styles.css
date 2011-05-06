@@ -3843,6 +3843,11 @@ body.controller_shouts .shout_left {
 .shout_related h3 {
   margin-bottom: 10px;
 }
+
+.shout_related li {
+  margin-bottom:10px;
+}
+
 span.shout_type_label {
 	float: left;
 }

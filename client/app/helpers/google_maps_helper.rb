@@ -92,7 +92,14 @@ GoogleMapsHelper.module_eval do
              stylers: [
                { lightness: 100 }
              ]
-           }
+           },
+           {
+              featureType: "transit.line",
+              elementType: "geometry",
+              stylers: [
+                { lightness: 100 }
+              ]
+            }
         ];
 
 
