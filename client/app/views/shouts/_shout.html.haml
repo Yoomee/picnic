@@ -1,10 +1,9 @@
 -if shout.attachable.is_a?(Link) && !shout.attachable.has_image? && !shout.attachable.url_error?
   -content_for :head do
     =javascript_tag("$(document).ready(function() {#{save_site_info_javascript(shout.attachable, :image_size => "150x125#")}});")
-.shout.flcb{:id => "shout_#{shout.id}"}
+.shout.flcb{:id => "shout_#{shout.id}", :class => (show_member ? 'with_member_details' : 'without_member_details')}
   .shout_left
     .shout_left_inner
-      =#link_to(image_for(shout.member, "50x50#"), shout.member, :class => "shout_member_image") if shout.member
       .shout_title.flcb
         =link_to(shout_title(shout), shout)
       .shout_text.flcb
@@ -18,8 +17,14 @@
         =link_if_allowed("Delete", shout, :method => :delete, :confirm => "Are you sure?")
         =link_to("View full post &rarr;", shout, :class => "shout_view_link")
   .shout_right
-    .shout_right_inner
-      =link_to(pluralize(shout.comments.count, 'comment'), shout, :class => "shout_comments_link flcb")
+    .shout_right_inner.fl
+      -if show_member
+        =link_to image_for(shout.member, '75x75'), shout.member, :class => "flcb"
+        .shout_right_inner_details.fl
+          =link_to_self shout.member
+          =link_to(pluralize(shout.comments.count, 'comment'), shout, :class => "shout_comments_link flcb")
+      -else
+        =link_to(pluralize(shout.comments.count, 'comment'), shout, :class => "shout_comments_link flcb")
       .shout_themes.themes_list.flcb
         %ul.lst
           -shout.tags.each do |tag|

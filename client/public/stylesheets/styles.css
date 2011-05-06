@@ -3516,32 +3516,42 @@ body.controller_badges .badge_photo {
 }
 /*====================== Newsnetwork home ====================*/
 
-.controller_home #map_canvas {
-	margin-bottom: 20px;
-}
-
 .controller_home #map_canvas a, .controller_home #map_canvas span {
   color:#ffffff !important;
   text-shadow:0 1px 0 #A0A0A0;   
-  
 }
 
 a.tag {
 	display: block;
-	padding: 4px 8px;
+	padding: 10px 20px;
 	line-height: 100%;
 	background: #e8e8e8;
 	float: left;
-	margin: 0 0 5px;
+	margin: 0 0 10px;
 	
 	-webkit-border-radius:3px;
 	-moz-border-radius:3px;
 	border-radius:3px;
 }
+.map_row {
+  background: lightgray;
+  margin-bottom: 40px;
+}
+.map_row h2 {
+  margin-top: 20px;
+}
 
+.stories_filter {
+  margin-left: 350px;
+}
 
-
-
+.stories_filter ul li, .stories_filter ul {
+  display: inline;
+}
+.stories_filter ul li.active a {
+  color: black;
+  font-weight: bold;
+}
 
 
 
@@ -3718,8 +3728,14 @@ dt {
   width: 100%;
   margin-bottom: 20px;
 }
-.shout_left {
+
+.with_member_details .shout_left {
+  width: 68%;
+}
+.without_member_details .shout_left {
   width: 80%;
+}
+.shout_left {
   float: left;
   border: 1px dashed #000;
 }
@@ -3729,8 +3745,19 @@ body.controller_shouts .shout_left {
 .shout_right {
   float: left;
 }
+
+.with_member_details .shout_right {
+  width: 31%;
+}
+.without_member_details .shout_right {
+  width: 19%;
+}
 .shout_right_inner {
   margin: 0 0 0 20px;
+}
+.shout_right_inner_details {
+  width: 50%;
+  margin-left: 30px;
 }
 .shout_left_inner {
   float: left;  
@@ -3819,6 +3846,20 @@ span.shout_type_label {
 .controller_browse .left .story, .controller_tags .left .story {
   clear: left;
 }
+.browse_list {
+  margin: 20px 0 40px 0;
+  width: 100%;
+}
+ul.page_lst {
+  display: inline;
+}
+ul.page_lst li {
+  display: inline;
+  margin: 5px;
+}
+ul.page_lst li.active a {
+  color: black;
+}
 
 /*========== news network themes ==========*/
 .controller_tags .theme {
@@ -3885,17 +3926,4 @@ span.shout_type_label {
 		background-size: 212px 303px;
 	}*/
 
-}
-
-.shout_wall .shout {
-  border: 1px dashed black;
-  padding: 5px;
-  margin: 0 10px 30px 0;
-  float: left
-}
-.shout_details .tags {
-  margin-top: 10px;
-}
-.shout_details .tags .tag {
-  margin-right: 10px;
 }
