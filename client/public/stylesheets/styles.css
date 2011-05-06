@@ -3116,9 +3116,9 @@ a.backto {
   float: left;
   clear: none;
   margin-top: 10px;
-  margin-right: 2%;
+  margin-right: 10px;
   text-align: center;
-  width: 13.8%;  
+  width: 100px;  
 }
 #member_grid li.left_column {
   clear: left;

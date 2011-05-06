@@ -8,5 +8,6 @@ ActionController::Routing::Routes.draw do |map|
   map.correspondents '/correspondents', :controller => 'correspondents'
   map.browse '/browse', :controller => 'browse'
   map.themes '/themes', :controller => 'tags'
+  map.news_network '/newsnetwork', :controller => 'news_network'
   
 end
