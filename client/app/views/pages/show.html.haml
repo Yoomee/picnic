@@ -38,9 +38,10 @@
           %li
             =link_to 'Email', {:controller => 'share', :action => 'new', :model_name => 'page', :id => @page.id, :as_email => true}, :id => 'share_as_email'
     -if @page.has_related_items?
-      #related_content
-        %h2.title Related content
-        =render_related_items(@page)
+      #related_content.row
+        .twelvecol
+          %h2.title Related content
+        =render_related_items(@page, :limit => 6, :truncate_length => 150)
 
 .row        
   -options_panel do

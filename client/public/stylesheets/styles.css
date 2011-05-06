@@ -3116,9 +3116,9 @@ a.backto {
   float: left;
   clear: none;
   margin-top: 10px;
-  margin-right: 2%;
+  margin-right: 10px;
   text-align: center;
-  width: 13.8%;  
+  width: 100px;  
 }
 #member_grid li.left_column {
   clear: left;
@@ -3297,19 +3297,20 @@ div.page_share {
 	float: left;
 	clear: both;
 	width: 100%;
-	border-top: 2px solid #bfd4e2;
+	border-top: 2px solid #f5f5f5;
 	margin-top: 20px;
 }
 
 #related_content h2{
-  margin: 5px 0 0px 0;
-	font-size: 14px;
+  margin: 10px 0 10px 0;
+	font-size: 20px;
 }
 #related_content ul {
 	float: left;
 	margin: 0;
 }
 #related_content h3 a {
+	color: #000;
 
 }
 #related_content ul li{
@@ -3325,10 +3326,9 @@ div.page_share {
 .item_image {
 	float:left;
 /*  margin:5px 15px 0 0;*/
-	width: 145px;
+
 }
 .item_image img{
-	width: 145px;
 }
 .item_info{
 	float: left;
@@ -3345,8 +3345,8 @@ div.page_share {
 	line-height: 15px;	
 }
 #related_content .item_image {
-	width: 145px;
-	margin: 0 15px 0 0;
+
+	margin: 0 0px 0 0;
 }
 #related_content .item_image img {}
 #related_content .item_info {
@@ -3354,8 +3354,8 @@ div.page_share {
 	font-size: 12px;
 }
 #related_content .item_info h3 {
-	margin: 0 0 5px;
-	font-size: 14px;
+	margin: 6px 0 8px;
+	font-size: 16px;
 	line-height: 100%;
 }
 
