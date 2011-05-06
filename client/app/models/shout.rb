@@ -21,3 +21,4 @@ Shout.class_eval do
   end
   
 end
+Shout::ROUTES_NAME = 'stories'
