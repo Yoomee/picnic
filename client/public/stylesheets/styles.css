@@ -3814,6 +3814,20 @@ span.shout_type_label {
 .controller_browse .left .story, .controller_tags .left .story {
   clear: left;
 }
+.browse_list {
+  margin: 20px 0 40px 0;
+  width: 100%;
+}
+ul.page_lst {
+  display: inline;
+}
+ul.page_lst li {
+  display: inline;
+  margin: 5px;
+}
+ul.page_lst li.active a {
+  color: black;
+}
 
 /*========== news network themes ==========*/
 .controller_tags .theme {
