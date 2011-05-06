@@ -1,0 +1,1 @@
+WallPostsController::HELP_MESSAGE = "Enter your comment..."
