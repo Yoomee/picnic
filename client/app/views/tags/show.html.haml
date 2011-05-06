@@ -5,8 +5,8 @@
       .fourcol
         %h2.tag
           =@tag
-        %p.tag_description
-          Maecenas quis tortor arcu. Vivamus rutrum nunc non neque consectetur quis placerat neque lobortis. Nam vestibulum, arcu sodales 
+        .tag_description
+          =read_more_truncate(@tag.description, :length => 500)
       .eightcol.last
         =image_for(@tag, '616x500')
     .row
@@ -15,3 +15,7 @@
       -@stories.each_with_col_name do |story, column_name|
         %div{:class => column_name}
           =render "browse/story", :story => story
+-options_panel do
+  =back_link
+  =link_if_allowed("Edit", edit_tag_proc(@tag))
+  =link_if_allowed("Delete", @tag, :method => :delete, :confirm => "Are you sure?")

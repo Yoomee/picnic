@@ -16,15 +16,14 @@
       %ul.lst
         -@shout.related_shouts.each do |shout|
           %li
-            =link_to(content_tag(:strong, shout_title(shout)), shout)
-            %p=truncate(strip_tags(shout.text), :length => 100)
+            =link_to(shout_title(shout), shout)
   .eightcol.last
     -if @shout.has_video?
       .shout_image.subrow
         =@shout.attachable.reformatted_html(:width => 746, :height => 400)
     -elsif @shout.has_photo?
       .shout_image.subrow
-        =image_for(@shout.attachable, "746x400#")
+        =image_for(@shout, "746x400#")
     .subrow
       .shout_left
         .shout_left_inner

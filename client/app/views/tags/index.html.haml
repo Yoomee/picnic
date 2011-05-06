@@ -7,5 +7,12 @@
           -link_to tag do
             =image_for(tag, '282x200')
             %h5=tag
-          %p
-            Nam pulvinar, odio sed rhoncus suscipit, sem diam ultrices mauris, eu consequat purus metus eu velit.
+          %p=truncate(tag.description, :length => 120)
+          -if allowed_to?(edit_tag_proc(tag))
+            .theme_links
+              =link_to("Edit", edit_tag_path(tag))
+              =link_to("Delete", tag, :method => :delete, :confirm => "Are you sure?")
+.row
+  -options_panel do
+    =back_link
+    =link_if_allowed("Add a theme", new_tag_proc)
