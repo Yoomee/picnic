@@ -3992,3 +3992,41 @@ ul.page_lst li.active a {
 	}*/
 
 }
+
+/*========== Splash page ==========*/
+.splash_inner {
+  -moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius: 20px;
+  border: 2px solid gray;
+  position: relative;
+}
+.splash .advert {
+  text-align: center;
+}
+.splash_inner .heading {
+  line-height: 40px;
+  margin: 20px auto 10px;
+  width: 1000px;
+}
+.splash_inner .heading a {
+  color: black;
+}
+.splash_inner .heading h2 {
+  font-size: 40px;
+}
+
+.splash .advert img {
+  padding: 20px;
+}
+.splash .tag_line {
+  font-size: 40px;
+  bottom: 150px;
+  left: 150px;
+  right: 150px;
+  position: absolute;
+}
+.splash .tag_line a {
+  color: white;
+}
+}

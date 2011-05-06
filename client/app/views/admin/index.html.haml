@@ -55,7 +55,13 @@
           =link_to("Add a folder", new_document_folder_path)
         %li
           =link_to("Add a document", new_document_path)
-    
+    #dash_adverts.dash_item
+      %h3 Adverts
+      %ul
+        %li
+          =link_to("List campaigns", advert_campaigns_path)
+        %li
+          =link_to("New campaign", new_advert_campaign_path)
   #dash_technical_stuff.dash_col
     %h2
       Technical stuff
