@@ -3689,19 +3689,22 @@ dt {
 .shout_left {
   width: 80%;
   float: left;
-	border:2px dotted #C0C0C0;  
+  border: 1px dashed #000;
+}
+body.controller_shouts .shout_left {
+  width: 60%;
 }
 .shout_right {
   float: left;
 }
 .shout_right_inner {
-  margin: 0 20px 0 20px;
+  margin: 0 0 0 20px;
 }
 .shout_left_inner {
   float: left;  
   margin: 10px;
 }
-.shout .shout_title {
+.shout_title {
   font-weight: bold;
   margin-bottom: 10px;
 }
@@ -3723,6 +3726,35 @@ dt {
 }
 .shout .shout_links a.shout_view_link {
   float: right;
+}
+.shout_author_image {
+  float: left;
+  margin-right: 20px;
+}
+.shout_author_name {
+  font-weight: bold;
+  float: left;
+}
+.shout_address {
+  width: 50%;
+  float: left;
+}
+.shout_share {
+  float: right;
+}
+.shout_related h3 {
+  margin-bottom: 10px;
+}
+span.shout_type_label {
+	float: left;
+}
+.attachable_preview {
+  float: left;
+  clear: both;
+}
+.attachable_preview img, .attachable_preview .remove_link {
+  float: left;
+  clear: both;
 }
 
 /*========== Tags ==========*/
