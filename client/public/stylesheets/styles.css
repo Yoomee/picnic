@@ -3546,7 +3546,34 @@ a.tag {
 
 /*========== Programme ==========*/
 
+#programme_days {
+  width:1000px;
+  margin-left: 66px;
+  position:relative;
+}
+#programme_days .programme_day{
+  width:333px;
+  float:left;
+  padding:5px 0px;
+  text-align:center;
+  font-size:14px;
+}
+#programme_days #active_border{
+  border:2px solid #E8E8E8;
+  border-bottom:none;
+  width:334px;
+  position:absolute;
+  height:42px;
+  top:0px;
+  left:0px;
+}
 
+
+#programme_wrapper {
+  clear:both;
+  float:left;
+  margin-bottom:40px;
+}
 
 #programme_wrapper .arrow {
   width:66px;
@@ -3557,9 +3584,9 @@ a.tag {
 }
 
 #programme_wrapper .arrow a {
-  font-size:150px;
+  font-size:46px;
+  width:;
   color:#ccc;
-	font-family: 'Helvetica Neue', arial, sans-serif;
 }
 #programme_wrapper .arrow a:hover {
   text-decoration:none;
@@ -3569,7 +3596,7 @@ a.tag {
 
 
 #timetable_outer {
-  border:2px solid black;
+  border:2px solid #E8E8E8;
   float:left;
   width:1000px;
   height:600px;
@@ -3592,9 +3619,9 @@ a.tag {
 }
 
 .timetable .hours .prog_col {
-  border-color:#CCC;
+  border-color:#E8E8E8;
   height:20px;
-  background: #CCC;
+  background: #E8E8E8;
 }
 
 .timetable .hours .hour {
