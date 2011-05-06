@@ -3559,6 +3559,7 @@ a.tag {
 #programme_wrapper .arrow a {
   font-size:150px;
   color:#ccc;
+	font-family: 'Helvetica Neue', arial, sans-serif;
 }
 #programme_wrapper .arrow a:hover {
   text-decoration:none;
