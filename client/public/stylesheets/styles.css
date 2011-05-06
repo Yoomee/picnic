@@ -3765,6 +3765,13 @@ span.shout_type_label {
 	-webkit-border-radius:5px;
 	border-radius:5px;
 }
+form.tag {
+  padding: 0;
+  background-color: transparent;
+  -moz-border-radius:none;
+	-webkit-border-radius:none;
+	border-radius:none;
+}
 
 
 /*========== browse news network ==========*/
@@ -3793,7 +3800,7 @@ span.shout_type_label {
 .controller_tags h2.tag {
   float: left;
 }
-.controller_tags p.tag_description {
+.controller_tags .tag_description {
   clear: left;
 }
 
