@@ -3523,11 +3523,11 @@ body.controller_badges .badge_photo {
 
 a.tag {
 	display: block;
-	padding: 4px 8px;
+	padding: 10px 20px;
 	line-height: 100%;
 	background: #e8e8e8;
 	float: left;
-	margin: 0 0 5px;
+	margin: 0 0 10px;
 	
 	-webkit-border-radius:3px;
 	-moz-border-radius:3px;
