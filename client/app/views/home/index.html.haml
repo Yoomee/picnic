@@ -1,76 +1,24 @@
--content_for :head do
-  :javascript
-    function styleIt(map) {
-    var grayStyles = [
-      {
-        featureType: "water",
-        elementType: "geometry",
-        stylers: [
-          { lightness: 0 },
-          { saturation: -90 }
-        ]
-      },
-      {
-        featureType: "landscape",
-        elementType: "geometry",
-        stylers: [
-          { lightness: +100 }
-        ]
-      },
-      {
-        featureType: "poi",
-        elementType: "geometry",
-        stylers: [
-          { lightness: +100 }
-        ]
-      },
-      {
-        featureType: "road",
-        elementType: "all",
-        stylers: [
-          { saturation: -100 },
-          { hue: "#333333" }
-        ]
-      },
-      {
-         featureType: "administrative",
-         elementType: "geometry",
-         stylers: [
-           { lightness: 100 }
-         ]
-       }
-    ];
-
-
-    var styledMapOptions = {
-      name: "Gray Map"
-    }
-
-    var grayMapType = new google.maps.StyledMapType(
-    grayStyles, styledMapOptions);
-
-    map.mapTypes.set('gray', grayMapType);
-    map.setMapTypeId('gray');
-    }
-    
 -no_content_row
 -title 'NewsNetwork', :hidden => true
-.row.map_row
-  .ninecol
-    =google_map([], :width => 844, :height => 350, :centre => [30, 0], :zoom => 2, :map_options => "scrollwheel:false,disableDefaultUI:true", :other => "styleIt(map);")
-  .threecol.map_banner.last
-    %h2 Latest
-    =image_for Shout.new, '200x'
-    %h3 Caption
-    %p
-      Donec congue lacinia dui, a porttitor lectus condimentum laoreet. Nunc eu.
-.row
-  =render :partial => 'themes/trending'
-  .tencol.last
-    %h4.flcb Stories
-    .fl.stories_filter
-      Showing:
-      %ul
-        =li_with_active true, link_to('Latest')
-        =li_with_active false, link_to('Popular')
-    =render_shouts(:latest)
+-if show_splash_page?
+  =render :partial => 'splash'
+-else
+  .row.map_row
+    .ninecol
+      =google_map([], :width => 844, :height => 350, :centre => [30, 0], :zoom => 2, :map_options => "scrollwheel:false,disableDefaultUI:true")
+    .threecol.map_banner.last
+      %h2 Latest
+      =image_for Shout.new, '200x'
+      %h3 Caption
+      %p
+        Donec congue lacinia dui, a porttitor lectus condimentum laoreet. Nunc eu.
+  .row
+    =render :partial => 'themes/trending'
+    .tencol.last
+      %h4.flcb Stories
+      .fl.stories_filter
+        Showing:
+        %ul
+          =li_with_active true, link_to('Latest')
+          =li_with_active false, link_to('Popular')
+      =render_shouts(:latest)

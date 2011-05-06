@@ -85,3 +85,8 @@ repository = git://git.yoomee.com:4321/plugins/tramlines_notifications.git
 path = vendor/plugins/tramlines_ratings
 scm = git
 repository = git://git.yoomee.com:4321/plugins/tramlines_ratings.git
+
+[vendor/plugins/tramlines_adverts]
+path = vendor/plugins/tramlines_adverts
+scm = git
+repository = git://git.yoomee.com:4321/plugins/tramlines_adverts.git

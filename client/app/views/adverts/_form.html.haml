@@ -1,0 +1,14 @@
+=error_message_on(advert, :base)
+-semantic_form_for(advert, :html => {:multipart => true}) do |form|
+  -form.inputs do
+    =form.input :campaign, :as => :select, :include_blank => false
+    =form.input :name
+    =form.input :tag_line, :as => :text, :input_html => {:rows => 3}
+    =form.input :url
+    =form.input :max_impression_count, :label => "Maximum impressions", :help => "Here you can specify the number of times the advert can be viewed."
+    =form.input :max_click_count, :label => "Maximum clicks", :help => "Here you can specify the number of times the advert can be clicked."
+    =form.input :active_from, :as => :tramlines_date, :label => "Start date", :help => "If you want the advert to appear between two specific dates, enter them here."
+    =form.input :active_until, :as => :tramlines_date, :label => "End date"
+    =form.input :image, :as => :image
+  -form.buttons do
+    =form.commit_button

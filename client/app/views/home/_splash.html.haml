@@ -1,0 +1,12 @@
+.row
+  .twelvecol.splash
+    .splash_inner
+      .heading
+        %h2.fl=splash_page_advert
+        %strong
+          =link_to "No thanks. Continue to the home page &gt;&gt", '', :class => 'fr'
+      =render_advert('1000x', :advert => splash_page_advert)
+      .tag_line
+        %strong
+          =link_to splash_page_advert.tag_line, splash_page_advert.url
+      %br.clear
