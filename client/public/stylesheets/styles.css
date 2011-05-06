@@ -3516,7 +3516,7 @@ body.controller_badges .badge_photo {
 }
 /*====================== Newsnetwork home ====================*/
 
-.controller_home #map_canvas a, .controller_home #map_canvas span {
+#map_canvas a, #map_canvas span {
   color:#ffffff !important;
   text-shadow:0 1px 0 #A0A0A0;   
 }
@@ -3621,32 +3621,42 @@ a.tag {
 
 
 .prog_row {
-  width: 1000px;
+  width: 880px;
   clear:both;
   float:left;
   border-bottom:1px solid #CCC;
   position:relative;
-}
-
-.prog_col {
-  float: left;
-  width: 80px;
-}
-
-.prog_row .first {
-  font-weight:bold;
-  font-size:16px;
-  width:115px;
-  padding-left:5px;
-  border-left:none;
   height:90px;
+  
 }
 
+#venues_col  {
+  width:120px;
+  float:left;
+  margin-top:21px;
+  border-top:1px solid #CCC;
+  height:582px;
+}
+
+#venues_col .venue_row {
+  border-bottom:1px solid #CCC;
+  font-size:16px;
+  float:left;
+  clear:both;
+  height:80px;
+  width:115px;
+  padding:5px 5px 5px 0px;
+  overflow: hidden;
+}
+
+#venues_col a {
+  color:#000000;
+}
 
 #timetable_outer {
   border:2px solid #000;
   float:left;
-  width:1000px;
+  width:880px;
   height:600px;
   top:0px;
   left:0px;
@@ -3654,9 +3664,9 @@ a.tag {
   overflow-x:hidden;
   
   position:relative;
-  -moz-border-radius:3px;
-  -webkit-border-radius:3px;
-  border-radius:3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
 
 }
 #timetable_inner {
@@ -3667,8 +3677,8 @@ a.tag {
 
 .timetable {
   float:left;
-  width:1000px;
-  background:url(/images/timetable.png) repeat-y;
+  width:880px;
+  background:url(/images/timetable.png) repeat-y -120px 0;
   height:600px;
 }
 
@@ -3680,19 +3690,20 @@ a.tag {
 .timetable .hours {
   border:none;
 }
-.timetable .hours .prog_col {
-  border-color:#000;
-  height:20px;
-  background: #000;
-}
-
 .timetable .hours .hour {
+  border-color:#000;
+  float:left;
+  height:20px;
   font-size: 14px;
   color:#fff;
+  background: #000;
+  padding-left:2px;
+  width:78px;
 }
 
+
 .timetable .session {
-  width:120px;
+  width:69px;
   height:80px;
   float:left;
   border-left:1px solid #CCC;
@@ -3701,8 +3712,33 @@ a.tag {
   padding:5px;
   top:0;
   left:0;
-  background-color:#EEE;
-  background-color:rgba(200,200,200,0.1);
+  background-color:#FCFCFC;
+}
+
+.timetable .session .details {
+  display:none;
+  width:189px;
+}
+
+.timetable a:hover{
+  text-decoration:none;
+}
+
+.timetable .hover .details {
+  display:block;
+}
+
+.timetable .hover {
+  z-index:100;
+  overflow:hidden;
+  -moz-box-shadow:5px 5px 5px #666666;
+	-webkit-box-shadow:5px 5px 5px #666666;
+	box-shadow:5px 5px 5px #666666;
+  border:1px solid #CCC;
+}
+
+.timetable .closing {
+  z-index:50;
 }
 
 
