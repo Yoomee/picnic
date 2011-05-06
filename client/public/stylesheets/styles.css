@@ -201,6 +201,9 @@ ul.lst li{
   clear: both;
   margin-bottom: 20px;
 }
+.formtastic .hidden, input[type='hidden'] {
+  display: none;
+}
 /* =============================  button styles ============================= */
 /* general large button*/
 input[type="submit"], a.bttn_l, .formtastic input[type="submit"], .formtastic  a.bttn_l {
@@ -1864,7 +1867,7 @@ ul.bx_lst li {
 ul#news_feed {
 	margin:0;
 }
-ul#news_feed li, .wall_post_list li {
+ul#news_feed li {
 	border-bottom:1px solid #E8E8E8;
 	float:left;
 	list-style-image:none;
@@ -3738,17 +3741,17 @@ dt {
 .without_member_details .shout_left {
   width: 80%;
 }
+body.controller_shouts .shout_left, body.controller_shouts .shout_comment_body {
+  width: 60%;
+}
 .shout_left {
   float: left;
   border: 1px dashed #000;
 }
-body.controller_shouts .shout_left {
-  width: 60%;
-}
 .shout_right {
   float: left;
+  width: 39%;
 }
-
 .with_member_details .shout_right {
   width: 31%;
 }
@@ -3757,6 +3760,9 @@ body.controller_shouts .shout_left {
 }
 .shout_right_inner {
   margin: 0 0 0 20px;
+}
+.shout_right_inner #map_canvas {
+  margin-bottom: 20px;
 }
 .shout_right_inner_details {
   width: 50%;
@@ -3817,6 +3823,51 @@ span.shout_type_label {
 .attachable_preview img, .attachable_preview .remove_link {
   float: left;
   clear: both;
+}
+
+/*========== Shout comments ==========*/
+
+li.wall_post {
+  list-style:none;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	clear: both;
+  float: left;
+  margin-bottom: 20px;
+}
+.wall_post_left {
+  width: 10%;
+  float: left;
+}
+.wall_post_right {
+  width: 87%;
+  float: right;
+}
+.wall_form .formtastic textarea {
+  width: 100%;
+  margin: 0;
+}
+.wall_form .wall_member_image {
+  width: 10%;
+  float: left;
+}
+.wall_form form {
+  width: 87%;
+  float: right;
+  clear: none;
+}
+.wall_form form ol {
+  margin: 0;
+}
+.wall_form form label {
+  font-size: 14px;
+  font-weight: normal;
+}
+.wall_form form label span {
+  color: #999999;
+  font-size: 11px;
+  margin-left: 5px;
 }
 
 /*========== Tags ==========*/

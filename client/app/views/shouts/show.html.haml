@@ -6,11 +6,12 @@
     .shout_author.subrow
       =link_to(image_for(@shout.member, "50x50#"), @shout.member, :class => "shout_author_image")
       =link_to_self(@shout.member, :class => "shout_author_name")
-    .shout_themes.themes_list.subrow
-      %h3.profile_title Themes
-      %ul.lst
-        -@shout.tags.each do |tag|
-          =link_to_tag(tag)
+    -if !@shout.tags.empty?
+      .shout_themes.themes_list.subrow
+        %h3.profile_title Themes
+        %ul.lst
+          -@shout.tags.each do |tag|
+            =link_to_tag(tag)
     .shout_related.subrow
       %h3.profile_title Related
       %ul.lst
@@ -36,7 +37,7 @@
         .shout_right_inner
           -# default to sheffield just for the moment
           -location = @shout.has_location? ? @shout.location : Location.new(:lat => "53.3830548", :lng => "-1.4647953", :country => "UK", :city => "Sheffield")
-          =google_map(location, :width => 250, :height => 200)
+          =google_map(location, :width => "100%", :height => 200)
           .shout_address
             %strong Location:
             %br
@@ -50,7 +51,8 @@
               %li=link_to("Facebook", "#")
               %li=link_to("Twitter", "#")
               %li=link_to("Email", "#")
-    
+    .subrow
+      =render_shout_comments(@shout, :button_label => "Post")
 .row
   -options_panel do
     =back_link
