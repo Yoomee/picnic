@@ -4,7 +4,7 @@ HomeController.class_eval do
   #after_filter :set_seen_splash_page, :only => :index
 
   def index
-    redirect_to news_network_path if !show_splash_page?
+    redirect_to home_section_path if !show_splash_page?
   end
   
   private
