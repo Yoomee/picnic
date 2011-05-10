@@ -1,6 +1,4 @@
 #nav
   %ul
-    =li_with_active(in_news_network?, link_to("NewsNetwork", news_network_path))
-    =li_with_active(viewing_club?, link_to("Club", club_path))
-    =li_with_active_slug(:picnic11, link_to_slug("PICNIC11", :picnic11))
-    =li_with_active_slug(:about, link_to_slug("About", :about_us))
+    -nav_items.each do |item|
+      =li_with_active(item[:active], link_to(item[:name], item[:url]))

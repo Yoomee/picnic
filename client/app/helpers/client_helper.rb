@@ -1,5 +1,21 @@
 module ClientHelper
   
+  def nav_items
+    items = Section.root.collect{|section| {
+      :name => section.name,
+      :url => section_path(section),
+      :active => current_page?(section_path(section)),
+      :weight => section.weight
+    }}
+    items << {
+      :name => "Club",
+      :url => club_path,
+      :active => viewing_club?,
+      :weight => 100
+    }    
+    items.sort{|x,y| x[:weight] <=> y[:weight]}
+  end
+  
   def viewing_club?
     current_page?(club_path) || current_page?(new_member_path)
   end
