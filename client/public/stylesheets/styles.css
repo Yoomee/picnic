@@ -467,7 +467,7 @@ ul.tabs_container li#pages_publishing_link a {
 ul.tabs_container li#pages_snippets_link a {
  background-position: 15px -1730px;
 }
-ul.tabs_container li#pages_related_items_link a {
+ul.tabs_container li#pages_related_items_link a, ul.tabs_container li#sections_related_items_link a {
  background-position: 15px -1790px;
 }
 ul.tabs_container li#sections_details_link a {
@@ -485,7 +485,7 @@ ul.tabs_container li a:hover{
 .formtastic.page, .formtastic.section, .controller_admin ul.tabs_container{
 	float: left;
 	background-color: transparent;
-	margin: 0px 0 0px 100px;
+	margin: 0px 0 0px 0px;
 }
 .testsdfsd {
 	background: url(/images/smoke_gradient_w.png)
@@ -558,7 +558,7 @@ br#pages_tab_links_break, br#sections_tab_links_break {
 .pages_tab label, #admin_tab_content label {
 	color: #fff;
 }
-.pages_tab h1, .pages_tab h2, .pages_tab h3, .pages_tab h4, .pages_tab h5, .pages_tab h6 {
+.pages_tab h1, .pages_tab h2, .pages_tab h3, .pages_tab h4, .pages_tab h5, .pages_tab h6, .sections_tab h1, .sections_tab h2, .sections_tab h3, .sections_tab h4, .sections_tab h5, .sections_tab h6  {
 	color: #fff;
 	text-shadow: 0px -1px 0px #496b7b;
 }
@@ -914,11 +914,11 @@ html body form {
 
 /*============= photo albums ==================*/
 
-.photo_album a {
+.photo_album {
 	float: left;
-	width: 150px;
+	width: 180px;
 	display: block;
-	height: 150px;
+	height: 210px;
 	background: #000 repeat-x 30px -320px;
 	float:left;
 	text-align: center;
@@ -935,6 +935,9 @@ html body form {
 
 	
 	
+}
+.photo_album a {
+	color: #fff;
 }
 .photo_album a img {
 	float: left;
@@ -3016,11 +3019,7 @@ li.news_feed_item_hovering a.trash {
 #page_subnav li.active a {
 
 }
-#page_right_col .photo_caption p {
-  color: black;
-  font-weight: bold;
-  width: 100%;
-}
+
 .page_share ul {
   clear: left;
   padding: 0;
@@ -3156,19 +3155,31 @@ a.backto {
 	padding:0;
 	text-indent:10px;
 }
-#page_right_col * {
-	float:left;
+#article_image img {
+	float: left;
+}
+.photo_caption {
+	width: 100%;
+	border-bottom: 1px solid #f5f5f5;
+	float: left;
+}
+.photo_caption p {
+	margin: 10px 0;
+	float: left;
+
 }
 .pull_quote {
-	background:none repeat scroll 0 0 #999999;
 	float:left;
-	margin:0 0 20px;
-	padding:10px 15px;
-	width:250px;
+	margin:20px 0;
+	padding:0;
+	width:100%;
 }
 .pull_quote * {
 	margin:0;
 	padding:0;
+}
+.pull_quote p {
+	float: left;
 }
 #logos {
 	background:url("/images/logos.png") no-repeat scroll 10px 10px #E85311;
@@ -3184,21 +3195,28 @@ a.backto {
 }
 .call_to_action {
 	background: white;
-	padding: 0;
+	padding: 10px 0;
 	margin: 20px 0;
 	float: left;
+	font-size: 20px;
+	width: 100%;
+	
+	border-top:3px solid #f5f5f5;
+	border-bottom:1px solid #f5f5f5;
 
 }
 #page_right_col .call_to_action p {
   color: black;
+
 }
 body #main .call_to_action * {
 	text-transform: none;
 	font-weight: normal;
+	margin: 0;
 
 }
 #main .call_to_action a {
-	color: #fff;
+
 	text-decoration:underline;
 }
 div.article_image {
@@ -3238,7 +3256,9 @@ div.article_image {
 }
 
 div.page_share {
-	margin: 20px 0 0;
+	margin: 10px 0 0;
+	clear: both;
+	float: left;
 	
 }
 
