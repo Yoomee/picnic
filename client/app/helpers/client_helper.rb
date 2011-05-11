@@ -4,7 +4,7 @@ module ClientHelper
     items = Section.root.collect{|section| {
       :name => section.name,
       :url => section_path(section),
-      :active => current_page?(section_path(section)),
+      :active => current_root_section?(section),
       :weight => section.weight
     }}
     items << {

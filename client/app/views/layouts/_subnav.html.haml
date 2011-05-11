@@ -8,11 +8,11 @@
             =li_with_active(current_page?(themes_path), link_to("Themes", themes_path))
             =li_with_active(current_page?(correspondents_path), link_to("Correspondents", correspondents_path))
           -else
-            -current_root_section.all_children.each do |page_or_section|
+            -current_root_section.all_children(:published_only => !admin_logged_in?).each do |page_or_section|
               =li_with_active(viewing_page_or_section?(page_or_section), link_to_self(page_or_section))
             -if current_root_section.slug == "picnic11"
               =li_with_active(controller_name =~ /programmes|conference_sessions|venues/, link_to("Programme", programme_path))
-          -if false    
+          -if false
             %li.right_subnav_link
               =link_to_slug("Contact", "contact")
             %li.right_subnav_link
