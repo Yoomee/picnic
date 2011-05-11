@@ -3117,13 +3117,18 @@ a.backto {
   margin-top: 10px;
   margin-right: 10px;
   text-align: center;
-  width: 100px;  
+  width: 100px;
+  height: 150px;
 }
 #member_grid li.left_column {
   clear: left;
 }
 #member_grid li.right_column {
   margin-right: 0;
+}
+#member_grid .member_grid_info {
+  height: 40px;
+  overflow: hidden;
 }
 #pull_quote_large_image {
 	background:none repeat scroll 0 0 #CCCCCC;
