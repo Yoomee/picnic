@@ -328,7 +328,7 @@ input, textarea {
 .formtastic p {
 	line-height: 140%;
 }
-.formtastic input, .formtastic textarea {
+.formtastic input, .formtastic textarea, .formtastic select {
 	float: left;
 	clear: both;
 	background: #fff url(/images/sprite.png) repeat-x 0 -320px;
@@ -338,7 +338,7 @@ body .formtastic input[type="radio"], body .formtastic input[type="checkbox"] {
 	background: none;
 	margin-right: 6px;
 }
-body .formtastic .error input, body .formtastic .error textarea, body .formtastic .error .cke_editor_page_text_editor {
+body .formtastic .error input, body .formtastic .error textarea, body .formtastic .error .cke_editor_page_text_editor, body .formtastic .error select {
 	-webkit-box-shadow:0 0px 3px rgba(0,0,0,0.3);
 	-moz-box-shadow:0 0px 3px rgba(0,0,0,0.3);
 	box-shadow:0 0px 3px rgba(0,0,0,0.3);
@@ -3426,6 +3426,7 @@ div.page_share {
 /*========== Register ==========*/
 
 .register_box {
+  width: 100%;
   margin-top: 40px;
   float: left;
   clear: both;
@@ -3442,14 +3443,12 @@ div.page_share {
   float: left;
   margin-right: 10px;
 }
-.register_box_inner {
-  background-color: #E8E8E8;  
-  width: 500px;
-  padding: 20px;    
-}
 .register_box p, .register_box_inner, .register_box h2 {
   float: left;
   clear: both;
+}
+.small_print {
+  color: #999;
 }
 .register_box input[type="submit"] {
   float: right;
@@ -3459,6 +3458,23 @@ div.page_share {
   float: left;
   clear: both;
   width: 100%;
+}
+.register_box li#member_password_input, .register_box li#member_surname_input {
+  clear: none;
+}
+.register_box .formtastic ol li {
+  margin-right: 20px;
+}
+.register_box select {
+  height: 33px;
+  width: 233px;
+}
+.register_box li.commit {
+  clear: none;
+}
+.register_box li.commit input {
+  margin-top: 18px;
+  margin-left: 10px;
 }
 
 /*========== Badges ==========*/
