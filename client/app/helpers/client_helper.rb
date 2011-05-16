@@ -39,4 +39,14 @@ module ClientHelper
     shout.title.blank? ? out : "#{out}: #{shout.title}"
   end
   
+  def fancybox_edit(object, input, options ={})
+    options.reverse_merge!(:link_text => "Edit")
+    return "" if !allowed_to?({:controller => object.class.to_s.tableize, :action => :update, :id => object.id})
+    div_id = "#{object.class.to_s.tableize}_#{object.id}_edit_#{input}_fancy_form"
+    update_id = options[:update_id] || "#{object.class.to_s.tableize}_#{object.id}_#{input}"
+    out = fancy_box :title => nil, :id => div_id, :link => {:content => options.delete(:link_text), :options => {:inline => true, :class => "fancybox_edit"}} do
+      render('fancybox/edit', :object => object, :input => input, :update_id => update_id, :options => options)
+    end
+  end
+  
 end

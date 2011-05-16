@@ -1,0 +1,6 @@
+-options ||= {}
+-semantic_remote_form_for object, :update => update_id, :complete => "$.fancybox.close();$('##{update_id}').highlight(2000)",:url => polymorphic_path(object, :format => :text, :wants => input) do |form|
+  -form.inputs do
+    =form.input input, :label => options[:label]
+  -form.buttons do
+    =form.commit_button "Save"

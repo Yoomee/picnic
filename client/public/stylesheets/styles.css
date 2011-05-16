@@ -1937,6 +1937,17 @@ h1.profile_title {
 	float:left;
 	width:140px;
 }
+
+.what_i_bring {
+  font-size: 26px;
+  width: 100%;
+  border-bottom: 2px solid #CCC;
+  padding-bottom: 20px;
+}
+
+.bio {
+  font-size: 18px;
+}
 #member_links {
   float: right;
   width: 100%;
@@ -4084,6 +4095,13 @@ ul.page_lst li.active a {
   color: white;
 }
 
+/*========== Fancybox edit ==========*/  
+
+a.fancybox_edit {
+  font-size:14px;
+}
+
+
 /* ============================= */
 /* ! Layout for mobile version   */
 /* ============================= */
@@ -4126,7 +4144,6 @@ ul.page_lst li.active a {
 	right: 0;
 	
 }
-  
   
 }
 
