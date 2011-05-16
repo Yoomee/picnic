@@ -7,7 +7,11 @@ ApplicationController.class_eval do
 
   
   def home_section_path
-    section_path Section.root.ascend_by_weight.first
+    if Section.count > 1
+      section_path Section.root.ascend_by_weight.first
+    else
+      home_path
+    end
   end
 
 end
