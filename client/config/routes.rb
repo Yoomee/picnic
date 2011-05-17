@@ -10,5 +10,6 @@ ActionController::Routing::Routes.draw do |map|
   map.browse '/browse', :controller => 'browse'
   map.themes '/themes', :controller => 'tags'
   map.news_network '/newsnetwork', :controller => 'news_network'
+  map.what_i_bring "/what_i_bring", :controller => 'members', :action => 'what_i_bring'
   
 end
