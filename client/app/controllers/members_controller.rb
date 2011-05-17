@@ -29,6 +29,28 @@ MembersController.class_eval do
   end
   alias_method_chain :new, :redirect
 
+  def update
+    @member.update_attributes(params[:member])
+    respond_to do |format|
+      format.html do
+        if @member.valid?
+          flash[:notice] = "Profile updated"
+          redirect_to @member
+        else
+          puts "keys = " + params[:member].keys.map(&:to_s).inspect
+          render :action => (params[:member].keys.map(&:to_s) == ['what_i_bring'] ? 'what_i_bring' : 'edit')
+        end
+      end
+      format.js do
+        ajax_update_response(@member, params[:wants])
+      end
+      format.text do
+        ajax_update_response(@member, params[:wants])
+      end
+    end
+  end
+
+
 
   def what_i_bring
     @member = logged_in_member

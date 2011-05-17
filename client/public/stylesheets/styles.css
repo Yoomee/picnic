@@ -4171,6 +4171,18 @@ a.fancybox_edit {
   margin-bottom:0;
 }
 
+/*========== What I bring ==========*/
+#characters_left.negative {
+  color: red;
+}
+#characters_left {
+  float: left;
+  margin: 40px 0 0 20px;
+}
+.formtastic textarea#member_what_i_bring {
+  width: 500px;
+}
+
 
 /* ============================= */
 /* ! Layout for mobile version   */

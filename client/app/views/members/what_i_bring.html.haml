@@ -1,9 +1,2 @@
-%h2 Tell us what you bring to picnic
--semantic_form_for @member do |form|
-  -@member.non_blank_attributes.each do |attr, val|
-    =form.input attr, :as => :hidden
-  =form.input :country, :as => :hidden
-  -form.inputs do
-    =form.input :what_i_bring, :as => :text, :input_html => {:rows => 5}
-  -form.buttons do
-    =form.commit_button 'Finish'
+=render 'members/what_i_bring', :object => @member, :small_print => 'You can edit this later if you want.'
+.clear
