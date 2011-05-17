@@ -807,50 +807,31 @@ html body form {
 /*============= admin dashboard ==================*/
 
 #admin_dashboard {
- 	Abackground: #496B7B url(/images/sprite.png) repeat-x 0 -3680px;
-	float: left;
-	padding: 20px;
-	margin: 0 0 20px;
-	
+
 	 -moz-border-radius:8px;
      -webkit-border-radius:8px;
      border-radius:8px;
 }
-#admin_content {
-	margin: 0;
-	
-}
-.dash_col {
-	float: left;
-	width: 288px;
-	margin: 0 0 20px 20px;
-	background: #fff;
-	padding-bottom: 10px;
-	
-	
-	 -moz-border-radius:5px;
-     -webkit-border-radius:5px;
-     border-radius:5px;
 
-}
+
 .dash_col h2 {
 	float: left;
 	border-bottom: 1px solid #666;
-	width: 268px;
-	padding: 5px 10px;
+	width: 100%;
+	padding: 5px 0;
 	margin: 0;
 	
 }
 .dash_col h3 {
 	font-size: 17px;
 	line-height: 17px;
-	margin: 0 0 10px;
+	margin: 0 0 10px 50px;
 }
 .dash_item {
 	float: left;
-	width: 218px;
+	width: 100%;
 	border-bottom: 1px solid #e8e8e8;
-	padding: 10px 15px 15px 55px;
+	padding: 10px 0px 15px 0px;
 	background: url(/images/sprite.png) 0 -1900px no-repeat;
 }
 .dash_item li {
@@ -861,6 +842,9 @@ html body form {
 	display: block;
 	background: url(/images/sprite.png) 0px -975px no-repeat;
 	padding: 0 0 0 15px;
+	float: left;
+	clear: both;
+	margin: 0 0 0 50px;
 }
 .dash_item ul {
 	margin: 0;
@@ -871,22 +855,22 @@ html body form {
 	margin: 0 0 0px 30px;
 }
 #dash_sections_and_pages {
-	background-position: 10px -2190px;
+	background-position: 0px -2190px;
 }
 #dash_images {
-	background-position: 10px -2430px;
+	background-position: 0px -2430px;
 }
 #dash_documents {
-	background-position: 10px -2690px;
+	background-position: 0px -2690px;
 }
 .create {
 	font-weight: bold;
 }
 #dash_enquiries {
-	background-position: 10px -2990px;
+	background-position: 0px -2990px;
 }
 #dash_members {
-	background-position: 10px -3270px;
+	background-position: 0px -3270px;
 }
 
 /*=========== title icons for different sections  ================*/
@@ -2430,6 +2414,32 @@ a.item_img {
 }
 a.item_img img {
 	float:left;
+}
+/* ====================  Section- Latest News view   ===================== */
+.newsbox {
+	margin-bottom: 30px;
+}
+h2.newsbox_title {
+	font-family:'VAG Rounded W02 Light';
+}
+.newsbox_img {
+	float: left;
+	
+}
+
+p.newsbox_date {
+	font-size: 12px;
+	color: #999;
+	
+}
+
+.row .sixcol  .sixcol {
+	width: 46%;
+	margin-right: 8%;
+	
+}
+.row .sixcol  .sixcol.last {
+	margin-right: 0;
 }
 
 /* ============================= Message inbox ========================== */
