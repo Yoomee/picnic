@@ -58,7 +58,7 @@
               =link_to_box(image_for(badge, "60x60"), info_badge_path(badge))
               =link_to_box(badge, info_badge_path(badge))
   .twocol.last
-    #member_links
+    #member_links{:style => "display:none"}
       %ul.lst
         %li=render_add_friend_link(@member, :ajax_loader => "ajax_loader_squares.gif", :text => "Send a friend request")
         %li=link_to("Introduce to...", "#", :class => "bttn_l")
