@@ -2,6 +2,8 @@ class ProgrammesController < ApplicationController
   
   before_filter :set_section
   
+  admin_only :show #hidden for now
+  
   def show
     if Date.today > Date.parse("2011-09-14") && Date.today <= Date.parse("2011-09-16")
       @date = Date.today

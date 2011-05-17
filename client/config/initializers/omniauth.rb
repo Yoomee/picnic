@@ -3,7 +3,11 @@ TWITTER_SECRET = "KJxlaKvr6M4qrkdnO6XodQQsmhU24kFrQ3qzxgII"
 ActionController::Dispatcher.middleware.use OmniAuth::Builder do
   provider :twitter, TWITTER_KEY, TWITTER_SECRET
 end
-
+LINKED_IN_KEY = "fjB4TGVdm_ZskNFHfr-vo-Ho0Q-mTGv4OW7rQF2vzDLrG1CZ_XLbZBEPl4zJl8Mh"
+LINKED_IN_SECRET = "cwMYbAVznpawAsq2FSGugn9Irgku8yjAy_9OYRgZdUxh0Ho-g0XsNkHdFapjp6gs"
+ActionController::Dispatcher.middleware.use OmniAuth::Builder do
+  provider :linked_in, LINKED_IN_KEY, LINKED_IN_SECRET
+end
 # 
 # #config/initializers/omniauth.rb
 # require 'openid/store/filesystem'

@@ -328,7 +328,7 @@ input, textarea {
 .formtastic p {
 	line-height: 140%;
 }
-.formtastic input, .formtastic textarea {
+.formtastic input, .formtastic textarea, .formtastic select {
 	float: left;
 	clear: both;
 	background: #fff url(/images/sprite.png) repeat-x 0 -320px;
@@ -338,7 +338,7 @@ body .formtastic input[type="radio"], body .formtastic input[type="checkbox"] {
 	background: none;
 	margin-right: 6px;
 }
-body .formtastic .error input, body .formtastic .error textarea, body .formtastic .error .cke_editor_page_text_editor {
+body .formtastic .error input, body .formtastic .error textarea, body .formtastic .error .cke_editor_page_text_editor, body .formtastic .error select {
 	-webkit-box-shadow:0 0px 3px rgba(0,0,0,0.3);
 	-moz-box-shadow:0 0px 3px rgba(0,0,0,0.3);
 	box-shadow:0 0px 3px rgba(0,0,0,0.3);
@@ -1637,7 +1637,7 @@ span.cal_sheet span.day {
 /* ==================== login form ===================== */
 
 #login_wrapper {
-	width: 400px;
+/*	width: 400px;*/
 	margin: 20px 0 0;
 }
 #login_intro h2 {
@@ -1920,6 +1920,17 @@ h1.profile_title {
 .profile_photo {
 	float:left;
 	width:140px;
+}
+
+.what_i_bring {
+  font-size: 26px;
+  width: 100%;
+  border-bottom: 2px solid #CCC;
+  padding-bottom: 20px;
+}
+
+.bio {
+  font-size: 18px;
 }
 #member_links {
   float: right;
@@ -3436,6 +3447,7 @@ div.page_share {
 /*========== Register ==========*/
 
 .register_box {
+  width: 100%;
   margin-top: 40px;
   float: left;
   clear: both;
@@ -3445,18 +3457,19 @@ div.page_share {
   clear: both;
   margin-bottom: 20px;
 }
+.auth_link#linkedin {
+  margin-top: -4px;
+}
 .auth_links .auth_link {
   float: left;
   margin-right: 10px;
 }
-.register_box_inner {
-  background-color: #E8E8E8;  
-  width: 500px;
-  padding: 20px;    
-}
 .register_box p, .register_box_inner, .register_box h2 {
   float: left;
   clear: both;
+}
+.small_print {
+  color: #999;
 }
 .register_box input[type="submit"] {
   float: right;
@@ -3466,6 +3479,23 @@ div.page_share {
   float: left;
   clear: both;
   width: 100%;
+}
+.register_box li#member_password_input, .register_box li#member_surname_input {
+  clear: none;
+}
+.register_box .formtastic ol li {
+  margin-right: 20px;
+}
+.register_box select {
+  height: 33px;
+  width: 233px;
+}
+.register_box li.commit {
+  clear: none;
+}
+.register_box li.commit input {
+  margin-top: 18px;
+  margin-left: 10px;
 }
 
 /*========== Badges ==========*/
@@ -4094,6 +4124,13 @@ ul.page_lst li.active a {
   color: white;
 }
 
+/*========== Fancybox edit ==========*/  
+
+a.fancybox_edit {
+  font-size:14px;
+}
+
+
 /* ============================= */
 /* ! Layout for mobile version   */
 /* ============================= */
@@ -4136,7 +4173,6 @@ ul.page_lst li.active a {
 	right: 0;
 	
 }
-  
   
 }
 

@@ -1,30 +1,27 @@
--title "Register for PICNIC", :hidden => true
+-title "Join the club", :hidden => true
 
 #register_picnic_club.register_box
-  %h2 Register for the PICNIC Club
-  .register_box_inner
-    %p
-      Registration is easy with one of these service. Just click on the service you would like to register with and we will automatically create you a PICNIC profile:
-    =render("sessions/auth_links")
-    -form_tag("#") do
-      .inputs
-        =label_tag("email_address", "Or just enter your email address")
-        =text_field_tag("email_address")
-      =submit_tag("Next")
+  %h2 Join the club
+  .clear
+  %h3 The easy way
+  %p
+    Pull in your details from elsewhere.
+  =render("sessions/auth_links")
+  %p.small_print
+    (We won't post anything to these services without your permission)
     
-#register_picnic_11.register_box
-  %h2 Register for PICNIC11
-  .register_box_inner
-    %p
-      If you would like to register for the PICNIC11 conference then please enter your details below:
-    -form_tag("#") do
-      .inputs
-        =label_tag("email_address")
-        =text_field_tag("email_address")
-      =submit_tag("Next")
-    %p
-      Click
-      =link_to("here", "#")
-      to see the booking information, pricing and discounts.
+  %hr  
+  
+  %h3 The hard way
+  %p Start from scratch
+  -semantic_form_for @member do |form|
+    -form.inputs do
+      -form.with_options(:input_html => {:size => 30}) do |opt|
+        =opt.input :email
+        =opt.input :password
+        =opt.input :forename, :label => 'First name'
+        =opt.input :surname, :label => 'Last name'
+      =form.input :country, :label => 'Where are you from?', :prompt => 'Select a country', :as => :country
+      =form.commit_button "Go &gt; &gt;"
 -options_panel do
   =back_link

@@ -20,3 +20,7 @@ config.ru
 /vendor/plugins/tramlines_notifications
 /vendor/plugins/tramlines_ratings
 /vendor/plugins/tramlines_adverts
+/vendor/plugins/tramlines_friends
+/vendor/plugins/acts_as_network
+/vendor/plugins/tramlines_picnic_auth.git
+/vendor/plugins/tramlines_picnic_auth

@@ -1,0 +1,7 @@
+-semantic_remote_form_for url_object, :complete => "$.fancybox.resize()" do |form|
+  -form.inputs do
+    =form.input :url, :as => :string
+    =form.input :attachable_id, :as => :hidden
+    =form.input :attachable_type, :as => :hidden
+  -form.buttons do
+    =form.commit_button "Submit"
