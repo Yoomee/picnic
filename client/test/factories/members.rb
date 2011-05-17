@@ -1,4 +1,4 @@
-Factory.define(:member) do |f|
+Factory.redefine(:member) do |f|
   f.forename 'John'
   f.surname 'Smith'
   f.sequence(:username) {|n| "johnsmith#{n}"}
@@ -6,4 +6,8 @@ Factory.define(:member) do |f|
   f.password 'pa55w0rd'
   f.country 'United Kingdom'
   f.what_i_bring 'cheese'
+end
+
+Factory.redefine(:admin_member, :parent => :member) do |m|
+  m.is_admin true
 end
