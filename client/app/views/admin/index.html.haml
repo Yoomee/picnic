@@ -1,6 +1,7 @@
 -title 'Dashboard'
-#admin_dashboard
-  #admin_content.dash_col
+-no_content_row
+#admin_dashboard.row
+  #admin_content.dash_col.fourcol
     %h2
       Content
     #dash_sections_and_pages.dash_item
@@ -62,7 +63,7 @@
           =link_to("List campaigns", advert_campaigns_path)
         %li
           =link_to("New campaign", new_advert_campaign_path)
-  #dash_technical_stuff.dash_col
+  #dash_technical_stuff.dash_col.fourcol
     %h2
       Technical stuff
     #dash_enquiries.dash_item
@@ -78,7 +79,7 @@
       %ul
         =link_in_li_if_allowed("List badges", badges_proc)
         =link_in_li_if_allowed("Add a badge", new_badge_proc)
-  #dash_membership.dash_col
+  #dash_membership.dash_col.fourcol.last
     %h2
       Membership
     #dash_members.dash_item

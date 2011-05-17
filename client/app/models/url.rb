@@ -5,8 +5,12 @@ class Url < ActiveRecord::Base
   
   before_save :resolve_host
   
-  private
+  def favicon
+    #Uses http://getfavicon.appspot.com/
+    "http://g.etfv.co/#{url.match(/^.*:\/\//) ? url : "http://#{url}"}?defaulticon=#{APP_CONFIG[:site_url]}/images/default_favicon.png"
+  end
   
+  private
   def resolve_host
     if matches = url.match(/^([^\/]*\/\/)?(www\.)?(.*)\.(\w*)(\/)?.*$/)
       self.host = matches[3]

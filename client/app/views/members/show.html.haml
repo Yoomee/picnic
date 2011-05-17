@@ -30,9 +30,13 @@
         =fancybox_edit(@member, :bio, :label => "Bio", :link_text => (@member.bio.blank? ? "Click here to add your bio": "Edit" ))
     .services.subrow
       %ul.lst
+        -if @member.fb_connected?
+          %li=link_to("Facebook", @member.fb_profile_url)
         -@member.urls.each do |url|
-          =link_to_url(url.url, :target => "_blank", :class => url.host)
-      =link_to_box("New link", new_url_path(:attachable_id => @member.id, :attachable_type => "Member"))
+          %li
+            =image_tag(url.favicon)
+            =link_to_url(url.url, :target => "_blank", :class => url.host)
+      =link_to_box(" + Add a service", new_url_path(:attachable_id => @member.id, :attachable_type => "Member"), :class => "new_link")
     #member_themes.themes_list.subrow
       %h3.profile_title="About the real #{forename_or_me(@member)}"
       %ul.lst
