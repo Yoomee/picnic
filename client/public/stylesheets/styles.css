@@ -4182,6 +4182,16 @@ a.fancybox_edit {
 .formtastic textarea#member_what_i_bring {
   width: 500px;
 }
+.action_what_i_bring .small_print {
+  margin-top: -30px;
+  font-style: italic;
+}
+.action_what_i_bring .buttons {
+  width: 600px;
+}
+.action_what_i_bring .buttons .commit {
+  float: right;
+}
 
 
 /* ============================= */
@@ -4226,8 +4236,7 @@ a.fancybox_edit {
 	right: 0;
 	
 }
-  
-}
+
 
 
 
