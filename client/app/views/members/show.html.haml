@@ -7,6 +7,7 @@
         =link_to image_for(@member, '140x'), :controller => 'member', :action => 'setphoto', :id => @logged_in_member
       -else
         =image_for(@member, '140x')
+      =fancybox_edit(@member, :image, :partial => "members/photo_form")
     .friends_list.subrow
       %h3.profile_title="#{forename_or_my(@member).capitalize} friends"
       -if @member.friends.blank?
@@ -27,7 +28,7 @@
     -if !@member.bio.blank? || allowed_to?(edit_member_proc(@member))
       .bio.subrow
         %span{:id => "members_#{@member.id}_bio"}=@member.bio
-        =fancybox_edit(@member, :bio, :label => "Bio", :link_text => (@member.bio.blank? ? "Click here to add your bio": "Edit" ))
+        =fancybox_edit(@member, :bio, :label => "Bio", :link_text => (@member.bio.blank? ? "Click here to add your bio": "Edit" ), :input_html => {:rows => 5})
     .services.subrow
       %ul.lst
         -if @member.fb_connected?

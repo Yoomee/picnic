@@ -4161,6 +4161,16 @@ a.fancybox_edit {
   font-size:14px;
 }
 
+#fancybox-wrap.fancybox_edit input {
+  margin-bottom:5px;
+}
+#fancybox-wrap.fancybox_edit fieldset {
+  margin-bottom:0;
+}
+#fancybox-wrap.fancybox_edit .formtastic ol li {
+  margin-bottom:0;
+}
+
 
 /* ============================= */
 /* ! Layout for mobile version   */
