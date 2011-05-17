@@ -2464,20 +2464,24 @@ h2.newsbox_title {
 	float: left;
 	
 }
+.newsbox_text a{
+  color:black;
+}
+
+.newsbox_text a:hover {
+  text-decoration:none;
+}
 
 p.newsbox_date {
 	font-size: 12px;
+	height:21px;
 	color: #999;
-	
+	float:left;
+	margin:3px 0 0;
 }
 
-.row .sixcol  .sixcol {
-	width: 46%;
-	margin-right: 8%;
-	
-}
-.row .sixcol  .sixcol.last {
-	margin-right: 0;
+a.newsbox_arrow {
+  float:right;
 }
 
 /* ============================= Message inbox ========================== */

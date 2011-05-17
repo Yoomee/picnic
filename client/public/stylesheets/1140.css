@@ -90,6 +90,16 @@ img {
 	height: auto;
 }
 
+.row .sixcol  .sixcol {
+  padding:0px;
+	width: 46%;
+	margin-right: 8%;
+	
+}
+.row .sixcol  .sixcol.last {
+	margin-right: 0;
+}
+
 
 /* Smaller screens */
 
@@ -129,5 +139,11 @@ img {
 	padding-left: 20px;
 	padding-right: 20px;
 	}
+	
+	.row .sixcol  .sixcol {
+    padding:0px;
+  	width: auto;
+  	margin-right: 0px;
+  }
 
 }

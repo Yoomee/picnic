@@ -3,85 +3,27 @@
 -unless @section.description.nil?
   %p.section_description
     =@section.description
--if false    
-  #index_view
-    -@pages_sections.each_with_col_name do |page_section, col_name|
-      .item{:class => "item_#{col_name}"}
-        %h3=link_to page_section, page_section
-        =link_to(photo_for(page_section, "250x140!"), page_section, :class => 'item_img')
-        %p=strip_tags description_for(page_section, :length => 140)
-        =link_to 'More', page_section, :class => 'bttn'
-        
-#news_1.newsbox.sixcol
-  %h2.newsbox_title 
-    =link_to "PICNIC announces new venue and Urban Futures theme for 2011", "#", :class=>'newsbox_title_link'
-  .newsbox_img
-  =image_tag 'holding.png', :class => ''
-  %p.newsbox_text
-    PICNIC, Europe’s leading event for the creative industries, announced its program themes and a new venue for 2011 during a meet-up in the historic Waag building in Amsterdam.
-  %p.newsbox_date
-    26 Apr 2011
-  =link_to "read more", "#", :class=>'newsbox_arrow'
-  
-  #news_4.newsbox.sixcol
-    %h2.newsbox_title Help FairPhone celebrate its first birthday on 17 March
-    .newsbox_img
-    =image_tag 'holding.png', :class => ''
-    %p.newsbox_text
-      FairPhone is the world’s first collective, non-profit developer of fair trade mobile phones. On 17 March, you’re invited to help celebrate the first anniversary of FairPhone with a special event at the Waag in Amsterdam. In addition to this milestone, FairPhone is also celebrating the return of the FairPhone team who recently travelled to Congo to collect samples of raw materials to be used in the first Fair Phone prototypes.
-    %p.newsbox_date
-      26 Apr 2011
-    =link_to "read more", "#", :class=>'newsbox_arrow'
 
-  #news_5.newsbox.sixcol.last
-    %h2.newsbox_title Join PICNIC & 7scenes at iCE Amsterdam 2011
-    .newsbox_img
-    =image_tag 'holding.png', :class => ''
-    %p.newsbox_text
-      PICNIC is going to iCE 2011, and we want you to come along! We’re hosting the Best Scene in Town workshop together with 7scenes and Amsterdam Innovation Motor. Thanks to our partnership with iCE, we have a few free tickets reserved just for you. Keep reading to find out more about the event, our workshop and how to get your free tickets.
-    %p.newsbox_date
-      26 Apr 2011
-    =link_to "read more", "#", :class=>'newsbox_arrow'
-  
-#news_2.newsbox.threecol
-  %h2.newsbox_title Spotlight on MaxClass: participant in PICNIC '10 Pitch Night and Marketplace
-  .newsbox_img
-  =image_tag 'holding.png', :class => ''
-  %p.newsbox_text
-    PICNIC has a passion for great ideas and inspiring individuals with an entrepreneurial spirit. In 2010, we introduced the PICNIC Business Program with expanded offerings for start-ups, SMBs and entrepreneurs. One of the participants was Michiel Klonhammer, with his new initiative called MaxClass. Michiel’s been hard at work since last year’s event, and his social networking platform specifically for schools/classrooms is now live! Keep reading to find out more about Michiel and MaxClass…
-  %p.newsbox_date
-    26 Apr 2011
-  =link_to "read more", "#", :class=>'newsbox_arrow'  
-#news_3.newsbox.threecol.last
-  %h2.newsbox_title Cure Violence: Portrait of an Epidemic
-  .newsbox_img
-  =image_tag 'holding.png', :class => ''
-  %p.newsbox_text
-    Chicago-based video artist and former PICNIC speaker Lincoln Schatz continually strives to use his artistic abilities to create projects that inspire social change and public interaction. His most recent work is a composite video entitled Cure Violence: Portrait of an Epidemic. This video series is a portrait of more than 50 Chicago residents committed to ending gun violence.
-  %p.newsbox_date
-    26 Apr 2011
-  =link_to "read more", "#", :class=>'newsbox_arrow'
-  
+-if !@pages_sections.blank?
+  #news_1.newsbox.sixcol
+    =render('sections/news_story', :page_section => @pages_sections[0])
+    -if @pages_sections[3]
+      #news_4.newsbox.sixcol=render('sections/news_story', :page_section => @pages_sections[3])
+    -if @pages_sections[4]
+      #news_5.newsbox.sixcol.last=render('sections/news_story', :page_section => @pages_sections[4])
 
-#news_6.newsbox.threecol
-  %h2.newsbox_title Attend iCE Amsterdam 2011 with a special discount from PICNIC
-  .newsbox_img
-  =#image_tag 'holding.png', :class => ''
-  %p.newsbox_text
-    Clear your calendars on 7 and 8 March for iCE Amsterdam 2011! This event covers all the latest on mobile strategies, platforms and app development. Featuring a conference, boot camps, dev camps, seminars and workshops there’s something for everybody – from managers and designers to developers and business professionals. Keep reading to find out more about the program and how to get your tickets with a special discount for friends of PICNIC.
-  %p.newsbox_date
-    26 Apr 2011
-  =link_to "read more", "#", :class=>'newsbox_arrow'
-  
-#news_7.newsbox.threecol.last
-  %h2.newsbox_title Apps for Amsterdam starts a local data revolution
-  .newsbox_img
-  =#image_tag 'holding.png', :class => ''
-  %p.newsbox_text
-    On February 16, the Waag building at the Nieuwmarkt in Amsterdam was absolutely packed for the informative and inspiring kick-off event of Apps for Amsterdam. The evening started with a short intro from Waag Society Director Marleen Stikker and city representative Carolien Gehrels. It was followed by a keynote presentation by Peter Corbett, CEO of iStrategy Labs and co-creator of Apps for Democracy in the US. Keep reading to find out more about the Apps for Amsterdam competition and the beginnings of Amsterdam’s open data revolution.
-  %p.newsbox_date
-    26 Apr 2011
-  =link_to "read more", "#", :class=>'newsbox_arrow'
+-if @pages_sections[1]
+  #news_2.newsbox.threecol=render('sections/news_story', :page_section => @pages_sections[1])
+
+-if @pages_sections[2]
+  #news_3.newsbox.threecol.last=render('sections/news_story', :page_section => @pages_sections[2])
+
+-if @pages_sections[5]
+  #news_6.newsbox.threecol=render('sections/news_story', :page_section => @pages_sections[5])
+
+-if @pages_sections[6]
+  #news_7.newsbox.threecol.last=render('sections/news_story', :page_section => @pages_sections[6])
+
        
   
   
