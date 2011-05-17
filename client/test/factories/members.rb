@@ -7,3 +7,7 @@ Factory.redefine(:member) do |f|
   f.country 'United Kingdom'
   f.what_i_bring 'cheese'
 end
+
+Factory.redefine(:admin_member, :parent => :member) do |m|
+  m.is_admin true
+end
