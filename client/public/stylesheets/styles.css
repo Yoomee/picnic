@@ -1948,6 +1948,33 @@ h1.profile_title {
 .bio {
   font-size: 18px;
 }
+
+.services ul{
+  border-top:1px solid #CCC;
+  float:left;
+  width:100%;
+  margin-bottom:5px;
+}
+
+.services li {
+  border-bottom:1px solid #CCC;
+  width:100%;
+  font-size:17px;
+  padding:5px 0;
+}
+
+.services li img {
+  float:left;
+  margin:5px;
+}
+
+.services li a {
+  float:left;
+}
+.new_link {
+  float:right;
+}
+
 #member_links {
   float: right;
   width: 100%;
