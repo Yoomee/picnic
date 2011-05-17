@@ -1,9 +1,7 @@
 %h2 Tell us what you bring to picnic
 -semantic_form_for @member do |form|
-  =form.input :email, :as => :hidden
-  =form.input :password, :as => :hidden
-  =form.input :forename, :as => :hidden
-  =form.input :surname, :as => :hidden
+  -@member.non_blank_attributes.each do |attr, val|
+    =form.input attr, :as => :hidden
   =form.input :country, :as => :hidden
   -form.inputs do
     =form.input :what_i_bring, :as => :text, :input_html => {:rows => 5}
