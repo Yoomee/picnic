@@ -95,3 +95,13 @@ repository = git://git.yoomee.com:4321/plugins/tramlines_adverts.git
 path = vendor/plugins/tramlines_friends
 repository = git://git.yoomee.com:4321/plugins/tramlines_friends.git
 scm = git
+
+[vendor/plugins/acts_as_network]
+path = vendor/plugins/acts_as_network
+scm = git
+repository = git://github.com/sjlombardo/acts_as_network.git
+
+[vendor/plugins/tramlines_picnic_auth]
+path = vendor/plugins/tramlines_picnic_auth
+scm = git
+repository = git://git.yoomee.com:4321/plugins/tramlines_picnic_auth.git

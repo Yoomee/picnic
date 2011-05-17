@@ -9,3 +9,12 @@ Tramlines.add_plugin(:notifications)
 Tramlines.add_plugin(:ratings)
 Tramlines.add_plugin(:adverts)
 Tramlines.add_plugin(:friends)
+Tramlines.add_plugin(:picnic_auth)
+
+Tramlines.add_plugin(:picnic_auth.git)
+
+Tramlines.add_plugin(:picnic_auth.git)
+
+Tramlines.add_plugin(:picnic_auth.git)
+
+Tramlines.add_plugin(:picnic_auth)
