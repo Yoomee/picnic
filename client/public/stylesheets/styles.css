@@ -4193,6 +4193,10 @@ a.fancybox_edit {
   float: right;
 }
 
+/*========== auth_popup ==========*/
+#auth_popup {
+  padding: 20px;
+}
 
 /* ============================= */
 /* ! Layout for mobile version   */
