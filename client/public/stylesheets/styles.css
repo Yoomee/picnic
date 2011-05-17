@@ -4171,6 +4171,28 @@ a.fancybox_edit {
   margin-bottom:0;
 }
 
+/*========== What I bring ==========*/
+#characters_left.negative {
+  color: red;
+}
+#characters_left {
+  float: left;
+  margin: 40px 0 0 20px;
+}
+.formtastic textarea#member_what_i_bring {
+  width: 500px;
+}
+.action_what_i_bring .small_print {
+  margin-top: -30px;
+  font-style: italic;
+}
+.action_what_i_bring .buttons {
+  width: 600px;
+}
+.action_what_i_bring .buttons .commit {
+  float: right;
+}
+
 
 /* ============================= */
 /* ! Layout for mobile version   */
@@ -4214,8 +4236,7 @@ a.fancybox_edit {
 	right: 0;
 	
 }
-  
-}
+
 
 
 

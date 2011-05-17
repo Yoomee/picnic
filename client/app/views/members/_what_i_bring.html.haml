@@ -1,0 +1,32 @@
+-content_for(:head) do
+  :javascript
+
+    var WhatIBringForm = {
+  
+      update: function() {
+        var characters_left = #{Member::WHAT_I_BRING_MAX_LENGTH} - $('#member_what_i_bring').val().length;
+        $('#characters_left').html(characters_left);
+        if (characters_left < 0) {
+          $('#characters_left').addClass('negative');
+        } else {
+          $('#characters_left').removeClass('negative');
+        }
+      }
+  
+    };
+
+    $(document).ready(function() {
+      WhatIBringForm.update();
+      $('#member_what_i_bring').keyup(function() {WhatIBringForm.update();});
+    });
+
+%h2 Tell us what you bring to PICNIC
+-semantic_form_for object do |form|
+  -form.inputs do
+    =form.input :what_i_bring, :as => :text, :input_html => {:rows => 2}, :label => 'I bring...'
+    %span{:id => 'characters_left'}
+  .clear
+  .small_print
+    =(small_print ||= small_print)
+  -form.buttons do
+    =form.commit_button 'Finish'
