@@ -2,18 +2,18 @@
 # Tunnel configuration is only needed if you are going to use the facebooker:tunnel Rake tasks
 # Your callback url in Facebook should be set to http://public_host:public_port
 
-# si
-# development:
-#   app_id: 129657333730843
-#   api_key: 837c8cdbefac6f5646968c06ef99c07f
-#   secret: 54f4c83ad90973e26f73f3d39c916c09
-#   pretty_errors: true
+#si
+development:
+  app_id: 129657333730843
+  api_key: 837c8cdbefac6f5646968c06ef99c07f
+  secret: 54f4c83ad90973e26f73f3d39c916c09
+  pretty_errors: true
 
-#ian
-development: &development
-  app_id: 273996288856
-  secret: 85c4852e799ccd5e4062024ec83ae552
-  api_key: 56e460da053a913c43817c3b126be55c
+# #ian
+# development: &development
+#   app_id: 273996288856
+#   secret: 85c4852e799ccd5e4062024ec83ae552
+#   api_key: 56e460da053a913c43817c3b126be55c
  
 #rich
 # development:

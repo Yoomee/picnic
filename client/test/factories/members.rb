@@ -1,4 +1,4 @@
-Factory.define(:member) do |f|
+Factory.redefine(:member) do |f|
   f.forename 'John'
   f.surname 'Smith'
   f.sequence(:username) {|n| "johnsmith#{n}"}

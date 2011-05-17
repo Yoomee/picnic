@@ -1,5 +1,5 @@
-TWITTER_KEY = "NIWYejijuj6icfVsJx92A"
-TWITTER_SECRET = "KJxlaKvr6M4qrkdnO6XodQQsmhU24kFrQ3qzxgII"
+TWITTER_KEY = "GKKYtZ4heIAghnD65bxwSg"
+TWITTER_SECRET = "evaiTLbV2EorMVL41nn90yXnjMqTnaA1zQbbkbwVs"
 ActionController::Dispatcher.middleware.use OmniAuth::Builder do
   provider :twitter, TWITTER_KEY, TWITTER_SECRET
 end
