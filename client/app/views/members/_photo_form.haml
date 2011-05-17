@@ -1,0 +1,8 @@
+=image_for(object, '280x')
+-options ||= {}
+-semantic_form_for object, :html => {:multipart => true} do |form|
+  -form.inputs do
+    =form.input input, :as => :file, :label => "Upload a new photo"
+  -form.buttons do
+    =form.commit_button "Save"
+    
