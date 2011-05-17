@@ -5,6 +5,7 @@
     %h2
       Content
     #dash_sections_and_pages.dash_item
+      .dash_icon
       %h3
         Sections &amp; pages
       %ul
@@ -18,12 +19,14 @@
           %a{ :href => "/pages/new" }
             Add a page
     #dash_stories.dash_item
+      .dash_icon
       %h3
         Stories
       %ul
         %li
           =link_to 'Add a story', new_shout_path
     #dash_images.dash_item
+      .dash_icon
       %h3
         Images
       %ul
@@ -36,7 +39,8 @@
         %li
           %a{ :href => "/photos/new" }
             Add an image
-    #dash_images.dash_item
+    #dash_events.dash_item
+      .dash_icon
       %h3
         Events
       %ul
@@ -47,6 +51,7 @@
         %li
           =link_to 'Add an event', new_event_path
     #dash_documents.dash_item
+      .dash_icon
       %h3
         Documents
       %ul
@@ -57,16 +62,19 @@
         %li
           =link_to("Add a document", new_document_path)
     #dash_adverts.dash_item
+      .dash_icon
       %h3 Adverts
       %ul
         %li
           =link_to("List campaigns", advert_campaigns_path)
         %li
           =link_to("New campaign", new_advert_campaign_path)
+          
   #dash_technical_stuff.dash_col.fourcol
     %h2
       Technical stuff
     #dash_enquiries.dash_item
+      .dash_icon
       %h3
         Enquiries
       %ul
@@ -74,15 +82,18 @@
           %a{ :href => "/enquiries" }
             List enquiries                                
     #dash_badges.dash_item
+      .dash_icon
       %h3
         Badges
       %ul
         =link_in_li_if_allowed("List badges", badges_proc)
         =link_in_li_if_allowed("Add a badge", new_badge_proc)
+        
   #dash_membership.dash_col.fourcol.last
     %h2
       Membership
     #dash_members.dash_item
+      .dash_icon
       %h3
         Members
       %ul
