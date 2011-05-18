@@ -1,0 +1,32 @@
+=#issues_facelist_javascript(:tag_list => shout.tag_list, :intro_text => "e.g. unemployment")
+-content_for :head do
+  :javascript
+    $(document).ready(function() {
+      $('#member_themes_form').faceList('#{autocomplete_tags_path}', {
+        returnID: 'tags',
+        minChars: 2,
+        intro_text: 'Type here',
+        no_result: '',
+        formatList: function(data, formatted) {return formatted.html(data['name']);},
+        queryParam: 'term',
+        selectedItem: 'value',
+        neverSubmit: true,
+        start_value: '#{object.tag_list},',
+        resultClick: function(data) {$.fancybox.resize();$('#as-input-issues').focus();},
+        resultsComplete: function(elem) {
+          var height = $('.facelist-result-item').size() * $('.facelist-result-item').outerHeight();
+          $('#fancybox-inner').height($('#fancybox-inner').height() + height);
+          $('#as-input-tags').focus();
+        }
+      });
+    });
+
+
+#member_themes_form_wrapper
+  %h2 About the real me
+  -semantic_form_for(object) do |form|
+    -form.inputs do
+      %li#member_themes_li
+        =text_field_tag :tag_list, "", :onkeypress => "return event.keyCode!=13", :id => "member_themes_form"
+    -form.buttons do
+      =form.commit_button "Save"

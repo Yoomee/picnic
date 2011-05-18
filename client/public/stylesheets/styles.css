@@ -4327,6 +4327,15 @@ abbr[title="required"] {
   overflow:hidden !important;
 }
 
+#member_themes_form_wrapper {
+  width:350px;
+  height:250px;
+}
+
+#member_themes_li {
+  width:300px;
+}
+
 /* ============================= */
 /* ! Layout for mobile version   */
 /* ============================= */
@@ -4372,7 +4381,7 @@ abbr[title="required"] {
 	#fancybox-inner {
     overflow:auto !important;
   }
-	
+  
 }
 
 

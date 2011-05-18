@@ -4,6 +4,8 @@ Member.class_eval do
 
   attr_boolean_accessor :skip_what_i_bring_validation
   
+  acts_as_taggable_on :tags
+  
   has_location  
   has_many :urls, :as => :attachable
   

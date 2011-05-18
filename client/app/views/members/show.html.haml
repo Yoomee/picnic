@@ -53,9 +53,9 @@
         =link_to_box(" + Add a service", new_url_path, :class => "new_link")
     #member_themes.themes_list.subrow
       %h3.profile_title="About the real #{forename_or_me(@member)}"
-      %ul.lst
-        -Tag.limit(4).each do |tag|
-          =link_to_tag(tag)
+      =render('themes/list', :tags => @member.tags, :list_id => "member_#{@member.id}_themes")
+      =fancybox_edit(@member, :tags_list, :partial => "members/themes_form", :link_text => (@member.tags.blank? ? "Add your themes  ": "Edit" ))
+        
     .subrow
       #member_location
         -# default to sheffield just for the moment

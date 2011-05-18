@@ -36,6 +36,7 @@ MembersController.class_eval do
   alias_method_chain :new, :redirect
 
   def update
+    @member.tag_list = params[:facelist_values_tags]
     @member.update_attributes(params[:member])
     respond_to do |format|
       format.html do
@@ -48,10 +49,10 @@ MembersController.class_eval do
         end
       end
       format.js do
-        ajax_update_response(@member, params[:wants])
+        ajax_update_response(@member, params[:wants], params[:sf])
       end
       format.text do
-        ajax_update_response(@member, params[:wants])
+        ajax_update_response(@member, params[:wants], params[:sf])
       end
     end
   end
