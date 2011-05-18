@@ -13,4 +13,8 @@ module TagsHelper
     options[:li] ? content_tag(:li, out) : out
   end
 
+  def url_to_tag(tag, options = {})
+    url_for({:controller => "tags", :action => "show", :id => u(tag)}.merge(options))
+  end
+
 end

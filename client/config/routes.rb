@@ -13,5 +13,6 @@ ActionController::Routing::Routes.draw do |map|
   map.what_i_bring "/what_i_bring", :controller => 'members', :action => 'what_i_bring'
   map.connections "/connections", :controller => 'club', :action => 'connections'
   map.leaderboard "/leaderboard", :controller => 'club', :action => 'leaderboard'
+  map.connect "tags/autocomplete", :controller => "tags", :action => "autocomplete"
   
 end

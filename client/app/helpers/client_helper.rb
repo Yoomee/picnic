@@ -54,5 +54,29 @@ module ClientHelper
     url = url.match(/^.*:\/\//) ? url : "http://#{url}"
     image ? image_tag(Url.favicon(url)) : url
   end
+
+  def themes_facelist_javascript(options = {})
+    javascript_tag do
+      "$(document).ready(function() {
+        $('#themes_text').faceList('#{url_for(:controller => 'tags', :action => 'autocomplete')}', {
+          returnID: 'themes',
+          minChars: 2,
+          intro_text: '#{options[:intro_text]}',
+          no_result: '',
+          formatList: function(data, formatted) {return formatted.html(data['name']);},
+          queryParam: 'term',
+          selectedItem: 'value',
+          neverSubmit: true,
+          start_value: #{options[:tag_list].collect {|t| {:value => t}}.to_json},
+          resultClick: function(data) {$.fancybox.resize();$('#as-input-themes').focus();},
+          resultsComplete: function(elem) {
+            var height = $('.facelist-result-item').size() * $('.facelist-result-item').outerHeight();
+            $('#fancybox-inner').height($('#fancybox-inner').height() + height);
+            $('#as-input-themes').focus();
+          }
+        });
+      });"
+    end
+  end
   
 end

@@ -48,13 +48,13 @@ var ShoutForm = {
   photo_attached: function () {
     return $('#shout_attach_type').val() == 'Photo';
   },
-  toggle_attachable: function(attachable, shout_id) {
-    if($(ShoutForm.form_id(shout_id) + ' #shout_attach_type').val() == attachable){
-      $(ShoutForm.form_id(shout_id) + ' #shout_attach_type').val('');
-      ShoutForm.hide_all_attachables(shout_id);
+  toggle_attachable: function(attachable) {
+    if($('#shout_shout_type').val() == attachable){
+      $('#shout_shout_type').val('');
+      ShoutForm.hide_all_attachables();
     } else {
-      $(ShoutForm.form_id(shout_id) + ' #shout_attach_type').val(attachable);
-      ShoutForm.show_attachable_form(attachable, shout_id);
+      $('#shout_shout_type').val(attachable);
+      ShoutForm.show_attachable_form(attachable);
     }
   },
   showCommentForm: function(elem) {
