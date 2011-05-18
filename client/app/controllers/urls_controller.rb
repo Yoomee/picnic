@@ -29,7 +29,7 @@ class UrlsController < ApplicationController
   
   
   def new
-    @url_object = Url.new(:attachable_id => params[:attachable_id], :attachable_type => params[:attachable_type])
+    @url_object = Url.new(:attachable => logged_in_member)
     render :layout => false
   end
   

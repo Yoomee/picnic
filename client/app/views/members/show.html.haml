@@ -49,7 +49,8 @@
             =link_to_url(url.url, :target => "_blank", :class => url.host)
             =link_to_remote_if_allowed('x', {:url => url_proc(url), :method => :delete, :confirm => 'Are you sure you want to delete this url?'}, :class => "delete_link")
             
-      =link_to_box(" + Add a service", new_url_path(:attachable_id => @member.id, :attachable_type => "Member"), :class => "new_link")
+      -if @member == logged_in_member
+        =link_to_box(" + Add a service", new_url_path, :class => "new_link")
     #member_themes.themes_list.subrow
       %h3.profile_title="About the real #{forename_or_me(@member)}"
       %ul.lst
