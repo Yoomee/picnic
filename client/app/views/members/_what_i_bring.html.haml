@@ -2,14 +2,17 @@
   :javascript
 
     var WhatIBringForm = {
-  
+      valid: #{(object.what_i_bring.blank? || (object.what_i_bring.length > Member::WHAT_I_BRING_MAX_LENGTH)) ? '0' : '1'},
       update: function() {
         var characters_left = #{Member::WHAT_I_BRING_MAX_LENGTH} - $('#member_what_i_bring').val().length;
         $('#characters_left').html(characters_left);
         if (characters_left < 0) {
           $('#characters_left').addClass('negative');
+          WhatIBringForm.valid = 0;
         } else {
           $('#characters_left').removeClass('negative');
+          WhatIBringForm.valid = 1;
+
         }
       }
   
@@ -21,12 +24,24 @@
     });
 
 %h2 Tell us what you bring to PICNIC
--semantic_form_for object do |form|
-  -form.inputs do
-    =form.input :what_i_bring, :as => :text, :input_html => {:rows => 2}, :label => 'I bring...'
-    %span{:id => 'characters_left'}
-  .clear
-  .small_print
-    =(small_print ||= small_print)
-  -form.buttons do
-    =form.commit_button 'Finish'
+
+-if options[:fancy]
+  -semantic_remote_form_for object, :update => update_id, :complete => "$.fancybox.close();$('##{update_id}').highlight(2000)",:url => polymorphic_path(object, :format => :text, :wants => input),:html => {:onsubmit => "if(!WhatIBringForm.valid){return false;}"} do |form|
+    -form.inputs do
+      =form.input :what_i_bring, :as => :text, :input_html => {:rows => 2}, :label => 'I bring...'
+      %span{:id => 'characters_left'}
+    .clear
+    .small_print
+      =(small_print ||= small_print)
+    -form.buttons do
+      =form.commit_button 'Save'
+-else
+  -semantic_form_for object, :html => {:onsubmit => "if(WhatIBringForm.valid){return true;}else{return false;}"} do |form|
+    -form.inputs do
+      =form.input :what_i_bring, :as => :text, :input_html => {:rows => 2}, :label => 'I bring...'
+      %span{:id => 'characters_left'}
+    .clear
+    .small_print
+      =(small_print ||= small_print)
+    -form.buttons do
+      =form.commit_button 'Finish'

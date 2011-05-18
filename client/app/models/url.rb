@@ -5,9 +5,16 @@ class Url < ActiveRecord::Base
   
   before_save :resolve_host
   
+  
+  class << self
+    def favicon(url)
+      #Uses http://getfavicon.appspot.com/
+      "http://g.etfv.co/#{url.match(/^.*:\/\//) ? url : "http://#{url}"}?defaulticon=#{APP_CONFIG[:site_url]}/images/default_favicon.png"
+    end
+  end
+  
   def favicon
-    #Uses http://getfavicon.appspot.com/
-    "http://g.etfv.co/#{url.match(/^.*:\/\//) ? url : "http://#{url}"}?defaulticon=#{APP_CONFIG[:site_url]}/images/default_favicon.png"
+    self.class.favicon(url)
   end
   
   private

@@ -49,4 +49,9 @@ module ClientHelper
     end
   end
   
+  def favicon(url, image = true)
+    url = url.match(/^.*:\/\//) ? url : "http://#{url}"
+    image ? image_tag(Url.favicon(url)) : url
+  end
+  
 end

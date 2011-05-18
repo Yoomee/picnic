@@ -1,7 +1,20 @@
 class UrlsController < ApplicationController
   
-  member_only :new, :create, :edit, :update
+  member_only :new, :create
+  owner_only :edit, :update
   
+  class << self
+    
+    def allowed_to_with_urls?(url_options, member)
+      if url_options[:action].to_sym == :destroy && url_options[:id]
+        Url.find(url_options[:id]).attachable == member || member.is_admin?
+      else
+        allowed_to_without_urls?(url_options, member)
+      end
+    end    
+    
+    alias_method_chain :allowed_to?, :urls
+  end
   
   def create
     @url_object = Url.new params[:url]
@@ -16,11 +29,25 @@ class UrlsController < ApplicationController
   
   
   def new
-    @url_object = Url.new(:attachable_id => params[:attachable_id], :attachable_type => params[:attachable_type])
+    @url_object = Url.new(:attachable => logged_in_member)
     render :layout => false
   end
   
   def show
+    
+  end
+  
+  def destroy
+    @url_object = Url.find(params[:id])
+    render :update do |page|
+      if @url_object.destroy
+        page << "$('#url_#{@url_object.id}').blindUp().remove()"
+      end
+    end
+  end
+  
+  private
+  def allowed_to
     
   end
   
