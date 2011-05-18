@@ -17,7 +17,7 @@
         %p.password
           %label{ :for => "login_password" }
             Password:
-          = password_field_tag 'login_password', :class=>'labelify'
+          = password_field_tag 'login_password', '', :class=>'labelify'
           =# star
           =link_to "Forgot password?", new_forgotten_password_path, :id => "forgotten_password"
         = submit_tag 'Log in', :id => 'login_bttn'
