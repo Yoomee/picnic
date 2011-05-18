@@ -4351,11 +4351,15 @@ abbr[title="required"] {
 	background-color: #EFF2F7;
 	z-index: 2000;
 }
+ul.facelist-selections li:hover.facelist-selection-item {
+	background-color: black;
+}
+
 .facelist-results {
   overflow:visible;
 }
 li.facelist-result-item.active {
-background-color: #666;
+background-color: #777;
 border-color: #333;
 color: white;
 }
@@ -4394,7 +4398,7 @@ ul.facelist-selections li {
   margin: 5px;	
 }
 .theme_tag, ul.facelist-selections li.facelist-selection-item {
-  background-color: black;
+  background-color: #333;
   color: #fff;
   font-size: 16px;
   line-height: 19px;
