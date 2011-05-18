@@ -17,7 +17,7 @@ module ClientHelper
   end
   
   def viewing_club?
-    current_page?(club_path) || current_page?(new_member_path)
+    current_page?(club_path) || current_page?(new_member_path) || current_page?(connections_path) || current_page?(leaderboard_path)
   end
   alias_method :in_club?, :viewing_club?
   
