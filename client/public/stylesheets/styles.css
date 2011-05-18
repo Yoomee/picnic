@@ -4010,6 +4010,10 @@ dt {
 body.controller_shouts .shout_left {
   width: 60%;
 }
+.shout_form_submit_loader {
+  float: right;
+  margin: 20px 0px 0px;
+}
 .shout_left {
   float: left;
   border-top: 3px solid #e8e8e8;
