@@ -4331,6 +4331,21 @@ abbr[title="required"] {
   overflow:hidden !important;
 }
 
+#member_themes_form_wrapper {
+/*  width:350px;
+  height:250px;*/
+}
+
+/*#member_themes_li {
+  width:300px;
+}*/
+
+
+
+#member_themes_form_wrapper ul.facelist-selections {
+	width: 320px;
+}
+
 /*========== facelist ==========*/
 .facelist-results ul.facelist-list {
 	background-color: #EFF2F7;
@@ -4455,7 +4470,7 @@ ul.facelist-selections li.facelist-selection-item {
 	#fancybox-inner {
     overflow:auto !important;
   }
-	
+  
 }
 
 
