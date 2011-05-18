@@ -2,7 +2,6 @@ class TagsController < ApplicationController
   
   before_filter :get_tag, :only => %w{destroy edit show update}
 
-
   def autocomplete
     search_term = params[:term].downcase.gsub('_', ' ').gsub(/[^A-Za-z\d\-\s]/, '').strip
     term_list = [*search_term.gsub('-', ' ').split]
@@ -27,8 +26,6 @@ class TagsController < ApplicationController
     end
     render :json => tags_list
   end
-
-
   def create
     @tag = Tag.new(params[:tag])
     if @tag.save

@@ -3,8 +3,10 @@
 .row
   =render :partial => 'themes/trending'
   .tencol.last
-    %h4.flcb Stories
-    .fl.stories_filter
+    .fr
+      =link_to_box("Start a discussion", new_shout_path, :class => "bttn_l new_comment_link", :scrolling => false)
+    /%h4.flcb Stories
+    .flcb.stories_filter
       Showing:
       %ul
         =li_with_active true, link_to('Latest')

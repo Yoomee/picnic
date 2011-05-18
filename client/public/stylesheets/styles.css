@@ -4010,6 +4010,10 @@ dt {
 body.controller_shouts .shout_left {
   width: 60%;
 }
+.shout_form_submit_loader {
+  float: right;
+  margin: 20px 0px 0px;
+}
 .shout_left {
   float: left;
   border-top: 3px solid #e8e8e8;
@@ -4328,13 +4332,94 @@ abbr[title="required"] {
 }
 
 #member_themes_form_wrapper {
-  width:350px;
-  height:250px;
+/*  width:350px;
+  height:250px;*/
 }
 
-#member_themes_li {
+/*#member_themes_li {
   width:300px;
+}*/
+
+
+
+#member_themes_form_wrapper ul.facelist-selections {
+	width: 320px;
 }
+
+/*========== facelist ==========*/
+.facelist-results ul.facelist-list {
+	background-color: #EFF2F7;
+	z-index: 2000;
+}
+.facelist-results {
+  overflow:visible;
+}
+li.facelist-result-item.active {
+background-color: #666;
+border-color: #333;
+color: white;
+}
+.formtastic ol li.facelist-result-item, .formtastic ol li.facelist-message  {
+  margin:0;
+}
+#new_shout_themes li.facelist-result-item em {
+  background:none;
+  font-style:italic;
+}
+ul.facelist-selections {
+	/*background: #fff url(/images/sprite.png) repeat-x 0 -320px;*/
+	margin: 0;
+/*	float: left;*/
+	width: 504px;
+	padding-bottom: 0px;
+}
+ul.facelist-selections li {
+	clear: none;
+}
+ul.facelist-selections li.facelist-original input {
+	background:none;
+	width: 160px;
+}
+.facelist-results ul.facelist-list {
+	background-color: #ddd;
+}
+#new_comment_themes ul.facelist-selections {
+	width: 450px;
+}
+#new_comment_themes #facelist-selections-themes {
+  margin: 0;
+}
+ul.facelist-selections li {
+	clear: none;
+  margin: 5px;	
+}
+.theme_tag, ul.facelist-selections li.facelist-selection-item {
+  background-color: black;
+  color: #fff;
+  font-size: 16px;
+  line-height: 19px;
+  list-style-type: none;
+  margin: 0 5px 0 0;
+  float: left;
+  padding: 4px 8px;
+  font-weight: normal;  
+/*  text-shadow: 0px 1px 0 #C84A36;*/
+  /*
+  -webkit-box-shadow:inset 0 0 9px #FF5034, 1px -1px 1px rgba(0,0,0,0.1);
+  -moz-box-shadow:inset 0 0 9px #FF5034, 1px -1px 1px rgba(0,0,0,0.1);
+  box-shadow:inset 0 0 9px #FF5034, 1px -1px 1px rgba(0,0,0,0.1);
+  */
+  border-radius:2px;
+  -webkit-border-radius:2px;
+  -moz-border-radius:2px;
+}
+
+
+
+ul.facelist-selections li.facelist-selection-item {
+	margin-bottom: 3px;
+}
+
 
 /* ============================= */
 /* ! Layout for mobile version   */
@@ -4402,3 +4487,4 @@ abbr[title="required"] {
 	}*/
 
 }
+
