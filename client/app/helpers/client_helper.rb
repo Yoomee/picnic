@@ -19,6 +19,7 @@ module ClientHelper
   def viewing_club?
     current_page?(club_path) || current_page?(new_member_path)
   end
+  alias_method :in_club?, :viewing_club?
   
   def conference_day(date_or_datetime)
     date = date_or_datetime.to_date
