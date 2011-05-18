@@ -11,7 +11,7 @@
           .panel
             .logged_in_panel
               -link_to logged_in_member do
-                =image_for(logged_in_member, '19x') 
+                =image_for(logged_in_member, '19x19#') 
                 My profile
               =link_if_allowed('Admin', admin_proc)
               =link_to('Logout', session_path, :method => :delete)

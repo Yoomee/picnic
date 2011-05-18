@@ -24,7 +24,7 @@
     .what_i_bring.subrow
       %strong I bring
       %span{:id => "members_#{@member.id}_what_i_bring"}=@member.what_i_bring || "..."
-      =fancybox_edit(@member, :what_i_bring, :label => "What I bring")
+      =fancybox_edit(@member, :what_i_bring, :partial => "members/what_i_bring", :fancy => true)
     -if !@member.bio.blank? || allowed_to?(edit_member_proc(@member))
       .bio.subrow
         %span{:id => "members_#{@member.id}_bio"}=@member.bio
@@ -32,11 +32,23 @@
     .services.subrow
       %ul.lst
         -if @member.fb_connected?
-          %li=link_to("Facebook", @member.fb_profile_url)
-        -@member.urls.each do |url|
           %li
+            =favicon("http://www.facebook.com")
+            =link_to("Facebook", @member.fb_profile_url)
+        -if @member.twitter_connected?
+          %li
+            =favicon("http://www.twitter.com")
+            =link_to("Twitter (@#{@member.twitter_username})", @member.twitter_profile_url)
+        -if @member.linked_in_connected?
+          %li
+            =favicon("http://www.linkedin.com")
+            =link_to("LinkedIn", @member.linked_in_profile_url)
+        -@member.urls.each do |url|
+          %li{:id => "url_#{url.id}"}
             =image_tag(url.favicon)
             =link_to_url(url.url, :target => "_blank", :class => url.host)
+            =link_to_remote_if_allowed('x', {:url => url_proc(url), :method => :delete, :confirm => 'Are you sure you want to delete this url?'}, :class => "delete_link")
+            
       =link_to_box(" + Add a service", new_url_path(:attachable_id => @member.id, :attachable_type => "Member"), :class => "new_link")
     #member_themes.themes_list.subrow
       %h3.profile_title="About the real #{forename_or_me(@member)}"

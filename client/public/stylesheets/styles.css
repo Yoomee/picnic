@@ -1976,6 +1976,11 @@ h1.profile_title {
 .services li a {
   float:left;
 }
+
+.services li a.delete_link {
+  float:right;
+  margin-right:10px;
+}
 .new_link {
   float:right;
 }
@@ -4278,6 +4283,7 @@ a.fancybox_edit {
 #characters_left {
   float: left;
   margin: 40px 0 0 20px;
+  width:40px;
 }
 .formtastic textarea#member_what_i_bring {
   width: 500px;
@@ -4296,6 +4302,13 @@ a.fancybox_edit {
 /*========== auth_popup ==========*/
 #auth_popup {
   padding: 20px;
+}
+abbr[title="required"] {
+  display:none;
+}
+
+#fancybox-inner {
+  overflow:hidden !important;
 }
 
 /* ============================= */
@@ -4338,8 +4351,16 @@ a.fancybox_edit {
 	position: absolute;
 	top: 0;
 	right: 0;
+}
+	
+	#fancybox-inner {
+    overflow:auto !important;
+  }
 	
 }
+
+
+
 
 
 
