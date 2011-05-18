@@ -11,5 +11,7 @@ ActionController::Routing::Routes.draw do |map|
   map.themes '/themes', :controller => 'tags'
   map.news_network '/newsnetwork', :controller => 'news_network'
   map.what_i_bring "/what_i_bring", :controller => 'members', :action => 'what_i_bring'
+  map.connections "/connections", :controller => 'club', :action => 'connections'
+  map.leaderboard "/leaderboard", :controller => 'club', :action => 'leaderboard'
   
 end
