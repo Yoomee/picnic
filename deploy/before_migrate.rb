@@ -7,6 +7,8 @@
 run "cd #{release_path} && sudo ext up"
 run "sudo touch #{shared_path}/log/#{environment}.log"
 run "sudo chown deploy:deploy #{shared_path}/log/#{environment}.log"
+run "sudo touch #{shared_path}/log/delegate.log"
+run "sudo chown deploy:deploy #{shared_path}/log/delegate.log"
 run "cd #{release_path} && sudo rake gems:install RAILS_ENV=#{environment} -t"
 
 db_yaml_path = "#{shared_path}/config/database.yml"

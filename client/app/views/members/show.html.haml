@@ -27,8 +27,8 @@
       =fancybox_edit(@member, :what_i_bring, :partial => "members/what_i_bring", :fancy => true)
     -if !@member.bio.blank? || allowed_to?(edit_member_proc(@member))
       .bio.subrow
-        %span{:id => "members_#{@member.id}_bio"}=@member.bio
-        =fancybox_edit(@member, :bio, :label => "Bio", :link_text => (@member.bio.blank? ? "Click here to add your bio": "Edit" ), :input_html => {:rows => 5})
+        %span{:id => "members_#{@member.id}_bio"}=simple_format(strip_tags(@member.bio))
+        =fancybox_edit(@member, :bio, :label => "Bio", :link_text => (@member.bio.blank? ? "Click here to add your bio": "Edit" ), :input_html => {:rows => 5}, :sf => true)
     .services.subrow
       %ul.lst
         -if @member.fb_connected?

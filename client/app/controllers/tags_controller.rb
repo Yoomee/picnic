@@ -2,17 +2,16 @@ class TagsController < ApplicationController
   
   before_filter :get_tag, :only => %w{destroy edit show update}
 
-  # used on themes fancybox form
   def autocomplete
     search_term = params[:term].downcase.gsub('_', ' ').gsub(/[^A-Za-z\d\-\s]/, '').strip
     term_list = [*search_term.gsub('-', ' ').split]
     if term_list.size < 2
-      tags = Tag.with_shouts.named_like(term_list.join(" ")).limit(5)
+      tags = Tag.named_like(term_list.join(" ")).limit(5)
     else
-      tags = Tag.with_shouts.named_like(search_term)
+      tags = Tag.named_like(search_term)
       if tags.size < 5
         term_list.each do |term|
-          tags += Tag.with_shouts.named_like(term).limit(5 - tags.size) if term.length >= 3
+          tags += Tag.named_like(term).limit(5 - tags.size) if term.length >= 3
           break if tags.size >= 5
         end
       end
@@ -27,7 +26,6 @@ class TagsController < ApplicationController
     end
     render :json => tags_list
   end
-
   def create
     @tag = Tag.new(params[:tag])
     if @tag.save

@@ -4335,7 +4335,11 @@ abbr[title="required"] {
 .facelist-results {
   overflow:visible;
 }
-
+li.facelist-result-item.active {
+background-color: #666;
+border-color: #333;
+color: white;
+}
 .formtastic ol li.facelist-result-item, .formtastic ol li.facelist-message  {
   margin:0;
 }
@@ -4358,7 +4362,7 @@ ul.facelist-selections li.facelist-original input {
 	width: 160px;
 }
 .facelist-results ul.facelist-list {
-	background-color: #EFF2F7;
+	background-color: #ddd;
 }
 #new_comment_themes ul.facelist-selections {
 	width: 450px;
