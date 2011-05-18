@@ -17,14 +17,13 @@ SectionsController.class_eval do
       @pages = @section.pages.published.weighted.paginate(:page => params[:page], :per_page => (APP_CONFIG[:section_pages_items_per_page] || 10))
     end
   end
-  
-  
-  
+    
   module SortByWeightAndPublished
 
     def compare_weight_and_published(item_a, item_b)
       weight_comp = item_a.weight <=> item_b.weight
       return weight_comp unless weight_comp.zero?
+      return 0 if !item_a.respond_to?(:publish_on) || !item_b.respond_to?(:publish_on)
       item_b.publish_on <=> item_a.publish_on
     end
 

@@ -17,7 +17,7 @@ ApplicationController.class_eval do
 
   protected
   def check_what_i_bring
-    return redirect_to(what_i_bring_path) if logged_in_member && logged_in_member.what_i_bring.blank?
+    return redirect_to(what_i_bring_path) if logged_in_member && logged_in_member.what_i_bring.blank? && !logged_in_member.force_password_change?
   end
   
 end

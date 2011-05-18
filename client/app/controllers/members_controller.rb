@@ -20,8 +20,14 @@ MembersController.class_eval do
   #   end
   # end
 
+  def change_password_with_picnic
+    @member.skip_what_i_bring_validation = true
+    change_password_without_picnic
+  end
+  alias_method_chain :change_password, :picnic
+
   def new_with_redirect
-    if logged_in_member
+    if logged_in_member && !logged_in_member_is_admin?
       login_member!(logged_in_member)
     else
       new_without_redirect
