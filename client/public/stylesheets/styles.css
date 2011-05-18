@@ -2,6 +2,7 @@
 	http://localhost:3000/stylesheets/client/styles.css
 	http://picnic.yoomee.com/stylesheets/client/styles.css?1304692474
 	http://picnic.yoomee.com/stylesheets/client/styles.css?1304694546
+	http://picnic.yoomee.com/stylesheets/client/styles.css?1305648268
 */
 
 /* the tramlines vanilla stylesheet */
@@ -391,7 +392,7 @@ p.inline-errors {
    text-shadow:0 1px 0 #cdcdcd;  
 }
 span#page_photo_clear.photo_browser_clear {
-	background: url(/images/sprite.png) no-repeat -100px -175px;
+	background: url(/images/sprite.png) no-repeat 0px -175px;
 	float: left;
 	margin: 0 0 0 10px;
 	padding: 0 0 0 16px;
@@ -1015,7 +1016,7 @@ div#top {
 #login_slide_bar_inside {
 }
 #page_title {
-
+	
 }
 h1#site_logo {
   margin: 0px 0 0;
@@ -1656,88 +1657,91 @@ span.cal_sheet span.day {
 
 
 /* ==================== login form ===================== */
-
 #login_wrapper {
-/*	width: 400px;*/
-	margin: 20px 0 0;
-}
-#login_intro h2 {
-	float: left;
-}
-#login_intro p {
-	clear: both;
-}
-#login_form {
-	display:block;
-}
-#login_form p {
-	display: block;
-	width: 220px;
-}
-#login_form p label {
-	font-weight: bold;
-}
-#login_email_or_username, #login_password {
-	float: left;
-	clear: both;
-	width: 200px;
-	padding: 6px 10px;
-}
-#login_password {
-  margin-bottom: 0;
-}
-#forgotten_password {
-  float: right;
-  clear: both;
-  font-size: 11px;
-  margin-top: 3px;
-}
-input#login_bttn {
-	margin: 17px 0 10px;
-	clear: left;
+	margin: 0 auto;
+	width: 550px;
 }
 #login_services {
-  float: left;
-  clear: both;
-  margin-bottom: 20px;
+	float: right;
+	width: 200px;
+	
+
+	padding: 20px;
+	margin: 0 40px 0 0;
+	position: relative;
+
+}
+#or_old_way {
+	display: block;
+	background: #000;
+	color: #fff;
+	position: absolute;
+	left: -28px;
+	top: 75px;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	font-size: 16px;
+	line-height: 28px;
+	-webkit-border-radius:18px;
+	-moz-border-radius:18px;
+	border-radius:18px;		
+
+}
+#login_services .auth_link {
+	margin: 0 0 20px;
 }
 
-/* login slide bar */
-#login_slide_bar form {
-	background-color: transparent;
-}
-#login_slide_bar #login_wrapper {
-	color: #fff;
-	float:right;
-}
-#login_slide_bar #login_intro {
-	width: 180px;
-	margin: 0 30px 0 0;
-	padding: 0 0 0 40px;
+#not_registered {
 	float: left;
+	clear: left;
+	padding: 20px 0;
+	width: 600px;
+	
+	font-size: 18px;
+	
 }
-#login_slide_bar #login_intro h2 {
-	color: #fff;
-	margin: 0px 0px 5px 0;
-	line-height: 20px;
-	font-size: 20px;	
-}
-#login_slide_bar #login_intro a {
-	color: #fff;
-	font-weight: bold;
-}
-#login_slide_bar #login_form p {
+
+#login_old_way {
 	float: left;
+	width: 256px;
+	padding: 20px 0;
+	border-right: 1px solid #000;
+	
 }
-#login_slide_bar #login_form p label {
-	color: #fff;
-	float: left;	
+#login_old_way p {
+	float: left;
+	margin: 0;
 }
-#login_slide_bar #login_email_or_username, #login_slide_bar #login_password {
-	border: none;	
+#login_old_way input {
+	width: 200px;
+	float: left;
+	clear: left;
 }
-#login_slide_bar input#login_bttn {
-	clear: none;
+#login_old_way label {
+	display: none;
+}
+
+#login_old_way input#login_password {
+	margin: 0;
+}
+
+
+
+#forgotten_password {
+	float: left;
+	clear: left;
+	font-size: 12px;
+	margin: 5px 0 0 0;
+	
+}
+
+#login_old_way input#login_bttn {
+	width: 80px;
+	float: left;
+	font-size: 16px;
+	padding: 5px;
+	margin: 20px 0 0;
 }
 
 
@@ -2481,6 +2485,9 @@ a.item_img img {
 h2.newsbox_title {
 	font-family:'VAG Rounded W02 Light';
 }
+h2.newsbox_title a {
+	color: #000;
+}
 .newsbox_img {
 	float: left;
 	
@@ -2494,7 +2501,7 @@ h2.newsbox_title {
 }
 
 p.newsbox_date {
-	font-size: 12px;
+	font-family:'VAG Rounded W02 Thin'
 	height:21px;
 	color: #999;
 	float:left;
@@ -2502,7 +2509,16 @@ p.newsbox_date {
 }
 
 a.newsbox_arrow {
-  float:right;
+  	float: right;
+	display: block;
+	width: 22px;
+	height: 28px;
+	margin: 0 6px 0px 0;
+	background: url(/images/sprite.png) 0 -1640px;
+	text-indent: -9000em;
+}
+a.newsbox_arrow:hover {
+	background-position: -32px -1640px;
 }
 
 /* ============================= Message inbox ========================== */
