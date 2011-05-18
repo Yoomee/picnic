@@ -1,40 +1,38 @@
 .row
   #footer_sitemap.twelvecol.last
-    %h2
-      Sitemap
+  #picnic_section.sitemap_list.twocol
+    %h3=link_to 'Festival', '#'
+    %ul 
+      %li
+        =link_to_slug("News", :news)
+      %li
+        =link_to_slug("Overview", :overview)
+      %li
+        =link_to_slug("Themes", :themes)
+      %li
+        =link_to_slug("Registration", :registration)
   #club.sitemap_list.twocol
     %h3=link_to 'Club', '#'
     %ul 
       %li
-        =link_to 'Intro', '#'
+        =link_to_slug("Intro", :club_intro)
       %li
-        =link_to 'Sessions', '#'
+        =link_to_slug("Connections", :club_connections)
       %li
-        =link_to 'Themes', '#'
+        =link_to_slug("Leaderboards", :club_leaderboards)
       %li
-        =link_to 'Registration', '#'
-  #picnic_section.sitemap_list.twocol
-    %h3=link_to 'PICNIC11', '#'
-    %ul 
-      %li
-        =link_to 'Intro', '#'
-      %li
-        =link_to 'Sessions', '#'
-      %li
-        =link_to 'Themes', '#'
-      %li
-        =link_to 'Registration', '#'
+        =link_to_slug("Sign up", :club_sign_up)
   #about.sitemap_list.twocol
     %h3=link_to 'About', '#'
     %ul 
       %li
-        =link_to 'History', '#'
+        =link_to_slug("What is PICNIC", :what_is_picnic)
       %li
-        =link_to 'Press room', '#'
+        =link_to_slug("Press room", :press_room)
       %li
-        =link_to 'Press releases', '#'
+        =link_to_slug("Stay in touch", :stay_in_touch)
       %li
-        =link_to 'Contact', '#'        
+        =link_to_slug("Contact", :contact)
   #footer_copyright.twelvecol.last
     %p
       ©2011 PICNIC. All rights reserved.      
