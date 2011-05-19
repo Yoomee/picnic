@@ -1144,6 +1144,22 @@ div.logged_in_panel {
 	
 }
 
+.notifications span, .messages span {
+	background: #000;
+	background: rgba(0, 0, 0, 0.9);
+	line-height: 100%;
+	font-size: 1px;
+	color: #fff;
+	font-weight: bold;
+	padding: 1px 4px;
+	margin-left: 3px;
+	border-radius:7px;
+	-moz-border-radius:7px;
+	-webkit-border-radius:7px;
+  -moz-box-shadow:0px 0px 3px rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow:0px 0px 3px rgba(0, 0, 0, 0.6);
+  box-shadow:0px 0px 3px rgba(0, 0, 0, 0.6);
+}
 a#member_login_bttn.open, a#member_login_bttn.open:hover {
 	background:#D4205D;
 	color:#fff;
@@ -4500,6 +4516,132 @@ ul.member_lst a.member_name {
 	font-size: 16px;
 	color: #000;
 }
+
+
+/* ====== Notifications ====== */
+
+#notifications .notification {
+	clear:both;
+	float:left;
+	line-height:24px;
+	margin:3px 0;
+	padding:10px;
+	width:500px;
+	border-bottom: 1px solid #ccc;
+}
+#notifications .notification.unread {
+	background: #f5f5f5;
+}
+#notifications .notification .notification_content {
+	float: left;
+}
+#notifications .notification .delete_link {
+	float: right;
+	font-size: 20px;
+	margin: 0 5px 0 0;
+}
+#notifications .notification .member_image {
+	float: left;
+	margin-right: 10px;
+}
+#notifications .notification p {
+	margin: 0;
+}
+
+
+/* ========= Search Results =========== */
+
+#search_submit {
+  float: left;
+  clear: both;
+}
+.search_results_list {
+  border-top: 1px solid #CCCCCC;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  width: 100%;
+  float: left;
+  clear: both;
+}
+.search_results_list .pagination {
+  border-top: 1px solid #CCCCCC;
+  margin-top: 20px;
+  padding-top: 20px;
+  width: 100%;
+  float: left;
+  clear: both;
+}
+.search_results_list ul {
+  float: left;
+  clear: both;
+}
+.search_results_list .conversation_wrapper {
+  float: left;
+}
+.search_results_header {
+  float: left;
+  clear: both;
+  margin-bottom: 10px;
+}
+#search_results_shouts .search_results_header {
+  margin: 0;
+}
+.search_results_header h3 {
+  float: left;
+  margin: 0;
+}
+.search_results_header a {
+  float: left;
+  line-height: 35px;
+  margin-left: 10px;
+}
+#search_again {
+  float: left;
+  clear: both;
+  margin: 10px 0px;
+  padding-bottom: 10px;
+}
+#comments_filter.search_filter {
+  padding: 4px 15px;
+  float: left;
+}
+#comments_filter.search_filter span {
+  float: left;
+  margin-right: 10px;
+}
+#search_results {
+  clear: both;
+}
+#search_again #search_term {
+  border-color: #CCCCCC; 
+}
+ul.possible_search_models {
+  width: 400px;
+}
+ul.possible_search_models li {
+  float: left;
+  clear: none;
+  width: 100px;
+}
+#search_results_members li {
+  float: left;
+  clear: none;
+  width: 50px;
+  margin-right: 10px;
+  overflow:hidden;
+  text-align: center;
+}
+#search_filter {
+  float: left;
+  font-size: 15px;
+  line-height: 30px;
+  margin: 0 0 0 10px;
+}
+#search_filter span {
+  font-weight: bold;
+}
+
+
 
 #connection_themes {
 	float: left;

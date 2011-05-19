@@ -1,0 +1,7 @@
+#search_results_members.search_results_list
+  .search_results_header
+  %ul.lst
+    -search.results(:members, :per_page => nil).each do |member|
+      %li
+        =link_to(image_for(member, "50x50#"), member, :class => "member_search_image")
+        =link_to_self(member)
