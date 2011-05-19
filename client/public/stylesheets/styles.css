@@ -4020,6 +4020,9 @@ dt {
 .with_member_details .shout_left {
   width: 68%;
 }
+.controller_members .with_member_details .shout_left {
+  width: 80%;
+}
 .without_member_details .shout_left {
   width: 80%;
 }
@@ -4045,6 +4048,12 @@ body.controller_shouts .shout_left {
 }
 .without_member_details .shout_right {
   width: 15%;
+}
+.controller_members .with_member_details .shout_right {
+  width: 15%;
+}
+#older_shouts_link {
+  clear: both;
 }
 .shout_right_inner {
   margin: 0 0 0 0px;
@@ -4121,6 +4130,9 @@ span.shout_type_label {
 .attachable_preview img, .attachable_preview .remove_link {
   float: left;
   clear: both;
+}
+.post_to_wall {
+  margin-bottom: 20px;
 }
 
 /*========== Shout comments ==========*/

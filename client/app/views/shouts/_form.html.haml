@@ -1,10 +1,12 @@
-#shout_form.shout_form
+.shout_form{:id => "#{shout.new_record? ? 'new_shout_form' : "edit_shout_form"}"}
   -semantic_form_for(shout, :html => {:onSubmit => shout_on_submit(shout), :multipart => true}) do |form|
     =hidden_field_tag :in_moderation, params[:in_moderation]
     =hidden_field_tag :redirect_to, params[:redirect_to]
     -form.inputs do
       =form.input :tag_list, :as => :hidden
       =form.input :shout_type, :as => :hidden
+      =form.input :recipient_type, :as => :hidden
+      =form.input :recipient_id, :as => :hidden
       =form.input :text, :label => "What do you want to say?", :input_html => {:cols => 35, :rows => 4, :class => "conversation_text_input", :tabindex => 1}
       -if shout.has_attachable? && shout.attachable.valid?
         =form.input :delete_attachable, :as => :hidden
