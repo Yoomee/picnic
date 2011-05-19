@@ -105,3 +105,8 @@ repository = git://github.com/sjlombardo/acts_as_network.git
 path = vendor/plugins/tramlines_picnic_auth
 scm = git
 repository = git://git.yoomee.com:4321/plugins/tramlines_picnic_auth.git
+
+[vendor/plugins/tramlines_messages]
+path = vendor/plugins/tramlines_messages
+repository = git://git.yoomee.com:4321/plugins/tramlines_messages.git
+scm = git

@@ -1,0 +1,27 @@
+-items = @search_filter.blank? ? search.results(:shouts) : search.results(@search_filter)
+#search_results_shouts.search_results_list
+  .search_results_header
+  %ul.lst
+    -items.each do |shout|
+      %li
+        .conversation_wrapper
+          =link_to(image_for(shout.member, "50x50#"), shout.member, :class => "profile_photo_60")
+          .conversation_body
+            %p.conversation_text
+              .conversation_name
+                %span.name
+                  =link_to_self(shout.member)
+                  ="on" if !shout.tags.empty?
+                -shout.tags.each do |tag|
+                  =link_to_tag(tag, :li => false)
+              .conversation_inner_text=search_summary(shout, search.term)
+              -if shout.attachable
+                .conversation_image{:class => "#{shout.attachable_type.underscore}_conversation_image"}
+                  %span.conversation_type_label
+                    =shout.attachable_type.underscore.humanize
+                  =render_shout_attachable(shout)
+            %span.posted_when
+              ="#{time_ago_in_words(shout.created_at)} ago"
+            .conversation_actions
+              =link_to("View discussion", shout)
+  =will_paginate(items, :renderer => SearchLinkRenderer) unless items.is_a?(Array)

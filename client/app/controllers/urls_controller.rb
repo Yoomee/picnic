@@ -6,7 +6,7 @@ class UrlsController < ApplicationController
   class << self
     
     def allowed_to_with_urls?(url_options, member)
-      if url_options[:action].to_sym == :destroy && url_options[:id]
+      if member && url_options[:action].to_sym == :destroy && url_options[:id]
         Url.find(url_options[:id]).attachable == member || member.is_admin?
       else
         allowed_to_without_urls?(url_options, member)

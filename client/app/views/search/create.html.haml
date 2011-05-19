@@ -1,0 +1,22 @@
+.twelvecol
+  -if !@search.term.blank?
+    -url = "/search/#{@search.term.parameterize}"
+    -url << "?filter=#{search_filter_name(@search_filter, :pluralize => true)}" if !@search_filter.blank?
+    :javascript
+      $(document).ready(function() {
+        #{track_page_view(url)}
+      });
+  #search_again
+    =render :partial => 'form', :locals => {:search => @search}
+  #search_results
+    -if @search.empty?(@search_filter)
+      %p
+        ="Sorry, no #{search_filter_name(@search_filter, :pluralize => true)} found."
+    -else
+      -if (@search_filter.blank? || @search_filter=="Member") && (params[:page].to_i < 2) && !@search.empty?(:members, :per_page => nil)
+        =render("members", :search => @search)
+      -if (@search_filter.blank? || @search_filter != "Member") && !@search.empty?(:shouts)
+        =render("shouts", :search => @search)
+
+  -options_panel do
+    =back_link

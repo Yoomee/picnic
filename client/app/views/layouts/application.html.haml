@@ -41,10 +41,11 @@
           .ninecol
             =render("layouts/nav")
           #search_box_outer.threecol.last    
-            #search_box
-              %form{ :action => "/search/results", :method => "post" }
-                %input#search_field{ :name => "term", :type => "text", :value => "Search", :onfocus => "var element = document.getElementById('search_field');element.value='';" }
-                %input#search_icon{ :name => "commit", :title => "search", :value => "search" }
+            -unless controller_name == 'search'
+              #search_box
+                -form_for Search.new do |form|
+                  =form.text_field :term, :title => "Search...", :class => "labelify", :id => "search_field"
+                  =form.submit "Search", :id => "search_icon"                
         =render("layouts/subnav")
       #main.content
         #main_container.container 
