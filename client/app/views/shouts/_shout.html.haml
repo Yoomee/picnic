@@ -16,6 +16,7 @@
         =link_to_box_if_allowed("Edit", edit_shout_proc(shout))
         =link_if_allowed("Delete", shout, :method => :delete, :confirm => "Are you sure?")
         =link_to("View full post &rarr;", shout, :class => "shout_view_link")
+      =render_shout_comments(shout) if shout.is_commentable? && !compact_view
   .shout_right
     .shout_right_inner.fl
       -if show_member
