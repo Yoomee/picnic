@@ -1,3 +1,20 @@
+module SectionsController::SortByWeightAndPublished
+
+  def compare_weight_and_published(item_a, item_b)
+    weight_comp = item_a.weight <=> item_b.weight
+    return weight_comp unless weight_comp.zero?
+    return 0 if !item_a.respond_to?(:publish_on) || !item_b.respond_to?(:publish_on)
+    item_b.publish_on <=> item_a.publish_on
+  end
+
+  def sort_by_weight_and_published
+    sort do |item_a, item_b|
+      compare_weight_and_published(item_a, item_b)
+    end
+  end
+
+end
+
 SectionsController.class_eval do
   
   def show
@@ -18,21 +35,5 @@ SectionsController.class_eval do
     end
   end
     
-  module SortByWeightAndPublished
 
-    def compare_weight_and_published(item_a, item_b)
-      weight_comp = item_a.weight <=> item_b.weight
-      return weight_comp unless weight_comp.zero?
-      return 0 if !item_a.respond_to?(:publish_on) || !item_b.respond_to?(:publish_on)
-      item_b.publish_on <=> item_a.publish_on
-    end
-
-    def sort_by_weight_and_published
-      sort do |item_a, item_b|
-        compare_weight_and_published(item_a, item_b)
-      end
-    end
-
-  end
-  
 end

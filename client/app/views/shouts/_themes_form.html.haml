@@ -1,0 +1,29 @@
+=themes_facelist_javascript(:tag_list => shout.tag_list, :intro_text => "e.g. mobility")
+=#javascript_include_tag("jquery.labelify")
+-#
+/ :javascript
+/   $('#as-input-themes').labelify({
+/     labelledClass: 'labelified',
+/     text: function(input) { return 'e.g. mobility';}
+/   });
+#new_shout_themes
+  %h2 What's on your mind?
+  %p
+    Tell us what themes you're going to cover - keep it short and sweet, one or two words
+    %br
+    two words at most. Choose from existing tags or feel free to create new ones.
+  =error_message_on(:shout, :base)
+  -semantic_remote_form_for(shout) do |form|
+    -form.inputs do
+      %li{:style => "display:none"}=hidden_field_tag(:redirect_to, params[:redirect_to])
+      =form.input :themes_form_step, :as => :hidden, :value => true
+      %li.text
+        =text_field_tag :themes_text, "", :onkeypress => "return event.keyCode!=13"
+      -form.semantic_fields_for :location do |fields|
+        =fields.input :lat, :as => :hidden
+        =fields.input :lng, :as => :hidden
+    -form.buttons do
+      %li.comment_next_link=link_to_function("Next", "$('#shout_submit').click()")
+      %li{:style => "display:none"}
+        =form.submit "Next", :id => "shout_submit"
+      =#form.commit_button "Next", :button_html => {:id => "shout_submit", :style => "display:none"}

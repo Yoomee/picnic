@@ -1,3 +1,5 @@
+require 'client/lib/delegate_logger'
+
 class ClientEnvironment
   
   class << self

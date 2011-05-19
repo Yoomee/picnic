@@ -5,7 +5,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :venues
   map.resources :conference_sessions
   map.resource :programme
-  map.resources :tags, :as => "themes"
+  map.resources :tags, :as => "themes", :collection => {:autocomplete => :get}
+  
+  map.delegate_receiver '/delegate/receive', :controller => 'delegate_receiver', :action => 'receive'
+  
   map.correspondents '/correspondents', :controller => 'correspondents'
   map.browse '/browse', :controller => 'browse'
   map.themes '/themes', :controller => 'tags'
@@ -13,5 +16,6 @@ ActionController::Routing::Routes.draw do |map|
   map.what_i_bring "/what_i_bring", :controller => 'members', :action => 'what_i_bring'
   map.connections "/connections", :controller => 'club', :action => 'connections'
   map.leaderboard "/leaderboard", :controller => 'club', :action => 'leaderboard'
+  map.connect "tags/autocomplete", :controller => "tags", :action => "autocomplete"
   
 end
