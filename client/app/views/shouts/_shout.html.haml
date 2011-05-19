@@ -13,7 +13,7 @@
           .shout_image{:class => "#{shout.attachable_type.underscore}_shout_image"}
             =render_shout_attachable(shout)
       .shout_links.flcb
-        =link_if_allowed("Edit", edit_shout_proc(shout))
+        =link_to_box_if_allowed("Edit", edit_shout_proc(shout))
         =link_if_allowed("Delete", shout, :method => :delete, :confirm => "Are you sure?")
         =link_to("View full post &rarr;", shout, :class => "shout_view_link")
   .shout_right

@@ -31,6 +31,8 @@ var ShoutForm = {
   },
   show_attachable_form: function(attachable, shout_id) {
     ShoutForm.hide_all_attachables(shout_id);
+    console.log(shout_id);
+    console.log(ShoutForm.form_id(shout_id));
     if (attachable == 'Link'){
       $(ShoutForm.form_id(shout_id) + ' #shout_link_url_input').show();
     } else if (attachable == 'Photo') {
@@ -48,13 +50,13 @@ var ShoutForm = {
   photo_attached: function () {
     return $('#shout_shout_type').val() == 'Photo';
   },
-  toggle_attachable: function(attachable) {
+  toggle_attachable: function(attachable, shout_id) {
     if($('#shout_shout_type').val() == attachable){
       $('#shout_shout_type').val('');
       ShoutForm.hide_all_attachables();
     } else {
       $('#shout_shout_type').val(attachable);
-      ShoutForm.show_attachable_form(attachable);
+      ShoutForm.show_attachable_form(attachable, shout_id);
     }
   },
   showCommentForm: function(elem) {

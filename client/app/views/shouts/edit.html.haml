@@ -1,6 +1,6 @@
 -title "Edit story"
 
--if admin_logged_in?
+-if admin_logged_in? && false
   =render("shouts/enhanced_form", :shout => @shout)
 -else
   =render("shouts/form", :shout => @shout)
