@@ -79,4 +79,8 @@ module ClientHelper
     end
   end
   
+  def location_marker_image(location)
+    "/client/images/marker_heart.png"
+  end
+  
 end

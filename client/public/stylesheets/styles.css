@@ -2022,6 +2022,11 @@ h3.profile_title {
   float: left;
   width: 50%;
 }
+#member_location #save_map_link {
+  float:right;
+  margin-top:0;
+  display:none;
+}
 #member_badges {
   float: left;
   width: 50%;
@@ -3757,7 +3762,7 @@ body.controller_badges .badge_photo {
 }
 /*====================== Newsnetwork home ====================*/
 
-#map_canvas a, #map_canvas span {
+.map_canvas a, .map_canvas span {
   color:#ffffff !important;
   text-shadow:0 1px 0 #A0A0A0;   
 }
@@ -4045,7 +4050,7 @@ body.controller_shouts .shout_left {
 .shout_right_inner {
   margin: 0 0 0 0px;
 }
-.shout_right_inner #map_canvas {
+.shout_right_inner .map_canvas {
   margin-bottom: 20px;
 }
 .shout_right_inner_details {
@@ -4352,21 +4357,6 @@ abbr[title="required"] {
   overflow:hidden !important;
 }
 
-
-#member_themes_form_wrapper {
-/*  width:350px;
-  height:250px;*/
-}
-
-/*#member_themes_li {
-  width:300px;
-}*/
-
-
-
-#member_themes_form_wrapper ul.facelist-selections {
-	width: 320px;
-}
 
 /*========== facelist ==========*/
 .facelist-results ul.facelist-list {
