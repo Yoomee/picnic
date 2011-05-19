@@ -3601,13 +3601,15 @@ div.page_share {
 .register_box {
   width: 100%;
   margin-top: 40px;
-  float: left;
   clear: both;
+  margin: 0 auto;
+  width: 550px;
 }
+
 .register_box .auth_links {
   float: left;
   clear: both;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 .auth_link#linkedin {
   margin-top: -4px;
@@ -3619,6 +3621,9 @@ div.page_share {
 .register_box p, .register_box_inner, .register_box h2 {
   float: left;
   clear: both;
+}
+.register_box p {
+  font-size: 16px;
 }
 .small_print {
   color: #999;
@@ -3649,9 +3654,16 @@ div.page_share {
   margin-top: 18px;
   margin-left: 10px;
 }
+.register_box p.small_print {
+  font-size:12px;
+  margin-bottom: 40px;
+}
 #the_hard_way {
   clear: left;
   float: left;
+}
+p.show_the_hard_way {
+  margin-bottom: 60px;
 }
 
 /*========== Badges ==========*/
@@ -3995,6 +4007,9 @@ dt {
 .with_member_details .shout_left {
   width: 68%;
 }
+.controller_members .with_member_details .shout_left {
+  width: 80%;
+}
 .without_member_details .shout_left {
   width: 80%;
 }
@@ -4020,6 +4035,12 @@ body.controller_shouts .shout_left {
 }
 .without_member_details .shout_right {
   width: 15%;
+}
+.controller_members .with_member_details .shout_right {
+  width: 15%;
+}
+#older_shouts_link {
+  clear: both;
 }
 .shout_right_inner {
   margin: 0 0 0 0px;
@@ -4096,6 +4117,9 @@ span.shout_type_label {
 .attachable_preview img, .attachable_preview .remove_link {
   float: left;
   clear: both;
+}
+.post_to_wall {
+  margin-bottom: 20px;
 }
 
 /*========== Shout comments ==========*/

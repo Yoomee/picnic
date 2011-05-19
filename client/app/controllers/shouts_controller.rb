@@ -6,6 +6,7 @@ ShoutsController.class_eval do
       deal_with_themes
     else
       if params[:shout][:shout_type] == "Photo"
+        logger.info "RESPONDING TO PARENT"
         responds_to_parent {deal_with_create}
       else
         deal_with_create
@@ -29,7 +30,8 @@ ShoutsController.class_eval do
   end
 
   def new
-    render :partial => "themes_form", :locals => {:shout => Shout.new(:tag_list => params[:theme])}
+    attributes = (params[:shout] || {}).merge(:tag_list => params[:theme])
+    render :partial => "themes_form", :locals => {:shout => Shout.new(attributes)}
   end
   
   # def new
@@ -37,23 +39,36 @@ ShoutsController.class_eval do
   # end
   
   private
-  private
   def deal_with_create
     render(:update) do |page|
       if @shout.save
-        # TODO Enable this when google analytics properly added, and themes resolved
-        #page << track_page_view("/discussions/create/#{@shout.id}")
-        #url = url_to_tag(Tag.find_by_name(@shout.tag_list.first), :filter => "latest")
-        # delay the redirect so theres time for google analytics to do its thing
-        #page << "setTimeout('window.location.href = \"#{url}\";', 200);"
-        page.redirect_to club_path
+        page[:shout_wall].prepend(render_shout(@shout))
+        page[:new_shout_form].replace render("shouts/form", :shout => Shout.new(:recipient => @shout.recipient))
+        page << "$.fancybox.close();"
+        page << "$('.shout_form_submit_loader').hide();"
+        page << "FancyboxLoader.loadAll();"
       else
-        page[:shout_form].replace render("shouts/form", :shout => @shout)
-        page << "$.fancybox.resize();"
+        page[:new_shout_form].replace render("shouts/form", :shout => @shout)
       end
-      page << refresh_fb_dom
     end
   end
+  
+  # def deal_with_create
+  #   render(:update) do |page|
+  #     if @shout.save
+  #       # TODO Enable this when google analytics properly added, and themes resolved
+  #       #page << track_page_view("/discussions/create/#{@shout.id}")
+  #       #url = url_to_tag(Tag.find_by_name(@shout.tag_list.first), :filter => "latest")
+  #       # delay the redirect so theres time for google analytics to do its thing
+  #       #page << "setTimeout('window.location.href = \"#{url}\";', 200);"
+  #       page.redirect_to club_path
+  #     else
+  #       page[:shout_form].replace render("shouts/form", :shout => @shout)
+  #       page << "$.fancybox.resize();"
+  #     end
+  #     page << refresh_fb_dom
+  #   end
+  # end
 
   def deal_with_themes
     puts params.inspect

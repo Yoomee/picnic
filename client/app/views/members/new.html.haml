@@ -3,22 +3,18 @@
 #register_picnic_club.register_box
   %h2 Join the club
   .clear
-  %h3 The easy way
   %p
-    Pull in your details from elsewhere.
+    Pull in your details by clicking on a service below.
   =render("sessions/auth_links")
   %p.small_print
-    (We won't post anything to these services without your permission)
+    (We won't post anything without your permission)
 
-  %p
-    =link_to_function "Or do it the hard way...", "$('#the_hard_way').toggle('blind')"
+  %p.show_the_hard_way
+    =link_to_function "Or enter your details manually...", "$('#the_hard_way').toggle('blind');$('#member_email').focus()"
   .clear
   #the_hard_way{:style => "display:none"}
     %div
       %hr  
-  
-      %h3 The hard way
-      %p Start from scratch
       -semantic_form_for @member do |form|
         -form.inputs do
           -form.with_options(:input_html => {:size => 30}) do |opt|

@@ -17,6 +17,8 @@
     -form.inputs do
       %li{:style => "display:none"}=hidden_field_tag(:redirect_to, params[:redirect_to])
       =form.input :themes_form_step, :as => :hidden, :value => true
+      =form.input :recipient_type, :as => :hidden
+      =form.input :recipient_id, :as => :hidden
       %li.text
         =text_field_tag :themes_text, "", :onkeypress => "return event.keyCode!=13"
       -form.semantic_fields_for :location do |fields|

@@ -2,7 +2,7 @@
 var ShoutForm = {
   blank: function(shout_id){
     var form_id = ShoutForm.form_id(shout_id);
-    return $(form_id + ' #shout_text').attr('value') == '' && ($(form_id + ' #shout_attach_type').val() == '' || $(form_id + ' #shout_attach_type').val() == undefined);
+    return $(form_id + ' #shout_text').attr('value') == '' && ($(form_id + ' #shout_shout_type').val() == '' || $(form_id + ' #shout_shout_type').val() == undefined);
   },
   form_id: function(shout_id) {
     if (shout_id==undefined || shout_id=='') {
@@ -25,7 +25,7 @@ var ShoutForm = {
     $.fancybox.resize();
   },
   remove_attachable: function(shout_id) {
-    $(ShoutForm.form_id(shout_id) + ' #shout_attach_type').val('');
+    $(ShoutForm.form_id(shout_id) + ' #shout_shout_type').val('');
     $(ShoutForm.form_id(shout_id) + ' #shout_delete_attachable').val(1);
     $(' .shout_form .attachable_preview').hide();
   },
@@ -46,7 +46,7 @@ var ShoutForm = {
     $.fancybox.resize();
   },        
   photo_attached: function () {
-    return $('#shout_attach_type').val() == 'Photo';
+    return $('#shout_shout_type').val() == 'Photo';
   },
   toggle_attachable: function(attachable) {
     if($('#shout_shout_type').val() == attachable){
