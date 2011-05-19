@@ -25,6 +25,9 @@
     -elsif @shout.has_photo?
       .shout_image.subrow
         =image_for(@shout, "746x400#")
+    -elsif @shout.has_link?
+      .shout_image.subrow
+        =image_for(@shout, "746x400#")
     .subrow
       .shout_left
         .shout_left_inner

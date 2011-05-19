@@ -79,19 +79,23 @@
         %li=link_to("Private message", "#", :class => "bttn_l")
 .row
   .twocol
+  .eightcol
+    .fr.post_to_wall
+      =link_to_box("Post something", new_shout_path, :class => "bttn_l new_comment_link", :scrolling => false) if @member == logged_in_member
+
+    =#render("shouts/form", :shout => @member.received_shouts.build)
+  .clear
+  .twocol.last
+.row
+  .twocol
     .themes_list
       %h3.profile_title="Themes"
       %ul.lst
-        -Tag.limit(4).each do |tag|
+        -@member.shout_tags.each do |tag|
           =link_to_tag(tag)
   .eightcol
-    .fr.post_to_wall
-      =link_to_box("Post something to #{forename_or_your(@member)} wall", new_shout_path(:shout => {:recipient_id => @member.id, :recipient_type => 'Member'}), :class => "bttn_l new_comment_link", :scrolling => false)
-  
-    =#render("shouts/form", :shout => @member.received_shouts.build)
-    .clear
     #members_shouts
-      %h3.profile_title.fl="#{forename_or_your(@member).capitalize} wall"
+      %h3.profile_title.fl="#{forename_or_your(@member).capitalize} posts"
       .stories_filter
         Showing:
         %ul

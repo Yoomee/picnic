@@ -16,7 +16,7 @@
               =shout.attachable_type.underscore.humanize
             =image_for(shout.attachable, "150x", :alt => '') if shout.attachable.has_image?
             =link_to(shout.attachable.title, shout.attachable.url, :target => "_blank", :class => "attachable_link_url") if shout.attachable.is_a?(Link)
-            =render("shouts/poll_question_form", :form => form)            
+            =#render("shouts/poll_question_form", :form => form)            
             =link_to_function("x remove #{shout.attachable_type.titleize.downcase}", "ShoutForm.remove_attachable()", :class => "remove_link")
         =form.commit_button :label => "Share", :button_html => {:class =>'shout_share_button'}
       -else
