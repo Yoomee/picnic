@@ -1,6 +1,6 @@
 class DelegateLogger < Logger
   def format_message(severity, timestamp, progname, msg)
-    "#{timestamp}\n#{msg}\n\n\n"
+    "#{timestamp}#{msg}\n\n\n"
   end
 end
 
