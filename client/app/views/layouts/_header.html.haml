@@ -16,7 +16,6 @@
               =link_if_allowed('Admin', admin_proc)
               =link_to('Logout', session_path, :method => :delete)
             .logged_in_as
-              Logged in as
               =link_to_self(logged_in_member)
         -else
           =link_to('Login', new_session_path, :class => 'button')

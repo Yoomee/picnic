@@ -163,10 +163,19 @@
         %li=link_to("Private message", "#", :class => "bttn_l")
 .row
   .twocol
+  .eightcol
+    .fr.post_to_wall
+      =link_to_box("Post something", new_shout_path, :class => "bttn_l new_comment_link", :scrolling => false) if @member == logged_in_member
+
+    =#render("shouts/form", :shout => @member.received_shouts.build)
+  .clear
+  .twocol.last
+.row
+  .twocol
     .themes_list
       %h3.profile_title="Themes"
       %ul.lst
-        -Tag.limit(4).each do |tag|
+        -@member.shout_tags.each do |tag|
           =link_to_tag(tag)
   .eightcol
     #members_shouts
@@ -179,7 +188,7 @@
       -if @member.profile_shouts.empty?
         %p="#{forename_or_you(@member, "hasn't")} got any posts yet."
       -else
-        =render_shouts(@member, :show_member => false)
+        =render_shouts(@member, :show_member => true)
   .twocol.last
 .row
   -options_panel do

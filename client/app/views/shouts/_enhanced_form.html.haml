@@ -9,7 +9,7 @@
       =form.input :permalink_name, :label => "Permalink <span>(a pretty url for the page)</span>"
       =form.input :text, :as => :ck_text, :label => "Text", :input_html => {:cols => 35, :rows => 4, :class => "shout_text_input", :tabindex => 1}
       =form.input :tag_list, :label => "Themes", :help => "Please enter any themes which this story relates too (separated by commas)"
-      =form.input :attach_type, :as => :hidden
+      =form.input :shout_type, :as => :hidden
       -if shout.has_attachable? && shout.attachable.valid?
         =form.input :delete_attachable, :as => :hidden
         -if !shout.delete_attachable?

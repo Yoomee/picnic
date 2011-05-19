@@ -14,9 +14,10 @@ ShoutsHelper.module_eval do
   
   def shout_on_submit(shout)
     "
-    if($('#shout_shout_type').val() == 'Photo'){
-      ShoutForm.loading();
-      $('#shout_form form').attr('target','photo_upload_iframe');    
+    var shout_form_id = ShoutForm.form_id('#{shout.try(:id)}');
+    if($(shout_form_id+' #shout_shout_type').val()=='Photo' || $(shout_form_id+' #shout_shout_type').val()=='Document'){
+      ShoutForm.loading('#{shout.try(:id)}');
+      $(shout_form_id).attr('target','photo_upload_iframe');
       return true; 
     } else {
       if (!ShoutForm.blank()) {

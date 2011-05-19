@@ -10,8 +10,12 @@
   #page_subnav.twocol
     -if !@page.section.root? || @page.section.page_and_section_descendant_generations == 1
       %ul.lst
-        -@page.section.all_children(:published_only => !admin_logged_in?).reverse.each do |page_or_section|
-          =li_with_active(viewing_page_or_section?(page_or_section), link_to_self(page_or_section))
+        -if @page.section.view == 'news_view'
+          -@page.section.all_children(:published_only => !admin_logged_in?).reverse.each do |page_or_section|
+            =li_with_active(viewing_page_or_section?(page_or_section), link_to_self(page_or_section))
+        -else
+          -@page.section.all_children(:published_only => !admin_logged_in?).each do |page_or_section|
+            =li_with_active(viewing_page_or_section?(page_or_section), link_to_self(page_or_section))
   #page_content{:class => "#{@page.slug_in?(%w{the_team advisors picnic11_speakers}) ? 'eightcol last' : 'fivecol'}"}
     #page_left_col
       %h1#page_title=@page.title
@@ -33,15 +37,15 @@
         %p Add us to your favorite social networks:
         %ul
           %li
-            =link_to "Twitter", "http://twitter.com/picnicfestival", :class=>"twitter"
+            =link_to "Twitter", "http://twitter.com/picnicfestival", :class=>"twitter", :target=>"blank"
           %li
-            =link_to "Facebook", "http://www.facebook.com/pages/Amsterdam-Netherlands/PICNIC/52555521797", :class=>"facebook"
+            =link_to "Facebook", "http://www.facebook.com/pages/Amsterdam-Netherlands/PICNIC/52555521797", :class=>"facebook", :target=>"blank"
           %li
-            =link_to "Vimeo", "http://vimeo.com/picnicfestival", :class=>"vimeo"
+            =link_to "Vimeo", "http://vimeo.com/picnicfestival", :class=>"vimeo", :target=>"blank"
           %li
-            =link_to "Flickr", "http://www.flickr.com/photos/crossmediaweek", :class=>"flickr"
+            =link_to "Flickr", "http://www.flickr.com/photos/crossmediaweek", :class=>"flickr", :target=>"blank"
           %li
-            =link_to "LinkedIn", "http://www.linkedin.com/groups?gid=150580", :class=>"linkedin"            
+            =link_to "LinkedIn", "http://www.linkedin.com/groups?gid=150580", :class=>"linkedin" , :target=>"blank"           
           //%li
           //=link_to "RSS", "#", :class=>"rss"
             
