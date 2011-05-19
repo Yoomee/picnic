@@ -91,7 +91,7 @@
     .themes_list
       %h3.profile_title="Themes"
       %ul.lst
-        -Tag.limit(4).each do |tag|
+        -@member.shout_tags.each do |tag|
           =link_to_tag(tag)
   .eightcol
     #members_shouts
