@@ -3055,10 +3055,11 @@ span.cal_icon span.day {
 	color:#999999;
 	font-size:11px;
 }
+/*
 .news_feed_item img{
 	float: left;
 }
-
+*/
 .news_feed_item div.inner_text{
 	float:right;
 	font-size:14px;

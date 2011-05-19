@@ -36,7 +36,8 @@ module ClientHelper
   end
   
   def shout_title(shout)
-    out = shout.pretty_date
+    #out = shout.pretty_date
+    out = "#{time_ago_in_words(shout.created_at)} ago"
     shout.title.blank? ? out : "#{out}: #{shout.title}"
   end
   
