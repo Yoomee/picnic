@@ -1,6 +1,7 @@
+Member::WHAT_I_BRING_MAX_LENGTH = 100
+
 Member.class_eval do
 
-  WHAT_I_BRING_MAX_LENGTH = 100
 
   attr_boolean_accessor :skip_what_i_bring_validation
   
@@ -9,7 +10,7 @@ Member.class_eval do
   has_location  
   has_many :urls, :as => :attachable
   
-  validates_length_of :what_i_bring, :maximum => WHAT_I_BRING_MAX_LENGTH, :on => :update, :allow_blank => true
+  validates_length_of :what_i_bring, :maximum => Member::WHAT_I_BRING_MAX_LENGTH, :on => :update, :allow_blank => true
   validates_presence_of :what_i_bring, :on => :update, :unless => Proc.new {|member| member.force_password_change? || member.skip_what_i_bring_validation?}
   
   accepts_nested_attributes_for :urls
