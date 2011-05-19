@@ -9,19 +9,24 @@
   =render("sessions/auth_links")
   %p.small_print
     (We won't post anything to these services without your permission)
-    
-  %hr  
+
+  %p
+    =link_to_function "Or do it the hard way...", "$('#the_hard_way').toggle('blind')"
+  .clear
+  #the_hard_way{:style => "display:none"}
+    %div
+      %hr  
   
-  %h3 The hard way
-  %p Start from scratch
-  -semantic_form_for @member do |form|
-    -form.inputs do
-      -form.with_options(:input_html => {:size => 30}) do |opt|
-        =opt.input :email
-        =opt.input :password
-        =opt.input :forename, :label => 'First name'
-        =opt.input :surname, :label => 'Last name'
-      =form.input :country, :label => 'Where are you from?', :prompt => 'Select a country', :as => :country
-      =form.commit_button "Go &gt; &gt;"
+      %h3 The hard way
+      %p Start from scratch
+      -semantic_form_for @member do |form|
+        -form.inputs do
+          -form.with_options(:input_html => {:size => 30}) do |opt|
+            =opt.input :email
+            =opt.input :password
+            =opt.input :forename, :label => 'First name'
+            =opt.input :surname, :label => 'Last name'
+          =form.input :country, :label => 'Where are you from?', :prompt => 'Select a country', :as => :country
+          =form.commit_button "Go &gt; &gt;"
 -options_panel do
   =back_link

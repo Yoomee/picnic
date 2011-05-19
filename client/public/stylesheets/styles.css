@@ -3649,6 +3649,10 @@ div.page_share {
   margin-top: 18px;
   margin-left: 10px;
 }
+#the_hard_way {
+  clear: left;
+  float: left;
+}
 
 /*========== Badges ==========*/
 
