@@ -4,7 +4,7 @@ class DelegateReceiverController < ApplicationController
   open_action :receive
   
   def receive
-    DELEGATE_LOGGER.info("#{params.to_yaml}\n\n#{request.env.inspect}\n\n")
+    DELEGATE_LOGGER.info(" (from #{request.remote_ip})\n\n#{params.to_yaml}\n#{request.env.inspect}\n\n")
     render :text => "SUCCESS\n", :status => 200
   end
   
