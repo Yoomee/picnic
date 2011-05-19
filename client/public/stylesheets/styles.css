@@ -4646,6 +4646,53 @@ ul.possible_search_models li {
 #connection_themes {
 	float: left;
 	width: 100%;
+}
+
+/************* Closed comment form ********/
+.wall_form.closed{
+  margin-top: 0;
+  padding: 0;
+  border-top:none;
+}
+
+
+.wall_form.closed form{
+  display:none;
+}
+.wall_form.closed .wall_member_image {
+  display: none;
+}
+
+.conversation_reply_form .comment_prompt, .wall_form .comment_prompt {
+  height:19px;
+  margin-left:15px;
+  width:490px;
+  resize:none;
+  margin-top:10px;
+  overflow:hidden;
+  cursor:text;
+  color:#808080;
+  background-color: white;
+/*  background-image: url(/images/input.png);*/
+  border: 1px solid #999;
+  clear: both;
+  cursor: text;
+  display: block;
+  float: left;
+  font-size: 14px;
+  line-height: 21px;
+  margin: 10px 0 0 15px;
+  padding: 5px;
+}
+
+.wall_form .comment_prompt {
+  display:none;
+}
+
+.wall_form.closed .comment_prompt {
+  display:block;
+}
+
 
 
 

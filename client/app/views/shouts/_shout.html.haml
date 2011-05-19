@@ -23,7 +23,7 @@
         =link_to image_for(shout.member, '75x75'), shout.member, :class => "flcb"
         .shout_right_inner_details.fl
           =link_to_self shout.member
-          =link_to(pluralize(shout.comments.count, 'comment'), shout, :class => "shout_comments_link flcb")
+          =#link_to(pluralize(shout.comments.count, 'comment'), shout, :class => "shout_comments_link flcb")
       -else
         =link_to(pluralize(shout.comments.count, 'comment'), shout, :class => "shout_comments_link flcb")
       .shout_themes.themes_list.flcb
