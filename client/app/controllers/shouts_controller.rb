@@ -13,6 +13,21 @@ ShoutsController.class_eval do
     end
   end
 
+  def destroy
+    @shout = Shout.find(params[:id])
+    if request.xhr?
+      if @shout.destroy
+        render :update do |page|
+          page["shout_#{@shout.id}"].remove
+        end
+      end
+    else
+      @shout.destroy
+      flash[:notice] = "Successfully deleted discussion."
+      redirect_to_waypoint_after_destroy
+    end
+  end
+
   def new
     render :partial => "themes_form", :locals => {:shout => Shout.new(:tag_list => params[:theme])}
   end
