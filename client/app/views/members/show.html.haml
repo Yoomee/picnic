@@ -1,3 +1,78 @@
+-if allowed_to?(edit_member_proc(@member))
+  -content_for :head do
+    :javascript
+      var locMap;
+      var LocationMap = {
+        editing: 0,
+        originalCenter: null,
+        toggleEdit: function(map_index) {
+          if(LocationMap.editing){
+            LocationMap.cancelEdit(map_index);
+            LocationMap.editing = 0;
+          } else {
+            LocationMap.startEdit(map_index);
+            LocationMap.editing = 1;
+          }
+        },
+        startEdit: function(map_index) {
+          $('#edit_map'+map_index+'_link').html('Cancel');
+          if (map_index == 0){map_index = '';}
+          locMap = eval('map'+map_index);
+          locMap.setOptions({
+            zoomControl: true,
+            scrollwheel: true,
+            draggable: true,
+            disableDoubleClickZoom: false
+          });
+          var mapCenter = locMap.getCenter();
+          LocationMap.originalCenter = mapCenter;
+          $('#member_location').animate({width:'100%'},500);
+          $('#member_location').addClass('editing');
+          $('#map_canvas'+map_index).animate({
+            width:'100%',
+            height:400
+          },750, function(){
+            google.maps.event.trigger(locMap, 'resize');
+            locMap.panTo(mapCenter);
+            $('#save_map_link').fadeIn();
+          });
+        },
+        updateLatLng: function(latLng) {
+          $('#member_lat').val(latLng.lat());
+          $('#member_lng').val(latLng.lng());
+        },
+        cancelEdit: function(map_index){
+          locMap.panTo(LocationMap.originalCenter);
+          LocationMap.stopEdit(map_index);
+        },
+        save: function(map_index) {
+          $('#member_location form#edit_member_#{@member.id}').trigger('onsubmit');
+          LocationMap.stopEdit(map_index);
+        },
+        stopEdit: function(map_index) {
+          $('#edit_map'+map_index+'_link').html('Edit')
+          if (map_index == 0){map_index = '';}
+          locMap = eval('map'+map_index);
+          locMap.setOptions({
+            zoomControl: false,
+            scrollwheel: false,
+            draggable: false,
+            disableDoubleClickZoom: true
+          });
+          var mapCenter = locMap.getCenter();
+          $('#member_location').animate({width:'50%'},500);
+          $('#member_location').removeClass('editing');
+          $('#save_map_link').fadeOut();
+          $('#map_canvas'+map_index).animate({
+            width:300,
+            height:200
+          },750, function(){
+            google.maps.event.trigger(locMap, 'resize');
+            locMap.panTo(mapCenter);
+          });
+        }
+      }
+
 -no_content_row
 -title @member.full_name, :hidden => true
 .row
@@ -59,10 +134,19 @@
     .subrow
       #member_location
         -# default to sheffield just for the moment
-        -location = @member.has_location? ? @member.location : Location.new(:lat => "53.3830548", :lng => "-1.4647953", :country => "UK", :city => "Sheffield")
+        -location = @member.has_lat_lng? ? @member.location : Location.new(:lat => "53.3830548", :lng => "-1.4647953", :country => "UK", :city => "Sheffield")
         %h3.profile_title Location:
         %p=render_address(location)
-        =google_map(location, :width => 300, :height => 200)
+        -if allowed_to?(edit_member_proc(@member))
+          =google_map(location, :width => 300, :height => 200, :other => "google.maps.event.addListener(map#{@map_index}, 'bounds_changed', function(){mapCenter=map#{@map_index}.getCenter();marker0.setPosition(mapCenter);LocationMap.updateLatLng(mapCenter);})", :interactive => false)
+          =link_to_function("Edit", "LocationMap.toggleEdit(#{@map_index})", :id => "edit_map#{@map_index}_link")
+          =link_to_function("Update location", "LocationMap.save(#{@map_index})", :id => "save_map_link", :class => "bttn_l")
+          -semantic_remote_form_for @member, :html => {:style => "display:none"} do |form|
+            =form.input :lat, :as => :hidden
+            =form.input :lng, :as => :hidden
+            =form.commit_button "Save"
+        -else
+          =google_map(location, :width => 300, :height => 200)
       #member_badges
         %h3.profile_title="#{pluralize(@member.points, 'club point')}"
         %ul.lst

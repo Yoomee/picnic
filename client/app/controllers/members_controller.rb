@@ -36,7 +36,7 @@ MembersController.class_eval do
   alias_method_chain :new, :redirect
 
   def update
-    @member.tag_list = params[:facelist_values_tags]
+    @member.tag_list = params[:facelist_values_themes] if !params[:facelist_values_themes].blank?
     @member.update_attributes(params[:member])
     respond_to do |format|
       format.html do
