@@ -1,0 +1,83 @@
+-no_content_row
+-title "Connections", :hidden => true
+.row
+  =#render :partial => 'themes/trending'
+  .fourcol
+    #find_someone
+      %h2.connection_title Find someone
+      #find_someone_search_box
+        %form{ :action => "/search/results", :method => "post" }
+          %input#search_field{ :name => "term", :type => "text", :value => "Search", :onfocus => "var element = document.getElementById('search_field');element.value='';" }
+          %input#search_icon{ :name => "commit", :title => "search", :value => "search" }
+    #connections_map
+      %h2.connection_title People near you
+      =google_map([], :width => 350, :height => 300, :centre => [30, 0], :zoom => 2, :map_options => "scrollwheel:false,disableDefaultUI:true")
+    #connection_themes
+      %h4 Themes
+      %ul.lst
+        -Tag.all.each do |tag|
+          %li
+            =link_to_self tag, :class=>'tag'  
+  .fourcol
+    .connection_box
+      %h2.connection_title New people that share the real you
+      %ul.member_lst.lst
+        %li
+          .connection_profile_photo
+            =link_to image_tag("member_image.png"), "#map"
+          .name_and_tag
+            =link_to "Kasper Johanson", "#", :class=>"member_name"
+            =link_to "Fencing", "#", :class=>"tag"
+        %li
+          .connection_profile_photo
+            =link_to image_tag("member_image.png"), "#map"
+          .name_and_tag
+            =link_to "Kasper Johanson", "#", :class=>"member_name"
+            =link_to "Table tennis", "#", :class=>"tag"
+        %li
+          .connection_profile_photo
+            =link_to image_tag("member_image.png"), "#map"
+          .name_and_tag
+            =link_to "Kasper Johanson", "#", :class=>"member_name"
+            =link_to "Technology", "#", :class=>"tag"
+        %li
+          .connection_profile_photo
+            =link_to image_tag("member_image.png"), "#map"
+          .name_and_tag
+            =link_to "Kasper Johanson", "#", :class=>"member_name"
+            =link_to "Shiny Apple products", "#", :class=>"tag" 
+            
+    .connection_box
+      %h2.connection_title People that share themes with you
+      %ul.member_lst.lst
+        %li
+          .connection_profile_photo
+            =link_to image_tag("member_image.png"), "#map"
+          .name_and_tag
+            =link_to "Kasper Johanson", "#", :class=>"member_name"
+            =link_to "Fencing", "#", :class=>"tag"
+        %li
+          .connection_profile_photo
+            =link_to image_tag("member_image.png"), "#map"
+          .name_and_tag
+            =link_to "Kasper Johanson", "#", :class=>"member_name"
+            =link_to "Table tennis", "#", :class=>"tag"
+        %li
+          .connection_profile_photo
+            =link_to image_tag("member_image.png"), "#map"
+          .name_and_tag
+            =link_to "Kasper Johanson", "#", :class=>"member_name"
+            =link_to "Technology", "#", :class=>"tag"
+        %li
+          .connection_profile_photo
+            =link_to image_tag("member_image.png"), "#map"
+          .name_and_tag
+            =link_to "Kasper Johanson", "#", :class=>"member_name"
+            =link_to "Shiny Apple products", "#", :class=>"tag"       
+      
+  .fourcol.last  
+    %h2.connection_title People recently interacting with you
+
+.row    
+  -options_panel do
+    =back_link

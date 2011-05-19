@@ -15,13 +15,13 @@
     %h3=link_to 'Club', '#'
     %ul 
       %li
-        =link_to_slug("Intro", :club_intro)
+        =link_to "intro", "/club"
       %li
-        =link_to_slug("Connections", :club_connections)
+        =link_to "Connections", "/connections"
       %li
-        =link_to_slug("Leaderboards", :club_leaderboards)
+        =link_to "Leaderboards", "/leaderboard"
       %li
-        =link_to_slug("Sign up", :club_sign_up)
+        =link_to "Sign up", :controller=> 'members', :action=> 'new' 
   #about.sitemap_list.twocol
     %h3=link_to 'About', '#'
     %ul 

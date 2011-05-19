@@ -1028,7 +1028,7 @@ h1#site_logo a {
 	width: 160px;*/
 	
 	display: block;
-	background: url(/images/picnic_logo.png) no-repeat -12px -15px;
+	background: url(/images/sprite_picnic.png) no-repeat -13px -15px;
 	width: 205px;
 	height: 60px;
 	text-indent:-9000em;
@@ -3761,19 +3761,6 @@ body.controller_badges .badge_photo {
   color:#ffffff !important;
   text-shadow:0 1px 0 #A0A0A0;   
 }
-
-a.tag {
-	display: block;
-	padding: 10px 20px;
-	line-height: 100%;
-	background: #e8e8e8;
-	float: left;
-	margin: 0 0 10px;
-	
-	-webkit-border-radius:3px;
-	-moz-border-radius:3px;
-	border-radius:3px;
-}
 .map_row {
   background: #e8e8e8;
   margin-bottom: 40px;
@@ -4204,13 +4191,19 @@ li.wall_post {
 .themes_list li {
   margin: 5px 5px 5px 0;
 }
-.tag {
-  padding: 5px 8px;
-  background-color: #ccc;
-  color: #000;
-  -moz-border-radius:5px;
-	-webkit-border-radius:5px;
+a.tag {
+	display: block;
+	padding: 8px 30px 9px 10px;
+	margin: 0 0 5px;
+	font-size: 13px;
+	line-height: 14px;
+	float: left;
+	background:url(/images/sprite_picnic.png) no-repeat right top;
+	color: #fff;
+	
 	border-radius:5px;
+
+
 }
 form.tag {
   padding: 0;
@@ -4359,6 +4352,7 @@ abbr[title="required"] {
   overflow:hidden !important;
 }
 
+
 #member_themes_form_wrapper {
 /*  width:350px;
   height:250px;*/
@@ -4444,6 +4438,7 @@ ul.facelist-selections li {
   border-radius:2px;
   -webkit-border-radius:2px;
   -moz-border-radius:2px;
+
 }
 
 
@@ -4451,6 +4446,75 @@ ul.facelist-selections li {
 ul.facelist-selections li.facelist-selection-item {
 	margin-bottom: 3px;
 }
+
+
+/*========== Club connections page ==========*/
+
+div#connections_map {
+	float: left;
+	width: 100%;
+	height: 350px;
+	overflow: hidden;
+	margin: 0 0 20px;
+}
+#find_someone {
+	float: left;
+	width: 100%;
+	
+}
+#find_someone_search_box {
+	height:26px;
+	margin:0 0 20px;
+	width:100%;
+	float: left;
+	background: #fff;
+	padding: 0;
+	color: #666;
+	border: 1px solid #ccc;
+}
+div.connection_box {
+	float: left;
+	width: 100%;
+	margin: 0 0 30px;	
+}
+
+h2.connection_title {
+	margin-bottom: 20px;
+	font-size: 18px;
+	
+}
+
+ul.member_lst li {
+	width: 100%;
+	margin: 0 0 10px;
+	border-bottom: 1px solid #f5f5f5;
+	padding-bottom: 10px ;
+	
+}
+
+.connection_profile_photo {
+	width: 64px;
+	float: left;
+	margin: 0 20px 0 0;
+	
+}
+
+div.name_and_tag {
+	float: left;
+	
+	
+}
+
+ul.member_lst a.member_name {
+	width: 100%;
+	font-size: 16px;
+	color: #000;
+}
+
+#connection_themes {
+	float: left;
+	width: 100%;
+
 
 
 /* ============================= */
