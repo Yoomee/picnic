@@ -122,7 +122,7 @@
         =image_for(@member, '140x')
       =fancybox_edit(@member, :image, :partial => "members/photo_form")
     .friends_list.subrow
-      %h3.profile_title="#{forename_or_my(@member)} friends"
+      %h3.profile_title="#{forename_or_my(@member, :capitalize => true)} friends"
       -if @member.friends.blank?
         You don't have any friends yet.
         %br
@@ -214,14 +214,14 @@
           =link_to_tag(tag)
   .eightcol
     #members_shouts
-      %h3.profile_title.fl="#{forename_or_your(@member).capitalize} posts"
+      %h3.profile_title.fl="#{forename_or_your(@member, :capitalize => true)} posts"
       .stories_filter
         Showing:
         %ul
           =li_with_active true, link_to_function('Latest', 'MemberShouts.latest()'), :id => 'latest_shouts'
           =li_with_active false, link_to_function('Popular', 'MemberShouts.popular()'), :id => 'popular_shouts'
-      -if @member.profile_shouts.empty?
-        %p.no_posts="#{forename_or_you_capitalized(@member, "hasn't")} got any posts yet."
+      -if @member.shouts.empty?
+        %p.no_posts="#{forename_or_you(@member, "hasn't", :capitalize => true)} got any posts yet."
       -else
         #shouts_container
           =render_shouts(@member.shouts, :show_member => true)
