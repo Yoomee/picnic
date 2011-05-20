@@ -8,7 +8,7 @@ GoogleMapsHelper.module_eval do
       :width => 300,
       :height => 300,
       :map_type => "roadmap",
-      :zoom => 6,
+      :zoom => 4,
       :interactive => true
     )
     options[:canvas_id] = "map_canvas#{map_index}" #force it for now
@@ -126,7 +126,7 @@ GoogleMapsHelper.module_eval do
     @included_google_maps_js = true
     options[:width] = "#{options[:width]}px" if options[:width].is_a?(Integer)
     options[:height] = "#{options[:height]}px" if options[:height].is_a?(Integer)
-    content_tag(:div, "",:id => options[:canvas_id], :style => "width:#{options[:width]};height:#{options[:height]}", :class => "map_canvas #{options[:class]}")
+    content_tag(:div, "",:id => options[:canvas_id], :style => "width:#{options[:width]};height:#{options[:height]}#{options[:style].blank? ? '' : ";#{options[:style]}"}", :class => "map_canvas #{options[:class]}")
   end
   
 end
