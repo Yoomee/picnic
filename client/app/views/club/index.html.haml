@@ -1,1 +1,66 @@
-=image_tag 'club_intro.jpg'
+-content_for :head do
+  :javascript
+
+    var ClubWelcome = {
+  
+      hide: function() {
+        $('#club_welcome').hide('blind', function() {
+          $('#show_this').show();
+          $('#hide_this').hide();
+        });
+      },
+
+      searchLoading: function() {
+        $('#search_term').addClass('loading');
+      },
+      
+      searchComplete: function() {
+        $('#search_term').removeClass('loading');
+      },
+      
+      show: function() {
+        $('#club_welcome').show('blind', function() {
+          $('#show_this').hide();
+          $('#hide_this').show();
+        });
+      }
+  
+    };
+#club_intro_page
+  #club_welcome.row
+    .fivecol
+      =image_tag 'welcome_video.jpg'
+    .sixcol
+      %h2
+        Welcome to the club
+      %p
+        Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed molestie augue sit amet leo consequat posuere. 
+    .onecol.last
+  #hide_this.row
+    .fivecol
+    .sevencol.last
+      =link_to_function "Hide this", "ClubWelcome.hide()"
+  #show_this.row{:style => "display: none;"}
+    .fivecol
+    .sevencol.last
+      =link_to_function "Show this", "ClubWelcome.show()"
+  #club_intro_connect.row
+    .fivecol
+      %h2 Find someone
+      -semantic_remote_form_for Search.new(:models => ['Member']) do |form|
+        -form.inputs do
+          =form.input :term, :label => false
+          =form.input :models, :as => :hidden
+          =observe_field 'search_term', :url => {:controller => "search", :action => "create", :autocomplete => true, :results_view_path => 'club'}, :frequency => 0.5, :loading => "ClubWelcome.searchLoading()", :complete => "ClubWelcome.searchComplete()", :with => "'search[models][]=Member&search[term]=' + value", :update => 'find_someone_results'
+      %ul#find_someone_results
+        -@find_someone_members.each do |member|
+          =render "find_someone_result", :member => member
+    .sevencol.last
+      %h2 Latest members
+      =google_map(@latest_members, :width => 646, :height => 350, :centre => [30, 0], :zoom => 2, :infoboxes => true)
+      #latest_members_photos
+        -@latest_members.limit(9).each do |member|
+          -link_to member do
+            =image_for member, '70x70#'
+=#image_tag 'club_intro.jpg'
+    

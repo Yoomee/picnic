@@ -88,4 +88,8 @@ module ClientHelper
     "/client/images/marker_heart.png"
   end
   
+  def member_marker_image(member)
+    "/client/images/marker_heart.png"
+  end
+  
 end

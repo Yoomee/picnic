@@ -4020,7 +4020,8 @@ dt {
 }
 
 /*========== Shouts ==========*/
-#no_posts {
+#no_posts
+ {
   clear: left;
   float: left;
   margin-top: 30px;
@@ -5053,7 +5054,7 @@ ul.possible_search_models li {
  .splash_inner .heading .fr {
 	float: left;
 }
-  #user_links {
+#user_links {
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -5065,9 +5066,99 @@ ul.possible_search_models li {
   
 }
 
+/*========== club intro ==========*/
+#club_welcome p {
+  font-size: 20px;
+  font-weight: normal;
+}
 
+#hide_this, #show_this {
+  font-size: 18px;
+}
+#hide_this {
+  border-bottom: 4px solid #e2e2e2;
+}
+#show_this {
+  border-top: 4px solid #e2e2e2;
+}
 
+#hide_this a, #show_this a {
+  background: #e2e2e2;
+  color: black;
+  padding: 3px 10px;
+  width: 100px;
+  text-align: center;
+  display: block;
+}
 
+#hide_this a {
+  -moz-border-top-left-radius:5px;
+  -webkit-border-top-left-radius:5px;
+  border-top-left-radius:5px;
+  -moz-border-top-right-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  border-top-right-radius:5px;
+}
+
+#show_this a {
+  -moz-border-bottom-left-radius:5px;
+  -webkit-border-bottom-left-radius:5px;
+  border-bottom-left-radius:5px;
+  -moz-border-bottom-right-radius: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  border-bottom-right-radius:5px;
+}
+#club_intro_page h2 {
+  font-size: 25px;
+}
+#club_intro_connect {
+  margin-top: 30px;
+}
+#club_intro_connect #search_term {
+  font-size: 22px;
+  width: 439px;
+  background: url(/images/icon_search.png) no-repeat 420px 12px;
+}
+#club_intro_connect #search_term.loading {
+  background: url(/images/ajax_loader_arrows.gif) no-repeat 420px 12px;
+}
+#find_someone_results .no_results {
+  list-style-type: none;
+  margin-left: 0;
+  color: #979797;
+}
+.find_someone_result {
+  float: left;
+  clear: left;
+  list-style-type: none;
+  margin-left: 0;
+  border-bottom: 2px solid #f5f5f5;
+  margin-bottom: 20px;
+}
+.find_someone_result img {
+  float: left;
+  margin-right: 20px;
+}
+.find_someone_result .details {
+  float: left;
+  width: 350px;
+}
+.find_someone_result .details h4 a {
+  color: black;
+}
+.find_someone_result .details p {
+  color: #979797;
+}
+#latest_members_photos {
+  float: left;
+  width: 634px;
+  background: black;
+  padding: 15px 6px;
+}
+
+#latest_members_photos a {
+  float: left;
+}
 
 
 
