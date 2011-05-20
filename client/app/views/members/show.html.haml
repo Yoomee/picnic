@@ -183,7 +183,7 @@
           =li_with_active true, link_to('Latest', '#')
           =li_with_active false, link_to('Popular', '#')
       -if @member.profile_shouts.empty?
-        %p="#{forename_or_you(@member, "hasn't")} got any posts yet."
+        %p.no_posts="#{forename_or_you(@member, "hasn't")} got any posts yet."
       -else
         =render_shouts(@member, :show_member => true)
   .twocol.last

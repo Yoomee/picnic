@@ -4020,7 +4020,11 @@ dt {
 }
 
 /*========== Shouts ==========*/
-
+.no_posts {
+  clear: left;
+  float: left;
+  margin-top: 30px;
+}
 .shout {
   width: 100%;
   margin-bottom: 20px;
