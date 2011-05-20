@@ -3,6 +3,7 @@
 	http://picnic.yoomee.com/stylesheets/client/styles.css?1304692474
 	http://picnic.yoomee.com/stylesheets/client/styles.css?1304694546
 	http://picnic.yoomee.com/stylesheets/client/styles.css?1305648268
+	http://picnic.yoomee.com/stylesheets/client/styles.css?1305906593
 */
 
 /* the tramlines vanilla stylesheet */
@@ -11,7 +12,7 @@
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outline:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 /* ===============================  text styles ================================ */
-body, textarea, input {font:12px/1.5 'Helvetica Neue', Arial,'Liberation Sans',FreeSans,sans-serif}a:focus{outline:1px dotted invert}hr{border:0 #ccc solid;border-top-width:1px;clear:both;height:0}h1{font-size:25px}h2{font-size:23px}h3{font-size:21px}h4{font-size:19px}h5{font-size:17px}h6{font-size:15px}ol{list-style:decimal}ul{list-style:disc}li{margin-left:30px}p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset{margin-bottom:10px}
+body, textarea, input {font:12px/1.5 'Helvetica Neue', Arial,'Liberation Sans',FreeSans,sans-serif}a:focus{outline:1px dotted invert}hr{border:0 #ccc solid;border-top-width:1px;clear:both;height:0}h1{font-size:25px}h2{font-size:23px}h3{font-size:21px}h4{font-size:19px}h5{font-size:17px}h6{font-size:15px}ol{list-style:decimal}ul{list-style:disc}li{margin-left:30px}p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset{margin-bottom:13px}
 
 /* ======================  CSS3 regularly used stuff ================== */
 
@@ -35,7 +36,11 @@ a.backto {
 
 
 a, p.inline-errors {
-	color:#777;
+	color:#999;
+	text-decoration: underline;
+}
+a:hover {
+	color: #000;
 }
 body span.cal_sheet span.month {
 	background:#87cd29;
@@ -43,7 +48,8 @@ body span.cal_sheet span.month {
 
 h1, h2, h3, h4, h5, h6 {
 	color:black;
-	font-family:'VAG Rounded W02 Thin', arial, sans-serif;
+	font-weight: normal;
+	font-family:'VAG Rounded W02 Light', arial, sans-serif;
 
 	
 }
@@ -71,7 +77,7 @@ body, textarea, input {
 	
 }
 strong {
-	font-family:'VAG Rounded W02 Bold', arial, sans-serif;
+
 }
 #main {
 	clear: both;
@@ -95,13 +101,14 @@ a:hover {
 }
 
 #header_right {
-	margin-top: 35px;
+	margin-top: 32px;
 	
 }
 #header_right a.button {
 		display: block;
 
 	background:#777777;
+	background:rgba(0,0,0,0.4);
 
 	float: right;
 	font-size: 12px;
@@ -117,10 +124,7 @@ a:hover {
 	-moz-border-radius:3px;
 }
 
-#header_right a.button:hover {
-	background: #000;
-	text-decoration: none;
-}
+
 table {}
 td, th {
 	border:1px solid #CCCCCC;
@@ -1044,7 +1048,7 @@ div#top {
 #login_slide_bar_inside {
 }
 #page_title {
-	font-size: 36px;
+	font-size: 34px;
 	line-height: 120%;
 	margin
 }
@@ -1065,7 +1069,7 @@ h1#site_logo a {
 	font-size: 45px;
 	color: black;
 	text-decoration: none;
-	margin:35px 0 0 0px;
+	margin:31px 0 0 0px;
 	display: block;
 }
 
@@ -1153,7 +1157,7 @@ div.logged_in_panel {
 			display: block;
 
 	background:#777777;
-	background:rgba(0,0,0,0.3);
+	background:rgba(0,0,0,0.8);
 
 	float: left;
 	font-size: 12px;
@@ -1165,6 +1169,14 @@ div.logged_in_panel {
 	border-radius:3px;
 	-webkit-border-radius:3px;
 	-moz-border-radius:3px;
+}
+.logged_in_as a:hover, #header_right a.button {
+	text-decoration: none;
+	background: #000;
+	
+	 -webkit-transition: .2s ease-in;
+     -moz-transition: .2s ease-in;
+     transition: .2s ease-in;
 }
 #member_login_bttn {
 	float: right;
@@ -1308,7 +1320,7 @@ input#search_icon {
 
 	float:left;
 	margin:0px 0px 0 0;
-	padding:8px 30px 7px 0;
+	padding:5px 30px 4px 0;
 
 }
 #nav ul li a:hover {
@@ -1601,7 +1613,7 @@ h1.page_title {
 
 h5.article_intro {
 	font-weight: normal;
-	font-size: 21px;
+
 	line-height: 140%;
 	font-family:'VAG Rounded W02 Thin', Arial, sans-serif;
 	
@@ -1995,24 +2007,30 @@ p.post_admin a {
 /* ========== profile styles =========== */
 #profile {}
 h1.profile_title {
-	font-size: 30px;
+	font-size: 36px;
+	line-height: 100%;
 	margin:0;
 }
 
 .profile_photo {
 	float:left;
-	width:140px;
 }
 
 .what_i_bring {
   font-size: 26px;
+  line-height: 130%;
   width: 100%;
   border-bottom: 2px solid #CCC;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
+  font-family:'VAG Rounded W02 Thin', arial, sans-serif;
+}
+
+.what_i_bring strong {
+	font-weight: normal;	
 }
 
 .bio {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .services ul{
@@ -2066,7 +2084,7 @@ h1.profile_title {
 }
 h3.profile_title {
 	font-size: 20px;
-	margin-bottom: 0;
+	margin-bottom: 10px;
 	font-family:'VAG Rounded W02 Light', arial, sans-serif;
 
 }
@@ -3274,16 +3292,22 @@ a.backto {
 	
 }
 #page_content h5 {
+	font-size: 18px;
+
 
 }
 
 #page_left_col {
 
 
+
 }
 #page_content {
 	background: #fff;
 	min-height: 600px;
+}
+#page_content a {
+	text-decoration: underline;
 }
 #page_left_col img {
 	float:left;
@@ -4351,19 +4375,19 @@ li.wall_post {
 /*========== Tags ==========*/
 
 .themes_list li {
-  margin: 5px 5px 5px 0;
+  margin: 0 0 8px 0;
 }
 a.tag {
 	display: block;
-	padding: 8px 30px 9px 10px;
+	padding: 5px 7px;
 	margin: 0 0 5px;
 	font-size: 13px;
 	line-height: 14px;
 	float: left;
-	background:url(/images/sprite_picnic.png) no-repeat right top;
+	background:rgba(0,0,0,0.3);
 	color: #fff;
 	
-	border-radius:5px;
+	border-radius:3px;
 
 
 }
