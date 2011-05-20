@@ -38,13 +38,12 @@
         =render :partial => 'layouts/header'
       #subheader.container
         #nav_line.row
-          .ninecol
+          .eightcol
             =render("layouts/nav")
-          #search_box_outer.threecol.last    
-            #search_box
-              %form{ :action => "/search/results", :method => "post" }
-                %input#search_field{ :name => "term", :type => "text", :value => "Search", :onfocus => "var element = document.getElementById('search_field');element.value='';" }
-                %input#search_icon{ :name => "commit", :title => "search", :value => "search" }
+          #search_box.fourcol.last
+            %form{ :action => "/search/results", :method => "post" }
+              %input#search_icon{ :name => "commit", :title => "search", :value => "search" }
+              %input#search_field{ :name => "term", :type => "text", :value => "Search", :onfocus => "var element = document.getElementById('search_field');element.value='';" }
         =render("layouts/subnav")
       #main.content
         #main_container.container 

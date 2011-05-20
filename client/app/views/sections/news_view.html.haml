@@ -5,7 +5,7 @@
     =@section.description
 
 -if !@pages_sections.blank?
-  .sixcol
+  .sixcol.newsbox
     #news_1.newsbox
       =render('sections/news_story', :page_section => @pages_sections[0])
     -if @pages_sections[3]

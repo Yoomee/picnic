@@ -1,22 +1,20 @@
 .row
-  .twelvecol
+  .twelvecol.no_padding
     =render_flash
   .threecol
     %h1#site_logo
       =link_to "PICNIC", root_path
-  #header_right.ninecol.last
-    #top_box
-      #user_links
-        -if logged_in?
-          .panel
-            .logged_in_panel
-              -link_to logged_in_member do
-                =image_for(logged_in_member, '19x19#') 
-                My profile
-              =link_if_allowed('Admin', admin_proc)
-              =link_to('Logout', session_path, :method => :delete)
-            .logged_in_as
-              =link_to_self(logged_in_member)
-        -else
-          =link_to('Login', new_session_path, :class => 'button')
-          =link_to("Signup", new_member_path, :class => 'button')
+  #header_right.ninecol.last 
+    -if logged_in?
+      .panel
+        .logged_in_panel
+          -link_to logged_in_member do
+            =image_for(logged_in_member, '19x19#') 
+            My profile
+          =link_if_allowed('Admin', admin_proc)
+          =link_to('Logout', session_path, :method => :delete)
+        .logged_in_as
+          =link_to_self(logged_in_member)
+    -else
+      =link_to('Login', new_session_path, :class => 'button')
+      =link_to("Signup", new_member_path, :class => 'button')        

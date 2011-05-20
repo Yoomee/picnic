@@ -11,11 +11,11 @@
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outline:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 /* ===============================  text styles ================================ */
-body, textarea, input {font:14px/1.5 'Helvetica Neue',Arial,'Liberation Sans',FreeSans,sans-serif}a:focus{outline:1px dotted invert}hr{border:0 #ccc solid;border-top-width:1px;clear:both;height:0}h1{font-size:25px}h2{font-size:23px}h3{font-size:21px}h4{font-size:19px}h5{font-size:17px}h6{font-size:15px}ol{list-style:decimal}ul{list-style:disc}li{margin-left:30px}p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset{margin-bottom:10px}
+body, textarea, input {font:12px/1.5 'Helvetica Neue', Arial,'Liberation Sans',FreeSans,sans-serif}a:focus{outline:1px dotted invert}hr{border:0 #ccc solid;border-top-width:1px;clear:both;height:0}h1{font-size:25px}h2{font-size:23px}h3{font-size:21px}h4{font-size:19px}h5{font-size:17px}h6{font-size:15px}ol{list-style:decimal}ul{list-style:disc}li{margin-left:30px}p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset{margin-bottom:10px}
 
 /* ======================  CSS3 regularly used stuff ================== */
 
-#main, input, #footer_links, .bx_h, #news_feed_older_btn, .bx_h a, button, .bttn, .pull_quote, div#page_related_col, a.backto, #search_box, #nav ul li a {
+#main, input, #footer_links, .bx_h, #news_feed_older_btn, .bx_h a, button, .bttn, .pull_quote, div#page_related_col, a.backto, #nav ul li a {
 	-moz-border-radius:3px;
 	-webkit-border-radius:3px;
 	border-radius:3px;
@@ -33,7 +33,7 @@ a.backto {
 	box-shadow:1px 1px 0 #7F7367;		
 }
 
-/* =============================  colours ============================= */
+
 a, p.inline-errors {
 	color:#777;
 }
@@ -43,9 +43,12 @@ body span.cal_sheet span.month {
 
 h1, h2, h3, h4, h5, h6 {
 	color:black;
-	font-family:'VAG Rounded W02 Bold', arial, sans-serif;
+	font-family:'VAG Rounded W02 Thin', arial, sans-serif;
 
 	
+}
+#nav, #subnav, #user_links .button {
+	font-family:'VAG Rounded W02 Light', arial, sans-serif;
 }
 
 /* =============================  general styles ============================= */
@@ -56,14 +59,14 @@ ul.sitemap li {
   margin-bottom: 10px;
 }
 body {
-
 	margin:0;
-	float:left;
-	width:100%;
+	background: #f5f5f5 url(/images/picnic_shield.png) no-repeat 200px center;
+	
+
 
 }
 body, textarea, input {
-    font-family:'VAG Rounded W02 Light', arial, sans-serif;
+    
 	/*-webkit-font-smoothing: antialiased;*/
 	
 }
@@ -92,7 +95,30 @@ a:hover {
 }
 
 #header_right {
+	margin-top: 15px;
 	
+}
+#header_right a.button {
+		display: block;
+
+	background:#000;
+
+	float: right;
+	font-size: 12px;
+	padding: 3px 9px;
+	margin: 0px 0 0 10px;
+
+
+	color: #fff;
+	
+	border-radius:3px;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+}
+
+#header_right a.button:hover {
+	background: #000;
+	text-decoration: none;
 }
 table {}
 td, th {
@@ -112,8 +138,9 @@ td, th {
 
   margin-top:20px;
   padding-top:10px;
+  padding-bottom: 10px;
 
-  background: #fff;
+  background: none;
 }
 .options_panel * {
 	float: left;
@@ -990,7 +1017,7 @@ div#top {
 	width:100%;
 }
 #header .row {
-	min-height:140px;
+	min-height:90px;
 
 }
 #header_inside {
@@ -1016,7 +1043,8 @@ div#top {
 #login_slide_bar_inside {
 }
 #page_title {
-	
+	font-size: 40px;
+	margin
 }
 h1#site_logo {
   margin: 0px 0 0;
@@ -1028,14 +1056,14 @@ h1#site_logo a {
 	width: 160px;*/
 	
 	display: block;
-	background: url(/images/sprite_picnic.png) no-repeat -13px -15px;
+	background: url(/images/sprite_picnic.png) no-repeat -9px -11px;
 	width: 205px;
-	height: 60px;
+	height: 30px;
 	text-indent:-9000em;
 	font-size: 45px;
 	color: black;
 	text-decoration: none;
-	margin: 40px 0 0 0px;
+	margin:15px 0 0 0px;
 	display: block;
 }
 
@@ -1084,30 +1112,13 @@ h1#site_logo a:active {
 #user_links p {
 	margin:0;
 }
-#user_links .button {
-	display: block;
-	padding: 10px;
-	background: #e8e8e8;
-	float: right;
-	margin: 20px 0 0 10px;
-	height: 40px;
-	line-height: 40px;
-	color: black;
-	width: 150px;
-	text-align: center;
-	font-weight: bold;
-	font-size: 20px;
-	
-	border-radius:3px;
-	-webkit-border-radius:3px;
-	-moz-border-radius:3px;
-}
+
 #user_links .panel {
   float: right;
   font-weight: bold;
   padding: 0px;
 
-  margin: 30px 0 0;
+  margin: 10px 0 0;
   width: 100%;
 }
 #user_links .panel a {
@@ -1119,19 +1130,20 @@ h1#site_logo a:active {
 }
 div.logged_in_panel {
 	float: right;
-	background: #e8e8e8;
-	padding: 10px;
 	
 	border-radius:3px;
 	-webkit-border-radius:3px;
 	-moz-border-radius:3px;
+}
+.logged_in_panel a {
+	margin-left: 15px ;
 }
 
 .logged_in_as {
   float: right;
   font-weight: bold;
   margin: 0px;
-  padding: 10px 10px 0;
+
 }
 
 #member_login_bttn {
@@ -1160,32 +1172,39 @@ fb.fb_login_not_logged_in.FB_login_button {
 	float: right;	
 }
 #search_box {
-	height:26px;
-	margin:0;
-	width:245px;
-	float: right;
-	background: #fff;
+	margin-top: 8px;
 	padding: 0;
 	color: #666;
-	border: 1px solid #ccc;
+	border: none;
+	font-size: 12px;
+
+
+
+
+}
+#search_box:hover {
+	opacity: 1;
 }
 input#search_field {
-	background:none repeat scroll 0 0 #FFFFFF;
+	background:none;
 	border:medium none;
-	float:left;
+	float:right;
+	font-size: 14px;
 
-	height:15px;
-	margin:0 10px 0 0;
-	padding:5px 10px;
-	width:189px;
-	color: #999;
+	margin:3px 10px 0 0;
+	padding:0px;
+	width:190px;
+	color: #959595;
+	text-align: right;
+	
+	
 	
 }
 input#search_icon {
 	background:url("/images/sprite.png") no-repeat scroll 0 -1px transparent;
 	border:medium none;
 	display:block;
-	float:left;
+	float:right;
 	height:21px;
 	margin:3px 0 0 0px;
 	width:23px;
@@ -1208,7 +1227,8 @@ input#search_icon {
 }
 
 #nav_line {
-	border-bottom: 3px solid #f5f5f5;
+	border-bottom: 1px solid #e8e8e8;
+	border-bottom: 1px solid rgba(0,0,0,0.3);
 	
 }
 
@@ -1216,11 +1236,9 @@ input#search_icon {
   clear: both;
   float: left;
   margin: 0px 0 0px;
-  padding: 10px 0 10px;
+  padding: 6px 0 6px;
   width: 100%;
-
-  
-  border-bottom: 1px solid #f5f5f5;
+ 
 }
 #nav ul, #subnav ul {
 	display:block;
@@ -1240,22 +1258,20 @@ input#search_icon {
 }
 #nav ul li {
 
-	-webkit-font-smoothing: antialiased;
+
 
 	float: left;
 }
 #nav ul li a {
 	display:block;
-	font-size: 26px;
+	font-size: 22px;
+	line-height: 100%;
 	color: #000;
-	
-	border-radius:5px;
-	-webkit-border-radius:5px;
-	-moz-border-radius:5px;
+
 
 	float:left;
 	margin:0px 0px 0 0;
-	padding:13px 40px 13px 0;
+	padding:4px 30px 10px 0;
 
 }
 #nav ul li a:hover {
@@ -1267,12 +1283,15 @@ input#search_icon {
      transition: .3s ease-in;
 
 }
-#nav ul li.active a, #subnav ul li.active a, #page_subnav ul li.active a {
+#nav ul li.active a, #subnav ul li.active a  {
   text-decoration:none;
 
 	font-family:'VAG Rounded W02 Bold', arial, sans-serif;
 
 	
+}
+#page_subnav ul li.active a {
+	font-weight: bold;
 }
 #subnav ul li a {
   display:block;
@@ -1281,13 +1300,14 @@ input#search_icon {
 	margin:0px 10px 0 0;
 	padding:0px 14px 0 0;
  	font-weight: bold;
- 	font-size: 16px;
+ 	font-size: 14px;
  	color: #000;
 
 }
 
 #main_container {
 	margin-top: 30px;
+
 	
 }
 
@@ -2160,17 +2180,18 @@ ul.action_links li {
 	clear:both;
 
 	position:relative;
+	background: #ccc;
 }
 
 #footer_copyright {
-	border-top: 3px solid #f5f5f5;
+	border-top: 3px solid #ccc;
 	margin-top: 10px;
 	margin-bottom: 20px;
 	padding-top: 10px;
 
 }
 #footer_sitemap {
-	border-top: 3px solid #f5f5f5;
+	border-top: 3px solid #ccc;
 	margin-top: 10px;
 	margin-bottom: 0px;
 	padding-top: 10px;
@@ -2486,7 +2507,9 @@ a.item_img img {
 /* ====================  Section- Latest News view   ===================== */
 .newsbox {
 	margin-bottom: 30px;
+	background: #fff;
 }
+
 h2.newsbox_title {
 	font-family:'VAG Rounded W02 Light';
 }
@@ -2518,7 +2541,7 @@ a.newsbox_arrow {
 	display: block;
 	width: 22px;
 	height: 28px;
-	margin: 0 6px 0px 0;
+	margin: 0 0px 0px 0;
 	background: url(/images/sprite.png) 0 -1640px;
 	text-indent: -9000em;
 }
@@ -3185,6 +3208,9 @@ a.backto {
 
 
 }
+#page_content {
+	background: #fff;
+}
 #page_left_col img {
 	float:left;
 	margin:0 0 20px;
@@ -3242,7 +3268,7 @@ a.backto {
 	width:590px;
 }
 #page_right_col {	
-
+	background: #fff;
 
 }
 #article_image {
@@ -4515,7 +4541,7 @@ ul.member_lst a.member_name {
 	float: left;
 	width: 100%;
 
-
+}
 
 /* ============================= */
 /* ! Layout for mobile version   */
