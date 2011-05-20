@@ -1,0 +1,5 @@
+=render_like_link_for(shout, :ajax_loader => "ajax_loader_arrows.gif", :polarized => true)
+%span.likings_count{:id => "likings_count_#{unique_rating_string(shout)}", :class => "#{shout.been_liked? ? '' : 'no_ratings'}"}
+  =shout.likings_count_string
+%span.dislikings_count{:id => "dislikings_count_#{unique_rating_string(shout)}", :class => "#{shout.been_disliked? ? '' : 'no_ratings'}"}
+  =shout.dislikings_count_string
