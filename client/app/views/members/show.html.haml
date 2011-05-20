@@ -71,7 +71,32 @@
             locMap.panTo(mapCenter);
           });
         }
-      }
+      };
+      
+      var MemberShouts = {
+
+        getShouts: function(filter) {
+          $.ajax({
+            url: '#{member_path(@member)}',
+            success: function(html) {
+              $('#shouts_container').html(html);
+            }
+          })
+        },
+      
+        latest: function() {
+          $('#latest_shouts').addClass('active');
+          $('#popular_shouts').removeClass('active');
+          this.getShouts('latest');
+        }, 
+      
+        popular: function() {
+          $('#popular_shouts').addClass('active');
+          $('#latest_shouts').removeClass('active');
+          this.getShouts('popular');
+        }        
+      
+      };
 
 -no_content_row
 -title @member.full_name, :hidden => true
@@ -180,12 +205,13 @@
       .stories_filter
         Showing:
         %ul
-          =li_with_active true, link_to('Latest', '#')
-          =li_with_active false, link_to('Popular', '#')
+          =li_with_active true, link_to_function('Latest', 'MemberShouts.latest()'), :id => 'latest_shouts'
+          =li_with_active false, link_to_function('Popular', 'MemberShouts.popular()'), :id => 'popular_shouts'
       -if @member.profile_shouts.empty?
-        %p.no_posts="#{forename_or_you(@member, "hasn't")} got any posts yet."
+        %p.no_posts="#{forename_or_you_capitalized(@member, "hasn't")} got any posts yet."
       -else
-        =render_shouts(@member, :show_member => true)
+        #shouts_container
+          =render_shouts(@member, :show_member => true)
   .twocol.last
 .row
   -options_panel do
