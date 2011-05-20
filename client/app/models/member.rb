@@ -2,8 +2,6 @@ Member::WHAT_I_BRING_MAX_LENGTH = 100
 Member::NEWS_FEED_FIELD_BLACKLIST = %w{bio}
 Member.class_eval do
 
-  has_permalink
-
   add_to_news_feed :on_update => true
 
   def skip_news_feed_with_field_blacklist
