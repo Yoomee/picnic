@@ -4153,6 +4153,11 @@ span.shout_type_label {
   text-indent: -9000em;
   width: 18px;
 }
+.like_links {
+  float: left;
+  height: 46px;
+  width: 28px;
+}
 span.like_link {
   background: url(/images/thumbs_up_active.png);
 }
@@ -4170,7 +4175,8 @@ span.dislike_link {
 .shout_ratings .like_loader {
   clear: left;
   float: left;
-  margin-top: 15px;
+  height: 46px;
+  line-height: 55px;
 }
 .shout_ratings {
   clear: left;
