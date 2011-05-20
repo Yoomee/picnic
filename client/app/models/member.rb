@@ -1,7 +1,13 @@
 Member::WHAT_I_BRING_MAX_LENGTH = 100
-
+Member::NEWS_FEED_FIELD_BLACKLIST = %w{bio}
 Member.class_eval do
 
+  add_to_news_feed :on_update => true
+
+  def skip_news_feed_with_field_blacklist
+    skip_news_feed_without_field_blacklist || changed.all? {|attr| attr.in?(Member::NEWS_FEED_FIELD_BLACKLIST)}
+  end
+  alias_method_chain :skip_news_feed, :field_blacklist
 
   attr_boolean_accessor :skip_what_i_bring_validation
   

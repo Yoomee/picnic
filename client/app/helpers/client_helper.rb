@@ -36,7 +36,8 @@ module ClientHelper
   end
   
   def shout_title(shout)
-    out = shout.pretty_date
+    #out = shout.pretty_date
+    out = "#{time_ago_in_words(shout.created_at)} ago"
     shout.title.blank? ? out : "#{out}: #{shout.title}"
   end
   
@@ -56,27 +57,35 @@ module ClientHelper
   end
 
   def themes_facelist_javascript(options = {})
-    javascript_tag do
-      "$(document).ready(function() {
-        $('#themes_text').faceList('#{url_for(:controller => 'tags', :action => 'autocomplete')}', {
-          returnID: 'themes',
-          minChars: 2,
-          intro_text: '#{options[:intro_text]}',
-          no_result: '',
-          formatList: function(data, formatted) {return formatted.html(data['name']);},
-          queryParam: 'term',
-          selectedItem: 'value',
-          neverSubmit: true,
-          start_value: #{options[:tag_list].collect {|t| {:value => t}}.to_json},
-          resultClick: function(data) {$.fancybox.resize();$('#as-input-themes').focus();},
-          resultsComplete: function(elem) {
-            var height = $('.facelist-result-item').size() * $('.facelist-result-item').outerHeight();
-            $('#fancybox-inner').height($('#fancybox-inner').height() + height);
-            $('#as-input-themes').focus();
-          }
-        });
-      });"
+    if !request.xhr? && !options[:in_head]
+      content_for(:head) {themes_facelist_javascript(options.merge(:in_head => true))}
+    else
+      javascript_tag do
+        "$(document).ready(function() {
+          $('##{options[:prefix] ? options[:prefix] + '_' : ''}themes_text').faceList('#{url_for(:controller => 'tags', :action => 'autocomplete')}', {
+            returnID: '#{options[:prefix] ? options[:prefix] + '_' : ''}themes',
+            minChars: 2,
+            intro_text: '#{options[:intro_text]}',
+            no_result: '',
+            formatList: function(data, formatted) {return formatted.html(data['name']);},
+            queryParam: 'term',
+            selectedItem: 'value',
+            neverSubmit: true,
+            start_value: #{options[:tag_list].collect {|t| {:value => t}}.to_json},
+            resultClick: function(data) {$.fancybox.resize();$('#as-input-themes').focus();},
+            resultsComplete: function(elem) {
+              var height = $('.facelist-result-item').size() * $('.facelist-result-item').outerHeight();
+              $('#fancybox-inner').height($('#fancybox-inner').height() + height);
+              $('#as-input-themes').focus();
+            }
+          });
+        });"
+      end
     end
+  end
+  
+  def location_marker_image(location)
+    "/client/images/marker_heart.png"
   end
   
 end

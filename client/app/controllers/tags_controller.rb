@@ -26,6 +26,8 @@ class TagsController < ApplicationController
     end
     render :json => tags_list
   end
+
+
   def create
     @tag = Tag.new(params[:tag])
     if @tag.save
@@ -50,7 +52,7 @@ class TagsController < ApplicationController
   end
   
   def index
-    @tags = Tag.all
+    @tags = Tag.top_tags_since(1.month.ago).all
   end
   
   def new

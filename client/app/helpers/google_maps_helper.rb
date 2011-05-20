@@ -1,15 +1,18 @@
 GoogleMapsHelper.module_eval do
   
   def google_map(objects, options ={})
+    @map_index  = (@map_index || -1) + 1
     objects = [*objects]
     options.reverse_merge!(
-      :canvas_id => "map_canvas",
+      :canvas_id => "map_canvas#{map_index}",
       :width => 300,
       :height => 300,
       :map_type => "roadmap",
-      :zoom => 6,
+      :zoom => 4,
       :interactive => true
     )
+    options[:canvas_id] = "map_canvas#{map_index}" #force it for now
+    
     
     if !options[:centre]
       if objects.size == 1 && objects.first.has_lat_lng?
@@ -20,13 +23,14 @@ GoogleMapsHelper.module_eval do
     end
     
     map_js = <<-JAVASCRIPT
-      var map = new google.maps.Map(document.getElementById('#{options[:canvas_id]}'),{
+      map#{map_index} = new google.maps.Map(document.getElementById('#{options[:canvas_id]}'),{
         zoom: #{options[:zoom]},
         center: new google.maps.LatLng(#{options[:centre].join(',')}),
         mapTypeId: google.maps.MapTypeId.#{options[:map_type].upcase},
+        minZoom:2,
         scrollwheel:false,
         disableDefaultUI:true
-        #{',draggable:false,' if !options[:interactive]}
+        #{',draggable:false,scrollwheel:false,disableDoubleClickZoom:true,keyboardShortcuts:false' if !options[:interactive]}
         #{',' + options[:map_options] unless options[:map_options].blank?}
       });
       
@@ -48,10 +52,11 @@ GoogleMapsHelper.module_eval do
         map_js << infobox("marker#{index}", object) if options[:infoboxes]
         map_js << "bounds.extend(markerLatLng);" if options[:auto_bounds]
       end
-      map_js << "map.fitBounds(bounds);" if options[:auto_bounds]
+      map_js << "map#{map_index}.fitBounds(bounds);" if options[:auto_bounds]
     end
     map_js_tag = javascript_tag do 
       <<-JAVASCRIPT
+      var map#{map_index};
       $(document).ready(function() {
         #{map_js}
         #{options[:other]}
@@ -110,8 +115,8 @@ GoogleMapsHelper.module_eval do
         var grayMapType = new google.maps.StyledMapType(
         grayStyles, styledMapOptions);
 
-        map.mapTypes.set('gray', grayMapType);
-        map.setMapTypeId('gray');
+        map#{map_index}.mapTypes.set('gray', grayMapType);
+        map#{map_index}.setMapTypeId('gray');
       });
       JAVASCRIPT
     end
@@ -119,7 +124,9 @@ GoogleMapsHelper.module_eval do
       @included_google_maps_js ? map_js_tag : "#{header_tag}#{map_js_tag}"
     end
     @included_google_maps_js = true
-    content_tag(:div, "",:id => options[:canvas_id], :style => "width:#{options[:width]}px;height:#{options[:height]}px", :class => options[:class])
+    options[:width] = "#{options[:width]}px" if options[:width].is_a?(Integer)
+    options[:height] = "#{options[:height]}px" if options[:height].is_a?(Integer)
+    content_tag(:div, "",:id => options[:canvas_id], :style => "width:#{options[:width]};height:#{options[:height]}#{options[:style].blank? ? '' : ";#{options[:style]}"}", :class => "map_canvas #{options[:class]}")
   end
   
 end

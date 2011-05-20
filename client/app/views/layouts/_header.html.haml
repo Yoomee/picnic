@@ -15,6 +15,8 @@
           =link_to('Logout', session_path, :method => :delete)
         .logged_in_as
           =link_to_self(logged_in_member)
+          =link_to "Notifications#{current_page?(notifications_path) || @logged_in_member.notifications.unread.empty? ? "" : " <span>#{@logged_in_member.notifications.unread.count}</span>"}", notifications_path, :class => "notifications", :title => "#{pluralize(@logged_in_member.notifications.unread.count, 'new notification')}"
+          =link_to "Inbox#{current_page?(messages_path) || !@logged_in_member.has_unread_messages? ? "" : " <span>#{@logged_in_member.unread_message_count}</span>"}", messages_path, :class => "messages", :title => "#{pluralize(@logged_in_member.unread_message_count, 'new messages')}"          
     -else
       =link_to('Login', new_session_path, :class => 'button')
-      =link_to("Signup", new_member_path, :class => 'button')        
+      =link_to("Signup", new_member_path, :class => 'button')

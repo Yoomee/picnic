@@ -1,3 +1,7 @@
+$(document).ready(function() {
+  $('.wall_post_text_input').autoGrow();
+});
+
 // Shout form javascript
 var ShoutForm = {
   blank: function(shout_id){

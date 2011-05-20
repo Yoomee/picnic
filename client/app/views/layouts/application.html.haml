@@ -15,7 +15,7 @@
     %link{ :href => "/images/favicon.ico", :rel => "shortcut icon" }
     %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
     = google_javascripts :jquery, :jqueryui
-    = javascript_include_tag 'jrails', 'jquery.cycle', 'tramlines', 'client/tramlines', 'jquery.labelify', 'jquery.fancy_box/jquery.fancybox-1.3.1.pack', 'jquery.fancy_box/jquery.mousewheel-3.0.2.pack.js', 'client/load_fancybox',"client/jquery.facelist_2-0", :cache => true
+    = javascript_include_tag 'jrails', 'jquery.cycle', 'tramlines', 'client/tramlines', 'jquery.labelify', 'jquery.fancy_box/jquery.fancybox-1.3.1.pack', 'jquery.fancy_box/jquery.mousewheel-3.0.2.pack.js', 'client/load_fancybox',"client/jquery.facelist_2-0", "jquery.autogrowtextarea.js", "client/like_form", :cache => true
     =javascript_include_tag 'jquery.fancy_box/jquery.easing-1.3.pack.js'
     = javascript_include_tag "http://connect.facebook.net/en_US/all.js"
     = stylesheet_link_tag 'http://fast.fonts.com/cssapi/f1269106-f262-440b-b3ce-93423b2eaf06.css'
@@ -40,10 +40,12 @@
         #nav_line.row
           .eightcol
             =render("layouts/nav")
+<<<<<<< HEAD
           #search_box.fourcol.last
-            %form{ :action => "/search/results", :method => "post" }
-              %input#search_icon{ :name => "commit", :title => "search", :value => "search" }
-              %input#search_field{ :name => "term", :type => "text", :value => "Search", :onfocus => "var element = document.getElementById('search_field');element.value='';" }
+            -unless controller_name == 'search'
+              -form_for Search.new do |form|
+                =form.text_field :term, :title => "Search..."      , :class => "labelify", :id => "search_field"
+                =form.submit "Search", :id => "search_icon"  
         =render("layouts/subnav")
       #main.content
         #main_container.container 

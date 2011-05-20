@@ -24,3 +24,4 @@ config.ru
 /vendor/plugins/acts_as_network
 /vendor/plugins/tramlines_picnic_auth.git
 /vendor/plugins/tramlines_picnic_auth
+/vendor/plugins/tramlines_messages
