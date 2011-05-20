@@ -2043,6 +2043,35 @@ h3.profile_title {
   margin-top:0;
   display:none;
 }
+
+#member_location .formtastic ol li {
+  float:left;
+  clear:none;
+  width:150px;
+  margin-bottom:0px;
+  margin-right:10px;
+}
+#member_location .formtastic ol li input{
+  width:138px;
+  margin:0;
+}
+#member_location .formtastic fieldset{
+  margin-bottom:5px;
+  float:left;
+}
+#member_location p.help {
+  float:right;
+  font-size: 18px;
+  line-height: 33px;
+  white-space: nowrap;
+  overflow:hidden;
+}
+#member_location.editing #member_address, #member_location #member_address_inputs {
+  display:none;
+}
+#member_location.editing #member_address_inputs, #member_location #member_address {
+  display:block;
+}
 #member_badges {
   float: left;
   width: 50%;

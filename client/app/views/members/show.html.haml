@@ -22,7 +22,7 @@
           if (map_index == 0){map_index = '';}
           locMap = eval('map'+map_index);
           var mapCenter = locMap.getCenter();
-          LocationMap.originalCenter = mapCenter;
+          LocationMap.center = mapCenter;
           $('#member_location').animate({width:'100%'},500);
           $('#member_location').addClass('editing');
           $('#map_canvas'+map_index).animate({
@@ -32,6 +32,7 @@
             google.maps.event.trigger(locMap, 'resize');
             locMap.panTo(mapCenter);
             $('#save_map_link').fadeIn();
+            $('#member_location p.help').blindRight();
             locMap.setOptions({
               zoomControl: true,
               zoomControlOptions: {style:'LARGE'},
@@ -43,7 +44,10 @@
         },
         updateAddress: function(){
           var url = '#{geocode_path}?lat_lng=' + LocationMap.center.lat() + ',' + LocationMap.center.lng();
-          $.get(url, function(data){alert(data);});
+          $.get(url, function(data){
+            $('#member_city').val(data.city);
+            $('#member_country').val(data.country);
+          });
         },
         updateLatLng: function(latLng) {
           LocationMap.center = latLng;
@@ -51,11 +55,13 @@
           $('#member_lng').val(latLng.lng());
         },
         cancelEdit: function(map_index){
-          locMap.panTo(LocationMap.originalCenter);
+          if(LocationMap.savedCenter != null){locMap.panTo(LocationMap.savedCenter);}
           LocationMap.stopEdit(map_index);
         },
         save: function(map_index) {
           $('#member_location form#edit_member_#{@member.id}').trigger('onsubmit');
+          $('#member_address').html(''+$('#member_city').val()+', '+$('#member_country').val());
+          LocationMap.savedCenter = locMap.getCenter();
           LocationMap.stopEdit(map_index);
         },
         stopEdit: function(map_index) {
@@ -69,6 +75,7 @@
             disableDoubleClickZoom: true
           });
           var mapCenter = locMap.getCenter();
+          $('#member_location p.help').hide();
           $('#member_location').animate({width:'50%'},500);
           $('#member_location').removeClass('editing');
           $('#save_map_link').fadeOut();
@@ -78,6 +85,7 @@
           },750, function(){
             google.maps.event.trigger(locMap, 'resize');
             locMap.panTo(mapCenter);
+            if(LocationMap.savedCenter == null){$('#map_canvas'+map_index).hide();}
           });
         }
       };
@@ -173,18 +181,24 @@
       #member_location
         %h3.profile_title Location:
         -if allowed_to?(edit_member_proc(@member))
-          =render_address(@member.location, :html => true) unless @member.location.blank?
-          -location = @member.location.try(:unknown?) ? Location.new(:lat => 52.374551, :lng =>4.898529) : @member.location
-          =google_map(location, :width => 300, :height => 200, :other => "google.maps.event.addListener(map#{@map_index}, 'drag', function(){mapCenter=map#{@map_index}.getCenter();marker0.setPosition(mapCenter);LocationMap.updateLatLng(mapCenter);})", :interactive => false, :style => "display:#{@member.has_lat_lng? ? 'block' : 'none'}")
-          =link_to_function("#{@member.location.unknown? ? 'Add your location' : 'Edit'}", "LocationMap.toggleEdit(#{@map_index})", :id => "edit_map#{@map_index}_link")
-          =link_to_function("Update location", "LocationMap.save(#{@map_index})", :id => "save_map_link", :class => "bttn_l")
-          -semantic_remote_form_for @member, :html => {:style => "display:none"} do |form|
-            =form.input :lat, :as => :hidden
-            =form.input :lng, :as => :hidden
-            =form.commit_button "Save"
+          -semantic_remote_form_for @member do |form|        
+            %p#member_address=render_address(@member.location) unless @member.location.unknown?
+            -form.inputs :id => "member_address_inputs" do
+              =form.input :city, :label => false, :input_html => {:value => @member.location.unknown? ? 'Amsterdam' : nil}
+              =form.input :country, :label => false, :input_html => {:value => @member.location.unknown? ? 'Netherlands' : nil}
+            -location = @member.location.try(:unknown?) ? Location.new(:lat => 52.374551, :lng =>4.898529) : @member.location
+            %p.help{:style=>"display:none"}
+              Drag the map to set your location
+            =google_map(location, :width => 300, :height => 200, :other => "google.maps.event.addListener(map#{@map_index}, 'center_changed', function(){mapCenter=map#{@map_index}.getCenter();marker0.setPosition(mapCenter);LocationMap.updateLatLng(mapCenter);});google.maps.event.addListener(map#{@map_index}, 'dragend', function(){LocationMap.updateAddress();});google.maps.event.addListener(map#{@map_index}, 'zoom_changed', function(){LocationMap.updateAddress();});", :interactive => false, :style => "display:#{@member.has_lat_lng? ? 'block' : 'none'}")
+            =link_to_function("#{@member.location.unknown? ? 'Add your location' : 'Edit'}", "LocationMap.toggleEdit(#{@map_index})", :id => "edit_map#{@map_index}_link")
+            =link_to_function("Update location", "LocationMap.save(#{@map_index})", :id => "save_map_link", :class => "bttn_l")
+            %div{:style => "display:none"}
+              =form.input :lat, :as => :hidden
+              =form.input :lng, :as => :hidden
+              =form.commit_button "Save"
         -else
           %p=@member.location.try(:unknown?) ? 'Unknown' : render_address(@member.location)
-          =google_map(@member.location, :width => 300, :height => 200)
+          =google_map(@member.location, :width => 300, :height => 200) unless @member.location.try(:unknown?)
       #member_badges
         %h3.profile_title="#{pluralize(@member.points, 'club point')}"
         %ul.lst
