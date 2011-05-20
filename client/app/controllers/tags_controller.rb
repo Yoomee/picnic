@@ -26,6 +26,8 @@ class TagsController < ApplicationController
     end
     render :json => tags_list
   end
+
+
   def create
     @tag = Tag.new(params[:tag])
     if @tag.save
