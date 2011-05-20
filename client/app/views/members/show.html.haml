@@ -78,6 +78,10 @@
         getShouts: function(filter) {
           $.ajax({
             url: '#{member_path(@member)}',
+            data: {
+              filter: filter,
+              wants: 'shouts'
+            },
             success: function(html) {
               $('#shouts_container').html(html);
             }
