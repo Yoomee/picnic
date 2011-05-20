@@ -41,6 +41,10 @@
             });
           });
         },
+        updateAddress: function(){
+          var url = '#{geocode_path}?lat_lng=' + LocationMap.center.lat() + ',' + LocationMap.center.lng();
+          $.get(url, function(data){alert(data);});
+        },
         updateLatLng: function(latLng) {
           LocationMap.center = latLng;
           $('#member_lat').val(latLng.lat());
