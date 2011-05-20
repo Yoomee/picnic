@@ -60,7 +60,7 @@ ul.sitemap li {
 }
 body {
 	margin:0;
-	background: #f5f5f5 url(/images/picnic_shield.png) no-repeat 200px center;
+	background: #f5f5f5;
 	
 
 
@@ -95,18 +95,19 @@ a:hover {
 }
 
 #header_right {
-	margin-top: 15px;
+	margin-top: 35px;
 	
 }
 #header_right a.button {
 		display: block;
 
-	background:#000;
+	background:#777777;
 
 	float: right;
 	font-size: 12px;
 	padding: 3px 9px;
 	margin: 0px 0 0 10px;
+	font-weight: bold;
 
 
 	color: #fff;
@@ -1043,7 +1044,8 @@ div#top {
 #login_slide_bar_inside {
 }
 #page_title {
-	font-size: 40px;
+	font-size: 36px;
+	line-height: 120%;
 	margin
 }
 h1#site_logo {
@@ -1063,7 +1065,7 @@ h1#site_logo a {
 	font-size: 45px;
 	color: black;
 	text-decoration: none;
-	margin:15px 0 0 0px;
+	margin:35px 0 0 0px;
 	display: block;
 }
 
@@ -1144,8 +1146,26 @@ div.logged_in_panel {
   font-weight: bold;
   margin: 0px;
 
-}
 
+}
+.logged_in_as a {
+	margin: 0 0 0 10px;
+			display: block;
+
+	background:#777777;
+	background:rgba(0,0,0,0.3);
+
+	float: left;
+	font-size: 12px;
+	padding: 3px 9px;
+	font-weight: bold;
+
+	color: #fff;
+	
+	border-radius:3px;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+}
 #member_login_bttn {
 	float: right;
 	display: block;
@@ -1193,6 +1213,7 @@ fb.fb_login_not_logged_in.FB_login_button {
 	color: #666;
 	border: none;
 	font-size: 12px;
+	
 
 
 
@@ -1252,7 +1273,7 @@ input#search_icon {
   clear: both;
   float: left;
   margin: 0px 0 0px;
-  padding: 6px 0 6px;
+  padding: 10px 0 0px;
   width: 100%;
  
 }
@@ -1287,7 +1308,7 @@ input#search_icon {
 
 	float:left;
 	margin:0px 0px 0 0;
-	padding:4px 30px 10px 0;
+	padding:8px 30px 7px 0;
 
 }
 #nav ul li a:hover {
@@ -2230,7 +2251,7 @@ ul.action_links li {
 	clear:both;
 
 	position:relative;
-	background: #ccc;
+	background: #d5d5d5;
 }
 
 #footer_copyright {
@@ -2558,6 +2579,7 @@ a.item_img img {
 .newsbox {
 	margin-bottom: 30px;
 	background: #fff;
+
 }
 
 h2.newsbox_title {
@@ -3261,6 +3283,7 @@ a.backto {
 }
 #page_content {
 	background: #fff;
+	min-height: 600px;
 }
 #page_left_col img {
 	float:left;
@@ -4413,6 +4436,8 @@ ul.page_lst li.active a {
   position: relative;
 }
 .splash .advert {
+	background: #fff;
+
 
 }
 .splash_inner .heading {

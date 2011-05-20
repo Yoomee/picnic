@@ -40,12 +40,11 @@
         #nav_line.row
           .eightcol
             =render("layouts/nav")
-<<<<<<< HEAD
           #search_box.fourcol.last
             -unless controller_name == 'search'
               -form_for Search.new do |form|
-                =form.text_field :term, :title => "Search..."      , :class => "labelify", :id => "search_field"
                 =form.submit "Search", :id => "search_icon"  
+                =form.text_field :term, :title => "Search..."      , :class => "labelify", :id => "search_field"                
         =render("layouts/subnav")
       #main.content
         #main_container.container 

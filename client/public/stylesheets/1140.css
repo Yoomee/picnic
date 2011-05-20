@@ -26,7 +26,7 @@ overflow: hidden;
 margin-right: 3.8%;
 float: left;
 min-height: 1px;
-padding: 1%;
+padding: 5px 1%;
 
 -webkit-border-radius:3px;
 -o-border-radius:3px;
@@ -83,7 +83,7 @@ width: 89.35%;
 .row .twelvecol {
 width: 98%;
 float: left;
-padding: 1%;
+padding: 0 1%;
 }
 
 .last {
