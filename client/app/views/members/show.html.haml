@@ -1,10 +1,12 @@
 -if allowed_to?(edit_member_proc(@member))
   -content_for :head do
     :javascript
+      var response;
       var locMap;
       var LocationMap = {
         editing: 0,
-        originalCenter: null,
+        savedCenter:null,
+        center: null,
         toggleEdit: function(map_index) {
           if(LocationMap.editing){
             LocationMap.cancelEdit(map_index);
@@ -15,15 +17,10 @@
           }
         },
         startEdit: function(map_index) {
+          #{"if(LocationMap.savedCenter == null){LocationMap.savedCenter = new google.maps.LatLng(#{@member.lat},#{@member.lng});}" if @member.has_lat_lng?}
           $('#edit_map'+map_index+'_link').html('Cancel');
           if (map_index == 0){map_index = '';}
           locMap = eval('map'+map_index);
-          locMap.setOptions({
-            zoomControl: true,
-            scrollwheel: true,
-            draggable: true,
-            disableDoubleClickZoom: false
-          });
           var mapCenter = locMap.getCenter();
           LocationMap.originalCenter = mapCenter;
           $('#member_location').animate({width:'100%'},500);
@@ -35,9 +32,17 @@
             google.maps.event.trigger(locMap, 'resize');
             locMap.panTo(mapCenter);
             $('#save_map_link').fadeIn();
+            locMap.setOptions({
+              zoomControl: true,
+              zoomControlOptions: {style:'LARGE'},
+              scrollwheel: true,
+              draggable: true,
+              disableDoubleClickZoom: false
+            });
           });
         },
         updateLatLng: function(latLng) {
+          LocationMap.center = latLng;
           $('#member_lat').val(latLng.lat());
           $('#member_lng').val(latLng.lng());
         },
@@ -162,20 +167,20 @@
         
     .subrow
       #member_location
-        -# default to sheffield just for the moment
-        -location = @member.has_lat_lng? ? @member.location : Location.new(:lat => "53.3830548", :lng => "-1.4647953", :country => "UK", :city => "Sheffield")
         %h3.profile_title Location:
-        %p=render_address(location)
         -if allowed_to?(edit_member_proc(@member))
-          =google_map(location, :width => 300, :height => 200, :other => "google.maps.event.addListener(map#{@map_index}, 'bounds_changed', function(){mapCenter=map#{@map_index}.getCenter();marker0.setPosition(mapCenter);LocationMap.updateLatLng(mapCenter);})", :interactive => false)
-          =link_to_function("Edit", "LocationMap.toggleEdit(#{@map_index})", :id => "edit_map#{@map_index}_link")
+          =render_address(@member.location, :html => true) unless @member.location.blank?
+          -location = @member.location.try(:unknown?) ? Location.new(:lat => 52.374551, :lng =>4.898529) : @member.location
+          =google_map(location, :width => 300, :height => 200, :other => "google.maps.event.addListener(map#{@map_index}, 'drag', function(){mapCenter=map#{@map_index}.getCenter();marker0.setPosition(mapCenter);LocationMap.updateLatLng(mapCenter);})", :interactive => false, :style => "display:#{@member.has_lat_lng? ? 'block' : 'none'}")
+          =link_to_function("#{@member.location.unknown? ? 'Add your location' : 'Edit'}", "LocationMap.toggleEdit(#{@map_index})", :id => "edit_map#{@map_index}_link")
           =link_to_function("Update location", "LocationMap.save(#{@map_index})", :id => "save_map_link", :class => "bttn_l")
           -semantic_remote_form_for @member, :html => {:style => "display:none"} do |form|
             =form.input :lat, :as => :hidden
             =form.input :lng, :as => :hidden
             =form.commit_button "Save"
         -else
-          =google_map(location, :width => 300, :height => 200)
+          %p=@member.location.try(:unknown?) ? 'Unknown' : render_address(@member.location)
+          =google_map(@member.location, :width => 300, :height => 200)
       #member_badges
         %h3.profile_title="#{pluralize(@member.points, 'club point')}"
         %ul.lst
