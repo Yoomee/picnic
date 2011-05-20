@@ -131,10 +131,10 @@
       =fancybox_edit(@member, :image, :partial => "members/photo_form")
     .friends_list.subrow
       %h3.profile_title="#{forename_or_my(@member, :capitalize => true)} friends"
-      -if @member.friends.blank?
-        You don't have any friends yet.
+      -if @member.friends.empty?
+        ="Aww shame. #{forename_or_you(@member, "don't", :capitalize => true)} have any friends."
         %br
-        =link_to("Get connected!", "#")
+        =link_to("Get connected!", club_path)
       -else
         -@member.friends.each do |member|
           =link_to(image_for(member, '50x50#'), member)
