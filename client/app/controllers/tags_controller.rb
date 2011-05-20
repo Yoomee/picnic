@@ -52,7 +52,7 @@ class TagsController < ApplicationController
   end
   
   def index
-    @tags = Tag.all
+    @tags = Tag.top_tags_since(1.month.ago).all
   end
   
   def new
