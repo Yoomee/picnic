@@ -1,0 +1,11 @@
+-if search.term.blank?
+  -Member.with_what_i_bring.with_image.random.limit(4).each do |member|
+    =render "club/find_someone_result", :member => member
+-elsif search.results.empty?
+  %li.no_results
+    No members found matching
+    ="'#{search.term}'."
+    Try again above.
+-else
+  -search.results.each do |member|
+    =render "club/find_someone_result", :member => member

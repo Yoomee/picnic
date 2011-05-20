@@ -1,0 +1,8 @@
+%li.find_someone_result
+  -link_to member do
+    =image_for member, '70x'
+  .details
+    %h4=link_to_self member
+    %p
+      I bring
+      =member.what_i_bring
