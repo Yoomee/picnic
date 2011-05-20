@@ -224,7 +224,7 @@
         %p.no_posts="#{forename_or_you_capitalized(@member, "hasn't")} got any posts yet."
       -else
         #shouts_container
-          =render_shouts(@member, :show_member => true)
+          =render_shouts(@member.shouts, :show_member => true)
   .twocol.last
 .row
   -options_panel do

@@ -59,7 +59,7 @@ MembersController.class_eval do
 
   def show_with_shout_filtering
     if request.xhr? && params[:wants] == 'shouts'
-      shouts = params[:filter] == 'popular' ? @member.profile_shouts.top_rated : @member.profile_shouts
+      shouts = params[:filter] == 'popular' ? @member.shouts.top_rated : @member.shouts
       render :text => @template.render_shouts(shouts)
     else
       show_without_shout_filtering
