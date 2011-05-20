@@ -61,6 +61,7 @@ ShoutsController.class_eval do
         page[:new_shout_form].replace render("shouts/form", :shout => Shout.new(:recipient => @shout.recipient))
         page << "$.fancybox.close();"
         page << "$('.shout_form_submit_loader').hide();"
+        page << "$('#no_posts').hide()"
         page << "FancyboxLoader.loadAll();"
       else
         page[:new_shout_form].replace render("shouts/form", :shout => @shout)

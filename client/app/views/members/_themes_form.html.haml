@@ -1,4 +1,4 @@
-=themes_facelist_javascript(:tag_list => object.tag_list, :intro_text => "e.g. mobility")
+=themes_facelist_javascript(:tag_list => object.tag_list, :intro_text => "e.g. mobility", :prefix => 'member')
 #member_themes_form_wrapper
   %h2 About the real me
   %p
@@ -10,6 +10,6 @@
       -if false
         %li#member_themes_li=text_field_tag :tag_list, "", :onkeypress => "return event.keyCode!=13", :id => "member_themes_form"
       %li.text
-        =text_field_tag :themes_text, "", :onkeypress => "return event.keyCode!=13"
+        =text_field_tag :member_themes_text, "", :onkeypress => "return event.keyCode!=13"
     -form.buttons do
       =form.commit_button "Save"
