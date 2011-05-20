@@ -26,7 +26,10 @@
           =#link_to(pluralize(shout.comments.count, 'comment'), shout, :class => "shout_comments_link flcb")
       -else
         =link_to(pluralize(shout.comments.count, 'comment'), shout, :class => "shout_comments_link flcb")
+      .shout_ratings
+        =render("shouts/ratings", :shout => shout) if shout.is_rateable?
       .shout_themes.themes_list.flcb
         %ul.lst
           -shout.tags.each do |tag|
             =link_to_tag(tag)
+        
