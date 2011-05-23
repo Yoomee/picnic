@@ -3,6 +3,7 @@
     =fields.input :permalink_name, :help => "You can set a permalink (ie. a 'pretty' shortcut to the page)"
     =fields.input :small_name, :label => "Small name <span>(optional name to use in menus)</span>"
     =fields.input :slug_name if yoomee_staff_logged_in?
+    =fields.input :hidden, :as => :boolean, :label => "Hide in sitemap and navigation?"
     =fields.input :description, :as => :ck_text, :input_html => {:rows => 5}
     =fields.input :weight, :label => 'Order', :help => 'Set the order for the section (sections with higher order numbers will appear further down)', :input_html => {:size => 2}
     %br.clear
