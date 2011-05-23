@@ -17,6 +17,7 @@
       $('.auth_link#twitter').click(function(){
         $.oauthpopup({
           path: '/auth/twitter',
+          center: true,
           callback: function(){
             window.location = '/me';
           }
@@ -25,6 +26,7 @@
       $('.auth_link#linkedin').click(function(){
         $.oauthpopup({
           path: '/auth/linked_in',
+          center: true,
           callback: function(){
             window.location = '/me';
           }
