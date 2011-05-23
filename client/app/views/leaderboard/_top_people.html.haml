@@ -1,0 +1,17 @@
+-rank_offset = (params[:ranking_page].to_i <= 1 ? 0 : (params[:ranking_page].to_i-1)*LeaderboardController::RANKED_MEMBERS_PER_PAGE)
+%h2 Most points
+#top_people_inner
+  -if !members.length.zero?
+    -col_size = (members.length/2.0).ceil
+    -members.each_slice(col_size) do |slice|
+      -slice_num = slice.first==members.first ? 0 : 1
+      .person_col
+        -slice.each_with_index do |member, index|
+          .person
+            =link_to(image_for(member, "50x50#"), member, :class => "person_image")
+            .person_right
+              =link_to("#{index+(slice_num*col_size)+1+(rank_offset)}. #{member}", member, :class => "member_link")
+              .num_points
+                =pluralize(member.points, 'point')
+=will_paginate(members, :param_name => "ranking_page", :update => "top_people", :loading => "Leaderboard.loading('#top_people')", :complete => "Leaderboard.complete('#top_people')")
+=image_tag("ajax_loader_squares_gray.gif", :class => "leaderboard_loader", :style => "display:none")

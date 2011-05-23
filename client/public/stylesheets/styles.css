@@ -2014,6 +2014,7 @@ h1.profile_title {
 .services li img {
   float:left;
   margin:5px 5px 5px 0;
+  width: 16px;
 }
 
 .services li a {
@@ -3683,12 +3684,13 @@ div.page_share {
   float: left;
   width: 300px;
 }
+/*
 #connections_holding {
 	height: 600px;
 	
 }
 
-
+*/
 /*========== Register ==========*/
 
 .register_box {
@@ -3710,6 +3712,34 @@ div.page_share {
 .auth_links .auth_link {
   float: left;
   margin-right: 10px;
+}
+.auth_link#url {
+  margin-right:0;
+  padding-top:2px;
+}
+.auth_link#url a{
+  padding:3px 10px;
+  line-height: 16px;
+  color:black;
+  border:1px solid black;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+#url_form_wrapper fieldset{
+  float:left;
+  clear:none; 
+}
+#url_form_wrapper fieldset.buttons{
+  float:right;
+}
+#url_form_wrapper input{
+  width:240px;
+}
+
+#url_form_wrapper input[type="submit"]{
+  width:auto;
+  margin:2px 0 0;
 }
 .register_box p, .register_box_inner, .register_box h2 {
   float: left;
@@ -4812,7 +4842,6 @@ div.name_and_tag {
 	float: left;
 	width: 80%;
 	
-	
 }
 
 p.recent_description {
@@ -4823,13 +4852,25 @@ p.recent_description a {
 	text-decoration: underline;
 }
 
-
-
 ul.member_lst a.member_name {
 	width: 100%;
 	font-size: 16px;
 	color: #000;
 }
+ul.connection_tags li {
+  float: left;
+  clear: none;
+  margin-right: 10px;
+  margin-bottom: 0;
+  width: auto;
+}
+ul.connection_tags li a.tag {
+  margin-bottom: 0;
+}
+.connection_box a.fancybox_edit {
+  font-size:12px;
+}
+
 
 /* ========= Messages ========== */
 table.inbox {
@@ -5325,6 +5366,9 @@ ul.possible_search_models li {
 #hide_this, #show_this {
   font-size: 18px;
 }
+#hide_this div, #show_this div {
+  padding: 0 1%;
+}
 #hide_this {
   border-bottom: 4px solid #e2e2e2;
 }
@@ -5382,16 +5426,21 @@ ul.possible_search_models li {
   clear: left;
   list-style-type: none;
   margin-left: 0;
-  border-bottom: 2px solid #f5f5f5;
+  border-bottom: 2px solid #e2e2e2;
   margin-bottom: 20px;
+  width: 441px;
+}
+a.find_someone_photo {
+  float: left;
 }
 .find_someone_result img {
   float: left;
   margin-right: 20px;
+  margin-bottom: 20px;
 }
 .find_someone_result .details {
   float: left;
-  width: 350px;
+  width: 320px;
 }
 .find_someone_result .details h4 a {
   color: black;
@@ -5411,6 +5460,153 @@ ul.possible_search_models li {
 }
 
 
+/*========== Leaderboard ==========*/
+
+#leaderboard_header {
+  border-bottom: 3px solid #ccc;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+#leaderboard_header h1 {
+  float: left;
+  font-size: 30px;
+  margin: 0;
+}
+#leaderboard_filter {
+  float: right;
+}
+#leaderboard_filter a {
+  font-size: 21px;
+  color: #000;
+  font-weight: bold;
+  padding: 5px 10px;
+}
+#leaderboard_filter a.active {
+  background-color: #000;
+  color: #fff;
+}
+#leaderboard_left {
+  border-right: 4px solid #CCCCCC;
+  float: left;
+  padding-right: 0;
+}
+#top_people {
+  float: left;
+  clear: both;
+  width: 100%;
+  margin-bottom: 20px;
+}
+#top_people .person_col {
+  float: left;
+  margin-right: 15px;
+  width: 260px;
+}
+#top_people_inner {
+  float: left;
+  clear: both;
+  min-height: 352px;
+}
+#top_people .pagination, #top_people .leaderboard_loader {
+  float: right;
+  clear: both;
+  margin-right: 80px;
+}
+.person {
+  float: left;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+}
+.person .person_image {
+  float: left;
+  margin-right: 10px;
+}
+.person .person_right {
+  float: left;
+  width: 200px;
+}
+.person .person_right a {
+  font-weight: bold;
+  font-size: 15px;
+}
+.person .person_right .num_points {
+  color: gray;
+  font-size: 15px;
+}
+#top_posters {
+  float: left;
+  margin-right: 40px;
+}
+#top_posters_inner {
+  width: 260px;
+  float: left;
+  clear: both;
+}
+#top_posters .pagination, #top_posters .leaderboard_loader {
+  float: left;
+  clear: both;
+}
+#top_tags {
+  float: left;
+}
+
+#points_transfers li.points_transfer {
+  border-bottom: 1px solid #ccc;
+  padding: 5px 0;
+  margin-bottom: 5px;
+  width: 320px;
+}
+#points_transfers li a.points_transfer_link {
+  font-size: 16px;  
+  color: #393939;
+  float:left;
+}
+#points_transfers li a.points_transfer_link:hover {
+  text-decoration: none;
+  background:url(/images/dis_arrow.png) no-repeat top right;
+}
+.points_transfer .points {
+  background-color: #000;
+  font-weight: bold;  
+  color: white;
+  float: left;  
+  font-size: 15px;
+  padding: 0 6px;
+  text-align: center;
+  width: 25px;
+  line-height: 35px;  
+  margin-right: 10px;  
+  -moz-border-radius: 20px;  
+	-webkit-border-radius:20px;
+	border-radius:20px; 
+}
+#points_transfers ul .points_transfer_top {
+  float: left;
+  clear: both;
+  width: 100%;
+}
+#points_transfers ul .points_transfer_top span {
+  line-height: 18px;
+}
+#points_transfers .timestamp {
+  font-size: 12px;
+  color: gray;
+  float: left;
+  clear: both;
+  width: 100%;  
+}
+#points_transfers .points_transfer_right {
+  float: left;
+}
+#points_transfers .pagination {
+  float:left;
+  margin-top:5px;
+}
+#points_transfers .pagination a {
+  background-color: #542F4F;
+}
 
 /* ========================================== */
 /* ! Provide higher res assets for iPhone 4   */
