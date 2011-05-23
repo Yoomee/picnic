@@ -1,0 +1,48 @@
+-content_for(:head) do
+  =javascript_include_tag 'jquery.oauthpopup.js'
+  :javascript
+    var FBLogin = {
+      process: function() {
+        FB.getLoginStatus(function(response) {
+          if (response.session) {
+            #{redirect_to_fb_create}
+          } else {
+            #{show_denied_fb_perms_message}
+          }
+        });
+      }
+    };
+    
+    $(document).ready(function(){
+      $('.auth_link#twitter').click(function(){
+        $.oauthpopup({
+          path: '/auth/twitter',
+          callback: function(){
+            window.location = '/me';
+          }
+        });
+      });
+      $('.auth_link#linkedin').click(function(){
+        $.oauthpopup({
+          path: '/auth/linked_in',
+          callback: function(){
+            window.location = '/me';
+          }
+        });
+      });
+    });
+    
+%h5 Connect to one of these services or add a link
+
+.auth_links
+  .auth_link#facebook
+    -fb_login(:text => "Facebook", :perms => "email") do
+      FBLogin.process();
+  .auth_link#twitter
+    =link_to(image_tag("twitter_sign_in_short.png"), "#")
+  .auth_link#linkedin
+    =link_to(image_tag("linked_in_sign_in_short.png"), "#")
+  .auth_link#url
+    =link_to_function("Other url", "$('#url_form_wrapper').toggle('fast', function(){$.fancybox.resize();})")
+#url_form_wrapper{:style => "display:none"}
+  =render 'urls/form', :url_object => Url.new(:attachable => logged_in_member)

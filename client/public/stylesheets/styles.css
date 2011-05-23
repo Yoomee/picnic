@@ -3751,6 +3751,34 @@ body.controller_club.action_connections, body.controller_club.action_leaderboard
   float: left;
   margin-right: 10px;
 }
+.auth_link#url {
+  margin-right:0;
+  padding-top:2px;
+}
+.auth_link#url a{
+  padding:3px 10px;
+  line-height: 16px;
+  color:black;
+  border:1px solid black;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+#url_form_wrapper fieldset{
+  float:left;
+  clear:none; 
+}
+#url_form_wrapper fieldset.buttons{
+  float:right;
+}
+#url_form_wrapper input{
+  width:240px;
+}
+
+#url_form_wrapper input[type="submit"]{
+  width:auto;
+  margin:2px 0 0;
+}
 .register_box p, .register_box_inner, .register_box h2 {
   float: left;
   clear: both;
