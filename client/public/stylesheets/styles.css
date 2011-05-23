@@ -2051,6 +2051,7 @@ h1.profile_title {
 .services li img {
   float:left;
   margin:5px 5px 5px 0;
+  width: 16px;
 }
 
 .services li a {
