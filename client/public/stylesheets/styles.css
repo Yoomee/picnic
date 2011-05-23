@@ -5249,6 +5249,7 @@ ul.possible_search_models li {
   margin-left: 0;
   border-bottom: 2px solid #e2e2e2;
   margin-bottom: 20px;
+  width: 441px;
 }
 a.find_someone_photo {
   float: left;
@@ -5256,6 +5257,7 @@ a.find_someone_photo {
 .find_someone_result img {
   float: left;
   margin-right: 20px;
+  margin-bottom: 20px;
 }
 .find_someone_result .details {
   float: left;
