@@ -239,8 +239,8 @@
           =li_with_active false, link_to_function('Popular', 'MemberShouts.popular()'), :id => 'popular_shouts'
       -if @member.shouts.empty?
         %p#no_posts="#{forename_or_you(@member, "hasn't", :capitalize => true)} got any posts yet."
-        #shouts_container
-          =render_shouts(@member.shouts, :show_member => true)
+      #shouts_container
+        =render_shouts(@member.shouts, :show_member => true)
   .twocol.last
 .row
   -options_panel do

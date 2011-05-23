@@ -3,6 +3,7 @@
 	http://picnic.yoomee.com/stylesheets/client/styles.css?1304692474
 	http://picnic.yoomee.com/stylesheets/client/styles.css?1304694546
 	http://picnic.yoomee.com/stylesheets/client/styles.css?1305648268
+	http://picnic.yoomee.com/stylesheets/client/styles.css?1305906593
 */
 
 /* the tramlines vanilla stylesheet */
@@ -11,7 +12,7 @@
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outline:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 /* ===============================  text styles ================================ */
-body, textarea, input {font:12px/1.5 'Helvetica Neue', Arial,'Liberation Sans',FreeSans,sans-serif}a:focus{outline:1px dotted invert}hr{border:0 #ccc solid;border-top-width:1px;clear:both;height:0}h1{font-size:25px}h2{font-size:23px}h3{font-size:21px}h4{font-size:19px}h5{font-size:17px}h6{font-size:15px}ol{list-style:decimal}ul{list-style:disc}li{margin-left:30px}p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset{margin-bottom:10px}
+body, textarea, input {font:12px/1.5 'Helvetica Neue', Arial,'Liberation Sans',FreeSans,sans-serif}a:focus{outline:1px dotted invert}hr{border:0 #ccc solid;border-top-width:1px;clear:both;height:0}h1{font-size:25px}h2{font-size:23px}h3{font-size:21px}h4{font-size:19px}h5{font-size:17px}h6{font-size:15px}ol{list-style:decimal}ul{list-style:disc}li{margin-left:30px}p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset{margin-bottom:13px}
 
 /* ======================  CSS3 regularly used stuff ================== */
 
@@ -35,7 +36,11 @@ a.backto {
 
 
 a, p.inline-errors {
-	color:#777;
+	color:#999;
+	text-decoration: underline;
+}
+a:hover {
+	color: #000;
 }
 body span.cal_sheet span.month {
 	background:#87cd29;
@@ -43,7 +48,8 @@ body span.cal_sheet span.month {
 
 h1, h2, h3, h4, h5, h6 {
 	color:black;
-	font-family:'VAG Rounded W02 Thin', arial, sans-serif;
+	font-weight: normal;
+	font-family:'VAG Rounded W02 Light', arial, sans-serif;
 
 	
 }
@@ -61,7 +67,7 @@ ul.sitemap li {
 body {
 	margin:0;
 	background: #f5f5f5;
-	
+		
 
 
 }
@@ -71,7 +77,7 @@ body, textarea, input {
 	
 }
 strong {
-	font-family:'VAG Rounded W02 Bold', arial, sans-serif;
+
 }
 #main {
 	clear: both;
@@ -95,13 +101,14 @@ a:hover {
 }
 
 #header_right {
-	margin-top: 35px;
+	margin-top: 32px;
 	
 }
 #header_right a.button {
 		display: block;
 
 	background:#777777;
+	background:rgba(0,0,0,0.4);
 
 	float: right;
 	font-size: 12px;
@@ -117,10 +124,7 @@ a:hover {
 	-moz-border-radius:3px;
 }
 
-#header_right a.button:hover {
-	background: #000;
-	text-decoration: none;
-}
+
 table {}
 td, th {
 	border:1px solid #CCCCCC;
@@ -243,7 +247,7 @@ input[type="submit"], a.bttn_l, .formtastic input[type="submit"], .formtastic  a
 	font-family:helvetica, arial, sans-serif;
 	font-weight: bold;
 
-	font-size: 19px;
+	font-size: 14px;
 	
 	color:#fff;
 	margin:10px 0 4px 3px;
@@ -1044,7 +1048,7 @@ div#top {
 #login_slide_bar_inside {
 }
 #page_title {
-	font-size: 36px;
+	font-size: 34px;
 	line-height: 120%;
 	margin
 }
@@ -1065,7 +1069,7 @@ h1#site_logo a {
 	font-size: 45px;
 	color: black;
 	text-decoration: none;
-	margin:35px 0 0 0px;
+	margin:31px 0 0 0px;
 	display: block;
 }
 
@@ -1153,7 +1157,7 @@ div.logged_in_panel {
 			display: block;
 
 	background:#777777;
-	background:rgba(0,0,0,0.3);
+	background:rgba(0,0,0,0.8);
 
 	float: left;
 	font-size: 12px;
@@ -1165,6 +1169,14 @@ div.logged_in_panel {
 	border-radius:3px;
 	-webkit-border-radius:3px;
 	-moz-border-radius:3px;
+}
+.logged_in_as a:hover, #header_right a.button {
+	text-decoration: none;
+	background: #000;
+	
+	 -webkit-transition: .2s ease-in;
+     -moz-transition: .2s ease-in;
+     transition: .2s ease-in;
 }
 #member_login_bttn {
 	float: right;
@@ -1265,7 +1277,7 @@ input#search_icon {
 
 #nav_line {
 	border-bottom: 1px solid #e8e8e8;
-	border-bottom: 1px solid rgba(0,0,0,0.3);
+	border-bottom: 1px solid rgba(0,0,0,0.1);
 	
 }
 
@@ -1308,7 +1320,7 @@ input#search_icon {
 
 	float:left;
 	margin:0px 0px 0 0;
-	padding:8px 30px 7px 0;
+	padding:5px 30px 4px 0;
 
 }
 #nav ul li a:hover {
@@ -1344,8 +1356,6 @@ input#search_icon {
 
 #main_container {
 	margin-top: 30px;
-
-	
 }
 
 /* ====================  homepage  ===================== */
@@ -1601,7 +1611,7 @@ h1.page_title {
 
 h5.article_intro {
 	font-weight: normal;
-	font-size: 21px;
+
 	line-height: 140%;
 	font-family:'VAG Rounded W02 Thin', Arial, sans-serif;
 	
@@ -1995,43 +2005,52 @@ p.post_admin a {
 /* ========== profile styles =========== */
 #profile {}
 h1.profile_title {
-	font-size: 30px;
+	font-size: 36px;
+	line-height: 100%;
 	margin:0;
 }
 
 .profile_photo {
 	float:left;
-	width:140px;
 }
 
 .what_i_bring {
   font-size: 26px;
+  line-height: 130%;
   width: 100%;
-  border-bottom: 2px solid #CCC;
-  padding-bottom: 20px;
+ 	border-bottom: 2px solid #e8e8e8;
+	border-bottom: 2px solid rgba(0,0,0,0.1);
+  padding-bottom: 10px;
+  font-family:'VAG Rounded W02 Thin', arial, sans-serif;
+}
+
+.what_i_bring strong {
+	font-weight: normal;	
 }
 
 .bio {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .services ul{
-  border-top:1px solid #CCC;
+    	border-bottom: 1px solid #e8e8e8;
+	border-bottom: 1px solid rgba(0,0,0,0.1); 
   float:left;
   width:100%;
   margin-bottom:5px;
 }
 
 .services li {
-  border-bottom:1px solid #CCC;
-  width:100%;
+  	border-bottom: 1px solid #e8e8e8;
+	border-bottom: 1px solid rgba(0,0,0,0.1); 
+	width:100%;
   font-size:17px;
   padding:5px 0;
 }
 
 .services li img {
   float:left;
-  margin:5px;
+  margin:5px 5px 5px 0;
 }
 
 .services li a {
@@ -2066,7 +2085,7 @@ h1.profile_title {
 }
 h3.profile_title {
 	font-size: 20px;
-	margin-bottom: 0;
+	margin-bottom: 10px;
 	font-family:'VAG Rounded W02 Light', arial, sans-serif;
 
 }
@@ -3274,16 +3293,22 @@ a.backto {
 	
 }
 #page_content h5 {
+	font-size: 18px;
+
 
 }
 
 #page_left_col {
 
 
+
 }
 #page_content {
 	background: #fff;
 	min-height: 600px;
+}
+#page_content a {
+	text-decoration: underline;
 }
 #page_left_col img {
 	float:left;
@@ -3695,6 +3720,14 @@ div.page_share {
   float: left;
   width: 300px;
 }
+#connections_holding {
+	height: 600px;
+	
+}
+body.controller_club.action_connections, body.controller_club.action_leaderboard {
+	background: #f5f5f5 url(/images/bg_purple.jpg) bottom no-repeat;
+
+}
 
 /*========== Register ==========*/
 
@@ -4098,7 +4131,8 @@ dt {
 }
 
 /*========== Shouts ==========*/
-#no_posts {
+#no_posts
+ {
   clear: left;
   float: left;
   margin-top: 30px;
@@ -4351,19 +4385,19 @@ li.wall_post {
 /*========== Tags ==========*/
 
 .themes_list li {
-  margin: 5px 5px 5px 0;
+  margin: 0 0 8px 0;
 }
 a.tag {
 	display: block;
-	padding: 8px 30px 9px 10px;
+	padding: 5px 7px;
 	margin: 0 0 5px;
 	font-size: 13px;
 	line-height: 14px;
 	float: left;
-	background:url(/images/sprite_picnic.png) no-repeat right top;
+	background:rgba(0,0,0,0.3);
 	color: #fff;
 	
-	border-radius:5px;
+	border-radius:3px;
 
 
 }
@@ -4436,7 +4470,7 @@ ul.page_lst li.active a {
   position: relative;
 }
 .splash .advert {
-	background: #fff;
+
 
 
 }
@@ -4448,21 +4482,23 @@ ul.page_lst li.active a {
   color: black;
 }
 .splash_inner .heading h2 {
-  font-size: 40px;
+  font-size: 34px;
 }
 
 .splash .advert img {
 
 }
 .splash .tag_line {
-  font-size: 40px;
-  bottom: 220px;
+  font-size: 2em;
+  width: 40%;
+  top: 20%;
   left: 40px;
-  right: 150px;
+
   position: absolute;
 }
 .splash .tag_line a {
   color: white;
+  font-family:'VAG Rounded W02 Light', arial, sans-serif;
 }
 
 /*========== Fancybox edit ==========*/  
@@ -5133,7 +5169,7 @@ ul.possible_search_models li {
  .splash_inner .heading .fr {
 	float: left;
 }
-  #user_links {
+#user_links {
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -5145,9 +5181,99 @@ ul.possible_search_models li {
   
 }
 
+/*========== club intro ==========*/
+#club_welcome p {
+  font-size: 20px;
+  font-weight: normal;
+}
 
+#hide_this, #show_this {
+  font-size: 18px;
+}
+#hide_this {
+  border-bottom: 4px solid #e2e2e2;
+}
+#show_this {
+  border-top: 4px solid #e2e2e2;
+}
 
+#hide_this a, #show_this a {
+  background: #e2e2e2;
+  color: black;
+  padding: 3px 10px;
+  width: 100px;
+  text-align: center;
+  display: block;
+}
 
+#hide_this a {
+  -moz-border-top-left-radius:5px;
+  -webkit-border-top-left-radius:5px;
+  border-top-left-radius:5px;
+  -moz-border-top-right-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  border-top-right-radius:5px;
+}
+
+#show_this a {
+  -moz-border-bottom-left-radius:5px;
+  -webkit-border-bottom-left-radius:5px;
+  border-bottom-left-radius:5px;
+  -moz-border-bottom-right-radius: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  border-bottom-right-radius:5px;
+}
+#club_intro_page h2 {
+  font-size: 25px;
+}
+#club_intro_connect {
+  margin-top: 30px;
+}
+#club_intro_connect #search_term {
+  font-size: 22px;
+  width: 439px;
+  background: url(/images/icon_search.png) no-repeat 420px 12px;
+}
+#club_intro_connect #search_term.loading {
+  background: url(/images/ajax_loader_arrows.gif) no-repeat 420px 12px;
+}
+#find_someone_results .no_results {
+  list-style-type: none;
+  margin-left: 0;
+  color: #979797;
+}
+.find_someone_result {
+  float: left;
+  clear: left;
+  list-style-type: none;
+  margin-left: 0;
+  border-bottom: 2px solid #f5f5f5;
+  margin-bottom: 20px;
+}
+.find_someone_result img {
+  float: left;
+  margin-right: 20px;
+}
+.find_someone_result .details {
+  float: left;
+  width: 350px;
+}
+.find_someone_result .details h4 a {
+  color: black;
+}
+.find_someone_result .details p {
+  color: #979797;
+}
+#latest_members_photos {
+  float: left;
+  width: 634px;
+  background: black;
+  padding: 15px 6px;
+}
+
+#latest_members_photos a {
+  float: left;
+}
 
 
 
