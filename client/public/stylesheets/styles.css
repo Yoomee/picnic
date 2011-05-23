@@ -5311,7 +5311,153 @@ a.find_someone_photo {
   float: left;
 }
 
+/*========== Leaderboard ==========*/
 
+#leaderboard_header {
+  border-bottom: 3px solid #ccc;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+#leaderboard_header h1 {
+  float: left;
+  font-size: 30px;
+  margin: 0;
+}
+#leaderboard_filter {
+  float: right;
+}
+#leaderboard_filter a {
+  font-size: 21px;
+  color: #000;
+  font-weight: bold;
+  padding: 5px 10px;
+}
+#leaderboard_filter a.active {
+  background-color: #000;
+  color: #fff;
+}
+#leaderboard_left {
+  border-right: 4px solid #CCCCCC;
+  float: left;
+  padding-right: 0;
+}
+#top_people {
+  float: left;
+  clear: both;
+  width: 100%;
+  margin-bottom: 20px;
+}
+#top_people .person_col {
+  float: left;
+  margin-right: 15px;
+  width: 260px;
+}
+#top_people_inner {
+  float: left;
+  clear: both;
+  min-height: 352px;
+}
+#top_people .pagination, #top_people .leaderboard_loader {
+  float: right;
+  clear: both;
+  margin-right: 80px;
+}
+.person {
+  float: left;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+}
+.person .person_image {
+  float: left;
+  margin-right: 10px;
+}
+.person .person_right {
+  float: left;
+  width: 200px;
+}
+.person .person_right a {
+  font-weight: bold;
+  font-size: 15px;
+}
+.person .person_right .num_points {
+  color: gray;
+  font-size: 15px;
+}
+#top_posters {
+  float: left;
+  margin-right: 40px;
+}
+#top_posters_inner {
+  width: 260px;
+  float: left;
+  clear: both;
+}
+#top_posters .pagination, #top_posters .leaderboard_loader {
+  float: left;
+  clear: both;
+}
+#top_tags {
+  float: left;
+}
+
+#points_transfers li.points_transfer {
+  border-bottom: 1px solid #ccc;
+  padding: 5px 0;
+  margin-bottom: 5px;
+  width: 320px;
+}
+#points_transfers li a.points_transfer_link {
+  font-size: 16px;  
+  color: #393939;
+  float:left;
+}
+#points_transfers li a.points_transfer_link:hover {
+  text-decoration: none;
+  background:url(/images/dis_arrow.png) no-repeat top right;
+}
+.points_transfer .points {
+  background-color: #000;
+  font-weight: bold;  
+  color: white;
+  float: left;  
+  font-size: 15px;
+  padding: 0 6px;
+  text-align: center;
+  width: 25px;
+  line-height: 35px;  
+  margin-right: 10px;  
+  -moz-border-radius: 20px;  
+	-webkit-border-radius:20px;
+	border-radius:20px; 
+}
+#points_transfers ul .points_transfer_top {
+  float: left;
+  clear: both;
+  width: 100%;
+}
+#points_transfers ul .points_transfer_top span {
+  line-height: 18px;
+}
+#points_transfers .timestamp {
+  font-size: 12px;
+  color: gray;
+  float: left;
+  clear: both;
+  width: 100%;  
+}
+#points_transfers .points_transfer_right {
+  float: left;
+}
+#points_transfers .pagination {
+  float:left;
+  margin-top:5px;
+}
+#points_transfers .pagination a {
+  background-color: #542F4F;
+}
 
 /* ========================================== */
 /* ! Provide higher res assets for iPhone 4   */

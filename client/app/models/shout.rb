@@ -2,6 +2,7 @@ Shout.class_eval do
 
   before_validation :set_attachable
 
+  after_create :trigger_points_event
   after_update :destroy_old_attachable
 
   attr_boolean_accessor :themes_form_step, :delete_attachable
@@ -87,6 +88,10 @@ Shout.class_eval do
   def destroy_old_attachable
     attachable_to_be_deleted.destroy if !attachable_to_be_deleted.nil?
     true
+  end
+  
+  def trigger_points_event(options = {})
+    member.handle_points_event(:post_shout, self, options)
   end
   
 end
