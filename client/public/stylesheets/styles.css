@@ -5190,6 +5190,9 @@ ul.possible_search_models li {
 #hide_this, #show_this {
   font-size: 18px;
 }
+#hide_this div, #show_this div {
+  padding: 0 1%;
+}
 #hide_this {
   border-bottom: 4px solid #e2e2e2;
 }
