@@ -10,6 +10,8 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/delegate/receive', :controller => 'delegate_receiver', :action => 'receive'
   map.connect '/delegate/test', :controller => 'delegate_receiver', :action => 'test'
   
+  map.leaderboard "leaderboard", :controller => "leaderboard", :action => "index"
+  map.all_time_leaderboard "leaderboard/all_time", :controller => "leaderboard", :action => "all_time"
   
   map.correspondents '/correspondents', :controller => 'correspondents'
   map.browse '/browse', :controller => 'browse'

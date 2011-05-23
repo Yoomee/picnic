@@ -1,0 +1,12 @@
+%h2 Biggest mouths
+#top_posters_inner
+  -members.each_with_index do |member, index|
+    .person
+      =link_to(image_for(member, "50x50#"), member, :class => "person_image")
+      .person_right
+        =link_to_self(member, :class => "member_link")
+        .num_points
+          %span.discussion_count=pluralize(member.shout_count, 'discussion') if member.shout_count.to_i > 0
+          %span.comment_count=pluralize(member.wall_post_count, 'comment') if member.wall_post_count.to_i > 0
+=will_paginate(members, :param_name => "posters_page", :update => "top_posters", :loading => "Leaderboard.loading('#top_posters')", :complete => "Leaderboard.complete('#top_posters')")
+=image_tag("ajax_loader_squares_gray.gif", :class => "leaderboard_loader", :style => "display:none")

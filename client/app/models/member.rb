@@ -12,6 +12,8 @@ Member.class_eval do
   attr_boolean_accessor :skip_what_i_bring_validation
   
   acts_as_taggable_on :tags
+
+  after_create :trigger_points_event
   
   has_location  
   has_many :urls, :as => :attachable
@@ -38,6 +40,11 @@ Member.class_eval do
       self.password = self.class::generate_password
       self.password_generated = true
     end
+  end
+  
+  private  
+  def trigger_points_event(options = {})
+    self.handle_points_event(:register, self, options)
   end
   
 end

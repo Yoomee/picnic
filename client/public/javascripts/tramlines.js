@@ -70,3 +70,15 @@ var ShoutForm = {
     elem.next('form').find('.wall_post_text_input').focus();
   }
 };
+
+var Leaderboard = {
+  loading: function(container_id) {
+    $(container_id + ' .pagination').hide();
+    $(container_id + ' .leaderboard_loader').show();
+  },
+  complete: function(container_id) {
+    $(container_id + ' .leaderboard_loader').hide();    
+    $(container_id + ' .pagination').show();
+    FB.XFBML.parse();
+  }
+};

@@ -1,0 +1,37 @@
+-title "Leaderboard", :hidden => true
+-no_content_row
+
+#leaderboard_header.row
+  .threecol
+    %h1 Leaderboard
+  #leaderboard_filter.fourcol.last
+    =link_with_active_if_current("This month", leaderboard_path)
+    =link_with_active_if_current("All time", all_time_leaderboard_path)
+.row
+  #leaderboard_left.sevencol
+    #top_people
+      =render("leaderboard/top_people", :members => @ranked_members)
+    #top_posters
+      =render("leaderboard/top_posters", :members => @top_posters)
+    #top_tags
+      %h2 Top tags
+      %ul.lst
+        -@top_tags.each do |tag|
+          =link_to_tag(tag)
+  #leaderboard_right.fivecol.last
+    %h2 Points Activity
+    #points_transfers
+      %ul.lst
+        -@points_transfers.each do |points_transfer|
+          %li.points_transfer
+            .points=points_transfer.points_string
+            .points_transfer_right
+              .points_transfer_top
+                =link_to_self(points_transfer.member, :class => "member_link")
+                %span=points_transfer.points_event_name
+              %span.timestamp
+                =time_ago_in_words(points_transfer.created_at)
+                ago
+.row
+  -options_panel do
+    =back_link

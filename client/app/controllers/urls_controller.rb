@@ -22,7 +22,7 @@ class UrlsController < ApplicationController
       if @url_object.save
         page.redirect_to @url_object.attachable
       else
-        page["#{@url_object.new_record? ? 'new' : 'url'}_url"].replace(render('urls/form', :url_object => @url_object))
+        page["#{@url_object.new_record? ? 'new' : 'edit'}_url"].replace(render('urls/form', :url_object => @url_object))
       end
     end
   end

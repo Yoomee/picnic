@@ -137,9 +137,10 @@
         #no_friends
           -if @member == logged_in_member
             Aww shame. You don't have any friends
+            %br
             =link_to("Get connected!", club_path)
           -else
-            -if !@logged_in_member.sent_friend_request_to?(@member)
+            -if !(@logged_in_member && @logged_in_member.sent_friend_request_to?(@member))
               ="Aww shame. #{@member.forename} doesn't have any friends."
               %br
             =render_add_friend_link(@member, :ajax_loader => "ajax_loader_squares.gif", :text => "Send a friend request")
@@ -163,25 +164,25 @@
         -if @member.fb_connected?
           %li
             =favicon("http://www.facebook.com")
-            =link_to("Facebook", @member.fb_profile_url)
+            =link_to("Facebook", @member.fb_profile_url, :target => "_blank")
         -if @member.twitter_connected?
           %li
             =favicon("http://www.twitter.com")
-            =link_to("Twitter (@#{@member.twitter_username})", @member.twitter_profile_url)
+            =link_to("Twitter (@#{@member.twitter_username})", @member.twitter_profile_url, :target => "_blank")
         -if @member.linked_in_connected?
           %li
             =favicon("http://www.linkedin.com")
-            =link_to("LinkedIn", @member.linked_in_profile_url)
+            =link_to("LinkedIn", @member.linked_in_profile_url, :target => "_blank")
         -@member.urls.each do |url|
           %li{:id => "url_#{url.id}"}
             =image_tag(url.favicon)
-            =link_to_url(url.url, :target => "_blank", :class => url.host)
+            =link_to_url(url.url, :class => url.host, :http => false)
             =link_to_remote_if_allowed('x', {:url => url_proc(url), :method => :delete, :confirm => 'Are you sure you want to delete this url?'}, :class => "delete_link")
             
       -if @member == logged_in_member
-        =#link_to_box(" + Add a service", new_url_path, :class => "new_link")
-        =# => fancy_box :title => nil, :link => {:content => " + Add a service", :options => {:inline => true, :class => "new_link"}}
-        =render('urls/new')
+        =#link_to_box(" + Add a service", new_url_path, :class => "new_link")        
+        =fancy_box :title => nil, :id => "url_box", :link => {:content => " + Add a service", :options => {:inline => true, :class => "new_link"}} do
+          =render('urls/add_service', :url_object => Url.new)
     #member_themes.themes_list.subrow
       %h3.profile_title="About the real #{forename_or_me(@member)}"
       =render('themes/list', :tags => @member.tags, :list_id => "member_#{@member.id}_themes")
