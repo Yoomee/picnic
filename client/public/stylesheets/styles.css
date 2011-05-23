@@ -3720,6 +3720,7 @@ div.page_share {
   float: left;
   width: 300px;
 }
+/*
 #connections_holding {
 	height: 600px;
 	
@@ -3728,7 +3729,7 @@ body.controller_club.action_connections, body.controller_club.action_leaderboard
 	background: #f5f5f5 url(/images/bg_purple.jpg) bottom no-repeat;
 
 }
-
+*/
 /*========== Register ==========*/
 
 .register_box {
@@ -4686,15 +4687,27 @@ ul.member_lst li {
 
 div.name_and_tag {
 	float: left;
-	
-	
+	width: 185px;
 }
-
 ul.member_lst a.member_name {
 	width: 100%;
 	font-size: 16px;
 	color: #000;
 }
+ul.connection_tags li {
+  float: left;
+  clear: none;
+  margin-right: 10px;
+  margin-bottom: 0;
+  width: auto;
+}
+ul.connection_tags li a.tag {
+  margin-bottom: 0;
+}
+.connection_box a.fancybox_edit {
+  font-size:12px;
+}
+
 
 /* ========= Messages ========== */
 table.inbox {
@@ -5282,8 +5295,6 @@ a.find_someone_photo {
 #latest_members_photos a {
   float: left;
 }
-
-
 
 /* ========================================== */
 /* ! Provide higher res assets for iPhone 4   */
