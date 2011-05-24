@@ -90,45 +90,47 @@
           });
         }
       };
-      
-      var MemberShouts = {
 
-        getShouts: function(filter) {
-          $('#filter_loader').show();
-          $.ajax({
-            url: '#{member_path(@member)}',
-            data: {
-              filter: filter,
-              wants: 'shouts'
-            },
-            complete: function() {
-              $('#filter_loader').hide();
-            },
-            success: function(html) {
-              $('#shouts_container').html(html);
-            }
-          })
-        },
+-content_for(:head) do
+  :javascript
+    var MemberShouts = {
+
+      getShouts: function(filter) {
+        $('#filter_loader').show();
+        $.ajax({
+          url: '#{member_path(@member)}',
+          data: {
+            filter: filter,
+            wants: 'shouts'
+          },
+          complete: function() {
+            $('#filter_loader').hide();
+          },
+          success: function(html) {
+            $('#shouts_container').html(html);
+          }
+        })
+      },
+    
+      latest: function() {
+        $('.stories_filter li').removeClass('active');
+        $('#latest_shouts').addClass('active');
+        this.getShouts('latest');
+      }, 
+    
+      popular: function() {
+        $('.stories_filter li').removeClass('active');
+        $('#popular_shouts').addClass('active');
+        this.getShouts('popular');
+      },
       
-        latest: function() {
-          $('.stories_filter li').removeClass('active');
-          $('#latest_shouts').addClass('active');
-          this.getShouts('latest');
-        }, 
-      
-        popular: function() {
-          $('.stories_filter li').removeClass('active');
-          $('#popular_shouts').addClass('active');
-          this.getShouts('popular');
-        },
-        
-        received: function() {
-          $('.stories_filter li').removeClass('active');
-          $('#received_shouts').addClass('active');
-          this.getShouts('received');
-        }       
-      
-      };
+      received: function() {
+        $('.stories_filter li').removeClass('active');
+        $('#received_shouts').addClass('active');
+        this.getShouts('received');
+      }       
+    
+    };
 
 -no_content_row
 -title @member.full_name, :hidden => true
