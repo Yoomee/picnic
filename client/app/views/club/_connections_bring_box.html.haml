@@ -1,0 +1,10 @@
+.bring_box
+  %ul
+    -members.each do |member|
+      %li.bring_item
+        .bring_profile
+          =link_to image_for(member, '20x'), member, :class => 'bring_profile_img_link'
+          =link_to member, member, :class => 'member_name'
+        .bring_quote
+          I bring
+          =member.what_i_bring
