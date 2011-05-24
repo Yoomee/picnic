@@ -1,26 +1,5 @@
 module ClientHelper
   
-  def nav_items
-    items = Section.root.collect{|section| {
-      :name => section.name,
-      :url => section_path(section),
-      :active => current_root_section?(section),
-      :weight => section.weight
-    }}
-    items << {
-      :name => "Club",
-      :url => club_path,
-      :active => viewing_club?,
-      :weight => 100
-    }    
-    items.sort{|x,y| x[:weight] <=> y[:weight]}
-  end
-  
-  def viewing_club?
-    current_page?(club_path) || current_page?(new_member_path) || current_page?(connections_path) || current_page?(leaderboard_path)
-  end
-  alias_method :in_club?, :viewing_club?
-  
   def conference_day(date_or_datetime)
     date = date_or_datetime.to_date
     if date < Date.parse("2011-09-14") || date > Date.parse("2011-09-16")
@@ -33,12 +12,6 @@ module ClientHelper
   def conference_session_time(session)
     start = session.starts_at.strftime("%H:%M")
     session.ends_at.blank? ? start : "#{start} - #{session.ends_at.strftime("%H:%M")}"
-  end
-  
-  def shout_title(shout)
-    #out = shout.pretty_date
-    out = "#{time_ago_in_words(shout.created_at)} ago"
-    shout.title.blank? ? out : "#{out}: #{shout.title}"
   end
   
   def fancybox_edit(object, input, options ={})
@@ -56,6 +29,36 @@ module ClientHelper
     image ? image_tag(Url.favicon(url)) : url
   end
 
+  def location_marker_image(location)
+    "/client/images/marker_heart.png"
+  end
+  
+  def member_marker_image(member)
+    "/client/images/marker_heart.png"
+  end
+  
+  def nav_items
+    items = Section.root.not_hidden.collect{|section| {
+      :name => section.name,
+      :url => section_path(section),
+      :active => current_root_section?(section),
+      :weight => section.weight
+    }}
+    items << {
+      :name => "Club",
+      :url => club_path,
+      :active => viewing_club?,
+      :weight => 100
+    }    
+    items.sort{|x,y| x[:weight] <=> y[:weight]}
+  end
+  
+  def shout_title(shout)
+    #out = shout.pretty_date
+    out = "#{time_ago_in_words(shout.created_at)} ago"
+    shout.title.blank? ? out : "#{out}: #{shout.title}"
+  end
+  
   def themes_facelist_javascript(options = {})
     if !request.xhr? && !options[:in_head]
       content_for(:head) {themes_facelist_javascript(options.merge(:in_head => true))}
@@ -84,12 +87,9 @@ module ClientHelper
     end
   end
   
-  def location_marker_image(location)
-    "/client/images/marker_heart.png"
+  def viewing_club?
+    current_page?(club_path) || current_page?(new_member_path) || current_page?(connections_path) || current_page?(leaderboard_path)
   end
-  
-  def member_marker_image(member)
-    "/client/images/marker_heart.png"
-  end
+  alias_method :in_club?, :viewing_club?
   
 end
