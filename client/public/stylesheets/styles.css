@@ -1986,13 +1986,19 @@ h1.profile_title {
 .what_i_bring {
   font-size: 26px;
   line-height: 130%;
-  width: 100%;
+  position: relative;
+  padding-right: 7%;
+  width: 93%;
  	border-bottom: 2px solid #e8e8e8;
 	border-bottom: 2px solid rgba(0,0,0,0.1);
   padding-bottom: 10px;
   font-family:'VAG Rounded W02 Thin', arial, sans-serif;
 }
-
+.what_i_bring_like {
+  position: absolute;
+  right: 15px;
+  bottom: 0px;
+}
 .what_i_bring strong {
 	font-weight: normal;	
 }
@@ -4286,7 +4292,7 @@ span.shout_type_label {
   margin-bottom: 20px;
 }
 
-.like_link {
+.like_link, .unlike_link {
   background: url(/images/thumbs_up.png);
   clear: left;
   float: left;
@@ -4300,7 +4306,7 @@ span.shout_type_label {
   height: 46px;
   width: 28px;
 }
-span.like_link {
+span.like_link, .unlike_link {
   background: url(/images/thumbs_up_active.png);
 }
 .dislike_link {
@@ -4567,6 +4573,7 @@ a.fancybox_edit {
 }
 #example_what_i_brings li {
   margin-top: 20px;
+  width: 100%;
 }
 #example_what_i_brings img {
   float: left;
