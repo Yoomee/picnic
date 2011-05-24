@@ -105,7 +105,15 @@
             Members report
         %li
           =link_to 'New member', new_member_path
-            
+
+      #dash_members.dash_item
+        .dash_icon
+        %h3
+          Eventpartners
+        %ul
+          %li
+            %a{ :href => "/conference_delegates" }
+              Delegates data
 -if false
   %ul.tabs_container
     -@admin_tabs.each do |tab|

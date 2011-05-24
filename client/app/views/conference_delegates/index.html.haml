@@ -1,0 +1,15 @@
+.twelve_col
+  %h1 Conference Delegates from Eventpartners
+  %table#delegates
+    %tbody
+      %tr.header
+        - ConferenceDelegate::FIELDS_IN_ORDER.each do |field|
+          %th=field
+        %th.last EXPECTED
+      -@conference_delegates.each do |del|
+        %tr
+          -del.data_fields.each do |field|
+            %td{:class => "#{field.try(:length) == 1 ? 'short' : ''}"}
+              =field
+          %td.last=del.expected_signature
+  =will_paginate(@conference_delegates)

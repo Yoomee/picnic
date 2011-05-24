@@ -4,6 +4,12 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :conference_sessions
   map.resources :tags, :as => "themes", :collection => {:autocomplete => :get}
+  
+  map.connect '/delegate/receive', :controller => 'delegate_receiver', :action => 'receive'
+  map.connect '/delegate/test', :controller => 'delegate_receiver', :action => 'test'
+  map.resources :conference_delegates, :only => [:index]
+  
+  map.leaderboard "leaderboard", :controller => "leaderboard", :action => "index"
   map.resources :urls
   map.resources :venues
 
