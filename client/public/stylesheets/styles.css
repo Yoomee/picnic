@@ -5639,6 +5639,28 @@ a.find_someone_photo {
   margin-top:5px;
 }
 
+
+/*========== DElegates ==========*/
+table#delegates {
+  margin-top:80px;
+  table-layout:fixed;
+  width:100%;
+  word-wrap:break-word;
+  border:none;
+  text-align:center;
+}
+table#delegates td{
+  border-left:none;
+}
+
+table#delegates th{
+  -webkit-transform: rotate(-90deg); 
+  -moz-transform: rotate(-90deg);
+  border:none;
+  word-wrap:normal;
+  text-indent:15px;
+}
+
 /* ========================================== */
 /* ! Provide higher res assets for iPhone 4   */
 /* ========================================== */

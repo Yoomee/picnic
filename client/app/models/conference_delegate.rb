@@ -36,7 +36,6 @@ class ConferenceDelegate < ActiveRecord::Base
     ).strip    
   end
   
-  private
   def data_fields
     ConferenceDelegate::FIELDS_IN_ORDER.collect do |field|
       case field
