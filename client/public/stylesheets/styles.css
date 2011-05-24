@@ -4208,8 +4208,8 @@ body.controller_shouts .shout_left {
   margin-bottom: 20px;
 }
 .shout_right_inner_details {
-  width: 50%;
-  margin-left: 30px;
+  margin-bottom: 10px;
+  width: 100%;
 }
 .shout_left_inner {
   float: left;  
@@ -5583,7 +5583,9 @@ a.find_someone_photo {
   float: right;
   width: 40%;
 }
-
+#fancybox-inner #points_transfers {
+  float: left;
+}
 #points_transfers li.points_transfer {
   border-bottom: 1px solid #ccc;
   padding: 5px 0;
@@ -5635,9 +5637,6 @@ a.find_someone_photo {
 #points_transfers .pagination {
   float:left;
   margin-top:5px;
-}
-#points_transfers .pagination a {
-  background-color: #542F4F;
 }
 
 /* ========================================== */

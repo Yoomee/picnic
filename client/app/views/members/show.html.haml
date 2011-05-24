@@ -233,7 +233,8 @@
           %p=@member.location.try(:unknown?) ? 'Unknown' : render_address(@member.location)
           =google_map(@member.location, :width => 300, :height => 200) unless @member.location.try(:unknown?)
       #member_badges
-        %h3.profile_title="#{pluralize(@member.points, 'club point')}"
+        -link_to(member_points_transfers_path(@member), :class => 'fancy points_link') do
+          %h3.profile_title="#{pluralize(@member.points, 'club point')}"
         %ul.lst
           -@member.badges.each do |badge|
             %li
