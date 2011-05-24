@@ -1986,13 +1986,19 @@ h1.profile_title {
 .what_i_bring {
   font-size: 26px;
   line-height: 130%;
-  width: 100%;
+  position: relative;
+  padding-right: 7%;
+  width: 93%;
  	border-bottom: 2px solid #e8e8e8;
 	border-bottom: 2px solid rgba(0,0,0,0.1);
   padding-bottom: 10px;
   font-family:'VAG Rounded W02 Thin', arial, sans-serif;
 }
-
+.what_i_bring_like {
+  position: absolute;
+  right: 15px;
+  bottom: 0px;
+}
 .what_i_bring strong {
 	font-weight: normal;	
 }
@@ -3939,12 +3945,16 @@ body.controller_badges .badge_photo {
 }
 /*====================== Newsnetwork home ====================*/
 
+<<<<<<< HEAD
 
 
 .map_canvas a, .map_canvas span {
+=======
+/*.map_canvas a, .map_canvas span {
+>>>>>>> 4f2b73931bfb49cbcf8c94e3fcb82fd2c3cb789c
   color:#ffffff !important;
   text-shadow:0 1px 0 #A0A0A0;   
-}
+}*/
 .map_row {
   background: #e8e8e8;
   margin-bottom: 40px;
@@ -4317,8 +4327,17 @@ span.shout_type_label {
   float: left;
   clear: both;
 }
+<<<<<<< HEAD
 .like_link {
   background: url(/images/sprite.png) 0 -60px;
+=======
+.post_to_wall {
+  margin-bottom: 20px;
+}
+
+.like_link, .unlike_link {
+  background: url(/images/thumbs_up.png);
+>>>>>>> 4f2b73931bfb49cbcf8c94e3fcb82fd2c3cb789c
   clear: left;
   float: left;
   height: 23px;
@@ -4331,8 +4350,13 @@ span.shout_type_label {
   height: 46px;
   width: 20px;
 }
+<<<<<<< HEAD
 span.like_link {
   background: url(/images/sprite.png) -32px -60px;
+=======
+span.like_link, .unlike_link {
+  background: url(/images/thumbs_up_active.png);
+>>>>>>> 4f2b73931bfb49cbcf8c94e3fcb82fd2c3cb789c
 }
 .dislike_link {
   background: url(/images/sprite.png) 0 -94px;
@@ -4601,6 +4625,7 @@ a.fancybox_edit {
 }
 #example_what_i_brings li {
   margin-top: 20px;
+  width: 100%;
 }
 #example_what_i_brings img {
   float: left;
@@ -4805,11 +4830,14 @@ a.bring_profile_img_link {
 	float: left;
 	width: 100%;
 	margin: 0;
+	overflow: hidden;
 }
 .tags_top ul {
 	margin: 0;
 	float: left;
-	width:1000px;
+}
+.tags_top_inner {
+  width:1000px;
 }
 .tags_top li {
 	float: left;
@@ -4817,19 +4845,22 @@ a.bring_profile_img_link {
 	margin: 5px 10px 0 0 ;
 	padding: 0 0 15px 0;
 }
-h2#tags_title {
+h2#member_tags_title, h2#tags_title {
 	float: left;
-	margin: 0 0px 0 0;
-	width: 10%;
-	
+	margin: 0 20px 0 0;
+	width: auto;
 }
 
-#connection_tags_list {
-	width: 90%;
-
+.connection_tags_list {
 	float: left;
 	overflow: hidden;
 	
+}
+.connection_tags_list#member_connection_tags_list ul{
+  width: auto;
+}
+.tags_top #member_connection_tags_list ul {
+  margin-right: 30px;
 }
 
 .tags_top a.tag {
@@ -5708,6 +5739,47 @@ table#delegates th{
   word-wrap:normal;
   line-height:12px;
   vertical-align:bottom;
+}
+
+/*========== infoBox ==========*/
+
+.infoBox, .infobox {
+  background-color:white;
+  padding:10px;
+  border:2px solid #CCC;
+  -moz-border-radius:2px;
+	-webkit-border-radius:2px;
+	border-radius:2px; 
+	-moz-box-shadow:0px 0px 10px #000000;
+  -webkit-box-shadow:0px 0px 10px #000000;
+  box-shadow:0px 0px 10px #000000;
+  width:150px;
+}
+
+.infobox_left {
+  float:left;
+  width:40px;
+  margin-right:10px;
+}
+.infobox_right {
+  float:left;
+  width:100px;
+}
+
+.infobox_right a {
+  color:black;
+  font-size:14px;
+}
+
+.infobox_bottom {
+  float:left;
+  clear:both;
+  width:100%;
+}
+
+.infobox_bottom a{
+  float:right;
+  margin-top:0px;
 }
 
 /* ========================================== */

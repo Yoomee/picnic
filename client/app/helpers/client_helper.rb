@@ -37,6 +37,10 @@ module ClientHelper
     "/client/images/marker_heart.png"
   end
   
+  def member_infobox(member)
+    render "members/infobox", :member => member
+  end
+  
   def nav_items
     items = Section.root.not_hidden.collect{|section| {
       :name => section.name,
@@ -88,7 +92,7 @@ module ClientHelper
   end
   
   def viewing_club?
-    current_page?(club_path) || current_page?(new_member_path) || current_page?(connections_path) || current_page?(leaderboard_path)
+    current_page?(club_path) || current_page?(new_member_path) || current_page?(connections_path) || current_page?(leaderboard_path) || current_page?(:controller => "members", :action => "show")
   end
   alias_method :in_club?, :viewing_club?
   

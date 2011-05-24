@@ -1,12 +1,12 @@
 -no_content_row
 .row
-  =render 'members/what_i_bring', :object => @member, :small_print => 'You can edit this later if you want.', :options => {:fancy => false}
-#example_what_i_brings.row
-  %ul.lst
-    -@other_members.each do |member|
-      %li
-        =image_for(member, "50x50#")
-        %p
-          %strong=member.full_name
-          ="is bringing #{member.what_i_bring}"
-    
+  .sevencol.last
+    =render 'members/what_i_bring', :object => @member, :small_print => 'You can edit this later if you want.', :options => {:fancy => false}
+    #example_what_i_brings.subrow
+      %ul.lst
+        -@other_members.each do |member|
+          %li
+            =image_for(member, "50x50#")
+            %p
+              %strong=member.full_name
+              ="is bringing #{member.what_i_bring}"
