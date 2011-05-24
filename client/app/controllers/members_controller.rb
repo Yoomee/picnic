@@ -35,10 +35,31 @@ MembersController.class_eval do
   end
   alias_method_chain :new, :redirect
 
+  def show_with_shout_filtering
+    if request.xhr? && params[:wants] == 'shouts'
+      filter = params[:filter]
+      shouts = case filter
+      when 'popular'
+        @member.recipientless_shouts.top_rated
+      when 'latest'
+        @member.recipientless_shouts
+      when 'received'
+        @member.received_shouts
+      end
+      if shouts.empty?
+        render :text => (filter == 'received' ? @template.not_received_yet_message(@member) : @template.not_posted_yet_message(@member))
+      else
+        render :text => @template.render_shouts(shouts)
+      end
+    else
+      show_without_shout_filtering
+    end
+  end
+  alias_method_chain :show, :shout_filtering
+
   def update
     params[:member] ||= {}
-    params[:member][:tag_list] = params[:facelist_values_member_themes] if !params[:facelist_values_member_themes].blank?
-    puts params[:member].inspect
+    params[:member][:tag_list] = params[:facelist_values_member_themes] if !params[:facelist_values_member_themes].nil?
     @member.update_attributes(params[:member])
     respond_to do |format|
       format.html do
@@ -57,16 +78,6 @@ MembersController.class_eval do
       end
     end
   end
-
-  def show_with_shout_filtering
-    if request.xhr? && params[:wants] == 'shouts'
-      shouts = params[:filter] == 'popular' ? @member.shouts.top_rated : @member.shouts
-      render :text => @template.render_shouts(shouts)
-    else
-      show_without_shout_filtering
-    end
-  end
-  alias_method_chain :show, :shout_filtering
 
   def what_i_bring
     @member = logged_in_member

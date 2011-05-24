@@ -1,0 +1,10 @@
+%div{:style => "display:none"}
+  .no_member_themes_fancybox{:id => "#{tag_name.fully_underscore}_fancybox"}
+    %span.tag=tag_name
+    -if logged_in_member==@member
+      %p You haven't added any tags yet so we've made some up. 
+      %p=fancybox_edit(@member, :tags_list, :partial => "members/themes_form", :link_text => "Click here to add your own")
+    -else
+      %p
+        ="#{@member.forename} hasn't added any tags yet so we've made some up."
+        Write on their wall and encourage them to get descriptive.
