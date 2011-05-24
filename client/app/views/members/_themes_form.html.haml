@@ -5,7 +5,7 @@
     Tell us what you're about - choose from existing themes or feel free
     %br
     to create new ones.
-  -semantic_form_for(object) do |form|
+  -semantic_form_for(object, :url => polymorphic_path(object, :redirect_to => options[:redirect_to])) do |form|
     -form.inputs do
       -if false
         %li#member_themes_li=text_field_tag :tag_list, "", :onkeypress => "return event.keyCode!=13", :id => "member_themes_form"

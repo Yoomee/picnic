@@ -1,6 +1,8 @@
 class ClubController< ApplicationController
 
   def connections
+    @same_tag_members = Member.scope_for_without_id_in('members', [logged_in_member.id]).tagged_with(logged_in_member.tag_list, :any => true).latest
+    @same_theme_members = Member.scope_for_without_id_in('members', [logged_in_member.id]).with_shout_tags(logged_in_member.shout_tag_list).latest
   end
   
   def discussions

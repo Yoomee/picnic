@@ -1,5 +1,45 @@
-#connections_holding
-  %h2
-    Under development
-  
-  
+-no_content_row
+-title "Connections", :hidden => true
+.row
+  =#render :partial => 'themes/trending'
+  .fourcol
+    #find_someone
+      %h2.connection_title Find someone
+      #find_someone_search_box
+        %form{ :action => "/search/results", :method => "post" }
+          %input#search_field{ :name => "term", :type => "text", :value => "Search", :onfocus => "var element = document.getElementById('search_field');element.value='';" }
+          %input#search_icon{ :name => "commit", :title => "search", :value => "search" }
+    #connections_map
+      %h2.connection_title People near you
+      =google_map([], :width => 350, :height => 300, :centre => [30, 0], :zoom => 2, :map_options => "scrollwheel:false,disableDefaultUI:true")
+    #connection_themes
+      %h4 Themes
+      %ul.lst
+        -Tag.all.each do |tag|
+          %li
+            =link_to_self tag, :class=>'tag' 
+  .fourcol.last  
+    %h2.connection_title People recently interacting with you
+  .fourcol
+    -if logged_in_member.tag_list.empty?
+      .connection_box
+        %h2.connection_title New people that share the real you
+        %p
+          You haven't yet told us about the real you. Click
+          =fancybox_edit(logged_in_member, :tags_list, :partial => "members/themes_form", :link_text => 'here', :redirect_to => connections_path)
+          to do so.
+    -elsif !@same_tag_members.empty?
+      =render "connection_box", :title => "New people that share the real you", :members => @same_tag_members, :showing_themes => false
+    -if logged_in_member.shouts.empty?
+      .connection_box
+        %h2.connection_title People that share themes with you
+        %p
+          You haven't yet posted any discussions. Click
+          =link_to 'here', ''
+          to do so.
+    -elsif !@same_theme_members.empty?
+      =render "connection_box", :title => "People that share themes with you", :members => @same_theme_members, :showing_themes => true
+
+.row    
+  -options_panel do
+    =back_link
