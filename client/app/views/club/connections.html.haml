@@ -21,8 +21,6 @@
     #bring_carousel.cycle
       -@bring_members.each_slice(4) do |members|
         =render "connections_bring_box", :members => members
--if false              
-  =#render :partial => 'themes/trending'
   #tags_wrapper.twelvecol
     .tags_top
       %h2#tags_title.connection_title
@@ -47,7 +45,7 @@
             =link_to "Fencing", "#", :class=>"tag"
           %li  
             =link_to "Table tennis", "#", :class=>"tag"
-      
+
     .tags_bottom
       =link_to image_tag("member_image.png"), "#map", :class=>"tag_profile_img_link"
       =link_to image_tag("member_image.png"), "#map", :class=>"tag_profile_img_link"
@@ -94,6 +92,11 @@
     %h2.connection_title 
       People near me
     =google_map([], :width => 550, :height => 300, :centre => [30, 0], :zoom => 2, :map_options => "scrollwheel:false,disableDefaultUI:true")  
+
+
+
+
+-if false              
 
 
 
