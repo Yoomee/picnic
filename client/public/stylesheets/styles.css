@@ -143,7 +143,7 @@ td, th {
 
   margin-top:20px;
   padding-top:10px;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
 
   background: none;
 }
@@ -1047,7 +1047,7 @@ div#top {
 }
 #login_slide_bar_inside {
 }
-#page_title {
+h1#page_title {
 	font-size: 34px;
 	line-height: 120%;
 	margin
@@ -1110,22 +1110,23 @@ div.logged_in_panel {
 
 .logged_in_as {
   float: right;
-  font-weight: bold;
+
   margin: 0px;
 
 
 }
+
 .logged_in_as a {
 	margin: 0 0 0 10px;
-			display: block;
+	display: block;
 
-	background:#777777;
-	background:rgba(0,0,0,0.8);
+	background:#ccc;
+	background:rgba(0,0,0,0.2);
 
 	float: left;
 	font-size: 12px;
 	padding: 3px 9px;
-	font-weight: bold;
+
 
 	color: #fff;
 	
@@ -1133,6 +1134,7 @@ div.logged_in_panel {
 	-webkit-border-radius:3px;
 	-moz-border-radius:3px;
 }
+
 .logged_in_as a:hover, #header_right a.button {
 	text-decoration: none;
 	background: #000;
@@ -1319,6 +1321,7 @@ input#search_icon {
 
 #main_container {
 	margin-top: 30px;
+	min-height: 500px;
 }
 
 /* ====================  homepage  ===================== */
@@ -2145,6 +2148,22 @@ h3.profile_title {
 #about_me  h3 {
 	font-size:14px;
 }
+.no_member_themes_fancybox {
+  padding: 20px;
+  width: 500px;
+  float: left;
+}
+.no_member_themes_fancybox span.tag {
+  float: left;
+  clear: both;
+  font-size: 17px;
+}
+.no_member_themes_fancybox p {
+  float: left;
+  clear: both;
+  font-size: 16px;
+  margin: 20px 0 0 0;
+}
 
 /* ====== Stuff I like tabs (under profile picture)- optional ====== */
 #stuff ul.tabbernav {
@@ -2245,7 +2264,8 @@ ul.action_links li {
 
 }
 #footer_sitemap {
-	border-top: 3px solid #ccc;
+
+
 	margin-top: 10px;
 	margin-bottom: 0px;
 	padding-top: 10px;
@@ -4386,7 +4406,7 @@ li.wall_post {
 .themes_list li {
   margin: 0 0 8px 0;
 }
-a.tag {
+a.tag, .no_member_themes_fancybox .tag {
 	display: block;
 	padding: 5px 7px;
 	margin: 0 0 5px;
@@ -4719,7 +4739,7 @@ a.bring_profile_img_link {
 .bring_quote {
 	float: left;
 	font-size: 17px;
-	margin: 10px 0;
+	margin: 10px 0 0;
 }
 
 #tags_wrapper {
@@ -5508,18 +5528,18 @@ a.find_someone_photo {
 }
 #top_people .person_col {
   float: left;
-  margin-right: 15px;
-  width: 260px;
+  margin-right: 3%;
+  width: 47%;
 }
 #top_people_inner {
   float: left;
   clear: both;
   min-height: 352px;
 }
-#top_people .pagination, #top_people .leaderboard_loader {
+#leaderboard_left .pagination, #leaderboard_left .leaderboard_loader {
   float: right;
   clear: both;
-  margin-right: 80px;
+  margin-right: 3%;
 }
 .person {
   float: left;
@@ -5530,11 +5550,15 @@ a.find_someone_photo {
 }
 .person .person_image {
   float: left;
-  margin-right: 10px;
+  width: 20%;
+}
+.person .person_image img {
+  width: 100% !important;
+  height: 100% !important;
 }
 .person .person_right {
-  float: left;
-  width: 200px;
+  float: right;
+  width: 75%;
 }
 .person .person_right a {
   font-weight: bold;
@@ -5546,19 +5570,16 @@ a.find_someone_photo {
 }
 #top_posters {
   float: left;
-  margin-right: 40px;
+  width: 47%;
 }
 #top_posters_inner {
-  width: 260px;
-  float: left;
-  clear: both;
-}
-#top_posters .pagination, #top_posters .leaderboard_loader {
+  width: 100%;
   float: left;
   clear: both;
 }
 #top_tags {
-  float: left;
+  float: right;
+  width: 40%;
 }
 
 #points_transfers li.points_transfer {

@@ -59,8 +59,7 @@ MembersController.class_eval do
 
   def update
     params[:member] ||= {}
-    params[:member][:tag_list] = params[:facelist_values_member_themes] if !params[:facelist_values_member_themes].blank?
-    puts params[:member].inspect
+    params[:member][:tag_list] = params[:facelist_values_member_themes] if !params[:facelist_values_member_themes].nil?
     @member.update_attributes(params[:member])
     respond_to do |format|
       format.html do
