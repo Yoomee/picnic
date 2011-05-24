@@ -2,6 +2,7 @@
 -title "Connections", :hidden => true
 -content_for :head do
   :javascript
+
     $(document).ready(function(){
       $('.cycle').cycle({
         fx: 'scrollHorz',
@@ -13,6 +14,15 @@
         prev: '.cycle_prev'
       });
     });
+
+    var TagsList = {
+      show: function(tag) {
+        $('#connection_tags_list li').removeClass('active_tag');
+        $('#connection_tags_list li#connection_tag_' + tag).addClass('active_tag');
+        $('.tags_bottom').hide();
+        $('#tags_bottom_' + tag).show();
+      }
+    };
 .row
   #bring_wrapper.twelvecol
     %h2#bring_title.connection_title
@@ -27,34 +37,13 @@
         Tags
       #connection_tags_list  
         %ul
-          %li.active_tag
-            =link_to "Table tennis", "#", :class=>"tag"
-          %li  
-            =link_to "Design", "#", :class=>"tag"
-          %li  
-            =link_to "Technology", "#", :class=>"tag"
-          %li  
-            =link_to "Fencing", "#", :class=>"tag"
-          %li  
-            =link_to "Table tennis", "#", :class=>"tag"
-          %li  
-            =link_to "Design", "#", :class=>"tag"
-          %li  
-            =link_to "Technology", "#", :class=>"tag"
-          %li  
-            =link_to "Fencing", "#", :class=>"tag"
-          %li  
-            =link_to "Table tennis", "#", :class=>"tag"
-
-    .tags_bottom
-      =link_to image_tag("member_image.png"), "#map", :class=>"tag_profile_img_link"
-      =link_to image_tag("member_image.png"), "#map", :class=>"tag_profile_img_link"
-      =link_to image_tag("member_image.png"), "#map", :class=>"tag_profile_img_link"
-      =link_to image_tag("member_image.png"), "#map", :class=>"tag_profile_img_link"
-      =link_to image_tag("member_image.png"), "#map", :class=>"tag_profile_img_link"
-      =link_to image_tag("member_image.png"), "#map", :class=>"tag_profile_img_link"
-      =link_to image_tag("member_image.png"), "#map", :class=>"tag_profile_img_link"
-      =link_to image_tag("member_image.png"), "#map", :class=>"tag_profile_img_link"
+          -@member_tags.each do |tag|
+            %li{tag_li_attributes(tag, @member_tags)}
+              =link_to_function tag, "TagsList.show('#{tag}')", :class => 'tag'
+    -@member_tags.each do |tag|
+      .tags_bottom{tags_bottom_attributes(tag, @member_tags)}
+        -Member.tagged_with(tag).random.limit(15).each do |member|
+          =link_to image_for(member, '50x'), member, :class => 'tag_profile_img_link'
   #recent_connections.sixcol
     %h2.connection_title Recent connections
     %ul.member_lst.lst
