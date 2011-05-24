@@ -57,7 +57,16 @@ ShoutsController.class_eval do
   def deal_with_create
     render(:update) do |page|
       if @shout.save
-        page[:shout_wall].prepend(render_shout(@shout))
+        if @shout.recipient
+          # shouts = @shout.recipient.received_shouts
+          # page[:shouts_container].replace_html(render_shouts(shouts))
+          page << "MemberShouts.received()"
+        else
+          # shouts = logged_in_member.shouts
+          # page[:shouts_container].replace_html(render_shouts(shouts))
+          page << "MemberShouts.latest()"
+        end
+        #page[:shout_wall].prepend(render_shout(@shout))
         page[:new_shout_form].replace render("shouts/form", :shout => Shout.new(:recipient => @shout.recipient))
         page << "$.fancybox.close();"
         page << "$('.shout_form_submit_loader').hide();"
@@ -74,7 +83,6 @@ ShoutsController.class_eval do
     updated_link = params[:shout][:shout_type]=="Link" && !params[:shout][:link_url].blank? && (params[:shout][:link_url] != @shout.link_url)
     render :update do |page|
       if @shout.update_attributes(params[:shout])
-        puts "REPLACING shout_#{@shout.id}"
         page["shout_#{@shout.id}"].replace(render_shout(@shout))
         if updated_link
           page << save_site_info_javascript(@shout.attachable, :image_size => "150x125#")

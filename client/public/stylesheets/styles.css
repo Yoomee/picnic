@@ -3923,11 +3923,20 @@ body.controller_badges .badge_photo {
 .stories_filter {
   margin-left: 350px;
 }
-
+#filter_loader {
+  width: 43px;
+  position: absolute;
+  right: 92px;
+  top: 11px;
+}
+#members_shouts {
+  position: relative;
+}
 .controller_members .stories_filter {
   float:right;
   margin-left:0;
   margin-right:150px;
+  margin-top: 8px;
 }
 
 .stories_filter ul li, .stories_filter ul {
@@ -4150,7 +4159,9 @@ dt {
  {
   clear: left;
   float: left;
-  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 3px solid #E8E8E8;
+  width: 80%
 }
 .shout {
   width: 100%;
@@ -4202,8 +4213,8 @@ body.controller_shouts .shout_left {
   margin-bottom: 20px;
 }
 .shout_right_inner_details {
-  width: 50%;
-  margin-left: 30px;
+  margin-bottom: 10px;
+  width: 100%;
 }
 .shout_left_inner {
   float: left;  
@@ -5524,18 +5535,18 @@ a.find_someone_photo {
 }
 #top_people .person_col {
   float: left;
-  margin-right: 15px;
-  width: 260px;
+  margin-right: 3%;
+  width: 47%;
 }
 #top_people_inner {
   float: left;
   clear: both;
   min-height: 352px;
 }
-#top_people .pagination, #top_people .leaderboard_loader {
+#leaderboard_left .pagination, #leaderboard_left .leaderboard_loader {
   float: right;
   clear: both;
-  margin-right: 80px;
+  margin-right: 3%;
 }
 .person {
   float: left;
@@ -5546,11 +5557,15 @@ a.find_someone_photo {
 }
 .person .person_image {
   float: left;
-  margin-right: 10px;
+  width: 18%;
+}
+.person .person_image img {
+  width: 100% !important;
+  height: auto !important;
 }
 .person .person_right {
-  float: left;
-  width: 200px;
+  float: right;
+  width: 78%;
 }
 .person .person_right a {
   font-weight: bold;
@@ -5562,21 +5577,20 @@ a.find_someone_photo {
 }
 #top_posters {
   float: left;
-  margin-right: 40px;
+  width: 47%;
 }
 #top_posters_inner {
-  width: 260px;
-  float: left;
-  clear: both;
-}
-#top_posters .pagination, #top_posters .leaderboard_loader {
+  width: 100%;
   float: left;
   clear: both;
 }
 #top_tags {
+  float: right;
+  width: 40%;
+}
+#fancybox-inner #points_transfers {
   float: left;
 }
-
 #points_transfers li.points_transfer {
   border-bottom: 1px solid #ccc;
   padding: 5px 0;
@@ -5629,8 +5643,27 @@ a.find_someone_photo {
   float:left;
   margin-top:5px;
 }
-#points_transfers .pagination a {
-  background-color: #542F4F;
+
+
+/*========== DElegates ==========*/
+table#delegates {
+  margin-top:80px;
+  table-layout:fixed;
+  width:100%;
+  word-wrap:break-word;
+  border:none;
+  text-align:center;
+}
+table#delegates td{
+  border-left:none;
+}
+
+table#delegates th{
+  -webkit-transform: rotate(-90deg); 
+  -moz-transform: rotate(-90deg);
+  border:none;
+  word-wrap:normal;
+  text-indent:15px;
 }
 
 /* ========================================== */

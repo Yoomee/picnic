@@ -90,35 +90,47 @@
           });
         }
       };
-      
-      var MemberShouts = {
 
-        getShouts: function(filter) {
-          $.ajax({
-            url: '#{member_path(@member)}',
-            data: {
-              filter: filter,
-              wants: 'shouts'
-            },
-            success: function(html) {
-              $('#shouts_container').html(html);
-            }
-          })
-        },
+-content_for(:head) do
+  :javascript
+    var MemberShouts = {
+
+      getShouts: function(filter) {
+        $('#filter_loader').show();
+        $.ajax({
+          url: '#{member_path(@member)}',
+          data: {
+            filter: filter,
+            wants: 'shouts'
+          },
+          complete: function() {
+            $('#filter_loader').hide();
+          },
+          success: function(html) {
+            $('#shouts_container').html(html);
+          }
+        })
+      },
+    
+      latest: function() {
+        $('.stories_filter li').removeClass('active');
+        $('#latest_shouts').addClass('active');
+        this.getShouts('latest');
+      }, 
+    
+      popular: function() {
+        $('.stories_filter li').removeClass('active');
+        $('#popular_shouts').addClass('active');
+        this.getShouts('popular');
+      },
       
-        latest: function() {
-          $('#latest_shouts').addClass('active');
-          $('#popular_shouts').removeClass('active');
-          this.getShouts('latest');
-        }, 
-      
-        popular: function() {
-          $('#popular_shouts').addClass('active');
-          $('#latest_shouts').removeClass('active');
-          this.getShouts('popular');
-        }        
-      
-      };
+      received: function() {
+        $('.stories_filter li').removeClass('active');
+        $('#received_shouts').addClass('active');
+        this.getShouts('received');
+      }       
+    
+    };
 
 -no_content_row
 -title @member.full_name, :hidden => true
@@ -221,7 +233,8 @@
           %p=@member.location.try(:unknown?) ? 'Unknown' : render_address(@member.location)
           =google_map(@member.location, :width => 300, :height => 200) unless @member.location.try(:unknown?)
       #member_badges
-        %h3.profile_title="#{pluralize(@member.points, 'club point')}"
+        -link_to(member_points_transfers_path(@member), :class => 'fancy points_link') do
+          %h3.profile_title="#{pluralize(@member.points, 'club point')}"
         %ul.lst
           -@member.badges.each do |badge|
             %li
@@ -235,9 +248,11 @@
   .twocol
   .eightcol
     .fr.post_to_wall
-      =link_to_box("Post something", new_shout_path, :class => "bttn_l new_comment_link", :scrolling => false) if @member == logged_in_member
-
-    =#render("shouts/form", :shout => @member.received_shouts.build)
+      -if @member == logged_in_member
+        =link_to_box("Post something", new_shout_path, :class => "bttn_l new_comment_link", :scrolling => false) 
+      -elsif logged_in_member
+        =link_to_box("Post something", new_shout_path(:shout => {:recipient_id => @member.id, :recipient_type => 'Member'}), :class => 'bttn_l new_comment_link', :scrolling => false)
+      =#render("shouts/form", :shout => @member.received_shouts.build)
   .clear
   .twocol.last
 .row
@@ -253,12 +268,18 @@
       .stories_filter
         Showing:
         %ul
-          =li_with_active true, link_to_function('Latest', 'MemberShouts.latest()'), :id => 'latest_shouts'
+          =li_with_active default_to_latest_shouts?, link_to_function('Latest', 'MemberShouts.latest()'), :id => 'latest_shouts'
           =li_with_active false, link_to_function('Popular', 'MemberShouts.popular()'), :id => 'popular_shouts'
-      -if @member.shouts.empty?
-        %p#no_posts="#{forename_or_you(@member, "hasn't", :capitalize => true)} got any posts yet."
+          =li_with_active default_to_received_shouts?, link_to_function('From others', 'MemberShouts.received()'), :id => 'received_shouts'
+      =image_tag 'ajax_loader_squares.gif', :id => 'filter_loader', :style => "display:none"
       #shouts_container
-        =render_shouts(@member.shouts, :show_member => true)
+        -if default_to_latest_shouts? 
+          -if @member.recipientless_shouts.empty?
+            =not_posted_yet_message(@member)
+          -else
+            =render_shouts(@member.recipientless_shouts, :show_member => true, :parent => @member, :filter => 'latest')
+        -else
+          =render_shouts(@member.received_shouts, :show_member => true, :parent => @member, :filter => 'received')
   .twocol.last
 .row
   -options_panel do
