@@ -4,7 +4,7 @@
 -ajax_loader ||= "ajax_loader_dark_transparent.gif"
 -show_form ||= (defined? wall_post) && !wall_post.nil?
 .wall_form{:class => "#{show_form ? '' : 'closed'} #{'no_posts' if !wall.has_posts?}"}
-  =link_to_function(WallPostsController::HELP_MESSAGE, "ShoutForm.showCommentForm($(this))", :class => "comment_prompt")
+  =#link_to_function(WallPostsController::HELP_MESSAGE, "ShoutForm.showCommentForm($(this))", :class => "comment_prompt")
   -if logged_in? && allowed_to?(wall_wall_posts_proc(wall), :method => :post)
     .wall_member_image
       =image_for(logged_in_member, "50x50#")
