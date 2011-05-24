@@ -18,6 +18,7 @@ class ConferenceDelegate < ActiveRecord::Base
           delegate_params[field.downcase.to_sym] = params[field]
         end
       end
+      delegate_params[:member] = Member.find_by_email(delegate_params[:email])
       create(delegate_params)
     end
   end
