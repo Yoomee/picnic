@@ -25,14 +25,14 @@
     =render_slug(@page.slug)
 
   -if !@page.slug_in?(%w{the_team advisors correspondents picnic11_speakers})
-    #page_right_col.fivecol.last
+    #page_right_col
       -if @page.has_photo?
-        #article_image
+        #article_image.fivecol.last
           =photo_for(@page, '450x')
-        =snippet(@page, :photo_caption)
-      =snippet(@page, :pull_quote)  
-      =snippet(@page, :call_to_action)
-      #keep_in_touch
+          =snippet(@page, :photo_caption)
+          =snippet(@page, :pull_quote)  
+          =snippet(@page, :call_to_action)
+      #keep_in_touch.fivecol.last
         %h3 Keep in Touch
         %p Add us to your favorite social networks:
         %ul
@@ -50,7 +50,7 @@
           //=link_to "RSS", "#", :class=>"rss"
             
 
-      #newsletter_signup  
+      #newsletter_signup.fivecol.last  
         %h3 Sign up for the PICNIC newsletter
         %p Get the latest news, announcements, special offers and more from PICNIC and our partners. Sign up today for PICNIC’s monthly newsletter.
         
