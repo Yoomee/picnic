@@ -5666,8 +5666,6 @@ a.find_someone_photo {
 
 /*========== DElegates ==========*/
 table#delegates {
-  margin-top:80px;
-  table-layout:fixed;
   width:100%;
   word-wrap:break-word;
   border:none;
@@ -5678,11 +5676,10 @@ table#delegates td{
 }
 
 table#delegates th{
-  -webkit-transform: rotate(-90deg); 
-  -moz-transform: rotate(-90deg);
   border:none;
   word-wrap:normal;
-  text-indent:15px;
+  line-height:12px;
+  vertical-align:bottom;
 }
 
 /* ========================================== */
