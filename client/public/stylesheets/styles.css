@@ -4565,7 +4565,20 @@ a.fancybox_edit {
 .action_what_i_bring .buttons .commit {
   float: right;
 }
-
+#example_what_i_brings li {
+  margin-top: 20px;
+}
+#example_what_i_brings img {
+  float: left;
+  margin-right: 2%;
+}
+#example_what_i_brings p {
+  float: left;
+  width: 70%;
+}
+#example_what_i_brings p strong {
+  color: #999999;
+}
 /*========== auth_popup ==========*/
 #auth_popup {
   padding: 20px;
@@ -4880,11 +4893,11 @@ div.name_and_tag {
 	
 }
 
-p.recent_description {
+p.relevant_description {
 	color: #999;
 	
 }
-p.recent_description a {
+p.relevant_description a {
 	text-decoration: underline;
 }
 
@@ -5647,8 +5660,6 @@ a.find_someone_photo {
 
 /*========== DElegates ==========*/
 table#delegates {
-  margin-top:80px;
-  table-layout:fixed;
   width:100%;
   word-wrap:break-word;
   border:none;
@@ -5659,11 +5670,10 @@ table#delegates td{
 }
 
 table#delegates th{
-  -webkit-transform: rotate(-90deg); 
-  -moz-transform: rotate(-90deg);
   border:none;
   word-wrap:normal;
-  text-indent:15px;
+  line-height:12px;
+  vertical-align:bottom;
 }
 
 /* ========================================== */

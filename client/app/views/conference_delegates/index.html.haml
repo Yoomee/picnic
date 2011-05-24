@@ -4,12 +4,12 @@
     %tbody
       %tr.header
         - ConferenceDelegate::FIELDS_IN_ORDER.each do |field|
-          %th=field
-        %th.last EXPECTED
+          %th=field.split(//).join("<br/>")
+        %th="AUTHENTIC".split(//).join("<br/>")
       -@conference_delegates.each do |del|
         %tr
           -del.data_fields.each do |field|
             %td{:class => "#{field.try(:length) == 1 ? 'short' : ''}"}
-              =field
-          %td.last=del.expected_signature
+              =field == del.data_fields.last ? del.signature : field
+          %td=del.authentic? ? "1" : "0"
   =will_paginate(@conference_delegates)

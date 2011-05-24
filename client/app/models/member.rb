@@ -23,6 +23,13 @@ Member.class_eval do
   
   # validates_presence_of :country, :unless => Proc.new {|member| !member.new_record? || member.twitter_connected? || member.linked_in_connected? || member.facebook_connected?}
   
+  
+  class << self
+    def from_delegate(delegate)
+      
+    end
+  end
+  
   def country
     location.country
   end
