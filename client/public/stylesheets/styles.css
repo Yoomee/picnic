@@ -4576,7 +4576,9 @@ a.fancybox_edit {
   float: left;
   width: 70%;
 }
-
+#example_what_i_brings p strong {
+  color: #999999;
+}
 /*========== auth_popup ==========*/
 #auth_popup {
   padding: 20px;
