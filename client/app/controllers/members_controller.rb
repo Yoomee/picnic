@@ -37,16 +37,14 @@ MembersController.class_eval do
 
   def update
     params[:member] ||= {}
-    params[:member][:tag_list] = params[:facelist_values_member_themes] if !params[:facelist_values_member_themes].blank?
-    puts params[:member].inspect
+    params[:member][:tag_list] = params[:facelist_values_member_themes] if !params[:facelist_values_member_themes].nil?
     @member.update_attributes(params[:member])
     respond_to do |format|
       format.html do
         if @member.valid?
           flash[:notice] = "Profile updated"
-          redirect_to @member
+          redirect_to params[:redirect_to] || @member
         else
-          puts "keys = " + params[:member].keys.map(&:to_s).inspect
           render :action => (params[:member].keys.map(&:to_s) == ['what_i_bring'] ? 'what_i_bring' : 'edit')
         end
       end

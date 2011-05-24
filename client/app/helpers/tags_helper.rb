@@ -17,4 +17,18 @@ module TagsHelper
     url_for({:controller => "tags", :action => "show", :id => u(tag)}.merge(options))
   end
 
+  def shared_tag_links(member1, member2)
+    shared_tag_link_lis(member1.tags & member2.tags)
+  end
+
+  def shared_theme_links(member1, member2)
+    shared_tag_link_lis(member1.shout_tags & member2.shout_tags)
+  end
+
+
+  private
+  def shared_tag_link_lis(tags)
+    tags.inject('') {|memo, tag| memo + content_tag(:li, link_to_self(tag.to_tag, :class => 'tag'))}
+  end
+  
 end

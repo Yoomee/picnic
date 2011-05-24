@@ -18,7 +18,7 @@ class LeaderboardController < ApplicationController
   
   private
   def get_points_transfers
-    @points_transfers = RAILS_ENV=='staging' ? PointsTransfer.latest.limit(18) : PointsTransfer.non_admins.latest.limit(18)
+    @points_transfers = PointsTransfer.latest.limit(18)
   end
   
   def paginate_and_render
