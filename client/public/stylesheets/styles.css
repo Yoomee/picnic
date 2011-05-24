@@ -4771,11 +4771,14 @@ a.bring_profile_img_link {
 	float: left;
 	width: 100%;
 	margin: 0;
+	overflow: hidden;
 }
 .tags_top ul {
 	margin: 0;
 	float: left;
-	width:1000px;
+}
+.tags_top_inner {
+  width:1000px;
 }
 .tags_top li {
 	float: left;
@@ -4783,19 +4786,22 @@ a.bring_profile_img_link {
 	margin: 5px 10px 0 0 ;
 	padding: 0 0 15px 0;
 }
-h2#tags_title {
+h2#member_tags_title, h2#tags_title {
 	float: left;
-	margin: 0 0px 0 0;
-	width: 10%;
-	
+	margin: 0 20px 0 0;
+	width: auto;
 }
 
-#connection_tags_list {
-	width: 90%;
-
+.connection_tags_list {
 	float: left;
 	overflow: hidden;
 	
+}
+.connection_tags_list#member_connection_tags_list ul{
+  width: auto;
+}
+.tags_top #member_connection_tags_list ul {
+  margin-right: 30px;
 }
 
 .tags_top a.tag {

@@ -11,6 +11,17 @@ Tag.class_eval do
     :conditions => "taggings.taggable_type='Member'",
     :group => "tags.id",
     :order => 'tag_count DESC'
+
+  named_scope :with_name_in, lambda {|names| {
+    :conditions => ["name IN (?)", names]
+  }}
+
+  named_scope :with_minimum_member_taggings, lambda{|n| {
+    :select => "tags.*, COUNT(DISTINCT taggings.taggable_id) AS tag_count",
+    :joins => "INNER JOIN taggings ON (taggings.tag_id = tags.id)",
+    :conditions => ["taggings.taggable_type='Member' AND tag_count > ?", n],
+    :group => "tags.id"
+  }}
   
   named_scope :top_tags, 
     :select => "tags.*, (COUNT(DISTINCT shouts.id) + COUNT(DISTINCT wall_posts.id)) AS tag_count", 
