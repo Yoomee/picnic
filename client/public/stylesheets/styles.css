@@ -5556,6 +5556,7 @@ a.find_someone_photo {
 }
 .person .person_image img {
   width: 100% !important;
+  height: auto !important;
 }
 .person .person_right {
   float: right;
