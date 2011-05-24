@@ -3922,7 +3922,7 @@ body.controller_badges .badge_photo {
   width: 43px;
   position: absolute;
   right: 92px;
-  top: 3px;
+  top: 11px;
 }
 #members_shouts {
   position: relative;
@@ -4154,7 +4154,9 @@ dt {
  {
   clear: left;
   float: left;
-  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 3px solid #E8E8E8;
+  width: 80%
 }
 .shout {
   width: 100%;
