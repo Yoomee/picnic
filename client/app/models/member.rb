@@ -12,6 +12,7 @@ Member.class_eval do
   
   has_location  
   has_many :urls, :as => :attachable
+  has_one :conference_delegate
 
   named_scope :with_what_i_bring, :conditions => "what_i_bring > ''"
   
