@@ -43,7 +43,7 @@ MembersController.class_eval do
       format.html do
         if @member.valid?
           flash[:notice] = "Profile updated"
-          redirect_to @member
+          redirect_to params[:redirect_to] || @member
         else
           render :action => (params[:member].keys.map(&:to_s) == ['what_i_bring'] ? 'what_i_bring' : 'edit')
         end

@@ -1,0 +1,14 @@
+.connection_box
+  %h2.connection_title=title
+  %ul.member_lst.lst
+    -members.each do |member|
+      %li
+        .connection_profile_photo
+          =link_to image_for(member, '140x'), member
+        .name_and_tag
+          =link_to_self member, :class => 'member_name'
+          %ul.lst.connection_tags
+            -if showing_themes
+              =shared_theme_links logged_in_member, member
+            -else
+              =shared_tag_links logged_in_member, member
