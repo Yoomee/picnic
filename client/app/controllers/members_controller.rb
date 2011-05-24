@@ -89,6 +89,7 @@ MembersController.class_eval do
 
   def what_i_bring
     @member = logged_in_member
+    @other_members = Member.not_including(@member).find(:all, :conditions => "what_i_bring IS NOT NULL AND what_i_bring != ''", :limit => 5)
   end
 
   private

@@ -4560,6 +4560,17 @@ a.fancybox_edit {
 .action_what_i_bring .buttons .commit {
   float: right;
 }
+#example_what_i_brings li {
+  margin-top: 20px;
+}
+#example_what_i_brings img {
+  float: left;
+  margin-right: 2%;
+}
+#example_what_i_brings p {
+  float: left;
+  width: 70%;
+}
 
 /*========== auth_popup ==========*/
 #auth_popup {
