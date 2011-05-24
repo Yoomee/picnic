@@ -3898,11 +3898,20 @@ body.controller_badges .badge_photo {
 .stories_filter {
   margin-left: 350px;
 }
-
+#filter_loader {
+  width: 43px;
+  position: absolute;
+  right: 92px;
+  top: 3px;
+}
+#members_shouts {
+  position: relative;
+}
 .controller_members .stories_filter {
   float:right;
   margin-left:0;
   margin-right:150px;
+  margin-top: 8px;
 }
 
 .stories_filter ul li, .stories_filter ul {
