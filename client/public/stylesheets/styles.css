@@ -4875,11 +4875,11 @@ div.name_and_tag {
 	
 }
 
-p.recent_description {
+p.relevant_description {
 	color: #999;
 	
 }
-p.recent_description a {
+p.relevant_description a {
 	text-decoration: underline;
 }
 
