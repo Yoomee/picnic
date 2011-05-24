@@ -2145,6 +2145,22 @@ h3.profile_title {
 #about_me  h3 {
 	font-size:14px;
 }
+.no_member_themes_fancybox {
+  padding: 20px;
+  width: 500px;
+  float: left;
+}
+.no_member_themes_fancybox span.tag {
+  float: left;
+  clear: both;
+  font-size: 17px;
+}
+.no_member_themes_fancybox p {
+  float: left;
+  clear: both;
+  font-size: 16px;
+  margin: 20px 0 0 0;
+}
 
 /* ====== Stuff I like tabs (under profile picture)- optional ====== */
 #stuff ul.tabbernav {
@@ -4377,7 +4393,7 @@ li.wall_post {
 .themes_list li {
   margin: 0 0 8px 0;
 }
-a.tag {
+a.tag, .no_member_themes_fancybox .tag {
 	display: block;
 	padding: 5px 7px;
 	margin: 0 0 5px;
