@@ -7,6 +7,7 @@ class ClubController< ApplicationController
     @theme_tags = Tag.top_tags.limit(5)
     
     @bring_members = Member.scope_for_without_id_in('members', [logged_in_member.id]).with_what_i_bring.random.limit(12)
+    @nearby_members = Member.with_lat_lng.within_distance_of(logged_in_member, 250)
     #@connections = logged_in_member.connections
     # @same_tag_members = Member.scope_for_without_id_in('members', [logged_in_member.id]).tagged_with(logged_in_member.tag_list, :any => true).latest
     # @same_theme_members = Member.scope_for_without_id_in('members', [logged_in_member.id]).with_shout_tags(logged_in_member.shout_tag_list).latest

@@ -37,6 +37,10 @@ module ClientHelper
     "/client/images/marker_heart.png"
   end
   
+  def member_infobox(member)
+    render "members/infobox", :member => member
+  end
+  
   def nav_items
     items = Section.root.not_hidden.collect{|section| {
       :name => section.name,
