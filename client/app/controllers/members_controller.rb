@@ -34,22 +34,30 @@ MembersController.class_eval do
     end
   end
   alias_method_chain :new, :redirect
+  
+  def older_shouts
+    get_member
+    @shouts = get_shouts.paginate(:page => params[:page], :per_page => params[:per_page])
+    render :update do |page|
+      @shouts.each do |shout|
+        page.insert_html :bottom, :shout_wall, render_shout(shout)
+      end
+      if WillPaginate::ViewHelpers.total_pages_for_collection(@shouts) > params[:page].to_i
+        page << "$('#older_shouts_link').attr('onclick', '').unbind('click');"
+        page << "$('#older_shouts_link').click(function() {#{remote_function(:url => older_shouts_link_url(:parent => @member, :filter => @filter), :method => :get)}; return false;});"
+      else
+        page[:older_shouts_link].replace("")
+      end
+    end
+  end
 
   def show_with_shout_filtering
     if request.xhr? && params[:wants] == 'shouts'
-      filter = params[:filter]
-      shouts = case filter
-      when 'popular'
-        @member.recipientless_shouts.top_rated
-      when 'latest'
-        @member.recipientless_shouts
-      when 'received'
-        @member.received_shouts
-      end
+      shouts = get_shouts
       if shouts.empty?
-        render :text => (filter == 'received' ? @template.not_received_yet_message(@member) : @template.not_posted_yet_message(@member))
+        render :text => (@filter == 'received' ? @template.not_received_yet_message(@member) : @template.not_posted_yet_message(@member))
       else
-        render :text => @template.render_shouts(shouts)
+        render :text => @template.render_shouts(shouts, :parent => @member, :filter => @filter)
       end
     else
       show_without_shout_filtering
@@ -83,4 +91,17 @@ MembersController.class_eval do
     @member = logged_in_member
   end
 
+  private
+  def get_shouts
+    @filter = params[:filter]
+    case @filter
+    when 'popular'
+      @member.recipientless_shouts.top_rated
+    when 'latest'
+      @member.recipientless_shouts
+    when 'received'
+      @member.received_shouts
+    end
+  end
+  
 end

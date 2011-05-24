@@ -277,9 +277,9 @@
           -if @member.recipientless_shouts.empty?
             =not_posted_yet_message(@member)
           -else
-            =render_shouts(@member.recipientless_shouts, :show_member => true)
+            =render_shouts(@member.recipientless_shouts, :show_member => true, :parent => @member, :filter => 'latest')
         -else
-          =render_shouts(@member.received_shouts, :show_member => true)
+          =render_shouts(@member.received_shouts, :show_member => true, :parent => @member, :filter => 'received')
   .twocol.last
 .row
   -options_panel do

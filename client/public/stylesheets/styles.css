@@ -5552,15 +5552,15 @@ a.find_someone_photo {
 }
 .person .person_image {
   float: left;
-  width: 20%;
+  width: 18%;
 }
 .person .person_image img {
   width: 100% !important;
-  height: 100% !important;
+  height: auto !important;
 }
 .person .person_right {
   float: right;
-  width: 75%;
+  width: 78%;
 }
 .person .person_right a {
   font-weight: bold;

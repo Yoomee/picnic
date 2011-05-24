@@ -25,6 +25,7 @@ var FancyboxLoader = {
     $(".gallery a").fancybox();
     $('a.fancy').fancybox({
       'hideOnOverlayClick': false,
+      'autoScale': false,
       'onClosed': function() {
         $('#fb_permission_header, #fb_permission_message').hide();
         $('#fb_login_normal_header, #login_facebook_intro').show();
