@@ -16,19 +16,14 @@ Member.class_eval do
 
   named_scope :with_what_i_bring, :conditions => "what_i_bring > ''"
   
+  validates_presence_of :email
+  
   validates_length_of :what_i_bring, :maximum => Member::WHAT_I_BRING_MAX_LENGTH, :on => :update, :allow_blank => true
   validates_presence_of :what_i_bring, :on => :update, :unless => Proc.new {|member| member.force_password_change? || member.skip_what_i_bring_validation?}
   
   accepts_nested_attributes_for :urls
   
   # validates_presence_of :country, :unless => Proc.new {|member| !member.new_record? || member.twitter_connected? || member.linked_in_connected? || member.facebook_connected?}
-  
-  
-  class << self
-    def from_delegate(delegate)
-      
-    end
-  end
   
   def country
     location.country
