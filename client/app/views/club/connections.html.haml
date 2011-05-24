@@ -1,5 +1,178 @@
 -no_content_row
 -title "Connections", :hidden => true
+-content_for :head do
+  :javascript
+    $(document).ready(function(){
+      $('.cycle').cycle({
+        fx: 'scrollHorz',
+        speed: 'slow',
+        timeout: 8000,
+        easing: 'easeOutQuint',
+        pager: '.cycle_nav',
+        next: '.cycle_next',
+        prev: '.cycle_prev'
+      });
+    });
+.row
+  #bring_wrapper.twelvecol
+    %h2#bring_title.connection_title
+      Other people are bringing...
+    .cycle_nav
+    #bring_carousel.cycle
+      .bring_box
+        %ul
+          %li.bring_item
+            .bring_profile
+              =link_to image_tag("member_image.png"), "#map", :class=>"bring_profile_img_link"
+              =link_to "Kasper Johanson", "#", :class=>"member_name"
+            .bring_quote
+              I bring something great and something else here, and something else dfg dfsg  dsfgdf g
+          %li.bring_item
+            .bring_profile
+              =link_to image_tag("member_image.png"), "#map", :class=>"bring_profile_img_link"
+              =link_to "Kasper Johanson", "#", :class=>"member_name"
+            .bring_quote
+              I bring something great and something else here
+          %li.bring_item
+            .bring_profile
+              =link_to image_tag("member_image.png"), "#map", :class=>"bring_profile_img_link"
+              =link_to "Kasper Johanson", "#", :class=>"member_name"
+            .bring_quote
+              I bring something great and something else here, and something else dfg dfg dfg
+          %li.bring_item
+            .bring_profile
+              =link_to image_tag("member_image.png"), "#map", :class=>"bring_profile_img_link"
+              =link_to "Kasper Johanson", "#", :class=>"member_name"
+            .bring_quote
+              I bring something great and something else here, and something else                         
+      .bring_box
+        %ul
+          %li.bring_item
+            .bring_profile
+              =link_to image_tag("member_image.png"), "#map", :class=>"bring_profile_img_link"
+              =link_to "Kasper Johanson", "#", :class=>"member_name"
+            .bring_quote
+              I bring something great and something else here, and something else
+          %li.bring_item
+            .bring_profile
+              =link_to image_tag("member_image.png"), "#map", :class=>"bring_profile_img_link"
+              =link_to "Kasper Johanson", "#", :class=>"member_name"
+            .bring_quote
+              I bring something great and something else here, and something else
+          %li.bring_item
+            .bring_profile
+              =link_to image_tag("member_image.png"), "#map", :class=>"bring_profile_img_link"
+              =link_to "Kasper Johanson", "#", :class=>"member_name"
+            .bring_quote
+              I bring something great and something else here, and something else
+          %li.bring_item
+            .bring_profile
+              =link_to image_tag("member_image.png"), "#map", :class=>"bring_profile_img_link"
+              =link_to "Kasper Johanson", "#", :class=>"member_name"
+            .bring_quote
+              I bring something great and something else here, and something else                         
+      .bring_box
+        %ul
+          %li.bring_item
+            .bring_profile
+              =link_to image_tag("member_image.png"), "#map", :class=>"bring_profile_img_link"
+              =link_to "Kasper Johanson", "#", :class=>"member_name"
+            .bring_quote
+              I bring something great and something else here, and something else
+          %li.bring_item
+            .bring_profile
+              =link_to image_tag("member_image.png"), "#map", :class=>"bring_profile_img_link"
+              =link_to "Kasper Johanson", "#", :class=>"member_name"
+            .bring_quote
+              I bring something great and something else here, and something else
+          %li.bring_item
+            .bring_profile
+              =link_to image_tag("member_image.png"), "#map", :class=>"bring_profile_img_link"
+              =link_to "Kasper Johanson", "#", :class=>"member_name"
+            .bring_quote
+              I bring something great and something else here, and something else
+          %li.bring_item
+            .bring_profile
+              =link_to image_tag("member_image.png"), "#map", :class=>"bring_profile_img_link"
+              =link_to "Kasper Johanson", "#", :class=>"member_name"
+            .bring_quote
+              I bring something great and something else here, and something else                         
+              
+  =#render :partial => 'themes/trending'
+  #tags_wrapper.twelvecol
+    .tags_top
+      %h2#tags_title.connection_title
+        Tags
+      #connection_tags_list  
+        %ul
+          %li.active_tag
+            =link_to "Table tennis", "#", :class=>"tag"
+          %li  
+            =link_to "Design", "#", :class=>"tag"
+          %li  
+            =link_to "Technology", "#", :class=>"tag"
+          %li  
+            =link_to "Fencing", "#", :class=>"tag"
+          %li  
+            =link_to "Table tennis", "#", :class=>"tag"
+          %li  
+            =link_to "Design", "#", :class=>"tag"
+          %li  
+            =link_to "Technology", "#", :class=>"tag"
+          %li  
+            =link_to "Fencing", "#", :class=>"tag"
+          %li  
+            =link_to "Table tennis", "#", :class=>"tag"
+          
+    .tags_bottom
+      =link_to image_tag("member_image.png"), "#map", :class=>"tag_profile_img_link"
+      =link_to image_tag("member_image.png"), "#map", :class=>"tag_profile_img_link"
+      =link_to image_tag("member_image.png"), "#map", :class=>"tag_profile_img_link"
+      =link_to image_tag("member_image.png"), "#map", :class=>"tag_profile_img_link"
+      =link_to image_tag("member_image.png"), "#map", :class=>"tag_profile_img_link"
+      =link_to image_tag("member_image.png"), "#map", :class=>"tag_profile_img_link"
+      =link_to image_tag("member_image.png"), "#map", :class=>"tag_profile_img_link"
+      =link_to image_tag("member_image.png"), "#map", :class=>"tag_profile_img_link"
+  #recent_connections.sixcol
+    %h2.connection_title Recent connections
+    %ul.member_lst.lst
+      %li
+        .connection_profile_photo
+          =link_to image_tag("member_image.png"), "#map"
+        .name_and_tag
+          =link_to "Kasper Johanson", "#", :class=>"member_name"
+          %p.recent_description
+            Became friends with 
+            =link_to 'Dave smith'
+      %li
+        .connection_profile_photo
+          =link_to image_tag("member_image.png"), "#map"
+        .name_and_tag
+          =link_to "Kasper Johanson", "#", :class=>"member_name"
+          %p.recent_description
+            Did something else
+      %li
+        .connection_profile_photo
+          =link_to image_tag("member_image.png"), "#map"
+        .name_and_tag
+          =link_to "Kasper Johanson", "#", :class=>"member_name"
+          %p.recent_description
+            Pellentesque Eu Est A Nulla Placerat Dignissim. Morbi A Enim In Magna Semper Bibendum. EtiamPellentesque Eu Est A Nulla Placerat Dignissim. Morbi A Enim In Magna Semper Bibendum. Etiam
+      %li
+        .connection_profile_photo
+          =link_to image_tag("member_image.png"), "#map"
+        .name_and_tag
+          =link_to "Kasper Johanson", "#", :class=>"member_name"
+          %p.recent_description
+            Became friends with 
+            =link_to 'Dave smith'                                    
+  #people_near_me.sixcol.last  
+    %h2.connection_title 
+      People near me
+    =google_map([], :width => 550, :height => 300, :centre => [30, 0], :zoom => 2, :map_options => "scrollwheel:false,disableDefaultUI:true")  
+
+
+
 .row
   =#render :partial => 'themes/trending'
   .fourcol
@@ -40,6 +213,11 @@
     -elsif !@same_theme_members.empty?
       =render "connection_box", :title => "People that share themes with you", :members => @same_theme_members, :showing_themes => true
 
+
+
 .row    
   -options_panel do
     =back_link
+    
+    
+    

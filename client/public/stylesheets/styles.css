@@ -53,7 +53,7 @@ h1, h2, h3, h4, h5, h6 {
 
 	
 }
-#nav, #subnav, #user_links .button {
+#nav, #subnav, #user_links .button, .bring_quote, .cycle_nav a {
 	font-family:'VAG Rounded W02 Light', arial, sans-serif;
 }
 
@@ -1077,43 +1077,6 @@ h1#site_logo a {
 }
 h1#site_logo a:active {
 }
-
-/* =======  cycle  ====== */
-.cycle_frame {
-	position:relative;
-	border:1px solid #9C9C9C;
-}
-.cycle {}
-.cycle_nav {
-	/*background:url(/images/ipad_smoke.png) repeat-x;*/
-	background:#979797;
-	opacity:0.5;;
-	bottom:0;
-	float:left;
-	height:40px;
-	left:0;
-	position:absolute;
-	width:100%;
-	z-index:200;
-}
-
-.cycle_nav a {
-	display: block;
-	float: left;
-	font-size: 15px;
-	color:#fff;
-	padding: 5px 15px;
-	margin: 5px 5px 0;
-	
-	 -moz-border-radius:10px;
-     -webkit-border-radius:10px;
-     border-radius:10px;
-
-}
-.cycle_nav a:hover {
-	background:#000;
-}
-
 
 #user_links p {
 	margin:0;
@@ -3726,10 +3689,7 @@ div.page_share {
 	height: 600px;
 	
 }
-body.controller_club.action_connections, body.controller_club.action_leaderboard {
-	background: #f5f5f5 url(/images/bg_purple.jpg) bottom no-repeat;
 
-}
 */
 /*========== Register ==========*/
 
@@ -4665,6 +4625,170 @@ ul.facelist-selections li.facelist-selection-item {
 
 /*========== Club connections page ==========*/
 
+#bring_wrapper {
+	position: relative;
+	margin: 0 0 40px;
+
+}
+#bring_carousel {
+	float: left;
+	width: 100%;
+
+}
+.bring_box {
+	width: 100%;
+	float: left;
+	margin: 0;
+}
+#bring_carousel ul {
+	margin: 0;
+	float: left;
+	width: 100%;
+}
+li.bring_item {
+	display: block;
+	float: left;
+	width: 21%;
+	clear: none;
+	margin: 0;
+	background: #fff;
+	padding: 2%;
+	min-height: 160px;
+	
+}
+/* =======  cycle  ====== */
+.cycle_frame {
+	position:relative;
+	border:1px solid #9C9C9C;
+}
+.cycle {}
+.cycle_nav {
+	/*background:url(/images/ipad_smoke.png) repeat-x;*/
+	top:0;
+	float:left;
+	height:40px;
+	right:0;
+	position:absolute;
+	width:100px;
+	z-index:200;
+}
+
+.cycle_nav a {
+	display: block;
+	float: left;
+	font-size: 15px;
+	color:#989;
+	padding: 5px 10px;
+	margin: 5px 0px 0;
+	
+	 -moz-border-radius:10px;
+     -webkit-border-radius:10px;
+     border-radius:10px;
+
+}
+.cycle_nav a.activeSlide {
+	color: #000;
+	
+}
+.cycle_nav a:hover {
+
+}
+.bring_profile {
+	float: left;
+	width: 100%;
+	font-weight: bold;
+	
+}
+
+a.bring_profile_img_link {
+	display: block;
+	float: left;
+	width: 20px;
+	margin: 0 10px 0 0;
+	
+}
+.bring_quote {
+	float: left;
+	font-size: 17px;
+	margin: 10px 0;
+}
+
+#tags_wrapper {
+	float: left;
+	margin: 0 0 30px 0;
+}
+
+.tags_top {
+	float: left;
+	width: 100%;
+	margin: 0;
+}
+.tags_top ul {
+	margin: 0;
+	float: left;
+	width:1000px;
+}
+.tags_top li {
+	float: left;
+	list-style-type: none;
+	margin: 5px 10px 0 0 ;
+	padding: 0 0 15px 0;
+}
+h2#tags_title {
+	float: left;
+	margin: 0 0px 0 0;
+	width: 10%;
+	
+}
+
+#connection_tags_list {
+	width: 90%;
+
+	float: left;
+	overflow: hidden;
+	
+}
+
+.tags_top a.tag {
+	margin: 0;
+}
+li.active_tag a.tag {
+	background: #000;
+}
+li.active_tag {
+	background: url(/images/connection_active_tag.png) no-repeat center 26px;
+
+}
+a.tag_profile_img_link {
+	display: block;
+	float: left;
+	width: 50px;
+	margin: 10px 0px 10px 10px;
+	
+}
+
+.tags_bottom {
+	background: #000;
+	float: left;
+	width: 100%;
+	padding: 0px;
+
+}
+
+#tag_people_count {
+	display: block;
+	float: left;
+	color: #fff;
+	font-size: 16px;
+	margin: 10px;
+	
+}
+
+
+
+
+
+
 div#connections_map {
 	float: left;
 	width: 100%;
@@ -4694,21 +4818,21 @@ div.connection_box {
 }
 
 h2.connection_title {
-	margin-bottom: 20px;
-	font-size: 18px;
+	margin-bottom: 10px;
+	font-size: 24px;
 	
 }
 
 ul.member_lst li {
 	width: 100%;
 	margin: 0 0 10px;
-	border-bottom: 1px solid #f5f5f5;
+	border-bottom: 1px solid #ccc;
 	padding-bottom: 10px ;
 	
 }
 
 .connection_profile_photo {
-	width: 64px;
+	width: 50px;
 	float: left;
 	margin: 0 20px 0 0;
 	
@@ -4716,8 +4840,18 @@ ul.member_lst li {
 
 div.name_and_tag {
 	float: left;
-	width: 185px;
+	width: 80%;
+	
 }
+
+p.recent_description {
+	color: #999;
+	
+}
+p.recent_description a {
+	text-decoration: underline;
+}
+
 ul.member_lst a.member_name {
 	width: 100%;
 	font-size: 16px;

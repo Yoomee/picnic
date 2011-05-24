@@ -185,7 +185,24 @@
           =render('urls/add_service', :url_object => Url.new)
     #member_themes.themes_list.subrow
       %h3.profile_title="About the real #{forename_or_me(@member)}"
-      =render('themes/list', :tags => @member.tags, :list_id => "member_#{@member.id}_themes")
+      -if @member.tags.empty?
+        -if logged_in_member==@member
+          %p You haven't added any themes yet so we have added some for you.
+        %ul.lst{:id => "member_#{@member.id}_themes"}
+          -Tag::FUN_TAGS.random_elements(3).each do |tag_name|
+            %li
+              -link_to("#empty_tags_message", :class => "fancy tag") do
+                %span=tag_name
+        %div{:style => "display:none"}
+          #empty_tags_message
+            -if logged_in_member==@member
+              %p You haven't added any themes yet so we have added some for you. 
+              %p You may want to edit these if you they don't quite suit you!
+            -else
+              %p="#{@member.forename} hasn't added any themes yet so we have added some for them."
+              %p Write on their wall and encourage them to get descriptive!
+      -else
+        =render('themes/list', :tags => @member.tags, :list_id => "member_#{@member.id}_themes")
       =fancybox_edit(@member, :tags_list, :partial => "members/themes_form", :link_text => (@member.tags.blank? ? "Add your themes  ": "Edit" ))
         
     .subrow
