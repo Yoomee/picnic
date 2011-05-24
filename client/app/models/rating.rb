@@ -5,8 +5,8 @@ Rating.class_eval do
   private
   def trigger_points_event(options = {})
     return true if rateable_type != "Shout" || rateable.member == member
-    rateable.member.handle_points_event((positive? ? :like_my_discussion : :dislike_my_discussion), rateable, options)
-    member.handle_points_event(:rate_discussion, rateable, options)
+    rateable.member.handle_points_event((positive? ? :like_my_shout : :dislike_my_shout), rateable, options)
+    member.handle_points_event(:rate_shout, rateable, options)
   end
   
 end

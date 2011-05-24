@@ -5515,18 +5515,18 @@ a.find_someone_photo {
 }
 #top_people .person_col {
   float: left;
-  margin-right: 15px;
-  width: 260px;
+  margin-right: 3%;
+  width: 47%;
 }
 #top_people_inner {
   float: left;
   clear: both;
   min-height: 352px;
 }
-#top_people .pagination, #top_people .leaderboard_loader {
+#leaderboard_left .pagination, #leaderboard_left .leaderboard_loader {
   float: right;
   clear: both;
-  margin-right: 80px;
+  margin-right: 3%;
 }
 .person {
   float: left;
@@ -5537,11 +5537,15 @@ a.find_someone_photo {
 }
 .person .person_image {
   float: left;
-  margin-right: 10px;
+  width: 20%;
+}
+.person .person_image img {
+  width: 100% !important;
+  height: 100% !important;
 }
 .person .person_right {
-  float: left;
-  width: 200px;
+  float: right;
+  width: 75%;
 }
 .person .person_right a {
   font-weight: bold;
@@ -5553,19 +5557,16 @@ a.find_someone_photo {
 }
 #top_posters {
   float: left;
-  margin-right: 40px;
+  width: 47%;
 }
 #top_posters_inner {
-  width: 260px;
-  float: left;
-  clear: both;
-}
-#top_posters .pagination, #top_posters .leaderboard_loader {
+  width: 100%;
   float: left;
   clear: both;
 }
 #top_tags {
-  float: left;
+  float: right;
+  width: 40%;
 }
 
 #points_transfers li.points_transfer {
