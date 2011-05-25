@@ -2070,6 +2070,15 @@ h3.profile_title {
   clear: none;
   margin-right: 10px;
 }
+#member_location #map_canvas {
+  float: left;
+  clear: both;
+}
+#member_location .edit_member_location_link {
+  float: left;
+  clear: both;
+  margin-top: 10px;
+}
 #member_location {
   float: left;
   width: 50%;
