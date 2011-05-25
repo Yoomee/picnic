@@ -5947,8 +5947,11 @@ h1#site_logo a {
   .newsbox {
 	background: none;
 }
-p.newsbox_text {
+.newsbox p {
 	float: left;
+}
+.newsbox img {
+	margin-bottom: 10px;
 }
 
 #main_container {
