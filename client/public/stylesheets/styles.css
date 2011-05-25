@@ -5910,6 +5910,7 @@ table#delegates th{
  } 
  .splash_inner .heading .fr {
 	float: left;
+	clear: both;
 }
 #nav_line_row {
 	position: relative;
