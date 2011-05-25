@@ -1,38 +1,70 @@
-.row
-  #footer_sitemap.twelvecol.last
-  #picnic_section.sitemap_list.twocol
-    %h3=link_to 'Festival', '#'
-    %ul 
-      %li
-        =link_to_slug("News", :news)
-      %li
-        =link_to_slug("Overview", :overview)
-      %li
-        =link_to_slug("Themes", :themes)
-      %li
-        =link_to_slug("Registration", :registration)
-  #club.sitemap_list.twocol
-    %h3=link_to 'Club', '#'
-    %ul 
-      %li
-        =link_to "intro", "/club"
-      %li
-        =link_to "Connections", "/connections"
-      %li
-        =link_to "Leaderboards", "/leaderboard"
-      %li
-        =link_to "Sign up", :controller=> 'members', :action=> 'new' 
-  #about.sitemap_list.twocol
-    %h3=link_to 'About', '#'
-    %ul 
-      %li
-        =link_to_slug("What is PICNIC", :what_is_picnic)
-      %li
-        =link_to_slug("Press room", :press_room)
-      %li
-        =link_to_slug("Stay in touch", :stay_in_touch)
-      %li
-        =link_to_slug("Contact", :contact)
-  #footer_copyright.twelvecol.last
-    %p
-      ©2011 PICNIC. All rights reserved.      
+#footer.container
+  .row
+    #footer_sitemap.twelvecol.last
+    #picnic_section.sitemap_list.twocol
+      %h3=link_to 'Festival', '#'
+      %ul 
+        %li
+          =link_to_slug("News", :news)
+        %li
+          =link_to_slug("Overview", :overview)
+        %li
+          =link_to_slug("Themes", :themes)
+        %li
+          =link_to_slug("Registration", :registration)
+    #club.sitemap_list.twocol
+      %h3=link_to 'Club', '#'
+      %ul 
+        %li
+          =link_to "intro", "/club"
+        %li
+          =link_to "Connections", "/connections"
+        %li
+          =link_to "Leaderboards", "/leaderboard"
+        %li
+          =link_to "Sign up", :controller=> 'members', :action=> 'new' 
+    #about.sitemap_list.twocol
+      %h3=link_to 'About', '#'
+      %ul 
+        %li
+          =link_to_slug("What is PICNIC", :what_is_picnic)
+        %li
+          =link_to_slug("Press room", :press_room)
+        %li
+          =link_to_slug("Stay in touch", :stay_in_touch)
+        %li
+          =link_to_slug("Contact", :contact)
+#iamsterdam.container
+  .row          
+    .twelvecol.last
+      =link_to 'Iamsterdam', 'http://www.iamsterdam.com/', :target=>'blank'
+#sponsors.container      
+  .row      
+    #premium_sponsors_title.twelvecol.last      
+      %p Premium Sponsors
+    #lottery_sponsor.sponsor.threecol  
+      =link_to 'Postcodeloterij', 'http://www.postcodeloterij.nl/', :target=>'blank'  
+    #vodaphone_sponsor.sponsor.threecol  
+      =link_to 'Vodaphone', 'http://www.vodafone.nl/', :target=>'blank'  
+    
+    #sponsors_title.twelvecol.last      
+      %p Sponsors
+    #upc_sponsor.sponsor.threecol  
+      =link_to 'UPC', 'http://www.upc.nl/', :target=>'blank'
+    #ey_sponsor.sponsor.threecol  
+      =link_to 'Ernst & Young', 'http://www.ey.com/', :target=>'blank'
+    #inholland_sponsor.sponsor.threecol  
+      =link_to 'InHolland', 'http://www.inholland.nl/', :target=>'blank'
+    #chamber_sponsor.sponsor.threecol.last  
+      =link_to 'Dutch Chamber of Commerce', 'http://www.kvk.nl/', :target=>'blank'
+    #rtl_sponsor.sponsor.threecol  
+      =link_to 'RTL', 'http://www.rtl.nl/service/rtlnederland/home/', :target=>'blank'
+    #sii_sponsor.sponsor.threecol  
+      =link_to 'SII', 'http://www.si-i.nl/', :target=>'blank'
+    #logica_sponsor.sponsor.threecol  
+      =link_to 'Logica', 'http://www.logica.com/', :target=>'blank'
+    
+    #footer_copyright.twelvecol.last
+      %p
+        ©2011 PICNIC. All rights reserved.
+      =link_to 'yoomee', 'http://www.yoomee.com/', :target=>'blank', :id=>'yoomee_link'

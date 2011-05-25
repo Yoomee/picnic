@@ -2307,6 +2307,7 @@ ul.action_links li {
 	margin-top: 10px;
 	margin-bottom: 20px;
 	padding-top: 10px;
+	height: 60px;
 
 }
 #footer_sitemap {
@@ -2374,7 +2375,117 @@ div#footer_links {
 
 }
 
+#iamsterdam { 
+	background: #4d4d4d;
+	padding: 0;
+	width: 100%;
+}
+#iamsterdam:hover {
+	background: #ff0000 ;
+}
+#iamsterdam .twelvecol {
 
+}
+#iamsterdam a {
+	float: right;
+	display: block;
+	width: 210px;
+	margin: 10px 0 5px;
+	height: 30px;
+	text-indent: -9000em;
+	background: url(/images/sponsors.jpg) -2px -804px;
+}
+#iamsterdam:hover a {
+	background-position: -282px -804px;
+}
+
+#sponsors {
+	background: #fff;
+	
+}
+.sponsor a {
+	background: url(/images/sponsors.jpg) -3px -3px;
+	display: block;
+	width: 100%;
+	height: 70px;
+	text-indent: -9000em;
+}
+
+#lottery_sponsor a:hover {
+	background-position: -283px -3px;
+	
+}
+
+#sponsors_title, #premium_sponsors_title {
+	font-weight: bold;
+	padding-top: 20px;
+	
+}
+
+#vodaphone_sponsor a {
+	background-position: -1px -80px;	
+}
+#vodaphone_sponsor a:hover {
+	background-position: -280px -80px;	
+}
+#upc_sponsor a {
+	background-position: -1px -162px;	
+}
+#upc_sponsor a:hover {
+	background-position: -281px -162px;	
+}
+#ey_sponsor a {
+	background-position: -1px -240px;	
+}
+#ey_sponsor a:hover {
+	background-position: -281px -240px;	
+}
+#inholland_sponsor a {
+	background-position: -1px -300px;	
+}
+#inholland_sponsor a:hover {
+	background-position: -281px -300px;	
+}
+#chamber_sponsor a {
+	background-position: -1px -387px;	
+}
+#chamber_sponsor a:hover {
+	background-position: -281px -387px;	
+}
+#rtl_sponsor a {
+	background-position: -1px -504px;	
+}
+#rtl_sponsor a:hover {
+	background-position: -281px -504px;	
+}
+#sii_sponsor a {
+	background-position: -1px -584px;	
+}
+#sii_sponsor a:hover {
+	background-position: -281px -584px;	
+}
+#logica_sponsor a {
+	background-position: -1px -689px;	
+}
+#logica_sponsor a:hover {
+	background-position: -281px -689px;	
+}
+
+#footer_copyright p {
+	float: left;
+}
+
+
+a#yoomee_link {
+	display: block;
+	background: url(/images/sprite_picnic.png) 0 -60px;
+	width: 68px;
+	margin: 0;
+	height: 30px;
+	text-indent: -9000em;
+	float: right;
+	
+}
 
 
 /* ====================  calendar/event styles  ===================== */
@@ -5863,6 +5974,13 @@ p.newsbox_text {
 	float: left;
 	width: 100%;
 }  
+#sponsors .sponsor a {
+	width: 200px;
+}
+.shout_right {
+	width: 80%;
+}
+
 }
 
 @media handheld, only screen and (max-width: 500px) {
