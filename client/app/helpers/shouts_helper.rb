@@ -72,4 +72,8 @@ ShoutsHelper.module_eval do
     "
   end
   
+  def toggle_attachable_second_arg(shout)
+    shout.new_record? ? '' : ", #{shout.id}"
+  end
+
 end
