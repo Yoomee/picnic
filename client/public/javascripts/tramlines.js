@@ -66,8 +66,10 @@ var ShoutForm = {
   showCommentForm: function(elem) {
     $('.wall_form').addClass('closed');
     $('.wall_form .wall_post_text_input').val('');
-    elem.parents('.wall_form').removeClass('closed');
-    elem.next('form').find('.wall_post_text_input').focus();
+    /*elem.parents('.wall_form').removeClass('closed');*/
+    elem.parents('.shout_right').find('.wall_form').removeClass('closed');
+    /*elem.next('form').find('.wall_post_text_input').focus();*/
+    elem.parents('.shout_right').find('.wall_post_text_input').focus();
   }
 };
 

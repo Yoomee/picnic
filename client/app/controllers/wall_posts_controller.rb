@@ -1,4 +1,4 @@
-WallPostsController::HELP_MESSAGE = "Enter your comment..."
+WallPostsController::HELP_MESSAGE = "Add comment"
 WallPostsController.class_eval do
   
   def show
