@@ -41,6 +41,10 @@ Member.class_eval do
       self.password_generated = true
     end
   end
+  
+  def allowed_job_title?
+    has_badge?(:picnic11_speaker) || has_badge?(:picnic11_team) || has_badge?(:picnic_advisor)
+  end
     
   def skip_news_feed_with_field_blacklist
     skip_news_feed_without_field_blacklist || changed.all? {|attr| attr.in?(Member::NEWS_FEED_FIELD_BLACKLIST)}
