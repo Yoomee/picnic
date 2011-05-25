@@ -46,4 +46,8 @@ Tag.class_eval do
     
   end
   
+  def official?
+    !description.blank?
+  end
+  
 end

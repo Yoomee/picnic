@@ -18,7 +18,7 @@ Member.class_eval do
   named_scope :with_what_i_bring, :conditions => "what_i_bring > ''"
   named_scope :with_theme_tag, lambda{|tag| {:joins => "INNER JOIN shouts ON shouts.member_id=members.id INNER JOIN taggings ON taggings.taggable_id=shouts.id", :conditions => ["taggings.taggable_type='Shout' AND taggings.tag_id=?", tag.id], :group => "members.id"}}
   
-  validates_presence_of :email
+  validates_presence_of :email, :unless => :allow_username_instead_of_email?
   
   validates_length_of :what_i_bring, :maximum => Member::WHAT_I_BRING_MAX_LENGTH, :on => :update, :allow_blank => true
   validates_presence_of :what_i_bring, :on => :update, :unless => Proc.new {|member| member.force_password_change? || member.skip_what_i_bring_validation?}
@@ -40,6 +40,10 @@ Member.class_eval do
       self.password = self.class::generate_password
       self.password_generated = true
     end
+  end
+  
+  def allowed_job_title?
+    has_badge?(:picnic11_speaker) || has_badge?(:picnic11_team) || has_badge?(:picnic_advisor)
   end
     
   def skip_news_feed_with_field_blacklist

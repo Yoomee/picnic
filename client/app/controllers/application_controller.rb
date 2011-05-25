@@ -4,15 +4,14 @@ ApplicationController.class_eval do
   
   before_filter :check_what_i_bring
   
-  helper_method :home_section_path
-
-  
-  def home_section_path
-    if Section.count > 1
-      section_path Section.root.ascend_by_weight.first
-    else
-      home_path
+  helper_method :home_section  
+  def home_section
+    return nil if Section.count < 1
+    section = Section.root.ascend_by_weight.first
+    while section.destination != section do
+      section = section.destination 
     end
+    section
   end
 
   protected

@@ -92,7 +92,7 @@ module ClientHelper
   end
   
   def viewing_club?
-    current_page?(club_path) || current_page?(new_member_path) || current_page?(connections_path) || current_page?(leaderboard_path) || current_page?(:controller => "members", :action => "show")
+    current_page?(club_path) || current_page?(connections_path) || current_page?(leaderboard_path) || (controller_name == 'members') || controller_name=="tags"
   end
   alias_method :in_club?, :viewing_club?
   

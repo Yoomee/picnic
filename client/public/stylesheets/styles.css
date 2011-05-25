@@ -2064,6 +2064,15 @@ h3.profile_title {
   clear: none;
   margin-right: 10px;
 }
+#member_location #map_canvas {
+  float: left;
+  clear: both;
+}
+#member_location .edit_member_location_link {
+  float: left;
+  clear: both;
+  margin-top: 10px;
+}
 #member_location {
   float: left;
   width: 50%;
@@ -3775,7 +3784,6 @@ div.page_share {
   margin-bottom: 0px;
 }
 .auth_link#linkedin {
-  margin-top: -4px;
 }
 .auth_links .auth_link {
   float: left;
@@ -3948,10 +3956,10 @@ body.controller_badges .badge_photo {
 }
 /*====================== Newsnetwork home ====================*/
 
-/*.map_canvas a, .map_canvas span {
+.map_canvas a, .map_canvas span {
   color:#ffffff !important;
   text-shadow:0 1px 0 #A0A0A0;   
-}*/
+}
 .map_row {
   background: #e8e8e8;
   margin-bottom: 40px;
@@ -4464,7 +4472,10 @@ li.wall_post {
   margin: 0;
   clear: none;
 }
-a.tag, .no_member_themes_fancybox .tag {
+#trending_themes {
+  min-height: 250px;
+}
+a.tag, .no_member_themes_fancybox .tag, .controller_tags h1.tag {
 	display: block;
 	padding: 5px 7px;
 	margin: 0 0 5px;
@@ -4473,10 +4484,18 @@ a.tag, .no_member_themes_fancybox .tag {
 	float: left;
 	background:rgba(0,0,0,0.3);
 	color: #fff;
-	
 	border-radius:3px;
-
-
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+}
+.controller_tags h1.tag {
+  font-size: 34px;
+  line-height: 32px;
+  margin-bottom: 20px;
+  padding: 8px 10px;
+}
+.controller_tags .profile_title {
+  margin-bottom: 20px;
 }
 form.tag {
   padding: 0;
@@ -4524,7 +4543,7 @@ ul.page_lst li.active a {
   margin: 0 5% 0 0;
   height: 350px;
 }
-.controller_tags h2.tag {
+.controller_tags h1.tag {
   float: left;
 }
 .controller_tags .tag_description {
@@ -5716,7 +5735,12 @@ table#delegates th{
 	-moz-box-shadow:0px 0px 10px #000000;
   -webkit-box-shadow:0px 0px 10px #000000;
   box-shadow:0px 0px 10px #000000;
-  width:150px;
+  width:230px;
+}
+
+.infoBox a, .infobox a {
+  color: black !important;
+  text-shadow:none;
 }
 
 .infobox_left {
@@ -5726,7 +5750,7 @@ table#delegates th{
 }
 .infobox_right {
   float:left;
-  width:100px;
+  width:180px;
 }
 
 .infobox_right a {

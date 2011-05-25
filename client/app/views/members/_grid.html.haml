@@ -1,3 +1,4 @@
+-team = ((defined? team) ? team : false)
 #member_grid
   %ul.lst
     -members.each do |member|
@@ -5,6 +6,7 @@
         =link_to(image_for(member, "100x100#"), member, :class => 'member_grid_image')
         .member_grid_info
           =link_to_self(member)
+          =member.job_title if team
 -#  
   %ul.lst
     -members.each_with_col_name(6) do |member, col_name|

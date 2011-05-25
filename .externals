@@ -41,30 +41,70 @@ path = vendor
 repository = git://git.yoomee.com:4321/tramlines/vendor.git
 scm = git
 
+[vendor/plugins/acts_as_network]
+path = vendor/plugins/acts_as_network
+scm = git
+repository = git://github.com/sjlombardo/acts_as_network.git
+
 [vendor/plugins/event_calendar]
 path = vendor/plugins/event_calendar
 scm = git
 repository = git://github.com/elevation/event_calendar.git
 
-[vendor/plugins/tramlines_events]
-path = vendor/plugins/tramlines_events
+[vendor/plugins/tramlines_adverts]
+path = vendor/plugins/tramlines_adverts
 scm = git
-repository = git://git.yoomee.com:4321/plugins/tramlines_events.git
+repository = git://git.yoomee.com:4321/plugins/tramlines_adverts.git
 
 [vendor/plugins/tramlines_auth]
 path = vendor/plugins/tramlines_auth
 scm = git
 repository = git://git.yoomee.com:4321/plugins/tramlines_auth.git
 
+[vendor/plugins/tramlines_badges]
+path = vendor/plugins/tramlines_badges
+scm = git
+repository = git://git.yoomee.com:4321/plugins/tramlines_badges.git
+
+[vendor/plugins/tramlines_connections]
+path = vendor/plugins/tramlines_connections
+scm = git
+repository = git://git.yoomee.com:4321/plugins/tramlines_connections.git
+
+[vendor/plugins/tramlines_events]
+path = vendor/plugins/tramlines_events
+scm = git
+repository = git://git.yoomee.com:4321/plugins/tramlines_events.git
+
+[vendor/plugins/tramlines_friends]
+path = vendor/plugins/tramlines_friends
+repository = git://git.yoomee.com:4321/plugins/tramlines_friends.git
+scm = git
+
 [vendor/plugins/tramlines_locations]
 path = vendor/plugins/tramlines_locations
 scm = git
 repository = git://git.yoomee.com:4321/plugins/tramlines_locations.git
 
-[vendor/plugins/tramlines_badges]
-path = vendor/plugins/tramlines_badges
+[vendor/plugins/tramlines_messages]
+path = vendor/plugins/tramlines_messages
+repository = git://git.yoomee.com:4321/plugins/tramlines_messages.git
 scm = git
-repository = git://git.yoomee.com:4321/plugins/tramlines_badges.git
+
+[vendor/plugins/tramlines_notifications]
+path = vendor/plugins/tramlines_notifications
+scm = git
+repository = git://git.yoomee.com:4321/plugins/tramlines_notifications.git
+
+[vendor/plugins/tramlines_picnic_auth]
+path = vendor/plugins/tramlines_picnic_auth
+scm = git
+repository = git://git.yoomee.com:4321/plugins/tramlines_picnic_auth.git
+
+[vendor/plugins/tramlines_ratings]
+path = vendor/plugins/tramlines_ratings
+scm = git
+repository = git://git.yoomee.com:4321/plugins/tramlines_ratings.git
 
 [vendor/plugins/tramlines_shouts]
 path = vendor/plugins/tramlines_shouts
@@ -76,37 +116,3 @@ path = vendor/plugins/tramlines_walls
 scm = git
 repository = git://git.yoomee.com:4321/plugins/tramlines_walls.git
 
-[vendor/plugins/tramlines_notifications]
-path = vendor/plugins/tramlines_notifications
-scm = git
-repository = git://git.yoomee.com:4321/plugins/tramlines_notifications.git
-
-[vendor/plugins/tramlines_ratings]
-path = vendor/plugins/tramlines_ratings
-scm = git
-repository = git://git.yoomee.com:4321/plugins/tramlines_ratings.git
-
-[vendor/plugins/tramlines_adverts]
-path = vendor/plugins/tramlines_adverts
-scm = git
-repository = git://git.yoomee.com:4321/plugins/tramlines_adverts.git
-
-[vendor/plugins/tramlines_friends]
-path = vendor/plugins/tramlines_friends
-repository = git://git.yoomee.com:4321/plugins/tramlines_friends.git
-scm = git
-
-[vendor/plugins/acts_as_network]
-path = vendor/plugins/acts_as_network
-scm = git
-repository = git://github.com/sjlombardo/acts_as_network.git
-
-[vendor/plugins/tramlines_picnic_auth]
-path = vendor/plugins/tramlines_picnic_auth
-scm = git
-repository = git://git.yoomee.com:4321/plugins/tramlines_picnic_auth.git
-
-[vendor/plugins/tramlines_messages]
-path = vendor/plugins/tramlines_messages
-repository = git://git.yoomee.com:4321/plugins/tramlines_messages.git
-scm = git
