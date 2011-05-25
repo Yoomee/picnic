@@ -3944,10 +3944,10 @@ body.controller_badges .badge_photo {
 }
 /*====================== Newsnetwork home ====================*/
 
-/*.map_canvas a, .map_canvas span {
+.map_canvas a, .map_canvas span {
   color:#ffffff !important;
   text-shadow:0 1px 0 #A0A0A0;   
-}*/
+}
 .map_row {
   background: #e8e8e8;
   margin-bottom: 40px;
@@ -5754,6 +5754,11 @@ table#delegates th{
   -webkit-box-shadow:0px 0px 10px #000000;
   box-shadow:0px 0px 10px #000000;
   width:230px;
+}
+
+.infoBox a, .infobox a {
+  color: black !important;
+  text-shadow:none;
 }
 
 .infobox_left {

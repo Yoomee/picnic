@@ -11,6 +11,7 @@
             =li_with_active(current_page?(club_path), link_to("Intro", club_path))
             =li_with_active(current_page?(connections_path), link_to("Connections", connections_path))
             =li_with_active(current_page?(leaderboard_path), link_to("Leaderboard", leaderboard_path))
+            =li_with_active(current_page?(member_path(logged_in_member)), link_to("My profile", logged_in_member)) if logged_in_member
           -else
             -current_root_section.all_children(:published_only => !admin_logged_in?).each do |page_or_section|
               =li_with_active(viewing_page_or_section?(page_or_section), link_to_self(page_or_section))

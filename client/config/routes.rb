@@ -28,5 +28,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/delegate/test', :controller => 'delegate_receiver', :action => 'test'
   map.connect "tags/autocomplete", :controller => "tags", :action => "autocomplete"
   
+  map.root :controller => 'sections', :action => 'home'
+  
 end
 
