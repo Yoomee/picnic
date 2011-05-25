@@ -4,7 +4,7 @@
       .heading
         %h2.fl=splash_page_advert
         %strong
-          =link_to "No thanks. Continue to the home page &gt;&gt", home_section, :class => 'fr'
+          =link_to "No thanks. Continue to the home page &gt;&gt", root_path, :class => 'fr'
       =render_advert('1140x', :advert => splash_page_advert)
       .tag_line
         =link_to splash_page_advert.tag_line, splash_page_advert.url

@@ -7,7 +7,7 @@
       .tag_description
         =read_more_truncate(@tag.description, :length => 500)
   .five.last
-    =image_for(@tag, '335x255#') if @tag.official?
+    =image_for(@tag, '335x255#') if @tag.official? && @tag.has_image?
   .eightcol
     %h3.profile_title Related posts
     -if @tag.shouts.empty?

@@ -18,7 +18,6 @@ end
 SectionsController.class_eval do
 
   helper_method :splash_page_advert
-  #after_filter :set_seen_splash_page, :only => :index
 
   def home
     if !show_splash_page? && @section = home_section
@@ -39,6 +38,7 @@ SectionsController.class_eval do
         render :action => 'show'
       end
     else
+      session[:seen_splash_page] = true
       render :template => 'home/index'
     end
   end
@@ -63,9 +63,6 @@ SectionsController.class_eval do
 
 
   private
-  def set_seen_flash_page
-    session[:seen_splash_page] = !session[:seen_splash_page]
-  end
 
   def show_splash_page?
     !logged_in_member && !session[:seen_splash_page] && splash_page_advert

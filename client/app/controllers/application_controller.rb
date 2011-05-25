@@ -8,7 +8,7 @@ ApplicationController.class_eval do
   def home_section
     return nil if Section.count < 1
     section = Section.root.ascend_by_weight.first
-    while section.destination != section do
+    while section.destination.is_a?(Section) && section.destination != section do
       section = section.destination 
     end
     section
