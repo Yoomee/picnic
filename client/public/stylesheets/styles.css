@@ -4461,7 +4461,10 @@ li.wall_post {
   margin: 0;
   clear: none;
 }
-a.tag, .no_member_themes_fancybox .tag {
+#trending_themes {
+  min-height: 250px;
+}
+a.tag, .no_member_themes_fancybox .tag, .controller_tags h1.tag {
 	display: block;
 	padding: 5px 7px;
 	margin: 0 0 5px;
@@ -4470,10 +4473,18 @@ a.tag, .no_member_themes_fancybox .tag {
 	float: left;
 	background:rgba(0,0,0,0.3);
 	color: #fff;
-	
 	border-radius:3px;
-
-
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+}
+.controller_tags h1.tag {
+  font-size: 34px;
+  line-height: 32px;
+  margin-bottom: 20px;
+  padding: 8px 10px;
+}
+.controller_tags .profile_title {
+  margin-bottom: 20px;
 }
 form.tag {
   padding: 0;
@@ -4521,7 +4532,7 @@ ul.page_lst li.active a {
   margin: 0 5% 0 0;
   height: 350px;
 }
-.controller_tags h2.tag {
+.controller_tags h1.tag {
   float: left;
 }
 .controller_tags .tag_description {
