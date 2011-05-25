@@ -5,19 +5,17 @@
     =@section.description
 
 -if !@pages_sections.blank?
-  .sixcol.newsbox
-    #news_1.newsbox
-      =render('sections/news_story', :page_section => @pages_sections[0])
-    -if @pages_sections[3]
-      #news_4.newsbox.sixcol=render('sections/news_story', :page_section => @pages_sections[3])
-    -if @pages_sections[4]
-      #news_5.newsbox.sixcol.last=render('sections/news_story', :page_section => @pages_sections[4])
-
+  #news_1.newsbox.sixcol
+    =render('sections/news_story', :page_section => @pages_sections[0])
 -if @pages_sections[1]
   #news_2.newsbox.threecol=render('sections/news_story', :page_section => @pages_sections[1])
 
 -if @pages_sections[2]
   #news_3.newsbox.threecol.last=render('sections/news_story', :page_section => @pages_sections[2])
+-if @pages_sections[3]
+  #news_4.newsbox.threecol=render('sections/news_story', :page_section => @pages_sections[3])
+-if @pages_sections[4]
+  #news_5.newsbox.threecol=render('sections/news_story', :page_section => @pages_sections[4])  
 
 -if @pages_sections[5]
   #news_6.newsbox.threecol=render('sections/news_story', :page_section => @pages_sections[5])

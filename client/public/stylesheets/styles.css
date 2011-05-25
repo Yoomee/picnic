@@ -12,7 +12,7 @@
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outline:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 /* ===============================  text styles ================================ */
-body, textarea, input {font:12px/1.5 'Helvetica Neue', Arial,'Liberation Sans',FreeSans,sans-serif}a:focus{outline:1px dotted invert}hr{border:0 #ccc solid;border-top-width:1px;clear:both;height:0}h1{font-size:25px}h2{font-size:23px}h3{font-size:21px}h4{font-size:19px}h5{font-size:17px}h6{font-size:15px}ol{list-style:decimal}ul{list-style:disc}li{margin-left:30px}p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset{margin-bottom:13px}
+body, textarea, input {font:12px/1.6 'Helvetica', Arial,'Liberation Sans',FreeSans,sans-serif}a:focus{outline:1px dotted invert}hr{border:0 #ccc solid;border-top-width:1px;clear:both;height:0}h1{font-size:25px}h2{font-size:23px}h3{font-size:21px}h4{font-size:19px}h5{font-size:17px}h6{font-size:15px}ol{list-style:decimal}ul{list-style:disc}li{margin-left:30px}p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset{margin-bottom:13px}
 
 /* ======================  CSS3 regularly used stuff ================== */
 
@@ -69,7 +69,6 @@ body {
 
 }
 body, textarea, input {
-    
 	/*-webkit-font-smoothing: antialiased;*/
 	
 }
@@ -136,7 +135,7 @@ td, th {
 .options_panel {
   border-top: 1px solid #f5f5f5;
   clear:left;
-  color:#fff;
+  color:#f5f5f5;
 
   margin-top:20px;
   padding-top:10px;
@@ -706,10 +705,6 @@ strong.highlight {
 
 /* ============ Related Items ============= */
 
-#search_term {
-	width: 300px;
-	
-}
 #suggest ul {
 	list-style-type: none;
 }
@@ -1047,7 +1042,6 @@ div#top {
 h1#page_title {
 	font-size: 34px;
 	line-height: 120%;
-	margin
 }
 h1#site_logo {
   margin: 0px 0 0;
@@ -1060,7 +1054,7 @@ h1#site_logo a {
 	
 	display: block;
 	background: url(/images/sprite_picnic.png) no-repeat -9px -11px;
-	width: 205px;
+	width: 150px;
 	height: 30px;
 	text-indent:-9000em;
 	font-size: 45px;
@@ -2004,7 +1998,7 @@ h1.profile_title {
 }
 
 .bio {
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .services ul{
@@ -2630,13 +2624,20 @@ a.item_img img {
 
 h2.newsbox_title {
 	font-family:'VAG Rounded W02 Light';
+	margin-bottom: 5px;
+
 }
 h2.newsbox_title a {
 	color: #000;
+
 }
 .newsbox_img {
 	float: left;
 	
+}
+
+#news_4 {
+	clear: left;	
 }
 .newsbox_text a{
   color:black;
@@ -3233,12 +3234,13 @@ li.news_feed_item_hovering a.trash {
 #page_subnav ul {
 
   float: left;
-  margin: 0 0 20px;
+  margin: 0 0 0px;
   width: 100%;
   
 }
 #page_subnav li {
   margin-bottom: 5px;
+  font-size: 13px;
 
 }
 #subnav li.right_subnav_link {
@@ -3326,6 +3328,7 @@ a.backto {
 }
 
 #page_left_col {
+	color: #444;
 
 
 
@@ -4543,10 +4546,8 @@ ul.page_lst li.active a {
 	border-radius: 20px;
   position: relative;
 }
-.splash .advert {
-
-
-
+.splash_inner .advert {
+	position: relative;
 }
 .splash_inner .heading {
   line-height: 40px;
@@ -4565,8 +4566,8 @@ ul.page_lst li.active a {
 .splash .tag_line {
   font-size: 2em;
   width: 40%;
-  top: 20%;
-  left: 40px;
+  top: 120px;
+  left: 20px;
 
   position: absolute;
 }
@@ -5413,53 +5414,6 @@ ul.possible_search_models li {
 
 }
 
-/* ============================= */
-/* ! Layout for mobile version   */
-/* ============================= */
-
-@media handheld, only screen and (max-width: 767px) {
-  
-	#page_subnav {
-  	width: 100%;
-  	font-size: 19px;
-	}
-	#search_box_outer {
-  	width: 95%;
-  	display: none;
-	}
-	body #user_links .panel {
-  	position: absolute;
-  	top: 0;
-  	right: 0;
-  	margin: 0;
-  }
-	body h1#site_logo a {
-	  margin: 70px 0 0;
-  }
-  #user_links .button {
-  	width: 80px;
-  	padding: 4px ;
-  	font-size: 15px;
-  	margin: 0 10px 0 0;
-  }
-  .splash .tag_line {
-  font-size: 20px;
-  bottom: 60px;
- } 
- .splash_inner .heading .fr {
-	float: left;
-}
-#user_links {
-	position: absolute;
-	top: 0;
-	right: 0;
-}
-	
-	#fancybox-inner {
-    overflow:auto !important;
-  }
-  
-}
 
 /*========== club intro ==========*/
 #club_welcome p {
@@ -5508,17 +5462,20 @@ ul.possible_search_models li {
 }
 #club_intro_page h2 {
   font-size: 25px;
+  margin-bottom: 10px;
 }
 #club_intro_connect {
   margin-top: 30px;
 }
 #club_intro_connect #search_term {
   font-size: 22px;
-  width: 439px;
-  background: url(/images/icon_search.png) no-repeat 420px 12px;
+  width: 100%;
+  text-indent: 35px;
+  padding-left: 0;
+  background: #fff url(/images/icon_search.png) no-repeat 10px 10px;
 }
 #club_intro_connect #search_term.loading {
-  background: url(/images/ajax_loader_arrows.gif) no-repeat 420px 12px;
+  background: #fff url(/images/ajax_loader_arrows.gif) no-repeat 10px 15px;
 }
 #find_someone_results .no_results {
   list-style-type: none;
@@ -5532,19 +5489,21 @@ ul.possible_search_models li {
   margin-left: 0;
   border-bottom: 2px solid #e2e2e2;
   margin-bottom: 20px;
-  width: 441px;
+  width: 100%;
 }
 a.find_someone_photo {
   float: left;
+  width: 20%;
+  margin: 0 5% 0 0;
 }
 .find_someone_result img {
   float: left;
-  margin-right: 20px;
+
   margin-bottom: 20px;
 }
 .find_someone_result .details {
   float: left;
-  width: 320px;
+  width: 75%;
 }
 .find_someone_result .details h4 a {
   color: black;
@@ -5554,14 +5513,23 @@ a.find_someone_photo {
 }
 #latest_members_photos {
   float: left;
-  width: 634px;
+  width: 100%;
+  height: 55px;
+  overflow: hidden;
   background: black;
+  margin: 0 0 20px;
   padding: 15px 6px;
 }
 
 #latest_members_photos a {
   float: left;
 }
+
+#club_welcome p.club_welcome_intro_text {
+	font-size: 17px;
+	
+}
+
 
 
 /*========== Leaderboard ==========*/
@@ -5581,10 +5549,15 @@ a.find_someone_photo {
   float: right;
 }
 #leaderboard_filter a {
-  font-size: 21px;
+  font-size: 14px;
   color: #000;
   font-weight: bold;
-  padding: 5px 10px;
+  padding: 3px 10px;
+  float: right;
+  
+  border-radius:3px;
+  -webkit-border-radius:3px;
+  -moz-border-radius:3px;
 }
 #leaderboard_filter a.active {
   background-color: #000;
@@ -5771,6 +5744,144 @@ table#delegates th{
   float:right;
   margin-top:0px;
 }
+/* ============================= */
+/* ! Layout for mobile version   */
+/* ============================= */
+
+@media handheld, only screen and (max-width: 767px) {
+  
+	#page_subnav {
+  	width: 100%;
+  	font-size: 19px;
+	}
+	body #user_links .panel {
+  	position: absolute;
+  	top: 0;
+  	right: 0;
+  	margin: 0;
+  }
+
+  #user_links .button {
+  	width: 80px;
+  	padding: 4px ;
+  	font-size: 15px;
+  	margin: 0 10px 0 0;
+  }
+  .splash .tag_line {
+  font-size: 20px;
+
+
+
+ } 
+ .splash_inner .heading .fr {
+	float: left;
+}
+#nav_line_row {
+	position: relative;
+}
+#search_box {
+	margin: -40px 0 0 ;
+	float: right;
+}
+#header .row {
+	min-height:60px;
+
+}
+#user_links {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+#header_right {
+	margin-top: -10px;
+
+}
+
+
+
+
+h1#site_logo a {
+	margin: 10px 0 0;
+	
+}
+
+	
+	#fancybox-inner {
+    overflow:auto !important;
+  }
+  .newsbox {
+	background: none;
+}
+p.newsbox_text {
+	float: left;
+}
+
+#main_container {
+	margin-top: 20px;
+}
+#page_content {
+	min-height: 0;
+}
+.splash_inner .advert {
+	float: left;
+	position: relative;
+}
+
+#page_subnav {
+	background: none;
+}
+#page_content {
+	border-top: 1px solid #000;
+
+}
+#page_content, #page_left_col, #page_right_col, #keep_in_touch, #article_image {
+	clear: both;
+	float: left;
+	width: 100%;
+}  
+}
+
+@media handheld, only screen and (max-width: 500px) {
+	
+#search_box {
+ display: none;
+	
+}
+div.logged_in_as {
+	background: #000;
+	float: left;
+	width: 100%;
+	margin: 10px 0;
+	
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	-o-border-radius:3px;
+	
+}
+div.logged_in_as a {
+	padding: 7px 7px;
+}
+  
+.splash .tag_line {
+	color: #000;
+	float: left;
+	position: relative;
+
+	
+}
+
+
+.splash img, .splash .tag_line {
+	display: none;
+} 
+#main_container {
+	min-height: 0;
+}
+
+
+}
+
 
 /* ========================================== */
 /* ! Provide higher res assets for iPhone 4   */

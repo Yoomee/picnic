@@ -32,9 +32,9 @@
       =image_tag 'welcome_video.jpg'
     .sixcol
       %h2
-        Welcome to the club
-      %p
-        Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed molestie augue sit amet leo consequat posuere. 
+        Welcome to the PICNIC Club
+      %p.club_welcome_intro_text
+        Find inspiration from speakers, the PICNIC team and advisors. Have fun, experiment and share ideas and conversations with other clubbers. It's open free and open to all. Why not sign up today?
     .onecol.last
   #hide_this.row
     .fivecol
@@ -57,7 +57,7 @@
           =render "find_someone_result", :member => member
     .sevencol.last
       %h2 Latest members
-      =google_map(@latest_members, :width => 646, :height => 350, :centre => [30, 0], :zoom => 2, :infoboxes => true)
+      =google_map(@latest_members, :width => 646, :height => 280, :centre => [30, 0], :zoom => 2, :infoboxes => true)
       #latest_members_photos
         -@latest_members.limit(9).each do |member|
           -link_to member do
