@@ -40,14 +40,14 @@
           .connection_tags_list#member_connection_tags_list
             %ul
               -@member_tags.each do |tag|
-                %li{tag_li_attributes(tag, @member_tags)}
+                %li{tag_li_attributes(tag, @member_tags + @theme_tags)}
                   =link_to_function tag, "TagsList.show('#{tag}')", :class => 'tag'
         %h2#tags_title.connection_title
           Top tags
         .connection_tags_list  
           %ul
             -@theme_tags.each do |tag|
-              %li{tag_li_attributes(tag, @member_tags)}
+              %li{tag_li_attributes(tag, @member_tags + @theme_tags)}
                 =link_to_function tag, "TagsList.show('#{tag}')", :class => 'tag'
       -@member_tags.each do |tag|
         .tags_bottom{tags_bottom_attributes(tag, @member_tags + @theme_tags)}
