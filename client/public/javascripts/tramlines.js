@@ -35,8 +35,6 @@ var ShoutForm = {
   },
   show_attachable_form: function(attachable, shout_id) {
     ShoutForm.hide_all_attachables(shout_id);
-    console.log(shout_id);
-    console.log(ShoutForm.form_id(shout_id));
     if (attachable == 'Link'){
       $(ShoutForm.form_id(shout_id) + ' #shout_link_url_input').show();
     } else if (attachable == 'Photo') {
