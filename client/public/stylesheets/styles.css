@@ -1986,13 +1986,19 @@ h1.profile_title {
 .what_i_bring {
   font-size: 26px;
   line-height: 130%;
-  width: 100%;
+  position: relative;
+  padding-right: 7%;
+  width: 93%;
  	border-bottom: 2px solid #e8e8e8;
 	border-bottom: 2px solid rgba(0,0,0,0.1);
   padding-bottom: 10px;
   font-family:'VAG Rounded W02 Thin', arial, sans-serif;
 }
-
+.what_i_bring_like {
+  position: absolute;
+  right: 15px;
+  bottom: 0px;
+}
 .what_i_bring strong {
 	font-weight: normal;	
 }
@@ -2167,6 +2173,40 @@ h3.profile_title {
   font-size: 16px;
   margin: 20px 0 0 0;
 }
+
+#posts_header {
+	float: left;
+	width: 100%;
+	border-bottom: 2px solid #ccc;
+	
+}
+
+#posts_header a.bttn_l {
+	font-size: 13px;
+	padding: 3px 10px;
+	margin: 0;
+	
+}
+
+div.stories_filter {
+	float: left;
+	width: 100%;
+	margin: 10px 0 20px;
+	color: #777;
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 10px;
+	position: relative;
+}
+
+div.stories_filter li {
+	margin: 0 0 0 10px;
+}
+
+
+
+
+
+
 
 /* ====== Stuff I like tabs (under profile picture)- optional ====== */
 #stuff ul.tabbernav {
@@ -3905,10 +3945,10 @@ body.controller_badges .badge_photo {
 }
 /*====================== Newsnetwork home ====================*/
 
-.map_canvas a, .map_canvas span {
+/*.map_canvas a, .map_canvas span {
   color:#ffffff !important;
   text-shadow:0 1px 0 #A0A0A0;   
-}
+}*/
 .map_row {
   background: #e8e8e8;
   margin-bottom: 40px;
@@ -3920,30 +3960,21 @@ body.controller_badges .badge_photo {
 	overflow: hidden;
 	height: 350px;
 }
-.stories_filter {
-  margin-left: 350px;
-}
 #filter_loader {
   width: 43px;
   position: absolute;
-  right: 92px;
-  top: 11px;
+  right: 0px;
+  top: 0px;
 }
 #members_shouts {
   position: relative;
-}
-.controller_members .stories_filter {
-  float:right;
-  margin-left:0;
-  margin-right:150px;
-  margin-top: 8px;
+
 }
 
 .stories_filter ul li, .stories_filter ul {
   display: inline;
 }
 .stories_filter ul li.active a {
-  color: black;
   	font-family:'VAG Rounded W02 Bold', arial, sans-serif;
 }
 
@@ -4165,60 +4196,58 @@ dt {
 }
 .shout {
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+
 }
 
-.with_member_details .shout_left {
-  width: 68%;
-}
-.controller_members .with_member_details .shout_left {
-  width: 80%;
-}
-.without_member_details .shout_left {
-  width: 80%;
-}
-body.controller_shouts .shout_left {
-  width: 60%;
-}
+
 .shout_form_submit_loader {
   float: right;
   margin: 20px 0px 0px;
 }
 .shout_left {
   float: left;
-  border-top: 3px solid #e8e8e8;
+  width: 15%;
+  background: url(/images/shout_left_bg.png) no-repeat right 10px;
 }
 .shout_right {
   float: left;
-  width: 35%;
-  margin: 0 0 0 5%;
-  overflow: hidden;
+  width: 85%;
+  margin: 0 0 0;
+
 }
-.with_member_details .shout_right {
-  width: 27%;
+
+div.shout_text {
+	font-size: 14px;
+	width: 94%;
+	
 }
-.without_member_details .shout_right {
-  width: 15%;
-}
-.controller_members .with_member_details .shout_right {
-  width: 15%;
+div.shout_text p {
+	margin: 0 0 5px;
 }
 #older_shouts_link {
   clear: both;
 }
 .shout_right_inner {
-  margin: 0 0 0 0px;
+  margin: 0 0 5px 0px;
+  padding: 2%;
+  width: 96%;
+  background: #fff;
+  float: left;
+  position: relative;
 }
+
 .shout_right_inner .map_canvas {
   margin-bottom: 20px;
 }
 .shout_right_inner_details {
   margin-bottom: 10px;
   width: 100%;
+  font-weight: bold;
 }
 .shout_left_inner {
   float: left;  
-  margin: 10px 0;
+  margin: 0px 0;
 }
 .shout_title {
   font-weight: bold;
@@ -4236,13 +4265,23 @@ body.controller_shouts .shout_left {
 	height: 42px;
 }
 .shout .shout_themes {
-  margin-top: 20px;
+  margin-top: 0px;
+}
+.shout .shout_themes li {
+	clear: none;
+	float: left;
+	font-size: 11px;
+	margin: 0 5px 0 0;
+}
+.shout .shout_themes li a.tag {
+	font-size: 11px;
+	padding: 3px 5px;
 }
 .shout .shout_links {
   width: 100%;
 }
 .shout .shout_links a {
-  float: left;
+  float: right;
   margin-right: 10px;
 }
 .shout .shout_links a.shout_view_link {
@@ -4282,12 +4321,16 @@ span.shout_type_label {
   float: left;
   clear: both;
 }
+
+.like_link {
+  background: url(/images/sprite.png) 0 -60px;
+ } 
 .post_to_wall {
   margin-bottom: 20px;
 }
 
-.like_link {
-  background: url(/images/thumbs_up.png);
+.like_link, .unlike_link {
+  background: url(/images/sprite.png) 0 -60px;
   clear: left;
   float: left;
   height: 23px;
@@ -4296,15 +4339,17 @@ span.shout_type_label {
   width: 18px;
 }
 .like_links {
-  float: left;
+
   height: 46px;
-  width: 28px;
+  width: 20px;
 }
-span.like_link {
-  background: url(/images/thumbs_up_active.png);
+
+span.like_link, .unlike_link {
+  background: url(/images/sprite.png) -32px -60px;
+
 }
 .dislike_link {
-  background: url(/images/thumbs_down.png);
+  background: url(/images/sprite.png) 0 -94px;
   clear: left;
   float: left;
   height: 23px;
@@ -4312,7 +4357,7 @@ span.like_link {
   width: 18px;
 }
 span.dislike_link {
-  background: url(/images/thumbs_down_active.png);
+  background: url(/images/sprite.png) -32px -94px;
 }
 .shout_ratings .like_loader {
   clear: left;
@@ -4323,7 +4368,9 @@ span.dislike_link {
 .shout_ratings {
   clear: left;
   float: left;
-  position: relative;
+  position: absolute;
+  top: 10px;
+  right: -30px;
 }
 .likings_count, .dislikings_count {
   color: black;
@@ -4349,8 +4396,8 @@ span.dislike_link {
 .shout_comment_body {
   width: 100%;
   float: left;
-  border-top: 3px solid #e8e8e8; 
-  padding-top: 20px;
+
+  padding-top: 0px;
 }
 ul.wall_post_list {
   margin: 0;
@@ -4411,7 +4458,8 @@ li.wall_post {
 /*========== Tags ==========*/
 
 .themes_list li {
-  margin: 0 0 8px 0;
+  margin: 0;
+  clear: none;
 }
 a.tag, .no_member_themes_fancybox .tag {
 	display: block;
@@ -4567,6 +4615,7 @@ a.fancybox_edit {
 }
 #example_what_i_brings li {
   margin-top: 20px;
+  width: 100%;
 }
 #example_what_i_brings img {
   float: left;
@@ -5336,7 +5385,7 @@ ul.possible_search_models li {
   margin-left:15px;
   width:490px;
   resize:none;
-  margin-top:10px;
+  margin-top:0px;
   overflow:hidden;
   cursor:text;
   color:#808080;
@@ -5349,7 +5398,7 @@ ul.possible_search_models li {
   float: left;
   font-size: 14px;
   line-height: 21px;
-  margin: 10px 0 0 15px;
+  margin: 10px 0 0 0px;
   padding: 5px;
 }
 
@@ -5680,6 +5729,47 @@ table#delegates th{
   word-wrap:normal;
   line-height:12px;
   vertical-align:bottom;
+}
+
+/*========== infoBox ==========*/
+
+.infoBox, .infobox {
+  background-color:white;
+  padding:10px;
+  border:2px solid #CCC;
+  -moz-border-radius:2px;
+	-webkit-border-radius:2px;
+	border-radius:2px; 
+	-moz-box-shadow:0px 0px 10px #000000;
+  -webkit-box-shadow:0px 0px 10px #000000;
+  box-shadow:0px 0px 10px #000000;
+  width:230px;
+}
+
+.infobox_left {
+  float:left;
+  width:40px;
+  margin-right:10px;
+}
+.infobox_right {
+  float:left;
+  width:180px;
+}
+
+.infobox_right a {
+  color:black;
+  font-size:14px;
+}
+
+.infobox_bottom {
+  float:left;
+  clear:both;
+  width:100%;
+}
+
+.infobox_bottom a{
+  float:right;
+  margin-top:0px;
 }
 
 /* ========================================== */

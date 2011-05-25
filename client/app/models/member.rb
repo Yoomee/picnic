@@ -10,7 +10,8 @@ Member.class_eval do
 
   after_create :trigger_points_event
   
-  has_location  
+  rateable_by_member
+  has_location
   has_many :urls, :as => :attachable
   has_one :conference_delegate
 

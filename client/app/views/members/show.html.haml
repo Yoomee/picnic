@@ -167,6 +167,11 @@
       %strong I bring
       %span{:id => "members_#{@member.id}_what_i_bring"}=@member.what_i_bring || "..."
       =fancybox_edit(@member, :what_i_bring, :partial => "members/what_i_bring", :fancy => true)
+      -if !logged_in_as?(@member) && !@member.what_i_bring.blank?
+        .what_i_bring_like
+          =render_like_link_for(@member, :ajax_loader => "ajax_loader_arrows.gif")
+          %span.likings_count{:id => "likings_count_#{unique_rating_string(@member)}", :class => "#{@member.been_liked? ? '' : 'no_ratings'}"}
+            =@member.likings_count_string
     -if !@member.bio.blank? || allowed_to?(edit_member_proc(@member))
       .bio.subrow
         %span{:id => "members_#{@member.id}_bio"}=simple_format(strip_tags(@member.bio))
@@ -247,12 +252,7 @@
 .row
   .twocol
   .eightcol
-    .fr.post_to_wall
-      -if @member == logged_in_member
-        =link_to_box("Post something", new_shout_path, :class => "bttn_l new_comment_link", :scrolling => false) 
-      -elsif logged_in_member
-        =link_to_box("Post something", new_shout_path(:shout => {:recipient_id => @member.id, :recipient_type => 'Member'}), :class => 'bttn_l new_comment_link', :scrolling => false)
-      =#render("shouts/form", :shout => @member.received_shouts.build)
+    =#render("shouts/form", :shout => @member.received_shouts.build)
   .clear
   .twocol.last
 .row
@@ -262,24 +262,29 @@
       %ul.lst
         -@member.shout_tags.each do |tag|
           =link_to_tag(tag)
-  .eightcol
-    #members_shouts
+  #members_shouts.eightcol
+    #posts_header
       %h3.profile_title.fl="#{forename_or_your(@member, :capitalize => true)} posts"
-      .stories_filter
-        Showing:
-        %ul
-          =li_with_active default_to_latest_shouts?, link_to_function('Latest', 'MemberShouts.latest()'), :id => 'latest_shouts'
-          =li_with_active false, link_to_function('Popular', 'MemberShouts.popular()'), :id => 'popular_shouts'
-          =li_with_active default_to_received_shouts?, link_to_function('From others', 'MemberShouts.received()'), :id => 'received_shouts'
+      .fr.post_to_wall
+        -if @member == logged_in_member
+          =link_to_box("Post something", new_shout_path, :class => "bttn_l new_comment_link", :scrolling => false) 
+        -elsif logged_in_member
+          =link_to_box("Post something", new_shout_path(:shout => {:recipient_id => @member.id, :recipient_type => 'Member'}), :class => 'bttn_l new_comment_link', :scrolling => false)
+    .stories_filter 
       =image_tag 'ajax_loader_squares.gif', :id => 'filter_loader', :style => "display:none"
-      #shouts_container
-        -if default_to_latest_shouts? 
-          -if @member.recipientless_shouts.empty?
-            =not_posted_yet_message(@member)
-          -else
-            =render_shouts(@member.recipientless_shouts, :show_member => true, :parent => @member, :filter => 'latest')
+      Showing:
+      %ul
+        =li_with_active default_to_latest_shouts?, link_to_function('Latest', 'MemberShouts.latest()'), :id => 'latest_shouts'
+        =li_with_active false, link_to_function('Popular', 'MemberShouts.popular()'), :id => 'popular_shouts'
+        =li_with_active default_to_received_shouts?, link_to_function('From others', 'MemberShouts.received()'), :id => 'received_shouts'
+    #shouts_container
+      -if default_to_latest_shouts? 
+        -if @member.recipientless_shouts.empty?
+          =not_posted_yet_message(@member)
         -else
-          =render_shouts(@member.received_shouts, :show_member => true, :parent => @member, :filter => 'received')
+          =render_shouts(@member.recipientless_shouts, :show_member => true, :parent => @member, :filter => 'latest')
+      -else
+        =render_shouts(@member.received_shouts, :show_member => true, :parent => @member, :filter => 'received')
   .twocol.last
 .row
   -options_panel do
