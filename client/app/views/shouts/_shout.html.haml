@@ -5,7 +5,7 @@
   .shout_left
     .shout_left_inner.fl
       -if show_member
-        =link_to image_for(shout.member, '70x70#'), shout.member, :class => "flcb"
+        =link_to image_for(shout.member, '70x'), shout.member, :class => "flcb"
         .shout_right_inner_details.fl
           =link_to_self shout.member
           =#link_to(pluralize(shout.comments.count, 'comment'), shout, :class => "shout_comments_link flcb")
