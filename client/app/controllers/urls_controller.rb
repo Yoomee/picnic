@@ -6,7 +6,8 @@ class UrlsController < ApplicationController
   class << self
     
     def allowed_to_with_urls?(url_options, member)
-      if member && url_options[:action].to_sym == :destroy && url_options[:id]
+      if url_options[:action].to_sym == :destroy && url_options[:id]
+        return false if !member
         Url.find(url_options[:id]).attachable == member || member.is_admin?
       else
         allowed_to_without_urls?(url_options, member)
@@ -27,6 +28,14 @@ class UrlsController < ApplicationController
     end
   end
   
+  def destroy
+    @url_object = Url.find(params[:id])
+    render :update do |page|
+      if @url_object.destroy
+        page << "$('#url_#{@url_object.id}').blindUp().remove()"
+      end
+    end
+  end
   
   def new
     @url_object = Url.new(:attachable => logged_in_member)
@@ -37,20 +46,10 @@ class UrlsController < ApplicationController
     
   end
   
-  def destroy
-    @url_object = Url.find(params[:id])
-    render :update do |page|
-      if @url_object.destroy
-        page << "$('#url_#{@url_object.id}').blindUp().remove()"
-      end
-    end
-  end
-  
   private
   def allowed_to
     
   end
   
-  
-  
 end
+  
