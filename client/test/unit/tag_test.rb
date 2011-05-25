@@ -18,4 +18,18 @@ class TagTest < ActiveSupport::TestCase
   
   end
   
+  context "after destroying a tagging" do
+    
+    setup do
+      @tag = Tag.create(:name => "test_tag", :description => "A description")
+      @tagging = @tag.taggings.create(:context => "tag")
+      @tagging.destroy
+    end
+    
+    should "not delete tag if it is an oficial tag" do
+      assert !Tag.count.zero?
+    end
+    
+  end
+  
 end
