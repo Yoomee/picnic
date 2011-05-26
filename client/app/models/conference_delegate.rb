@@ -11,7 +11,7 @@ class ConferenceDelegate < ActiveRecord::Base
       ConferenceDelegate::FIELDS_IN_ORDER.each do |field|
         case field
         when "REGDATE"
-          delegate_params[:regdate] = params["REGDATE"].gsub('-','/')
+          delegate_params[:regdate] = params["REGDATE"].try(:gsub, '-','/')
         when "TYPE"
           delegate_params[:delegate_type] = params["TYPE"]
         else
@@ -41,7 +41,7 @@ class ConferenceDelegate < ActiveRecord::Base
     ConferenceDelegate::FIELDS_IN_ORDER.collect do |field|
       case field
       when "SIGNATURE" then nil
-      when "REGDATE" then regdate.strftime("%m-%d-%Y")
+      when "REGDATE" then regdate.try(:strftime, "%m-%d-%Y")
       when "TYPE" then delegate_type
       else
         string = send(field.downcase).to_s

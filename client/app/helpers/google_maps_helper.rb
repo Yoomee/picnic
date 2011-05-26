@@ -35,7 +35,6 @@ GoogleMapsHelper.module_eval do
       });
       
       function PicnicMarker(opts) {
-        console.log(opts);
         opts.image = new google.maps.MarkerImage(
           '/images/marker_heart.png',
           new google.maps.Size(20,38),

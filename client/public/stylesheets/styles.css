@@ -3900,25 +3900,43 @@ div.page_share {
   float: left;
   margin-right: 10px;
 }
-.auth_link#url {
-  margin-right:0;
-  padding-top:2px;
+#url_box .auth_links .auth_link a img{
+  margin-top: 20px;
 }
-.auth_link#url a{
-  padding:3px 10px;
-  line-height: 16px;
+.auth_links .auth_link .tick{
+  text-align:center;
+  width:100%;
+  float:left;
+  font-size: 18px;
+  line-height: 18px;
+  margin-bottom: 2px;
+}
+.auth_links .auth_link img{
+  float:left;
+  clear:both;
+}
+
+#url_box h5 {
+  margin-bottom:5px;
+}
+
+#url_box .auth_link {
+  padding: 0px 20px;
+}
+#add_url_link{
+  float:left;
+  clear:both;
   color:black;
-  border:1px solid black;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
+  margin-top:10px;
+  text-decoration:underline;
 }
 #url_form_wrapper fieldset{
   float:left;
-  clear:none; 
+  clear:none;
 }
 #url_form_wrapper fieldset.buttons{
-  float:right;
+  float:left;
+  margin-left:15px;
 }
 #url_form_wrapper input{
   width:240px;
