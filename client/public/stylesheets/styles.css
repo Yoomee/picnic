@@ -4342,8 +4342,22 @@ dt {
   margin-bottom: 10px;
 
 }
-
-
+#edit_shout_form {
+ height: 350px;
+}
+.shout_form li.commit {
+  float: right;
+  margin-right: 20px;
+  clear: none;
+}
+.shout_form .conversation_types {
+  float: left;
+  clear: both;
+}
+.shout_form .form_type_input {
+  float: left;
+  clear: left;
+}
 .shout_form_submit_loader {
   float: right;
   margin: 20px 0px 0px;
@@ -4458,11 +4472,11 @@ span.shout_type_label {
 }
 .attachable_preview {
   float: left;
-  clear: both;
+  clear: left;
 }
 .attachable_preview img, .attachable_preview .remove_link {
   float: left;
-  clear: both;
+  clear: left;
 }
 
 .like_link {
