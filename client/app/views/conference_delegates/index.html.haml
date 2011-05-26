@@ -4,7 +4,7 @@
     %tbody
       %tr.header
         - ConferenceDelegate::FIELDS_IN_ORDER.each do |field|
-          %th=field.split(//).join("<br/>")
+          %th=field.gsub('_', ' ').split(//).join("<br/>")
         %th="AUTHENTIC".split(//).join("<br/>")
       -@conference_delegates.each do |del|
         %tr

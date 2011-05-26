@@ -4677,7 +4677,9 @@ ul.page_lst li.active a {
   position: relative;
 }
 .splash_inner .advert {
-	position: relative;
+  float:left;
+  margin-bottom:20px;
+	position:relative;
 }
 .splash_inner .heading {
   line-height: 40px;
