@@ -48,7 +48,7 @@
           %ul
             -@theme_tags.each do |tag|
               %li{tag_li_attributes(tag, @member_tags + @theme_tags)}
-                =link_to_function tag, "TagsList.show('#{tag}')", :class => 'tag'
+                =link_to_function tag, "TagsList.show('#{tag.name.fully_underscore}')", :class => 'tag'
       -@member_tags.each do |tag|
         .tags_bottom{tags_bottom_attributes(tag, @member_tags + @theme_tags)}
           -Member.tagged_with(tag).not_including(logged_in_member).random.limit(15).each do |member|
