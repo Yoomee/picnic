@@ -8,5 +8,5 @@
           =link_to "No thanks. Continue to the home page &gt;&gt", root_path, :class => 'fr'
       =render_advert('1140x', :advert => splash_page_advert)
       .tag_line
-        =link_to splash_page_advert.tag_line, splash_page_advert.url
+        =link_to(splash_page_advert.tag_line, splash_page_advert.url) if splash_page_advert
       %br.clear

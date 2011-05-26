@@ -17,8 +17,6 @@ end
 
 SectionsController.class_eval do
 
-  helper_method :splash_page_advert
-
   def home
     if !show_splash_page? && @section = home_section
       case @section.view
@@ -31,7 +29,8 @@ SectionsController.class_eval do
         )
         render :action => @section.view
       when 'first_page'
-        redirect_to send("#{@section.destination_type}_path", @section.destination) unless @section.destination == @section
+        @page = @section.destination
+        render :template => "pages/show"
       else
         # Otherwise use show view
         @pages = @section.pages.published.weighted.paginate(:page => params[:page], :per_page => (APP_CONFIG[:section_pages_items_per_page] || 10))
@@ -67,10 +66,5 @@ SectionsController.class_eval do
   def show_splash_page?
     !logged_in_member && !session[:seen_splash_page] && splash_page_advert
   end
-
-  def splash_page_advert
-    @splash_page_advert ||= AdvertCampaign::splash_page.adverts.active.random_element
-  end
-
 
 end
