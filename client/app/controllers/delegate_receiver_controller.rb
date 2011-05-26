@@ -5,7 +5,7 @@ class DelegateReceiverController < ApplicationController
   open_action :receive  
   def receive
     conf_delegate = ConferenceDelegate.create_from_params!(params)
-    DELEGATE_LOGGER.info(" (from #{request.remote_ip})\n\n#{params.to_yaml}\nSIGNATURE: #{params["SIGNATURE"]}\nEXPECTED:  #{conf_delegate.expected_signature}\n\n#{request.env.inspect}")
+    DELEGATE_LOGGER.info(" (from #{request.remote_ip})\n\n#{params.to_yaml}\nSIGNATURE: #{params["SIGNATURE"]}\nEXPECTED:  #{conf_delegate.try(:expected_signature)}\n\n#{request.env.inspect}")
     render :text => "SUCCESS\n", :status => 200
   end
   
