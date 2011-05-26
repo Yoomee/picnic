@@ -2,7 +2,8 @@
   .twelvecol.splash
     .splash_inner
       .heading
-        %h2.fl=splash_page_advert
+        %h2.fl
+          =link_to(splash_page_advert,splash_page_advert.url)
         %strong
           =link_to "No thanks. Continue to the home page &gt;&gt", root_path, :class => 'fr'
       =render_advert('1140x', :advert => splash_page_advert)
