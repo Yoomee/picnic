@@ -3,11 +3,11 @@
   =render :partial => 'themes/trending'
   .fourcol
     %h1.tag=@tag
-    -if !@tag.description.blank?
+    -if @tag.official?
       .tag_description
         =read_more_truncate(@tag.description, :length => 500)
   .five.last
-    =image_for(@tag, '335x255#') if !@tag.description.blank?
+    =image_for(@tag, '335x255#') if @tag.official? && @tag.has_image?
   .eightcol
     %h3.profile_title Related posts
     -if @tag.shouts.empty?

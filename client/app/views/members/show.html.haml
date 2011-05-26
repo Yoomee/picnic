@@ -166,7 +166,7 @@
       =fancybox_edit(@member, :what_i_bring, :partial => "members/what_i_bring", :fancy => true)
       -if !logged_in_as?(@member) && !@member.what_i_bring.blank?
         .what_i_bring_like
-          =render_like_link_for(@member, :ajax_loader => "ajax_loader_arrows.gif", :hide_if_logged_out => true)
+          =render_like_link_for(@member, :ajax_loader => "ajax_loader_arrows.gif", :disable_if_logged_out => true)
           %span.likings_count{:id => "likings_count_#{unique_rating_string(@member)}", :class => "#{@member.been_liked? ? '' : 'no_ratings'}"}
             =@member.likings_count_string
     -if !@member.bio.blank? || allowed_to?(edit_member_proc(@member))
@@ -228,7 +228,7 @@
             %p.help{:style=>"display:none"}
               Drag the map to set your location
             =google_map(location, :width => 300, :height => 200, :other => "google.maps.event.addListener(map#{@map_index}, 'center_changed', function(){mapCenter=map#{@map_index}.getCenter();marker0.setPosition(mapCenter);LocationMap.updateLatLng(mapCenter);});google.maps.event.addListener(map#{@map_index}, 'dragend', function(){LocationMap.updateAddress();});google.maps.event.addListener(map#{@map_index}, 'zoom_changed', function(){LocationMap.updateAddress();});", :interactive => false, :style => "display:#{@member.has_lat_lng? ? 'block' : 'none'}")
-            =link_to_function("#{@member.location.unknown? ? 'Add your location' : 'Edit'}", "LocationMap.toggleEdit(#{@map_index})", :id => "edit_map#{@map_index}_link")
+            =link_to_function("#{@member.location.unknown? ? 'Add your location' : 'Edit'}", "LocationMap.toggleEdit(#{@map_index})", :id => "edit_map#{@map_index}_link", :class => "edit_member_location_link")
             =link_to_function("Update location", "LocationMap.save(#{@map_index})", :id => "save_map_link", :class => "bttn_l")
             %div{:style => "display:none"}
               =form.input :lat, :as => :hidden

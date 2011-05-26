@@ -40,23 +40,23 @@
           .connection_tags_list#member_connection_tags_list
             %ul
               -@member_tags.each do |tag|
-                %li{tag_li_attributes(tag, @member_tags)}
+                %li{tag_li_attributes(tag, @member_tags + @theme_tags)}
                   =link_to_function tag, "TagsList.show('#{tag}')", :class => 'tag'
         %h2#tags_title.connection_title
           Top tags
         .connection_tags_list  
           %ul
             -@theme_tags.each do |tag|
-              %li{tag_li_attributes(tag, @member_tags)}
+              %li{tag_li_attributes(tag, @member_tags + @theme_tags)}
                 =link_to_function tag, "TagsList.show('#{tag}')", :class => 'tag'
       -@member_tags.each do |tag|
         .tags_bottom{tags_bottom_attributes(tag, @member_tags + @theme_tags)}
           -Member.tagged_with(tag).not_including(logged_in_member).random.limit(15).each do |member|
-            =link_to image_for(member, '50x50'), member, :class => 'tag_profile_img_link'
+            =link_to image_for(member, '50x50#'), member, :class => 'tag_profile_img_link'
       -@theme_tags.each do |tag|
         .tags_bottom{tags_bottom_attributes(tag, @member_tags + @theme_tags)}
-          -Member.with_theme_tag(tag).not_including(logged_in_member).random.limit(15).each do |member|
-            =link_to image_for(member, '50x50'), member, :class => 'tag_profile_img_link'
+          -Member.tagged_with(tag).not_including(logged_in_member).random.limit(15).each do |member|
+            =link_to image_for(member, '50x50#'), member, :class => 'tag_profile_img_link'
   #relevant_connections.sixcol
     %h2.connection_title Relevant connections
     %ul.member_lst.lst
@@ -90,11 +90,11 @@
           =link_to "Kasper Johanson", "#", :class=>"member_name"
           %p.relevant_description
             Became friends with 
-            =link_to 'Dave smith'                                    
+            =link_to 'Dave smith'
   #people_near_me.sixcol.last  
     %h2.connection_title 
       People near me
-    =google_map(@nearby_members, :width => 550, :height => 300, :centre => logged_in_member.lat_lng || [30,0], :zoom => 5, :map_options => "scrollwheel:false,disableDefaultUI:true", :infoboxes => true)  
+    =google_map(@nearby_members, :width => 550, :height => 300, :centre => logged_in_member.lat_lng || [30,0], :zoom => 5, :map_options => "scrollwheel:false,disableDefaultUI:true", :infoboxes => true)
 
 
 

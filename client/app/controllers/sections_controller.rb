@@ -16,15 +16,40 @@ module SectionsController::SortByWeightAndPublished
 end
 
 SectionsController.class_eval do
-  
+
+  def home
+    if !show_splash_page? && @section = home_section
+      case @section.view
+      when 'latest_stories', 'news_view'
+        @pages_sections = @section.pages.published.latest + @section.children
+        @pages_sections.extend(SectionsController::SortByWeightAndPublished)
+        @pages_sections = @pages_sections.sort_by_weight_and_published.paginate(
+        :page => params[:page],
+        :per_page => (@section.view == 'news_view' ? 7 : (APP_CONFIG[:latest_stories_items_per_page] || 6))
+        )
+        render :action => @section.view
+      when 'first_page'
+        @page = @section.destination
+        render :template => "pages/show"
+      else
+        # Otherwise use show view
+        @pages = @section.pages.published.weighted.paginate(:page => params[:page], :per_page => (APP_CONFIG[:section_pages_items_per_page] || 10))
+        render :action => 'show'
+      end
+    else
+      session[:seen_splash_page] = true
+      render :template => 'home/index'
+    end
+  end
+
   def show
     case @section.view
     when 'latest_stories', 'news_view'
       @pages_sections = @section.pages.published.latest + @section.children
       @pages_sections.extend(SectionsController::SortByWeightAndPublished)
       @pages_sections = @pages_sections.sort_by_weight_and_published.paginate(
-        :page => params[:page],
-        :per_page => (@section.view == 'news_view' ? 7 : (APP_CONFIG[:latest_stories_items_per_page] || 6))
+      :page => params[:page],
+      :per_page => (@section.view == 'news_view' ? 7 : (APP_CONFIG[:latest_stories_items_per_page] || 6))
       )
       render :action => @section.view
     when 'first_page'
@@ -34,6 +59,12 @@ SectionsController.class_eval do
       @pages = @section.pages.published.weighted.paginate(:page => params[:page], :per_page => (APP_CONFIG[:section_pages_items_per_page] || 10))
     end
   end
-    
+
+
+  private
+
+  def show_splash_page?
+    !logged_in_member && !session[:seen_splash_page] && splash_page_advert
+  end
 
 end

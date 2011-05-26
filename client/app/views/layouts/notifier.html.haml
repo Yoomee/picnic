@@ -1,0 +1,23 @@
+%html
+  %head
+    %title Email from PICNIC Network
+    %meta{ :content => "text/html; charset=iso-8859-1", "http-equiv" => "Content-Type" }    
+  %body{:bgcolor => "#F5F5F5", :leftmargin => "0", :topmargin => "0",  :marginwidth => "0",  :marginheight => "0", :style => "font-family: Arial,Verdana"}
+    %table{:width => "600", :border => "0", :align => "center", :cellpadding => "0", :cellspacing => "0",  :id => "table1", :valign => "top", :style => "margin:0 auto 20px"}
+      %tr
+        %td{:height => "131", :bgcolor => "#ffffff"}
+          -link_to(site_url) do
+            =image_tag("#{site_url}/images/email_header.jpg", :width => 600, :height => 131, :border => 0, :alt => "PICNIC")
+      %tr
+        %td{:width => "560", :valign => "top", :bgcolor => "#ffffff", :style => "padding: 20px; font-size: 12px; font-family:Helvetica,Arial,Verdana,sans-serif; line-height: 16px; color:#000;"}
+          %p{:align => "left", :style => "font-size: 12px; font-family:Helvetica,Arial,Verdana,sans-serif; line-height: 16px; color:#000;"}
+            =@content_for_layout
+      %tr
+        %td{:valign => "top", :style => "padding: 0; height: 2px;"}
+          =image_tag("#{site_url}/images/email_footer.jpg", :width => 600, :height => 2, :border => 0)
+      %tr
+        %td{:height => "70"}
+          %div{:align => "center"}
+            %p{:style => "margin: 0px; width: 500px; font-size: 11px; font-family:Helvetica,Arial,Verdana,sans-serif; line-height: 18px; text-align: center; color: #000;"}
+              &copy; PICNIC 2011
+            =link_to(site_url.gsub(/https?:\/\//, ''), site_url, :style => "margin: 0pt; width: 500px; font-size: 13px; font-weight:bold; font-family:Helvetica,Arial,Verdana,sans-serif; line-height: 18px; color: #000;")
