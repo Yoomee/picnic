@@ -48,7 +48,7 @@
           %ul
             -@theme_tags.each do |tag|
               %li{tag_li_attributes(tag, @member_tags + @theme_tags)}
-                =link_to_function tag, "TagsList.show('#{tag}')", :class => 'tag'
+                =link_to_function tag, "TagsList.show('#{tag.name.fully_underscore}')", :class => 'tag'
       -@member_tags.each do |tag|
         .tags_bottom{tags_bottom_attributes(tag, @member_tags + @theme_tags)}
           -Member.tagged_with(tag).not_including(logged_in_member).random.limit(15).each do |member|
@@ -60,36 +60,7 @@
   #relevant_connections.sixcol
     %h2.connection_title Relevant connections
     %ul.member_lst.lst
-      %li
-        .connection_profile_photo
-          =link_to image_tag("member_image.png"), "#map"
-        .name_and_tag
-          =link_to "Kasper Johanson", "#", :class=>"member_name"
-          %p.relevant_description
-            Became friends with 
-            =link_to 'Dave smith'
-      %li
-        .connection_profile_photo
-          =link_to image_tag("member_image.png"), "#map"
-        .name_and_tag
-          =link_to "Kasper Johanson", "#", :class=>"member_name"
-          %p.relevant_description
-            Did something else
-      %li
-        .connection_profile_photo
-          =link_to image_tag("member_image.png"), "#map"
-        .name_and_tag
-          =link_to "Kasper Johanson", "#", :class=>"member_name"
-          %p.relevant_description
-            Pellentesque Eu Est A Nulla Placerat Dignissim. Morbi A Enim In Magna Semper Bibendum. EtiamPellentesque Eu Est A Nulla Placerat Dignissim. Morbi A Enim In Magna Semper Bibendum. Etiam
-      %li
-        .connection_profile_photo
-          =link_to image_tag("member_image.png"), "#map"
-        .name_and_tag
-          =link_to "Kasper Johanson", "#", :class=>"member_name"
-          %p.relevant_description
-            Became friends with 
-            =link_to 'Dave smith'
+      =render_connections(@connections)
   #people_near_me.sixcol.last  
     %h2.connection_title 
       People near me
