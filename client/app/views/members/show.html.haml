@@ -108,8 +108,9 @@
           },
           success: function(html) {
             $('#shouts_container').html(html);
+            FancyboxLoader.loadAll();
           }
-        })
+        });
       },
     
       latest: function() {
