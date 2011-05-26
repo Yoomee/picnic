@@ -4549,9 +4549,6 @@ li.wall_post {
   width: 10%;
   float: left;
 }
-.wall_form .wall_member_image img {
-  height: auto !important;
-}
 .wall_form form {
   width: 87%;
   float: right;
