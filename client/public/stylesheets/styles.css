@@ -3900,7 +3900,10 @@ div.page_share {
   float: left;
   margin-right: 10px;
 }
-#url_box .auth_links .auth_link a img{
+.auth_links .auth_link a{
+  float:left;
+}
+#url_box .auth_links .auth_link a img, #url_box .auth_links .auth_link a.fb_button{
   margin-top: 20px;
 }
 .auth_links .auth_link .tick{
