@@ -12,4 +12,5 @@
             %td{:class => "#{field.try(:length) == 1 ? 'short' : ''}"}
               =field == del.data_fields.last ? del.signature : field
           %td=del.authentic? ? "1" : "0"
+          %td=link_to_url(verify_delegate_url(:signature => del.signature))
   =will_paginate(@conference_delegates)
