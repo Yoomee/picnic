@@ -4,7 +4,7 @@
     =render 'members/what_i_bring', :object => @member, :small_print => 'You can edit this later if you want.', :options => {:fancy => false}
     #example_what_i_brings.subrow
       %ul.lst
-        -@other_members.each do |member|
+        -Member.top_rated.not_including(@member).with_what_i_bring.limit(5).each do |member|
           %li
             =image_for(member, "50x50#")
             %p
