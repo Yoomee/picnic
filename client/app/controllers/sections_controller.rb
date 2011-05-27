@@ -37,7 +37,7 @@ SectionsController.class_eval do
         render :action => 'show'
       end
     else
-      session[:seen_splash_page] = true
+      seen_splash_page!
       render :template => 'home/index'
     end
   end
@@ -63,8 +63,19 @@ SectionsController.class_eval do
 
   private
 
+  def seen_splash_page!
+    if splash_page_advert
+      session[:viewed_splash_pages] ||= []
+      session[:viewed_splash_pages] << splash_page_advert.id.to_s
+    end
+  end
+
+  def seen_splash_page?
+    session[:viewed_splash_pages] && session[:viewed_splash_pages].include?(splash_page_advert.id.to_s)
+  end
+
   def show_splash_page?
-    !logged_in_member && !session[:seen_splash_page] && splash_page_advert
+    splash_page_advert && !seen_splash_page?
   end
 
 end
