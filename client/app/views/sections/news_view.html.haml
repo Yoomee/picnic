@@ -1,31 +1,14 @@
 -@page_title = @section.name
--hide_page_title
 -unless @section.description.nil?
   %p.section_description
     =@section.description
-
--if !@pages_sections.blank?
-  #news_1.newsbox.sixcol
-    =render('sections/news_story', :page_section => @pages_sections[0])
--if @pages_sections[1]
-  #news_2.newsbox.threecol=render('sections/news_story', :page_section => @pages_sections[1])
-
--if @pages_sections[2]
-  #news_3.newsbox.threecol.last=render('sections/news_story', :page_section => @pages_sections[2])
--if @pages_sections[3]
-  #news_4.newsbox.threecol=render('sections/news_story', :page_section => @pages_sections[3])
--if @pages_sections[4]
-  #news_5.newsbox.threecol=render('sections/news_story', :page_section => @pages_sections[4])  
-
--if @pages_sections[5]
-  #news_6.newsbox.threecol=render('sections/news_story', :page_section => @pages_sections[5])
-
--if @pages_sections[6]
-  #news_7.newsbox.threecol.last=render('sections/news_story', :page_section => @pages_sections[6])
-
-       
-  
-  
+#news_view
+  -@pages_sections.each_with_col_name do |page_section, col_name|
+    .item{:class => "item_#{col_name}"}
+      %h3=link_to page_section, page_section
+      =link_to(photo_for(page_section, "250x140!"), page_section, :class => 'item_img')
+      %p=strip_tags description_for(page_section, :length => 140)
+      =link_to 'More', page_section, :class => 'bttn'
 %br.clear
 =will_paginate @pages_sections
 -options_panel do
