@@ -1,0 +1,36 @@
+-@page_title = @section.name
+-hide_page_title
+-unless @section.description.nil?
+  %p.section_description
+    =@section.description
+
+-if !@pages_sections.blank?
+  #news_1.newsbox.sixcol
+    =render('sections/news_story', :page_section => @pages_sections[0])
+-if @pages_sections[1]
+  #news_2.newsbox.threecol=render('sections/news_story', :page_section => @pages_sections[1])
+
+-if @pages_sections[2]
+  #news_3.newsbox.threecol.last=render('sections/news_story', :page_section => @pages_sections[2])
+-if @pages_sections[3]
+  #news_4.newsbox.threecol=render('sections/news_story', :page_section => @pages_sections[3])
+-if @pages_sections[4]
+  #news_5.newsbox.threecol=render('sections/news_story', :page_section => @pages_sections[4])  
+
+-if @pages_sections[5]
+  #news_6.newsbox.threecol=render('sections/news_story', :page_section => @pages_sections[5])
+
+-if @pages_sections[6]
+  #news_7.newsbox.threecol.last=render('sections/news_story', :page_section => @pages_sections[6])
+
+       
+  
+  
+%br.clear
+=will_paginate @pages_sections
+-options_panel do
+  =back_link
+  =link_if_allowed 'Edit section', edit_section_proc(@section)
+  =link_if_allowed 'Delete', @section, :method => :delete, :confirm => "Are you sure you want to delete this section? (its subsections and pages will also be deleted)"
+  =link_if_allowed "New subsection", new_section_section_proc(@section)
+  =link_if_allowed 'New page', new_section_page_proc(@section)

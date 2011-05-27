@@ -63,7 +63,7 @@ ul.sitemap li {
 }
 body {
 	margin:0;
-	background: #f5f5f5;
+	background: #fff;
 		
 
 
@@ -97,7 +97,7 @@ a:hover {
 }
 
 #header_right {
-	margin-top: 32px;
+	margin-top: 40px;
 	
 }
 #header_right a.button {
@@ -135,7 +135,7 @@ td, th {
 .options_panel {
   border-top: 1px solid #f5f5f5;
   clear:left;
-  color:#f5f5f5;
+  color:#fff;
 
   margin-top:20px;
   padding-top:10px;
@@ -1014,7 +1014,7 @@ div#top {
 	width:100%;
 }
 #header .row {
-	min-height:90px;
+	min-height:98px;
 
 }
 #header_inside {
@@ -1060,7 +1060,7 @@ h1#site_logo a {
 	font-size: 45px;
 	color: black;
 	text-decoration: none;
-	margin:31px 0 0 0px;
+	margin:39px 0 0 0px;
 	display: block;
 }
 
@@ -1247,7 +1247,7 @@ input#search_icon {
   clear: both;
   float: left;
   margin: 0px 0 0px;
-  padding: 10px 0 0px;
+  padding: 14px 0 0px;
   width: 100%;
  
 }
@@ -1282,7 +1282,7 @@ input#search_icon {
 
 	float:left;
 	margin:0px 0px 0 0;
-	padding:5px 30px 4px 0;
+	padding:5px 30px 10px 0;
 
 }
 #nav ul li a:hover {
@@ -1320,6 +1320,7 @@ input#search_icon {
 	margin-top: 30px;
 	min-height: 500px;
 }
+
 
 /* ====================  homepage  ===================== */
 div.big_message {
@@ -2299,9 +2300,12 @@ ul.action_links li {
 	clear:both;
 
 	position:relative;
-	background: #d5d5d5;
+	background:;
 }
-
+#footer .row {
+	border-top: 1px solid #e8e8e8;
+	border-top: 1px solid rgba(0,0,0,0.1);
+}
 #footer_copyright {
 	border-top: 3px solid #ccc;
 	margin-top: 10px;
@@ -2400,7 +2404,7 @@ div#footer_links {
 }
 
 #sponsors {
-	background: #fff;
+	background: #f5f5f5;
 	
 }
 .sponsor a {
@@ -2475,18 +2479,34 @@ div#footer_links {
 	float: left;
 }
 
-
 a#yoomee_link {
+	float: right;
+	width: 155px;
+	color: #555;
+}
+a#yoomee_link span.yoomee_logo {
 	display: block;
 	background: url(/images/sprite_picnic.png) 0 -60px;
-	width: 68px;
-	margin: 0;
+	width: 80px;
+	margin: 2px 0;
 	height: 30px;
 	text-indent: -9000em;
 	float: right;
 	
 }
 
+a#yoomee_link span.yoomee_text {
+	display: block;
+	text-indent:0;
+	float: left;
+	width: 60px ;
+	line-height: 120%;
+	margin: 4px 0 0;
+}
+a#yoomee_link:hover {
+	color: #000;
+	text-decoration: none;
+}
 
 /* ====================  calendar/event styles  ===================== */
 #calendar_menubar {
@@ -2735,6 +2755,41 @@ a.item_img {
 a.item_img img {
 	float:left;
 }
+/* ====================  Section- blog_like_news view   ===================== */
+
+div.blog_like_news_content {
+	color: #555;
+	
+}
+
+div.blog_like_news {
+	float: left;
+	border-bottom: 1px solid #e8e8e8;
+	border-bottom: 1px solid rgba(0,0,0,0.1);	
+	margin: 0 0 20px;
+	position: relative;
+	padding-bottom: 10px;
+}
+
+h2.blog_like_news_title {
+	margin: 0;
+	line-height: 140%;
+}
+h2.blog_like_news_title a {
+	color: #000;
+	margin: 0 0 5px;
+	
+	
+}
+
+p.blog_like_news_date {
+	color: #999;
+	font-size: 16px;
+}
+
+
+
+
 /* ====================  Section- Latest News view   ===================== */
 .newsbox {
 	margin-bottom: 30px;
@@ -2776,6 +2831,9 @@ p.newsbox_date {
 }
 
 a.newsbox_arrow {
+	position: absolute;
+	right: 0;
+	bottom: 10px;
   	float: right;
 	display: block;
 	width: 22px;
@@ -2787,6 +2845,14 @@ a.newsbox_arrow {
 a.newsbox_arrow:hover {
 	background-position: -32px -1640px;
 }
+/* ====================  Section- blog News view   ===================== */
+
+div.blog_news_img {
+	float: left;
+	
+}
+
+
 
 /* ============================= Message inbox ========================== */
 .messaging_section #page {
@@ -3447,8 +3513,8 @@ a.backto {
 
 }
 
-#page_left_col {
-	color: #444;
+#page_left_col, #page_right_col {
+	color: #666;
 
 
 
@@ -4318,7 +4384,7 @@ dt {
 }
 .shout {
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 
 }
 
@@ -4354,7 +4420,7 @@ div.shout_text p {
   margin: 0 0 5px 0px;
   padding: 2%;
   width: 96%;
-  background: #fff;
+  background: #f5f5f5;
   float: left;
   position: relative;
 }
@@ -4405,6 +4471,9 @@ div.shout_text p {
 .shout .shout_links a {
   float: right;
   margin-right: 10px;
+}
+.shout .shout_links a.comment_prompt {
+	font-weight: bold;
 }
 .shout .shout_links a.shout_view_link {
   float: right;
@@ -5919,10 +5988,7 @@ table#delegates th{
 	margin: -40px 0 0 ;
 	float: right;
 }
-#header .row {
-	min-height:60px;
 
-}
 #user_links {
 	position: absolute;
 	top: 0;
@@ -5935,11 +6001,6 @@ table#delegates th{
 
 
 
-
-h1#site_logo a {
-	margin: 10px 0 0;
-	
-}
 
 	
 	#fancybox-inner {
