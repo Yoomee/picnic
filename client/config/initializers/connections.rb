@@ -1,1 +1,1 @@
-ConnectionSet::connection_classes = [FriendOfAFriendConnection, TwitterFriendConnection, RandomConnection]
+ConnectionSet::connection_classes = [FriendOfAFriendConnection, TwitterFriendConnection, FacebookFriendConnection, RandomConnection]
