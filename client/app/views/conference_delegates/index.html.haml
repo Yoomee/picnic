@@ -1,15 +1,17 @@
-.twelve_col
-  %h1 Conference Delegates from Eventpartners
-  %table#delegates
-    %tbody
-      %tr.header
-        - ConferenceDelegate::FIELDS_IN_ORDER.each do |field|
-          %th=field.gsub('_', ' ').split(//).join("<br/>")
-        %th="AUTHENTIC".split(//).join("<br/>")
-      -@conference_delegates.each do |del|
-        %tr
-          -del.data_fields.each do |field|
-            %td{:class => "#{field.try(:length) == 1 ? 'short' : ''}"}
-              =field == del.data_fields.last ? del.signature : field
-          %td=del.authentic? ? "1" : "0"
-  =will_paginate(@conference_delegates)
+-no_content_row
+#conference_delegates_row.row
+  .twelvecol
+    %h1 Conference Delegates from Eventpartners
+    %table#delegates
+      %tbody
+        %tr.header
+          - ConferenceDelegate::FIELDS_IN_ORDER.each do |field|
+            %th=field.gsub('_', ' ').split(//).join("<br/>")
+          %th="AUTHENTIC".split(//).join("<br/>")
+        -@conference_delegates.each do |del|
+          %tr
+            -del.data_fields.each_with_index do |field, idx|
+              %td{:class => "#{field.try(:length) == 1 ? 'short' : ''}"}
+                =(idx == (del.data_fields.length - 2)) ? del.signature : field
+            %td=del.authentic? ? "1" : "0"
+    =will_paginate(@conference_delegates)
