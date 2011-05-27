@@ -1,11 +1,18 @@
 FriendRequestsController.class_eval do
   
-  def create
-    member_target = Member.find(params[:member_id])
-    FriendRequest.create(:member => @logged_in_member, :member_target => member_target)
+  private
+  def deal_with_accept
     render :update do |page|
-      page["#no_friends"].replace(render("friend_requests/add_friend_link", :member => member_target))
-      page["#friend_request_#{member_target.id}"].replace(render("friend_requests/add_friend_link", :member => member_target))
+      if logged_in_as?(@friend_request.member_target) && @friend_request.accept!
+        page["#friend_request_#{@friend_request.member_id}_link"].replace_html("You are now sitting on #{@friend_request.member.forename}'s blanket.")
+        page["#friend_list_#{@friend_request.member_id}"].replace(render("members/friend_list", :member => @friend_request.member(true)))
+      end
+    end
+  end
+  
+  def deal_with_create
+    render :update do |page|
+      page[".friends_list"].replace_html(render("members/friends", :member => @member_target))
     end
   end
   

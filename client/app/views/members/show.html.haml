@@ -141,22 +141,7 @@
       =image_for(@member, '140x')
       =fancybox_edit(@member, :image, :partial => "members/photo_form")
     .friends_list.subrow
-      %h3.profile_title="#{forename_or_my(@member, :capitalize => true)} friends"
-      
-      -if @member.friends.empty?
-        #no_friends
-          -if @member == logged_in_member
-            Aww shame. You don't have any friends
-            %br
-            =link_to("Get connected!", club_path)
-          -else
-            -if !(@logged_in_member && @logged_in_member.sent_friend_request_to?(@member))
-              ="Aww shame. #{@member.forename} doesn't have any friends."
-              %br
-            =render_add_friend_link(@member, :ajax_loader => "ajax_loader_squares.gif", :text => "Send a friend request")
-      -else
-        -@member.friends.each do |member|
-          =link_to(image_for(member, '50x50#'), member)
+      =render("members/friends", :member => @member)
   .eightcol
     .profile_info.subrow
       %h1.profile_title
@@ -248,8 +233,6 @@
               =link_to_box(badge, info_badge_path(badge))
   .twocol.last
     #member_links
-      %ul.lst
-        %li=render_add_friend_link(@member, :ajax_loader => "ajax_loader_squares.gif", :text => "Send a friend request")
 .row
   .twocol
   .eightcol
