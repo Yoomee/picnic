@@ -1,0 +1,8 @@
+-if !page.section.root? || page.section.page_and_section_descendant_generations == 1
+  %ul.lst
+    -if page.section.view == 'news_view'
+      -page.section.all_children(:published_only => !admin_logged_in?).reverse.each do |page_or_section|
+        =li_with_active(viewing_page_or_section?(page_or_section), link_to_self(page_or_section))
+    -else
+      -page.section.all_children(:published_only => !admin_logged_in?).each do |page_or_section|
+        =li_with_active(viewing_page_or_section?(page_or_section), link_to_self(page_or_section))

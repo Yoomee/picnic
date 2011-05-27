@@ -46,7 +46,7 @@ body span.cal_sheet span.month {
 	background:#87cd29;
 }
 
-h1, h2, h3, h4, h5, h6, #nav, #subnav, #user_links .button, .bring_quote, .cycle_nav a, .call_to_action {
+h1, h2, h3, h4, h5, h6, #nav, #subnav, #user_links .button, .bring_quote, .cycle_nav a, .call_to_action, #beta_bar {
 	font-family:'VAG Rounded W02 Light', arial, sans-serif;
 		color:black;
 	font-weight: normal;
@@ -5921,6 +5921,19 @@ table#delegates th{
 .controller_conference_delegates .container .row{
   max-width:none;
 }
+
+/*========== beta bar ==========*/
+#beta_bar {
+  display: block;
+  background: black;
+  color: white;
+  width: 100%;
+  font-size: 14px;
+  height: 35px;
+  line-height: 35px;
+  cursor: pointer;
+}
+
 /* ============================= */
 /* ! Layout for mobile version   */
 /* ============================= */
