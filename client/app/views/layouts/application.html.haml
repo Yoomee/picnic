@@ -31,9 +31,16 @@
           cookie : true, // enable cookies to allow the server to access the session
           xfbml  : true  // parse XFBML
         });
+        // Beta bar
+        $('#beta_bar').click(function() {
+          window.location.href = '#{url_for Page.slug(:beta)}';
+        });
       });
+
+      
   - body_tag do
     #wrapper
+      =render "layouts/beta_bar"
       #header.container
         =render :partial => 'layouts/header'
       #subheader.container
