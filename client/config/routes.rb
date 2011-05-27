@@ -7,6 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.connect '/delegate/receive', :controller => 'delegate_receiver', :action => 'receive'
   map.connect '/delegate/test', :controller => 'delegate_receiver', :action => 'test'
+  map.verify_delegate '/delegate/verify/:signature', :controller => 'conference_delegates', :action => 'verify'
   map.resources :conference_delegates, :only => [:index]
   
   map.leaderboard "leaderboard", :controller => "leaderboard", :action => "index"
@@ -23,9 +24,7 @@ ActionController::Routing::Routes.draw do |map|
   map.news_network '/newsnetwork', :controller => 'news_network'
   map.themes '/themes', :controller => 'tags'
   map.what_i_bring "/what_i_bring", :controller => 'members', :action => 'what_i_bring'
-
-  map.connect '/delegate/receive', :controller => 'delegate_receiver', :action => 'receive'
-  map.connect '/delegate/test', :controller => 'delegate_receiver', :action => 'test'
+  
   map.connect "tags/autocomplete", :controller => "tags", :action => "autocomplete"
   
   map.root :controller => 'sections', :action => 'home'

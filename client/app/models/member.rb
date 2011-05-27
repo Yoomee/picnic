@@ -13,7 +13,7 @@ Member.class_eval do
   rateable_by_member
   has_location
   has_many :urls, :as => :attachable
-  has_one :conference_delegate
+  has_one :conference_delegate  
 
   named_scope :with_what_i_bring, :conditions => "what_i_bring > ''"
   named_scope :with_theme_tag, lambda{|tag| {:joins => "INNER JOIN shouts ON shouts.member_id=members.id INNER JOIN taggings ON taggings.taggable_id=shouts.id", :conditions => ["taggings.taggable_type='Shout' AND taggings.tag_id=?", tag.id], :group => "members.id"}}
@@ -26,6 +26,14 @@ Member.class_eval do
   accepts_nested_attributes_for :urls
   
   # validates_presence_of :country, :unless => Proc.new {|member| !member.new_record? || member.twitter_connected? || member.linked_in_connected? || member.facebook_connected?}
+  
+  def conference_delegate_id
+    conference_delegate.try(:id)
+  end
+  
+  def conference_delegate_id=(val)
+    self.conference_delegate = ConferenceDelegate.find_by_id(val)
+  end
   
   def country
     location.country

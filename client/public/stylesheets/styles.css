@@ -5917,6 +5917,10 @@ table#delegates th{
   float:right;
   margin-top:0px;
 }
+
+.controller_conference_delegates .container .row{
+  max-width:none;
+}
 /* ============================= */
 /* ! Layout for mobile version   */
 /* ============================= */
