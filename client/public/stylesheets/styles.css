@@ -2043,9 +2043,9 @@ h1.profile_title {
   width: 100%;
 }
 #member_links a {
-  width: 85%;
+  width: 100%;
+  float: left;
   font-size: 15px;
-  padding: 5px 8px;
 }
 .profile_info {
 	width: 100%;
@@ -5139,7 +5139,14 @@ ul.connection_tags li a.tag {
 .connection_box a.fancybox_edit {
   font-size:12px;
 }
-
+.friend_list_intro {
+  font-size: 13px;
+}
+.member_friend_list {
+  float: left;
+  clear: both;
+  margin-top: 10px;
+}
 
 /* ========= Messages ========== */
 table.inbox {
@@ -5429,7 +5436,12 @@ p.no_messages_yet {
 #notifications .notification p {
 	margin: 0;
 }
-
+.notification_content .accept_friend_request {
+  margin-right: 10px;
+}
+.notification_content .friend_request_links a {
+  float: left;
+}
 
 /* ========= Search Results =========== */
 
