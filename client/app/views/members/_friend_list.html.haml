@@ -1,3 +1,5 @@
-%div{:id => "friend_list_#{member.id}", :class => "member_friend_list"}
-  -member.friends.each do |member|
-    =link_to(image_for(member, '50x50#'), member)
+%ul{:id => "friend_list_#{member.id}", :class => "lst member_friend_list"}
+  -member.friends.first(10).each do |member|
+    %li.member_friend_item
+      =link_to(image_for(member, '50x50#'), member)
+      =link_to(member.forename, member, :class => "member_name")

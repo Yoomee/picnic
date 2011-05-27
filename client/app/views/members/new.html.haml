@@ -4,13 +4,13 @@
   %h2 Join the club
   .clear
   %p
-    Pull in your details by clicking on a service below.
+    It's easy to log in with one of these sites you already use.
+    %br
+    We promise not to post to your account or spam your friends.
   =render("sessions/auth_links")
-  %p.small_print
-    (We won't post anything without your permission)
 
   %p.show_the_hard_way
-    =link_to_function "Or enter your details manually...", "$('#the_hard_way').toggle('blind');$('#member_email').focus()"
+    =link_to_function "Or enter your email address manually...", "$('#the_hard_way').toggle('blind');$('html,body').animate({scrollTop:$('#the_hard_way').offset().top-100},'slow',function(){$('#member_email').focus();});"
   .clear
   #the_hard_way{:style => "display:none"}
     %div

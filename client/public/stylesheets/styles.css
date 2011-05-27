@@ -3889,6 +3889,10 @@ div.page_share {
   width: 550px;
 }
 
+.register_box a.show_sign_in {
+  margin-top:15px;
+}
+
 .register_box .auth_links {
   float: left;
   clear: both;
@@ -3994,7 +3998,7 @@ div.page_share {
   float: left;
 }
 p.show_the_hard_way {
-  margin-bottom: 60px;
+  margin-top: 20px;
 }
 
 /*========== Badges ==========*/
@@ -5146,6 +5150,23 @@ ul.connection_tags li a.tag {
   float: left;
   clear: both;
   margin-top: 10px;
+}
+.member_friend_list li.member_friend_item {
+  clear: none;
+  float: left;
+  height: 60px;
+  margin: 0 10px 18px 0;
+  width: 50px;
+}
+.member_friend_list li.member_friend_item a {
+  clear: both;
+  display:block;
+  text-align: center;
+  width: 100%;
+  overflow: hidden;
+}
+.member_friend_item li.member_friend_item a.member_name {
+  
 }
 
 /* ========= Messages ========== */
