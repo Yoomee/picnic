@@ -19,7 +19,6 @@ class ConferenceDelegatesController < ApplicationController
         redirect_to club_path
       else
         @member = Member.new(:conference_delegate => conference_delegate)
-        render :template => 'members/new'
       end
     else
       flash[:notice] = "This PICNIC 11 booking has already been verified."
