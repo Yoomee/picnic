@@ -3889,6 +3889,10 @@ div.page_share {
   width: 550px;
 }
 
+.register_box a.show_sign_in {
+  margin-top:15px;
+}
+
 .register_box .auth_links {
   float: left;
   clear: both;
@@ -3994,7 +3998,7 @@ div.page_share {
   float: left;
 }
 p.show_the_hard_way {
-  margin-bottom: 60px;
+  margin-top: 20px;
 }
 
 /*========== Badges ==========*/

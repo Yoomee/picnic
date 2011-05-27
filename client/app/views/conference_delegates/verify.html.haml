@@ -36,14 +36,12 @@
 -title "Join the club", :hidden => true
 
 #register_picnic_club.register_box
-  %h2
-    -if !@member.conference_delegate.nil?
-      ="Hi #{@member.conference_delegate.firstname}, sign up and join the club"
-    -else
-      Join the club
-  .clear
+  %h2="Welcome to the club #{@member.conference_delegate.firstname}!"
   %p
-    Pull in your details by clicking on a service below.
+    It's easy to log in with one of these sites you already use.
+    %br
+    We promise not to post to your account or spam your friends.
+    
   .auth_links
     .auth_link#facebook
       -fb_login(:text => "Sign in with Facebook", :perms => "email") do
@@ -52,11 +50,9 @@
       =link_to(image_tag("twitter_sign_in.png"), "#")
     .auth_link#linkedin
       =link_to(image_tag("linked_in_sign_in.png"), "#")
-  %p.small_print
-    (We won't post anything without your permission)
 
   %p.show_the_hard_way
-    =link_to_function "Or enter your details manually...", "$('#the_hard_way').toggle('blind');$('#member_email').focus()"
+    =link_to_function "Or enter your email address manually...", "$('#the_hard_way').toggle('blind');$('html,body').animate({scrollTop:$('#the_hard_way').offset().top-100},'slow',function(){$('#member_email').focus();});"
   .clear
   #the_hard_way{:style => "display:none"}
     %div
@@ -71,5 +67,7 @@
           =form.input :country, :label => 'Where are you from?', :prompt => 'Select a country', :as => :country
           =form.input :conference_delegate_id, :as => :hidden
           =form.commit_button "Go &gt; &gt;"
+  %p.small_print
+    =link_to_function("Already got an account? Click here.", "alert('Hello!')", :class => 'fl show_sign_in')
 -options_panel do
   =back_link

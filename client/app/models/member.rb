@@ -7,13 +7,15 @@ Member.class_eval do
   attr_boolean_accessor :skip_what_i_bring_validation
   
   acts_as_taggable_on :tags
+  
+  before_save :associate_with_delegate
 
   after_create :trigger_points_event
   
   rateable_by_member
   has_location
   has_many :urls, :as => :attachable
-  has_one :conference_delegate  
+  has_one :conference_delegate, :autosave => true
 
   named_scope :with_what_i_bring, :conditions => "what_i_bring > ''"
   named_scope :with_theme_tag, lambda{|tag| {:joins => "INNER JOIN shouts ON shouts.member_id=members.id INNER JOIN taggings ON taggings.taggable_id=shouts.id", :conditions => ["taggings.taggable_type='Shout' AND taggings.tag_id=?", tag.id], :group => "members.id"}}
@@ -64,6 +66,14 @@ Member.class_eval do
   end
 
   private  
+  def associate_with_delegate
+    if conference_delegate.nil? && (new_record? || changed?(&:email))
+      if del = ConferenceDelegate.find_by_email_and_member_id(email, nil)
+        del.member = self
+      end
+    end
+  end
+  
   def trigger_points_event(options = {})
     self.handle_points_event(:register, self, options)
   end
