@@ -1,11 +1,7 @@
 -title "Join the club", :hidden => true
 
 #register_picnic_club.register_box
-  %h2
-    -if !@member.conference_delegate.nil?
-      ="Hi #{@member.conference_delegate.firstname}, sign up and join the club"
-    -else
-      Join the club
+  %h2 Join the club
   .clear
   %p
     Pull in your details by clicking on a service below.
@@ -27,7 +23,6 @@
             =opt.input :forename, :label => 'First name'
             =opt.input :surname, :label => 'Last name'
           =form.input :country, :label => 'Where are you from?', :prompt => 'Select a country', :as => :country
-          =form.input :conference_delegate_id
           =form.commit_button "Go &gt; &gt;"
 -options_panel do
   =back_link

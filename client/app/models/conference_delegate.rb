@@ -19,7 +19,7 @@ class ConferenceDelegate < ActiveRecord::Base
           delegate_params[field.downcase.to_sym] = params[field]
         end
       end
-      return nil if [:firstname, :lastname, :email, :signature].any?{|field| delegate_params[field].blank?} || exists?(:evp_id => delegate_params[:evp_id])
+      return nil if [:firstname, :lastname, :email, :signature, :evp_id].any?{|field| delegate_params[field].blank?} || exists?(:evp_id => delegate_params[:evp_id])
       delegate_params[:member] = Member.find_by_email(delegate_params[:email])
       create(delegate_params)
     end

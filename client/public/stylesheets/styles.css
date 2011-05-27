@@ -5918,7 +5918,7 @@ table#delegates th{
   margin-top:0px;
 }
 
-.controller_conference_delegates .container .row{
+#conference_delegates_row{
   max-width:none;
 }
 /* ============================= */

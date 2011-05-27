@@ -71,9 +71,9 @@
   =text_field_tag "DINNER_THU", "1"
   %br
   =label_tag "EVP_ID"
-  =text_field_tag "EVP_ID", "1"
+  =text_field_tag "EVP_ID", ConferenceDelegate.last.evp_id + 1
   %br
   =label_tag "SIGNATURE"
-  =text_field_tag "SIGNATURE", "/mlUv+X6sMI/p1SJqMOogVfaVHM="
+  =text_field_tag "SIGNATURE", rand(1000000000).to_s(32)
   %br
   =submit_tag
