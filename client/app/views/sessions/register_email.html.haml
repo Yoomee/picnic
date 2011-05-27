@@ -25,7 +25,6 @@
     -form.inputs do
       -@member.non_blank_attributes.each do |attribute, value|
         =form.input attribute, :as => :hidden unless attribute.to_sym == :email
-      =form.input :conference_delegate
       =form.input :auth_service, :as => :hidden
       =form.input :linked_in_image_url, :as => :hidden
       =form.input :email, :as => (), :label => email_label
