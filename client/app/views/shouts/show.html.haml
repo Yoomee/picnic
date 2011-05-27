@@ -2,60 +2,68 @@
 -title shout_title(@shout), :hidden => true
 
 .row
-  .twocol
-    .shout_author.subrow
-      =link_to(image_for(@shout.member, "50x50#"), @shout.member, :class => "shout_author_image")
-      =link_to_self(@shout.member, :class => "shout_author_name")
-    -if !@shout.tags.empty?
-      .shout_themes.themes_list.subrow
-        %h3.profile_title Themes
-        %ul.lst
-          -@shout.tags.each do |tag|
-            =link_to_tag(tag)
-    .shout_related.subrow
-      %h3.profile_title Related
-      %ul.lst
-        -@shout.related_shouts.each do |shout|
-          %li
-            =link_to(shout_title(shout), shout)
   .eightcol.last
-    -if @shout.has_video?
-      .shout_image.subrow
-        =@shout.attachable.reformatted_html(:width => 746, :height => 400)
-    -elsif @shout.has_photo?
-      .shout_image.subrow
-        =image_for(@shout, "746x400#")
-    -elsif @shout.has_link?
-      .shout_image.subrow
-        =image_for(@shout, "746x400#")
-    .subrow
-      .shout_left
-        .shout_left_inner
-          .shout_title.flcb
-            =shout_title(@shout)
-          .shout_text.flcb
-            =@shout.text
-        =render_shout_comments(@shout, :button_label => "Post")
-      .shout_right
-        .shout_right_inner
-          -# default to sheffield just for the moment
-          -location = @shout.has_location? ? @shout.location : Location.new(:lat => "53.3830548", :lng => "-1.4647953", :country => "UK", :city => "Sheffield")
-          =google_map(location, :width => "100%", :height => 200)
-          .shout_address
-            %strong Location:
-            %br
-            =render_address(location)
-            .shout_likes
-              =image_tag("thumbs_up.png")
-              12 likes
-          .shout_share
-            %strong Share
-            %ul.lst
-              %li=link_to("Facebook", "#")
-              %li=link_to("Twitter", "#")
-              %li=link_to("Email", "#")
+    =render_shout(@shout)
 .row
   -options_panel do
     =back_link
-    =link_if_allowed("Edit story", edit_shout_proc(@shout))
-    =link_if_allowed("Delete story", @shout, :method => :delete, :confirm => "Are you sure?")
+
+-if false # Orignially designed for NewsNetwork stories
+  .row
+    .twocol
+      .shout_author.subrow
+        =link_to(image_for(@shout.member, "50x50#"), @shout.member, :class => "shout_author_image")
+        =link_to_self(@shout.member, :class => "shout_author_name")
+      -if !@shout.tags.empty?
+        .shout_themes.themes_list.subrow
+          %h3.profile_title Themes
+          %ul.lst
+            -@shout.tags.each do |tag|
+              =link_to_tag(tag)
+      .shout_related.subrow
+        %h3.profile_title Related
+        %ul.lst
+          -@shout.related_shouts.each do |shout|
+            %li
+              =link_to(shout_title(shout), shout)
+    .eightcol.last
+      -if @shout.has_video?
+        .shout_image.subrow
+          =@shout.attachable.reformatted_html(:width => 746, :height => 400)
+      -elsif @shout.has_photo?
+        .shout_image.subrow
+          =image_for(@shout, "746x400#")
+      -elsif @shout.has_link?
+        .shout_image.subrow
+          =image_for(@shout, "746x400#")
+      .subrow
+        .shout_left
+          .shout_left_inner
+            .shout_title.flcb
+              =shout_title(@shout)
+            .shout_text.flcb
+              =@shout.text
+          =render_shout_comments(@shout, :button_label => "Post")
+        .shout_right
+          .shout_right_inner
+            -# default to sheffield just for the moment
+            -location = @shout.has_location? ? @shout.location : Location.new(:lat => "53.3830548", :lng => "-1.4647953", :country => "UK", :city => "Sheffield")
+            =google_map(location, :width => "100%", :height => 200)
+            .shout_address
+              %strong Location:
+              %br
+              =render_address(location)
+              .shout_likes
+                =image_tag("thumbs_up.png")
+                12 likes
+            .shout_share
+              %strong Share
+              %ul.lst
+                %li=link_to("Facebook", "#")
+                %li=link_to("Twitter", "#")
+                %li=link_to("Email", "#")
+  .row
+    -options_panel do
+      =back_link
+      =link_if_allowed("Edit story", edit_shout_proc(@shout))
+      =link_if_allowed("Delete story", @shout, :method => :delete, :confirm => "Are you sure?")
