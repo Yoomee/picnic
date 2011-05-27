@@ -1,0 +1,73 @@
+-content_for(:head) do
+  =javascript_include_tag 'jquery.oauthpopup.js'
+  :javascript
+    var FBLogin = {
+      process: function() {
+        FB.getLoginStatus(function(response) {
+          if (response.session) {
+            #{redirect_to_fb_create(:signature => @member.conference_delegate.signature)}
+          } else {
+            #{show_denied_fb_perms_message}
+          }
+        });
+      }
+    };
+    $(document).ready(function(){
+      $('.auth_link#twitter').click(function(){
+        $.oauthpopup({
+          path: '/auth/twitter',
+          center: true,
+          callback: function(){
+            window.location = '/me?signature=#{@member.conference_delegate.signature}';
+          }
+        });
+      });
+      $('.auth_link#linkedin').click(function(){
+        $.oauthpopup({
+          path: '/auth/linked_in',
+          center: true,
+          callback: function(){
+            window.location = '/me?signature=#{@member.conference_delegate.signature}';
+          }
+        });
+      });
+    });
+    
+-title "Join the club", :hidden => true
+
+#register_picnic_club.register_box
+  %h2="Welcome to the club #{@member.conference_delegate.firstname}!"
+  %p
+    It's easy to log in with one of these sites you already use.
+    %br
+    We promise not to post to your account or spam your friends.
+    
+  .auth_links
+    .auth_link#facebook
+      -fb_login(:text => "Sign in with Facebook", :perms => "email") do
+        FBLogin.process();
+    .auth_link#twitter
+      =link_to(image_tag("twitter_sign_in.png"), "#")
+    .auth_link#linkedin
+      =link_to(image_tag("linked_in_sign_in.png"), "#")
+
+  %p.show_the_hard_way
+    =link_to_function "Or enter your email address manually...", "$('#the_hard_way').toggle('blind');$('html,body').animate({scrollTop:$('#the_hard_way').offset().top-100},'slow',function(){$('#member_email').focus();});"
+  .clear
+  #the_hard_way{:style => "display:none"}
+    %div
+      %hr  
+      -semantic_form_for @member do |form|
+        -form.inputs do
+          -form.with_options(:input_html => {:size => 30}) do |opt|
+            =opt.input :email
+            =opt.input :password
+            =opt.input :forename, :label => 'First name'
+            =opt.input :surname, :label => 'Last name'
+          =form.input :country, :label => 'Where are you from?', :prompt => 'Select a country', :as => :country
+          =form.input :conference_delegate_id, :as => :hidden
+          =form.commit_button "Go &gt; &gt;"
+  %p.small_print
+    =link_to_function("Already got an account? Click here.", "alert('Hello!')", :class => 'fl show_sign_in')
+-options_panel do
+  =back_link

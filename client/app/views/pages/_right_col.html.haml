@@ -1,0 +1,51 @@
+-if page.has_photo? || page.slug_in?(%w{location contact})
+  #article_image.fivecol.last
+    -if page.slug_in?(%w{location contact})
+      -location = page.slug_is?(:contact) ? Location.picnic_hq : Location.picnic_festival
+      =google_map(location, :width => 420, :height => 300, :centre => location.lat_lng || [30,0], :zoom => 11, :map_options => "disableDefaultUI:true,zoomControl:true")
+    -else
+      =photo_for(page, '450x')
+    =snippet(page, :photo_caption)
+    =snippet(page, :pull_quote)  
+    =snippet(page, :call_to_action)
+#keep_in_touch.fivecol.last
+  %h3 Keep in Touch
+  %p Add us to your favorite social networks:
+  %ul
+    %li
+      =link_to "Twitter", "http://twitter.com/picnicfestival", :class=>"twitter", :target=>"blank"
+    %li
+      =link_to "Facebook", "http://www.facebook.com/pages/Amsterdam-Netherlands/PICNIC/52555521797", :class=>"facebook", :target=>"blank"
+    %li
+      =link_to "Vimeo", "http://vimeo.com/picnicfestival", :class=>"vimeo", :target=>"blank"
+    %li
+      =link_to "Flickr", "http://www.flickr.com/photos/crossmediaweek", :class=>"flickr", :target=>"blank"
+    %li
+      =link_to "LinkedIn", "http://www.linkedin.com/groups?gid=150580", :class=>"linkedin" , :target=>"blank"           
+    //%li
+    //=link_to "RSS", "#", :class=>"rss"
+      
+
+#newsletter_signup.fivecol.last  
+  %h3 Sign up for the PICNIC newsletter
+  %p Get the latest news, announcements, special offers and more from PICNIC and our partners. Sign up today for PICNIC’s monthly newsletter.
+  
+  -form_tag("http://picnicnetwork.us1.list-manage.com/subscribe/post?u=f68513e4236c461ff84a35e7a&id=bdfa09384f") do
+    =label_tag("FNAME", "First name")
+    =text_field_tag("FNAME", "", :class=>'labelify', :title=>'First name')
+    =label_tag("FNAME", "Last name")
+    =text_field_tag("LNAME", "", :class=>'labelify', :title=>'Last name')
+    =label_tag("FNAME", "Email")        
+    =text_field_tag("EMAIL", "", :class=>'labelify', :title=>'Email')
+    =submit_tag("Send", :class=>'newsletter_submit')
+-if false
+  .page_share
+    %h2 Share
+    %ul
+      %li
+        =link_to "Facebook", "http://facebook.com/sharer.php?u=#{site_url}#{page_path(page, :host => site_host)}", :popup => ['popUpWindow','height=350,width=600'] 
+      %li
+        =#link_to_function "Twitter", "http://twitter.com/home?status=#{page.title} - #{site_url}#{page_path(page, :host => site_host)}", :target => "_blank"
+        =link_to_function "Twitter", "(function(){window.twttr=window.twttr||{};var D=550,A=450,C=screen.height,B=screen.width,H=Math.round((B/2)-(D/2)),G=0,F=document,E;if(C>A){G=Math.round((C/2)-(A/2))}window.twttr.shareWin=window.open('http://twitter.com/share','',',left='+H+',top='+G+',width='+D+',height='+A+',personalbar=0,toolbar=0,scrollbars=1,resizable=1');E=F.createElement('script');E.src='http://platform.twitter.com/bookmarklets/share.js?v=1';F.getElementsByTagName('head')[0].appendChild(E)}())"
+      %li
+        =link_to 'Email', {:controller => 'share', :action => 'new', :model_name => 'page', :id => page.id, :as_email => true}, :id => 'share_as_email'

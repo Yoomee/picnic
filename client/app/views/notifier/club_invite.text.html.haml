@@ -1,0 +1,14 @@
+%p
+  Hi
+  =@conference_delegate.firstname
+
+%p
+  Thanks for booking onto the PICNIC Festival!
+
+%p
+  =link_to "Click here to join the club", "#{APP_CONFIG['site_url']}#{verify_delegate_path(:signature => @conference_delegate.signature)}"
+  
+%p
+  See you soon,
+  %br
+  ="The #{APP_CONFIG['site_name']} Team"

@@ -1,9 +1,10 @@
 require 'openssl'
 require 'base64'
 class ConferenceDelegate < ActiveRecord::Base
-  ConferenceDelegate::FIELDS_IN_ORDER = %w{REGDATE PRESENT TYPE PROMO FIRSTNAME LASTNAME GENDER ORGANISATION BRANCH FUNCTION EMAIL TWITTER TICKET_WED TICKET_THU TICKET_FRI TICKET_3 DINNER_WED DINNER_THU SIGNATURE}
+  ConferenceDelegate::FIELDS_IN_ORDER = %w{REGDATE PRESENT TYPE PROMO FIRSTNAME LASTNAME GENDER ORGANISATION BRANCH FUNCTION EMAIL TWITTER TICKET_WED TICKET_THU TICKET_FRI TICKET_3 DINNER_WED DINNER_THU SIGNATURE EVP_ID}
   
   belongs_to :member
+  after_create :send_club_invite
   
   class << self
     def create_from_params!(params)
@@ -11,13 +12,14 @@ class ConferenceDelegate < ActiveRecord::Base
       ConferenceDelegate::FIELDS_IN_ORDER.each do |field|
         case field
         when "REGDATE"
-          delegate_params[:regdate] = params["REGDATE"].gsub('-','/')
+          delegate_params[:regdate] = params["REGDATE"].try(:gsub, '-','/')
         when "TYPE"
           delegate_params[:delegate_type] = params["TYPE"]
         else
           delegate_params[field.downcase.to_sym] = params[field]
         end
       end
+      return nil if [:firstname, :lastname, :email, :signature, :evp_id].any?{|field| delegate_params[field].blank?} || exists?(:evp_id => delegate_params[:evp_id])
       delegate_params[:member] = Member.find_by_email(delegate_params[:email])
       create(delegate_params)
     end
@@ -41,7 +43,7 @@ class ConferenceDelegate < ActiveRecord::Base
     ConferenceDelegate::FIELDS_IN_ORDER.collect do |field|
       case field
       when "SIGNATURE" then nil
-      when "REGDATE" then regdate.strftime("%m-%d-%Y")
+      when "REGDATE" then regdate.try(:strftime, "%m-%d-%Y")
       when "TYPE" then delegate_type
       else
         string = send(field.downcase).to_s
@@ -53,4 +55,12 @@ class ConferenceDelegate < ActiveRecord::Base
       end
     end
   end
+  
+  private
+  def send_club_invite
+    if email.match(/@yoomee\.com$/)
+      Notifier.deliver_club_invite(self)
+    end
+  end
+  
 end

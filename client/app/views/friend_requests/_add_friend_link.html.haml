@@ -1,0 +1,10 @@
+-if !@logged_in_member.friends_with?(member)
+  %div{:id => "friend_request_#{member.id}_link", :class => "friend_request_link"}
+    -if @logged_in_member.sent_friend_request_to?(member)
+      ="Waiting for #{forename_or_you(member)} to allow you onto their blanket."
+    -elsif @logged_in_member.has_pending_friend_request_from?(member)
+      %p="#{member.forename} wants to join your picnic. Is that ok?"
+      =link_to_remote("Yes", :url => accept_friend_request_path(@logged_in_member.friend_request_from(member)), :method => :put, :loading => "FriendRequest.loading()", :complete => "FriendRequest.complete()", :html => {:class => "accept_link"})
+      =link_to_remote("No", :url => friend_request_path(@logged_in_member.friend_request_from(member)), :method => :delete, :confirm => "Are you sure you don't want #{member} to be in your picnic?", :loading => "FriendRequest.loading()", :complete => "FriendRequest.complete()", :html => {:class => "reject_link"})
+    -elsif @logged_in_member.can_request_friendship_with?(member)
+      =link_to_remote("Sit on #{member.forename}'s blanket", :url => {:controller => "friend_requests", :action => "create", :member_id => member}, :method => :post, :loading => "FriendRequest.loading()", :complete => "FriendRequest.complete()")

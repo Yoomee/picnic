@@ -16,11 +16,11 @@
   %br
   
   =label_tag "FIRSTNAME"
-  =text_field_tag "FIRSTNAME", "Sven"
+  =text_field_tag "FIRSTNAME", "Matt"
   %br
   
   =label_tag "LASTNAME"
-  =text_field_tag "LASTNAME", "Bordes"
+  =text_field_tag "LASTNAME", "Atkins"
   %br
   
   =label_tag "GENDER"
@@ -28,23 +28,23 @@
   %br
   
   =label_tag "ORGANISATION"
-  =text_field_tag "ORGANISATION", "Eventpartners"
+  =text_field_tag "ORGANISATION", "Yoomee"
   %br
   
   =label_tag "BRANCH"
-  =text_field_tag "BRANCH", "Event Registration"
+  =text_field_tag "BRANCH", "Dev Team"
   %br
   
   =label_tag "FUNCTION"
-  =text_field_tag "FUNCTION", "CEO"
+  =text_field_tag "FUNCTION", "Developer"
   %br
   
   =label_tag "EMAIL"
-  =text_field_tag "EMAIL", "sven@eventpartners.nl"
+  =text_field_tag "EMAIL", "matt@yoomee.com"
   %br
   
   =label_tag "TWITTER"
-  =text_field_tag "TWITTER", "svenevent"
+  =text_field_tag "TWITTER", "matkins"
   %br
   
   =label_tag "TICKET_WED"
@@ -70,7 +70,10 @@
   =label_tag "DINNER_THU"
   =text_field_tag "DINNER_THU", "1"
   %br
+  =label_tag "EVP_ID"
+  =text_field_tag "EVP_ID", ConferenceDelegate.last.evp_id + 1
+  %br
   =label_tag "SIGNATURE"
-  =text_field_tag "SIGNATURE", "mjArIck5jsJq81s6o9CB/pwe4Oo="
+  =text_field_tag "SIGNATURE", rand(1000000000).to_s(32)
   %br
   =submit_tag

@@ -1,13 +1,10 @@
 Shout.class_eval do
 
-  before_validation :set_attachable
-
   after_create :trigger_points_event
-  after_update :destroy_old_attachable
 
   attr_boolean_accessor :themes_form_step, :delete_attachable
 
-  attr_accessor :shout_type, :video_url, :link_url, :photo_image, :poll_question, :attachable_to_be_deleted
+  attr_accessor :shout_type
   
   include TramlinesImages
   
@@ -32,7 +29,7 @@ Shout.class_eval do
   
   def has_valid_tags?
     if tag_list.empty?
-      self.errors.add_to_base("You need to add at least one issue.")
+      self.errors.add_to_base("You need to add at least one tag.")
     else
       tags_with_errors = Tag.create_tag_list(self.tag_list).reject(&:valid?)
       return true if tags_with_errors.empty?
@@ -83,11 +80,6 @@ Shout.class_eval do
       end
       self.attachable.skip_news_feed = true if self.attachable.respond_to?(:skip_news_feed)
     end
-  end
-  
-  def destroy_old_attachable
-    attachable_to_be_deleted.destroy if !attachable_to_be_deleted.nil?
-    true
   end
   
   def trigger_points_event(options = {})

@@ -1,0 +1,11 @@
+Hi
+=@conference_delegate.firstname
+
+Thanks for booking onto the PICNIC Festival!
+
+Use this link to join the club:
+="#{APP_CONFIG['site_url']}#{verify_delegate_path(:signature => @conference_delegate.signature)}"
+
+See you soon,
+
+="The #{APP_CONFIG['site_name']} Team"

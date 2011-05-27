@@ -34,6 +34,30 @@ GoogleMapsHelper.module_eval do
         #{',' + options[:map_options] unless options[:map_options].blank?}
       });
       
+      function PicnicMarker(opts) {
+        opts.image = new google.maps.MarkerImage(
+          '/images/marker_heart.png',
+          new google.maps.Size(20,38),
+          new google.maps.Point(0,0),
+          new google.maps.Point(10,38)
+        );
+
+        opts.shadow = new google.maps.MarkerImage(
+          '/images/marker_heart_shadow.png',
+          new google.maps.Size(42,38),
+          new google.maps.Point(0,0),
+          new google.maps.Point(10,38)
+        );
+
+        opts.shape = {
+          coord: [17,1,18,2,19,3,19,4,18,5,19,6,19,7,19,8,19,9,19,10,19,11,19,12,19,13,19,14,19,15,18,16,18,17,18,18,19,19,19,20,19,21,18,22,18,23,18,24,17,25,17,26,16,27,16,28,15,29,15,30,14,31,14,32,14,33,13,34,13,35,12,36,7,36,6,35,6,34,5,33,5,32,5,31,4,30,4,29,3,28,3,27,2,26,2,25,1,24,1,23,1,22,0,21,0,20,0,19,1,18,1,17,1,16,0,15,0,14,0,13,0,12,0,11,0,10,0,9,0,8,0,7,0,6,1,5,0,4,0,3,1,2,2,1,17,1],
+          type: 'poly'
+        };
+        this.setOptions(opts); 
+      } 
+
+      PicnicMarker.prototype = new google.maps.Marker;
+      
     JAVASCRIPT
     
     if options[:infoboxes]
@@ -127,6 +151,22 @@ GoogleMapsHelper.module_eval do
     options[:width] = "#{options[:width]}px" if options[:width].is_a?(Integer)
     options[:height] = "#{options[:height]}px" if options[:height].is_a?(Integer)
     content_tag(:div, "",:id => options[:canvas_id], :style => "width:#{options[:width]};height:#{options[:height]}#{options[:style].blank? ? '' : ";#{options[:style]}"}", :class => "map_canvas #{options[:class]}")
+  end
+  
+  private
+  
+  def marker(object, marker_options_hash = {})
+    marker_options_hash ||= {}
+    marker_options = "position: markerLatLng,map: map#{map_index}, title:''"
+    if marker_options_hash[:draggable]
+      marker_options << ", draggable: true"
+    end
+    marker_image_method = "#{object.class.to_s.underscore}_marker_image"
+    if (methods.include?(marker_image_method)) && (marker_image = send(marker_image_method, object))
+      icon_string = (marker_image =~ /^new/) ? marker_image : "'#{marker_image}'" 
+      marker_options << ", icon:#{icon_string}"
+    end
+    "new PicnicMarker({#{marker_options}});"
   end
   
 end

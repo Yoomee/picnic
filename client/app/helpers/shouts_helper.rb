@@ -58,9 +58,9 @@ ShoutsHelper.module_eval do
       $(shout_form_id).attr('target','photo_upload_iframe');
       return true; 
     } else {
-      if (!ShoutForm.blank()) {
+      if (!ShoutForm.blank('#{shout.try(:id)}')) {
         jQuery.ajax({
-          beforeSend:function(request){ShoutForm.loading();},
+          beforeSend:function(request){ShoutForm.loading('#{shout.try(:id)}');},
           data:jQuery.param(jQuery(this).serializeArray()) + '&authenticity_token=' + encodeURIComponent('#{form_authenticity_token}'),
           dataType:'script',
           type:'post',

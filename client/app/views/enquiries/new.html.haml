@@ -1,0 +1,18 @@
+-params[:id] ||= params[:enquiry][:form_name]
+- title @enquiry.form_title
+-if @enquiry.form_name == 'Beta'
+  -no_content_row
+  -hide_page_title
+  .row
+    .twocol
+      =render "pages/subnav", :page => Page.slug(:beta)
+    #page_content.fivecol
+      #page_left_col
+        %h1#page_title=Page.slug(:beta).title
+        =render_form(@enquiry)
+    #page_right_col
+      =render "pages/right_col", :page => Page.slug(:beta)
+-else
+  =render_form(@enquiry)
+-options_panel do
+  =back_link

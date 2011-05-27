@@ -14,37 +14,52 @@
     };
     
     $(document).ready(function(){
-      $('.auth_link#twitter').click(function(){
-        $.oauthpopup({
-          path: '/auth/twitter',
-          center: true,
-          callback: function(){
-            window.location = '/me';
-          }
+      if(#{!logged_in_member.twitter_connected?}){
+        $('.auth_link#twitter').click(function(){
+          $.oauthpopup({
+            path: '/auth/twitter',
+            center: true,
+            callback: function(){
+              window.location = '/me';
+            }
+          });
         });
-      });
-      $('.auth_link#linkedin').click(function(){
-        $.oauthpopup({
-          path: '/auth/linked_in',
-          center: true,
-          callback: function(){
-            window.location = '/me';
-          }
+      }
+      if(#{!logged_in_member.linked_in_connected?}){
+        $('.auth_link#linkedin').click(function(){
+          $.oauthpopup({
+            path: '/auth/linked_in',
+            center: true,
+            callback: function(){
+              window.location = '/me';
+            }
+          });
         });
-      });
+      }
     });
     
 %h5 Connect to one of these services or add a link
 
 .auth_links
   .auth_link#facebook
-    -fb_login(:text => "Facebook", :perms => "email") do
-      FBLogin.process();
+    -if logged_in_member.fb_connected?
+      %span.tick &#x2714;
+      =image_tag("fb_sign_in_short_grey.png")
+    -else
+      -fb_login(:text => "Facebook", :perms => "email") do
+        FBLogin.process();
   .auth_link#twitter
-    =link_to(image_tag("twitter_sign_in_short.png"), "#")
+    -if logged_in_member.twitter_connected?
+      %span.tick &#x2714;
+      =image_tag("twitter_sign_in_short_grey.png")
+    -else
+      =link_to(image_tag("twitter_sign_in_short.png"), "#")
   .auth_link#linkedin
-    =link_to(image_tag("linked_in_sign_in_short.png"), "#")
-  .auth_link#url
-    =link_to_function("Other url", "$('#url_form_wrapper').toggle('fast', function(){$.fancybox.resize();})")
-#url_form_wrapper{:style => "display:none"}
+    -if logged_in_member.linked_in_connected?
+      %span.tick &#x2714;
+      =image_tag("linked_in_sign_in_short_grey.png")
+    -else
+      =link_to(image_tag("linked_in_sign_in_short.png"), "#")
+%h6=link_to_function("Add another URL", "$('#url_form_wrapper').toggle('slow', function(){$.fancybox.resize();})", :id => "add_url_link")
+#url_form_wrapper.flcb{:style => "display:none"}
   =render 'urls/form', :url_object => Url.new(:attachable => logged_in_member)

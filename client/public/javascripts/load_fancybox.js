@@ -18,21 +18,27 @@
 
 var FancyboxLoader = {
   loadAll: function() {
+    
     $('a.fancy-img').fancybox({
       'hideOnOverlayClick': false,
       type: 'image'
     });
+    
     $(".gallery a").fancybox();
+    
     $('a.fancy').fancybox({
       'hideOnOverlayClick': false,
-      'autoScale': false,
-      'onClosed': function() {
-        $('#fb_permission_header, #fb_permission_message').hide();
-        $('#fb_login_normal_header, #login_facebook_intro').show();
-        $('#fb_login_normal_header .comment_header').show();
-        $('#fb_login_normal_header .standard_header').hide();
-      }
+      'autoScale': false
     });
+    
+    $('a.fancy-video').fancybox({
+      'hideOnOverlayClick': false,
+      'autoScale': false,
+      'autoDimensions': false,
+      'width': 600,
+      'height': 400
+    });
+    
     $("a.iframe").fancybox({
       'frameWidth': 800,
       'frameHeight': 600

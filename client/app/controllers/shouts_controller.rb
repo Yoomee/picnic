@@ -6,7 +6,6 @@ ShoutsController.class_eval do
       deal_with_themes
     else
       if params[:shout][:shout_type] == "Photo"
-        logger.info "RESPONDING TO PARENT"
         responds_to_parent {deal_with_create}
       else
         deal_with_create
@@ -60,18 +59,18 @@ ShoutsController.class_eval do
         if @shout.recipient
           # shouts = @shout.recipient.received_shouts
           # page[:shouts_container].replace_html(render_shouts(shouts))
-          page << "MemberShouts.received()"
+          page << "MemberShouts.received();"
         else
           # shouts = logged_in_member.shouts
           # page[:shouts_container].replace_html(render_shouts(shouts))
-          page << "MemberShouts.latest()"
+          page << "MemberShouts.latest();"
         end
         #page[:shout_wall].prepend(render_shout(@shout))
-        page[:new_shout_form].replace render("shouts/form", :shout => Shout.new(:recipient => @shout.recipient))
-        page << "$.fancybox.close();"
+        page << "$.fancybox.close();"        
+        # page[:new_shout_form].replace render("shouts/form", :shout => Shout.new(:recipient => @shout.recipient))
         page << "$('.shout_form_submit_loader').hide();"
-        page << "$('#no_posts').hide()"
         page << "FancyboxLoader.loadAll();"
+        page << "$('#no_posts').hide();"
       else
         page[:new_shout_form].replace render("shouts/form", :shout => @shout)
       end
@@ -79,7 +78,6 @@ ShoutsController.class_eval do
   end
   
   def deal_with_update
-    puts "IN deal_with_update"
     updated_link = params[:shout][:shout_type]=="Link" && !params[:shout][:link_url].blank? && (params[:shout][:link_url] != @shout.link_url)
     render :update do |page|
       if @shout.update_attributes(params[:shout])
