@@ -5963,6 +5963,10 @@ table#delegates th{
   cursor: pointer;
 }
 
+#enquiry_spam_answer_input p.inline-errors{
+  float: left;
+}
+
 /* ============================= */
 /* ! Layout for mobile version   */
 /* ============================= */
