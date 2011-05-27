@@ -1,7 +1,7 @@
 require 'openssl'
 require 'base64'
 class ConferenceDelegate < ActiveRecord::Base
-  ConferenceDelegate::FIELDS_IN_ORDER = %w{REGDATE PRESENT TYPE PROMO FIRSTNAME LASTNAME GENDER ORGANISATION BRANCH FUNCTION EMAIL TWITTER TICKET_WED TICKET_THU TICKET_FRI TICKET_3 DINNER_WED DINNER_THU SIGNATURE}
+  ConferenceDelegate::FIELDS_IN_ORDER = %w{REGDATE PRESENT TYPE PROMO FIRSTNAME LASTNAME GENDER ORGANISATION BRANCH FUNCTION EMAIL TWITTER TICKET_WED TICKET_THU TICKET_FRI TICKET_3 DINNER_WED DINNER_THU SIGNATURE EVP_ID}
   
   belongs_to :member
   after_create :send_club_invite
@@ -19,7 +19,7 @@ class ConferenceDelegate < ActiveRecord::Base
           delegate_params[field.downcase.to_sym] = params[field]
         end
       end
-      return nil if [:firstname, :lastname, :email, :signature].any?{|field| delegate_params[field].blank?}
+      return nil if [:firstname, :lastname, :email, :signature].any?{|field| delegate_params[field].blank?} || exists?(:evp_id => delegate_params[:evp_id])
       delegate_params[:member] = Member.find_by_email(delegate_params[:email])
       create(delegate_params)
     end
