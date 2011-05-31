@@ -1793,6 +1793,8 @@ span.cal_sheet span.day {
 }
 #login_services .auth_link {
 	margin: 0 0 20px;
+	clear:both;
+	width:100%;
 }
 
 #not_registered {
@@ -3507,13 +3509,12 @@ li.news_feed_item_hovering a.trash {
 #page_subnav li {
   margin-bottom: 5px;
   font-size: 13px;
-
+  width:100%;
 }
 #subnav li.right_subnav_link {
 	float: right;
 }
 #page_subnav li.active {
-
   
   position: relative;
   z-index: 100;
@@ -3801,6 +3802,7 @@ div.page_share {
 #keep_in_touch li {
 	margin: 0;
 	list-style: none;
+	float:left;
 }
 #keep_in_touch li a {
 	float: left;
@@ -4058,12 +4060,20 @@ div.page_share {
   margin-bottom: 0px;
 }
 
+.register_box p {
+  width:100%;
+}
+
+.auth_links {
+  width:100%;
+}
 
 .auth_link#linkedin {
 }
 .auth_links .auth_link {
   float: left;
   margin-right: 10px;
+
 }
 .auth_links .auth_link a{
   float:left;
@@ -5830,7 +5840,7 @@ ul.possible_search_models li {
   font-size: 18px;
 }
 #hide_this div, #show_this div {
-  padding: 0 1%;
+  padding: 0;
 }
 #hide_this {
   border-bottom: 4px solid #e2e2e2;
@@ -5915,7 +5925,7 @@ a.find_someone_photo {
 }
 .find_someone_result .details {
   float: left;
-  width: 75%;
+  width: 70%;
 }
 .find_someone_result .details h4 a {
   color: black;
