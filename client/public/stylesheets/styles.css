@@ -3523,6 +3523,10 @@ li.news_feed_item_hovering a.trash {
   font-size: 13px;
   width:100%;
 }
+#page_subnav li a {
+  width:100%;
+  float: left;
+}
 #subnav li.right_subnav_link {
 	float: right;
 }
