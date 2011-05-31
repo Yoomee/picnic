@@ -24,3 +24,4 @@
     =render_add_friend_link(member, :ajax_loader => "ajax_loader_squares.gif")
 
 =render("members/friend_list", :member => member)
+=link_to("View all", member_friends_path(member)) if member.friends.count > 10

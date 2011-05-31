@@ -1,0 +1,34 @@
+-title "#{full_name_or_your(@member).titleize} friends", :hidden => true
+%h1
+  =logged_in_as?(@member) ? link_to("Your", @member) : "#{link_to_self(@member)}'s" 
+  picnic
+
+-if logged_in_as?(@member)
+  -if logged_in_member.has_pending_friend_requests?
+    People want to sit on your blanket.
+    %br
+    =link_to("Click here", notifications_path)
+    to see who.
+  -else
+    -if @member.friends.empty?
+      %p#no_friends
+        Aww shame. No one's sitting on your blanket.
+        %br
+        =link_to("Get connected!", club_path)
+-elsif logged_in?
+  -if @member.friends.empty?
+    -if !logged_in_member.has_pending_friend_request_from?(@member) && !logged_in_member.sent_friend_request_to?(@member)
+      ="Aww shame. No one's sitting on #{@member.forename}'s blanket."
+      %br
+    =render_add_friend_link(@member, :ajax_loader => "ajax_loader_squares.gif")
+  -elsif logged_in_member.friends_with?(@member)
+    %p.friend_list_intro="You are sitting on #{forename_or_your(@member)} blanket."
+  -else
+    =render_add_friend_link(@member, :ajax_loader => "ajax_loader_squares.gif")
+
+=render("members/grid", :members => @friends)
+=will_paginate(@friends)
+
+-options_panel do
+  =back_link
+  
