@@ -6045,7 +6045,6 @@ table#delegates th{
 
 /*========== beta bar ==========*/
 #beta_bar {
-  display: block;
   background: black;
   color: white;
   width: 100%;
@@ -6053,6 +6052,11 @@ table#delegates th{
   height: 35px;
   line-height: 35px;
   cursor: pointer;
+}
+#hide_beta_bar_link {
+  float: right;
+  margin-top: -34px;
+  color: white;
 }
 
 #enquiry_spam_answer_input p.inline-errors{
