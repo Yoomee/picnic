@@ -11,7 +11,7 @@
         %p.blog_like_news_date
           =(page_section.is_a?(Page) ? page_section.publish_on : page_section.created_at).strftime("%e %B %Y")  
         %p.blog_like_news_text
-          =page_section.is_a?(Page) ? (page_section.intro.blank? ? truncate(page_section.text.strip_tags, 350) : page_section.intro) : page_section.description
+          =page_section.is_a?(Page) ? (page_section.intro.blank? ? truncate(page_section.text.strip_tags, :length => 350) : page_section.intro) : page_section.description
         =link_to "read more", page_section, :class=>'newsbox_arrow'      
       .blog_like_news_img.threecol  
         -if page_section.has_photo?
