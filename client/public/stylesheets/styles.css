@@ -703,6 +703,7 @@ strong.highlight {
   background-color: #ffc;
 }
 
+
 /* ============ Related Items ============= */
 
 #suggest ul {
@@ -1201,15 +1202,12 @@ input#search_field {
 	float:left;
 	font-size: 14px;
 	line-height: 21px;
-
+  height: 20px;
 	margin:4px 0px 0 0;
 	padding:0px 0 0 30px;
 	width:180px;
 	color: #959595;
 	text-align: left;
-	
-	
-	
 }
 input#search_icon {
 	background:url("/images/sprite.png") no-repeat scroll 0 -1px transparent;
@@ -4446,8 +4444,10 @@ dt {
 
 div.shout_text {
 	font-size: 14px;
-	width: 94%;
-	
+	width: 94%;	
+}
+.compact_view div.shout_text {
+  font-size: 12px;
 }
 div.shout_text p {
 	margin: 0 0 5px;
@@ -5589,9 +5589,24 @@ p.no_messages_yet {
   padding: 4px 15px;
   float: left;
 }
+#comments_filter a {
+	float: left;
+	margin: 0 10px 0 0;
+	display: block;
+	padding: 2px;
+}
+#comments_filter a.active_filter {
+	background: #000;
+	color: #fff;
+	padding: 2px 10px;
+	border-radius:12px;
+	-moz-border-radius: 12px;
+	-webkit-border-radius: 12px;
+}
 #comments_filter.search_filter span {
   float: left;
   margin-right: 10px;
+  padding: 2px;
 }
 #search_results {
   clear: both;
@@ -5624,12 +5639,33 @@ ul.possible_search_models li {
 #search_filter span {
   font-weight: bold;
 }
-
-
-
 #connection_themes {
 	float: left;
 	width: 100%;
+}
+.search_results_list {
+  width: 100%;
+}
+.search_results_list ul {
+  width: 100%;
+}
+.search_results_list ul li {
+  float: left;
+  clear: both;
+  width: 100%;
+}
+.search_results_list li .search_result_image {
+  float: left;
+  margin-right: 2%;
+  width: 6%;
+}
+.search_results_list li .search_result_right {
+  float: left;
+  width: 90%;
+}
+.search_result_view_all {
+  float: right;
+  clear: both;
 }
 
 /************* Closed comment form ********/

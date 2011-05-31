@@ -1,7 +1,9 @@
 -if shout.attachable.is_a?(Link) && !shout.attachable.has_image? && !shout.attachable.url_error?
   -content_for :head do
     =javascript_tag("$(document).ready(function() {#{save_site_info_javascript(shout.attachable, :image_size => "150x125#")}});")
-.shout.flcb{:id => "shout_#{shout.id}", :class => (show_member ? 'with_member_details' : 'without_member_details')}
+-div_class = (show_member ? 'with_member_details' : 'without_member_details')
+-div_class << " compact_view" if compact_view
+.shout.flcb{:id => "shout_#{shout.id}", :class => div_class}
   .shout_left
     .shout_left_inner.fl
       -if show_member
@@ -14,22 +16,30 @@
   .shout_right
     .shout_right_inner
       .shout_text.flcb
-        =read_more_truncate(shout.text, :length => 300)
-      .shout_themes.themes_list.flcb
-        %ul.lst
-          -shout.tags.each do |tag|
-            =link_to_tag(tag)
+        -if search_term
+          =search_summary(shout, search_term)
+        -else
+          =read_more_truncate(shout.text, :length => 300)
+      -if !shout.tags.empty?
+        .shout_themes.themes_list.flcb
+          %ul.lst
+            -shout.tags.each do |tag|
+              =link_to_tag(tag)
       -if shout.attachable
         .shout_images.flcb
           .shout_image{:class => "#{shout.attachable_type.underscore}_shout_image"}
             =render_shout_attachable(shout)
-      .shout_ratings
-        =render("shouts/ratings", :shout => shout) if shout.is_rateable?
+      -if shout.is_rateable? && !compact_view
+        .shout_ratings
+          =render("shouts/ratings", :shout => shout)
     .shout_links.flcb
-      =link_to_box_if_allowed("Edit", edit_shout_proc(shout))
-      =link_if_allowed("Delete", shout, :method => :delete, :confirm => "Are you sure?")
-      -if logged_in? && allowed_to?(wall_wall_posts_proc(shout.wall), :method => :post)
-        =link_to_function(WallPostsController::HELP_MESSAGE, "ShoutForm.showCommentForm($(this))", :class => "comment_prompt")
-      =#link_to("View full post &rarr;", shout, :class => "shout_view_link")
+      -if compact_view
+        =link_to("View post &rarr;", shout)
+        =link_to(pluralize(shout.comments.count, 'comment'), shout) if !shout.comments.empty?
+      -else
+        =link_to_box_if_allowed("Edit", edit_shout_proc(shout))
+        =link_if_allowed("Delete", shout, :method => :delete, :confirm => "Are you sure?")
+        -if logged_in? && allowed_to?(wall_wall_posts_proc(shout.wall), :method => :post)
+          =link_to_function(WallPostsController::HELP_MESSAGE, "ShoutForm.showCommentForm($(this))", :class => "comment_prompt")
 
     =render_shout_comments(shout) if shout.is_commentable? && !compact_view
