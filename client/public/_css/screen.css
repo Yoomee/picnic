@@ -1,0 +1,258 @@
+/* @override http://localhost:3000/_css/screen.css */
+
+*{
+				padding:0;
+				margin:0;
+			}
+			body{
+				background: #000;
+				color: #fff;
+			}
+			
+			#top #date{
+				position: relative;
+				top: -42px;
+				left: 85px;
+			}
+			#wrapper {
+				position: relative;	
+				top: 40px;
+				left: 40px;
+				width: 900px;		
+			}
+			
+			#fullscreenbg {
+				position: fixed;
+			}
+			#fullscreenbg img {
+			    height:100%;
+			    position:absolute;
+			    width:100%;
+			    z-index:0
+			}	
+			#fullscreencontrols .control {
+				position: absolute;
+				height: 100%;
+				width: 180px;
+				display: block;
+				background: url(_gfx/trans.gif);
+			}
+			#fullscreencontrols #ctrl_left {
+				left: 10px;
+			}
+			
+			#fullscreencontrols #ctrl_right {
+				right: 10px;
+			}		
+			
+			#fullscreencontrols .prev {
+				background: url(../_gfx/btn_prv.png) no-repeat center;
+			}	
+			
+			#fullscreencontrols .next {
+				background: url(../_gfx/btn_nxt.png) no-repeat center;
+			}												
+			
+			#logo {
+				position: relative;
+				top: -14px;
+			}
+			#logo a img {
+				border: none;
+			}
+			#slidecounter {
+				position: absolute;
+				top: -17px;
+				left: 500px;
+			}
+			
+			#slides li{
+				display: inline;
+			}
+			#slides li a{
+				display: block;
+				float: left;
+			} 			
+			#slides li a img {
+				border: none;
+			}	
+			#slides li a.currentslide {
+				opacity: .5;
+			}		
+			#content {
+				min-height: 900px;
+				margin: 0 0 100px 0;
+
+			}
+			
+			#content h2 {
+				margin: 20px 0 10px 0;
+				font-size: 60px;
+				width: 430px;
+			}
+			#content h2 span {
+				color: #9bcdee;
+			}
+			#content p.intro {
+				width: 430px;
+				font-size: 20px;
+				line-height: 135%;
+				color: #fff;
+				margin: 0 0 20px 0;
+			}	
+			
+			#content p.parintro {
+				font-size: 20px;
+				line-height: 135%;
+				color: #fff;
+			}				
+			#content p, #content p a {
+				font-family: Arial;
+				width: 430px;
+				font-weight: lighter;
+				line-height: 165%;			
+				font-size: 12px;
+				color: #fff;
+			}
+
+h3.subtitle {
+	margin: 20px 0 10px;
+	
+}	
+h4.subtitle {
+	margin: 20px 0 10px;
+	font-size: 17px;
+	
+}			
+			#content .pink {
+				color: #f59cba;
+			}
+			#content .yellow{
+				color: #eacf4a;
+			}
+			#content .purple {
+				color: #8d69c4;
+			}
+			#content .green {
+				color: #8fc061;
+			}
+			
+			#content .speaker h3,#content .speaker h4{
+				position: relative;
+				left: 10px;
+			}
+			#content .speaker p{
+				float: left;
+				width: 380px;
+				padding: 10px;
+			}
+			#content .speaker p.tags{
+				position: relative;
+				top: -10px;
+				left: 100px;
+			}
+			#content .speaker {
+				clear: both;
+				width: 500px;
+			}			
+			.colorlink {
+				position: relative;
+				z-index: 9999;
+			}	
+			
+			#information {
+				position: absolute;
+				top: 85px;
+				left: 500px;
+				width: 200px;
+			}
+			
+			#information .infopane {
+				margin: 0 0 10px 0;
+				padding: 0 0 30px 0;
+				background: url(../_gfx/devider.png) no-repeat;
+			}
+			
+			#information .infopane h3 {
+				margin: 0 0 12px 0;
+				font-size: 20px;
+			}
+			
+			#information .infopane a img {
+				border: none;
+			}
+			
+			#information .infopane p,#information .infopane a {
+				font-family: Arial;
+				font-weight: lighter;
+				line-height: 165%;			
+				font-size: 12px;
+				color: #fff;
+			}	
+			
+			#information .infopane a, .buy_tickets_now {
+				margin: 10px 0 0 0;
+				text-decoration: none;
+				width: 81px;
+				height: 18px;
+				font-size: 11px;
+				text-indent: 7px;
+				display: block;
+				background: url(../_gfx/btn_bg.png) no-repeat;
+			}
+				
+			#information .first {
+				background-position: 0px 140px;
+			}			
+			#information .second {
+				background-position: 0px 123px;			
+			}					
+			#information .last {
+				background: none;
+			}	
+			#tag {
+				position: fixed;
+				left: 75%;
+				width: 170px;
+				height: 80px;
+				top: 78%;
+				display: none;
+			}
+					
+			#footer {
+				font-family: Arial;
+				font-size: 12px;
+				color: #fff;	
+				position: relative;
+				z-index: 999;
+				height: 80px;
+				left: 40px;
+				width: 990px;	
+			}	
+			#footer p{
+				float: left;
+				bottom: 20px;
+				left: 40px;
+			}				
+			#footer ul {
+				margin: 2px 0 0 0;
+				float: right;
+			}
+			#footer ul li {
+				list-style: none;
+				display: inline;
+			}
+			#footer ul li a {
+				display: block;
+				float: left;
+				padding: 0 7px 0 7px;
+				border-right: solid 1px #666;
+				color: #fff;
+				text-decoration: none;
+				height: 10px;
+				line-height: 10px;
+			}
+			#footer ul li.lastitem a {
+				border: none;
+				padding: 0 0 0 7px;
+			}		

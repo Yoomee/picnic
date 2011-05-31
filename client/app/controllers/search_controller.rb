@@ -1,7 +1,7 @@
 SearchController.class_eval do
   
   def create
-    options = {:match_mode => params[:match_mode], :autocomplete => params[:autocomplete], :page => params[:page], :per_page => 10}
+    options = {:match_mode => params[:match_mode], :autocomplete => params[:autocomplete], :page => params[:page], :per_page => SearchController::PER_PAGE}
     @search_filter = params[:search_filter]
     @search = Search.new params[:search], options
     if request.xhr?
@@ -16,3 +16,4 @@ SearchController.class_eval do
   end
   
 end
+SearchController::PER_PAGE = 10

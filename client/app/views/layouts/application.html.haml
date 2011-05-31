@@ -46,6 +46,10 @@
           event.stopPropagation();
           return false;
         });
+        $("a.logged_in_member_link").click(function () {
+          $(this).toggleClass("logged_in_member_link_highlight");
+          $('.logged_in_box').toggleClass("logged_in_box_highlight");
+        });
       });
 
       
