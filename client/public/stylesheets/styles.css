@@ -2783,7 +2783,7 @@ p.nextLink {
 	border-radius:3px;
 	-webkit-border-radius:3px;    
 	-moz-border-radius:3px;
-
+  width: 100%;
 }
 .item p.blog_like_news_date {
 	position: absolute;
@@ -2791,7 +2791,8 @@ p.nextLink {
 	font-size: 12px;
 }
 .item_inner {
-	margin: 10px;
+	margin: 5%;
+	width: 90%;
 	float: left;
 
 }
