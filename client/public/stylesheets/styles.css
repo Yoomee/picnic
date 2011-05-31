@@ -3953,8 +3953,21 @@ div.page_share {
   width: 550px;
 }
 
+
 .register_box a.show_sign_in {
   margin-top:15px;
+}
+
+.register_box #book_on_picnic h2 {
+  margin-bottom:5px;
+}
+
+.register_box #book_on_picnic p {
+  margin-bottom:20px;
+}
+
+.register_box hr{
+  margin-bottom:20px;
 }
 
 .register_box .auth_links {
@@ -3962,6 +3975,8 @@ div.page_share {
   clear: both;
   margin-bottom: 0px;
 }
+
+
 .auth_link#linkedin {
 }
 .auth_links .auth_link {
@@ -4148,6 +4163,10 @@ body.controller_badges .badge_photo {
 
 #unawarded_badges {
   width: 400px;
+  float: left;
+}
+#unawarded_badges .badge_item {
+  height:33px;
 }
 #unawarded_badges_links {
   float: left;
@@ -6062,7 +6081,6 @@ table#delegates th{
 
 /*========== beta bar ==========*/
 #beta_bar {
-  display: block;
   background: black;
   color: white;
   width: 100%;
@@ -6070,6 +6088,11 @@ table#delegates th{
   height: 35px;
   line-height: 35px;
   cursor: pointer;
+}
+#hide_beta_bar_link {
+  float: right;
+  margin-top: -34px;
+  color: white;
 }
 
 #enquiry_spam_answer_input p.inline-errors{

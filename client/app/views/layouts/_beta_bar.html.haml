@@ -1,5 +1,7 @@
-#beta_bar
-  .container
-    .row
-      .twelvecol
-        The PICNIC website is a work in progress. Click here to read more about the beta.
+-unless cookies[:hide_beta_bar]
+  #beta_bar
+    .container
+      .row
+        .twelvecol
+          The PICNIC website is a work in progress. Click here to read more about the beta.
+      =link_to "Hide", '#', :id => 'hide_beta_bar_link'

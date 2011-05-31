@@ -5,6 +5,7 @@
       =#form.input :image, :as => :file
       =form.input :forename
       =form.input :surname
+      =form.input :is_admin, :input_html => {:disabled => logged_in_as?(member) ? 'disabled' : nil}, :label => 'This member is an admin' if admin_logged_in?
       =form.input :what_i_bring, :input_html => {:rows => 3}, :label => "What I bring"
       =form.input :bio, :input_html => {:rows => 5}
       =form.input :job_title if member.allowed_job_title?
