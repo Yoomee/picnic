@@ -128,9 +128,9 @@ a:hover {
 	text-decoration: none;
 	background-color: #777;
 	
-	 -webkit-transition: .1s ease-in;
-     -moz-transition: .1s ease-in;
-     transition: .1s ease-in;
+	 -webkit-transition: .2s ease-in;
+     -moz-transition: .2s ease-in;
+     transition: .2s ease-in;
 }
 
 
@@ -377,6 +377,9 @@ input, textarea {
 	clear: both;
 	border-color: #ccc;
 	background: #fff url(/images/sprite.png) repeat-x 0 -320px;
+}
+#new_enquiry input, #new_enquiry textarea, #new_enquiry input select {
+	width: 100%;	
 }
 body .formtastic input[type="radio"], body .formtastic input[type="checkbox"] {
 	border: none;
