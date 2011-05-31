@@ -1783,6 +1783,8 @@ span.cal_sheet span.day {
 }
 #login_services .auth_link {
 	margin: 0 0 20px;
+	clear:both;
+	width:100%;
 }
 
 #not_registered {
@@ -4047,12 +4049,20 @@ div.page_share {
   margin-bottom: 0px;
 }
 
+.register_box p {
+  width:100%;
+}
+
+.auth_links {
+  width:100%;
+}
 
 .auth_link#linkedin {
 }
 .auth_links .auth_link {
   float: left;
   margin-right: 10px;
+
 }
 .auth_links .auth_link a{
   float:left;
@@ -5897,7 +5907,7 @@ a.find_someone_photo {
 }
 .find_someone_result .details {
   float: left;
-  width: 75%;
+  width: 70%;
 }
 .find_someone_result .details h4 a {
   color: black;

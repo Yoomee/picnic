@@ -15,11 +15,13 @@
           =link_to 'More', page_section, :class => 'newsbox_arrow'
           %p.blog_like_news_date
             =(page_section.is_a?(Page) ? page_section.publish_on : page_section.created_at).strftime("%e %B %Y")
-%br.clear
-=will_paginate @pages_sections
--options_panel do
-  =back_link
-  =link_if_allowed 'Edit section', edit_section_proc(@section)
-  =link_if_allowed 'Delete', @section, :method => :delete, :confirm => "Are you sure you want to delete this section? (its subsections and pages will also be deleted)"
-  =link_if_allowed "New subsection", new_section_section_proc(@section)
-  =link_if_allowed 'New page', new_section_page_proc(@section)
+.row
+  .twelvecol
+    =will_paginate @pages_sections
+  .twelvecol
+    -options_panel do
+      =back_link
+      =link_if_allowed 'Edit section', edit_section_proc(@section)
+      =link_if_allowed 'Delete', @section, :method => :delete, :confirm => "Are you sure you want to delete this section? (its subsections and pages will also be deleted)"
+      =link_if_allowed "New subsection", new_section_section_proc(@section)
+      =link_if_allowed 'New page', new_section_page_proc(@section)
