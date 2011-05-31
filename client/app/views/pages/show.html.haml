@@ -15,8 +15,8 @@
       -unless @page.published?
         %p#page_status=@page.status_string
       =render('pages/content', :page => @page)
-      -#if @page.slug ==  'beta'
-        =#render_form @enquiry
+      -if @page.slug == 'beta'
+        =render_form @enquiry
     =render_slug(@page.slug)
 
   -if !@page.slug_in?(%w{the_team advisors correspondents picnic11_speakers})
