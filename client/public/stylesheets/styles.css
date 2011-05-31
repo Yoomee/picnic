@@ -1022,8 +1022,6 @@ html body form {
 
 
 
-
-
 /* =============================  top styles ============================= */
 div#top {
 	background:#000;
@@ -1150,7 +1148,7 @@ div.logged_in_panel {
 
 .logged_in_as a.logged_in_member_link {
 	font-weight: bold;
-	background: #f5f5f5 url(/images/sprite.png) right -611px;
+	background: #f5f5f5 url(/images/sprite.png) right -611px no-repeat;
 	padding-right: 25px;
 }
 .logged_in_as a.logged_in_member_link:hover {
@@ -1159,7 +1157,7 @@ div.logged_in_panel {
      transition: .0s ease-in;
 }
 .logged_in_as a.logged_in_member_link_highlight {
-	background: #000 url(/images/sprite.png) right -652px;
+	background: #000 url(/images/sprite.png) right -652px no-repeat;
 	color: #fff;
 	border-bottom: 6px solid #000;
 }
@@ -2837,6 +2835,20 @@ a.item_img {
 a.item_img img {
 	float:left;
 }
+
+.pagination a, .pagination a {
+	
+}
+
+span.disabled.prev_page {
+	display: block;
+	float: left;
+	
+}
+
+
+
+
 /* ====================  Section- blog_like_news view   ===================== */
 
 div.blog_like_news_content {
