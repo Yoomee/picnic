@@ -57,7 +57,7 @@ MembersController.class_eval do
       if shouts.empty?
         render :text => (@filter == 'received' ? @template.not_received_yet_message(@member) : @template.not_posted_yet_message(@member))
       else
-        render :text => @template.render_shouts(shouts, :parent => @member, :filter => @filter)
+        render :text => @template.render_shouts(shouts, :parent => @member, :filter => @filter) + @template.javascript_tag(@template.refresh_fb_dom)
       end
     else
       show_without_shout_filtering
