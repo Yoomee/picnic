@@ -13,5 +13,6 @@
               =link_to("#{index+(slice_num*col_size)+1+(rank_offset)}. #{member}", member, :class => "member_link")
               .num_points
                 =pluralize(member.points, 'point')
+%br.clear
 =will_paginate(members, :param_name => "ranking_page", :update => "top_people", :loading => "Leaderboard.loading('#top_people')", :complete => "Leaderboard.complete('#top_people')")
 =image_tag("ajax_loader_squares_gray.gif", :class => "leaderboard_loader", :style => "display:none")
