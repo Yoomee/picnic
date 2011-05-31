@@ -16,7 +16,7 @@
   %p.show_the_hard_way
     =link_to_function "Or enter your email address manually...", "$('#the_hard_way').toggle('blind');$('html,body').animate({scrollTop:$('#the_hard_way').offset().top-100},'slow',function(){$('#member_email').focus();});"
   .clear
-  #the_hard_way{:style => "display:none"}
+  #the_hard_way{:style => @member.errors.empty? ? "display:none" : ''}
     %div
       %hr  
       -semantic_form_for @member do |form|
