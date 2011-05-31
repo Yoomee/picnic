@@ -4,10 +4,11 @@
     var ClubWelcome = {
   
       hide: function() {
-        $('#club_welcome').hide('blind', function() {
-          $('#show_this').show();
-          $('#hide_this').hide();
-        });
+        $('#club_welcome').animate(
+          {height:'toggle'},
+          500,
+          function(){$('#show_this').show();$('#hide_this').hide();}
+        );
       },
 
       searchLoading: function() {
@@ -19,13 +20,15 @@
       },
       
       show: function() {
-        $('#club_welcome').show('blind', function() {
-          $('#show_this').hide();
-          $('#hide_this').show();
-        });
+        $('#club_welcome').animate(
+          {height:'toggle'},
+          500,
+          function(){$('#show_this').hide();$('#hide_this').show();}
+        );
       }
   
     };
+-no_content_row
 #club_intro_page
   #club_welcome.row
     .fivecol
