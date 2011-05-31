@@ -15,7 +15,7 @@
       -unless @page.published?
         %p#page_status=@page.status_string
       =render('pages/content', :page => @page)
-      -if @page.slug == 'beta'
+      -if @page.slug_is(:beta) && @enquiry
         =render_form @enquiry
     =render_slug(@page.slug)
 
