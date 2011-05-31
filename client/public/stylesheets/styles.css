@@ -1383,7 +1383,6 @@ input#search_icon {
 	height:20px;
 	margin:0px 10px 0 0;
 	padding:0px 14px 0 0;
- 	font-weight: bold;
  	font-size: 14px;
  	color: #000;
 
@@ -2795,7 +2794,7 @@ p.nextLink {
 	border-radius:3px;
 	-webkit-border-radius:3px;    
 	-moz-border-radius:3px;
-
+  width: 100%;
 }
 .item p.blog_like_news_date {
 	position: absolute;
@@ -2803,7 +2802,8 @@ p.nextLink {
 	font-size: 12px;
 }
 .item_inner {
-	margin: 10px;
+	margin: 5%;
+	width: 90%;
 	float: left;
 
 }
@@ -5849,6 +5849,12 @@ ul.possible_search_models li {
   float: right;
 }
 
+#show_this div.fivecol {
+  padding: 0;
+  height: 0;
+  min-height: 0;
+}
+
 #hide_this a {
   -moz-border-top-left-radius:5px;
   -webkit-border-top-left-radius:5px;
@@ -5994,6 +6000,9 @@ a.find_someone_photo {
   float: right;
   clear: both;
   margin-right: 3%;
+}
+.row #leaderboard_left.sevencol {
+  width:55.75%;
 }
 .person {
   float: left;
@@ -6206,6 +6215,74 @@ span.click_here_beta {
 
 #enquiry_spam_answer_input p.inline-errors{
   float: left;
+}
+
+/*********** Contacts form ************/
+#contacts_form {
+  padding:15px;
+  width:400px;
+}
+
+#contacts_form p.error {
+  font-size:14px;
+  color:red;
+}
+
+#contacts_results {
+  padding:15px;
+  width:400px;
+}
+
+#contacts_results .list_wrapper {
+  padding:2px;
+  background-color:gray;
+}
+
+#contacts_results .contacts_list {
+  background:#fff;
+  height: 200px;
+  overflow: auto;
+  border: 1px solid #666;
+  width:394px;
+}
+
+#contacts_results .contacts_list li, #contacts_results li.select_all{
+  border-bottom: 1px dashed #666;
+  padding:9px 5px 4px;
+  float:left; 
+  width:369px; 
+}
+
+#contacts_results li.select_all{
+  border-bottom: none;
+}
+
+#contacts_results .contacts_list li.bottom{
+  border-bottom: none;
+}
+
+#contacts_results input[type="checkbox"],#contacts_results span.name, #contacts_results span.email{
+  float:left;
+  display:block;
+  line-height:15px;
+}
+
+#contacts_results span.name{
+  width:130px;
+  overflow:hidden;
+  margin-left:5px;
+}
+#contacts_results span.email{
+  overflow:hidden;
+}
+
+#contacts_results input[type="checkbox"]{
+  margin-top:3px;
+}
+
+/*========== Referrals ==========*/
+.fourcol .formtastic textarea, .fourcol .formtastic .string input {
+  width: 300px;
 }
 
 /* ============================= */
