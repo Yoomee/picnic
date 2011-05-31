@@ -109,8 +109,7 @@ a:hover {
 #header_right a.button {
 		display: block;
 
-	background:#777777;
-	background:rgba(0,0,0,0.4);
+	background:#000;
 
 	float: right;
 	font-size: 12px;
@@ -124,6 +123,14 @@ a:hover {
 	border-radius:3px;
 	-webkit-border-radius:3px;
 	-moz-border-radius:3px;
+}
+ #header_right a.button:hover {
+	text-decoration: none;
+	background-color: #777;
+	
+	 -webkit-transition: .1s ease-in;
+     -moz-transition: .1s ease-in;
+     transition: .1s ease-in;
 }
 
 
@@ -1157,7 +1164,7 @@ div.logged_in_panel {
 	background-color: #000;
 
 }
-.logged_in_as a:hover, #header_right a.button {
+.logged_in_as a:hover {
 	text-decoration: none;
 	background-color: #ccc;
 	
@@ -1234,6 +1241,7 @@ body .logged_in_box_highlight {
 a.my_profile_link {
 	font-size: 14px;
 	font-weight: bold;	
+	padding-bottom: 10px;
 	border-bottom: 1px solid #999;
 }
 a.my_profile_link img {
@@ -5835,6 +5843,7 @@ ul.possible_search_models li {
   width: 100px;
   text-align: center;
   display: block;
+  float: right;
 }
 
 #hide_this a {
