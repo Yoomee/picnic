@@ -1,4 +1,5 @@
-.twelvecol
+-no_content_row
+.row
   -if !@search.term.blank?
     -url = "/search/#{@search.term.parameterize}"
     -url << "?filter=#{search_filter_name(@search_filter, :pluralize => true)}" if !@search_filter.blank?
@@ -6,17 +7,19 @@
       $(document).ready(function() {
         #{track_page_view(url)}
       });
-  #search_again
+  #search_again.twelvecol.last
     =render :partial => 'form', :locals => {:search => @search}
-  #search_results
+  #search_results.tencol.last
     -if @search.empty?(@search_filter)
       %p
         ="Sorry, no #{search_filter_name(@search_filter, :pluralize => true)} found."
     -else
       -if (@search_filter.blank? || @search_filter=="Member") && (params[:page].to_i < 2) && !@search.empty?(:members, :per_page => nil)
         =render("members", :search => @search)
-      -if (@search_filter.blank? || @search_filter != "Member") && !@search.empty?(:shouts)
+      -if (@search_filter.blank? || @search_filter == "PagesSection") && !@search.empty?(:pages_sections)
+        =render("pages_sections", :search => @search)
+      -if (@search_filter.blank? || @search_filter.in?(%w{Shout Photo Video Link})) && !@search.empty?(:shouts)
         =render("shouts", :search => @search)
-
+.row
   -options_panel do
     =back_link

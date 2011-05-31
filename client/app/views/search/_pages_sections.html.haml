@@ -1,0 +1,10 @@
+#search_results_pages_sections.search_results_list
+  .search_results_header
+  %ul.lst
+    -search.results(:pages_sections).each do |page_section|
+      %li.search_result_item
+        =link_to(image_for(page_section, "50x50#"), page_section, :class => "search_result_image")
+        .search_result_right
+          =link_to_self(page_section)
+          %p=search_summary(page_section, search.term)
+  =search_results_view_all_link(search, :pages_sections)

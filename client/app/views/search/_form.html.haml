@@ -4,7 +4,7 @@
     var SearchForm = {
       filter: function(filter_name) {
         $('#search_filter_input').val(filter_name);
-        $('#discussion_search_form').submit();
+        $('#search_form').submit();
       }
     };
 
@@ -13,12 +13,12 @@
     =form.text_field :term, :title => "Search...", :class => "labelify", :id => "search_field"
     =form.submit "Search", :id => "search_icon"
     =hidden_field_tag :search_filter, @search_filter, :id => "search_filter_input"
-    -if false
-      #comments_filter.search_filter
-        %span Filter by
-        =search_filter_link("Everything", :filter_name => "")
-        =search_filter_link("Post")
-        =search_filter_link("Videos")
-        =search_filter_link("Links")
-        =search_filter_link("Polls", :filter_name => "PollQuestion")
-        =search_filter_link("People", :filter_name => "Member")
+    #comments_filter.search_filter
+      %span Filter by
+      =search_filter_link("Everything", :filter_name => "")
+      =search_filter_link("People", :filter_name => "Member")
+      =search_filter_link("Pages", :filter_name => "PagesSection")
+      =search_filter_link("Posts", :filter_name => "Shout")
+      =#search_filter_link("Photos")
+      =#search_filter_link("Videos")
+      =#search_filter_link("Links")

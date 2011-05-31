@@ -1,14 +1,20 @@
 -@page_title = @section.name
+-no_content_row
 -unless @section.description.nil?
-  %p.section_description
-    =@section.description
-#news_view
+  .row
+    %p.section_description
+      =@section.description
+#index_view.row
   -@pages_sections.each_with_col_name do |page_section, col_name|
-    .item{:class => "item_#{col_name}"}
-      %h3=link_to page_section, page_section
-      =link_to(photo_for(page_section, "250x140!"), page_section, :class => 'item_img')
-      %p=strip_tags description_for(page_section, :length => 140)
-      =link_to 'More', page_section, :class => 'bttn'
+    .item.fourcol{:class => "item_#{col_name}"}
+      .item_border
+        .item_inner
+          %h3=link_to page_section, page_section
+          =link_to(photo_for(page_section, "330x180#"), page_section, :class => 'item_img')
+          %p=strip_tags description_for(page_section, :length => 140)
+          =link_to 'More', page_section, :class => 'newsbox_arrow'
+          %p.blog_like_news_date
+            =(page_section.is_a?(Page) ? page_section.publish_on : page_section.created_at).strftime("%e %B %Y")
 %br.clear
 =will_paginate @pages_sections
 -options_panel do
