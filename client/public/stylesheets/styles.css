@@ -4150,6 +4150,10 @@ body.controller_badges .badge_photo {
 
 #unawarded_badges {
   width: 400px;
+  float: left;
+}
+#unawarded_badges .badge_item {
+  height:33px;
 }
 #unawarded_badges_links {
   float: left;
