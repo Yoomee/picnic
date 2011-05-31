@@ -23,6 +23,10 @@
     = javascript_include_tag "http://connect.facebook.net/en_US/all.js"
     = stylesheet_link_tag 'http://fast.fonts.com/cssapi/f1269106-f262-440b-b3ce-93423b2eaf06.css'
     = stylesheet_link_tag "client/facelist_2-0",'jquery.fancybox', 'jquery-ui', 'client/1140.css', 'client/styles', :cache => false
+    /[if IE]
+      = stylesheet_link_tag 'client/ie.css'
+    /[if IE 6]
+      = stylesheet_link_tag 'client/ie6.css'
     =# formtastic_stylesheet_link_tag
     = labelify_javascript
     =yield :head
