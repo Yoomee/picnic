@@ -9,7 +9,7 @@
   -hide_page_title
   #page_subnav.twocol
     =render("pages/subnav", :page => @page)
-  #page_content{:class => "#{@page.slug_in?(%w{the_team advisors picnic11_speakers}) ? 'eightcol last' : 'fivecol'}"}
+  #page_content{:class => "#{@page.slug_in?(%w{the_team advisors picnic11_speakers contributors}) ? 'eightcol last' : 'fivecol'}"}
     #page_left_col
       %h1#page_title=@page.title
       -unless @page.published?
