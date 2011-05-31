@@ -5563,7 +5563,7 @@ p.no_messages_yet {
 .search_results_list {
   border-top: 1px solid #CCCCCC;
   margin-bottom: 10px;
-  padding-top: 10px;
+  padding-top: 20px;
   width: 100%;
   float: left;
   clear: both;
@@ -5670,17 +5670,17 @@ ul.possible_search_models li {
 .search_results_list ul {
   width: 100%;
 }
-.search_results_list ul li {
+.search_results_list ul li.search_result_item {
   float: left;
   clear: both;
   width: 100%;
 }
-.search_results_list li .search_result_image {
+.search_results_list li.search_result_item .search_result_image {
   float: left;
   margin-right: 2%;
   width: 6%;
 }
-.search_results_list li .search_result_right {
+.search_results_list li.search_result_item .search_result_right {
   float: left;
   width: 90%;
 }

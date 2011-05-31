@@ -2,7 +2,7 @@
   .search_results_header
   %ul.lst
     -search.results(:pages_sections).each do |page_section|
-      %li
+      %li.search_result_item
         =link_to(image_for(page_section, "50x50#"), page_section, :class => "search_result_image")
         .search_result_right
           =link_to_self(page_section)

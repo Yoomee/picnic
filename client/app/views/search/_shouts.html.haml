@@ -3,6 +3,6 @@
   .search_results_header
   %ul.lst
     -items.each do |shout|
-      %li
+      %li.search_result_item
         =render_shout(shout, :compact_view => true, :search_term => search.term)
   =search_results_view_all_link(search, :shouts)
