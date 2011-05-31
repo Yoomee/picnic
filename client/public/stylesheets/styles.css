@@ -4081,6 +4081,9 @@ div.page_share {
 #url_box .auth_links .auth_link a img, #url_box .auth_links .auth_link a.fb_button{
   margin-top: 20px;
 }
+a.fb_button:hover {
+  text-decoration: none;
+}
 .auth_links .auth_link .tick{
   text-align:center;
   width:100%;
