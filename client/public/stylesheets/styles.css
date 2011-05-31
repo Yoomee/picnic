@@ -6349,7 +6349,7 @@ span.click_here_beta {
 	}
 
 h1#site_logo a {
-	margin: 20px 0 0;
+	margin: 20px 0;
 	
 }
 .newsbox {
@@ -6451,6 +6451,24 @@ a.item_img {
 }
 .logged_in_box {
 	top: 86px;
+}
+#login_wrapper {
+	width: 300px;
+}
+#login_services {
+	padding: 0 0 20px;
+	margin: 0 0 20px;
+	float: left;
+	border-bottom: 1px solid #000;
+	
+}
+#or_old_way {
+	bottom: -15px;
+	top: auto;
+	left: 0px;
+}
+#login_old_way {
+	border: none;
 }
 
 }
