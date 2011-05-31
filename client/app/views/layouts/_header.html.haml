@@ -8,11 +8,18 @@
     -if logged_in?
       .panel
         .logged_in_as
-          =link_to_self(@logged_in_member)
+          =link_to (@logged_in_member, "#", :class=>'logged_in_member_link')
           =link_to "Notifications#{current_page?(notifications_path) || @logged_in_member.notifications.unread.empty? ? "" : " <span>#{@logged_in_member.notifications.unread.count}</span>"}", notifications_path, :class => "notifications", :title => "#{pluralize(@logged_in_member.notifications.unread.count, 'new notification')}"
           =#link_to "Inbox#{current_page?(messages_path) || !@logged_in_member.has_unread_messages? ? "" : " <span>#{@logged_in_member.unread_message_count}</span>"}", messages_path, :class => "messages", :title => "#{pluralize(@logged_in_member.unread_message_count, 'new messages')}"
           =link_if_allowed('Admin', admin_proc)
-          =link_to('Logout', session_path, :method => :delete)
     -else
       =link_to('Login', new_session_path, :class => 'button')
       =link_to("Signup", new_member_path, :class => 'button')
+
+    -if logged_in?
+      .logged_in_box
+        -link_to @logged_in_member, :class=>'my_profile_link' do
+          =image_for @logged_in_member, '50x50#'
+          %p My profile
+        =link_to 'Account settings', '#', :class=>''
+        =link_to('Logout', session_path, :method => :delete)
