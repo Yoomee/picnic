@@ -1,0 +1,8 @@
+%div{:id => "notification_#{notification.id}", :class => "notification #{notification.read? ? 'read' : 'unread'}"}
+  -if notification.from_member
+    .member_image
+      =link_to(image_for(notification.from_member, '50x50#'), notification.from_member)
+  .notification_content
+    %p=notification.text
+  .delete_link
+    =link_to("x", notification, :method => :delete, :confirm => "Are you sure?")
