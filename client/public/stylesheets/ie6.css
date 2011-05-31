@@ -1,3 +1,9 @@
+h1#site_logo a {
+	background-image: url(/images/sprite_picnic.gif);
+}
+#hide_beta_bar_link, input#search_field {
+	background-image: url(/images/sprite.gif);
+}
 #search_box, ul#logged_out_nav li a {
 	display:inline;
 }
