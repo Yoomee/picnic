@@ -43,7 +43,6 @@
           window.location.href = '#{url_for Page.slug(:beta)}';
         });
         $('#hide_beta_bar_link').click(function(event) {
-          console.log('hiding');
           $.ajax({
             url: '#{close_beta_bar_path}'
           });

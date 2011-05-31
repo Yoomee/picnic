@@ -37,9 +37,10 @@
       =form.commit_button 'Save'
 -else
   -semantic_form_for object, :html => {:onsubmit => "if(WhatIBringForm.valid){return true;}else{return false;}"} do |form|
-    -form.inputs do
+    -form.inputs(:id => 'what_i_bring_inputs') do
       =form.input :what_i_bring, :as => :text, :input_html => {:rows => 2}, :label => 'I bring...'
-      %span{:id => 'characters_left'}
+      %li#characters_left_container
+        %span{:id => 'characters_left'}
     .clear
     .small_print
       =(small_print ||= small_print)

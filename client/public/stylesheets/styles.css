@@ -4971,6 +4971,12 @@ a.fancybox_edit {
   margin: 40px 0 0 20px;
   width:40px;
 }
+#characters_left_container {
+  clear: none;
+}
+#what_i_bring_inputs {
+  width: 800px;
+}
 .formtastic textarea#member_what_i_bring {
   width: 500px;
 }
