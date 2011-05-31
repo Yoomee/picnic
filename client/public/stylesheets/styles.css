@@ -3955,8 +3955,21 @@ div.page_share {
   width: 550px;
 }
 
+
 .register_box a.show_sign_in {
   margin-top:15px;
+}
+
+.register_box #book_on_picnic h2 {
+  margin-bottom:5px;
+}
+
+.register_box #book_on_picnic p {
+  margin-bottom:20px;
+}
+
+.register_box hr{
+  margin-bottom:20px;
 }
 
 .register_box .auth_links {
@@ -3964,6 +3977,8 @@ div.page_share {
   clear: both;
   margin-bottom: 0px;
 }
+
+
 .auth_link#linkedin {
 }
 .auth_links .auth_link {
