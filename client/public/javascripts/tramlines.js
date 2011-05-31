@@ -82,3 +82,12 @@ var Leaderboard = {
     FB.XFBML.parse();
   }
 };
+
+function action_with_page_param(form_id, page) {
+	var action = $('#'+form_id).attr('action');
+	if (action.match(/\?/)) {
+		return (action + '&page=' + page);
+	} else {
+		return (action + '?page=' + page);
+	}
+}
