@@ -35,7 +35,7 @@
 				height: 100%;
 				width: 180px;
 				display: block;
-				background: url(_gfx/trans.gif);
+				background: url(../_gfx/trans.gif);
 			}
 			#fullscreencontrols #ctrl_left {
 				left: 10px;
