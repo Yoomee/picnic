@@ -21,6 +21,7 @@
 /vendor/plugins/tramlines_notifications
 /vendor/plugins/tramlines_picnic_auth
 /vendor/plugins/tramlines_ratings
+/vendor/plugins/tramlines_referrals
 /vendor/plugins/tramlines_shouts
 /vendor/plugins/tramlines_walls
 .DS_Store
