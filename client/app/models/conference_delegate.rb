@@ -70,9 +70,7 @@ class ConferenceDelegate < ActiveRecord::Base
   end
   
   def send_club_invite
-    if email.match(/@yoomee\.com$/)
-      Notifier.deliver_club_invite(self)
-    end
+    Notifier.deliver_club_invite(self)
   end
   
 end
