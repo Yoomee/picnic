@@ -8,5 +8,6 @@
         .num_points
           %span.discussion_count=pluralize(member.shout_count, 'discussion') if member.shout_count.to_i > 0
           %span.comment_count=pluralize(member.wall_post_count, 'comment') if member.wall_post_count.to_i > 0
+%br.clear          
 =will_paginate(members, :param_name => "posters_page", :update => "top_posters", :loading => "Leaderboard.loading('#top_posters')", :complete => "Leaderboard.complete('#top_posters')")
 =image_tag("ajax_loader_squares_gray.gif", :class => "leaderboard_loader", :style => "display:none")
