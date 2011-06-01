@@ -1,10 +1,13 @@
 require 'openssl'
 require 'base64'
 class ConferenceDelegate < ActiveRecord::Base
+  
   ConferenceDelegate::FIELDS_IN_ORDER = %w{REGDATE PRESENT TYPE PROMO FIRSTNAME LASTNAME GENDER ORGANISATION BRANCH FUNCTION EMAIL TWITTER TICKET_WED TICKET_THU TICKET_FRI TICKET_3 DINNER_WED DINNER_THU SIGNATURE EVP_ID}
   
   belongs_to :member
   after_create :send_club_invite
+  before_save :set_award_badge
+  after_save :add_badge
   
   class << self
     def create_from_params!(params)
@@ -57,6 +60,14 @@ class ConferenceDelegate < ActiveRecord::Base
   end
   
   private
+  def set_award_badge
+    @award_badge = changed.include?('member_id') && !member_id.nil?
+  end
+  
+  def add_badge
+    member.award_badge!(:picnic11_attendee) if @award_badge
+  end
+  
   def send_club_invite
     if email.match(/@yoomee\.com$/)
       Notifier.deliver_club_invite(self)
