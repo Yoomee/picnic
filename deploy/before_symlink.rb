@@ -19,3 +19,7 @@ run "mkdir -p #{release_path}/uploads"
 end
 
 run "ln -nfs #{release_path}/client/public/index.html #{release_path}/public/index.html"
+run "ln -nfs #{release_path}/client/public/_css #{release_path}/public/_css"
+run "ln -nfs #{release_path}/client/public/_gfx #{release_path}/public/_gfx"
+run "ln -nfs #{release_path}/client/public/_images #{release_path}/public/_images"
+run "ln -nfs #{release_path}/client/public/_js #{release_path}/public/_js"
