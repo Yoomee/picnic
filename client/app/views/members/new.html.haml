@@ -27,6 +27,7 @@
             =opt.input :forename, :label => 'First name'
             =opt.input :surname, :label => 'Last name'
           =form.input :country, :label => 'Where are you from?', :prompt => 'Select a country', :as => :country
+          =form.input :conference_delegate_id, :as => :hidden
           =form.commit_button "Go &gt; &gt;"
 -options_panel do
   =back_link

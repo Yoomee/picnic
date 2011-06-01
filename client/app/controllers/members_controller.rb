@@ -2,7 +2,7 @@ MembersController.class_eval do
   
   open_action :show
 
-  skip_before_filter :check_what_i_bring, :only => %w{update what_i_bring}
+  skip_before_filter :check_what_i_bring, :only => %w{update what_i_bring me}
   skip_badge_announcement :what_i_bring
 
   # def create
