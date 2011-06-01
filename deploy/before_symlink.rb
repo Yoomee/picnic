@@ -23,3 +23,7 @@ run "ln -nfs #{release_path}/client/public/_css #{release_path}/public/_css"
 run "ln -nfs #{release_path}/client/public/_gfx #{release_path}/public/_gfx"
 run "ln -nfs #{release_path}/client/public/_images #{release_path}/public/_images"
 run "ln -nfs #{release_path}/client/public/_js #{release_path}/public/_js"
+
+run "rm #{release_path}/public/404.html; ln -nfs #{release_path}/client/public/404.html #{release_path}/public/404.html"
+run "rm #{release_path}/public/500.html; ln -nfs #{release_path}/client/public/500.html #{release_path}/public/500.html"
+
