@@ -6393,6 +6393,19 @@ span.click_here_beta {
   width: 300px;
 }
 
+/*========== Enquiries ==========*/
+.controller_enquiries .fieldName {
+  float: left;
+  clear: left;
+  width: 200px;
+  font-weight: bold;
+  margin: 10px 10px 20px 0;
+}
+.controller_enquiries .fieldValue {
+  float: left;
+  margin: 10px 0 20px 0;
+}
+
 /* ============================= */
 /* ! Layout for mobile version   */
 /* ============================= */

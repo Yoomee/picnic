@@ -17,3 +17,9 @@ run "mkdir -p #{release_path}/uploads"
   run "mkdir -p #{shared_year_path}" unless File.exists?(shared_year_path)
   run "ln -nfs #{shared_year_path} #{release_year_path}"
 end
+
+run "ln -nfs #{release_path}/client/public/index.html #{release_path}/public/index.html"
+run "ln -nfs #{release_path}/client/public/_css #{release_path}/public/_css"
+run "ln -nfs #{release_path}/client/public/_gfx #{release_path}/public/_gfx"
+run "ln -nfs #{release_path}/client/public/_images #{release_path}/public/_images"
+run "ln -nfs #{release_path}/client/public/_js #{release_path}/public/_js"
