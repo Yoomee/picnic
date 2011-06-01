@@ -3,6 +3,7 @@ ApplicationController.class_eval do
   include Facebooker2::Rails::Controller
   
   before_filter :check_what_i_bring
+  before_filter :break_for_non_yoomee
   
   helper_method :home_section, :splash_page_advert
   
@@ -22,6 +23,12 @@ ApplicationController.class_eval do
   
   def splash_page_advert
     @splash_page_advert ||= AdvertCampaign::splash_page.adverts.active.random_element
+  end
+  
+  def break_for_non_yoomee
+    if request.host =~ /picnic.yoomee.com/ && logged_in_member
+      report_error "This site is locked down whilst we transfer it to http://picnicnetwork.org" unless logged_in_member.try(:email) =~ /yoomee.com$/
+    end
   end
   
 end
