@@ -5,6 +5,7 @@
 	http://picnic.yoomee.com/stylesheets/client/styles.css?1305648268
 	http://picnic.yoomee.com/stylesheets/client/styles.css?1305906593
 	http://picnic.yoomee.com/stylesheets/client/styles.css?1306862143
+	http://picnic.yoomee.com/stylesheets/client/styles.css?1306862736
 */
 
 /* the tramlines vanilla stylesheet */
@@ -17,7 +18,7 @@ body, textarea, input {font:12px/1.6 'Helvetica', Arial,'Liberation Sans',FreeSa
 
 /* ======================  CSS3 regularly used stuff ================== */
 
-#main, input, #footer_links, .bx_h, #news_feed_older_btn, .bx_h a, button, .bttn, .pull_quote, div#page_related_col, a.backto, #nav ul li a, .logged_in_box {
+#main, input, #footer_links, .bx_h, #news_feed_older_btn, .bx_h a, button, .bttn, .pull_quote, div#page_related_col, a.backto, #nav ul li a, .logged_in_box{
 	-moz-border-radius:3px;
 	-webkit-border-radius:3px;
 	border-radius:3px;
@@ -37,9 +38,9 @@ a.backto {
 }
 
 
-a, p.inline-errors {
+a, p.inline-errors, .formError {
 	color:#999;
-	text-decoration: underline;
+
 }
 a:hover {
 	color: #000;
@@ -53,7 +54,7 @@ h1, h2, h3, h4, h5, h6, #nav, #subnav, #user_links .button, .bring_quote, .cycle
 		color:black;
 	font-weight: normal;
 }
-span.click_here_beta {
+span.click_here_beta, p.club_welcome_intro_text {
 	font-family:'VAG Rounded W02 Thin', arial, sans-serif;
 }
 #page_content, #article_image, #keep_in_touch, #newsletter_signup, #pull_quote, #call_to_action {
@@ -1036,7 +1037,7 @@ div#top {
 	min-height:98px;
 	position: relative;
 	overflow: visible;
-	z-index: 40;
+
 
 }
 #header_inside {
@@ -2380,7 +2381,7 @@ ul.action_links li {
 }
 #footer_copyright {
 	border-top: 3px solid #ccc;
-	margin-top: 10px;
+	margin-top: 20px;
 	margin-bottom: 20px;
 	padding-top: 10px;
 	height: 60px;
@@ -4546,20 +4547,54 @@ dt {
 }
 .shout_form li.commit {
   float: right;
-  margin-right: 20px;
+  margin-right: 10px;
   clear: none;
 }
 .shout_form .conversation_types {
   float: left;
+  font-size: 14px;
   clear: both;
+  margin-bottom: 0px;
 }
+.conversation_types span, .conversation_types a {
+	margin: 0 0px 0  0;
+	float: left;
+	padding: 3px 7px 8px;
+}
+.conversation_types a.active {
+	background: #000;
+	color: #fff;
+	
+}
+
+#shout_photo_image_input {
+
+	
+}
+
 .shout_form .form_type_input {
   float: left;
   clear: left;
+  	background: #000;
+	color: #fff;
+	padding: 5px 10px;
 }
+.form_type_input label {
+	font-size: 12px;
+}
+#shout_photo_image_input {
+	
+}
+
+input#shout_link_url {
+	width: 300px;
+	
+}
+
+
 .shout_form_submit_loader {
   float: right;
-  margin: 20px 0px 0px;
+  margin: 10px 20px 0px;
 }
 .shout_left {
   float: left;
@@ -5025,13 +5060,17 @@ abbr[title="required"] {
 }
 ul.facelist-selections li:hover.facelist-selection-item {
 	background-color: black;
+	
 }
 
 .facelist-results {
   overflow:visible;
 }
+li.facelist-result-item {
+	border-radius:3px;
+}
 li.facelist-result-item.active {
-background-color: #777;
+background-color: #000;
 border-color: #333;
 color: white;
 }
@@ -5046,7 +5085,7 @@ ul.facelist-selections {
 	/*background: #fff url(/images/sprite.png) repeat-x 0 -320px;*/
 	margin: 0;
 /*	float: left;*/
-	width: 504px;
+	width: 480px;
 	padding-bottom: 0px;
 }
 ul.facelist-selections li {
@@ -5056,6 +5095,34 @@ ul.facelist-selections li.facelist-original input {
 	background:none;
 	width: 160px;
 }
+
+input#as-input-themes {
+	margin: 0;
+	
+}
+
+.formtastic ol li.comment_next_link {
+	font-size: 20px;
+	float: right;
+	width: 100%;
+	
+}
+div#new_shout_themes, #new_shout_form {
+	width: 490px;
+}
+
+#shout_text {
+	width: 470px;
+	margin: 0;
+	
+}
+
+li.comment_next_link a {
+	float: right;
+	background: url(/images/sprite_picnic.png) 0 -114px;
+	padding: 0 0 0 25px;
+}
+
 .facelist-results ul.facelist-list {
 	background-color: #ddd;
 }
@@ -5126,9 +5193,9 @@ li.bring_item {
 	width: 21%;
 	clear: none;
 	margin: 0;
-	background: #fff;
+	background: #f5f5f5;
 	padding: 2%;
-	min-height: 160px;
+	min-height: 165px;
 	
 }
 /* =======  cycle  ====== */
@@ -5863,10 +5930,11 @@ ul.possible_search_models li {
 }
 
 #hide_this, #show_this {
-  font-size: 18px;
+  font-size: 14px;
 }
-#hide_this div, #show_this div {
+#hide_this .sevencol, #show_this .sevencol {
   padding: 0;
+  float: right;
 }
 #hide_this {
   border-bottom: 4px solid #e2e2e2;
@@ -5879,10 +5947,10 @@ ul.possible_search_models li {
   background: #e2e2e2;
   color: black;
   padding: 3px 10px;
-  width: 100px;
+  width: 70px;
   text-align: center;
   display: block;
-  float: right;
+  float: left;
 }
 
 #show_this div.fivecol {
@@ -5953,6 +6021,9 @@ a.find_someone_photo {
   float: left;
   width: 70%;
 }
+.find_someone_result .details h4 {
+	margin: 0px;
+}
 .find_someone_result .details h4 a {
   color: black;
 }
@@ -5975,6 +6046,7 @@ a.find_someone_photo {
 
 #club_welcome p.club_welcome_intro_text {
 	font-size: 17px;
+	margin-bottom: 30px;
 	
 }
 
@@ -6446,13 +6518,36 @@ h1#site_logo a {
 .row #leaderboard_left.sevencol {
   width:100%;
 }
+#club_intro_page h2 {
+	margin-top: 20px;
+}
+li.bring_item .bring_quote {
+	font-size: 14px;
 
+}
+li.bring_item a.member_name {
+	font-size: 10px;
+	line-height: 10px;
+	float: left;
+}
+li.bring_item{
+	min-height: 180px;
+}
+
+#bring_wrapper {
+	height: 230px;
+}
+#fancybox-wrap {
+	padding: 0;
+}
 
 
 }
 
 @media handheld, only screen and (max-width: 500px) {
-	
+
+
+
 #search_box {
  display: none;
 	
@@ -6514,6 +6609,29 @@ a.item_img {
 #login_old_way {
 	border: none;
 }
+
+li.bring_item{
+	width: 46%;
+	height: 40px;
+}
+
+#fancybox-wrap {
+	padding: 0;	
+	width: 400px;
+}
+div#new_shout_themes, #new_shout_form {
+	width: 380px;
+}
+#shout_text {
+	margin: 0;
+	width: 365px;
+}
+ul#facelist-selections-themes.facelist-selections {
+	width: 360px;
+}
+
+
+
 
 }
 
