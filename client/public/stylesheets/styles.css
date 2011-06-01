@@ -4268,10 +4268,14 @@ p.show_the_hard_way {
 body.controller_badges .badge_info {
   float: left;
   margin: 20px 0;
+  width: 100%;
 }
 body.controller_badges .badge_photo {
   float: left;
   margin-right: 20px;
+}
+body.controller_badges .badge_members {
+  clear: left;
 }
 
 #unawarded_badges {
