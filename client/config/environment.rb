@@ -12,6 +12,7 @@ class ClientEnvironment
       config.gem 'oa-core', :version => "0.1.6", :lib => "omniauth/core"
       config.gem 'omniauth', :version => "0.1.6"
       config.gem 'acts_as_textcaptcha', :version => '2.1.3'
+      config.gem 'contacts'
     end
     
   end

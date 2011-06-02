@@ -106,6 +106,11 @@ path = vendor/plugins/tramlines_ratings
 scm = git
 repository = git://git.yoomee.com:4321/plugins/tramlines_ratings.git
 
+[vendor/plugins/tramlines_referrals]
+path = vendor/plugins/tramlines_referrals
+scm = git
+repository = git://git.yoomee.com:4321/plugins/tramlines_referrals.git
+
 [vendor/plugins/tramlines_shouts]
 path = vendor/plugins/tramlines_shouts
 scm = git
