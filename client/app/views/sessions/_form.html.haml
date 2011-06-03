@@ -19,7 +19,7 @@
             Password:
           = password_field_tag 'login_password', '', :class=>'labelify'
           =# star
-          =link_to "Forgot password?", new_forgotten_password_path, :id => "forgotten_password"
+          =link_to_box "Forgot password?", new_forgotten_password_path, :class => "forgotten_password"
         =hidden_field_tag :signature, params[:signature]
         = submit_tag 'Log in', :id => 'login_bttn'
     

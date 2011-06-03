@@ -49,8 +49,12 @@
           return false;
         });
         $("a.logged_in_member_link").click(function () {
-          $(this).toggleClass("logged_in_member_link_highlight");
-          $('.logged_in_box').toggleClass("logged_in_box_highlight");
+          if($(this).hasClass('logged_in_member_link_highlight')){
+            $('.logged_in_box').hide(0, function(){$('a.logged_in_member_link').removeClass("logged_in_member_link_highlight");});
+          } else {          
+            $('.logged_in_box').show();
+            $(this).addClass("logged_in_member_link_highlight");
+          }
         });
       });
 
