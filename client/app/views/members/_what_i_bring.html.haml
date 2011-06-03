@@ -2,7 +2,7 @@
   :javascript
 
     var WhatIBringForm = {
-      valid: #{(object.what_i_bring.blank? || (object.what_i_bring.length > Member::WHAT_I_BRING_MAX_LENGTH)) ? '0' : '1'},
+      valid: #{(object.what_i_bring.blank? || object.what_i_bring == '...' || (object.what_i_bring.length > Member::WHAT_I_BRING_MAX_LENGTH)) ? '0' : '1'},
       update: function() {
         var characters_left = #{Member::WHAT_I_BRING_MAX_LENGTH} - $('#member_what_i_bring').val().length;
         $('#characters_left').html(characters_left);
@@ -28,7 +28,7 @@
 -if options[:fancy]
   -semantic_remote_form_for object, :update => update_id, :complete => "$.fancybox.close();$('##{update_id}').highlight(2000)",:url => polymorphic_path(object, :format => :text, :wants => input),:html => {:onsubmit => "if(!WhatIBringForm.valid){return false;}"} do |form|
     -form.inputs do
-      =form.input :what_i_bring, :as => :text, :input_html => {:rows => 2}, :label => 'I bring...'
+      =form.input :what_i_bring, :as => :text, :input_html => {:rows => 2, :value => object.what_i_bring == '...' ? '' : object.what_i_bring}, :label => 'I bring...'
       %span{:id => 'characters_left'}
     .clear
     .small_print
@@ -38,7 +38,7 @@
 -else
   -semantic_form_for object, :html => {:onsubmit => "if(WhatIBringForm.valid){return true;}else{return false;}"} do |form|
     -form.inputs(:id => 'what_i_bring_inputs') do
-      =form.input :what_i_bring, :as => :text, :input_html => {:rows => 2}, :label => 'I bring...'
+      =form.input :what_i_bring, :as => :text, :input_html => {:rows => 2, :value => object.what_i_bring == '...' ? '' : object.what_i_bring}, :label => 'I bring...'
       %li#characters_left_container
         %span{:id => 'characters_left'}
     .clear

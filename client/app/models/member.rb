@@ -17,7 +17,7 @@ Member.class_eval do
   has_many :urls, :as => :attachable
   has_one :conference_delegate, :autosave => true
 
-  named_scope :with_what_i_bring, :conditions => "what_i_bring > ''"
+  named_scope :with_what_i_bring, :conditions => "what_i_bring > '' AND what_i_bring <> '...'"
   named_scope :with_theme_tag, lambda{|tag| {:joins => "INNER JOIN shouts ON shouts.member_id=members.id INNER JOIN taggings ON taggings.taggable_id=shouts.id", :conditions => ["taggings.taggable_type='Shout' AND taggings.tag_id=?", tag.id], :group => "members.id"}}
   
   validates_presence_of :email, :unless => :allow_username_instead_of_email?
