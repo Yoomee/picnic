@@ -3,6 +3,7 @@ class LeaderboardController < ApplicationController
   before_filter :get_points_transfers
   
   def index
+    Member.show_admins_on_leaderboard = true
     @ranked_members = Member.ranked_since(1.month.ago)
     @top_posters = Member.top_posters_since(1.month.ago)
     @top_tags = Tag.top_tags_since(1.month.ago).limit(15)
@@ -10,6 +11,7 @@ class LeaderboardController < ApplicationController
   end
   
   def all_time
+    Member.show_admins_on_leaderboard = true
     @ranked_members = Member.ranked
     @top_posters = Member.top_posters
     @top_tags = Tag.top_tags.limit(15)
