@@ -913,7 +913,7 @@ html body form {
 .dash_icon {
 	width: 44px;
 	height: 60px;
-	background: url(/images/sprite.png) 60px -940px;
+	background: url(/images/sprite.png) 120px -940px no-repeat;
 	position: absolute;
 	top: 10px;
 	left: 0;
@@ -925,14 +925,26 @@ html body form {
 #dash_images .dash_icon{
 	background-position: 0 -1000px;
 }
+#dash_events .dash_icon {
+	background-position: 0 -1320px;
+}
+#dash_stories .dash_icon {
+	background-position: 0 -1240px;
+}
 #dash_documents .dash_icon{
-	background-position: 0 -940px;
+	background-position: -80px -940px;
 }
 #dash_enquiries .dash_icon{
 	background-position: 0 -1060px;
 }
 #dash_members .dash_icon{
-	background-position: 0 -940px;
+	background-position: 0 -1180px;
+}
+#dash_adverts .dash_icon{
+	background-position: 0 -1420px;
+}
+#dash_badges .dash_icon{
+	background-position: 0 -1500px;
 }
 .create {
 	font-weight: bold;
