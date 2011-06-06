@@ -1,1 +1,3 @@
 =render("members/grid", :members => Member.with_badge(:picnic11_team).all, :team => true)
+%h1 Board
+=render("members/grid", :members => Member.with_badge(:picnic11_board).all, :team => true)

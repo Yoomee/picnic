@@ -24,7 +24,7 @@ class ConferenceDelegate < ActiveRecord::Base
       end
       return nil if [:firstname, :lastname, :email, :signature, :evp_id].any?{|field| delegate_params[field].blank?} || exists?(:evp_id => delegate_params[:evp_id])
       delegate_params[:member] = Member.find_by_email(delegate_params[:email])
-      create(delegate_params)
+      create!(delegate_params)
     end
   end
   
@@ -62,6 +62,7 @@ class ConferenceDelegate < ActiveRecord::Base
   private
   def set_award_badge
     @award_badge = changed.include?('member_id') && !member_id.nil?
+    true
   end
   
   def add_badge
@@ -69,9 +70,7 @@ class ConferenceDelegate < ActiveRecord::Base
   end
   
   def send_club_invite
-    if email.match(/@yoomee\.com$/)
-      Notifier.deliver_club_invite(self)
-    end
+    Notifier.deliver_club_invite(self)
   end
   
 end

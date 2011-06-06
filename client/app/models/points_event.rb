@@ -25,5 +25,6 @@ PointsEvent::SLUG_POINTS = {
   :dislike_my_shout => {:name => "Having your discussion \"thumbed down\"", :points => -1},
   :first_comment_on_my_shout => {:name => "Having comments on your discussion", :points => 2},
   :share_my_shout => {:name => "Having your discussion shared by others", :points => 5},
-  :friend_on_fb => {:name => "Having friends on Facebook also on PICNIC", :points => 5} 
+  :friend_on_fb => {:name => "Having friends on Facebook also on PICNIC", :points => 5}, 
+  :like_my_profile => {:name => "Having your profile \"thumbed up\"", :points => 2}
 }

@@ -1,4 +1,18 @@
 FriendRequestsController.class_eval do
+
+  def accept
+    @friend_request = FriendRequest.find(params[:id])
+    if request.xhr?
+      deal_with_accept
+    else
+      if @logged_in_member != @friend_request.member_target
+        flash[:error] = "You do not have permission to accept this friend request"
+      elsif @friend_request.accept!
+        flash[:notice] = "You are now sitting on #{@friend_request.member.forename}'s blanket"
+      end
+      redirect_to waypoint || notifications_path
+    end
+  end
   
   private
   def deal_with_accept

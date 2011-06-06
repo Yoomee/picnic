@@ -1,6 +1,7 @@
 class ClubController< ApplicationController
   
   member_only :connections
+  before_filter :refresh_fb_session, :only => :connections
 
   def connections
     @member_tags = logged_in_member ? logged_in_member.tags_with_other_members.randomize.first(5) : []

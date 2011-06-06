@@ -14,9 +14,7 @@
     %meta{ :name => "info", :content => "#{page_title}#{page_subtitle}" }
     %link{ :href => "/images/favicon.ico", :rel => "shortcut icon" }
     %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
-    %meta{:property => "og:title", :content => 'PICNIC Network'}
-    %meta{:property => "og:type", :content => 'website'}
-    %meta{:property => "og:description", :content => "The PICNIC name represents everything we strive to be. It is a gathering of friends old and new, where everyone brings something to the table."}
+    =facebook_sharer_tags(:title => "PICNIC Network", :description => "The PICNIC name represents everything we strive to be. It is a gathering of friends old and new, where everything", :image => '/images/picnic_logo.png')
     = google_javascripts :jquery, :jqueryui
     = javascript_include_tag 'jrails', 'jquery.cycle', 'tramlines', 'client/tramlines', 'jquery.labelify', 'jquery.fancy_box/jquery.fancybox-1.3.1.pack', 'jquery.fancy_box/jquery.mousewheel-3.0.2.pack.js', 'client/load_fancybox',"client/jquery.facelist_2-0", "jquery.autogrowtextarea.js", "client/like_form", :cache => true
     =javascript_include_tag 'jquery.fancy_box/jquery.easing-1.3.pack.js'
@@ -51,8 +49,12 @@
           return false;
         });
         $("a.logged_in_member_link").click(function () {
-          $(this).toggleClass("logged_in_member_link_highlight");
-          $('.logged_in_box').toggleClass("logged_in_box_highlight");
+          if($(this).hasClass('logged_in_member_link_highlight')){
+            $('.logged_in_box').hide(0, function(){$('a.logged_in_member_link').removeClass("logged_in_member_link_highlight");});
+          } else {          
+            $('.logged_in_box').show();
+            $(this).addClass("logged_in_member_link_highlight");
+          }
         });
       });
 

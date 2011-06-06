@@ -2,24 +2,8 @@ MembersController.class_eval do
   
   open_action :show
 
-  skip_before_filter :check_what_i_bring, :only => %w{update what_i_bring}
+  skip_before_filter :check_what_i_bring, :only => %w{update what_i_bring me}
   skip_badge_announcement :what_i_bring
-
-  # def create
-  #   puts "IN CREATE"
-  #   @member = Member.new(params[:member])
-  #   if @member.save
-  #     if params[:in_popup]
-  #       render(:text => "<script type='text/javascript'>window.close()</script>")
-  #     else
-  #       flash[:notice] = "Your account has been created. Welcome to #{APP_CONFIG['site_name']}."
-  #       session[:logged_in_member_id] = @member.id if @logged_in_member.nil?
-  #       redirect_to @member
-  #     end
-  #   else
-  #     render :action => 'new'
-  #   end
-  # end
 
   def change_password_with_picnic
     @member.skip_what_i_bring_validation = true

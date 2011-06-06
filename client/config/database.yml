@@ -13,7 +13,7 @@ test:
 production: 
   username: root
   adapter: mysql
-  database: picnic_production
+  database: picnic_development
   host: localhost
   password: ''
 

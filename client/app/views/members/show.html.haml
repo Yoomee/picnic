@@ -149,15 +149,16 @@
     .profile_info.subrow
       %h1.profile_title
         =@member.full_name
-    .what_i_bring.subrow
-      %strong I bring
-      %span{:id => "members_#{@member.id}_what_i_bring"}=@member.what_i_bring || "..."
-      =fancybox_edit(@member, :what_i_bring, :partial => "members/what_i_bring", :fancy => true)
-      -if !logged_in_as?(@member) && !@member.what_i_bring.blank?
-        .what_i_bring_like
-          =render_like_link_for(@member, :ajax_loader => "ajax_loader_arrows.gif", :disable_if_logged_out => true)
-          %span.likings_count{:id => "likings_count_#{unique_rating_string(@member)}", :class => "#{@member.been_liked? ? '' : 'no_ratings'}"}
-            =@member.likings_count_string
+    -if logged_in_as?(@member) || !(@member.what_i_bring.blank? || @member.what_i_bring == '...')
+      .what_i_bring.subrow
+        %strong I bring
+        %span{:id => "members_#{@member.id}_what_i_bring"}=@member.what_i_bring || "..."
+        =fancybox_edit(@member, :what_i_bring, :partial => "members/what_i_bring", :fancy => true)
+        -if !logged_in_as?(@member) && !@member.what_i_bring.blank? && @member.what_i_bring != '...'
+          .what_i_bring_like
+            =render_like_link_for(@member, :ajax_loader => "ajax_loader_arrows.gif", :disable_if_logged_out => true, :allow_unlike => false)
+            %span.likings_count{:id => "likings_count_#{unique_rating_string(@member)}", :class => "#{@member.been_liked? ? '' : 'no_ratings'}"}
+              =@member.likings_count_string
     -if !@member.bio.blank? || allowed_to?(edit_member_proc(@member))
       .bio.subrow
         %span{:id => "members_#{@member.id}_bio"}=simple_format(strip_tags(@member.bio))

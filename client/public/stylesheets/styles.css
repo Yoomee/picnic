@@ -1238,7 +1238,7 @@ a#member_login_bttn.open, a#member_login_bttn.open:hover {
 	right: 0;
 	display: none;
 	z-index: 100;
-	
+	overflow:hidden;
 	
 }
 body .logged_in_box_highlight {
@@ -1844,7 +1844,7 @@ span.cal_sheet span.day {
 
 
 
-#forgotten_password {
+.forgotten_password {
 	float: left;
 	clear: left;
 	font-size: 12px;
@@ -1852,12 +1852,45 @@ span.cal_sheet span.day {
 	
 }
 
+
 #login_old_way input#login_bttn {
 	width: 80px;
 	float: left;
 	font-size: 16px;
 	padding: 5px;
 	margin: 20px 0 0;
+}
+
+/* ========== Forgotten password ============ */
+
+#forgotten_password_box {
+  height: 160px;
+  padding: 20px;
+  font-size:15px;
+}
+#forgotten_password_box form {
+  float: left;
+  clear: both;
+  margin-top: 10px;
+}
+#forgotten_password_box label {
+  margin-right: 5px;
+  font-weight: bold;
+  float: left;
+}
+#forgotten_password_box input {
+  float: left;
+}
+#forgotten_password_box p.forgotten_password_error {
+  color: red;
+}
+#forgotten_password_box input.forgotten_password_error {
+  border-color: red;
+}
+#forgotten_password_box input[type='submit'] {
+  font-size: 15px;
+  margin: 0 0 0 10px;
+  padding: 4px 10px;
 }
 
 
@@ -4280,10 +4313,14 @@ p.show_the_hard_way {
 body.controller_badges .badge_info {
   float: left;
   margin: 20px 0;
+  width: 100%;
 }
 body.controller_badges .badge_photo {
   float: left;
   margin-right: 20px;
+}
+body.controller_badges .badge_members {
+  clear: left;
 }
 
 #unawarded_badges {
