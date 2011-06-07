@@ -28,6 +28,7 @@
       -if shout.attachable
         .shout_images.flcb
           .shout_image{:class => "#{shout.attachable_type.underscore}_shout_image"}
+            %span.shout_icon
             =render_shout_attachable(shout)
       -if shout.is_rateable? && !compact_view
         .shout_ratings
