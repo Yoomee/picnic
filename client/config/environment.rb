@@ -14,6 +14,7 @@ class ClientEnvironment
       config.gem 'linkedin'
       config.gem 'acts_as_textcaptcha', :version => '2.1.3'
       config.gem 'contacts'
+      config.gem 'newrelic_rpm'
     end
     
   end
