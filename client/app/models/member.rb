@@ -11,6 +11,7 @@ Member.class_eval do
   before_save :associate_with_delegate
 
   after_create :trigger_points_event
+  before_update :set_location_from_ip_address
   
   rateable_by_member
   has_location
@@ -81,6 +82,11 @@ Member.class_eval do
   
   def trigger_points_event(options = {})
     self.handle_points_event(:register, self, options)
+  end
+  
+  def set_location_from_ip_address
+    return true if ip_address.blank? || !changed.include?("ip_address") || !location.unknown?
+    self.location = Location.from_ip_address(ip_address)
   end
   
 end
