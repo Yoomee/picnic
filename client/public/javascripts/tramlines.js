@@ -1,5 +1,10 @@
+function externalLink(url) {
+  _gaq.push(['_trackPageview', '/external/'+encodeURIComponent(url)]);
+  setTimeout('window.open("' + url + '","_blank");', 100);
+}
 $(document).ready(function() {
   $('.wall_post_text_input').autoGrow();
+  $('a[href]').not("[href^='/']").not("[href*='#{request.host.gsub(/www\./, '')}']").not("[href^='#']").not("[href^='javascript']").attr('onClick', "externalLink(this.href);return false;");
 });
 
 // Shout form javascript
