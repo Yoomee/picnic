@@ -5,11 +5,14 @@
     %table#delegates
       %tbody
         %tr.header
+          %th="CLUB MEMBER".split(//).join("<br/>")
           - ConferenceDelegate::FIELDS_IN_ORDER.each do |field|
             %th=field.gsub('_', ' ').split(//).join("<br/>")
           %th="AUTHENTIC".split(//).join("<br/>")
         -@conference_delegates.each do |del|
           %tr
+            %td
+              =del.member.nil? ? "No" : link_to('Yes', del.member)
             -del.data_fields.each_with_index do |field, idx|
               %td{:class => "#{field.try(:length) == 1 ? 'short' : ''}"}
                 =(idx == (del.data_fields.length - 2)) ? del.signature : field
