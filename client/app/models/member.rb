@@ -29,6 +29,11 @@ Member.class_eval do
   
   # validates_presence_of :country, :unless => Proc.new {|member| !member.new_record? || member.twitter_connected? || member.linked_in_connected? || member.facebook_connected?}
   
+  def initialize_with_default_what_i_bring(attrs = {})
+    initialize_without_default_what_i_bring(attrs.reverse_merge(:what_i_bring => '...'))
+  end
+  alias_method_chain :initialize, :default_what_i_bring
+  
   def conference_delegate_id
     conference_delegate.try(:id)
   end
