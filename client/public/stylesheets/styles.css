@@ -6,6 +6,7 @@
 	http://picnic.yoomee.com/stylesheets/client/styles.css?1305906593
 	http://picnic.yoomee.com/stylesheets/client/styles.css?1306862143
 	http://picnic.yoomee.com/stylesheets/client/styles.css?1306862736
+	http://picnicnetwork.org/stylesheets/client/styles.css?1307435042
 */
 
 /* the tramlines vanilla stylesheet */
@@ -1827,12 +1828,14 @@ span.cal_sheet span.day {
 }
 #login_old_way p {
 	float: left;
-	margin: 0;
+	margin: 0 0 20px;
 }
 #login_old_way input {
 	width: 200px;
 	float: left;
+	line-height: 140%;
 	clear: left;
+	margin: 0;
 }
 #login_old_way label {
 	display: none;
@@ -1849,6 +1852,7 @@ span.cal_sheet span.day {
 	clear: left;
 	font-size: 12px;
 	margin: 5px 0 0 0;
+	width: 100%;
 	
 }
 
@@ -1858,7 +1862,7 @@ span.cal_sheet span.day {
 	float: left;
 	font-size: 16px;
 	padding: 5px;
-	margin: 20px 0 0;
+	margin: 0px 0 0;
 }
 
 /* ========== Forgotten password ============ */
@@ -2177,6 +2181,9 @@ h3.profile_title {
 	margin-bottom: 10px;
 	font-family:'VAG Rounded W02 Light', arial, sans-serif;
 
+}
+.friend_request_link a {
+	font-weight: bold;
 }
 #member_themes li {
   float: left;
@@ -3908,7 +3915,7 @@ div.page_share {
 }
 
 #newsletter_signup {
-
+	float: right;
 }
 #newsletter_signup p{
 	font-size: 12px;
@@ -4678,6 +4685,71 @@ div.shout_text p {
   float: left;
   position: relative;
 }
+
+.shout_attachable_icon {
+	display: block;
+	width: 55px;
+	height: 55px;
+	position: absolute;
+	top: 20px;
+	left: 60px;
+
+}
+.video_shout_image .shout_attachable_icon {
+	background: url(/images/sprite.png) no-repeat -0px -2120px;
+}
+.link_image .shout_attachable_icon {
+	background: url(/images/sprite.png) no-repeat 0px -2180px;
+	left: 50px;
+	top: 33px;
+}
+.link_image {
+	float: left;
+	margin: 0 20px 0 0;
+}
+
+div.shout_images {
+	float: left;
+	width: 100%;
+	
+}
+
+div.shout_image {
+	position: relative;
+	float: left;
+	margin: 10px 0 0 0;
+	width: 100%;
+	
+}
+div.shout_image img {
+	float: left;
+}
+
+a.fancy-img {
+	width: 100%;
+	float: left;
+	
+}
+
+.link_description p, .link_description a {
+	float: left;
+	width: 50%;
+}
+
+
+a.fancy-video {
+	float: left;
+	display: block;
+	margin: 5px 0;
+	position: relative;
+	
+}
+a.fancy-video:hover {
+	-webkit-box-shadow: 0px 0px 2px #000;
+	-moz-box-shadow: 0px 0px 2px #000;
+	box-shadow: 0px 0px 2px #000;
+}
+
 
 .shout_right_inner .map_canvas {
   margin-bottom: 20px;
@@ -6032,6 +6104,9 @@ ul.possible_search_models li {
 #club_intro_connect {
   margin-top: 30px;
 }
+#map_right_col {
+	margin-bottom: 20px;
+}
 #club_intro_connect #search_term {
   font-size: 22px;
   width: 100%;
@@ -6595,6 +6670,8 @@ li.bring_item a.member_name {
 li.bring_item{
 	min-height: 180px;
 }
+
+
 
 #bring_wrapper {
 	height: 230px;

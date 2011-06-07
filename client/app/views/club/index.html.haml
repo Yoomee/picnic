@@ -58,12 +58,13 @@
       %ul#find_someone_results
         -@find_someone_members.each do |member|
           =render "find_someone_result", :member => member
-    .sevencol.last
+    #map_right_col.sevencol.last
       %h2 Latest members
-      =google_map(@latest_members, :width => 646, :height => 280, :centre => [30, 0], :zoom => 2, :infoboxes => true)
-      #latest_members_photos
-        -@latest_members.limit(9).each do |member|
-          -link_to member do
-            =image_for member, '70x70#'
+      =google_map(@latest_members, :width => 646, :height => 460, :centre => [30, 0], :zoom => 2, :infoboxes => true)
+      -if false
+        #latest_members_photos
+          -@latest_members.limit(9).each do |member|
+            -link_to member do
+              =image_for member, '70x70#'
 =#image_tag 'club_intro.jpg'
     

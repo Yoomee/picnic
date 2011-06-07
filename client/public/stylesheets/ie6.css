@@ -1,10 +1,10 @@
 h1#site_logo a {
 	background-image: url(/images/sprite_picnic.gif);
 }
-#hide_beta_bar_link, input#search_field {
+#hide_beta_bar_link, input#search_field, .logged_in_as a.logged_in_member_link, .like_link, .unlike_link, span.disabled_like_link, .link_image .shout_attachable_icon, .video_shout_image .shout_attachable_icon, .dislike_link, span.disabled_dislike_link, span.like_link, .unlike_link {
 	background-image: url(/images/sprite.gif);
 }
-#search_box, ul#logged_out_nav li a {
+#search_box, ul#logged_out_nav li a, #index_view .item, .item_border {
 	display:inline;
 }
 #logged_in_as ul li a {
@@ -18,4 +18,12 @@ h1#site_logo a {
 }
 span.end {
 	display:none;
+}
+#nav ul li.active a, #subnav ul li.active a {
+	background:#fff;
+	font-weight:bold;
+	font-family:arial, sans-serif;
+}
+#nav ul li.active, #subnav ul li.active, #page_subnav li.active {
+	background:#fff;
 }
