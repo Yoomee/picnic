@@ -10,6 +10,7 @@ Member.class_eval do
   
   before_save :associate_with_delegate
   after_save :save_delegate
+  after_save :add_real_me_points
   
   after_create :trigger_points_event
   before_update :set_location_from_ip_address
@@ -82,6 +83,13 @@ Member.class_eval do
   end
 
   private  
+  def add_real_me_points
+    unless tags.empty? || has_points_transfer?(:set_real_me_tags) || @adding_real_me_points
+      @adding_real_me_points = true
+      handle_points_event(:set_real_me_tags, self, {}) 
+    end
+  end
+  
   def associate_with_delegate
     if conference_delegate.nil? && (new_record? || changed?(&:email))
       if del = ConferenceDelegate.find_by_email_and_member_id(email, nil)
