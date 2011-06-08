@@ -1,6 +1,7 @@
 Shout.class_eval do
 
   after_create :trigger_points_event
+  after_destroy :trigger_reverse_points_event
 
   attr_boolean_accessor :themes_form_step, :delete_attachable
 
@@ -84,6 +85,10 @@ Shout.class_eval do
   
   def trigger_points_event(options = {})
     member.handle_points_event(:post_shout, self, options)
+  end
+  
+  def trigger_reverse_points_event(options = {})
+    member.handle_points_event(:deleted_posted_shout, nil, options)
   end
   
 end
