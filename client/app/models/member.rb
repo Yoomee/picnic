@@ -9,7 +9,8 @@ Member.class_eval do
   acts_as_taggable_on :tags
   
   before_save :associate_with_delegate
-
+  after_save :save_delegate
+  
   after_create :trigger_points_event
   before_update :set_location_from_ip_address
   
@@ -29,6 +30,14 @@ Member.class_eval do
   accepts_nested_attributes_for :urls
   
   # validates_presence_of :country, :unless => Proc.new {|member| !member.new_record? || member.twitter_connected? || member.linked_in_connected? || member.facebook_connected?}
+
+  class << self
+    
+    def with_theme_or_member_tag(tag)
+      (with_theme_tag(tag) + Member.tagged_with(tag)).uniq.randomize
+    end
+    
+  end
   
   def initialize_with_default_what_i_bring(attrs = {})
     initialize_without_default_what_i_bring(attrs.reverse_merge(:what_i_bring => '...'))
@@ -40,7 +49,8 @@ Member.class_eval do
   end
   
   def conference_delegate_id=(val)
-    self.conference_delegate = ConferenceDelegate.find_by_id(val)
+    cd = ConferenceDelegate.find_by_id(val)
+    self.conference_delegate = cd unless cd.nil? || (cd.member_id != self && !cd.member_id.nil?)
   end
   
   def country
@@ -77,6 +87,13 @@ Member.class_eval do
       if del = ConferenceDelegate.find_by_email_and_member_id(email, nil)
         del.member = self
       end
+    end
+  end
+  
+  def save_delegate
+    unless conference_delegate.nil?
+      conference_delegate.save!
+      conference_delegate.add_badge
     end
   end
   
