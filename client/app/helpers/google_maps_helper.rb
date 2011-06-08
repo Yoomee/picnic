@@ -1,6 +1,7 @@
 GoogleMapsHelper.module_eval do
   
   def google_map(objects, options ={})
+    puts "options = #{options.inspect}"
     @map_index  = (@map_index || -1) + 1
     objects = [*objects]
     options.reverse_merge!(
@@ -9,7 +10,8 @@ GoogleMapsHelper.module_eval do
       :height => 300,
       :map_type => "roadmap",
       :zoom => 4,
-      :interactive => true
+      :interactive => true,
+      :disable_default_ui => true
     )
     options[:canvas_id] = "map_canvas#{map_index}" #force it for now
     
@@ -22,6 +24,8 @@ GoogleMapsHelper.module_eval do
       end
     end
     
+    puts "disableDefaultUI = #{options[:disable_default_ui]}"
+    
     map_js = <<-JAVASCRIPT
       map#{map_index} = new google.maps.Map(document.getElementById('#{options[:canvas_id]}'),{
         zoom: #{options[:zoom]},
@@ -29,7 +33,7 @@ GoogleMapsHelper.module_eval do
         mapTypeId: google.maps.MapTypeId.#{options[:map_type].upcase},
         minZoom:2,
         scrollwheel:false,
-        disableDefaultUI:true
+        disableDefaultUI:#{options[:disable_default_ui]}
         #{',draggable:false,scrollwheel:false,disableDoubleClickZoom:true,keyboardShortcuts:false' if !options[:interactive]}
         #{',' + options[:map_options] unless options[:map_options].blank?}
       });
