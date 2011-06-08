@@ -1,7 +1,9 @@
 Tag::FUN_TAGS = %w{lazy boring dull apathetic bland nofriends uninspired loner}
 Tag.class_eval do
-  
+
   include TramlinesImages
+  
+  search_attributes %w{name}
   
   attr_accessible :description, :image
 

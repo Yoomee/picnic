@@ -14,7 +14,7 @@
       %p
         ="Sorry, no #{search_filter_name(@search_filter, :pluralize => true)} found."
     -else
-      -if (@search_filter.blank? || @search_filter=="Member") && (params[:page].to_i < 2) && !@search.empty?(:members, :per_page => nil)
+      -if (@search_filter.blank? || @search_filter=="Member") && (params[:page].to_i < 2) && !(@search.empty?(:members, :per_page => nil) && @search.tagged_members.empty?)
         =render("members", :search => @search)
       -if (@search_filter.blank? || @search_filter == "PagesSection") && !@search.empty?(:pages_sections)
         =render("pages_sections", :search => @search)
