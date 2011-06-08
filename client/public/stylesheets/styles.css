@@ -7,6 +7,7 @@
 	http://picnic.yoomee.com/stylesheets/client/styles.css?1306862143
 	http://picnic.yoomee.com/stylesheets/client/styles.css?1306862736
 	http://picnicnetwork.org/stylesheets/client/styles.css?1307435042
+	http://picnicnetwork.org/stylesheets/client/styles.css?1307459162
 */
 
 /* the tramlines vanilla stylesheet */
@@ -2202,6 +2203,7 @@ h3.profile_title {
 #member_location {
   float: left;
   width: 50%;
+  overflow: hidden;
 }
 #member_location #save_map_link {
   float:right;
@@ -2237,9 +2239,14 @@ h3.profile_title {
 #member_location.editing #member_address_inputs, #member_location #member_address {
   display:block;
 }
+#member_location #member_address {
+	margin-top: -10px;
+	font-size: 13px;
+}
 #member_badges {
   float: left;
-  width: 50%;
+  width: 46%;
+  margin-left: 4%;
 }
 #member_badges li {
   float: left;
