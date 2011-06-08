@@ -217,7 +217,7 @@
             -location = @member.location.try(:unknown?) ? Location.new(:lat => 52.374551, :lng =>4.898529) : @member.location
             %p.help{:style=>"display:none"}
               Drag the map to set your location
-            =google_map(location, :width => 300, :height => 200, :other => "google.maps.event.addListener(map#{@map_index}, 'center_changed', function(){mapCenter=map#{@map_index}.getCenter();marker0.setPosition(mapCenter);LocationMap.updateLatLng(mapCenter);});google.maps.event.addListener(map#{@map_index}, 'dragend', function(){LocationMap.updateAddress();});google.maps.event.addListener(map#{@map_index}, 'zoom_changed', function(){LocationMap.updateAddress();});", :interactive => false, :style => "display:#{@member.has_lat_lng? ? 'block' : 'none'}")
+            =google_map(location, :width => 380, :height => 200, :other => "google.maps.event.addListener(map#{@map_index}, 'center_changed', function(){mapCenter=map#{@map_index}.getCenter();marker0.setPosition(mapCenter);LocationMap.updateLatLng(mapCenter);});google.maps.event.addListener(map#{@map_index}, 'dragend', function(){LocationMap.updateAddress();});google.maps.event.addListener(map#{@map_index}, 'zoom_changed', function(){LocationMap.updateAddress();});", :interactive => false, :style => "display:#{@member.has_lat_lng? ? 'block' : 'none'}")
             =link_to_function("#{@member.location.unknown? ? 'Add your location' : 'Edit'}", "LocationMap.toggleEdit(#{@map_index})", :id => "edit_map#{@map_index}_link", :class => "edit_member_location_link")
             =link_to_function("Update location", "LocationMap.save(#{@map_index})", :id => "save_map_link", :class => "bttn_l")
             %div{:style => "display:none"}
@@ -226,7 +226,7 @@
               =form.commit_button "Save"
         -else
           %p=@member.location.try(:unknown?) ? 'Unknown' : render_address(@member.location)
-          =google_map(@member.location, :width => 300, :height => 200) unless @member.location.try(:unknown?)
+          =google_map(@member.location, :width => 380, :height => 200) unless @member.location.try(:unknown?)
       #member_badges
         -link_to(member_points_transfers_path(@member), :class => 'fancy points_link') do
           %h3.profile_title="#{pluralize(@member.points, 'club point')}"
