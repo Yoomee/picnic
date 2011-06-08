@@ -37,10 +37,6 @@ ShoutsController.class_eval do
     render :partial => "themes_form", :locals => {:shout => Shout.new(attributes)}
   end
   
-  # def new
-  #   @shout = Shout.new
-  # end
-  
   def update
     @shout = Shout.find(params[:id])
     if Module.value_to_boolean(params[:shout][:themes_form_step])
@@ -64,6 +60,8 @@ ShoutsController.class_eval do
           # shouts = logged_in_member.shouts
           # page[:shouts_container].replace_html(render_shouts(shouts))
           page << "MemberShouts.latest();"
+          page << "TagShouts.latest();"
+          page << "TagShouts.addProfilePhoto(#{logged_in_member_id}, '#{escape_javascript(@template.tag_people_profile_photo(logged_in_member))}')"
         end
         #page[:shout_wall].prepend(render_shout(@shout))
         page << "$.fancybox.close();"        
@@ -95,23 +93,6 @@ ShoutsController.class_eval do
     end
   end
   
-  # def deal_with_create
-  #   render(:update) do |page|
-  #     if @shout.save
-  #       # TODO Enable this when google analytics properly added, and themes resolved
-  #       #page << track_page_view("/discussions/create/#{@shout.id}")
-  #       #url = url_to_tag(Tag.find_by_name(@shout.tag_list.first), :filter => "latest")
-  #       # delay the redirect so theres time for google analytics to do its thing
-  #       #page << "setTimeout('window.location.href = \"#{url}\";', 200);"
-  #       page.redirect_to club_path
-  #     else
-  #       page[:shout_form].replace render("shouts/form", :shout => @shout)
-  #       page << "$.fancybox.resize();"
-  #     end
-  #     page << refresh_fb_dom
-  #   end
-  # end
-
   def deal_with_themes
     puts params.inspect
     @shout.tag_list = params[:facelist_values_themes]

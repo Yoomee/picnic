@@ -1,3 +1,49 @@
+-content_for(:head) do
+  :javascript
+    var TagShouts = {
+
+      addProfilePhoto: function(id, html) {
+        if ($('.member_grid_image').length < 8 && $('#people_profile_photo' + id).length == 0) {
+          $('#member_grid ul').append(html);
+        }
+      },
+
+      getShouts: function(filter) {
+        $('#filter_loader').show();
+        $.ajax({
+          url: '#{tag_path(@tag)}',
+          data: {
+            filter: filter,
+            wants: 'shouts'
+          },
+          complete: function() {
+            $('#filter_loader').hide();
+          },
+          success: function(html) {
+            $('#shouts_container').html(html);
+            FancyboxLoader.loadAll();
+          }
+        });
+      },
+    
+      latest: function() {
+        $('.stories_filter li').removeClass('active');
+        $('#latest_shouts').addClass('active');
+        this.getShouts('latest');
+      }, 
+    
+      popular: function() {
+        $('.stories_filter li').removeClass('active');
+        $('#popular_shouts').addClass('active');
+        this.getShouts('popular');
+      }
+      
+    };
+    
+    var MemberShouts = {
+      latest: function() {/*Dummy*/}
+    };
+
 -no_content_row
 .row
   =render :partial => 'themes/trending'
@@ -9,11 +55,33 @@
   .five.last
     =image_for(@tag, '335x255#') if @tag.official? && @tag.has_image?
   .eightcol
-    %h3.profile_title Related posts
-    -if @tag.shouts.empty?
-      %p There are no posts with this tag.
+    %h3.theme_title
+      People
+      =link_to 'View all', people_tag_path(@tag), :id => 'view_tag_people_link' if @members.size > 8
+    -if @members.empty?
+      %p Nobody has used this theme yet. Be the first by posting below.
     -else
-      =render_shouts(@tag.shouts, :show_member => true, :parent => @tag, :filter => 'latest')
+      #tag_member_grid_container
+        #member_grid
+          %ul.lst
+            -@members.first(8).each do |member|
+              =tag_people_profile_photo(member)
+    #posts_header
+      %h3.theme_title.fl Posts
+      .fr.post_to_wall
+        =link_to_box("Post something", new_shout_path(:theme => @tag.name), :class => 'bttn_l new_comment_link', :scrolling => false)
+    .stories_filter 
+      =image_tag 'ajax_loader_squares.gif', :id => 'filter_loader', :style => "display:none"
+      Showing:
+      %ul
+        =li_with_active default_to_latest_shouts?, link_to_function('Latest', 'TagShouts.latest()'), :id => 'latest_shouts'
+        =li_with_active false, link_to_function('Popular', 'TagShouts.popular()'), :id => 'popular_shouts'
+    #shouts_container
+      -if @stories.empty?
+        %p Don't be boring, post something here!
+      -else
+        =render_shouts(@stories, :show_member => true, :parent => @tag, :filter => 'latest')
+        
 .row
   -options_panel do
     =back_link

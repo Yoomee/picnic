@@ -3713,6 +3713,9 @@ a.backto {
   width: 100px;
   height: 150px;
 }
+#tag_member_grid_container #member_grid li {
+  width: 79px;
+}
 #member_grid li.left_column {
   clear: left;
 }
@@ -4981,6 +4984,11 @@ li.wall_post {
   margin: 0;
   clear: none;
 }
+#view_tag_people_link {
+  float: right;
+  font-size: 12px;
+  text-decoration: underline;
+}
 #trending_themes {
   min-height: 250px;
 }
@@ -5014,15 +5022,12 @@ form.tag {
 	-webkit-border-radius:none;
 	border-radius:none;
 }
+/*
 h3.theme_title {
 	font-size: 20px;
-	margin-bottom: 10px;
-	margin-top: 30px;
-	padding-bottom: 5px;
 	font-family:'VAG Rounded W02 Light', arial, sans-serif;
-	border-bottom: 2px solid #ccc;
 }
-
+*/
 
 
 /*========== browse news network ==========*/

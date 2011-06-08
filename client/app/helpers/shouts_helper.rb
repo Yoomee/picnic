@@ -1,7 +1,11 @@
 ShoutsHelper.module_eval do
 
   def default_to_latest_shouts?
-    @member.has_recipientless_shouts? || !@member.has_received_shouts?
+    if @member
+      @member.has_recipientless_shouts? || !@member.has_received_shouts?
+    else
+      true
+    end
   end
   
   def default_to_received_shouts?
@@ -28,9 +32,13 @@ ShoutsHelper.module_eval do
   def older_shouts_link_url(url_options = {})
     url_options.reverse_merge!(:page => ((params[:page] || 1).to_i + 1), :per_page => (params[:per_page] || 10), :named_scope => params[:named_scope])
     if parent = url_options.delete(:parent)
-      if parent.is_a?(Member)
+      case parent
+      when Member
         url_options.merge(:id => parent.id)
         return member_older_shouts_path(url_options)
+      when Tag
+        url_options.merge(:id => u(parent))
+        return tag_older_shouts_path(url_options)
       else
         url_options.merge!(:parent_type => parent.class, :parent_id => parent.id)
       end
