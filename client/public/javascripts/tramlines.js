@@ -4,7 +4,7 @@ function externalLink(url) {
 }
 $(document).ready(function() {
   $('.wall_post_text_input').autoGrow();
-  $('a[href]').not("[href^='/']").not("[href*='#{request.host.gsub(/www\./, '')}']").not("[href^='#']").not("[href^='javascript']").attr('target', '_blank').attr('onClick', "externalLink(this.href);return false;");
+  $('a[href]').not("[href^='/']").not("[href*='#{request.host.gsub(/www\./, '')}']").not("[href^='#']").not("[href^='javascript']").attr('target', '_blank').attr('onClick', "externalLink(this.href);return true;");
 });
 
 // Shout form javascript
