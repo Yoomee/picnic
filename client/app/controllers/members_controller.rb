@@ -16,6 +16,7 @@ MembersController.class_eval do
       login_member!(logged_in_member)
     else
       new_without_redirect
+      spamify(@member)
       @member.conference_delegate_id ||= session[:conference_delegate_id]
     end
   end

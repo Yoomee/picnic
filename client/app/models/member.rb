@@ -2,6 +2,10 @@ Member::WHAT_I_BRING_MAX_LENGTH = 100
 Member::NEWS_FEED_FIELD_BLACKLIST = %w{bio}
 Member.class_eval do
 
+  acts_as_textcaptcha({
+    'questions' => Picnic::SPAM_QUESTIONS
+  })
+
   add_to_news_feed :on_update => true
 
   attr_boolean_accessor :skip_what_i_bring_validation
@@ -40,11 +44,10 @@ Member.class_eval do
     
   end
   
-  def initialize_with_default_what_i_bring(attrs = {})
-    initialize_without_default_what_i_bring(attrs.reverse_merge(:what_i_bring => '...'))
+  def allowed_job_title?
+    has_badge?(:picnic11_speaker) || has_badge?(:picnic11_team) || has_badge?(:picnic_advisor)
   end
-  alias_method_chain :initialize, :default_what_i_bring
-  
+    
   def conference_delegate_id
     conference_delegate.try(:id)
   end
@@ -69,10 +72,11 @@ Member.class_eval do
     end
   end
   
-  def allowed_job_title?
-    has_badge?(:picnic11_speaker) || has_badge?(:picnic11_team) || has_badge?(:picnic_advisor)
+  def initialize_with_default_what_i_bring(attrs = {})
+    initialize_without_default_what_i_bring(attrs.reverse_merge(:what_i_bring => '...'))
   end
-    
+  alias_method_chain :initialize, :default_what_i_bring
+  
   def skip_news_feed_with_field_blacklist
     skip_news_feed_without_field_blacklist || changed.all? {|attr| attr.in?(Member::NEWS_FEED_FIELD_BLACKLIST)}
   end

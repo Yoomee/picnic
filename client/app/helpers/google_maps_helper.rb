@@ -1,7 +1,6 @@
 GoogleMapsHelper.module_eval do
   
   def google_map(objects, options ={})
-    puts "options = #{options.inspect}"
     @map_index  = (@map_index || -1) + 1
     objects = [*objects]
     options.reverse_merge!(
@@ -23,8 +22,6 @@ GoogleMapsHelper.module_eval do
         options[:centre] = [54.47,-4.53]
       end
     end
-    
-    puts "disableDefaultUI = #{options[:disable_default_ui]}"
     
     map_js = <<-JAVASCRIPT
       map#{map_index} = new google.maps.Map(document.getElementById('#{options[:canvas_id]}'),{
