@@ -47,7 +47,12 @@ Member.class_eval do
   def allowed_job_title?
     has_badge?(:picnic11_speaker) || has_badge?(:picnic11_team) || has_badge?(:picnic_advisor)
   end
+  
+  def blank_what_i_bring?
+    what_i_bring.blank? || what_i_bring == '...'
+  end
     
+  
   def conference_delegate_id
     conference_delegate.try(:id)
   end
