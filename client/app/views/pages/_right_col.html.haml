@@ -2,7 +2,7 @@
   #article_image.fivecol.last
     -if page.slug_in?(%w{location contact})
       -location = page.slug_is?(:contact) ? Location.picnic_hq : Location.picnic_festival
-      =google_map(location, :width => 420, :height => 300, :centre => location.lat_lng || [30,0], :zoom => 11, :map_options => "disableDefaultUI:true,zoomControl:true")
+      =google_map(location, :width => 420, :height => 300, :centre => location.lat_lng || [30,0], :zoom => 11, :disable_default_ui => false, :map_options => "mapTypeControl:false,zoomControl:true,streetViewControl:false")
     -else
       =photo_for(page, '450x')
     =snippet(page, :photo_caption)

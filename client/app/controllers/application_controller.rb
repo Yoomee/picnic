@@ -18,7 +18,7 @@ ApplicationController.class_eval do
 
   protected
   def check_what_i_bring
-    return redirect_to(what_i_bring_path) if logged_in_member && logged_in_member.what_i_bring.blank? && !logged_in_member.force_password_change?
+    return redirect_to(what_i_bring_path) if logged_in_member && logged_in_member.blank_what_i_bring? && !logged_in_member.force_password_change?
   end
   
   def splash_page_advert

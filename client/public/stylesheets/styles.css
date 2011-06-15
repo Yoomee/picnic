@@ -7,6 +7,7 @@
 	http://picnic.yoomee.com/stylesheets/client/styles.css?1306862143
 	http://picnic.yoomee.com/stylesheets/client/styles.css?1306862736
 	http://picnicnetwork.org/stylesheets/client/styles.css?1307435042
+	http://picnicnetwork.org/stylesheets/client/styles.css?1307459162
 */
 
 /* the tramlines vanilla stylesheet */
@@ -2202,6 +2203,7 @@ h3.profile_title {
 #member_location {
   float: left;
   width: 50%;
+  overflow: hidden;
 }
 #member_location #save_map_link {
   float:right;
@@ -2237,9 +2239,14 @@ h3.profile_title {
 #member_location.editing #member_address_inputs, #member_location #member_address {
   display:block;
 }
+#member_location #member_address {
+	margin-top: -10px;
+	font-size: 13px;
+}
 #member_badges {
   float: left;
-  width: 50%;
+  width: 46%;
+  margin-left: 4%;
 }
 #member_badges li {
   float: left;
@@ -3706,6 +3713,9 @@ a.backto {
   width: 100px;
   height: 150px;
 }
+#tag_member_grid_container #member_grid li {
+  width: 79px;
+}
 #member_grid li.left_column {
   clear: left;
 }
@@ -4258,7 +4268,7 @@ p.show_the_hard_way {
   padding: 10px 0;
 }
 #badge_announcements {
-  height:  200px;  
+  height:  250px;  
   width:   600px;  
   padding: 0;  
   margin:  0;
@@ -4974,6 +4984,11 @@ li.wall_post {
   margin: 0;
   clear: none;
 }
+#view_tag_people_link {
+  float: right;
+  font-size: 12px;
+  text-decoration: underline;
+}
 #trending_themes {
   min-height: 250px;
 }
@@ -5007,6 +5022,12 @@ form.tag {
 	-webkit-border-radius:none;
 	border-radius:none;
 }
+/*
+h3.theme_title {
+	font-size: 20px;
+	font-family:'VAG Rounded W02 Light', arial, sans-serif;
+}
+*/
 
 
 /*========== browse news network ==========*/

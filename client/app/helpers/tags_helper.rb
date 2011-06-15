@@ -13,10 +13,6 @@ module TagsHelper
     options[:li] ? content_tag(:li, out) : out
   end
 
-  def url_to_tag(tag, options = {})
-    url_for({:controller => "tags", :action => "show", :id => u(tag)}.merge(options))
-  end
-
   def shared_tag_links(member1, member2)
     shared_tag_link_lis(member1.tags & member2.tags)
   end
@@ -25,6 +21,13 @@ module TagsHelper
     shared_tag_link_lis(member1.shout_tags & member2.shout_tags)
   end
 
+  def tag_people_profile_photo(member)
+    render "tags/people_profile_photo", :member => member
+  end
+
+  def url_to_tag(tag, options = {})
+    url_for({:controller => "tags", :action => "show", :id => u(tag)}.merge(options))
+  end
 
   private
   def shared_tag_link_lis(tags)

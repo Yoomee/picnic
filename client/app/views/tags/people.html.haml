@@ -1,0 +1,7 @@
+-title "People interested in #{@tag}", :hidden => true
+%h1
+  People interested in
+  =link_to_self(@tag)
+=render("members/grid", :members => @members)
+-options_panel do
+  =back_link

@@ -7,7 +7,7 @@ Location.class_eval do
     end
     
     def picnic_festival
-      Location.new(:address1 => "Pazzanistraat 41", :city => "Amsterdam", :postcode => "1014 DB", :country => "The Netherlands", :lat => "52.385933", :lng => "4.872351")      
+      Location.new(:address1 => "Neveritaweg 15", :city => "Amsterdam", :postcode => "1033 WB", :country => "The Netherlands", :lat => "52.403375", :lng => "4.88971")      
     end
     
   end

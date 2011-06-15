@@ -5,7 +5,7 @@
     %h2 Book for PICNIC '11 Festival
     %p=link_to('Click here to go to the registration page and book your tickets', 'http://www.eventpartners04.nl/picnic', :target => '_blank')
   %hr
-  %h2 Join the club
+    %h2 Join the club
   .clear
   %p
     It's easy to log in with one of these sites you already use.
@@ -28,6 +28,10 @@
             =opt.input :surname, :label => 'Last name'
           =form.input :country, :label => 'Where are you from?', :prompt => 'Select a country', :as => :country
           =form.input :conference_delegate_id, :as => :hidden
+          -if @member.validate_spam_answer
+            =form.input :spam_answer, :as => :hidden
+          -else
+            =form.input :spam_answer, :label => @member.spam_question, :help => "Please help us keep the bots off our Picnic blanket by answering this question:", :input_html => {:value => ''}
           =form.commit_button "Go &gt; &gt;"
 -options_panel do
   =back_link

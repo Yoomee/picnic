@@ -6,7 +6,6 @@ class ConferenceDelegate < ActiveRecord::Base
   
   belongs_to :member
   after_create :send_club_invite
-  before_save :set_award_badge
   after_save :add_badge
   
   class << self
@@ -58,16 +57,12 @@ class ConferenceDelegate < ActiveRecord::Base
       end
     end
   end
-  
-  private
-  def set_award_badge
-    @award_badge = changed.include?('member_id') && !member_id.nil?
-    true
-  end
-  
+
   def add_badge
-    member.award_badge!(:picnic11_attendee) if @award_badge
+    puts "member_id = #{member_id}"
+    Member.find(member_id).award_badge!(:picnic11_attendee) unless member_id.nil?
   end
+    
   
   def send_club_invite
     Notifier.deliver_club_invite(self)
