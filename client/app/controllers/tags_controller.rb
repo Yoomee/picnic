@@ -1,5 +1,5 @@
 class TagsController < ApplicationController
-  
+
   before_filter :get_tag, :only => %w{destroy edit people show older_shouts update}
 
   def autocomplete
@@ -45,19 +45,19 @@ class TagsController < ApplicationController
     end
     redirect_to_waypoint
   end
-  
+
   def edit
-    
+
   end
-  
+
   def index
     @tags = Tag.top_tags_since(1.month.ago).all
   end
-  
+
   def new
     @tag = Tag.new
   end
-  
+
   def older_shouts
     @shouts = get_shouts.paginate(:page => params[:page], :per_page => params[:per_page])
     render :update do |page|
@@ -72,26 +72,31 @@ class TagsController < ApplicationController
       end
     end
   end
-  
-  
+
+
   def people
     @members = Member.with_theme_or_member_tag(@tag)
   end
-  
+
   def show
-    if request.xhr? && params[:wants] == 'shouts'
-      shouts = get_shouts
-      if shouts.empty?
-        render :text => @template.not_posted_yet_message(@member)
+    if !@tag.blank?
+      if request.xhr? && params[:wants] == 'shouts'
+        shouts = get_shouts
+        if shouts.empty?
+          render :text => @template.not_posted_yet_message(@member)
+        else
+          render :text => @template.render_shouts(shouts, :filter => @filter, :parent => @tag) + @template.javascript_tag(@template.refresh_fb_dom)
+        end
       else
-        render :text => @template.render_shouts(shouts, :filter => @filter, :parent => @tag) + @template.javascript_tag(@template.refresh_fb_dom)
+        @stories = Shout.tagged_with(params[:id])
+        @members = Member.with_theme_or_member_tag(@tag)
       end
+
     else
-      @stories = Shout.tagged_with(params[:id])
-      @members = Member.with_theme_or_member_tag(@tag)
+      redirect_to tags_path 
     end
   end
-  
+
   def update
     if @tag.update_attributes(params[:tag])
       flash[:notice] = "Updated theme"
@@ -100,7 +105,7 @@ class TagsController < ApplicationController
       render :action => "edit"
     end
   end
-  
+
   private
   def get_shouts
     @filter = params[:filter]
@@ -111,10 +116,10 @@ class TagsController < ApplicationController
       Shout.tagged_with(params[:id])
     end
   end
-  
+
   def get_tag
     @tag = Tag.find_by_name(CGI::unescape(params[:id]))
   end
-  
-  
+
+
 end
