@@ -179,7 +179,7 @@
           %li
             =favicon("http://www.twitter.com")
             =link_to("Twitter (@#{@member.twitter_username})", @member.twitter_profile_url, :target => "_blank")
-        -if @member.linked_in_connected?
+        -if !@member.linked_in_profile_url.blank?
           %li
             =favicon("http://www.linkedin.com")
             =link_to("LinkedIn", @member.linked_in_profile_url, :target => "_blank")
