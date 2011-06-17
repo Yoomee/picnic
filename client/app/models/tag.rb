@@ -22,7 +22,7 @@ Tag.class_eval do
 
   named_scope :top_tags_since, lambda{|date| { 
     :select => "tags.*, (COUNT(DISTINCT shouts.id) + COUNT(DISTINCT wall_posts.id)) AS tag_count", 
-    :joins => "LEFT OUTER JOIN taggings ON (taggings.tag_id = tags.id AND taggings.created_at >= '#{date.to_date}') LEFT OUTER JOIN shouts ON (shouts.id = taggings.taggable_id AND taggings.taggable_type = 'Shout') LEFT OUTER JOIN walls ON (walls.attachable_type = 'Shout' AND walls.attachable_id = shouts.id) LEFT OUTER JOIN wall_posts ON (wall_posts.wall_id = walls.id)",
+    :joins => "INNER JOIN taggings ON (taggings.tag_id = tags.id AND taggings.created_at >= '#{date.to_date}') INNER JOIN shouts ON (shouts.id = taggings.taggable_id AND taggings.taggable_type = 'Shout') LEFT OUTER JOIN walls ON (walls.attachable_type = 'Shout' AND walls.attachable_id = shouts.id) LEFT OUTER JOIN wall_posts ON (wall_posts.wall_id = walls.id)",
     :group => "tags.id",
     :order => "tag_count DESC"
   }}
