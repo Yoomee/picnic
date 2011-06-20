@@ -260,9 +260,9 @@
     #posts_header
       %h3.profile_title.fl="#{forename_or_your(@member, :capitalize => true)} posts"
       .fr.post_to_wall
-        -if @member == logged_in_member
+        -if logged_in_as?(@member)
           =link_to_box("Post something", new_shout_path, :class => "bttn_l new_comment_link", :scrolling => false) 
-        -elsif logged_in_member
+        -elsif logged_in? && !@member.no_wall_posts_from_others?
           =link_to_box("Post something", new_shout_path(:shout => {:recipient_id => @member.id, :recipient_type => 'Member'}), :class => 'bttn_l new_comment_link', :scrolling => false)
     .stories_filter 
       =image_tag 'ajax_loader_squares.gif', :id => 'filter_loader', :style => "display:none"
