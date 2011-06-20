@@ -2564,6 +2564,9 @@ div#footer_links {
 #vodaphone_sponsor a:hover {
 	background-position: -280px -80px;	
 }
+#waag_sponsor a {
+	background-position: -480px 0;	
+}
 #upc_sponsor a {
 	background-position: -1px -162px;	
 }
