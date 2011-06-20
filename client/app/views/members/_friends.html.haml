@@ -3,7 +3,7 @@
 -if member.no_friend_requests?
   =forename_or_you(member, "has", :capitalize => true)
   ="decided not to let people sit on #{logged_in_as?(member) ? "your" : "their"} blanket"
-  =member.no_wall_posts_from_others? ? "or post on their profile." : "."
+  =member.no_wall_posts_from_others? ? "or post on #{logged_in_as?(member) ? "your" : "their"} profile." : "."
 -elsif logged_in_as?(member)
   -if logged_in_member.has_pending_friend_requests?
     People want to sit on your blanket.
