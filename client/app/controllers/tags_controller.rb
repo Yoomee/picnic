@@ -1,6 +1,6 @@
 class TagsController < ApplicationController
-  
-  before_filter :get_tag, :only => %w{destroy edit show update}
+
+  before_filter :get_tag, :only => %w{destroy edit people show older_shouts update}
 
   def autocomplete
     search_term = params[:term].downcase.gsub('_', ' ').gsub(/[^A-Za-z\d\-\s]/, '').strip
@@ -27,7 +27,6 @@ class TagsController < ApplicationController
     render :json => tags_list
   end
 
-
   def create
     @tag = Tag.new(params[:tag])
     if @tag.save
@@ -46,23 +45,58 @@ class TagsController < ApplicationController
     end
     redirect_to_waypoint
   end
-  
+
   def edit
-    
+
   end
-  
+
   def index
     @tags = Tag.top_tags_since(1.month.ago).all
   end
-  
+
   def new
     @tag = Tag.new
   end
-  
-  def show
-    @stories = Shout.tagged_with(params[:id]).all.paginate(:per_page => 6, :page => params[:page])
+
+  def older_shouts
+    @shouts = get_shouts.paginate(:page => params[:page], :per_page => params[:per_page])
+    render :update do |page|
+      @shouts.each do |shout|
+        page.insert_html :bottom, :shout_wall, render_shout(shout)
+      end
+      if WillPaginate::ViewHelpers.total_pages_for_collection(@shouts) > params[:page].to_i
+        page << "$('#older_shouts_link').attr('onclick', '').unbind('click');"
+        page << "$('#older_shouts_link').click(function() {#{remote_function(:url => older_shouts_link_url(:parent => @tag, :filter => @filter), :method => :get)}; return false;});"
+      else
+        page[:older_shouts_link].replace("")
+      end
+    end
   end
-  
+
+
+  def people
+    @members = Member.with_theme_or_member_tag(@tag)
+  end
+
+  def show
+    if !@tag.blank?
+      if request.xhr? && params[:wants] == 'shouts'
+        shouts = get_shouts
+        if shouts.empty?
+          render :text => @template.not_posted_yet_message(@member)
+        else
+          render :text => @template.render_shouts(shouts, :filter => @filter, :parent => @tag) + @template.javascript_tag(@template.refresh_fb_dom)
+        end
+      else
+        @stories = Shout.tagged_with(params[:id])
+        @members = Member.with_theme_or_member_tag(@tag)
+      end
+
+    else
+      redirect_to tags_path 
+    end
+  end
+
   def update
     if @tag.update_attributes(params[:tag])
       flash[:notice] = "Updated theme"
@@ -71,10 +105,21 @@ class TagsController < ApplicationController
       render :action => "edit"
     end
   end
-  
+
   private
+  def get_shouts
+    @filter = params[:filter]
+    case @filter
+    when 'popular'
+      Shout.tagged_with(params[:id]).top_rated
+    when 'latest'
+      Shout.tagged_with(params[:id])
+    end
+  end
+
   def get_tag
     @tag = Tag.find_by_name(CGI::unescape(params[:id]))
   end
-  
+
+
 end

@@ -4,6 +4,8 @@ MembersController.class_eval do
 
   skip_before_filter :check_what_i_bring, :only => %w{update what_i_bring me}
   skip_badge_announcement :what_i_bring
+  
+  member_only :what_i_bring
 
   def change_password_with_picnic
     @member.skip_what_i_bring_validation = true
@@ -16,6 +18,7 @@ MembersController.class_eval do
       login_member!(logged_in_member)
     else
       new_without_redirect
+      spamify(@member)
       @member.conference_delegate_id ||= session[:conference_delegate_id]
     end
   end

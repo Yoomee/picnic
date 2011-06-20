@@ -4,7 +4,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :conference_delegates, :only => [:index]
   map.resources :conference_sessions
-  map.resources :tags, :as => "themes", :collection => {:autocomplete => :get}
+  map.resources :tags, :as => "themes", :collection => {:autocomplete => :get}, :member => {:people => :get}
   map.resources :urls
   map.resources :venues
 
@@ -15,8 +15,11 @@ ActionController::Routing::Routes.draw do |map|
   map.connections "/connections", :controller => 'club', :action => 'connections'
   map.correspondents '/correspondents', :controller => 'correspondents'
   map.leaderboard "leaderboard", :controller => "leaderboard", :action => "index"
+  map.login '/login', :controller => 'sessions', :action => 'new'
   map.member_older_shouts "/member_older_shouts/:id", :controller => 'members', :action => 'older_shouts'
   map.news_network '/newsnetwork', :controller => 'news_network'
+  map.register '/register', :controller => 'members', :action => 'new'
+  map.tag_older_shouts "/tag_older_shouts/:id", :controller => 'tags', :action => 'older_shouts'
   map.themes '/themes', :controller => 'tags'
   map.verify_delegate '/delegate/verify/:signature', :controller => 'conference_delegates', :action => 'verify'
   map.what_i_bring "/what_i_bring", :controller => 'members', :action => 'what_i_bring'

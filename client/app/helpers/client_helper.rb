@@ -79,7 +79,7 @@ module ClientHelper
             selectedItem: 'value',
             neverSubmit: true,
             start_value: #{options[:tag_list].collect {|t| {:value => t}}.to_json},
-            resultClick: function(data) {$.fancybox.resize();$('#as-input-themes').focus();},
+            resultClick: function(data) {$.fancybox.resize();$('#as-input-#{options[:prefix] ? options[:prefix] + '_' : ''}themes').focus()},
             resultsComplete: function(elem) {
               var height = $('.facelist-result-item').size() * $('.facelist-result-item').outerHeight();
               $('#fancybox-inner').height($('#fancybox-inner').height() + height);

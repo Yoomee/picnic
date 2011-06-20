@@ -9,7 +9,8 @@ GoogleMapsHelper.module_eval do
       :height => 300,
       :map_type => "roadmap",
       :zoom => 4,
-      :interactive => true
+      :interactive => true,
+      :disable_default_ui => true
     )
     options[:canvas_id] = "map_canvas#{map_index}" #force it for now
     
@@ -29,7 +30,7 @@ GoogleMapsHelper.module_eval do
         mapTypeId: google.maps.MapTypeId.#{options[:map_type].upcase},
         minZoom:2,
         scrollwheel:false,
-        disableDefaultUI:true
+        disableDefaultUI:#{options[:disable_default_ui]}
         #{',draggable:false,scrollwheel:false,disableDoubleClickZoom:true,keyboardShortcuts:false' if !options[:interactive]}
         #{',' + options[:map_options] unless options[:map_options].blank?}
       });

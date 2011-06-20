@@ -2,6 +2,10 @@ Member::WHAT_I_BRING_MAX_LENGTH = 100
 Member::NEWS_FEED_FIELD_BLACKLIST = %w{bio}
 Member.class_eval do
 
+  acts_as_textcaptcha({
+    'questions' => Picnic::SPAM_QUESTIONS
+  })
+
   add_to_news_feed :on_update => true
 
   attr_boolean_accessor :skip_what_i_bring_validation
@@ -10,6 +14,7 @@ Member.class_eval do
   
   before_save :associate_with_delegate
   after_save :save_delegate
+  after_save :add_real_me_points
   
   after_create :trigger_points_event
   before_update :set_location_from_ip_address
@@ -39,10 +44,14 @@ Member.class_eval do
     
   end
   
-  def initialize_with_default_what_i_bring(attrs = {})
-    initialize_without_default_what_i_bring(attrs.reverse_merge(:what_i_bring => '...'))
+  def allowed_job_title?
+    has_badge?(:picnic11_speaker) || has_badge?(:picnic11_team) || has_badge?(:picnic_advisor)
   end
-  alias_method_chain :initialize, :default_what_i_bring
+  
+  def blank_what_i_bring?
+    what_i_bring.blank? || what_i_bring == '...'
+  end
+    
   
   def conference_delegate_id
     conference_delegate.try(:id)
@@ -68,10 +77,11 @@ Member.class_eval do
     end
   end
   
-  def allowed_job_title?
-    has_badge?(:picnic11_speaker) || has_badge?(:picnic11_team) || has_badge?(:picnic_advisor)
+  def initialize_with_default_what_i_bring(attrs = {})
+    initialize_without_default_what_i_bring(attrs.reverse_merge(:what_i_bring => '...'))
   end
-    
+  alias_method_chain :initialize, :default_what_i_bring
+  
   def skip_news_feed_with_field_blacklist
     skip_news_feed_without_field_blacklist || changed.all? {|attr| attr.in?(Member::NEWS_FEED_FIELD_BLACKLIST)}
   end
@@ -82,6 +92,13 @@ Member.class_eval do
   end
 
   private  
+  def add_real_me_points
+    unless tags.empty? || has_points_transfer?(:set_real_me_tags) || @adding_real_me_points
+      @adding_real_me_points = true
+      handle_points_event(:set_real_me_tags, self, {}) 
+    end
+  end
+  
   def associate_with_delegate
     if conference_delegate.nil? && (new_record? || changed?(&:email))
       if del = ConferenceDelegate.find_by_email_and_member_id(email, nil)

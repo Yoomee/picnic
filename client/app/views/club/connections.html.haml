@@ -64,7 +64,7 @@
   #people_near_me.sixcol.last  
     %h2.connection_title 
       People near me
-    =google_map(@nearby_members, :width => 550, :height => 300, :centre => logged_in_member.lat_lng || [30,0], :zoom => 5, :map_options => "scrollwheel:false,disableDefaultUI:true", :infoboxes => true)
+    =google_map(@nearby_members, :width => 550, :height => 300, :centre => logged_in_member.lat_lng || [30,0], :zoom => 5, :disable_default_ui => false, :map_options => "scrollwheel:false,mapTypeControl:false,streetViewControl:false", :infoboxes => true)
 
 
 
