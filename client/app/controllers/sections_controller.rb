@@ -45,7 +45,7 @@ SectionsController.class_eval do
   def show
     case @section.view
     when 'latest_stories', 'news_view'
-      @pages_sections = @section.pages.published.latest + @section.children
+      @pages_sections = @section.pages.published.latest + @section.children.not_hidden
       @pages_sections.extend(SectionsController::SortByWeightAndPublished)
       @pages_sections = @pages_sections.sort_by_weight_and_published.paginate(
       :page => params[:page],

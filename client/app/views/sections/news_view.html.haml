@@ -17,7 +17,7 @@
             =(page_section.is_a?(Page) ? page_section.publish_on : page_section.created_at).strftime("%e %B %Y")
 
 -if @section.slug == "premium-sponsors"
-  -@section.parent.children.id_is_not(@section.id).each do |section|
+  -@section.parent.children.id_is_not(@section.id).not_hidden.each do |section|
     .row
       %h1=section
     -unless section.description.nil?
@@ -25,7 +25,7 @@
         %p.section_description
           =section.description
     #index_view.row
-      -pages_sections = section.pages.published.latest + section.children
+      -pages_sections = section.pages.published.latest + section.children.not_hidden
       -pages_sections.extend(SectionsController::SortByWeightAndPublished)
       -pages_sections = pages_sections.sort_by_weight_and_published
       -pages_sections.each_with_col_name do |page_section, col_name|
