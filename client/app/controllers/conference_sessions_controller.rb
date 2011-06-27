@@ -8,7 +8,7 @@ class ConferenceSessionsController < ApplicationController
     @conference_session = ConferenceSession.new params[:conference_session]
     if @conference_session.save
       flash[:notice] = 'Session successfully created'
-      redirect_to_waypoint
+      redirect_to @conference_session
     else
       render :action => 'new'
     end
@@ -24,11 +24,12 @@ class ConferenceSessionsController < ApplicationController
   end
   
   def index
-    @conference_sessions = ConferenceSession.all(:order => 'name')
+    @conference_sessions = ConferenceSession.all(:order => 'starts_at')
   end
   
   def new
-    @conference_session = ConferenceSession.new(:starts_at =>DateTime.parse("2011-09-14T09:00"), :ends_at => DateTime.parse("2011-09-14T10:00"))
+    @conference_session = ConferenceSession.new(:conference => Conference.find(params[:conference_id]), :starts_at =>DateTime.parse("2011-09-14T09:00"), :ends_at => DateTime.parse("2011-09-14T10:00"))
+    @conference_session.members.build
   end
   
   def show
@@ -37,7 +38,7 @@ class ConferenceSessionsController < ApplicationController
   def update
     if @conference_session.update_attributes(params[:conference_session])
       flash[:notice] = 'Session successfully updated'
-      redirect_to_waypoint
+      redirect_to @conference_session
     else
       render :action => 'edit'
     end

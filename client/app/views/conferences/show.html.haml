@@ -1,0 +1,22 @@
+-no_content_row
+-title @conference
+.row
+  .sevencol
+    %h3=DateTimeSpan.new(@conference.starts_on, @conference.ends_on)
+    =simple_format(@conference.description)
+    %h4 Sessions
+    -if @conference.sessions.blank?
+      %p There are no sessions at the conference yet.
+    -else
+      %ul
+        -@conference.sessions.each do |session|
+          %li=link_to_self(session)
+
+  .fivecol.last
+    =image_for(@conference, '450x')
+.row
+  .twelvecol
+  -options_panel do
+    =link_if_allowed "Edit conference", edit_conference_proc(@conference)
+    =link_if_allowed "Delete conference", conference_proc(@conference), :method => :delete, :confirm => "Are you sure? All the events at this conference will be deleted."
+    =link_if_allowed "Add conference", new_conference_proc(@conference)

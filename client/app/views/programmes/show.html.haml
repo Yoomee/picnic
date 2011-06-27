@@ -44,35 +44,39 @@
     
 -no_content_row
 -title "Programme", :hidden => true
-.row
-  .twelvecol
-    #prog_days
-      -(Date.parse("2011-09-14")..Date.parse("2011-09-16")).each do |date|
-        =link_to_function(date.strftime("%A %e %B"), "Programme.scrollTo(#{date.day - 13})", :class =>"prog_day")
-      #active_border{:style => "left:#{(@date.day-14)*333}px;"}
-    #prog_wrapper
-      -#.arrow=link_to_function("<", "Programme.scroll(false)", :id => "go_back_link", :style => "display:#{@date.day < 15 ? 'none' : 'block'}")
-      #venues_col
-        -@venues.each do |venue|
-          .venue_row=link_to_self(venue)
-      #timetable_outer
-        #timetable_inner{:style => "left:#{(14-@date.day)*880}px;"}
-          -(Date.parse("2011-09-14")..Date.parse("2011-09-16")).each do |date|
-            .timetable{:id => "timetable_#{date.day}"}
-              .hours
-                -(9..19).each do |hour|
-                  .hour="%02d:00" % hour
-              -@venues.each do |venue|
-                -sessions = venue.sessions.on_date(date)
-                .prog_row
-                  -sessions.each do |session|
-                    -link_to(session, :class => 'session', :style => "left:#{(session.starts_at.hour - 9)*80}px") do
-                      .title=session
-                      .details
-                        ="Time: #{conference_session_time(session)}<br/>"
-                        ="Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus."
-                        
-      -#.arrow=link_to_function(">", "Programme.scroll(true)", :id => "go_forward_link", :style => "display:#{@date.day > 15 ? 'none' : 'block'}")
+#prog_container
+  .row
+    .twelvecol
+      #prog_days
+        -(Date.parse("2011-09-14")..Date.parse("2011-09-16")).each do |date|
+          =link_to_function(date.strftime("%A %e %B"), "Programme.scrollTo(#{date.day - 13})", :class =>"prog_day")
+        #active_border{:style => "left:#{(@date.day-14)*333}px;"}
+      #prog_wrapper
+        -#.arrow=link_to_function("<", "Programme.scroll(false)", :id => "go_back_link", :style => "display:#{@date.day < 15 ? 'none' : 'block'}")
+        #venues_col
+          -@venues.each do |venue|
+            .venue_row=link_to_self(venue)
+        #timetable_outer
+          #timetable_inner{:style => "left:#{(14-@date.day)*880}px;"}
+            -(Date.parse("2011-09-14")..Date.parse("2011-09-16")).each do |date|
+              .timetable{:id => "timetable_#{date.day}"}
+                .hours
+                  -(9..19).each do |hour|
+                    .hour="%02d:00" % hour
+                -@venues.each do |venue|
+                  -sessions = venue.sessions.on_date(date)
+                  .prog_row
+                    -sessions.each do |session|
+                      -link_to(session, :class => 'session', :style => "left:#{(session.starts_at.hour - 9)*80}px") do
+                        .title=session
+                        .details
+                          =session.description.word_truncate(150)
+    
+  
+  
+  
+  
+  
       
 
   

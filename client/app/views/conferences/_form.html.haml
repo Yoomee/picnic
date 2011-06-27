@@ -1,0 +1,18 @@
+-content_for :head do
+  :javascript
+    $(document).ready(function() {
+      $('.datetime').datepicker({
+        duration: '',
+        dateFormat: 'dd/mm/yy',
+        constrainInput: false
+      });  
+    });
+-semantic_form_for conference, :html => {:multipart => true} do |form|
+  -form.inputs do
+    =form.input :name
+    =form.input :description, :input_html => {:rows => 5}
+    =form.input :image, :as => :image
+    =form.input :formatted_starts_on, :label => 'Starts on', :as => :string, :input_html => {:class => 'datetime'}
+    =form.input :formatted_ends_on, :label => 'Ends on', :as => :string, :input_html => {:class => 'datetime'}
+  -form.buttons do
+    =form.submit "Save"

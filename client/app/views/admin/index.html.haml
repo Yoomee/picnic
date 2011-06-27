@@ -39,17 +39,6 @@
         %li
           %a{ :href => "/photos/new" }
             Add an image
-    #dash_events.dash_item
-      .dash_icon
-      %h3
-        Events
-      %ul
-        %li
-          =link_to 'List venues', venues_path
-        %li
-          =link_to 'Add a venue', new_venue_path
-        %li
-          =link_to 'Add an event', new_event_path
     #dash_documents.dash_item
       .dash_icon
       %h3
@@ -88,6 +77,37 @@
       %ul
         =link_in_li_if_allowed("List badges", badges_proc)
         =link_in_li_if_allowed("Add a badge", new_badge_proc)
+        
+    %br.flcb
+    %br.flcb
+    %h2 Festivals & Conferences
+    #dash_events.dash_item
+      .dash_icon
+      %h3
+        Conferences
+      %ul
+        %li
+          =link_to 'List conferences', conferences_path
+        %li
+          =link_to 'Add a conference', new_conference_path
+    #dash_events.dash_item
+      .dash_icon
+      %h3
+        Sessions
+      %ul
+        %li
+          =link_to 'List sessions', conference_sessions_path
+        %li
+          =link_to 'Add a session', new_conference_session_path
+    #dash_events.dash_item
+      .dash_icon
+      %h3
+        Venues
+      %ul
+        %li
+          =link_to 'List venues', venues_path
+        %li
+          =link_to 'Add a venue', new_venue_path
         
   #dash_membership.dash_col.fourcol.last
     %h2

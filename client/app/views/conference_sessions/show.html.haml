@@ -1,9 +1,7 @@
 -no_content_row
 -title @conference_session
 .row
-  .sixcol
-    %p=@conference_session.description
-  .fourcol.last
+  .sevencol
     %dl
       %dt Day
       %dd=conference_day(@conference_session.starts_at)
@@ -11,8 +9,16 @@
       %dd=conference_session_time(@conference_session)
       %dt Venue
       %dd=link_to_self(@conference_session.venue)
+    %br.flcb
+    %br.flcb  
+    =simple_format(@conference_session.description)
+    =render("members/grid", :members => @conference_session.members.alphabetically)
+  .fivecol.last
+    =image_for(@conference_session, '450x')
+
 .row
   .twelvecol
     -options_panel do
       =link_if_allowed "Edit session", edit_conference_session_proc(@conference_session)
       =link_if_allowed "Delete session", conference_session_proc(@conference_session), :method => :delete, :confirm => "Are you sure?"
+      =link_if_allowed "Add a session", new_conference_conference_session_proc(@conference_session)

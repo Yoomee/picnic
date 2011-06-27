@@ -7,8 +7,9 @@
 -else
   %p.intro
     The following sessions are on the system. Click one to view more details.
+  %br.clear
   %ul.lst
     -@conference_sessions.each do |conference_session|
-      =link_to_self conference_session
+      %li=link_to_self conference_session
 -options_panel do
   =link_if_allowed 'New session', new_conference_session_proc

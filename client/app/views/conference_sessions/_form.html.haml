@@ -1,4 +1,30 @@
--semantic_form_for conference_session do |f|
-  =f.inputs
-  -f.buttons do
-    =f.submit "Save"
+-content_for :head do
+  :javascript
+    $(document).ready(function() {
+      $('.datetime').datepicker({
+        duration: '',
+        dateFormat: 'dd/mm/yy',
+        minDate: '#{conference_session.conference.starts_on.strftime("%d/%m/%y")}',
+        maxDate: '#{conference_session.conference.ends_on.strftime("%d/%m/%y")}',
+        showTime: true,
+        constrainInput: false,
+        stepMinutes: 1,
+        stepHours: 1,
+        altTimeField: '',
+        time24h: true
+      });  
+    });
+-semantic_form_for conference_session, :html => {:multipart => true} do |form|
+  -form.inputs do
+    =form.input :conference_id, :as => :hidden
+    =form.input :name
+    =form.input :description, :input_html => {:rows => 8}
+    =form.input :image, :as => :image
+    =form.input :venue, :prompt => "None"
+    =form.input :formatted_starts_at, :label => 'Starts at', :as => :string, :input_html => {:class => 'datetime'}
+    =form.input :formatted_ends_at, :label => 'Ends at', :as => :string, :input_html => {:class => 'datetime'}
+    %li
+      %label Related people
+    =multiple_nested_inputs_for :conference_sessions_members, :form => form, :label => false, :add_link_text => "Add related person"
+  -form.buttons do
+    =form.submit "Save"

@@ -4397,7 +4397,12 @@ body.controller_badges .badge_members {
 
 
 /*========== Programme ==========*/
-
+#prog_container .row {
+  overflow-x:auto;
+}
+#prog_container .twelvecol {
+  width:1010px;
+}
 #prog_days {
   width:880px;
   margin-left: 120px;
@@ -4581,7 +4586,10 @@ body.controller_badges .badge_members {
 }
 
 
-
+.multiple_nested_inputs .remove_link {
+  clear:none;
+  margin-left:10px;
+}
 
 
 /*========== Session show ==========*/
