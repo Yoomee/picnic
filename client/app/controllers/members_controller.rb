@@ -12,6 +12,10 @@ MembersController.class_eval do
     change_password_without_picnic
   end
   alias_method_chain :change_password, :picnic
+  
+  def index
+    @members = Member.alphabetically.paginate(:per_page => 20, :page => params[:page])
+  end
 
   def new_with_redirect
     if logged_in_member && !logged_in_member_is_admin?

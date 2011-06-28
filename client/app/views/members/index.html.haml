@@ -1,0 +1,10 @@
+-title "Members"
+%h4=page_entries_info @members
+%ul
+  -@members.each do |member|
+    %li
+      =link_to member.full_name, member
+=will_paginate @members
+-options_panel do
+  =back_link
+  =link_if_allowed 'New member', new_member_proc
