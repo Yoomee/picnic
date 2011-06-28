@@ -1,11 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
   
-  map.resource :programme
 
   map.resources :conference_delegates, :only => [:index]
   
   map.resources :conferences do |conf|
     conf.resources :conference_sessions, :as => 'sessions', :only => [:show, :new]
+    conf.resource :programme, :only => [:show]
   end
   map.resources :conference_sessions, :only => [:create, :edit, :destroy, :show, :update]
   

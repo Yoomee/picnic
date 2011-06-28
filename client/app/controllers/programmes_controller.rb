@@ -5,11 +5,15 @@ class ProgrammesController < ApplicationController
   admin_only :show #hidden for now
   
   def show
-    if Date.today > Date.parse("2011-09-14") && Date.today <= Date.parse("2011-09-16")
+    params[:conference_id] ||= 1
+    @conference = Conference.find(params[:conference_id])
+    if params[:day]
+      @date = @conference.days[params[:day].to_i - 1] || @conference.starts_on
+    elsif Date.today > @conference.starts_on && Date.today <= @conference.ends_on
       @date = Date.today
       @time = Time.now
     else
-      @date = Date.parse("2011-09-14")
+      @date = @conference.starts_on
     end  
     @venues = Venue.with_sessions_in_year(2011)
     

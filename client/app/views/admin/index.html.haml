@@ -86,19 +86,9 @@
       %h3
         Conferences
       %ul
-        %li
-          =link_to 'List conferences', conferences_path
-        %li
-          =link_to 'Add a conference', new_conference_path
-    #dash_events.dash_item
-      .dash_icon
-      %h3
-        Sessions
-      %ul
-        %li
-          =link_to 'List sessions', conference_sessions_path
-        %li
-          =link_to 'Add a session', new_conference_session_path
+        -Conference.oldest.each do |conference|
+          %li=link_to_self conference
+        %li=#link_to 'New conference', new_conference_path
     #dash_events.dash_item
       .dash_icon
       %h3

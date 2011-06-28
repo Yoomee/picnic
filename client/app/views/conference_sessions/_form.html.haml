@@ -18,13 +18,13 @@
   -form.inputs do
     =form.input :conference_id, :as => :hidden
     =form.input :name
-    =form.input :description, :input_html => {:rows => 8}
-    =form.input :image, :as => :image
-    =form.input :venue, :prompt => "None"
+    =form.input :venue, :include_blank => false
     =form.input :formatted_starts_at, :label => 'Starts at', :as => :string, :input_html => {:class => 'datetime'}
     =form.input :formatted_ends_at, :label => 'Ends at', :as => :string, :input_html => {:class => 'datetime'}
+    =form.input :description, :input_html => {:rows => 12}
     %li
-      %label Related people
-    =multiple_nested_inputs_for :conference_sessions_members, :form => form, :label => false, :add_link_text => "Add related person"
+      %label Speakers
+    =multiple_nested_inputs_for :conference_sessions_members, :form => form, :label => false, :add_link_text => "Add a speaker"
+    =form.input :image, :as => :image
   -form.buttons do
     =form.submit "Save"

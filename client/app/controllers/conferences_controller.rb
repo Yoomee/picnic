@@ -8,7 +8,7 @@ class ConferencesController < ApplicationController
     @conference = Conference.new params[:conference]
     if @conference.save
       flash[:notice] = 'Conference successfully created'
-      redirect_to_waypoint
+      redirect_to @conference
     else
       render :action => 'new'
     end
@@ -37,7 +37,7 @@ class ConferencesController < ApplicationController
   def update
     if @conference.update_attributes(params[:conference])
       flash[:notice] = 'Conference successfully updated'
-      redirect_to_waypoint
+      redirect_to @conference
     else
       render :action => 'edit'
     end

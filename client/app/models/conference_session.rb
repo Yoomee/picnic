@@ -3,19 +3,24 @@ class ConferenceSession < ActiveRecord::Base
   
   belongs_to :venue
   belongs_to :conference
-  validates_presence_of :name, :conference
+  validates_presence_of :name, :conference, :venue
   validate :time_is_within_conference_dates, :ends_after_start
   
   has_many :conference_sessions_members
   has_many :members, :through => :conference_sessions_members
   
-  accepts_nested_attributes_for :conference_sessions_members
+  accepts_nested_attributes_for :conference_sessions_members, :allow_destroy => true
   
   formatted_time_accessor :starts_at, :ends_at
   
-  named_scope :on_date, lambda {|date| {:conditions => ["DATE(conference_sessions.starts_at) = ?", date]}}
-  named_scope :starts_in_hour, lambda {|date| {:conditions => ["HOUR(conference_sessions.starts_at) = ?", date]}}
+  named_scope :on_date, lambda {|date| {:conditions => ["DATE(conference_sessions.starts_at) = ?", date], :order => "conference_sessions.starts_at"}}
+  named_scope :starts_in_hour, lambda {|date| {:conditions => ["HOUR(conference_sessions.starts_at) = ?", date], :order => "conference_sessions.starts_at"}}
 
+
+  def conference_day
+    conference.days.to_a.index(starts_at.to_date) + 1
+  end
+  
   private
   def time_is_within_conference_dates
     return true if conference.nil?
