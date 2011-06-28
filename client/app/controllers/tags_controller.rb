@@ -1,4 +1,4 @@
-class TagsController < ApplicationController
+TagsController.class_eval do
 
   before_filter :get_tag, :only => %w{destroy edit people show older_shouts update}
 
