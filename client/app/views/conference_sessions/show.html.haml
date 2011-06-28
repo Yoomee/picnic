@@ -13,13 +13,15 @@
         %dt Venue
         %dd=link_to_self(@conference_session.venue)
     %br.flcb
-    %br.flcb  
+    %br.flcb 
+    %h6.fl Themes
+    =render('themes/list', :tags => @conference_session.tags, :list_id => "conference_session_#{@conference_session.id}_themes")
     =simple_format(@conference_session.description)
     =render("members/grid", :members => @conference_session.members.alphabetically)
   .fivecol.last
     .call_to_action
       =link_to "View the #{@conference_session.conference} programme", conference_programme_path(@conference_session.conference)
-    =image_for(@conference_session, '450x')
+    =image_for(@conference_session, '450x') if @conference_session.has_image?
 
 .row
   .twelvecol

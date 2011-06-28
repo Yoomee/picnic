@@ -11,6 +11,8 @@ class ConferenceSession < ActiveRecord::Base
   
   accepts_nested_attributes_for :conference_sessions_members, :allow_destroy => true
   
+  acts_as_taggable_on :tags
+  
   formatted_time_accessor :starts_at, :ends_at
   
   named_scope :on_date, lambda {|date| {:conditions => ["DATE(conference_sessions.starts_at) = ?", date], :order => "conference_sessions.starts_at"}}

@@ -5,6 +5,7 @@ class ConferenceSessionsController < ApplicationController
   before_filter :get_conference_session, :only => %w{destroy edit show update}
   
   def create
+    handle_facelist
     @conference_session = ConferenceSession.new params[:conference_session]
     if @conference_session.save
       flash[:notice] = 'Session successfully created'
@@ -35,6 +36,7 @@ class ConferenceSessionsController < ApplicationController
   end
   
   def update
+    handle_facelist
     if @conference_session.update_attributes(params[:conference_session])
       flash[:notice] = 'Session successfully updated'
       redirect_to @conference_session
@@ -47,6 +49,11 @@ class ConferenceSessionsController < ApplicationController
   def get_conference_session
     @conference_session = ConferenceSession.find(params[:id])
     @section = Section.find_by_slug("picnic11")
+  end
+  
+  def handle_facelist
+    params[:conference_session] ||= {}
+    params[:conference_session][:tag_list] = params[:facelist_values_conference_session_themes] if !params[:facelist_values_conference_session_themes].nil?
   end
   
 end

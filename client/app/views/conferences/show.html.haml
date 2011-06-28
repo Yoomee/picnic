@@ -21,7 +21,7 @@
   .fivecol.last
     .call_to_action
       =link_to "View the #{@conference} programme", conference_programme_path(@conference)
-    =image_for(@conference, '450x')
+    =image_for(@conference, '450x') if @conference.has_image?
 .row
   .twelvecol
   -options_panel do
