@@ -15,6 +15,11 @@ MembersController.class_eval do
   
   def index
     @members = Member.alphabetically.paginate(:per_page => 20, :page => params[:page])
+    sign_up_counts = Member.created_at_gte(2.months.ago).count(:id, :group => "DATE(created_at)")
+    @data = []
+    (2.months.ago.to_date..Date.today).each do |date|
+      @data << [date.strftime("%d/%m/%y"), sign_up_counts[date.to_s].to_i]
+    end
   end
 
   def new_with_redirect

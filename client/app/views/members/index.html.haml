@@ -1,4 +1,21 @@
+-content_for :head do
+  =javascript_include_tag "https://www.google.com/jsapi"
+  %script{:type=>"text/javascript", :src => "https://www.google.com/jsapi"}
+  :javascript
+    google.load("visualization", "1", {packages:["corechart"]});
+    google.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Date');
+      data.addColumn('number', 'Members');
+      data.addRows(#{@data.inspect});
+      var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+      chart.draw(data, {width: 1000, height: 250, legend: 'none', chartArea: {left: 50, top: 20, right: 50, bottom:0}, colors:['#000']});
+    }
+
 -title "Members"
+%h4 New members in the last 2 months
+#chart_div
 %h4=page_entries_info @members
 %ul
   -@members.each do |member|
