@@ -4559,6 +4559,9 @@ body.controller_badges .badge_members {
   background-color:#FCFCFC;
 }
 
+.timetable .session .title {
+  white-space:nowrap;
+}
 .timetable .session .details {
   display:none;
   width:189px;
