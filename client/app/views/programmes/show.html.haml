@@ -5,13 +5,13 @@
         function(){
           if (!$(this).hasClass('hover')){
             $(this).addClass('hover');
-            $(this).animate({'width':189,'height':129}, 250, 'easeInOutCirc');
+            $(this).animate({'width':189,'height':129}, 0, 'easeInOutCirc');
           }
         },
         function(){
           if ($(this).hasClass('hover') && !$(this).hasClass('closing')){        
             $(this).addClass('closing');
-            $(this).animate({'width':parseInt($(this).attr("data-width")),'height':parseInt($(this).attr("data-height"))},  250, 'easeInOutCirc', function(){
+            $(this).animate({'width':parseInt($(this).attr("data-width")),'height':parseInt($(this).attr("data-height"))},  0, 'easeInOutCirc', function(){
               $(this).removeClass('hover');
               $(this).removeClass('closing');
             });

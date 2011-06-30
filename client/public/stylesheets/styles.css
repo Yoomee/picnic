@@ -4400,66 +4400,6 @@ body.controller_badges .badge_members {
 #prog_container .row {
   overflow-x:auto;
 }
-#prog_container .twelvecol {
-  width:1010px;
-}
-#prog_days {
-  width:880px;
-  margin-left: 120px;
-  position:relative;
-}
-#prog_days .prog_day{
-  width:293px;
-  float:left;
-  padding:5px 0px 3px;
-  text-align:center;
-  font-size:14px;
-  color:black;
-}
-#prog_days #active_border{
-  border:2px solid #000;
-  border-bottom:none;
-  width:294px;
-  position:absolute;
-  height:42px;
-  top:0px;
-  left:0px;
-  
-	-moz-border-radius-topleft:3px;
-  -moz-border-radius-topright:3px;
-  -webkit-border-top-right-radius:3px;
-  -webkit-border-top-left-radius:3px;
-  border-top-right-radius:3px;
-  border-top-left-radius:3px;
-}
-
-
-/*#prog_wrapper {
-  clear:both;
-  float:left;
-  margin-bottom:40px;
-}*/
-
-#prog_wrapper .arrow {
-  width:66px;
-  float:left;
-  text-align:center;
-  height:600px;
-  
-}
-
-#prog_wrapper .arrow a {
-  font-size:46px;
-  width:100%;
-  color:#ccc;
-  padding-top:200px;
-  height:400px;
-  float:left;
-}
-#prog_wrapper .arrow a:hover {
-  text-decoration:none;
-  color:#333;
-}
 
 
 .prog_row {
@@ -4471,78 +4411,16 @@ body.controller_badges .badge_members {
   height:90px;
   
 }
-
-/*#venues_col  {
-  width:120px;
-  float:left;
-  margin-top:22px;
-  border-top:1px solid #CCC;
-  height:581px;
-}*/
-
-/*#venues_col .venue_row {
-  border-bottom:1px solid #CCC;
-  font-size:16px;
-  float:left;
-  clear:both;
-  height:80px;
-  width:115px;
-  padding:5px 5px 5px 0px;
-  overflow: hidden;
-}
-*/
 #venues_col a {
   color:#000000;
 }
 
-#timetable_outer {
-  border:2px solid #000;
-  float:left;
-  width:880px;
-  height:600px;
-  top:0px;
-  left:0px;
-  overflow-y:auto;
-  overflow-x:hidden;
-  
-  position:relative;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
 
-}
-#timetable_inner {
-  position:absolute;
-  width:3000px;
-  float:left;  
-}
-
-/*.timetable {
-  float:left;
-  width:880px;
-  background:url(/images/timetable.png) repeat-y -120px 0;
-  height:600px;
-}*/
 
 .timetable a{
   color: #000;
 }
 
-
-/*.timetable .hours {
-  border-bottom:1px solid #CCC;
-  float:left;
-}
-.timetable .hours .hour {
-  border-color:#000;
-  float:left;
-  height:20px;
-  font-size: 14px;
-  color:#fff;
-  background: #000;
-  padding-left:2px;
-  width:78px;
-}*/
 
 
 .timetable .session {
@@ -4560,8 +4438,8 @@ body.controller_badges .badge_members {
 }
 
 .timetable .session .title {
-  white-space:nowrap;
-}
+/*  white-space:nowrap;
+*/}
 .timetable .session .details {
   display:none;
   width:189px;
@@ -4647,7 +4525,6 @@ body.controller_badges .badge_members {
 #venues_col  {
   width:118px;
   float:left;
-  height:600px;
   border-right:2px solid #000;
 }
 #venues_col .venue_row {
@@ -4664,14 +4541,9 @@ body.controller_badges .badge_members {
 #timetable_col {
   float:left;
   width:880px;
-  height:600px;
   top:0px;
   left:0px;
-  overflow-y:auto;
   overflow-x:hidden;
-  
-  position:relative;
-
 }
 
 .timetable {
@@ -4679,7 +4551,6 @@ body.controller_badges .badge_members {
   width:880px;
   background:url(/images/timetable.png) repeat-y -120px 0;
   position:absolute;
-  height:600px;
 }
 
 #prog_hours {
