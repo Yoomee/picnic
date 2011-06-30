@@ -18,7 +18,7 @@ class ConferenceSessionsController < ApplicationController
   def destroy
     @conference_session.destroy
     flash[:notice] = "Session successfully deleted"
-    redirect_to conference_sessions_path
+    redirect_to @conference_session.conference
   end
   
   def edit
