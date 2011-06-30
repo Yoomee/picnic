@@ -31,3 +31,4 @@
       =back_link
       =link_if_allowed "Edit session", edit_conference_session_proc(@conference_session)
       =link_if_allowed "Delete session", conference_session_proc(@conference_session), :method => :delete, :confirm => "Are you sure?"
+      =link_if_allowed "Duplicate session", duplicate_conference_session_proc(@conference_session)

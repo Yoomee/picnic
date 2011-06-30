@@ -7,7 +7,7 @@ ActionController::Routing::Routes.draw do |map|
     conf.resources :conference_sessions, :as => 'sessions', :only => [:show, :new]
     conf.resource :programme, :only => [:show]
   end
-  map.resources :conference_sessions, :only => [:create, :edit, :destroy, :show, :update]
+  map.resources :conference_sessions, :only => [:create, :edit, :destroy, :show, :update], :member => {:duplicate => :get}
   
   map.resources :tags, :as => "themes", :collection => {:autocomplete => :get}, :member => {:people => :get}
   map.resources :urls

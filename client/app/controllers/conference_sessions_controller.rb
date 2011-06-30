@@ -1,6 +1,6 @@
 class ConferenceSessionsController < ApplicationController
   
-  admin_only :create, :edit, :destroy, :index, :new, :update
+  admin_only :create, :edit, :destroy, :index, :new, :update, :duplicate
 
   before_filter :get_conference_session, :only => %w{destroy edit show update}
   
@@ -19,6 +19,15 @@ class ConferenceSessionsController < ApplicationController
     @conference_session.destroy
     flash[:notice] = "Session successfully deleted"
     redirect_to @conference_session.conference
+  end
+  
+  def duplicate
+    @existing_session = ConferenceSession.find(params[:id])
+    @conference_session = @existing_session.clone
+    @conference_session.duplicate_of = @existing_session.id
+    @conference_session.tag_list = @existing_session.tag_list.dup
+    @conference_session.conference_sessions_members = @existing_session.conference_sessions_members.collect(&:clone)
+    render :action => :new
   end
   
   def edit

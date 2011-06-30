@@ -9,6 +9,8 @@ class ConferenceSession < ActiveRecord::Base
   has_many :conference_sessions_members
   has_many :members, :through => :conference_sessions_members
   
+  before_create :duplicate_image
+  
   accepts_nested_attributes_for :conference_sessions_members, :allow_destroy => true
   
   acts_as_taggable_on :tags
@@ -17,6 +19,8 @@ class ConferenceSession < ActiveRecord::Base
   
   named_scope :on_date, lambda {|date| {:conditions => ["DATE(conference_sessions.starts_at) = ?", date], :order => "conference_sessions.starts_at"}}
   named_scope :starts_in_hour, lambda {|date| {:conditions => ["HOUR(conference_sessions.starts_at) = ?", date], :order => "conference_sessions.starts_at"}}
+  
+  attr_accessor :duplicate_of
 
 
   def conference_day
@@ -29,6 +33,11 @@ class ConferenceSession < ActiveRecord::Base
   end
   
   private
+  def duplicate_image
+    return true unless image_uid.blank? && original = ConferenceSession.find_by_id(duplicate_of)
+    self.image_uid = original.image_uid
+  end
+
   def time_is_within_conference_dates
     return true if conference.nil?
     err_mess = "must be between #{conference.starts_on.strftime("%d/%m/%y")} and #{conference.ends_on.strftime("%d/%m/%y")}"
