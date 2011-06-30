@@ -4550,6 +4550,7 @@ body.controller_badges .badge_members {
   height:80px;
   float:left;
   border-left:1px solid #CCC;
+  border-top:1px solid #CCC;
   border-right:1px solid #CCC;
   position:absolute;
   padding:5px;

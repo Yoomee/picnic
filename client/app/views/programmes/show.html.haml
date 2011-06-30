@@ -11,7 +11,7 @@
         function(){
           if ($(this).hasClass('hover') && !$(this).hasClass('closing')){        
             $(this).addClass('closing');
-            $(this).animate({'width':69,'height':80},  250, 'easeInOutCirc', function(){
+            $(this).animate({'width':parseInt($(this).attr("data-width")),'height':parseInt($(this).attr("data-height"))},  250, 'easeInOutCirc', function(){
               $(this).removeClass('hover');
               $(this).removeClass('closing');
             });
@@ -73,13 +73,19 @@
           -@conference.days.each_with_index do |day, idx|
             .timetable{:id => "timetable_day_#{idx+1}", :style => "display:#{@date == day ? 'block' : 'none'}"}
               -@venues.each do |venue|
-                -sessions = venue.sessions.on_date(day)
+                -sessions_by_hour = venue.sessions.on_date(day).group_by{|s|s.starts_at.hour}
                 .prog_row
-                  -sessions.each do |session|
-                    -link_to(session, :class => 'session', :style => "left:#{(session.starts_at.hour - 9)*80}px") do
-                      .title=session
-                      .details
-                        =session.description.word_truncate(150)
+                  -sessions_by_hour.each do |hour, sessions|
+                    -height = (90.0/sessions.size).to_i - 10
+                    -offset = (90.0/sessions.size).to_i
+                    -sessions.each_with_index do |session, idx|
+                      -width = (session.duration_in_whole_hours * 80) - 11
+                      -link_to(session, :class => 'session', :style => "left:#{(hour - 9)*80}px;top:#{(idx*offset)-1}px;height:#{height}px;width:#{width}px", "data-height" => height, "data-width" => width) do
+                        .title=session
+                        .details
+                          ="#{session.starts_at.strftime("%H:%M")} - #{session.ends_at.strftime("%H:%M")}"
+                          %br
+                          =session.description.word_truncate(150)
 .row
   .twelvecol
   -options_panel do

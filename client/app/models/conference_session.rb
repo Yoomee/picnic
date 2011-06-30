@@ -23,6 +23,11 @@ class ConferenceSession < ActiveRecord::Base
     conference.days.to_a.index(starts_at.to_date) + 1
   end
   
+  def duration_in_whole_hours
+    return 1 if starts_at.nil? || ends_at.nil? || starts_at > ends_at
+    ((ends_at - starts_at)/3600).ceil
+  end
+  
   private
   def time_is_within_conference_dates
     return true if conference.nil?
