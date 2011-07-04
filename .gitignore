@@ -26,3 +26,4 @@
 /vendor/plugins/tramlines_walls
 .DS_Store
 config.ru
+.eyrc
