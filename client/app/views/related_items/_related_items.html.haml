@@ -5,7 +5,11 @@
   -related_items.each do |related_item|
     %div{:class => "twocol #{related_item==related_items.last ? 'last' : ''}"}
       .item_image
-        =link_to image_or_photo_for(related_item, image_size), related_item
+        -if related_item.is_a?(Member) && related_item.fb_connected? && !related_item.has_image?
+          -width, height = get_img_size_options(image_size)
+          =link_to image_or_photo_for(related_item, width), related_item
+        -else
+          =link_to image_or_photo_for(related_item, image_size), related_item
       .item_info
         %h3
           =link_to related_item, related_item

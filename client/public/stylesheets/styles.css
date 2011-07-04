@@ -4051,8 +4051,9 @@ div.page_share {
 	line-height: 15px;	
 }
 #related_content .item_image {
-
 	margin: 0 0px 0 0;
+  height: 90px;
+  overflow: hidden;	
 }
 #related_content .item_image img {}
 #related_content .item_info {
