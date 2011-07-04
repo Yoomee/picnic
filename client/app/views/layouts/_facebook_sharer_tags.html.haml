@@ -1,0 +1,13 @@
+-default_description = "PICNIC is a gathering of friends old and new, where everyone brings something to the table. It is an annual three-day festival that blurs the lines between creativity, science, technology and business. People from diverse backgrounds come to exchange ideas and insight in an informal, social atmosphere."
+
+-if @page && @page.is_a?(Page) && !@page.new_record?
+  -image_url = @page.photo.try(:has_image?) ? @page.photo.image.process(:thumb, "200x").url : '/images/picnic_logo.png'
+  =facebook_sharer_tags(:title => @page.title, :description => strip_tags(@page.summary(200)), :image => image_url)
+-elsif current_section
+  -image_url = current_section.photo.try(:has_image?) ? current_section.photo.image.process(:thumb, "200x").url : '/images/picnic_logo.png'
+  =facebook_sharer_tags(:title => current_section.name, :description => current_section.description.blank? ? default_description : strip_tags(current_section.summary(200)), :image => image_url)
+-elsif @member && current_page?(member_path(@member))
+  -image_url = @member.has_image? ? @member.image.process(:thumb, "200x").url : '/images/picnic_logo.png'
+  =facebook_sharer_tags(:title => "#{@member.full_name} on PICNIC", :description => "I bring #{@member.what_i_bring}", :image => image_url)
+-else
+  =facebook_sharer_tags(:title => "PICNIC Network", :description => default_description, :image => '/images/picnic_logo.png')
