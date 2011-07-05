@@ -235,7 +235,13 @@
           =google_map(@member.location, :width => 380, :height => 200) unless @member.location.try(:unknown?)
       #member_badges
         -link_to(member_points_transfers_path(@member), :class => 'fancy points_link') do
-          %h3.profile_title="#{pluralize(@member.points, 'club point')}"
+          %h3.profile_title="#{forename_or_you(@member, 'has', :capitalize => true)} #{pluralize(@member.points, 'club point')}"
+        -if !@member.rank_this_month.nil?
+          =link_to("<strong>#{@member.rank_this_month.ordinalize}</strong> in this month's leaderboard", leaderboard_path, :class => "leaderboard")
+          -if !@member.rank.nil?
+            %br
+            =link_to("<strong>#{@member.rank.ordinalize}</strong> in the all time leaderboard", all_time_leaderboard_path, :class => 'leaderboard')
+        %h3#badges_title.profile_title="#{forename_or_you(@member, 'has', :capitalize => true)} #{pluralize(@member.badges.count, 'badge')}"
         %ul.lst
           -@member.badges.each do |badge|
             %li
