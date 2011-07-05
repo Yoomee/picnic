@@ -239,8 +239,8 @@
         %ul.lst
           -@member.badges.each do |badge|
             %li
-              =link_to_box(image_for(badge, "60x60"), info_badge_path(badge))
-              =link_to_box(badge, info_badge_path(badge))
+              =link_to_box(image_for(badge, "60x60", :alt => ""), info_badge_path(badge), :title => "")
+              =link_to_box(badge, info_badge_path(badge), :title => "")
   .twocol.last
     #member_links
 .row

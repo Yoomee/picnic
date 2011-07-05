@@ -1,0 +1,17 @@
+=javascript_tag(refresh_fb_dom)
+#badge_announcement_wrapper.badge_info_wrapper
+  #badge_announcements
+    .badge_announcement
+      =image_for(@badge, "120x120", :class => "badge_image")
+      .badge_info
+        %h3=@badge.name
+        .badge_description
+          =simple_format(@badge.description)
+        -if @badge.members.count > 1
+          .badge_members
+            =link_to("#{pluralize(@badge.members.count, 'other member')} have this badge", @badge, :class => "other_member_count")
+            %ul.lst
+              -@badge.members.random.limit(5).each do |member|
+                %li
+                  =link_to(image_for(member, "50x50#"), member, :class => "image_link")
+                  =link_to(member.forename, member, :class => "member_link")

@@ -4272,17 +4272,20 @@ p.show_the_hard_way {
   padding: 10px 0;
 }
 #badge_announcements {
-  height:  250px;  
+  height:  220px;
   width:   600px;  
   padding: 0;  
   margin:  0;
 }
 #badge_announcements .badge_announcement {
   padding: 20px;
-  height: 160px;
+  height: 200px;
   width: 560px;
   top:  0; 
   left: 0
+}
+.badge_info_wrapper #badge_announcements .badge_announcement {
+  height: 260px;
 }
 #badge_announcements .badge_announcement .badge_image {
   float: left;
@@ -4299,7 +4302,28 @@ p.show_the_hard_way {
 #badge_announcements .badge_announcement .badge_info .badge_description {
   font-size: 16px;
   overflow-y: auto;
-  height: 140px;
+  height: 100px;
+}
+#badge_announcements .badge_announcement .badge_members a.other_member_count {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 10px 0;
+  float: left;
+  clear: both;
+}
+#badge_announcements .badge_announcement .badge_members ul {
+  float: left;
+  clear: both;
+}
+#badge_announcements .badge_announcement .badge_members ul li {
+  float: left;
+  clear: none;
+  width: 60px;
+  margin-right: 5px;
+  text-align: center;
+}
+#badge_announcements .badge_announcement .badge_members ul li a {
+  display: block;
 }
 #badge_announcement_links {
   float: right;
@@ -4356,6 +4380,28 @@ body.controller_badges .badge_members {
   clear: both;
   margin-top: 20px;
 }
+#badge_members {
+  margin-top: 20px;
+}
+#badge_members li.member_item {
+  float: left;
+  clear: none;
+  text-align: center;
+  width: 60px;
+  height: 90px;
+  margin: 0 10px 10px 0;
+  overflow: hidden;
+}
+#badge_members li.member_item a {
+  float: none;
+  display: block;
+}
+#badge_members .pagination {
+  float: left;
+  clear: both;
+  margin-top: 10px;
+}
+
 /*====================== Newsnetwork home ====================*/
 
 .map_canvas a, .map_canvas span {
