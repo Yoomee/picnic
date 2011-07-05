@@ -3722,7 +3722,11 @@ a.backto {
   height: 150px;
 }
 #tag_member_grid_container #member_grid li {
-  width: 79px;
+  width: 49px;
+  height: 100px;
+}
+#tag_member_grid_container #member_grid {
+  margin-bottom: 20px;
 }
 #member_grid li.left_column {
   clear: left;
@@ -6691,7 +6695,7 @@ span.click_here_beta {
 	background: #53534D;
 	background:rgba(0, 0, 0, 0.8);
 	padding: 5px 8px;
-	color:#000;
+	color:#fff;
 	max-width: 150px;	
   -moz-border-radius:6px;
   -webkit-border-radius:6px;
@@ -6704,7 +6708,7 @@ span.click_here_beta {
 	font-size:12px;
 	line-height:12px;
 	font-weight: normal;
-	color:#000;
+	color:#fff;
 }
 
 /* ============================= */
