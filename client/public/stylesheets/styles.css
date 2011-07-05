@@ -6589,6 +6589,21 @@ span.click_here_beta {
   margin: 10px 0 20px 0;
 }
 
+/*========== Section Ordering ==========*/
+
+#orderable_page_sections li {
+  margin-bottom: 10px;
+  line-height: 22px;
+}
+#orderable_page_sections .drag_icon, #orderable_page_sections span {
+  float: left;
+}
+#orderable_page_sections .drag_icon {
+  margin-right: 5px;
+  cursor: move;
+}
+
+
 /* ============================= */
 /* ! Layout for mobile version   */
 /* ============================= */
