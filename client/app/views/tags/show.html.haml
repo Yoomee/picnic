@@ -49,6 +49,7 @@
   =render :partial => 'themes/trending'
   .fourcol
     %h1.tag=@tag
+    =render("subscriptions/link", :attachable => @tag)
     -if @tag.official?
       .tag_description
         =read_more_truncate(@tag.description, :length => 500)

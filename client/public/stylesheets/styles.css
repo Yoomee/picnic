@@ -6661,6 +6661,51 @@ span.click_here_beta {
   cursor: move;
 }
 
+/*========== Subscriptions ==========*/
+
+#subscribe_link a {
+  padding: 2px 5px;
+  font-size: 12px;
+}
+.controller_tags #subscribe_link {
+  float: left;
+  clear: both;
+  margin-bottom: 10px;
+}
+.controller_tags h1.tag {
+  margin-bottom: 0px;
+}
+.controller_members #subscribe_link {
+  float: right;
+  clear: none;
+}
+.profile_info h1.profile_title {
+  float: left;
+}
+
+/*========== Tooltips ==========*/
+
+#tooltip {
+	position: absolute;
+	z-index: 3000;
+	background: #53534D;
+	background:rgba(0, 0, 0, 0.8);
+	padding: 5px 8px;
+	color:#000;
+	max-width: 150px;	
+  -moz-border-radius:6px;
+  -webkit-border-radius:6px;
+  border-radius:6px;  
+}
+#tooltip h3, #tooltip div {
+  margin: 0;
+}
+#tooltip h3 {
+	font-size:12px;
+	line-height:12px;
+	font-weight: normal;
+	color:#000;
+}
 
 /* ============================= */
 /* ! Layout for mobile version   */

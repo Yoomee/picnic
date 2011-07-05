@@ -155,6 +155,7 @@
     .profile_info.subrow
       %h1.profile_title
         =@member.full_name
+      =render("subscriptions/link", :attachable => @member)
     -if logged_in_as?(@member) || !(@member.what_i_bring.blank? || @member.what_i_bring == '...')
       .what_i_bring.subrow
         %strong I bring

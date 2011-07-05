@@ -13,6 +13,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :urls
   map.resources :venues
 
+  map.resources :subscriptions, :only => [:create, :destroy]
+
   map.all_time_leaderboard "leaderboard/all_time", :controller => "leaderboard", :action => "all_time"
   map.browse '/browse', :controller => 'browse'
   map.close_beta_bar '/close_beta_bar', :controller => 'home', :action => 'close_beta_bar'

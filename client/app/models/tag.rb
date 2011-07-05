@@ -7,6 +7,9 @@ Tag.class_eval do
   
   attr_accessible :description, :image
 
+  has_many :subscription_items, :class_name => "Subscription", :as => :attachable, :dependent => :destroy
+  has_many :subscribers, :through => :subscription_items, :source => :member
+
   named_scope :top_member_tags,
     :select => "tags.*, COUNT(DISTINCT taggings.taggable_id) AS tag_count",
     :joins => "INNER JOIN taggings ON (taggings.tag_id = tags.id)",
