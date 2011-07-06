@@ -1,6 +1,6 @@
 Shout.class_eval do
 
-  after_create :trigger_points_event
+  after_create :trigger_points_event, :notify_subscribers
   after_destroy :trigger_reverse_points_event
 
   attr_boolean_accessor :themes_form_step, :delete_attachable
@@ -89,6 +89,14 @@ Shout.class_eval do
   
   def trigger_reverse_points_event(options = {})
     member.handle_points_event(:deleted_posted_shout, nil, options)
+  end
+  
+  private
+  def notify_subscribers
+    subscribers = Member.subscribed_to_tags(tags) + Member.subscribed_to_member(member)
+    subscribers.uniq.each do |subscriber|
+      subscriber.notifications.create(:attachable => self) unless subscriber.in?([member, recipient])
+    end
   end
   
 end
