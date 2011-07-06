@@ -6589,6 +6589,58 @@ span.click_here_beta {
   margin: 10px 0 20px 0;
 }
 
+
+/*========== Flipboard ==========*/
+#flipboard_strip {
+  height:580px;
+  overflow-x:hidden;
+  width:100%;
+  position:relative;
+}
+
+#flipboard_header, #flipboard_footer {
+  font-size:22px;
+  margin:2px 0px;
+}
+
+#flipboard {
+  height:580px;
+  width:3000px;
+  position:absolute;
+  top:0;
+  left:5px;
+}
+
+#flipboard .flipcol {
+  width:480px;
+  float:left;
+}
+#flipboard .flipsubcol {
+  width:240px;
+  float:left;
+}
+#flipboard .flip {
+  margin: 0 5px 5px 0;
+  background:black;
+}
+
+#flipboard .x1 {
+  width: 235px;
+  float:left;
+}
+#flipboard .x2 {
+  width: 475px;
+  float:left;
+  clear:both;
+}
+
+#flipboard .y1 {
+  height: 140px;
+}
+#flipboard .y2 {
+  height: 285px;
+}
+
 /* ============================= */
 /* ! Layout for mobile version   */
 /* ============================= */
@@ -6846,4 +6898,7 @@ ul#facelist-selections-themes.facelist-selections {
 	}*/
 
 }
+
+
+
 
