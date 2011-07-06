@@ -1,18 +1,34 @@
 -no_content_row
 -title @conference_session
 .row
-  .sixcol
-    %p=@conference_session.description
-  .fourcol.last
+  .sevencol
     %dl
       %dt Day
-      %dd=conference_day(@conference_session.starts_at)
+      %dd
+        =@conference_session.conference_day
+        =bracket(@conference_session.starts_at.strftime("%A %e %B"))
       %dt Time
       %dd=conference_session_time(@conference_session)
-      %dt Venue
-      %dd=link_to_self(@conference_session.venue)
+      -if @conference_session.venue
+        %dt Venue
+        %dd=link_to_self(@conference_session.venue)
+    %br.flcb
+    %br.flcb  
+    -if !@conference_session.tags.empty?
+      %h6.fl Themes
+      =render('themes/list', :tags => @conference_session.tags, :list_id => "conference_session_#{@conference_session.id}_themes")
+      %br.flcb  
+    =simple_format(@conference_session.description)
+    =render("members/grid", :members => @conference_session.members.alphabetically)
+  .fivecol.last
+    .call_to_action
+      =link_to "View the #{@conference_session.conference} programme", conference_programme_path(@conference_session.conference)
+    =image_for(@conference_session, '450x') if @conference_session.has_image?
+
 .row
   .twelvecol
     -options_panel do
+      =back_link
       =link_if_allowed "Edit session", edit_conference_session_proc(@conference_session)
       =link_if_allowed "Delete session", conference_session_proc(@conference_session), :method => :delete, :confirm => "Are you sure?"
+      =link_if_allowed "Duplicate session", duplicate_conference_session_proc(@conference_session)

@@ -5,13 +5,13 @@
         function(){
           if (!$(this).hasClass('hover')){
             $(this).addClass('hover');
-            $(this).animate({'width':189,'height':129}, 250, 'easeInOutCirc');
+            $(this).animate({'width':189,'height':129}, 0, 'easeInOutCirc');
           }
         },
         function(){
           if ($(this).hasClass('hover') && !$(this).hasClass('closing')){        
             $(this).addClass('closing');
-            $(this).animate({'width':69,'height':80},  250, 'easeInOutCirc', function(){
+            $(this).animate({'width':parseInt($(this).attr("data-width")),'height':parseInt($(this).attr("data-height"))},  0, 'easeInOutCirc', function(){
               $(this).removeClass('hover');
               $(this).removeClass('closing');
             });
@@ -20,23 +20,30 @@
       );  
     });
     var Programme = {
-      day: #{@date.day - 13},
+      day: #{@conference.day(@date)},
+      days: [#{@conference.days.collect{|d|d.strftime("\'%A %e %B\'")}.join(',')}],
       scroll: function(forward) {
-        if (forward && (Programme.day < 3)){
+        if (forward && (Programme.day < #{@conference.days.count})){
           Programme.scrollTo(Programme.day + 1);
         } else if (!forward && (Programme.day > 1)) {
           Programme.scrollTo(Programme.day - 1);
         }
       },
       scrollTo: function(day) {
-        if ((day > 0) && (day < 4) && (day != Programme.day) ) {
-          $('#active_border').animate({'left':(day - 1) * 293}, 1000, 'easeInOutCirc');
-          $('#timetable_inner').animate({'left':(1 - day)*880}, 1000, 'easeInOutCirc');
+        if ((day > 0) && (day < #{@conference.days.count + 1}) && (day != Programme.day) ) {
+          var showDirection = (day > Programme.day) ? 'right' : 'left';
+          var hideDirection = (day < Programme.day) ? 'right' : 'left';
+          
+          $('#timetable_day_'+Programme.day).hide('slide', {direction: hideDirection}, 1000);
+          $('#timetable_day_'+day).show('slide', {direction: showDirection}, 700);
+          
           switch(day){
             case 1:$('#go_back_link').fadeOut(  'slow');break;
-            case 2:$('#go_back_link:hidden').fadeIn('slow');$('#go_forward_link:hidden').fadeIn('slow');break;
-            case 3:$('#go_forward_link').fadeOut('slow');break;
+            case #{@conference.days.count}:$('#go_forward_link').fadeOut('slow');break;
+            default:$('#go_back_link:hidden').fadeIn('slow');$('#go_forward_link:hidden').fadeIn('slow');break;
           }
+          $('#prog_header .day h1').html('Day '+day);
+          $('#prog_header .day p').html(Programme.days[day-1]);
           Programme.day = day;
         }
       }
@@ -44,35 +51,54 @@
     
 -no_content_row
 -title "Programme", :hidden => true
+#prog_container
+  .row
+    .twelvecol
+      #prog_header.fl
+        .day.fl
+          %h1="Day #{@conference.day(@date)}"
+          %p=@date.strftime("%A %e %B")
+        .controls.fr
+          =link_to_function("<","Programme.scroll(false)", :id => "go_back_link", :class=>"fl", :style => "display:#{@conference.day(@date) > 1 ? 'block' : 'none'}")
+          =link_to_function(">","Programme.scroll(true)", :id => "go_forward_link", :class=>"fr", :style => "display:#{@conference.day(@date) < @conference.days.count ? 'block' : 'none'}")
+      #prog_hours
+        .hours
+          -(9..19).each do |hour|
+            .hour="%02d:00" % hour
+      #prog_wrapper
+        #venues_col
+          -@venues.each do |venue|
+            .venue_row=link_to_self(venue)
+        #timetable_col
+          -@conference.days.each_with_index do |day, idx|
+            .timetable{:id => "timetable_day_#{idx+1}", :style => "display:#{@date == day ? 'block' : 'none'}"}
+              -@venues.each do |venue|
+                -sessions_by_hour = venue.sessions.on_date(day).group_by{|s|s.starts_at.hour}
+                .prog_row
+                  -sessions_by_hour.each do |hour, sessions|
+                    -height = (90.0/sessions.size).to_i - 10
+                    -offset = (90.0/sessions.size).to_i
+                    -sessions.each_with_index do |session, idx|
+                      -width = (session.duration_in_whole_hours * 80) - 11
+                      -link_to(session, :class => 'session', :style => "left:#{(hour - 9)*80}px;top:#{(idx*offset)-1}px;height:#{height}px;width:#{width}px", "data-height" => height, "data-width" => width) do
+                        .title=session
+                        .details
+                          ="#{session.starts_at.strftime("%H:%M")} - #{session.ends_at.strftime("%H:%M")}"
+                          %br
+                          =session.description.word_truncate(150)
 .row
   .twelvecol
-    #prog_days
-      -(Date.parse("2011-09-14")..Date.parse("2011-09-16")).each do |date|
-        =link_to_function(date.strftime("%A %e %B"), "Programme.scrollTo(#{date.day - 13})", :class =>"prog_day")
-      #active_border{:style => "left:#{(@date.day-14)*333}px;"}
-    #prog_wrapper
-      -#.arrow=link_to_function("<", "Programme.scroll(false)", :id => "go_back_link", :style => "display:#{@date.day < 15 ? 'none' : 'block'}")
-      #venues_col
-        -@venues.each do |venue|
-          .venue_row=link_to_self(venue)
-      #timetable_outer
-        #timetable_inner{:style => "left:#{(14-@date.day)*880}px;"}
-          -(Date.parse("2011-09-14")..Date.parse("2011-09-16")).each do |date|
-            .timetable{:id => "timetable_#{date.day}"}
-              .hours
-                -(9..19).each do |hour|
-                  .hour="%02d:00" % hour
-              -@venues.each do |venue|
-                -sessions = venue.sessions.on_date(date)
-                .prog_row
-                  -sessions.each do |session|
-                    -link_to(session, :class => 'session', :style => "left:#{(session.starts_at.hour - 9)*80}px") do
-                      .title=session
-                      .details
-                        ="Time: #{conference_session_time(session)}<br/>"
-                        ="Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus."
-                        
-      -#.arrow=link_to_function(">", "Programme.scroll(true)", :id => "go_forward_link", :style => "display:#{@date.day > 15 ? 'none' : 'block'}")
+  -options_panel do
+    =back_link
+    =link_if_allowed "Edit conference", edit_conference_proc(@conference)
+    =link_if_allowed "Delete conference", conference_proc(@conference), :method => :delete, :confirm => "Are you sure? All the events at this conference will be deleted."
+    =link_if_allowed "New session at this conference", new_conference_conference_session_proc(@conference)
+    
+  
+  
+  
+  
+  
       
 
   

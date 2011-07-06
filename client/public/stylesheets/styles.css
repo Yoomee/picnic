@@ -2254,7 +2254,12 @@ h3.profile_title {
   text-align: center;
   width: 60px;
   margin-right: 10px;
-  font-size: 12px;  
+  font-size: 12px;
+  overflow: hidden;
+}
+#member_badges li a {
+  display: block;
+  float: none;
 }
 .profile_photo img {}
 
@@ -3717,7 +3722,11 @@ a.backto {
   height: 150px;
 }
 #tag_member_grid_container #member_grid li {
-  width: 79px;
+  width: 49px;
+  height: 100px;
+}
+#tag_member_grid_container #member_grid {
+  margin-bottom: 20px;
 }
 #member_grid li.left_column {
   clear: left;
@@ -4051,8 +4060,9 @@ div.page_share {
 	line-height: 15px;	
 }
 #related_content .item_image {
-
 	margin: 0 0px 0 0;
+  height: 90px;
+  overflow: hidden;	
 }
 #related_content .item_image img {}
 #related_content .item_info {
@@ -4271,17 +4281,20 @@ p.show_the_hard_way {
   padding: 10px 0;
 }
 #badge_announcements {
-  height:  250px;  
+  height:  220px;
   width:   600px;  
   padding: 0;  
   margin:  0;
 }
 #badge_announcements .badge_announcement {
   padding: 20px;
-  height: 160px;
+  height: 200px;
   width: 560px;
   top:  0; 
   left: 0
+}
+.badge_info_wrapper #badge_announcements .badge_announcement {
+  height: 260px;
 }
 #badge_announcements .badge_announcement .badge_image {
   float: left;
@@ -4298,7 +4311,28 @@ p.show_the_hard_way {
 #badge_announcements .badge_announcement .badge_info .badge_description {
   font-size: 16px;
   overflow-y: auto;
-  height: 140px;
+  height: 100px;
+}
+#badge_announcements .badge_announcement .badge_members a.other_member_count {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 10px 0;
+  float: left;
+  clear: both;
+}
+#badge_announcements .badge_announcement .badge_members ul {
+  float: left;
+  clear: both;
+}
+#badge_announcements .badge_announcement .badge_members ul li {
+  float: left;
+  clear: none;
+  width: 60px;
+  margin-right: 5px;
+  text-align: center;
+}
+#badge_announcements .badge_announcement .badge_members ul li a {
+  display: block;
 }
 #badge_announcement_links {
   float: right;
@@ -4355,6 +4389,28 @@ body.controller_badges .badge_members {
   clear: both;
   margin-top: 20px;
 }
+#badge_members {
+  margin-top: 20px;
+}
+#badge_members li.member_item {
+  float: left;
+  clear: none;
+  text-align: center;
+  width: 60px;
+  height: 90px;
+  margin: 0 10px 10px 0;
+  overflow: hidden;
+}
+#badge_members li.member_item a {
+  float: none;
+  display: block;
+}
+#badge_members .pagination {
+  float: left;
+  clear: both;
+  margin-top: 10px;
+}
+
 /*====================== Newsnetwork home ====================*/
 
 .map_canvas a, .map_canvas span {
@@ -4397,63 +4453,8 @@ body.controller_badges .badge_members {
 
 
 /*========== Programme ==========*/
-
-#prog_days {
-  width:880px;
-  margin-left: 120px;
-  position:relative;
-}
-#prog_days .prog_day{
-  width:293px;
-  float:left;
-  padding:5px 0px 3px;
-  text-align:center;
-  font-size:14px;
-  color:black;
-}
-#prog_days #active_border{
-  border:2px solid #000;
-  border-bottom:none;
-  width:294px;
-  position:absolute;
-  height:42px;
-  top:0px;
-  left:0px;
-  
-	-moz-border-radius-topleft:3px;
-  -moz-border-radius-topright:3px;
-  -webkit-border-top-right-radius:3px;
-  -webkit-border-top-left-radius:3px;
-  border-top-right-radius:3px;
-  border-top-left-radius:3px;
-}
-
-
-#prog_wrapper {
-  clear:both;
-  float:left;
-  margin-bottom:40px;
-}
-
-#prog_wrapper .arrow {
-  width:66px;
-  float:left;
-  text-align:center;
-  height:600px;
-  
-}
-
-#prog_wrapper .arrow a {
-  font-size:46px;
-  width:100%;
-  color:#ccc;
-  padding-top:200px;
-  height:400px;
-  float:left;
-}
-#prog_wrapper .arrow a:hover {
-  text-decoration:none;
-  color:#333;
+#prog_container .row {
+  overflow-x:auto;
 }
 
 
@@ -4466,78 +4467,16 @@ body.controller_badges .badge_members {
   height:90px;
   
 }
-
-#venues_col  {
-  width:120px;
-  float:left;
-  margin-top:22px;
-  border-top:1px solid #CCC;
-  height:581px;
-}
-
-#venues_col .venue_row {
-  border-bottom:1px solid #CCC;
-  font-size:16px;
-  float:left;
-  clear:both;
-  height:80px;
-  width:115px;
-  padding:5px 5px 5px 0px;
-  overflow: hidden;
-}
-
 #venues_col a {
   color:#000000;
 }
 
-#timetable_outer {
-  border:2px solid #000;
-  float:left;
-  width:880px;
-  height:600px;
-  top:0px;
-  left:0px;
-  overflow-y:auto;
-  overflow-x:hidden;
-  
-  position:relative;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
 
-}
-#timetable_inner {
-  position:absolute;
-  width:3000px;
-  float:left;  
-}
-
-.timetable {
-  float:left;
-  width:880px;
-  background:url(/images/timetable.png) repeat-y -120px 0;
-  height:600px;
-}
 
 .timetable a{
   color: #000;
 }
 
-
-.timetable .hours {
-  border-bottom:1px solid #CCC;
-  float:left;
-}
-.timetable .hours .hour {
-  border-color:#000;
-  float:left;
-  height:20px;
-  font-size: 14px;
-  color:#fff;
-  background: #000;
-  padding-left:2px;
-  width:78px;
-}
 
 
 .timetable .session {
@@ -4545,6 +4484,7 @@ body.controller_badges .badge_members {
   height:80px;
   float:left;
   border-left:1px solid #CCC;
+  border-top:1px solid #CCC;
   border-right:1px solid #CCC;
   position:absolute;
   padding:5px;
@@ -4553,6 +4493,9 @@ body.controller_badges .badge_members {
   background-color:#FCFCFC;
 }
 
+.timetable .session .title {
+/*  white-space:nowrap;
+*/}
 .timetable .session .details {
   display:none;
   width:189px;
@@ -4581,10 +4524,135 @@ body.controller_badges .badge_members {
 }
 
 
+.multiple_nested_inputs .remove_link {
+  clear:none;
+  margin-left:10px;
+}
 
+#conference_sessions_member_inputs fieldset, #conference_sessions_member_inputs fieldset select{
+  margin-bottom:0;
+}
 
+/*========== New programme ==========*/
+#prog_header {
+  width:1004px;
+  padding-top:20px;
+}
+#prog_header .day{
+}
+
+#prog_header .day h1{
+  line-height:25px;
+  margin-bottom:5px;
+}
+#prog_header .day p{
+  font-size:14px;
+  line-height:14px;
+}
+#prog_header .controls {
+  margin-top:7px;
+  width:90px;
+}
+#prog_header .controls a{
+  font-size:22px;
+  color:#000;
+  padding:0px 11px 2px;
+  border:2px solid #000;
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px;
+  border-radius:3px;
+}
+#prog_header .controls a:hover{
+  text-decoration:none;
+  background-color:#EFEFEF;
+}
+#prog_wrapper {
+  clear:both;
+  float:left;
+  margin-bottom:0px;
+  border:2px solid #000;
+  -webkit-border-bottom-left-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+#venues_col  {
+  width:118px;
+  float:left;
+  border-right:2px solid #000;
+}
+#venues_col .venue_row {
+  border-bottom:1px solid #CCC;
+  font-size:16px;
+  float:left;
+  clear:both;
+  height:80px;
+  width:108px;
+  padding:5px;
+  overflow: hidden;
+}
+
+#timetable_col {
+  float:left;
+  width:880px;
+  top:0px;
+  left:0px;
+  overflow-x:hidden;
+}
+
+.timetable {
+  float:left;
+  width:880px;
+  background:url(/images/timetable.png) repeat-y -120px 0;
+  position:absolute;
+}
+
+#prog_hours {
+  float:left;
+  clear:both;
+  width:1000px;
+  background:#000;
+  border:2px solid black;
+  border-bottom:0;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-top-right-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-topright: 3px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+#prog_hours .hours {
+/*  background:url(/images/timetable.png) repeat-y -120px 0;*/
+  float:right;
+  clear:both;
+  color:#fff;
+}
+#prog_hours .hours .hour {
+  float:left;
+  height:20px;
+  font-size: 14px;
+  padding-left:2px;
+  width:78px;
+}
 
 /*========== Session show ==========*/
+.controller_conference_sessions .call_to_action, .controller_conferences .call_to_action {
+  margin:0;
+  border:none;
+}
+
+.controller_conference_sessions ul.themes_list {
+  float:left;
+  margin-left:10px;
+}
+
+.controller_conference_sessions ul.themes_list li{
+  float: left;
+  clear: none;
+  margin-right: 10px;
+}
 
 dt {
   float:left;
@@ -4597,6 +4665,28 @@ dt {
   float:left;
 }
 
+form.conference_session ul.facelist-selections{
+  -webkit-box-shadow:none;
+  -moz-box-shadow:none;
+  border-top-width:1px;
+  width:400px;
+  
+  border: 1px solid #CCC;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  
+  
+}
+
+form.conference_session ul.facelist-selections input{
+  margin:0;
+}
+
+
+form.conference_session ul.facelist-selections li{
+  margin:3px;
+}
 /*========== Shouts ==========*/
 #no_posts
  {
@@ -6300,11 +6390,12 @@ a.find_someone_photo {
   float: right;
   width: 40%;
 }
-#fancybox-inner #points_transfers {
-  float: left;
-}
 #points_transfers {
   width: 95%;
+}
+#fancybox-inner #points_transfers {
+  float: left;
+  width: 320px;
 }
 #points_transfers li.points_transfer {
   border-bottom: 1px solid #ccc;
@@ -6316,6 +6407,7 @@ a.find_someone_photo {
   font-size: 16px;  
   color: #393939;
   float:left;
+  width: 100%;
 }
 #points_transfers li a.points_transfer_link:hover {
   text-decoration: none;
@@ -6359,7 +6451,12 @@ a.find_someone_photo {
   float:left;
   margin-top:5px;
 }
-
+#member_badges .points_link h3 {
+  margin-bottom: 5px;
+}
+#member_badges #badges_title {
+  margin-top: 20px;
+}
 
 /*========== DElegates ==========*/
 table#delegates {
@@ -6552,6 +6649,66 @@ span.click_here_beta {
 .controller_enquiries .fieldValue {
   float: left;
   margin: 10px 0 20px 0;
+}
+
+/*========== Section Ordering ==========*/
+
+#orderable_page_sections li {
+  margin-bottom: 10px;
+  line-height: 22px;
+}
+#orderable_page_sections .drag_icon, #orderable_page_sections span {
+  float: left;
+}
+#orderable_page_sections .drag_icon {
+  margin-right: 5px;
+  cursor: move;
+}
+
+/*========== Subscriptions ==========*/
+
+#subscribe_link a {
+  padding: 2px 5px;
+  font-size: 12px;
+}
+.controller_tags #subscribe_link {
+  float: left;
+  clear: both;
+  margin-bottom: 10px;
+}
+.controller_tags h1.tag {
+  margin-bottom: 0px;
+}
+.controller_members #subscribe_link {
+  float: right;
+  clear: none;
+}
+.profile_info h1.profile_title {
+  float: left;
+}
+
+/*========== Tooltips ==========*/
+
+#tooltip {
+	position: absolute;
+	z-index: 3000;
+	background: #53534D;
+	background:rgba(0, 0, 0, 0.8);
+	padding: 5px 8px;
+	color:#fff;
+	max-width: 150px;	
+  -moz-border-radius:6px;
+  -webkit-border-radius:6px;
+  border-radius:6px;  
+}
+#tooltip h3, #tooltip div {
+  margin: 0;
+}
+#tooltip h3 {
+	font-size:12px;
+	line-height:12px;
+	font-weight: normal;
+	color:#fff;
 }
 
 /* ============================= */

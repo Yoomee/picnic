@@ -13,5 +13,8 @@
       =form.input :password, :as => :password
       =form.input :password_confirmation, :as => :password, :input_html => {:size => 25}
       =form.input :no_notification_emails, :label => "Don't send me email notifications"
+      -if admin_logged_in?
+        =form.input :no_friend_requests, :label => "Don't let people sit on my blanket"
+        =form.input :no_wall_posts_from_others, :label => "Don't let people post on my profile"
     - form.buttons do
       = form.commit_button

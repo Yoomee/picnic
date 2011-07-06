@@ -1,0 +1,20 @@
+-title "Conference"
+-if @conferences.empty?
+  %p.intro
+    There are no conferences currently on the system. Click
+    =link_to 'here', new_conference_path
+    to create one.
+-else
+  %p.intro
+    The following conferences are on the system. Click one to view more details.
+  %br.clear
+  %ul.lst
+    -@conferences.each do |conference|
+      %li
+        =link_to_self conference
+        -bracket do
+          -separate_links do
+            =link_if_allowed('Edit', edit_conference_proc(conference))
+            =link_if_allowed('Delete', conference_proc(conference), :method => :delete, :confirm => "Are you sure you want to do this? All sessions at the")
+-options_panel do
+  =link_if_allowed 'New conference', new_conference_proc

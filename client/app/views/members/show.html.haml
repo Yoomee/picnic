@@ -155,6 +155,7 @@
     .profile_info.subrow
       %h1.profile_title
         =@member.full_name
+      =render("subscriptions/link", :attachable => @member)
     -if logged_in_as?(@member) || !(@member.what_i_bring.blank? || @member.what_i_bring == '...')
       .what_i_bring.subrow
         %strong I bring
@@ -235,12 +236,18 @@
           =google_map(@member.location, :width => 380, :height => 200) unless @member.location.try(:unknown?)
       #member_badges
         -link_to(member_points_transfers_path(@member), :class => 'fancy points_link') do
-          %h3.profile_title="#{pluralize(@member.points, 'club point')}"
+          %h3.profile_title="#{forename_or_you(@member, 'has', :capitalize => true)} #{pluralize(@member.points, 'club point')}"
+        -if !@member.rank_this_month.nil?
+          =link_to("<strong>#{@member.rank_this_month.ordinalize}</strong> in this month's leaderboard", leaderboard_path, :class => "leaderboard")
+          -if !@member.rank.nil?
+            %br
+            =link_to("<strong>#{@member.rank.ordinalize}</strong> in the all time leaderboard", all_time_leaderboard_path, :class => 'leaderboard')
+        %h3#badges_title.profile_title="#{forename_or_you(@member, 'has', :capitalize => true)} #{pluralize(@member.badges.count, 'badge')}"
         %ul.lst
           -@member.badges.each do |badge|
             %li
-              =link_to_box(image_for(badge, "60x60"), info_badge_path(badge))
-              =link_to_box(badge, info_badge_path(badge))
+              =link_to_box(image_for(badge, "60x60", :alt => ""), info_badge_path(badge), :title => "")
+              =link_to_box(badge, info_badge_path(badge), :title => "")
   .twocol.last
     #member_links
 .row
@@ -260,9 +267,9 @@
     #posts_header
       %h3.profile_title.fl="#{forename_or_your(@member, :capitalize => true)} posts"
       .fr.post_to_wall
-        -if @member == logged_in_member
+        -if logged_in_as?(@member)
           =link_to_box("Post something", new_shout_path, :class => "bttn_l new_comment_link", :scrolling => false) 
-        -elsif logged_in_member
+        -elsif logged_in? && !@member.no_wall_posts_from_others?
           =link_to_box("Post something", new_shout_path(:shout => {:recipient_id => @member.id, :recipient_type => 'Member'}), :class => 'bttn_l new_comment_link', :scrolling => false)
     .stories_filter 
       =image_tag 'ajax_loader_squares.gif', :id => 'filter_loader', :style => "display:none"

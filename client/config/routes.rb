@@ -1,12 +1,19 @@
 ActionController::Routing::Routes.draw do |map|
   
-  map.resource :programme
 
   map.resources :conference_delegates, :only => [:index]
-  map.resources :conference_sessions
+  
+  map.resources :conferences do |conf|
+    conf.resources :conference_sessions, :as => 'sessions', :only => [:show, :new]
+    conf.resource :programme, :only => [:show]
+  end
+  map.resources :conference_sessions, :only => [:create, :edit, :destroy, :show, :update], :member => {:duplicate => :get}
+  
   map.resources :tags, :as => "themes", :collection => {:autocomplete => :get}, :member => {:people => :get}
   map.resources :urls
   map.resources :venues
+
+  map.resources :subscriptions, :only => [:create, :destroy]
 
   map.all_time_leaderboard "leaderboard/all_time", :controller => "leaderboard", :action => "all_time"
   map.browse '/browse', :controller => 'browse'

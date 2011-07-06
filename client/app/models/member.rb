@@ -23,6 +23,13 @@ Member.class_eval do
   has_location
   has_many :urls, :as => :attachable
   has_one :conference_delegate, :autosave => true
+  
+  has_many :conference_sessions_members
+  has_many :conference_sessions, :through => :conference_sessions_members
+
+  has_many :subscriptions, :dependent => :destroy
+  has_many :subscription_items, :class_name => "Subscription", :as => :attachable, :dependent => :destroy
+  has_many :subscribers, :through => :subscription_items, :source => :member
 
   named_scope :with_what_i_bring, :conditions => "what_i_bring > '' AND what_i_bring <> '...'"
   named_scope :with_theme_tag, lambda{|tag| {:joins => "INNER JOIN shouts ON shouts.member_id=members.id INNER JOIN taggings ON taggings.taggable_id=shouts.id", :conditions => ["taggings.taggable_type='Shout' AND taggings.tag_id=?", tag.id], :group => "members.id"}}
@@ -86,6 +93,10 @@ Member.class_eval do
     skip_news_feed_without_field_blacklist || changed.all? {|attr| attr.in?(Member::NEWS_FEED_FIELD_BLACKLIST)}
   end
   alias_method_chain :skip_news_feed, :field_blacklist
+  
+  def subscription_for(attachable)
+    subscriptions.find_by_attachable_type_and_attachable_id(attachable.class.to_s, attachable.id)
+  end
 
   def tags_with_other_members
     tags.select {|tag| Member.tagged_with(tag.name).size > 1}
