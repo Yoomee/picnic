@@ -2254,7 +2254,12 @@ h3.profile_title {
   text-align: center;
   width: 60px;
   margin-right: 10px;
-  font-size: 12px;  
+  font-size: 12px;
+  overflow: hidden;
+}
+#member_badges li a {
+  display: block;
+  float: none;
 }
 .profile_photo img {}
 
@@ -3717,7 +3722,11 @@ a.backto {
   height: 150px;
 }
 #tag_member_grid_container #member_grid li {
-  width: 79px;
+  width: 49px;
+  height: 100px;
+}
+#tag_member_grid_container #member_grid {
+  margin-bottom: 20px;
 }
 #member_grid li.left_column {
   clear: left;
@@ -4272,17 +4281,20 @@ p.show_the_hard_way {
   padding: 10px 0;
 }
 #badge_announcements {
-  height:  250px;  
+  height:  220px;
   width:   600px;  
   padding: 0;  
   margin:  0;
 }
 #badge_announcements .badge_announcement {
   padding: 20px;
-  height: 160px;
+  height: 200px;
   width: 560px;
   top:  0; 
   left: 0
+}
+.badge_info_wrapper #badge_announcements .badge_announcement {
+  height: 260px;
 }
 #badge_announcements .badge_announcement .badge_image {
   float: left;
@@ -4299,7 +4311,28 @@ p.show_the_hard_way {
 #badge_announcements .badge_announcement .badge_info .badge_description {
   font-size: 16px;
   overflow-y: auto;
-  height: 140px;
+  height: 100px;
+}
+#badge_announcements .badge_announcement .badge_members a.other_member_count {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 10px 0;
+  float: left;
+  clear: both;
+}
+#badge_announcements .badge_announcement .badge_members ul {
+  float: left;
+  clear: both;
+}
+#badge_announcements .badge_announcement .badge_members ul li {
+  float: left;
+  clear: none;
+  width: 60px;
+  margin-right: 5px;
+  text-align: center;
+}
+#badge_announcements .badge_announcement .badge_members ul li a {
+  display: block;
 }
 #badge_announcement_links {
   float: right;
@@ -4356,6 +4389,28 @@ body.controller_badges .badge_members {
   clear: both;
   margin-top: 20px;
 }
+#badge_members {
+  margin-top: 20px;
+}
+#badge_members li.member_item {
+  float: left;
+  clear: none;
+  text-align: center;
+  width: 60px;
+  height: 90px;
+  margin: 0 10px 10px 0;
+  overflow: hidden;
+}
+#badge_members li.member_item a {
+  float: none;
+  display: block;
+}
+#badge_members .pagination {
+  float: left;
+  clear: both;
+  margin-top: 10px;
+}
+
 /*====================== Newsnetwork home ====================*/
 
 .map_canvas a, .map_canvas span {
@@ -6335,11 +6390,12 @@ a.find_someone_photo {
   float: right;
   width: 40%;
 }
-#fancybox-inner #points_transfers {
-  float: left;
-}
 #points_transfers {
   width: 95%;
+}
+#fancybox-inner #points_transfers {
+  float: left;
+  width: 320px;
 }
 #points_transfers li.points_transfer {
   border-bottom: 1px solid #ccc;
@@ -6351,6 +6407,7 @@ a.find_someone_photo {
   font-size: 16px;  
   color: #393939;
   float:left;
+  width: 100%;
 }
 #points_transfers li a.points_transfer_link:hover {
   text-decoration: none;
@@ -6394,7 +6451,12 @@ a.find_someone_photo {
   float:left;
   margin-top:5px;
 }
-
+#member_badges .points_link h3 {
+  margin-bottom: 5px;
+}
+#member_badges #badges_title {
+  margin-top: 20px;
+}
 
 /*========== DElegates ==========*/
 table#delegates {
@@ -6589,7 +6651,6 @@ span.click_here_beta {
   margin: 10px 0 20px 0;
 }
 
-
 /*========== Flipboard ==========*/
 #flipboard_strip {
   height:580px;
@@ -6639,6 +6700,65 @@ span.click_here_beta {
 }
 #flipboard .y2 {
   height: 285px;
+
+/*========== Section Ordering ==========*/
+
+#orderable_page_sections li {
+  margin-bottom: 10px;
+  line-height: 22px;
+}
+#orderable_page_sections .drag_icon, #orderable_page_sections span {
+  float: left;
+}
+#orderable_page_sections .drag_icon {
+  margin-right: 5px;
+  cursor: move;
+}
+
+/*========== Subscriptions ==========*/
+
+#subscribe_link a {
+  padding: 2px 5px;
+  font-size: 12px;
+}
+.controller_tags #subscribe_link {
+  float: left;
+  clear: both;
+  margin-bottom: 10px;
+}
+.controller_tags h1.tag {
+  margin-bottom: 0px;
+}
+.controller_members #subscribe_link {
+  float: right;
+  clear: none;
+}
+.profile_info h1.profile_title {
+  float: left;
+}
+
+/*========== Tooltips ==========*/
+
+#tooltip {
+	position: absolute;
+	z-index: 3000;
+	background: #53534D;
+	background:rgba(0, 0, 0, 0.8);
+	padding: 5px 8px;
+	color:#fff;
+	max-width: 150px;	
+  -moz-border-radius:6px;
+  -webkit-border-radius:6px;
+  border-radius:6px;  
+}
+#tooltip h3, #tooltip div {
+  margin: 0;
+}
+#tooltip h3 {
+	font-size:12px;
+	line-height:12px;
+	font-weight: normal;
+	color:#fff;
 }
 
 /* ============================= */
