@@ -6734,11 +6734,18 @@ span.click_here_beta {
   position:absolute;
   bottom:0;
   width:120px;
-  padding:5px 10px;
+  padding:10px;
   background:#383838;
   background:rgba(0,0,0,0.85);
   color:#fff;
 }
+
+#flipboard .x1 .hover { width:215px;}
+#flipboard .x2 .hover { width:455px;}
+#flipboard .y1 .hover { height:120px;}
+#flipboard .y2 .hover { height:265px;}
+#flipboard .y3 .hover { height:410px;}
+
 /*========== Section Ordering ==========*/
 
 #orderable_page_sections li {
