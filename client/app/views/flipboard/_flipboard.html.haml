@@ -1,6 +1,10 @@
+=javascript_include_tag('client/jquery.hotkeys')
+
 :javascript
   var Flipboard = {
     timer: null,
+    scrolling: 0,
+    direction: 1,
     startScroll: function(){
       Flipboard.timer = setInterval("Flipboard.scroll()",55);
     },
@@ -8,19 +12,32 @@
       clearInterval(Flipboard.timer);
     },
     scroll: function(){
-      console.log('Scrolling');
-      $('#flipboard').css('left', $('#flipboard').position().left -1);
+      $('#flipboard').css('left', $('#flipboard').position().left - Flipboard.direction);
+    },
+    scrollJump: function(right){
+      if(!Flipboard.scrolling){
+        Flipboard.scrolling = 1;
+        Flipboard.stopScroll()
+        $('#flipboard').animate({'left':(right ? '-' : '+') + '=240'}, 600, function(){
+          Flipboard.scrolling = 0;
+          Flipboard.direction = (right ? 1 : -1);
+          Flipboard.startScroll();
+        });
+      }
     }
   };
   $(document).ready(function() {
     window.location.hash = "header"
+    $('body').bind('keydown','right',function(){Flipboard.scrollJump(1);});
+    $('body').bind('keydown','left',function(){Flipboard.scrollJump(0);});
+    setTimeout("Flipboard.startScroll()",2000);
   });
 
 :ruby
   @flipcols = [
     [
-      {:flip_item => @pages_sections[0], :x => 2, :y =>1},
-      {:flip_item => @pages_sections[0], :x => 2, :y =>2}            
+      {:flipitem => @pages_sections[0], :x => 2, :y =>1, :flip_partial => "page_title"},
+      {:flipitem => @pages_sections[0], :x => 2, :y =>2}            
     ]
   ]
   
@@ -38,7 +55,7 @@
       -@flipcols.each do |flipcol_flips|
         .flipcol
           -flipcol_flips.each do |flip_params|
-            =render('flipboard/flip', flip_params)
+            =render('flipboard/flip', flip_params.reverse_merge(:flip_partial => nil))
           .flip.x1.y1
           .flip.x1.y1
       .flipcol

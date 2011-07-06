@@ -6683,16 +6683,19 @@ span.click_here_beta {
 #flipboard .flip {
   margin: 0 5px 5px 0;
   background:black;
+  color:#fff;
+  float:left;
+}
+
+#flipboard h1 {
+  color:#fff;
 }
 
 #flipboard .x1 {
   width: 235px;
-  float:left;
 }
 #flipboard .x2 {
   width: 475px;
-  float:left;
-  clear:both;
 }
 
 #flipboard .y1 {
@@ -6700,7 +6703,11 @@ span.click_here_beta {
 }
 #flipboard .y2 {
   height: 285px;
-
+}
+#flipboard .padding {
+  padding:10px;
+  float:left;
+}
 /*========== Section Ordering ==========*/
 
 #orderable_page_sections li {
