@@ -33,6 +33,8 @@ Member.class_eval do
 
   named_scope :with_what_i_bring, :conditions => "what_i_bring > '' AND what_i_bring <> '...'"
   named_scope :with_theme_tag, lambda{|tag| {:joins => "INNER JOIN shouts ON shouts.member_id=members.id INNER JOIN taggings ON taggings.taggable_id=shouts.id", :conditions => ["taggings.taggable_type='Shout' AND taggings.tag_id=?", tag.id], :group => "members.id"}}
+  named_scope :subscribed_to_tags, lambda{|tags| {:joins => :subscriptions, :conditions => ["(subscriptions.attachable_type = 'Tag' OR subscriptions.attachable_type = 'ActsAsTaggableOn::Tag') AND subscriptions.attachable_id IN (?)", tags.collect(&:id)], :group => "members.id"}}
+  named_scope :subscribed_to_member, lambda{|member| {:joins => :subscriptions, :conditions => ["subscriptions.attachable_type = 'Member' AND subscriptions.attachable_id = ?", member.id], :group => "members.id"}}
   
   validates_presence_of :email, :unless => :allow_username_instead_of_email?
   
@@ -96,6 +98,10 @@ Member.class_eval do
   
   def subscription_for(attachable)
     subscriptions.find_by_attachable_type_and_attachable_id(attachable.class.to_s, attachable.id)
+  end
+
+  def tags_subscribed_to
+    subscriptions.attachable_type_is('Tag').collect(&:attachable)
   end
 
   def tags_with_other_members

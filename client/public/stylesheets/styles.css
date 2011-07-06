@@ -5954,6 +5954,7 @@ p.no_messages_yet {
 }
 #notifications .notification .notification_content {
 	float: left;
+	width: 80%;
 }
 #notifications .notification .delete_link {
 	float: right;
@@ -5973,7 +5974,12 @@ p.no_messages_yet {
 .notification_content .friend_request_links a {
   float: left;
 }
-
+.notification_content .tag {
+  float: none;
+  display: inline;
+  margin-left: 5px;
+  padding: 2px 5px;  
+}
 /* ========= Search Results =========== */
 
 #search_submit {

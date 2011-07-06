@@ -6,7 +6,7 @@
     $(document).ready(function() {
       $('#subscribe_link a').tooltip();
     });
-  -if logged_in?
+  -if logged_in? && logged_in_member != attachable
     -if subscription = logged_in_member.subscription_for(attachable)
       =link_to_remote("Unfollow", :url => subscription, :method => :delete, :html => {:class => "bttn_l", :title => unfollow_tooltip})
     -else
