@@ -65,16 +65,7 @@
       =render :partial => 'flipboard/flipboard' if @section.try(:slug) == 'news'
       #header.container
         =render :partial => 'layouts/header'
-      #subheader.container
-        #nav_line.row
-          .ninecol
-            =render("layouts/nav")
-          #search_box.threecol.last
-            -unless controller_name == 'search'
-              -form_for Search.new do |form|
-                =form.submit "Search", :id => "search_icon"  
-                =form.text_field :term, :title => "Search..."      , :class => "labelify", :id => "search_field" 
-                
+      #subheader.container                
         =render("layouts/subnav")
       #main.content
         #main_container.container 

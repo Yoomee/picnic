@@ -77,7 +77,7 @@ body {
 
 }
 body, textarea, input {
-	/*-webkit-font-smoothing: antialiased;*/
+	
 	
 }
 strong {
@@ -103,9 +103,12 @@ a:hover {
 .hide {
 	visibility:hidden;
 }
-
+body #wrapper .no_padding {
+	padding-top: 0;
+	padding-bottom: 0;
+}
 #header_right {
-	margin-top: 40px;
+	margin-top: 15px;
 
 	position: relative;
 	
@@ -113,13 +116,13 @@ a:hover {
 #header_right a.button {
 		display: block;
 
-	background:#000;
+	background:#000 url(/images/sprite.png) 0px -2375px no-repeat;
 
 	float: right;
 	font-size: 12px;
-	padding: 3px 9px;
+	padding: 2px 9px;
 	margin: 0px 0 0 10px;
-	font-weight: bold;
+
 
 
 	color: #fff;
@@ -1042,13 +1045,21 @@ html body form {
 div#top {
 	background:#000;
 	float:left;
-	width:100%;
+	padding: 0;
 }
 #header {
-	
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	width: 100%;
+	padding: 0;
+	background: #fff;
+
+	border-bottom: 1px solid #e8e8e8;
 }
 #header .row {
-	min-height:98px;
+
 	position: relative;
 	overflow: visible;
 
@@ -1090,14 +1101,14 @@ h1#site_logo a {
 	width: 160px;*/
 	
 	display: block;
-	background: url(/images/sprite_picnic.png) no-repeat -9px -11px;
-	width: 150px;
+	background: url(/images/sprite_picnic.png) no-repeat -6px -1px;
+	width: 88px;
 	height: 30px;
 	text-indent:-9000em;
 	font-size: 45px;
 	color: black;
 	text-decoration: none;
-	margin:39px 0 29px 0;
+	margin:11px 10px 11px 0;
 	display: block;
 }
 
@@ -1320,6 +1331,9 @@ input#search_icon {
 	-moz-border-radius:4px;
 	
 	padding: 0;
+	float: left;
+	margin: 11px 0 0 0px;
+	
 
 }
 
@@ -1332,7 +1346,7 @@ input#search_icon {
 #subnav {
   clear: both;
   float: left;
-  margin: 0px 0 0px;
+  margin: 50px 0 0px;
   padding: 14px 0 0px;
   width: 100%;
  
@@ -1361,14 +1375,18 @@ input#search_icon {
 }
 #nav ul li a {
 	display:block;
-	font-size: 22px;
+	font-size: 19px;
 	line-height: 100%;
-	color: #000;
-
+	color: #999;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	-webkit-font-smoothing: antialiased;
 
 	float:left;
 	margin:0px 0px 0 0;
-	padding:5px 30px 10px 0;
+	padding:5px 13px 5px;
+	
+	font-family:'VAG Rounded W02 Bold', arial, sans-serif;
 
 }
 #nav ul li a:hover {
@@ -1382,8 +1400,9 @@ input#search_icon {
 }
 #nav ul li.active a, #subnav ul li.active a  {
   text-decoration:none;
+  color: #000;
 
-	font-family:'VAG Rounded W02 Bold', arial, sans-serif;
+	
 
 	
 }
@@ -2845,8 +2864,9 @@ p.nextLink {
 }
 #index_view .item {
 	float:left;
-	margin-bottom: 30px;
+	margin-bottom: 5px;
 	position: relative;
+	background: #fff;
 }
 .item .newsbox_arrow {
 	right: 10px;
@@ -2855,14 +2875,7 @@ p.nextLink {
   margin-left: 0px;
 }
 .item_border {
-	border: 1px solid #e8e8e8;
-	float: left;
-	height: 380px;
-	
-	border-radius:3px;
-	-webkit-border-radius:3px;    
-	-moz-border-radius:3px;
-  width: 100%;
+
 }
 .item p.blog_like_news_date {
 	position: absolute;
@@ -2870,9 +2883,13 @@ p.nextLink {
 	font-size: 12px;
 }
 .item_inner {
-	margin: 5%;
-	width: 90%;
+
 	float: left;
+	
+	min-height:330px;
+	height:auto !important;
+	height:330px;
+
 
 }
 #index_view .item_right {
@@ -3576,7 +3593,7 @@ li.news_feed_item_hovering a.trash {
 }
 #page_subnav {
   float: left;
-
+  background: #fff;
 
 }
 #page_subnav ul {
@@ -3759,10 +3776,9 @@ a.backto {
 	float:left;
 	
 	height:auto !important;
-	
 	min-height:165px;
 	text-indent:10px;
-	margin-bottom: 20px;
+	margin-bottom: 5px;
 }
 #article_image img {
 	float: left;
@@ -3882,7 +3898,7 @@ div.page_share {
 }
 
 #keep_in_touch {
-	margin-bottom: 20px;
+	margin-bottom: 5px;
 }
 #keep_in_touch h3, #newsletter_signup h3 {
 	margin: 0;
@@ -5507,6 +5523,7 @@ a.bring_profile_img_link {
 }
 .tags_top_inner {
   width:1000px;
+  float: left;
 }
 .tags_top li {
 	float: left;
@@ -6885,6 +6902,8 @@ h1#site_logo a {
 .item {
 	padding-bottom: 30px;
 	border-bottom: 1px solid #ccc;
+	
+
 }
 
 #leaderboard_left .pagination, #leaderboard_left .leaderboard_loader {
