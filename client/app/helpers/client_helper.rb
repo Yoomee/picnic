@@ -57,11 +57,20 @@ module ClientHelper
     items.sort{|x,y| x[:weight] <=> y[:weight]}
   end
   
+  def random_sponsor
+    sponsors = Section.find_by_slug("premium-sponsors").pages.published
+    sponsors += Section.find_by_slug("premium-sponsors").pages.published
+    sponsors += Section.find_by_slug("sponsors-sponsors").pages.published
+    sponsors += Section.find_by_slug("media-partners").pages.published
+    sponsors[rand(sponsors.size)]
+  end
+  
   def shout_title(shout)
     #out = shout.pretty_date
     out = "#{time_ago_in_words(shout.created_at)} ago"
     shout.title.blank? ? out : "#{out}: #{shout.title}"
   end
+
   
   def themes_facelist_javascript(options = {})
     if !request.xhr? && !options[:in_head]

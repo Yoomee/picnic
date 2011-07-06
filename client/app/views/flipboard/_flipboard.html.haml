@@ -5,6 +5,15 @@
     timer: null,
     scrolling: 0,
     direction: 1,
+    hoverOn: function(flip){
+      console.log("Hover On");
+      if(!flip.hasClass('hovering')){
+        flip.children('.hover').show();
+      }
+    },
+    hoverOff: function(flip){
+    
+    },
     startScroll: function(){
       Flipboard.timer = setInterval("Flipboard.scroll()",55);
     },
@@ -27,19 +36,15 @@
     }
   };
   $(document).ready(function() {
-    window.location.hash = "header"
+    $(document).scrollTop(680);
     $('body').bind('keydown','right',function(){Flipboard.scrollJump(1);});
     $('body').bind('keydown','left',function(){Flipboard.scrollJump(0);});
-    setTimeout("Flipboard.startScroll()",2000);
+    $('#flipboard .flip').hover(function(){Flipboard.hoverOn($(this));}, function(){Flipboard.hoverOff($(this));});
+    //setTimeout("Flipboard.startScroll()",2000);
   });
 
 :ruby
-  @flipcols = [
-    [
-      {:flipitem => @pages_sections[0], :x => 2, :y =>1, :flip_partial => "page_title"},
-      {:flipitem => @pages_sections[0], :x => 2, :y =>2}            
-    ]
-  ]
+  @flipitems = [@pages_sections[0], "register", random_sponsor] + (@pages_sections[1..@pages_sections.size] + get_latest_tweets_from("PICNICfestival",10,false,true) + Member.with_badge(:picnic11_speaker).all).randomize
   
 #flipboard_wrapper{:style => "display:block"}
   #flipboard_header.container
@@ -52,47 +57,20 @@
           =link_to_function("Start", "Flipboard.startScroll()")
   #flipboard_strip
     #flipboard
-      -@flipcols.each do |flipcol_flips|
+      .flipcol
+        -FlipcolTemplate.new(0).template.each do |flip_template|
+          =render_flip_item(@flipitems.shift, flip_template)
+      -while !@flipitems.empty?
         .flipcol
-          -flipcol_flips.each do |flip_params|
-            =render('flipboard/flip', flip_params.reverse_merge(:flip_partial => nil))
-          .flip.x1.y1
-          .flip.x1.y1
-      .flipcol
-        .flipsubcol
-          .flip.x1.y2
-          .flip.x1.y2
-        .flipsubcol
-          .flip.x1.y1
-          .flip.x1.y2
-          .flip.x1.y1
-      .flipcol
-        .flip.x2.y2
-        .flipsubcol
-          .flip.x1.y1
-          .flip.x1.y1
-        .flipsubcol
-          .flip.x1.y2
-      .flipcol
-        .flip.x2.y1
-        .flip.x2.y2
-        .flip.x1.y1
-        .flip.x1.y1
-      .flipcol
-        .flipsubcol
-          .flip.x1.y2
-          .flip.x1.y2
-        .flipsubcol
-          .flip.x1.y1
-          .flip.x1.y2
-          .flip.x1.y1
-      .flipcol
-        .flip.x2.y2
-        .flipsubcol
-          .flip.x1.y1
-          .flip.x1.y1
-        .flipsubcol
-          .flip.x1.y2
+          -FlipcolTemplate.new.template.each do |subcol_or_flip_template|
+            -if subcol_or_flip_template.dup.flatten == subcol_or_flip_template
+              -break if @flipitems.empty?
+              =render_flip_item(@flipitems.shift, subcol_or_flip_template)
+            -else
+              .flipsubcol
+                -subcol_or_flip_template.each do |flip_template|
+                  -break if @flipitems.empty?
+                  =render_flip_item(@flipitems.shift, flip_template)
 
 
   #flipboard_footer.container

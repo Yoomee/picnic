@@ -1,0 +1,9 @@
+-if y == 3
+  .flip{:class => "x#{x} y1"}
+    .padding
+      %h1=flipitem
+  .flip{:class => "x#{x} y#2"}
+    =image_or_photo_for(item, "#{x*235+5*(x-1)}x#{2*140+5*(2)}#")
+-else
+  .flip{:class => "x#{x} y#{y}"}
+    =image_or_photo_for(item, "#{x*235+5*(x-1)}x#{y*140+5*(y-1)}#")

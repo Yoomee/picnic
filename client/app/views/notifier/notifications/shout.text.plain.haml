@@ -1,6 +1,10 @@
 ="Hi #{@recipient.forename},"
 
-="#{@shout.member} posted a #{@shout.has_attachable? ? @shout.attachable_type.titleize.downcase : 'message'} on your wall."
+="#{@shout.member} posted a #{@shout.has_attachable? ? @shout.attachable_type.titleize.downcase : 'message'}"
+-if (@shout.recipient != @logged_in_member) && !(tags = (@logged_in_member.tags_subscribed_to.collect(&:name) & @shout.tag_list)).empty?
+  ="on the #{tags.count > 1 ? 'themes' : 'theme'}: #{tags.to_sentence}."
+-else
+  ="on #{@shout.recipient.nil? ? 'their profile' : "#{full_name_or_your(@shout.recipient)} profile"}."
 -if !@shout.text.blank?
   ="\"#{strip_tags(@shout.text)}\""
 

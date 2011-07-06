@@ -1,13 +1,13 @@
 -attachable_name = attachable.is_a?(Tag) ? "theme" : attachable.class.to_s.humanize.downcase
--unfollow_tooltip = "Click on this button to stop getting email updates for this #{attachable_name}"
--follow_tooltip = "Click on this button to get email updates about activity on this #{attachable_name}"
+-unfollow_tooltip = "Click on this button to stop getting notifications for this #{attachable_name}"
+-follow_tooltip = "Click on this button to get notifications about activity on this #{attachable_name}"
 #subscribe_link
   :javascript
     $(document).ready(function() {
       $('#subscribe_link a').tooltip();
     });
-  -if logged_in?
+  -if logged_in? && logged_in_member != attachable
     -if subscription = logged_in_member.subscription_for(attachable)
-      =link_to_remote("Unfollow", :url => subscription, :method => :delete, :html => {:class => "bttn_l", :title => unfollow_tooltip})
+      =link_to_remote("Unsubscribe", :url => subscription, :method => :delete, :html => {:class => "bttn_l", :title => unfollow_tooltip})
     -else
-      =link_to_remote("Follow", :url => subscriptions_path(:attachable_type => attachable.class.to_s, :attachable_id => attachable.id), :method => :post, :html => {:class => "bttn_l", :title => follow_tooltip})
+      =link_to_remote("Subscribe", :url => subscriptions_path(:attachable_type => attachable.class.to_s, :attachable_id => attachable.id), :method => :post, :html => {:class => "bttn_l", :title => follow_tooltip})
