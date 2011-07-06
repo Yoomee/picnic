@@ -1,0 +1,84 @@
+:javascript
+  var Flipboard = {
+    timer: null,
+    startScroll: function(){
+      Flipboard.timer = setInterval("Flipboard.scroll()",55);
+    },
+    stopScroll: function(){
+      clearInterval(Flipboard.timer);
+    },
+    scroll: function(){
+      console.log('Scrolling');
+      $('#flipboard').css('left', $('#flipboard').position().left -1);
+    }
+  };
+  $(document).ready(function() {
+    window.location.hash = "header"
+  });
+
+:ruby
+  @flipcols = [
+    [
+      {:flip_item => @pages_sections[0], :x => 2, :y =>1},
+      {:flip_item => @pages_sections[0], :x => 2, :y =>2}            
+    ]
+  ]
+  
+#flipboard_wrapper{:style => "display:block"}
+  #flipboard_header.container
+    .row
+      .twelvecol
+        %strong.fl
+          PICNIC
+        .fr
+          =link_to_function("Stop", "Flipboard.stopScroll()")
+          =link_to_function("Start", "Flipboard.startScroll()")
+  #flipboard_strip
+    #flipboard
+      -@flipcols.each do |flipcol_flips|
+        .flipcol
+          -flipcol_flips.each do |flip_params|
+            =render('flipboard/flip', flip_params)
+          .flip.x1.y1
+          .flip.x1.y1
+      .flipcol
+        .flipsubcol
+          .flip.x1.y2
+          .flip.x1.y2
+        .flipsubcol
+          .flip.x1.y1
+          .flip.x1.y2
+          .flip.x1.y1
+      .flipcol
+        .flip.x2.y2
+        .flipsubcol
+          .flip.x1.y1
+          .flip.x1.y1
+        .flipsubcol
+          .flip.x1.y2
+      .flipcol
+        .flip.x2.y1
+        .flip.x2.y2
+        .flip.x1.y1
+        .flip.x1.y1
+      .flipcol
+        .flipsubcol
+          .flip.x1.y2
+          .flip.x1.y2
+        .flipsubcol
+          .flip.x1.y1
+          .flip.x1.y2
+          .flip.x1.y1
+      .flipcol
+        .flip.x2.y2
+        .flipsubcol
+          .flip.x1.y1
+          .flip.x1.y1
+        .flipsubcol
+          .flip.x1.y2
+
+
+  #flipboard_footer.container
+    .row
+      .twelvecol
+        Latest | Featured | My PICNIC

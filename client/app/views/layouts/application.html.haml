@@ -62,6 +62,7 @@
   - body_tag do
     #wrapper
       =render "layouts/beta_bar"
+      =render :partial => 'flipboard/flipboard' if @section.try(:slug) == 'news'
       #header.container
         =render :partial => 'layouts/header'
       #subheader.container
