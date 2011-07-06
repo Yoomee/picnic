@@ -6698,7 +6698,7 @@ span.click_here_beta {
 
 #flipboard {
   height:580px;
-  width:3000px;
+  width:10000px;
   position:absolute;
   top:0;
   left:5px;
@@ -6717,9 +6717,20 @@ span.click_here_beta {
   background:black;
   color:#fff;
   float:left;
+  overflow:hidden;
+  position:relative;
 }
 
-#flipboard h1 {
+#flipboard .flip a {
+  color:#B9B9B9;
+}
+
+#flipboard .flip a:hover {
+  color:#B9B9B9;
+  text-decoration:underline;
+}
+
+#flipboard h1, #flipboard h3, #flipboard h6 {
   color:#fff;
 }
 
@@ -6736,9 +6747,23 @@ span.click_here_beta {
 #flipboard .y2 {
   height: 285px;
 }
+#flipboard .y3 {
+  height: 430px;
+}
 #flipboard .padding {
   padding:10px;
   float:left;
+}
+
+#flipboard .hover {
+  display:none;
+  position:absolute;
+  bottom:0;
+  width:120px;
+  padding:5px 10px;
+  background:#383838;
+  background:rgba(0,0,0,0.85);
+  color:#fff;
 }
 /*========== Section Ordering ==========*/
 
