@@ -62,6 +62,15 @@ span.click_here_beta, p.club_welcome_intro_text {
 #page_content, #article_image, #keep_in_touch, #newsletter_signup, #pull_quote, #call_to_action {
 	background: #fff;
 }
+.formtastic ol li.inline-fields label, .formtastic ol li.inline-fields input, .formtastic ol li.inline-fields select {
+  float: left;
+  clear: none;
+  margin-right: 10px;
+}
+.formtastic ol li.inline-fields label, .formtastic ol li.inline-fields .inline-errors {
+  margin-top: 10px;
+}
+
 /* =============================  general styles ============================= */
 ul.sitemap {
 }
@@ -2343,11 +2352,12 @@ div.stories_filter li {
 	margin: 0 0 0 10px;
 }
 
-
-
-
-
-
+#invite_friends_link {
+  font-size: 19px;
+  float: left;
+  clear: both;
+  margin-top: 10px;
+}
 
 /* ====== Stuff I like tabs (under profile picture)- optional ====== */
 #stuff ul.tabbernav {
@@ -6581,7 +6591,23 @@ span.click_here_beta {
   padding:15px;
   width:400px;
 }
-
+#contacts_form .inputs li.password input {
+  width: 350px;
+}
+#contacts_form .inputs li.string input {
+  width: 200px;
+}
+#contacts_form .inputs li.string {
+  clear: none;
+}
+#contacts_form .inputs li.select {
+  clear: none;
+  margin: 25px 0 0 5px;
+}
+#contacts_form .inputs li.select label {
+  float: left;
+  margin-top: 5px;
+}
 #contacts_form p.error {
   font-size:14px;
   color:red;

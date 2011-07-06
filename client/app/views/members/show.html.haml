@@ -151,6 +151,8 @@
       =fancybox_edit(@member, :image, :partial => "members/photo_form")
     .friends_list.subrow
       =render("members/friends", :member => @member)
+      -if logged_in_as?(@member)
+        =link_to("Invite friends", new_referral_path, :id => "invite_friends_link")
   .eightcol
     .profile_info.subrow
       %h1.profile_title
