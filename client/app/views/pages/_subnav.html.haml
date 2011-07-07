@@ -1,10 +1,11 @@
 -if !page.section.root? || page.section.page_and_section_descendant_generations == 1
   %ul.lst
     -if page.section.view == 'news_view'
-      -pages_and_sections = page.section.all_children(:published_only => !admin_logged_in?)
-      -pages_and_sections.extend(SectionsController::SortByWeightAndPublished)
-      -pages_and_sections.sort_by_weight_and_published.each do |page_or_section|
-        =li_with_active(viewing_page_or_section?(page_or_section), link_to_self(page_or_section))
+      =link_to "&larr; back to news", "/"
+      -#pages_and_sections = page.section.all_children(:published_only => !admin_logged_in?)
+      -#pages_and_sections.extend(SectionsController::SortByWeightAndPublished)
+      -#pages_and_sections.sort_by_weight_and_published.each do |page_or_section|
+        =#li_with_active(viewing_page_or_section?(page_or_section), link_to_self(page_or_section))
     -else
       -page.section.all_children(:published_only => !admin_logged_in?).each do |page_or_section|
         =li_with_active(viewing_page_or_section?(page_or_section), link_to_self(page_or_section))

@@ -94,6 +94,8 @@ div#flipboard_wrapper {
 	background: #fff;
 	margin-top: 50px;
 	
+
+	
 }
 
 .fliboard_nav {
@@ -1096,6 +1098,10 @@ div#top {
 	width: 100%;
 	padding: 0;
 	background: #fff;
+	
+	 -webkit-box-shadow:0px 2px 8px rgba(0,0,0,0.2);
+  	-moz-box-shadow:0px 2px 8px rgba(0,0,0,0.2);
+  	box-shadow:0px 2px 8px rgba(0,0,0,0.2);
 
 }
 #header .row {
@@ -1386,7 +1392,7 @@ input#search_icon {
 #subnav {
   clear: both;
   float: left;
-  margin: 55px 0 0px;
+  margin: 52px 0 0px;
   padding: 14px 0 0px;
   width: 100%;
   border-top: 1px solid #e8e8e8;
@@ -6368,7 +6374,7 @@ a.find_someone_photo {
 
 #leaderboard_header {
   border-bottom: 3px solid #ccc;
-  width: 100%;
+
   margin-bottom: 10px;
 }
 
@@ -6759,6 +6765,13 @@ span.click_here_beta {
 	float: left;
 	padding: 0;
 	background: #666;
+	
+  	-webkit-box-shadow:inset 0px -2px 2px #555;
+  	-moz-box-shadow:inset 0px -2px 2px #555;
+  	box-shadow:inset 0px -2px 2px #555;
+}
+#flipboard_footer .twelvecol {
+	padding-top: 5px;
 }
 #flipboard {
   height:580px;
@@ -6768,6 +6781,8 @@ span.click_here_beta {
   left:5px;
   background: #666;
   margin: 0;
+  
+
 }
 
 #flipboard .flipcol {

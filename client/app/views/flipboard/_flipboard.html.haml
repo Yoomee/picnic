@@ -44,7 +44,7 @@
     }
   };
   $(document).ready(function() {
-    $(document).scrollTop(680);
+    $(document).scrollTop(669);
     $('body').bind('keydown','right',function(){Flipboard.scrollJump(1);});
     $('body').bind('keydown','left',function(){Flipboard.scrollJump(0);});
     $('#flipboard .flip').has('.hover').hover(function(){Flipboard.hoverOn($(this));}, function(){Flipboard.hoverOff($(this));});
@@ -71,5 +71,5 @@
     .row
       .twelvecol
         .fr
-          =link_to_function("Right", "Flipboard.stopScroll()", :class=>"fliboard_nav", :id=>"flipboard_left")
-          =link_to_function("Left", "Flipboard.startScroll()", :class=>"fliboard_nav", :id=>"flipboard_right")
+          =link_to_function("Right", "Flipboard.scrollJump(1)", :class=>"fliboard_nav", :id=>"flipboard_left")
+          =link_to_function("Left", "Flipboard.scrollJump(0)", :class=>"fliboard_nav", :id=>"flipboard_right")
