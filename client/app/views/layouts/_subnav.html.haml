@@ -19,8 +19,3 @@
               =li_with_active(viewing_page_or_section?(page_or_section), link_to_self(page_or_section))
             -if false && current_root_section.slug == "picnic11" #hidden for now
               =li_with_active(controller_name =~ /programmes|conference_sessions|venues/, link_to("Programme", programme_path))
-          -if false
-            %li.right_subnav_link
-              =link_to_slug("Contact", "contact")
-            %li.right_subnav_link
-              =link_to_slug("Press room", "press-room")
