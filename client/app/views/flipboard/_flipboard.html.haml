@@ -47,14 +47,6 @@
   @flipitems = [@pages_sections[0], "register", random_sponsor] + (@pages_sections[1..@pages_sections.size] + get_latest_tweets_from("PICNICfestival",10,false,true) + Member.with_badge(:picnic11_speaker).all).randomize
   
 #flipboard_wrapper{:style => "display:block"}
-  #flipboard_header.container
-    .row
-      .twelvecol
-        %strong.fl
-          PICNIC
-        .fr
-          =link_to_function("Stop", "Flipboard.stopScroll()")
-          =link_to_function("Start", "Flipboard.startScroll()")
   #flipboard_strip
     #flipboard
       .flipcol
@@ -76,4 +68,6 @@
   #flipboard_footer.container
     .row
       .twelvecol
-        Latest | Featured | My PICNIC
+        .fr
+          =link_to_function("Right", "Flipboard.stopScroll()", :class=>"fliboard_nav", :id=>"flipboard_left")
+          =link_to_function("Left", "Flipboard.startScroll()", :class=>"fliboard_nav", :id=>"flipboard_right")

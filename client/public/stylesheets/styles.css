@@ -80,6 +80,38 @@ body, textarea, input {
 	
 	
 }
+
+div#flipboard_wrapper {
+	background: #fff;
+	margin-top: 50px;
+	
+}
+
+.fliboard_nav {
+		display: block;
+
+	background:#000 url(/images/sprite.png) 1px -1941px no-repeat;
+
+	float: right;
+	font-size: 12px;
+	text-indent: -9000em;
+	padding: 2px 9px;
+	width: 15px;
+	margin: 0px 0 0 10px;
+
+
+
+	color: #fff;
+	
+	border-radius:3px;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+
+}
+#flipboard_left {
+	background-position: -40px -1941px;
+}
+
 strong {
 
 }
@@ -1056,7 +1088,6 @@ div#top {
 	padding: 0;
 	background: #fff;
 
-	border-bottom: 1px solid #e8e8e8;
 }
 #header .row {
 
@@ -1346,9 +1377,10 @@ input#search_icon {
 #subnav {
   clear: both;
   float: left;
-  margin: 50px 0 0px;
+  margin: 55px 0 0px;
   padding: 14px 0 0px;
   width: 100%;
+  border-top: 1px solid #e8e8e8;
  
 }
 #nav ul, #subnav ul {
@@ -3618,7 +3650,7 @@ li.news_feed_item_hovering a.trash {
 #page_subnav li.active {
   
   position: relative;
-  z-index: 100;
+  z-index: 90;
   
 
 }
@@ -6680,19 +6712,27 @@ span.click_here_beta {
   overflow-x:hidden;
   width:100%;
   position:relative;
+  background: #666;
 }
 
-#flipboard_header, #flipboard_footer {
+#flipboard_header {
   font-size:22px;
-  margin:2px 0px;
+  margin:0px 0px;
 }
-
+#flipboard_footer {
+	width: 100%;
+	float: left;
+	padding: 0;
+	background: #666;
+}
 #flipboard {
   height:580px;
   width:10000px;
   position:absolute;
   top:0;
   left:5px;
+  background: #666;
+  margin: 0;
 }
 
 #flipboard .flipcol {
