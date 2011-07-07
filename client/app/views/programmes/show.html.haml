@@ -5,7 +5,7 @@
         function(){
           if (!$(this).hasClass('hover')){
             $(this).addClass('hover');
-            $(this).animate({'width':189,'height':129}, 0, 'easeInOutCirc');
+            $(this).animate({'width':235,'height':150}, 0, 'easeInOutCirc');
           }
         },
         function(){
@@ -19,36 +19,7 @@
         }
       );  
     });
-    var Programme = {
-      day: #{@conference.day(@date)},
-      days: [#{@conference.days.collect{|d|d.strftime("\'%A %e %B\'")}.join(',')}],
-      scroll: function(forward) {
-        if (forward && (Programme.day < #{@conference.days.count})){
-          Programme.scrollTo(Programme.day + 1);
-        } else if (!forward && (Programme.day > 1)) {
-          Programme.scrollTo(Programme.day - 1);
-        }
-      },
-      scrollTo: function(day) {
-        if ((day > 0) && (day < #{@conference.days.count + 1}) && (day != Programme.day) ) {
-          var showDirection = (day > Programme.day) ? 'right' : 'left';
-          var hideDirection = (day < Programme.day) ? 'right' : 'left';
-          
-          $('#timetable_day_'+Programme.day).hide('slide', {direction: hideDirection}, 1000);
-          $('#timetable_day_'+day).show('slide', {direction: showDirection}, 700);
-          
-          switch(day){
-            case 1:$('#go_back_link').fadeOut(  'slow');break;
-            case #{@conference.days.count}:$('#go_forward_link').fadeOut('slow');break;
-            default:$('#go_back_link:hidden').fadeIn('slow');$('#go_forward_link:hidden').fadeIn('slow');break;
-          }
-          $('#prog_header .day h1').html('Day '+day);
-          $('#prog_header .day p').html(Programme.days[day-1]);
-          Programme.day = day;
-        }
-      }
-    };
-    
+
 -no_content_row
 -title "Programme", :hidden => true
 #prog_container
@@ -62,30 +33,46 @@
           =link_to_function("<","Programme.scroll(false)", :id => "go_back_link", :class=>"fl", :style => "display:#{@conference.day(@date) > 1 ? 'block' : 'none'}")
           =link_to_function(">","Programme.scroll(true)", :id => "go_forward_link", :class=>"fr", :style => "display:#{@conference.day(@date) < @conference.days.count ? 'block' : 'none'}")
       #prog_hours
+        .col_title
+          &larr;
         .hours
           -(9..19).each do |hour|
-            .hour="%02d:00" % hour
-      #prog_wrapper
-        #venues_col
+            .hour="%d:00" % hour
+        .col_title
+          &larr;
+      #prog_wrapper.timetable
+        #venue_cols
           -@venues.each do |venue|
-            .venue_row=link_to_self(venue)
-        #timetable_col
-          -@conference.days.each_with_index do |day, idx|
-            .timetable{:id => "timetable_day_#{idx+1}", :style => "display:#{@date == day ? 'block' : 'none'}"}
-              -@venues.each do |venue|
-                -sessions_by_hour = venue.sessions.on_date(day).group_by{|s|s.starts_at.hour}
-                .prog_row
-                  -sessions_by_hour.each do |hour, sessions|
-                    -height = (90.0/sessions.size).to_i - 10
-                    -offset = (90.0/sessions.size).to_i
-                    -sessions.each_with_index do |session, idx|
-                      -width = (session.duration_in_whole_hours * 80) - 11
-                      -link_to(session, :class => 'session', :style => "left:#{(hour - 9)*80}px;top:#{(idx*offset)-1}px;height:#{height}px;width:#{width}px", "data-height" => height, "data-width" => width) do
-                        .title=session
-                        .details
-                          ="#{session.starts_at.strftime("%H:%M")} - #{session.ends_at.strftime("%H:%M")}"
-                          %br
-                          =session.description.word_truncate(150)
+            .venue_col
+              .col_title.top=venue
+              -venue.sessions.on_date(@conference.days.first).each do |session|
+                -height = (session.duration_in_hours * 100).round - 2
+                -link_to(session, :class => 'session', :style => "top:#{((session.starts_at_offset(9)*100).round) + 40}px;height:#{height}px") do
+                  .session_content
+                    .title=session
+                    .details
+                      ="#{session.starts_at.strftime("%H:%M")} - #{session.ends_at.strftime("%H:%M")}"
+                      %br
+                      =session.description.word_truncate(150)
+              
+              .col_title.bottom=venue
+              
+            -#@conference.days.each_with_index do |day, idx|
+              .timetable{:id => "timetable_day_#{idx+1}", :style => "display:#{@date == day ? 'block' : 'none'}"}
+                -@venues.each do |venue|
+                  -sessions_by_hour = venue.sessions.on_date(day).group_by{|s|s.starts_at.hour}
+                  .prog_col
+                    -sessions_by_hour.each do |hour, sessions|
+                      -height = (90.0/sessions.size).to_i - 10
+                      -offset = (90.0/sessions.size).to_i
+                      -sessions.each_with_index do |session, idx|
+                        -width = (session.duration_in_whole_hours * 80) - 11
+                        -link_to(session, :class => 'session', :style => "left:#{(hour - 9)*80}px;top:#{(idx*offset)-1}px;height:#{height}px;width:#{width}px", "data-height" => height, "data-width" => width) do
+                          .title=session
+                          .details
+                            ="#{session.starts_at.strftime("%H:%M")} - #{session.ends_at.strftime("%H:%M")}"
+                            %br
+                            =session.description.word_truncate(150)
 .row
   .twelvecol
   -options_panel do

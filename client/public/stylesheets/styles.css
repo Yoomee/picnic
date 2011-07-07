@@ -4464,15 +4464,108 @@ body.controller_badges .badge_members {
 
 
 
-
-
-
-
-/*========== Programme ==========*/
-#prog_container .row {
-  overflow-x:auto;
+.multiple_nested_inputs .remove_link {
+  clear:none;
+  margin-left:10px;
 }
 
+#conference_sessions_member_inputs fieldset, #conference_sessions_member_inputs fieldset select{
+  margin-bottom:0;
+}
+
+/*========== New programme ==========*/
+
+
+#prog_header {
+  width:955px;
+  padding-top:20px;
+}
+#prog_header .day{
+}
+
+#prog_hours {
+  clear:both;
+  float:left;
+  width:75px;
+  margin-right:5px;
+}
+
+#prog_container .col_title {
+  text-align:center;
+  font-size:16px;
+  line-height:40px;
+  color:#fff;
+  background:#000;
+  height:40px;
+}
+#prog_hours .hour {
+  height:98px;
+  font-size: 14px;
+  font-size:14px;
+  border-bottom:2px solid #999;
+}
+
+#prog_wrapper {
+  width:875px;
+  height:1180px;
+  float:left;
+  position:relative;
+  overflow:hidden;
+}
+
+#prog_wrapper #venue_cols {
+  position:absolute;
+  width:3000px;
+  top:0px;
+  left:0px;
+  height:100%;
+}
+
+#prog_wrapper .venue_col {
+  width:155px;
+  margin-right:5px;
+  background:#EEE;
+  float:left;
+  height:100%;
+  position:relative;
+}
+
+.venue_col .col_title {
+  position:absolute;
+  width:155px;
+}
+.venue_col .top {
+  top:0px;
+}
+.venue_col .bottom {
+  bottom:0px;
+}
+
+#prog_header .day h1{
+  line-height:25px;
+  margin-bottom:5px;
+}
+#prog_header .day p{
+  font-size:14px;
+  line-height:14px;
+}
+#prog_header .controls {
+  margin-top:7px;
+  width:90px;
+}
+#prog_header .controls a{
+  font-size:22px;
+  color:#000;
+  padding:0px 11px 2px;
+  border:2px solid #000;
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px;
+  border-radius:3px;
+}
+#prog_header .controls a:hover{
+  text-decoration:none;
+  background-color:#EFEFEF;
+}
 
 .prog_row {
   width: 880px;
@@ -4483,10 +4576,6 @@ body.controller_badges .badge_members {
   height:90px;
   
 }
-#venues_col a {
-  color:#000000;
-}
-
 
 
 .timetable a{
@@ -4496,17 +4585,18 @@ body.controller_badges .badge_members {
 
 
 .timetable .session {
-  width:69px;
-  height:80px;
+  width:155px;
+  height:99px;
+  border-bottom:2px solid #EEE;
   float:left;
-  border-left:1px solid #CCC;
-  border-top:1px solid #CCC;
-  border-right:1px solid #CCC;
   position:absolute;
-  padding:5px;
   top:0;
   left:0;
   background-color:#FCFCFC;
+}
+.timetable .session_content {
+  float:left;
+  padding:5px;
 }
 
 .timetable .session .title {
@@ -4540,60 +4630,6 @@ body.controller_badges .badge_members {
 }
 
 
-.multiple_nested_inputs .remove_link {
-  clear:none;
-  margin-left:10px;
-}
-
-#conference_sessions_member_inputs fieldset, #conference_sessions_member_inputs fieldset select{
-  margin-bottom:0;
-}
-
-/*========== New programme ==========*/
-#prog_header {
-  width:1004px;
-  padding-top:20px;
-}
-#prog_header .day{
-}
-
-#prog_header .day h1{
-  line-height:25px;
-  margin-bottom:5px;
-}
-#prog_header .day p{
-  font-size:14px;
-  line-height:14px;
-}
-#prog_header .controls {
-  margin-top:7px;
-  width:90px;
-}
-#prog_header .controls a{
-  font-size:22px;
-  color:#000;
-  padding:0px 11px 2px;
-  border:2px solid #000;
-  -moz-border-radius:3px;
-  -webkit-border-radius:3px;
-  border-radius:3px;
-}
-#prog_header .controls a:hover{
-  text-decoration:none;
-  background-color:#EFEFEF;
-}
-#prog_wrapper {
-  clear:both;
-  float:left;
-  margin-bottom:0px;
-  border:2px solid #000;
-  -webkit-border-bottom-left-radius: 3px;
-  -webkit-border-bottom-right-radius: 3px;
-  -moz-border-radius-bottomleft: 3px;
-  -moz-border-radius-bottomright: 3px;
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
 #venues_col  {
   width:118px;
   float:left;
@@ -4623,34 +4659,6 @@ body.controller_badges .badge_members {
   width:880px;
   background:url(/images/timetable.png) repeat-y -120px 0;
   position:absolute;
-}
-
-#prog_hours {
-  float:left;
-  clear:both;
-  width:1000px;
-  background:#000;
-  border:2px solid black;
-  border-bottom:0;
-  -webkit-border-top-left-radius: 3px;
-  -webkit-border-top-right-radius: 3px;
-  -moz-border-radius-topleft: 3px;
-  -moz-border-radius-topright: 3px;
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-}
-#prog_hours .hours {
-/*  background:url(/images/timetable.png) repeat-y -120px 0;*/
-  float:right;
-  clear:both;
-  color:#fff;
-}
-#prog_hours .hours .hour {
-  float:left;
-  height:20px;
-  font-size: 14px;
-  padding-left:2px;
-  width:78px;
 }
 
 /*========== Session show ==========*/
