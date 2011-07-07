@@ -1,6 +1,9 @@
 ="Hi #{@recipient.forename},"
 -important_email_content do
-  %p="#{@friend_request.member.full_name} would like to join your picnic."
+  %p
+    ="#{@friend_request.member.full_name} would like to join your picnic.#{@friend_request.message.blank? ? '' : ' They left this message for you:'}"
+  -if !@friend_request.message.blank?
+    %p="\"#{@friend_request.message}\""
   %p="#{link_to("Click here", site_url + notifications_path)} to allow #{@friend_request.member.forename} to sit on your blanket."
 %p 
   Thanks,
