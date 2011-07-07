@@ -77,6 +77,12 @@
       %ul
         =link_in_li_if_allowed("List badges", badges_proc)
         =link_in_li_if_allowed("Add a badge", new_badge_proc)
+    #dash_points.dash_item
+      .dash_icon
+      %h3
+        Club points
+      %ul
+        =link_in_li_if_allowed("List point events", points_events_proc)
         
     %br.flcb
     %br.flcb
@@ -116,14 +122,14 @@
         %li
           =link_to 'New member', new_member_path
 
-      #dash_members.dash_item
-        .dash_icon
-        %h3
-          Eventpartners
-        %ul
-          %li
-            %a{ :href => "/conference_delegates" }
-              Delegates data
+    #dash_members.dash_item
+      .dash_icon
+      %h3
+        Eventpartners
+      %ul
+        %li
+          %a{ :href => "/conference_delegates" }
+            Delegates data
 -if false
   %ul.tabs_container
     -@admin_tabs.each do |tab|

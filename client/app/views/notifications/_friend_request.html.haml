@@ -2,7 +2,10 @@
   .member_image
     =link_to(image_for(friend_request.member, "50x50#"), friend_request.member)
   .notification_content      
-    %p="#{link_to_self(friend_request.member)} wants to sit on your blanket. Is that ok?"
+    %p
+      ="#{link_to_self(friend_request.member)} wants to sit on your blanket. Is that ok?"
+    -if !friend_request.message.blank?
+      %p="\"#{friend_request.message}\""
     %p.friend_request_links
       =link_to("Yes, of course", accept_friend_request_path(friend_request), :method => :put, :class => "bttn accept_friend_request")    
       =link_to("No, I don't like having friends", friend_request, :method => :delete, :confirm => "Are you sure you don't want #{friend_request.member} to be in your picnic?")
