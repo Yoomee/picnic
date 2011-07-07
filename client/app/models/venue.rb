@@ -1,6 +1,7 @@
 class Venue < ActiveRecord::Base
   
   has_many :sessions, :class_name => "ConferenceSession", :dependent => :destroy
+  belongs_to :conference
   
   validates_presence_of :name
   validates_uniqueness_of :name

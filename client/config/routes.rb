@@ -6,14 +6,15 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :conferences do |conf|
     conf.resources :conference_sessions, :as => 'sessions', :only => [:show, :new]
     conf.resource :programme, :only => [:show]
+    conf.resource :venues, :only => [:show, :new]
   end
   map.resources :conference_sessions, :only => [:create, :edit, :destroy, :show, :update], :member => {:duplicate => :get}
+  map.resources :venues, :only => [:create, :edit, :destroy, :show, :update]
   
   map.resources :members, :only => [], :collection => {:admin => :get}
   
   map.resources :tags, :as => "themes", :collection => {:autocomplete => :get}, :member => {:people => :get}
   map.resources :urls
-  map.resources :venues
 
   map.resources :subscriptions, :only => [:create, :destroy]
 

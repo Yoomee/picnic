@@ -95,15 +95,6 @@
         -Conference.oldest.each do |conference|
           %li=link_to_self conference
         %li=#link_to 'New conference', new_conference_path
-    #dash_events.dash_item
-      .dash_icon
-      %h3
-        Venues
-      %ul
-        %li
-          =link_to 'List venues', venues_path
-        %li
-          =link_to 'Add a venue', new_venue_path
         
   #dash_membership.dash_col.fourcol.last
     %h2

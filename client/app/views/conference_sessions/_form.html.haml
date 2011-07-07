@@ -20,7 +20,7 @@
     =form.input :duplicate_of, :as => :hidden
     =form.input :conference_id, :as => :hidden
     =form.input :name
-    =form.input :venue, :prompt => "Select a venue..."
+    =form.input :venue, :prompt => "Select a venue...", :collection => conference_session.conference.venues
     =form.input :formatted_starts_at, :label => 'Starts at', :as => :string, :input_html => {:class => 'datetime'}
     =form.input :formatted_ends_at, :label => 'Ends at', :as => :string, :input_html => {:class => 'datetime'}
     =form.input :description, :input_html => {:rows => 12}
