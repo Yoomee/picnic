@@ -4456,6 +4456,12 @@ body.controller_badges .badge_members {
   	font-family:'VAG Rounded W02 Bold', arial, sans-serif;
 }
 
+.stories_filter ul li.active a:hover {
+  	cursor:default;
+  	text-decoration:none;
+  	color:#999;
+}
+
 
 
 
@@ -6189,6 +6195,7 @@ ul.possible_search_models li {
 }
 #hide_this {
   border-bottom: 4px solid #e2e2e2;
+  margin-bottom:15px;
 }
 #show_this {
   border-top: 4px solid #e2e2e2;
@@ -6198,7 +6205,7 @@ ul.possible_search_models li {
   background: #e2e2e2;
   color: black;
   padding: 3px 10px;
-  width: 70px;
+  width: 100px;
   text-align: center;
   display: block;
   float: left;
@@ -6304,7 +6311,9 @@ a.find_someone_photo {
 	
 }
 
-
+#club_shouts_container .shout_right {
+  width:80%;
+}
 
 /*========== Leaderboard ==========*/
 

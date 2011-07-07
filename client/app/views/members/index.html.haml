@@ -1,27 +1,31 @@
 -content_for :head do
-  =javascript_include_tag "https://www.google.com/jsapi"
-  %script{:type=>"text/javascript", :src => "https://www.google.com/jsapi"}
   :javascript
-    google.load("visualization", "1", {packages:["corechart"]});
-    google.setOnLoadCallback(drawChart);
-    function drawChart() {
-      var data = new google.visualization.DataTable();
-      data.addColumn('string', 'Date');
-      data.addColumn('number', 'Members');
-      data.addRows(#{@data.inspect});
-      var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-      chart.draw(data, {width: 1000, height: 250, legend: 'none', chartArea: {left: 50, top: 20, right: 50, bottom:0}, colors:['#000']});
-    }
 
--title "Members"
-%h4 New members in the last 2 months
-#chart_div
-%h4=page_entries_info @members
-%ul
-  -@members.each do |member|
-    %li
-      =link_to member.full_name, member
-=will_paginate @members
--options_panel do
-  =back_link
-  =link_if_allowed 'New member', new_member_proc
+    var ClubWelcome = {
+      searchLoading: function() {
+        $('#search_term').addClass('loading');
+      },    
+      searchComplete: function() {
+        $('#search_term').removeClass('loading');
+      },
+    };
+-no_content_row
+#club_intro_connect.row
+  .fivecol
+    %h2 Find someone
+    -semantic_remote_form_for Search.new(:models => ['Member']) do |form|
+      -form.inputs do
+        =form.input :term, :label => false
+        =form.input :models, :as => :hidden
+        =observe_field 'search_term', :url => {:controller => "search", :action => "create", :autocomplete => true, :results_view_path => 'members'}, :frequency => 0.5, :loading => "ClubWelcome.searchLoading()", :complete => "ClubWelcome.searchComplete()", :with => "'search[models][]=Member&search[term]=' + value", :update => 'find_someone_results'
+    %ul#find_someone_results
+      -@find_someone_members.each do |member|
+        =render "find_someone_result", :member => member
+  #map_right_col.sevencol.last
+    %h2 Latest members
+    =google_map(@latest_members, :width => 646, :height => 460, :centre => [30, 0], :zoom => 2, :infoboxes => true)
+    -if false
+      #latest_members_photos
+        -@latest_members.limit(9).each do |member|
+          -link_to member do
+            =image_for member, '70x70#'

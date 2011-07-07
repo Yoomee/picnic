@@ -8,13 +8,12 @@
             =li_with_active(current_page?(themes_path), link_to("Themes", themes_path))
             =li_with_active(current_page?(correspondents_path), link_to("Correspondents", correspondents_path))
           -elsif in_club?
-            =li_with_active(current_page?(club_path), link_to("Intro", club_path))
+            =li_with_active(current_page?(club_path), link_to("Latest", club_path))
             =li_with_active(controller_name == 'leaderboard', link_to("Leaderboard", leaderboard_path))
+            =li_with_active(current_page?(members_path), link_to("Members", members_path))
             =li_with_active(current_page?(connections_path), link_to("Connections", connections_path)) if logged_in?
-            -if logged_in?
-              =li_with_active(current_page?(member_path(logged_in_member)), link_to("My profile", logged_in_member))
-            -else
-              =li_with_active(current_page?(new_member_path), link_to("Join", new_member_path))
+            =li_with_active_slug(:ground_rules, link_to_slug("House rules",:ground_rules))
+            =li_with_active(current_page?(new_member_path), link_to("Join", new_member_path)) if !logged_in?
           -else
             -current_root_section.all_children(:published_only => !admin_logged_in?).each do |page_or_section|
               =li_with_active(viewing_page_or_section?(page_or_section), link_to_self(page_or_section))

@@ -107,9 +107,7 @@
       %h3
         Members
       %ul
-        %li
-          %a{ :href => "/members" }
-            List members
+        %li=link_to("List members",admin_members_path)
         %li
           %a{ :href => "/reports/new?name=members" }
             Members report

@@ -9,6 +9,8 @@ ActionController::Routing::Routes.draw do |map|
   end
   map.resources :conference_sessions, :only => [:create, :edit, :destroy, :show, :update], :member => {:duplicate => :get}
   
+  map.resources :members, :only => [], :collection => {:admin => :get}
+  
   map.resources :tags, :as => "themes", :collection => {:autocomplete => :get}, :member => {:people => :get}
   map.resources :urls
   map.resources :venues
