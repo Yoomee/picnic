@@ -15,16 +15,18 @@ padding-right: 30px;
 }
 
 .row {
-width: 955px;
+width: 100%;
+max-width: 1100px;
+min-width: 755px;
 margin: 0 auto;
 overflow: hidden;
 }
 
 .onecol, .twocol, .threecol, .fourcol, .fivecol, .sixcol, .sevencol, .eightcol, .ninecol, .tencol, .elevencol {
-margin-right: 5px;
+margin-right: 3.8%;
 float: left;
 min-height: 1px;
-padding:10px;
+padding:0;
 
 -webkit-border-radius:3px;
 -o-border-radius:3px;
@@ -33,54 +35,53 @@ border-radius:3px;
 
 }
 .row .onecol {
-width: 55px;
+width: 4.85%;
 }
 
 .row .twocol {
-width: 135px;
+width: 13.45%;
 }
 
 .row .threecol {
-width: 215px;
+width: 22.05%;
 }
 
 .row .fourcol {
-width: 295px;
+width: 30.75%;
 }
 
 .row .fivecol {
-width: 375px;
+width: 39.45%;
 }
 
 
 .row .sixcol {
-width: 455px;
+width: 48%;
 }
 
 .row .sevencol {
-width: 535px;
+width: 56.75%;
 }
 
 .row .eightcol {
-width: 615px;
+width: 65.4%;
 }
 
 .row .ninecol {
-width: 695px;
+width: 74.05%;
 }
 
 .row .tencol {
-width: 775px;
+width: 82.7%;
 }
 
 .row .elevencol {
-width: 855px;
+width: 91.35%;
 }
 
 .row .twelvecol {
-width: 935px;
+width: 100%;
 float: left;
-padding: 10px;
 }
 
 .last {
