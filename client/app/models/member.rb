@@ -51,6 +51,10 @@ Member.class_eval do
       (with_theme_tag(tag) + Member.tagged_with(tag)).uniq.randomize
     end
     
+    def show_admins_on_leaderboard
+      true
+    end
+    
   end
   
   def allowed_job_title?

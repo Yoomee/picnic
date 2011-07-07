@@ -9,8 +9,31 @@ Shout.class_eval do
   
   include TramlinesImages
   
+  
+  #TODO Investigate if there is max lenght, or performance issues with lots of friends
+  named_scope :by_friends_of, lambda {|member| {:joins => "INNER JOIN walls ON (shouts.id = walls.attachable_id AND walls.attachable_type = 'Shout') LEFT OUTER JOIN wall_posts ON (wall_posts.wall_id = walls.id)", :group => "shouts.id", :conditions => ["shouts.member_id IN (:ids) OR wall_posts.member_id IN (:ids)", {:ids => member.friend_ids}]}}
+  
+  
   has_location
   has_permalink
+  
+  
+  class << self
+    def get_shouts(filter_name, member)
+      case filter_name
+      when "latest"
+        latest
+      when "comments"
+        most_commented_on
+      when "popular"
+        top_rated
+      when "blanket"
+        by_friends_of(member)
+      else
+        latest
+      end
+    end
+  end
   
   def has_image?
     attachable.try(:has_image?)

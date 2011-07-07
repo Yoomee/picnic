@@ -12,12 +12,12 @@
         %p.login_email
           %label{ :for => "login_email" }
             Email/Username:
-          = text_field_tag 'login_email_or_username', @login_email_or_username, :class=>'labelify', :title=>'Email/Username'
+          = text_field_tag 'login_email_or_username', @login_email_or_username, :class=>'labelify', :title=>'Email'
           =# star
         %p.password
           %label{ :for => "login_password" }
             Password:
-          = password_field_tag 'login_password', '', :class=>'labelify'
+          = password_field_tag 'login_password', '', :class=>'labelify', :title=>'Password'
           =# star
           =link_to_box "Forgot password?", new_forgotten_password_path, :class => "forgotten_password"
         =hidden_field_tag :signature, params[:signature]

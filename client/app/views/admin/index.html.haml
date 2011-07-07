@@ -77,6 +77,12 @@
       %ul
         =link_in_li_if_allowed("List badges", badges_proc)
         =link_in_li_if_allowed("Add a badge", new_badge_proc)
+    #dash_points.dash_item
+      .dash_icon
+      %h3
+        Club points
+      %ul
+        =link_in_li_if_allowed("List point events", points_events_proc)
         
     %br.flcb
     %br.flcb
@@ -89,15 +95,6 @@
         -Conference.oldest.each do |conference|
           %li=link_to_self conference
         %li=#link_to 'New conference', new_conference_path
-    #dash_events.dash_item
-      .dash_icon
-      %h3
-        Venues
-      %ul
-        %li
-          =link_to 'List venues', venues_path
-        %li
-          =link_to 'Add a venue', new_venue_path
         
   #dash_membership.dash_col.fourcol.last
     %h2
@@ -107,23 +104,21 @@
       %h3
         Members
       %ul
-        %li
-          %a{ :href => "/members" }
-            List members
+        %li=link_to("List members",admin_members_path)
         %li
           %a{ :href => "/reports/new?name=members" }
             Members report
         %li
           =link_to 'New member', new_member_path
 
-      #dash_members.dash_item
-        .dash_icon
-        %h3
-          Eventpartners
-        %ul
-          %li
-            %a{ :href => "/conference_delegates" }
-              Delegates data
+    #dash_members.dash_item
+      .dash_icon
+      %h3
+        Eventpartners
+      %ul
+        %li
+          %a{ :href => "/conference_delegates" }
+            Delegates data
 -if false
   %ul.tabs_container
     -@admin_tabs.each do |tab|

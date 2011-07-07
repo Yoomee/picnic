@@ -7,4 +7,4 @@
       =link_to_remote("Yes", :url => accept_friend_request_path(@logged_in_member.friend_request_from(member)), :method => :put, :loading => "FriendRequest.loading()", :complete => "FriendRequest.complete()", :html => {:class => "accept_link"})
       =link_to_remote("No", :url => friend_request_path(@logged_in_member.friend_request_from(member)), :method => :delete, :confirm => "Are you sure you don't want #{member} to be in your picnic?", :loading => "FriendRequest.loading()", :complete => "FriendRequest.complete()", :html => {:class => "reject_link"})
     -elsif @logged_in_member.can_request_friendship_with?(member)
-      =link_to_remote("Sit on #{member.forename}'s blanket", :url => {:controller => "friend_requests", :action => "create", :member_id => member}, :method => :post, :loading => "FriendRequest.loading()", :complete => "FriendRequest.complete()")
+      =link_to_box("Sit on #{member.forename}'s blanket", new_friend_request_path(:member_id => member.id))

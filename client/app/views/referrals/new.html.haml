@@ -14,7 +14,8 @@
           %p
             Enter up to 10 email addresses above, separated by commas.
         %li
-          =link_to_box("Load contacts from your email account", contacts_new_referral_path, :class => "bttn_s")
+          -# TODO: fix this. Getting weird results from hotmail email address
+          =#link_to_box("Load contacts from your email account", contacts_new_referral_path, :class => "bttn_s")
         =f.input :medium, :as => :hidden, :value => 'email'
         =f.input :subject
         =f.input :message, :as => :text, :input_html => {:rows => 12}

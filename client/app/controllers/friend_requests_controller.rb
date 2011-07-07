@@ -27,6 +27,7 @@ FriendRequestsController.class_eval do
   
   def deal_with_create
     render :update do |page|
+      page << "$.fancybox.close();"      
       page["#friend_request_#{@member_target.id}_link"].replace(render("friend_requests/add_friend_link", :member => @member_target))
       page[".friends_list"].replace_html(render("members/friends", :member => @member_target))
       page << refresh_fb_dom

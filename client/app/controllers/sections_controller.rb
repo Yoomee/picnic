@@ -43,9 +43,6 @@ SectionsController.class_eval do
   end
 
   def show
-    if @section.slug == "news"
-      @flipcols = [[{:item => @pages_sections[0], :x => 2, :y =>1}]]
-    end
     case @section.view
     when 'latest_stories', 'news_view'
       @pages_sections = @section.pages.published.latest + @section.children.not_hidden

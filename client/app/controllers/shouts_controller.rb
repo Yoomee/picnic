@@ -37,6 +37,22 @@ ShoutsController.class_eval do
     render :partial => "themes_form", :locals => {:shout => Shout.new(attributes)}
   end
   
+  def older
+    @shouts = Shout.get_shouts(params[:filter],@logged_in_member).paginate(:page => params[:page], :per_page => params[:per_page])
+    render :update do |page|
+      @shouts.each do |shout|
+        page.insert_html :bottom, :shout_wall, render_shout(shout, :compact_view => params[:compact_view])
+      end
+      page << "FB.XFBML.parse();"
+      if WillPaginate::ViewHelpers.total_pages_for_collection(@shouts) > params[:page].to_i
+        page << "$('#older_shouts_link').attr('onclick', '').unbind('click');"
+        page << "$('#older_shouts_link').click(function() {#{remote_function(:url => older_shouts_link_url(:parent => @parent), :method => :get)}; return false;});"
+      else
+        page[:older_shouts_link].replace("")
+      end
+    end
+  end
+  
   def update
     @shout = Shout.find(params[:id])
     if Module.value_to_boolean(params[:shout][:themes_form_step])

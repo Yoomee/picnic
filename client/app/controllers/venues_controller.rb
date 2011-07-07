@@ -28,7 +28,7 @@ class VenuesController < ApplicationController
   end
   
   def new
-    @venue = Venue.new
+    @venue = Venue.new(:conference_id => params[:conference_id])
   end
   
   def show
