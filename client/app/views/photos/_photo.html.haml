@@ -1,9 +1,10 @@
 .photo
-  =link_if_allowed(image_for(photo, '180x140#'), photo)
+  =link_if_allowed(image_for(photo, '180x180#'), photo)
   -if !photo.untitled?
     .photo_name
       =photo.name
   -if !photo.description.blank?
     .photo_description{:style => "height:0px"}
-      =truncate(photo.description, :length => 75)
-      =link_to("Read more", photo) if photo.description.length > 97
+      -description = truncate_html(auto_link(photo.description), 75)
+      -description << link_to("Read more", photo) if photo.description.length > 72
+      =simple_format(description)
