@@ -1,7 +1,7 @@
 MembersController.class_eval do
   
   admin_only :admin
-  open_action :show
+  open_actions :show, :index
 
   skip_before_filter :check_what_i_bring, :only => %w{update what_i_bring me}
   skip_badge_announcement :what_i_bring

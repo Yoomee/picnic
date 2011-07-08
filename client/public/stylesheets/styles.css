@@ -70,6 +70,12 @@ span.click_here_beta, p.club_welcome_intro_text {
 .formtastic ol li.inline-fields label, .formtastic ol li.inline-fields .inline-errors {
   margin-top: 10px;
 }
+.formtastic .inputs li.image img {
+  float: left;
+}
+.formtastic .inputs li.image input {
+  width: 180px;
+}
 
 /* =============================  general styles ============================= */
 ul.sitemap {
@@ -1023,7 +1029,7 @@ html body form {
 
 /*============= photo albums ==================*/
 
-.photo_album {
+.photo_albums .photo_album {
 	float: left;
 	width: 180px;
 	display: block;
@@ -1081,7 +1087,17 @@ html body form {
 .photo_album a:hover {
 	text-decoration: none;
 }
-
+form.photo_album #photo_forms .inputs li {
+  clear: none;
+  margin: 0;
+}
+form.photo_album #photo_forms .inputs li.photo_album_photo_image {
+  margin-right: 10px;
+}
+form.photo_album #photo_forms .inputs li.photo_album_photo_name input {
+  margin-bottom: 5px;
+  width: 400px;
+}
 
 
 /* =============================  top styles ============================= */
@@ -6920,6 +6936,25 @@ span.click_here_beta {
 	font-weight: normal;
 	color:#fff;
 }
+
+/*========== Photo Gallery ==========*/
+
+#photo_gallery .photo {
+  float: left;
+  width: 180px;
+  height: 220px;
+  margin: 0 40px 20px 0;
+  text-align: center;  
+  overflow: hidden;
+}
+#photo_gallery .photo .photo_name {
+  font-weight: bold;
+  margin: 0;
+}
+#photo_gallery .photo p {
+  text-align: left;
+}
+
 
 /* ============================= */
 /* ! Layout for mobile version   */
