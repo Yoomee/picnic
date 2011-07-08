@@ -91,8 +91,8 @@ body, textarea, input {
 }
 
 div#flipboard_wrapper {
-	background: #fff;
-	margin-top: 50px;
+
+	margin-top: 52px;
 	
 
 	
@@ -108,7 +108,7 @@ div#flipboard_wrapper {
 	text-indent: -9000em;
 	padding: 2px 9px;
 	width: 15px;
-	margin: 0px 0 0 10px;
+	margin: -5px 0 0 10px;
 
 
 
@@ -6757,7 +6757,7 @@ span.click_here_beta {
 
 /*========== Flipboard ==========*/
 #flipboard_strip {
-  height:580px;
+  height:600px;
   overflow-x:hidden;
   width:100%;
   position:relative;
@@ -6778,16 +6778,19 @@ span.click_here_beta {
   	-moz-box-shadow:inset 0px -2px 2px #555;
   	box-shadow:inset 0px -2px 2px #555;
 }
+#flipboard_footer, #flipboard_footer.row {
+	overflow: visible;
+}
 #flipboard_footer .twelvecol {
-	padding-top: 5px;
+	padding-top: 0px;
+	overflow: visible;
 }
 #flipboard {
-  height:580px;
+  height:600px;
   width:10000px;
   position:absolute;
   top:0;
   left:5px;
-  background: #666;
   margin: 0;
   
 
@@ -6802,7 +6805,7 @@ span.click_here_beta {
   float:left;
 }
 #flipboard .flip {
-  margin: 0 5px 5px 0;
+  margin: 0 10px 10px 0;
   background:black;
   color:#fff;
   float:left;
@@ -6824,10 +6827,10 @@ span.click_here_beta {
 }
 
 #flipboard .x1 {
-  width: 235px;
+  width: 230px;
 }
 #flipboard .x2 {
-  width: 475px;
+  width: 470px;
 }
 
 #flipboard .y1 {
