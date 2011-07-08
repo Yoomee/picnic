@@ -6,4 +6,8 @@ Section.class_eval do
     ['News View', 'news_view']
   ]
   
+  def flip_partial
+    "page_section"
+  end
+  
 end

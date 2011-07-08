@@ -32,6 +32,10 @@ class FlipcolTemplate
 
 end
 
+FlipcolTemplate::X1 = 230
+FlipcolTemplate::Y1 = 140
+FlipcolTemplate::MARGIN = 10
+
 FlipcolTemplate::TEMPLATES = [
   [
     [2,3],[1,1],[1,1]

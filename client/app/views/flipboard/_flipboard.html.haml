@@ -1,5 +1,6 @@
 :ruby
   @flipitems = [@pages_sections[0], "register", random_sponsor] + (@pages_sections[1..@pages_sections.size] + get_latest_tweets_from("PICNICfestival",10,false,true) + Member.with_badge(:picnic11_speaker).all).randomize
+  @flipitems = Member.with_badge(:picnic11_speaker).all
   @flipboard_content = []
   until @flipitems.empty? do
     template = FlipcolTemplate.new(@flipboard_content.empty? ? 0 : nil)

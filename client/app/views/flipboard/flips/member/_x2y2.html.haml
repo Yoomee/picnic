@@ -1,9 +1,13 @@
-.flip{:class => "x#{x} y#{y}"}
-  .padding
-    %h6 FESTIVAL 2011
+-x = (FlipcolTemplate::X1 * 2) + FlipcolTemplate::MARGIN
+-y = (FlipcolTemplate::Y1 * 2) + FlipcolTemplate::MARGIN
+.flip.x2.y2
+  =link_to(image_or_photo_for(flipitem, "#{x}x#{y}#"),flipitem)
+  .hover
+    .padding
+      %h6 FESTIVAL 2011
     .text2
       Presenting
       %br
       =flipitem
-  -y = 2 if y ==3 
-  =link_to(image_or_photo_for(flipitem, "#{x*235+5*(x-1)}x#{2*140+5}#"),flipitem)
+    .text3
+      =truncate(flipitem.bio, :length => 100)
