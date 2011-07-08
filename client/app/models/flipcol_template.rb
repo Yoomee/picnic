@@ -6,12 +6,24 @@ class FlipcolTemplate
   end
   
   def initialize(template_id = nil)
-    template_id ||= rand(FlipcolTemplate::TEMPLATES.size - 1) + 1
+    template_id ||= rand(FlipcolTemplate::TEMPLATES.size)
     @template = FlipcolTemplate::TEMPLATES[template_id]
   end
   
   def has_subcols?
     template.any?{|flip_or_sub| flip_or_sub.flatten != flip_or_sub}
+  end
+  
+  def flipitems
+    items = []
+    template.each do |flip_or_sub|
+      if flip_or_sub.flatten != flip_or_sub
+        items += flip_or_sub
+      else
+        items << flip_or_sub
+      end
+    end
+    items
   end
   
   def size

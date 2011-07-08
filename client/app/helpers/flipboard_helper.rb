@@ -10,7 +10,7 @@ module FlipboardHelper
     else
       flip_partial = flipitem.class.to_s.underscore
     end
-    render("flipboard/flips/#{flip_partial}", :flipitem => flipitem, :x => template[0], :y => template[1])
+    render("flipboard/flips/#{flip_partial}/x#{template[0]}y#{template[1]}.html.haml", :flipitem => flipitem, :x => template[0], :y => template[1])
   end
   
   
