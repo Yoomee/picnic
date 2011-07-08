@@ -4544,7 +4544,9 @@ body.controller_badges .badge_members {
 }
 
 /*========== New programme ==========*/
-
+#prog_container .row{
+  width:955px !important;
+}
 
 #prog_header {
   width:955px;
@@ -4609,10 +4611,10 @@ body.controller_badges .badge_members {
   bottom:0px;
 }
 #prog_hours .hour {
-  height:98px;
+  height:99px;
   font-size: 14px;
   font-size:14px;
-  border-bottom:2px solid #999;
+  border-bottom:1px solid #999;
 }
 
 #prog_wrapper {
@@ -4634,7 +4636,7 @@ body.controller_badges .badge_members {
 #prog_wrapper .venue_col {
   width:155px;
   margin-right:5px;
-  background:#EEE;
+  background: url(/images/programme_bg.png) 0 40px;
   float:left;
   height:100%;
   position:relative;
@@ -4740,12 +4742,8 @@ body.controller_badges .badge_members {
   -moz-box-shadow:5px 5px 5px #666666;
 	-webkit-box-shadow:5px 5px 5px #666666;
 	box-shadow:5px 5px 5px #666666;
-  border:1px solid #CCC;
 }
 
-.timetable .hover .session_content{
-  padding:4px;
-}
 
 .timetable .closing {
   z-index:50;
