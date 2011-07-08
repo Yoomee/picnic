@@ -11,7 +11,7 @@
         function(){
           if ($(this).hasClass('hover') && !$(this).hasClass('closing')){        
             $(this).addClass('closing');
-            $(this).animate({'height':parseInt($(this).attr("data-height"))},  0, 'easeInOutCirc', function(){
+            $(this).animate({'height':parseInt($(this).attr("data-height")),'width':155},  0, 'easeInOutCirc', function(){
               $(this).removeClass('hover');
               $(this).removeClass('closing');
             });
@@ -87,7 +87,7 @@
                 .col_title.top=venue
                 -venue.sessions.on_date(day).each do |session|
                   -height = (session.duration_in_hours * 100).round - 2
-                  -link_to(session, :class => 'session', :style => "top:#{((session.starts_at_offset(9)*100).round)+40}px;height:#{height}px", "data-height" => height) do
+                  -link_to(session, :class => 'session', :style => "top:#{((session.starts_at_offset(9)*100).round)+40}px;height:#{height}px;background-color:#{session.color};color:#{complementary_color(session.color)}", "data-height" => height) do
                     .session_content
                       .title=session
                       .details

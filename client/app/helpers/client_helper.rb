@@ -9,6 +9,15 @@ module ClientHelper
     end
   end
   
+  def complementary_color(color)
+    case color[1..6].scan(/../).collect(&:hex).inject(0){|sum,val| sum += val}
+    when 510..765
+      '#000000'
+    else
+      '#FFFFFF'
+    end
+  end
+  
   def conference_session_time(session)
     start = session.starts_at.strftime("%H:%M")
     session.ends_at.blank? ? start : "#{start} - #{session.ends_at.strftime("%H:%M")}"

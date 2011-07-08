@@ -15,13 +15,13 @@ padding-right: 30px;
 }
 
 .row {
-width: 955px;
+width: 950px;
 margin: 0 auto;
 overflow: hidden;
 }
 
 .onecol, .twocol, .threecol, .fourcol, .fivecol, .sixcol, .sevencol, .eightcol, .ninecol, .tencol, .elevencol {
-margin-right: 5px;
+margin-right: 10px;
 float: left;
 min-height: 1px;
 padding:10px;
@@ -33,52 +33,52 @@ border-radius:3px;
 
 }
 .row .onecol {
-width: 55px;
+width: 50px;
 }
 
 .row .twocol {
-width: 135px;
+width: 130px;
 }
 
 .row .threecol {
-width: 215px;
+width: 210px;
 }
 
 .row .fourcol {
-width: 295px;
+width: 290px;
 }
 
 .row .fivecol {
-width: 375px;
+width: 370px;
 }
 
 
 .row .sixcol {
-width: 455px;
+width: 450px;
 }
 
 .row .sevencol {
-width: 535px;
+width: 530px;
 }
 
 .row .eightcol {
-width: 615px;
+width: 610px;
 }
 
 .row .ninecol {
-width: 695px;
+width: 690px;
 }
 
 .row .tencol {
-width: 775px;
+width: 770px;
 }
 
 .row .elevencol {
-width: 855px;
+width: 850px;
 }
 
 .row .twelvecol {
-width: 935px;
+width: 930px;
 float: left;
 padding: 10px;
 }
