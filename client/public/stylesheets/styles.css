@@ -115,6 +115,7 @@ div#flipboard_wrapper {
 	padding: 2px 9px;
 	width: 15px;
 	margin: -5px 0 0 10px;
+	position: relative;
 
 
 
@@ -6815,7 +6816,7 @@ span.click_here_beta {
   	-moz-box-shadow:inset 0px -2px 2px #555;
   	box-shadow:inset 0px -2px 2px #555;
 }
-#flipboard_footer, #flipboard_footer.row {
+#flipboard_footer, #flipboard_footer .row {
 	overflow: visible;
 }
 #flipboard_footer .twelvecol {
