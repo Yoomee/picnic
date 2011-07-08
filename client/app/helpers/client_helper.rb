@@ -58,10 +58,16 @@ module ClientHelper
   end
   
   def random_sponsor
-    sponsors = Section.find_by_slug("premium-sponsors").pages.published
-    sponsors += Section.find_by_slug("premium-sponsors").pages.published
-    sponsors += Section.find_by_slug("sponsors-sponsors").pages.published
-    sponsors += Section.find_by_slug("media-partners").pages.published
+    sponsors = []
+    if section = Section.find_by_slug("premium-sponsors")
+      sponsors += section.pages.published*2
+    end
+    if section = Section.find_by_slug("sponsors-sponsors")
+      sponsors += section.pages.published
+    end
+    if section = Section.find_by_slug("media-sponsors")
+      sponsors += section.pages.published
+    end
     sponsors[rand(sponsors.size)]
   end
   
@@ -101,7 +107,7 @@ module ClientHelper
   end
   
   def viewing_club?
-    current_page?(club_path) || current_page?(connections_path) || controller_name == 'leaderboard' || (controller_name == 'members') || controller_name=="tags"
+    controller_name=='club' || controller_name=='leaderboard' || controller_name=='members' || controller_name=="tags"
   end
   alias_method :in_club?, :viewing_club?
   

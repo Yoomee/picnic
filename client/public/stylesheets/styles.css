@@ -4001,7 +4001,7 @@ div.page_share {
 }
 
 #newsletter_signup {
-	float: right;
+/*  float: right;*/
 }
 #newsletter_signup p{
 	font-size: 12px;

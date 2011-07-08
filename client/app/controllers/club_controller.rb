@@ -26,4 +26,8 @@ class ClubController< ApplicationController
   def leaderboard
   end
   
+  def rules
+    @rules_page = Page.find_by_slug(:ground_rules)
+  end
+  
 end
