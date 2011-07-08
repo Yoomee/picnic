@@ -12,7 +12,7 @@
             =li_with_active(controller_name == 'leaderboard', link_to("Leaderboard", leaderboard_path))
             =li_with_active(current_page?(members_path), link_to("Members", members_path))
             =li_with_active(current_page?(connections_path), link_to("Connections", connections_path)) if logged_in?
-            =li_with_active_slug(:ground_rules, link_to_slug("House rules",:ground_rules))
+            =li_with_active(current_page?(club_rules_path), link_to("House rules", club_rules_path))
             =li_with_active(current_page?(new_member_path), link_to("Join", new_member_path)) if !logged_in?
           -else
             -current_root_section.all_children(:published_only => !admin_logged_in?).each do |page_or_section|
