@@ -96,3 +96,16 @@ function action_with_page_param(form_id, page) {
 		return (action + '?page=' + page);
 	}
 }
+
+var PhotoGallery = {
+  init_hovers: function() {
+    $('.photo_gallery_row').hover(
+      function() {
+        $(this).find('.photo_description').animate({'height':70});
+      },
+      function() {
+        $(this).find('.photo_description').animate({'height':0});
+      }
+    );
+  }
+};
