@@ -1,5 +1,7 @@
+-x = FlipcolTemplate::X1
+-y = FlipcolTemplate::Y1
 .flip.x1.y1
-  =link_to(image_or_photo_for(flipitem, "230x140#"),flipitem)
+  =link_to(image_or_photo_for(flipitem, "#{x}x#{y}#"),flipitem)
   .hover
     .padding
       %h6 FESTIVAL 2011

@@ -4,7 +4,7 @@ Page.class_eval do
     if section.try(:parent).try(:slug) == "sponsors"
       "sponsor"
     else
-      "page"
+      "page_section"
     end
   end
   
