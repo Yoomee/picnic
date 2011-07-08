@@ -3,6 +3,10 @@ class FlipcolTemplate
   
   class << self
     alias_method :find, :new
+    
+    def can_display_item?(item, template)
+      rand(2).zero?
+    end
   end
   
   def initialize(template_id = nil)
