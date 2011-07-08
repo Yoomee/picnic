@@ -98,6 +98,7 @@ ul.sitemap li {
 body {
 	margin:0;
 	background: #fff;
+	padding-top: 52px;
 		
 
 
@@ -109,7 +110,6 @@ body, textarea, input {
 
 div#flipboard_wrapper {
 
-	margin-top: 52px;
 	
 
 	
@@ -6830,6 +6830,7 @@ span.click_here_beta {
 #flipboard_footer .twelvecol {
 	padding-top: 0px;
 	overflow: visible;
+	margin: 0 0 40px;
 }
 #flipboard {
   height:600px;
