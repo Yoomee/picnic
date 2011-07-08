@@ -1,1 +1,14 @@
-dfdfgdfgd
+-4.times do |time|
+  -(0..255).each do |num|
+    -if time == 0
+      -color = "##{"%02x"%num}#{"%02x"%num}#{"%02x"%num}"
+    -elsif time == 1
+      -color = "##{"%02x"%num}0000"
+    -elsif time == 2
+      -color = "#00#{"%02x"%num}00"
+    -elsif time == 3
+      -color = "#0000#{"%02x"%num}"    
+    
+    %div{:style =>"width:50px;height:50px;background-color:#{color};float:left;border:1px solid black;text-align:center"}
+      %span{:style => "line-height:50px;font-size:16px;color:#{complementary_color(color)}"}
+        Text

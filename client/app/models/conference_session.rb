@@ -27,6 +27,9 @@ class ConferenceSession < ActiveRecord::Base
     conference.days.to_a.index(starts_at.to_date) + 1
   end
   
+  def color
+    tags.color_not_null.first.try(:color) || '#000000'
+  end
   
   def duration_in_hours
     return 1 if starts_at.nil? || ends_at.nil? || starts_at > ends_at
