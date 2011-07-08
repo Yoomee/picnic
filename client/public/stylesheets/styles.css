@@ -59,6 +59,17 @@ h1, h2, h3, h4, h5, h6, #nav, #subnav, #user_links .button, .bring_quote, .cycle
 span.click_here_beta, p.club_welcome_intro_text {
 	font-family:'VAG Rounded W02 Thin', arial, sans-serif;
 }
+#nav ul li a, a.button {
+	font-family:'VAG Rounded W02 Bold', arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+
+	
+
+
+}
+
+
+
 #page_content, #article_image, #keep_in_touch, #newsletter_signup, #pull_quote, #call_to_action {
 	background: #fff;
 }
@@ -169,9 +180,11 @@ body #wrapper .no_padding {
 	background:#000 url(/images/sprite.png) 0px -2375px no-repeat;
 
 	float: right;
-	font-size: 12px;
-	padding: 2px 9px;
+	font-size: 11px;
+	padding: 2px 12px;
 	margin: 0px 0 0 10px;
+	
+	text-transform: uppercase;
 
 
 
@@ -1409,7 +1422,7 @@ input#search_icon {
 #subnav {
   clear: both;
   float: left;
-  margin: 52px 0 0px;
+  margin: 0px 0 0px;
   padding: 14px 0 0px;
   width: 100%;
   border-top: 1px solid #e8e8e8;
@@ -1444,14 +1457,11 @@ input#search_icon {
 	color: #999;
 	text-transform: uppercase;
 	letter-spacing: 1px;
-	-webkit-font-smoothing: antialiased;
+	
 
 	float:left;
 	margin:0px 0px 0 0;
 	padding:5px 13px 5px;
-	
-	font-family:'VAG Rounded W02 Bold', arial, sans-serif;
-
 }
 #nav ul li a:hover {
 	color: #666;
