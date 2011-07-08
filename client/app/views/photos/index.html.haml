@@ -1,0 +1,28 @@
+-content_for(:head) do
+  :javascript
+    $(document).ready(function() {
+      PhotoGallery.init_hovers();
+    });
+  
+-no_content_row
+-title (@photo_album ? @photo_album.name : "All Photos")
+
+-if @photos.empty?
+  .twelvecol.last
+    %p
+      This album currently has no photos.
+-else
+  -@photos.each_slice(4) do |photos|
+    .row.photo_gallery_row
+      -photos.each do |photo|
+        %div{:class => "threecol#{photo == photos.last ? ' last' : ''}"}
+          =render(:partial => 'photo', :locals => {:photo => photo})
+
+.row
+  -options_panel do
+    =back_link
+    =link_if_allowed("System albums", photo_albums_proc)
+    -if @photo_album
+      =link_if_allowed "Edit album", edit_photo_album_proc(@photo_album)
+    -else
+      =link_if_allowed "New Photo", new_photo_proc
