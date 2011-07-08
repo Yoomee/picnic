@@ -15,7 +15,7 @@ class ProgrammesController < ApplicationController
     else
       @date = @conference.starts_on
     end  
-    @venues = Venue.with_sessions_in_year(2011)
+    @venues = @conference.venues.with_sessions.all
     
   end
   

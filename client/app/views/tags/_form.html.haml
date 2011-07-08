@@ -1,7 +1,8 @@
 -semantic_form_for(tag, :html => {:multipart => true}) do |form|
   -form.inputs do
     =form.input :name
-    =form.input :description
+    =form.input :description, :input_html => {:rows => 4}
     =form.input :image, :as => :image
+    =form.input :color, :input_html => {:size => 15, :title => "e.g. #FF0000", :class => "labelify"}
   -form.buttons do
     =form.commit_button "Save"

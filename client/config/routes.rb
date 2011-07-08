@@ -22,6 +22,7 @@ ActionController::Routing::Routes.draw do |map|
   map.browse '/browse', :controller => 'browse'
   map.close_beta_bar '/close_beta_bar', :controller => 'home', :action => 'close_beta_bar'
   map.club '/club', :controller => 'club', :action => 'index'
+  map.club_rules "/club/rules", :controller => 'club', :action => 'rules'
   map.connections "/connections", :controller => 'club', :action => 'connections'
   map.correspondents '/correspondents', :controller => 'correspondents'
   map.leaderboard "leaderboard", :controller => "leaderboard", :action => "index"
