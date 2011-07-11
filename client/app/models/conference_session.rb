@@ -8,6 +8,8 @@ class ConferenceSession < ActiveRecord::Base
   
   has_many :conference_sessions_members
   has_many :members, :through => :conference_sessions_members
+  has_many :speakers, :through => :conference_sessions_members, :source => :member,  :conditions => "conference_sessions_members.speaker = 1"
+  has_many :attendees, :through => :conference_sessions_members, :source => :member, :conditions => "conference_sessions_members.speaker = 0"
   
   before_create :duplicate_image
   
@@ -21,7 +23,6 @@ class ConferenceSession < ActiveRecord::Base
   named_scope :starts_in_hour, lambda {|date| {:conditions => ["HOUR(conference_sessions.starts_at) = ?", date], :order => "conference_sessions.starts_at"}}
   
   attr_accessor :duplicate_of
-
 
   def conference_day
     conference.days.to_a.index(starts_at.to_date) + 1

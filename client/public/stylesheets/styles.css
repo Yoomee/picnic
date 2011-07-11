@@ -20,7 +20,7 @@ body, textarea, input {font:12px/1.6 'Helvetica', Arial,'Liberation Sans',FreeSa
 
 /* ======================  CSS3 regularly used stuff ================== */
 
-#main, input, #footer_links, .bx_h, #news_feed_older_btn, .bx_h a, button, .bttn, .pull_quote, div#page_related_col, a.backto, #nav ul li a, .logged_in_box, #flipboard_wrapper .fr {
+#main, input, #footer_links, .bx_h, #news_feed_older_btn, .bx_h a, button, .bttn, div#page_related_col, a.backto, #nav a, .logged_in_box, #flipboard_wrapper .fr, #share_this {
 	-moz-border-radius:3px;
 	-webkit-border-radius:3px;
 	border-radius:3px;
@@ -51,7 +51,7 @@ body span.cal_sheet span.month {
 	background:#87cd29;
 }
 
-h1, h2, h3, h4, h5, h6, #nav, #user_links .button, .bring_quote, .cycle_nav a, .call_to_action, #beta_bar, #flipboard {
+h1, h2, h3, h4, h5, h6, #nav, #user_links .button, .bring_quote, .cycle_nav a, .call_to_action, #beta_bar,  p.stories_header, #flipboard, .pull_quote  {
 	font-family:'VAG Rounded W02 Light', arial, sans-serif;
 	color:black;
 	font-weight: normal;
@@ -59,11 +59,11 @@ h1, h2, h3, h4, h5, h6, #nav, #user_links .button, .bring_quote, .cycle_nav a, .
 span.click_here_beta, p.club_welcome_intro_text {
 	font-family:'VAG Rounded W02 Thin', arial, sans-serif;
 }
-#nav ul li a, a.button, h1#page_title {
+#nav a, a.button, h1#page_title {
 	font-family:'VAG Rounded W02 Bold', arial, sans-serif;
 	letter-spacing: 1px;
 }
-h1#page_title {
+h1#page_title, h2#page_intro {
 	letter-spacing: 0;
 	-webkit-font-smoothing: antialiased;
 }
@@ -190,7 +190,7 @@ body #wrapper .no_padding {
 #header_right a.button {
 		display: block;
 
-	background:#000 url(/images/sprite.png) 0px -2375px no-repeat;
+	background:#000;
 
 	float: right;
 	font-size: 11px;
@@ -429,9 +429,9 @@ input, textarea {
 	padding:5px;
 	margin-bottom:15px;
 	
-	-moz-border-radius:4px;
-    -webkit-border-radius:4px;
-    border-radius:4px;
+	-moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
 }
 .formtastic {clear: left;}
 .formtastic label {
@@ -1205,17 +1205,14 @@ h1#site_logo a {
 /*	height:95px;
 	margin:15px 0 0 20px;
 	width: 160px;*/
-	
+	float:left;
+	padding-left: 23px;
+	margin-left: -24px;
 	display: block;
 	background: url(/images/sprite_picnic.png) no-repeat -6px -1px;
-	width: 88px;
-	height: 30px;
-	text-indent:-9000em;
-	font-size: 45px;
-	color: black;
+
 	text-decoration: none;
-	margin:11px 10px 11px 0;
-	display: block;
+
 }
 
 #home h1#site_logo a {
@@ -1438,7 +1435,7 @@ input#search_icon {
 	
 	padding: 0;
 	float: left;
-	margin: 11px 0 0 0px;
+	margin: 12px 0;
 	
 
 }
@@ -1469,7 +1466,6 @@ input#search_icon {
 	text-indent:0;
 		font-size: 20px;
 	line-height: 20px;
-	width: 100%;
 }
 #nav ul li, #subnav ul li {
 	float:left;
@@ -1482,11 +1478,11 @@ input#search_icon {
 
 	float: left;
 }
-#nav ul li a {
+#nav a {
 	display:block;
-	font-size: 19px;
+	font-size: 18px;
 	line-height: 100%;
-	color: #999;
+	color: #808080;
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	
@@ -1503,6 +1499,16 @@ input#search_icon {
      -moz-transition: .3s ease-in;
      transition: .3s ease-in;
 
+}
+#nav li.active a {
+	color: #000;
+}
+.action_home #nav li.active a {
+	color: #808080;
+}
+.action_home #site_logo a {
+	color: #000;
+	background-position: -6px -35px ;
 }
 #subnav ul li.active a  {
   text-decoration:none;
@@ -3698,9 +3704,18 @@ li.news_feed_item_hovering a.trash {
 	display:block;
 	float:left;
 }
+h2#page_intro {
+	font-size: 26px;
+	line-height: 32px;
+	margin-bottom: 38px;
+}
 #page_subnav {
   float: left;
   background: #fff;
+  margin: 0 0 20px;
+  width: 100%;
+  padding-bottom: 60px;
+
 
 }
 #page_subnav ul {
@@ -3730,7 +3745,7 @@ li.news_feed_item_hovering a.trash {
 
 }
 #page_subnav li.active a {
-
+	font-weight: bold;
 }
 
 .page_share ul {
@@ -3797,9 +3812,9 @@ a.backto {
 	
 }
 .top_color {
-	height: 20px;
 	background: #ed4287;
-	height:8px
+	height:8px;
+	margin-top: 10px;
 }
 .page_header {
 	min-height: 100px;
@@ -3807,9 +3822,67 @@ a.backto {
 	margin: 0 0 20px;
 	padding: 20px 0 10px;
 }
-#page_left_col {
-	min-height: 800px;
+
+p.stories_header {
+	font-size: 12px;
+	letter-spacing: 1px;
+	
 }
+
+#share_this {
+	float: left;
+	width: 74px;
+	background: #fbd0e1;
+	padding: 10px;
+	margin: 0 0 60px;
+	
+}
+
+a.share_link {
+	display: block;
+	float: left;
+	width: 30px;
+	height: 30px;
+	margin: 0 5px 5px;
+	background: url(/images/sprite_picnic.png) 0px -160px;
+	text-indent: -9000em;
+	clear: both;
+	
+	
+}
+a#facebook_share_link {
+	background-position: 0 -200px;
+}
+span.share_link_count {
+	float: left;
+	margin-top: 5px;
+}
+
+
+#share_this h3 {
+	font-size: 12px;
+	margin: 0 0 5px;
+	text-transform: uppercase;
+	color: #666;
+}
+#page_left_col {
+	min-height: 1200px;
+}
+
+#page_tags {
+	float: left;
+	width: 100%;
+	margin: 0 0 60px;
+
+	
+}
+#page_tags li {
+	float: left;
+	clear: none;
+	margin: 0 5px 0 0;
+}
+
+
 #page_content h5 {
 	font-size: 18px;
 
@@ -3919,10 +3992,14 @@ a.backto {
 
 }
 .pull_quote {
-	margin: 20px 0 0;
+	margin: 40px 0;
 	float: left;
-	width: 100%;
 	text-indent: 0;
+	background: #ed4287;
+	padding: 10px;
+	color: #fff;
+	font-size: 18px;
+	width: 200px;
 }
 .pull_quote * {
 	margin:0;
@@ -4074,10 +4151,60 @@ div.page_share {
 }
 
 #newsletter_signup {
-/*  float: right;*/
+	float: left;
+	background: #000;
+	color: #fff;
+	padding: 10px;
+
 }
+
+#main_page_content {
+	color: #808080;
+	
+}
+
+#newsletter_signup h3 {
+	color: #fff;
+	text-transform: uppercase;
+	text-align: center;
+	letter-spacing: 1px;
+	font-size: 16px;
+	line-height: 19px;
+	margin: 3px 0 10px;
+}
+
+#newsletter_signup input.newsletter_submit {
+	  	display: block;
+
+	background:#808080;
+
+	float: left;
+	font-size: 11px;
+	padding: 2px 12px;
+	margin: 0 0 5px;
+
+	
+	text-transform: uppercase;
+	
+	font-family:'VAG Rounded W02 Bold', arial, sans-serif;
+	letter-spacing: 1px;
+	text-shadow: none;
+
+	color: #fff;
+	
+	border-radius:3px;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	
+	-webkit-box-shadow:none;
+	-moz-box-shadow:none;
+	box-shadow:none;
+	
+}
+
 #newsletter_signup p{
-	font-size: 12px;
+	font-size: 10px;
+	text-align: center;
 }
 #newsletter_signup label {
 	float: left;
@@ -4088,12 +4215,17 @@ div.page_share {
 #newsletter_signup input {
 	float: left;
 	clear: left;
-	width: 97%;
+	width: 95%;
 	margin: 0 0 12px;
+	border: none;	
+	color: #999;
+	font-size: 12px;
+	padding: 3px 5px;
 }
 #newsletter_signup input.newsletter_submit {
 	width: auto;
-	font-size: 14px;
+	font-size: 11px;
+
 }
 /*================ Share Page ======================*/
 .share{
@@ -4662,7 +4794,7 @@ body.controller_badges .badge_members {
   width: 75px;
   position: absolute;
   right: 0px;
-  z-index: 100;
+  z-index: 20;
 }
 #prog_container #bottom_scroll_right{
   bottom:0px;
@@ -4786,7 +4918,7 @@ body.controller_badges .badge_members {
   width:238px;
   border:1px solid black;
   color:black;
-  z-index:100;
+  z-index:20;
   -moz-box-shadow:5px 5px 5px #666666;
 	-webkit-box-shadow:5px 5px 5px #666666;
 	box-shadow:5px 5px 5px #666666;
@@ -5253,18 +5385,26 @@ li.wall_post {
   min-height: 250px;
 }
 a.tag, .no_member_themes_fancybox .tag, .controller_tags h1.tag {
-	display: block;
-	padding: 5px 7px;
+  	display: block;
+
+	background:#ccc;
+
+	float: right;
+	font-size: 11px;
+	padding: 2px 12px;
 	margin: 0 0 5px;
-	font-size: 13px;
-	line-height: 14px;
-	float: left;
-	background:#ABABAB;
-	background:rgba(0,0,0,0.3);
+
+	
+	text-transform: uppercase;
+	
+	font-family:'VAG Rounded W02 Bold', arial, sans-serif;
+	letter-spacing: 1px;
+
 	color: #fff;
+	
 	border-radius:3px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
 }
 .controller_tags h1.tag {
   font-size: 34px;

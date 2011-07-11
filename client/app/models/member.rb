@@ -25,7 +25,7 @@ Member.class_eval do
   has_one :conference_delegate, :autosave => true
   
   has_many :conference_sessions_members
-  has_many :conference_sessions, :through => :conference_sessions_members
+  has_many :conference_sessions, :through => :conference_sessions_members  
 
   has_many :subscriptions, :dependent => :destroy
   has_many :subscription_items, :class_name => "Subscription", :as => :attachable, :dependent => :destroy
@@ -60,6 +60,15 @@ Member.class_eval do
   def allowed_job_title?
     has_badge?(:picnic11_speaker) || has_badge?(:picnic11_team) || has_badge?(:picnic_advisor)
   end
+  
+  def attending?(session)
+    session.attendees.all.include?(self)
+  end
+  
+  def speaking_at?(session)
+    session.speakers.all.include?(self)
+  end
+  
   
   def blank_what_i_bring?
     what_i_bring.blank? || what_i_bring == '...'

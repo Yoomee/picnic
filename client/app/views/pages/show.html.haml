@@ -13,15 +13,51 @@
       %p.stories_header
         STORIES 
         %strong SOCIETY
+      
     
   #header_right_col.ninecol.last  
     #top_color_right.top_color
     .page_header
       %h1#page_title=@page.title
   #page_left_col.threecol
-    tags here
+    #page_subnav
+      =render("pages/subnav", :page => @page)  
+    #page_tags
+      %ul.lst
+        %li
+          =link_to "Sustainability", "#", :class=>"tag"
+        %li
+          =link_to "Design", "#", :class=>"tag"
+        %li
+          =link_to "Urban futures", "#", :class=>"tag"
+    #share_this
+      %h3 Share this
+      =link_to "Facebook", "http://facebook.com/sharer.php?u=#{site_url}#{page_path(@page, :host => site_host)}", :popup => ['popUpWindow','height=350,width=600'], :class=>"share_link", :id=>"facebook_share_link" 
+      %span.share_link_count
+        12
+      =#link_to_function "Twitter", "http://twitter.com/home?status=#{page.title} - #{site_url}#{page_path(page, :host => site_host)}", :target => "_blank"
+      =link_to_function "Twitter", "(function(){window.twttr=window.twttr||{};var D=550,A=450,C=screen.height,B=screen.width,H=Math.round((B/2)-(D/2)),G=0,F=document,E;if(C>A){G=Math.round((C/2)-(A/2))}window.twttr.shareWin=window.open('http://twitter.com/share','',',left='+H+',top='+G+',width='+D+',height='+A+',personalbar=0,toolbar=0,scrollbars=1,resizable=1');E=F.createElement('script');E.src='http://platform.twitter.com/bookmarklets/share.js?v=1';F.getElementsByTagName('head')[0].appendChild(E)}())", :class=>"share_link", :id=>"twitter_share_link" 
+      %span.share_link_count
+        13
+    #newsletter_signup.last  
+      %h3 
+        Sign up for 
+        %br
+        the PICNIC newsletter
+      %p Get the latest news, announcements, special offers and more from PICNIC and our partners. Sign up today for PICNIC’s monthly newsletter.
+
+      -form_tag("http://picnicnetwork.us1.list-manage.com/subscribe/post?u=f68513e4236c461ff84a35e7a&id=bdfa09384f") do
+        =label_tag("FNAME", "First name")
+        =text_field_tag("FNAME", "", :class=>'labelify', :title=>'First name')
+        =label_tag("FNAME", "Last name")
+        =text_field_tag("LNAME", "", :class=>'labelify', :title=>'Last name')
+        =label_tag("FNAME", "Email")        
+        =text_field_tag("EMAIL", "", :class=>'labelify', :title=>'Email')
+        =submit_tag("Send", :class=>'newsletter_submit')    
+
   #page_right_col.sixcol  
-    %h2 PICNIC is so much more than your average conference, it's a festival! What sets PICNIC apart from the rest? Keep reading to find out more.  
+    %h2#page_intro
+      =@page.intro
   #article_image.sevencol.last
     -if @page.slug_in?(%w{location contact})
       -location = @page.slug_is?(:contact) ? Location.picnic_hq : Location.picnic_festival
@@ -29,13 +65,14 @@
     -else
       =photo_for(@page, '550x')
     =snippet(@page, :photo_caption)
-    =snippet(@page, :pull_quote)  
-    =snippet(@page, :call_to_action)    
   -if false  
     #page_subnav.twocol
       =render("pages/subnav", :page => @page)
-  .sixcol    
-    =render('pages/content', :page => @page)    
+  #main_page_content.sixcol    
+    =render('pages/content', :page => @page)
+    =snippet(@page, :call_to_action)
+  #pull_quote.threecol.last  
+    =snippet(@page, :pull_quote)
   %span
   -if false
     #page_content{:class => "#{@page.slug_in?(%w{the_team advisors picnic11_speakers contributors}) ? 'eightcol last' : 'fivecol'}"}
