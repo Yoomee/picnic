@@ -34,24 +34,28 @@
   -if false  
     #page_subnav.twocol
       =render("pages/subnav", :page => @page)
-  #page_content{:class => "#{@page.slug_in?(%w{the_team advisors picnic11_speakers contributors}) ? 'eightcol last' : 'fivecol'}"}
-    #page_left_col
-      -if @page.has_photo? || @page.slug_in?(%w{location contact})
-      -unless @page.published?
-        %p#page_status=@page.status_string
-      =render('pages/content', :page => @page)
-      -if @page.slug_is(:beta) && @enquiry
-        =render_form @enquiry
-    =render_slug(@page.slug)
+  .sixcol    
+    =render('pages/content', :page => @page)    
+  %span
+  -if false
+    #page_content{:class => "#{@page.slug_in?(%w{the_team advisors picnic11_speakers contributors}) ? 'eightcol last' : 'fivecol'}"}
+      #page_left_col
+        -if @page.has_photo? || @page.slug_in?(%w{location contact})
+        -unless @page.published?
+          %p#page_status=@page.status_string
+        =render('pages/content', :page => @page)
+        -if @page.slug_is(:beta) && @enquiry
+          =render_form @enquiry
+      =render_slug(@page.slug)
 
-  -if !@page.slug_in?(%w{the_team advisors correspondents picnic11_speakers})
-    #page_right_col
-      =render "pages/right_col", :page => @page
-    -if @page.has_related_items?
-      #related_content.row
-        .twelvecol
-          %h2.title Related content
-        =render_related_items(@page, :limit => 6, :truncate_length => 150)
+    -if !@page.slug_in?(%w{the_team advisors correspondents picnic11_speakers})
+      #page_right_col
+        =render "pages/right_col", :page => @page
+      -if @page.has_related_items?
+        #related_content.row
+          .twelvecol
+            %h2.title Related content
+          =render_related_items(@page, :limit => 6, :truncate_length => 150)
 
 .row        
   -options_panel do
