@@ -1,0 +1,6 @@
+-if logged_in_member && !logged_in_member.speaking_at?(session)
+  #attend_link
+    -if logged_in_member.attending?(session)
+      =link_to_remote("I'm not going", :url => unattend_conference_session_path(session), :method => :delete, :html => {:class => "bttn_l"})
+    -else
+      =link_to_remote("I'm going to this", :url => attend_conference_session_path(session), :html => {:class => "bttn_l"})

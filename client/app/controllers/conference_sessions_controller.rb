@@ -1,8 +1,33 @@
 class ConferenceSessionsController < ApplicationController
   
   admin_only :create, :edit, :destroy, :index, :new, :update, :duplicate
+  member_only :attend, :unattend
 
-  before_filter :get_conference_session, :only => %w{destroy edit show update}
+  before_filter :get_conference_session, :only => %w{destroy edit show update attend unattend}
+
+  def attend
+    if !logged_in_member.attending?(@conference_session)
+      @conference_session.attendees << logged_in_member  
+      render :update do |page|
+        page[:attend_link].replace(render("conference_sessions/attend_link", :session => @conference_session))
+        page[:attendees_list].prepend(render("members/grid_item", :member => @logged_in_member, :team => false))
+      end
+    else
+      render :nothing => true
+    end
+  end
+
+  def unattend
+    if logged_in_member.attending?(@conference_session)
+      @conference_session.attendees.delete(logged_in_member)
+      render :update do |page|
+        page[:attend_link].replace(render("conference_sessions/attend_link", :session => @conference_session))
+        page << "$('#grid_item_member_#{logged_in_member.id}').fadeOut('slow', function(){$(this).remove();});"
+      end
+    else
+      render :nothing => true
+    end
+  end
   
   def create
     handle_facelist
