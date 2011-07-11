@@ -4731,35 +4731,32 @@ body.controller_badges .badge_members {
   padding:5px;
 }
 
-.timetable .session .title {
-/*  white-space:nowrap;
-*/}
-.timetable .session .details {
+
+
+.timetable .session_hover {
   display:none;
-  width:189px;
-}
-
-.timetable a:hover{
-  text-decoration:none;
-}
-
-.timetable .hover .details {
-  display:block;
-}
-
-.timetable .hover {
+  position:absolute;
+  background:white;
+  width:238px;
+  border:1px solid black;
+  color:black;
   z-index:100;
-  overflow:hidden;
   -moz-box-shadow:5px 5px 5px #666666;
 	-webkit-box-shadow:5px 5px 5px #666666;
 	box-shadow:5px 5px 5px #666666;
 }
 
-
-.timetable .closing {
-  z-index:50;
+.timetable .session_hover .title {
+  padding:5px;
 }
 
+.timetable .session_hover .details {
+  padding:5px;
+}
+
+.timetable a:hover{
+  text-decoration:none;
+}
 
 /*========== Session show ==========*/
 .controller_conference_sessions .call_to_action, .controller_conferences .call_to_action {
