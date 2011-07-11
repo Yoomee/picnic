@@ -8,7 +8,7 @@ ActionController::Routing::Routes.draw do |map|
     conf.resource :programme, :only => [:show]
     conf.resource :venues, :only => [:show, :new]
   end
-  map.resources :conference_sessions, :only => [:create, :edit, :destroy, :show, :update], :member => {:duplicate => :get}
+  map.resources :conference_sessions, :only => [:create, :edit, :destroy, :show, :update], :member => {:duplicate => :get, :attend => :post, :unattend => :delete}
   map.resources :venues, :only => [:create, :edit, :destroy, :show, :update]
   
   map.resources :members, :only => [], :collection => {:admin => :get}

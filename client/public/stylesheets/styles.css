@@ -4659,7 +4659,7 @@ body.controller_badges .badge_members {
   width: 75px;
   position: absolute;
   right: 0px;
-  z-index: 100;
+  z-index: 20;
 }
 #prog_container #bottom_scroll_right{
   bottom:0px;
@@ -4783,7 +4783,7 @@ body.controller_badges .badge_members {
   width:238px;
   border:1px solid black;
   color:black;
-  z-index:100;
+  z-index:20;
   -moz-box-shadow:5px 5px 5px #666666;
 	-webkit-box-shadow:5px 5px 5px #666666;
 	box-shadow:5px 5px 5px #666666;
