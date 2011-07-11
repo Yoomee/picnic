@@ -116,7 +116,7 @@ var Flipboard = {
   scrolling: 0,
   direction: 1,
   hoverOn: function(flip){
-    $('#flipboard .hover').fadeOut('fast', function() {
+    $('#flipboard .hover').fadeOut(50, function() {
       $(this).removeClass('fading');
     });
     flip.children('.hover:not(.fading)').addClass('fading').fadeIn('fast');
@@ -124,7 +124,7 @@ var Flipboard = {
     // flip.children('.hover').addClass('hovering').blindDown();
   },
   hoverOff: function(flip){
-    flip.children('.hover').fadeOut('fast', function() {
+    flip.children('.hover').fadeOut(50, function() {
       $(this).removeClass('fading');
     });
     // flip.children('.hover').removeClass('hovering').blindUp();

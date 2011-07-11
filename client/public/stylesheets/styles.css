@@ -6915,6 +6915,8 @@ span.click_here_beta {
   color:#000;
   margin-bottom: 5px;
   font-weight: bold;
+  float: left;
+  clear: both;
 }
 #flipboard .flip_tweet h6 {
   color: #fff;
@@ -6923,9 +6925,14 @@ span.click_here_beta {
   font-size: 24px;
   line-height: 26px;
   font-weight: bold;
+  float: left;
+  clear: both;
+  margin-bottom: 10px;
 }
 #flipboard .text2 {
   font-size: 16px;
+  float: left;
+  clear: both;
 }
 
 #flipboard .x1 .hover { width:215px;}
@@ -6963,6 +6970,14 @@ span.click_here_beta {
   background:#383838;
   background:rgba(0,0,0,0.85);
   color:#fff;
+}
+#flipboard a.hover, #flipboard a.flip_info {
+  text-decoration: none;
+  float: left;
+}
+#flipboard a.hover:hover, #flipboard a.flip_info:hover {
+  text-decoration: none;
+  cursor: pointer;
 }
 #flipboard .flip_sponsor {
   background: #fff;
