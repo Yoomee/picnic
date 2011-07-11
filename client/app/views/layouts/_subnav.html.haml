@@ -20,5 +20,5 @@
             -else
               -current_root_section.all_children(:published_only => !admin_logged_in?).each do |page_or_section|
                 =li_with_active(viewing_page_or_section?(page_or_section), link_to_self(page_or_section))
-                -if current_root_section.slug == "picnic11"
-                  =li_with_active(controller_name =~ /programmes|conference_sessions|venues/, link_to("Programme", conference_programme_path))
+              -if current_root_section.slug == "picnic11"
+                =li_with_active(controller_name =~ /programmes|conference_sessions|venues/, link_to("Programme", conference_programme_path(1)))
