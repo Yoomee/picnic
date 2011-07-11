@@ -1,5 +1,7 @@
 Page.class_eval do
 
+  acts_as_taggable_on :tags
+  
   class << self
     
     def random_sponsors(limit = 3)
@@ -16,6 +18,10 @@ Page.class_eval do
       limit == 1 ? [sponsors.random_element] : sponsors.random_elements(limit)
     end
     
+  end
+  
+  def color
+    tags.color_not_null.first.try(:color) || '#C9DCDF'
   end
   
   def flip_partial

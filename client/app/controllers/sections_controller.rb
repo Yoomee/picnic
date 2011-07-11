@@ -17,6 +17,8 @@ end
 
 SectionsController.class_eval do
 
+  before_filter :handle_facelist, :only => [:create, :update]
+
   def home
     if !show_splash_page? && @section = home_section
       case @section.view
@@ -62,7 +64,11 @@ SectionsController.class_eval do
 
 
   private
-
+  def handle_facelist
+    params[:section] ||= {}
+    params[:section][:tag_list] = params[:facelist_values_section_themes] if !params[:facelist_values_section_themes].nil?
+  end
+  
   def seen_splash_page!
     if splash_page_advert
       session[:viewed_splash_pages] ||= []

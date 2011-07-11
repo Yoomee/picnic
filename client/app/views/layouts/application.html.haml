@@ -64,7 +64,8 @@
       =#render "layouts/beta_bar"
       =render_flipboard if @section.try(:slug) == 'news'
       #header.container
-        =render :partial => 'layouts/header'                
+        =render :partial => 'layouts/header'
+      #subnav_container.container                  
         =render("layouts/subnav")
       #main.content
         #main_container.container 

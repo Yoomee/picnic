@@ -17,7 +17,8 @@ module FlipboardHelper
     flipitems = Page::random_sponsors(1) +
                 (@pages_sections[1..@pages_sections.size] + 
                 get_latest_tweets_from("PICNICfestival",10,false,true) + 
-                Member.with_badge(:picnic11_speaker).all).randomize
+                Member.with_badge(:picnic11_speaker).all)
+    # flipitems = flipitems.randomize
     flipboard_content = []
     until flipitems.empty? do
       template = FlipcolTemplate.new(flipboard_content.empty? ? 0 : nil)

@@ -51,9 +51,9 @@ body span.cal_sheet span.month {
 	background:#87cd29;
 }
 
-h1, h2, h3, h4, h5, h6, #nav, #user_links .button, .bring_quote, .cycle_nav a, .call_to_action, #beta_bar {
+h1, h2, h3, h4, h5, h6, #nav, #user_links .button, .bring_quote, .cycle_nav a, .call_to_action, #beta_bar, #flipboard {
 	font-family:'VAG Rounded W02 Light', arial, sans-serif;
-		color:black;
+	color:black;
 	font-weight: normal;
 }
 span.click_here_beta, p.club_welcome_intro_text {
@@ -62,9 +62,6 @@ span.click_here_beta, p.club_welcome_intro_text {
 #nav ul li a, a.button, h1#page_title {
 	font-family:'VAG Rounded W02 Bold', arial, sans-serif;
 	letter-spacing: 1px;
-	
-
-
 }
 h1#page_title {
 	letter-spacing: 0;
@@ -101,7 +98,7 @@ ul.sitemap li {
 body {
 	margin:0;
 	background: #fff;
-	padding-top: 85px;
+	padding-top: 52px;
 		
 
 
@@ -113,7 +110,7 @@ body, textarea, input {
 
 div#flipboard_wrapper {
 	padding-top: 14px;
-	padding-bottom: 6px;
+	padding-bottom: 2px;
 	background: #666;
 
 	
@@ -1149,10 +1146,10 @@ div#top {
 	padding: 0;
 	background: #fff;
 	
-	/*
+	
 	 -webkit-box-shadow:0px 2px 8px rgba(0,0,0,0.2);
   	-moz-box-shadow:0px 2px 8px rgba(0,0,0,0.2);
-  	box-shadow:0px 2px 8px rgba(0,0,0,0.2);*/
+  	box-shadow:0px 2px 8px rgba(0,0,0,0.2);
 
 }
 #header .row {
@@ -1167,6 +1164,12 @@ div#top {
 	clear: left;
 	float: left;
 	width: 100%;
+	margin: 0 0 20px;
+}
+#subnav_container {
+	float: left;
+	width: 100%;
+	padding: 0;
 }
 #header_inside {
 	clear: both;
@@ -6858,10 +6861,10 @@ span.click_here_beta {
 	float: left;
 	padding: 0;
 	position: relative;
-
+	height: 0;
 
 	
-	margin: 0 0 30px;
+	margin: 0 0 0px;
 
 }
 #flipboard_footer, #flipboard_footer .row {
@@ -6878,7 +6881,7 @@ span.click_here_beta {
   width:10000px;
   position:absolute;
   top:0;
-  left:5px;
+  left:10px;
   margin: 0;
 }
 
@@ -6909,15 +6912,27 @@ span.click_here_beta {
 }
 
 #flipboard h1, #flipboard h3, #flipboard h6 {
-  color:#fff;
+  color:#000;
   margin-bottom: 5px;
+  font-weight: bold;
+  float: left;
+  clear: both;
+}
+#flipboard .flip_tweet h6 {
+  color: #fff;
 }
 #flipboard .text1 {
-  font-size: 17px;
+  font-size: 24px;
+  line-height: 26px;
   font-weight: bold;
+  float: left;
+  clear: both;
+  margin-bottom: 10px;
 }
 #flipboard .text2 {
   font-size: 16px;
+  float: left;
+  clear: both;
 }
 
 #flipboard .x1 .hover { width:215px;}
@@ -6955,6 +6970,14 @@ span.click_here_beta {
   background:#383838;
   background:rgba(0,0,0,0.85);
   color:#fff;
+}
+#flipboard a.hover, #flipboard a.flip_info {
+  text-decoration: none;
+  float: left;
+}
+#flipboard a.hover:hover, #flipboard a.flip_info:hover {
+  text-decoration: none;
+  cursor: pointer;
 }
 #flipboard .flip_sponsor {
   background: #fff;
