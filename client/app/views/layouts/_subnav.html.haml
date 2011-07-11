@@ -18,7 +18,7 @@
               -else
                 =li_with_active(current_page?(new_member_path), link_to("Join", new_member_path))
             -else
-              -current_root_section.all_children(:published_only => !admin_logged_in?).each do |page_or_section|
-                =li_with_active(viewing_page_or_section?(page_or_section), link_to_self(page_or_section))
+              -current_root_section.all_children(:published_only => !admin_logged_in?).each_with_index do |page_or_section, idx|
+                =li_with_active(viewing_page_or_section?(page_or_section) || (current_page?(root_path) && idx == 0), link_to_self(page_or_section))
               -if current_root_section.slug == "picnic11"
                 =li_with_active(controller_name =~ /programmes|conference_sessions|venues/, link_to("Programme", conference_programme_path(1)))
