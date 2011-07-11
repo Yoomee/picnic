@@ -115,20 +115,30 @@ var Flipboard = {
   fast_scrolling: null,  
   scrolling: 0,
   direction: 1,
+  allowScrolling: function() {
+    var currentPosition = $('#flipboard').position().left;
+    if (Flipboard.direction == 1) {
+      return (currentPosition >= Flipboard.maxRight());
+    } else {
+      return (currentPosition <= Flipboard.maxLeft);
+    }
+    
+  },
   hoverOn: function(flip){
     $('#flipboard .hover').fadeOut(50, function() {
       $(this).removeClass('fading');
     });
     flip.children('.hover:not(.fading)').addClass('fading').fadeIn('fast');
-    // $('#flipboard .hover.hovering').blindUp().removeClass('hovering');
-    // flip.children('.hover').addClass('hovering').blindDown();
   },
   hoverOff: function(flip){
     flip.children('.hover').fadeOut(50, function() {
       $(this).removeClass('fading');
     });
-    // flip.children('.hover').removeClass('hovering').blindUp();
   },
+  maxRight: function() {
+    return (window.innerWidth - 10 - $('#flipboard').width());
+  },
+  maxLeft: 10,
   startFastScroll: function() {
     Flipboard.stopAllScrolling();
     Flipboard.fast_scrolling = setInterval("Flipboard.scroll()", 0.1);
@@ -147,16 +157,26 @@ var Flipboard = {
   stopSlowScroll: function(){
     clearInterval(Flipboard.slow_scrolling);
   },
-  scroll: function(){
+  scroll: function() {
+    if (!Flipboard.allowScrolling()) {
+      Flipboard.direction = (Flipboard.direction * -1);
+    }
     $('#flipboard').css('left', $('#flipboard').position().left - Flipboard.direction);
   },
   scrollJump: function(right){
-    if(!Flipboard.scrolling){
+    Flipboard.direction = (right ? 1 : -1);
+    if(!Flipboard.scrolling && Flipboard.allowScrolling()){
       Flipboard.scrolling = 1;
       Flipboard.stopAllScrolling();
-      $('#flipboard').animate({'left':(right ? '-' : '+') + '=240'}, 600, function(){
+      var currentPosition = $('#flipboard').position().left;
+      var newPosition = (right ? (currentPosition - 240) : (currentPosition + 240));
+      if (newPosition > Flipboard.maxLeft) {
+        newPosition = Flipboard.maxLeft;
+      } else if (newPosition < Flipboard.maxRight()) {
+       newPosition = Flipboard.maxRight(); 
+      }
+      $('#flipboard').animate({'left':newPosition}, 600, function(){
         Flipboard.scrolling = 0;
-        Flipboard.direction = (right ? 1 : -1);
         Flipboard.startSlowScroll();
       });
     }

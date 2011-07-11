@@ -9,11 +9,11 @@
       }, function(){
         Flipboard.hoverOff($(this));
       });
-    //setTimeout("Flipboard.startScroll()",2000);
+    setTimeout("Flipboard.startSlowScroll();", 2000);
   });
 #flipboard_wrapper{:style => "display:block"}
   #flipboard_strip
-    #flipboard
+    #flipboard{:style => "width: #{flipboard_content.size*(FlipcolTemplate::X1 + FlipcolTemplate::MARGIN)*2}px"}
       -flipboard_content.each do |template, items|
         .flipcol
           -template.template.each do |subcol_or_flip_template|

@@ -14,14 +14,29 @@ module FlipboardHelper
   end
   
   def render_flipboard
-    flipitems = Page::random_sponsors(1) +
-                (@pages_sections[1..@pages_sections.size] + 
-                get_latest_tweets_from("PICNICfestival",10,false,true) + 
-                Member.with_badge(:picnic11_speaker).all)
-    # flipitems = flipitems.randomize
+    flipboard_content = Rails.cache.fetch("flipboard_content", :expires_in => 1.day) do
+      get_flipboard_content
+    end
+    render("flipboard/flipboard", :flipboard_content => get_flipboard_content)
+  end
+  
+  def get_flipboard_content
+    sponsors = Page::random_sponsors(3)
+    pages_sections = Section.find_by_slug(:news).all_children(:published_only => true, :latest => true).first(10)
+    tweets = get_latest_tweets_from("PICNICfestival", 5, false, true)
+    speakers = Member.with_badge(:picnic11_speaker).latest.limit(10).all
+    flipitems = (pages_sections + speakers).sort_by(&:created_at)
+    total_size = flipitems.size
+    sponsors.each_with_index do |sponsor, index|
+      flipitems.insert((index+1)*(total_size /sponsors.size), sponsor)
+    end
+    tweets.each_with_index do |tweet, index|
+      flipitems.insert((index+1)*(total_size/tweets.size), tweet)
+    end
     flipboard_content = []
+    template_id = 0
     until flipitems.empty? do
-      template = FlipcolTemplate.new(flipboard_content.empty? ? 0 : nil)
+      template = FlipcolTemplate.new(template_id)
       items = []
       template.flipitems.each do |flipitem_template|
         item_queue = []
@@ -34,8 +49,13 @@ module FlipboardHelper
         end
       end
       flipboard_content << [template, items.compact]
+      if (template_id+1 == FlipcolTemplate::TEMPLATES.size)
+        template_id = 0
+      else
+        template_id += 1
+      end
     end
-    render("flipboard/flipboard", :flipboard_content => flipboard_content)
+    flipboard_content
   end
   
 end

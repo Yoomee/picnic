@@ -6878,7 +6878,7 @@ span.click_here_beta {
 }
 #flipboard {
   height:600px;
-  width:10000px;
+/*  width:10000px;*/
   position:absolute;
   top:0;
   left:10px;
