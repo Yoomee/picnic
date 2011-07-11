@@ -8,7 +8,7 @@ class FlipcolTemplate
       case item.class.to_s
       when "Member" then true
       when "Struct::Tweet"
-        [[2,1],[1,2],[2,2]].include?(template)
+        [[2,1],[1,2]].include?(template)
       when "Page","Section"
         if item.is_sponsor?
           [[1,1],[1,2]].include?(template)

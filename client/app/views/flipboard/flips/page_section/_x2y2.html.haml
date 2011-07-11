@@ -2,8 +2,8 @@
 -y = (FlipcolTemplate::Y1 * 2) + FlipcolTemplate::MARGIN
 .flip.x2.y2
   =link_to(image_or_photo_for(flipitem, "#{x}x#{y}#"),flipitem)
-  .hover.x2.y1
+  -link_to(flipitem, :class => "hover flip_info", :style => "background-color:#{flipitem.color}") do
     .padding
       %h6=flipitem.created_at.strftime("%d %B %Y")
-      .text2
+      .text2{:style => "color:#{complementary_color(flipitem.color)}"}
         =auto_link(flipitem.summary(150, :strip_tags => true))

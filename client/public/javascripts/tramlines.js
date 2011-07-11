@@ -111,11 +111,12 @@ var PhotoGallery = {
 };
 
 var Flipboard = {
-  timer: null,
+  slow_scrolling: null,
+  fast_scrolling: null,  
   scrolling: 0,
   direction: 1,
   hoverOn: function(flip){
-    $('#flipboard .hover').fadeOut('fast', function() {
+    $('#flipboard .hover').fadeOut(50, function() {
       $(this).removeClass('fading');
     });
     flip.children('.hover:not(.fading)').addClass('fading').fadeIn('fast');
@@ -123,16 +124,28 @@ var Flipboard = {
     // flip.children('.hover').addClass('hovering').blindDown();
   },
   hoverOff: function(flip){
-    flip.children('.hover').fadeOut('fast', function() {
+    flip.children('.hover').fadeOut(50, function() {
       $(this).removeClass('fading');
     });
     // flip.children('.hover').removeClass('hovering').blindUp();
   },
-  startScroll: function(){
-    Flipboard.timer = setInterval("Flipboard.scroll()",55);
+  startFastScroll: function() {
+    Flipboard.stopAllScrolling();
+    Flipboard.fast_scrolling = setInterval("Flipboard.scroll()", 0.1);
   },
-  stopScroll: function(){
-    clearInterval(Flipboard.timer);
+  startSlowScroll: function() {
+    Flipboard.stopAllScrolling();    
+    Flipboard.slow_scrolling = setInterval("Flipboard.scroll()", 55);
+  },
+  stopAllScrolling: function(){
+    Flipboard.stopSlowScroll();
+    Flipboard.stopFastScroll();
+  },
+  stopFastScroll: function(){
+    clearInterval(Flipboard.fast_scrolling);
+  },
+  stopSlowScroll: function(){
+    clearInterval(Flipboard.slow_scrolling);
   },
   scroll: function(){
     $('#flipboard').css('left', $('#flipboard').position().left - Flipboard.direction);
@@ -140,11 +153,11 @@ var Flipboard = {
   scrollJump: function(right){
     if(!Flipboard.scrolling){
       Flipboard.scrolling = 1;
-      Flipboard.stopScroll();
+      Flipboard.stopAllScrolling();
       $('#flipboard').animate({'left':(right ? '-' : '+') + '=240'}, 600, function(){
         Flipboard.scrolling = 0;
         Flipboard.direction = (right ? 1 : -1);
-        Flipboard.startScroll();
+        Flipboard.startSlowScroll();
       });
     }
   }

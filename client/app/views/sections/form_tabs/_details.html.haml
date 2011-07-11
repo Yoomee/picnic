@@ -1,3 +1,5 @@
+-content_for :head do
+  =themes_facelist_javascript(:tag_list => section.tag_list, :intro_text => "e.g. mobility", :prefix => 'section')
 %p
   = "Please enter the details of the section below."
 -semantic_fields_for section do |fields|
@@ -6,5 +8,9 @@
       =fields.label :parent_id, 'Parent'
       =fields.select :parent_id, possible_parent_section_option_tags(section)
     =fields.input :name
+    %li
+      %label Themes
+    %li.text
+      =text_field_tag :section_themes_text, "", :onkeypress => "return event.keyCode!=13"
     =fields.input :view, :as => :radio, :collection => Section::VIEW_OPTIONS, :help => 'Please select how the section should be displayed'
     %li=fields.photo_browser_button :photo    
