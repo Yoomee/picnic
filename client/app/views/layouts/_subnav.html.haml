@@ -1,23 +1,24 @@
 -if in_news_network? || in_club? || (!current_root_section.nil? && (current_root_section.page_and_section_descendant_generations > 1))
-  .row            
-    .twelvecol.no_padding
-      #subnav
-        %ul
-          -if in_news_network?
-            =li_with_active(current_page?(browse_path), link_to("Browse", browse_path))
-            =li_with_active(current_page?(themes_path), link_to("Themes", themes_path))
-            =li_with_active(current_page?(correspondents_path), link_to("Correspondents", correspondents_path))
-          -elsif in_club?
-            =li_with_active(current_page?(club_path), link_to("Latest", club_path))
-            =li_with_active(controller_name == 'leaderboard', link_to("Leaderboard", leaderboard_path))
-            =li_with_active(current_page?(members_path), link_to("Members", members_path))
-            =li_with_active(current_page?(club_rules_path), link_to("House rules", club_rules_path))
-            -if logged_in?
-              =li_with_active(current_page?(connections_path), link_to("Connections", connections_path))
+  #subnav_row
+    .row            
+      .twelvecol.no_padding
+        #subnav
+          %ul
+            -if in_news_network?
+              =li_with_active(current_page?(browse_path), link_to("Browse", browse_path))
+              =li_with_active(current_page?(themes_path), link_to("Themes", themes_path))
+              =li_with_active(current_page?(correspondents_path), link_to("Correspondents", correspondents_path))
+            -elsif in_club?
+              =li_with_active(current_page?(club_path), link_to("Latest", club_path))
+              =li_with_active(controller_name == 'leaderboard', link_to("Leaderboard", leaderboard_path))
+              =li_with_active(current_page?(members_path), link_to("Members", members_path))
+              =li_with_active(current_page?(club_rules_path), link_to("House rules", club_rules_path))
+              -if logged_in?
+                =li_with_active(current_page?(connections_path), link_to("Connections", connections_path))
+              -else
+                =li_with_active(current_page?(new_member_path), link_to("Join", new_member_path))
             -else
-              =li_with_active(current_page?(new_member_path), link_to("Join", new_member_path))
-          -else
-            -current_root_section.all_children(:published_only => !admin_logged_in?).each do |page_or_section|
-              =li_with_active(viewing_page_or_section?(page_or_section), link_to_self(page_or_section))
-            -if false && current_root_section.slug == "picnic11" #hidden for now
-              =li_with_active(controller_name =~ /programmes|conference_sessions|venues/, link_to("Programme", programme_path))
+              -current_root_section.all_children(:published_only => !admin_logged_in?).each do |page_or_section|
+                =li_with_active(viewing_page_or_section?(page_or_section), link_to_self(page_or_section))
+              -if current_root_section.slug == "picnic11"
+                =li_with_active(controller_name =~ /programmes|conference_sessions|venues/, link_to("Programme", conference_programme_path(1)))

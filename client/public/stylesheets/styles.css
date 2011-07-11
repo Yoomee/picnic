@@ -20,7 +20,7 @@ body, textarea, input {font:12px/1.6 'Helvetica', Arial,'Liberation Sans',FreeSa
 
 /* ======================  CSS3 regularly used stuff ================== */
 
-#main, input, #footer_links, .bx_h, #news_feed_older_btn, .bx_h a, button, .bttn, .pull_quote, div#page_related_col, a.backto, #nav ul li a, .logged_in_box{
+#main, input, #footer_links, .bx_h, #news_feed_older_btn, .bx_h a, button, .bttn, .pull_quote, div#page_related_col, a.backto, #nav ul li a, .logged_in_box, #flipboard_wrapper .fr {
 	-moz-border-radius:3px;
 	-webkit-border-radius:3px;
 	border-radius:3px;
@@ -51,7 +51,7 @@ body span.cal_sheet span.month {
 	background:#87cd29;
 }
 
-h1, h2, h3, h4, h5, h6, #nav, #subnav, #user_links .button, .bring_quote, .cycle_nav a, .call_to_action, #beta_bar, #flipboard {
+h1, h2, h3, h4, h5, h6, #nav, #user_links .button, .bring_quote, .cycle_nav a, .call_to_action, #beta_bar, #flipboard {
 	font-family:'VAG Rounded W02 Light', arial, sans-serif;
 	color:black;
 	font-weight: normal;
@@ -59,8 +59,12 @@ h1, h2, h3, h4, h5, h6, #nav, #subnav, #user_links .button, .bring_quote, .cycle
 span.click_here_beta, p.club_welcome_intro_text {
 	font-family:'VAG Rounded W02 Thin', arial, sans-serif;
 }
-#nav ul li a, a.button {
+#nav ul li a, a.button, h1#page_title {
 	font-family:'VAG Rounded W02 Bold', arial, sans-serif;
+	letter-spacing: 1px;
+}
+h1#page_title {
+	letter-spacing: 0;
 	-webkit-font-smoothing: antialiased;
 }
 
@@ -105,12 +109,25 @@ body, textarea, input {
 }
 
 div#flipboard_wrapper {
+	padding-top: 14px;
+	padding-bottom: 2px;
+	background: #666;
 
 	
 
 	
 }
+#flipboard_wrapper .fr {
+	position: absolute;
+	top: -42px;
+	right: 0px;
+	background: #666666;
+	padding: 10px 10px 10px 0;
+	
 
+	
+	
+}
 .fliboard_nav {
 		display: block;
 
@@ -121,7 +138,7 @@ div#flipboard_wrapper {
 	text-indent: -9000em;
 	padding: 2px 9px;
 	width: 15px;
-	margin: -5px 0 0 10px;
+	margin: -2px 0 0 10px;
 	position: relative;
 
 
@@ -181,6 +198,7 @@ body #wrapper .no_padding {
 	margin: 0px 0 0 10px;
 	
 	text-transform: uppercase;
+	
 
 
 
@@ -457,6 +475,9 @@ body .formtastic .error input, body .formtastic .error textarea, body .formtasti
 	-moz-box-shadow:0 0px 3px rgba(0,0,0,0.3);
 	box-shadow:0 0px 3px rgba(0,0,0,0.3);
 	border: 2px solid #d91c5c;	
+}
+body.cke_show_borders {
+	padding-top: 0;
 }
 p.inline-errors {
 	font-size: 15px;
@@ -1125,6 +1146,7 @@ div#top {
 	padding: 0;
 	background: #fff;
 	
+	
 	 -webkit-box-shadow:0px 2px 8px rgba(0,0,0,0.2);
   	-moz-box-shadow:0px 2px 8px rgba(0,0,0,0.2);
   	box-shadow:0px 2px 8px rgba(0,0,0,0.2);
@@ -1136,6 +1158,18 @@ div#top {
 	overflow: visible;
 
 
+}
+#subnav_row {
+	background: #000;
+	clear: left;
+	float: left;
+	width: 100%;
+	margin: 0 0 20px;
+}
+#subnav_container {
+	float: left;
+	width: 100%;
+	padding: 0;
 }
 #header_inside {
 	clear: both;
@@ -1419,9 +1453,11 @@ input#search_icon {
   clear: both;
   float: left;
   margin: 0px 0 0px;
-  padding: 14px 0 0px;
+  padding: 7px 0;
   width: 100%;
-  border-top: 1px solid #e8e8e8;
+  background: #000;
+  color: #fff;
+
  
 }
 #nav ul, #subnav ul {
@@ -1468,16 +1504,16 @@ input#search_icon {
      transition: .3s ease-in;
 
 }
-#nav ul li.active a, #subnav ul li.active a  {
+#subnav ul li.active a  {
   text-decoration:none;
-  color: #000;
+	font-weight: bold;
+	color: #fff;
 
 	
 
 	
 }
 #page_subnav ul li.active a {
-	font-weight: bold;
 }
 #subnav ul li a {
   display:block;
@@ -1485,8 +1521,8 @@ input#search_icon {
 	height:20px;
 	margin:0px 10px 0 0;
 	padding:0px 14px 0 0;
- 	font-size: 14px;
- 	color: #000;
+ 	font-size: 12px;
+ 	color: #e8e8e8;
 
 }
 
@@ -3760,6 +3796,20 @@ a.backto {
 	padding:6px 10px;
 	
 }
+.top_color {
+	height: 20px;
+	background: #ed4287;
+	height:8px
+}
+.page_header {
+	min-height: 100px;
+	border-bottom: 1px solid #000;
+	margin: 0 0 20px;
+	padding: 20px 0 10px;
+}
+#page_left_col {
+	min-height: 800px;
+}
 #page_content h5 {
 	font-size: 18px;
 
@@ -4727,35 +4777,32 @@ body.controller_badges .badge_members {
   padding:5px;
 }
 
-.timetable .session .title {
-/*  white-space:nowrap;
-*/}
-.timetable .session .details {
+
+
+.timetable .session_hover {
   display:none;
-  width:189px;
-}
-
-.timetable a:hover{
-  text-decoration:none;
-}
-
-.timetable .hover .details {
-  display:block;
-}
-
-.timetable .hover {
+  position:absolute;
+  background:white;
+  width:238px;
+  border:1px solid black;
+  color:black;
   z-index:100;
-  overflow:hidden;
   -moz-box-shadow:5px 5px 5px #666666;
 	-webkit-box-shadow:5px 5px 5px #666666;
 	box-shadow:5px 5px 5px #666666;
 }
 
-
-.timetable .closing {
-  z-index:50;
+.timetable .session_hover .title {
+  padding:5px;
 }
 
+.timetable .session_hover .details {
+  padding:5px;
+}
+
+.timetable a:hover{
+  text-decoration:none;
+}
 
 /*========== Session show ==========*/
 .controller_conference_sessions .call_to_action, .controller_conferences .call_to_action {
@@ -6803,7 +6850,6 @@ span.click_here_beta {
   overflow-x:hidden;
   width:100%;
   position:relative;
-  background: #666;
 }
 
 #flipboard_header {
@@ -6814,26 +6860,28 @@ span.click_here_beta {
 	width: 100%;
 	float: left;
 	padding: 0;
-	background: #666;
+	position: relative;
+	height: 0;
+
 	
-  	-webkit-box-shadow:inset 0px -2px 2px #555;
-  	-moz-box-shadow:inset 0px -2px 2px #555;
-  	box-shadow:inset 0px -2px 2px #555;
+	margin: 0 0 0px;
+
 }
 #flipboard_footer, #flipboard_footer .row {
 	overflow: visible;
+	position: relative;
 }
 #flipboard_footer .twelvecol {
 	padding-top: 0px;
 	overflow: visible;
-	margin: 0 0 40px;
+	margin: 10px 0 14px;
 }
 #flipboard {
   height:600px;
   width:10000px;
   position:absolute;
   top:0;
-  left:5px;
+  left:10px;
   margin: 0;
 }
 

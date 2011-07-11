@@ -3,21 +3,24 @@
     $(document).ready(function() {
       $('.session').hover(
         function(){
-          if (!$(this).hasClass('hover')){
-            $(this).addClass('hover');
-            $(this).animate({'width':226,'height':150}, 0, 'easeInOutCirc');
-          }
+          $('#prog_wrapper .session_hover').hide()
+          $(this).children('.session_hover').show();
         },
         function(){
-          if ($(this).hasClass('hover') && !$(this).hasClass('closing')){        
-            $(this).addClass('closing');
-            $(this).animate({'height':parseInt($(this).attr("data-height")),'width':155},  0, 'easeInOutCirc', function(){
-              $(this).removeClass('hover');
-              $(this).removeClass('closing');
-            });
-          }
+          $(this).children('.session_hover').hide();
         }
-      );  
+      );
+      $('.session').mousemove(function(e){
+          var sessPos = $(this).offset();
+          var colPos = $(this).parents('.venue_col').position().left + $(this).parents('.venue_cols').position().left;
+          console.log(colPos);
+          if(colPos <= 480){
+            $(this).children('.session_hover').css('left',(e.pageX - sessPos.left) + 15);
+          } else {
+            $(this).children('.session_hover').css('right',155 - (e.pageX - sessPos.left - 15));
+          }
+         $(this).children('.session_hover').css('top',(e.pageY - sessPos.top) + 15);
+      });  
     });
     var Programme = {
       day: #{@conference.day(@date)},
@@ -90,6 +93,8 @@
                   -link_to(session, :class => 'session', :style => "top:#{((session.starts_at_offset(9)*100).round)+40}px;height:#{height}px;background-color:#{session.color};color:#{complementary_color(session.color)}", "data-height" => height) do
                     .session_content
                       .title=session
+                    .session_hover{:style=>"border-color:#{complementary_color(session.color)}"}
+                      .title{:style=>"background-color:#{session.color};color:#{complementary_color(session.color)}"}=session
                       .details
                         ="#{session.starts_at.strftime("%H:%M")} - #{session.ends_at.strftime("%H:%M")}"
                         %br
