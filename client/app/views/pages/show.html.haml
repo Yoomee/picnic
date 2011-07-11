@@ -13,13 +13,29 @@
       %p.stories_header
         STORIES 
         %strong SOCIETY
+      
     
   #header_right_col.ninecol.last  
     #top_color_right.top_color
     .page_header
       %h1#page_title=@page.title
   #page_left_col.threecol
-    tags here
+    #page_subnav
+      =render("pages/subnav", :page => @page)  
+    #page_tags
+      %ul.lst
+        %li
+          =link_to "Sustainability", "#", :class=>"tag"
+        %li
+          =link_to "Design", "#", :class=>"tag"
+        %li
+          =link_to "Urban futures", "#", :class=>"tag"
+    #share_this
+      %h3 Share this
+      =link_to "Facebook", "http://facebook.com/sharer.php?u=#{site_url}#{page_path(@page, :host => site_host)}", :popup => ['popUpWindow','height=350,width=600'] 
+      =#link_to_function "Twitter", "http://twitter.com/home?status=#{page.title} - #{site_url}#{page_path(page, :host => site_host)}", :target => "_blank"
+      =link_to_function "Twitter", "(function(){window.twttr=window.twttr||{};var D=550,A=450,C=screen.height,B=screen.width,H=Math.round((B/2)-(D/2)),G=0,F=document,E;if(C>A){G=Math.round((C/2)-(A/2))}window.twttr.shareWin=window.open('http://twitter.com/share','',',left='+H+',top='+G+',width='+D+',height='+A+',personalbar=0,toolbar=0,scrollbars=1,resizable=1');E=F.createElement('script');E.src='http://platform.twitter.com/bookmarklets/share.js?v=1';F.getElementsByTagName('head')[0].appendChild(E)}())"
+
   #page_right_col.sixcol  
     %h2 PICNIC is so much more than your average conference, it's a festival! What sets PICNIC apart from the rest? Keep reading to find out more.  
   #article_image.sevencol.last
