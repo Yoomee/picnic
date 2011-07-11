@@ -109,3 +109,43 @@ var PhotoGallery = {
     );
   }
 };
+
+var Flipboard = {
+  timer: null,
+  scrolling: 0,
+  direction: 1,
+  hoverOn: function(flip){
+    $('#flipboard .hover').fadeOut('fast', function() {
+      $(this).removeClass('fading');
+    });
+    flip.children('.hover:not(.fading)').addClass('fading').fadeIn('fast');
+    // $('#flipboard .hover.hovering').blindUp().removeClass('hovering');
+    // flip.children('.hover').addClass('hovering').blindDown();
+  },
+  hoverOff: function(flip){
+    flip.children('.hover').fadeOut('fast', function() {
+      $(this).removeClass('fading');
+    });
+    // flip.children('.hover').removeClass('hovering').blindUp();
+  },
+  startScroll: function(){
+    Flipboard.timer = setInterval("Flipboard.scroll()",55);
+  },
+  stopScroll: function(){
+    clearInterval(Flipboard.timer);
+  },
+  scroll: function(){
+    $('#flipboard').css('left', $('#flipboard').position().left - Flipboard.direction);
+  },
+  scrollJump: function(right){
+    if(!Flipboard.scrolling){
+      Flipboard.scrolling = 1;
+      Flipboard.stopScroll();
+      $('#flipboard').animate({'left':(right ? '-' : '+') + '=240'}, 600, function(){
+        Flipboard.scrolling = 0;
+        Flipboard.direction = (right ? 1 : -1);
+        Flipboard.startScroll();
+      });
+    }
+  }
+};
