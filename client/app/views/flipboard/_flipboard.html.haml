@@ -1,9 +1,21 @@
 :ruby
-  @flipitems = [@pages_sections[0], "register", random_sponsor] + (@pages_sections[1..@pages_sections.size] + get_latest_tweets_from("PICNICfestival",10,false,true) + Member.with_badge(:picnic11_speaker).all).randomize
+  #@flipitems = [@pages_sections[0], "register", random_sponsor] + (@pages_sections[1..@pages_sections.size] + get_latest_tweets_from("PICNICfestival",10,false,true) + Member.with_badge(:picnic11_speaker).all).randomize
+  @flipitems = (@pages_sections[1..@pages_sections.size] + get_latest_tweets_from("PICNICfestival",10,false,true) + Member.with_badge(:picnic11_speaker).all).randomize
   @flipboard_content = []
   until @flipitems.empty? do
     template = FlipcolTemplate.new(@flipboard_content.empty? ? 0 : nil)
-    @flipboard_content << [template, @flipitems.shift(template.size)]
+    items = []
+    template.flipitems.each do |flipitem_template|
+      @item_queue = []
+      until @flipitems.empty? || FlipcolTemplate.can_display_item?(flipitem = @flipitems.shift, flipitem_template)
+        @item_queue << flipitem
+      end
+      if !@flipitems.empty?
+        items << flipitem
+        @flipitems = @item_queue + @flipitems
+      end
+    end
+    @flipboard_content << [template, items.compact]
   end
 
   
@@ -50,7 +62,6 @@
     $('#flipboard .flip').has('.hover').hover(function(){Flipboard.hoverOn($(this));}, function(){Flipboard.hoverOff($(this));});
     //setTimeout("Flipboard.startScroll()",2000);
   });
-
 #flipboard_wrapper{:style => "display:block"}
   #flipboard_strip
     #flipboard
@@ -58,13 +69,11 @@
         .flipcol
           -template.template.each do |subcol_or_flip_template|
             -if subcol_or_flip_template.dup.flatten == subcol_or_flip_template
-              -break if items.empty?
-              =render_flip_item(items.shift, subcol_or_flip_template)
+              =render_flip_item(items.shift, subcol_or_flip_template) unless items.empty?
             -else
               .flipsubcol
                 -subcol_or_flip_template.each do |flip_template|
-                  -break if items.empty?
-                  =render_flip_item(items.shift, flip_template)
+                  =render_flip_item(items.shift, flip_template) unless items.empty?
 
 
   #flipboard_footer.container

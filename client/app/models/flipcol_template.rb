@@ -3,6 +3,18 @@ class FlipcolTemplate
   
   class << self
     alias_method :find, :new
+    
+    def can_display_item?(item, template)
+      case item.class.to_s
+      when "Member" then true
+      when "Struct::Tweet"
+        [[2,1],[1,2],[2,2]].include?(template)
+      when "Page","Section"
+        [[1,2],[2,2],[2,3]].include?(template)
+      else
+        true
+      end
+    end
   end
   
   def initialize(template_id = nil)
@@ -31,6 +43,10 @@ class FlipcolTemplate
   end
 
 end
+
+FlipcolTemplate::X1 = 230
+FlipcolTemplate::Y1 = 140
+FlipcolTemplate::MARGIN = 10
 
 FlipcolTemplate::TEMPLATES = [
   [
