@@ -66,20 +66,6 @@ module ClientHelper
     items.sort{|x,y| x[:weight] <=> y[:weight]}
   end
   
-  def random_sponsor
-    sponsors = []
-    if section = Section.find_by_slug("premium-sponsors")
-      sponsors += section.pages.published*2
-    end
-    if section = Section.find_by_slug("sponsors-sponsors")
-      sponsors += section.pages.published
-    end
-    if section = Section.find_by_slug("media-sponsors")
-      sponsors += section.pages.published
-    end
-    sponsors[rand(sponsors.size)]
-  end
-  
   def shout_title(shout)
     #out = shout.pretty_date
     out = "#{time_ago_in_words(shout.created_at)} ago"

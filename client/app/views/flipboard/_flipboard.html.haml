@@ -1,71 +1,20 @@
-:ruby
-  #@flipitems = [@pages_sections[0], "register", random_sponsor] + (@pages_sections[1..@pages_sections.size] + get_latest_tweets_from("PICNICfestival",10,false,true) + Member.with_badge(:picnic11_speaker).all).randomize
-  @flipitems = (@pages_sections[1..@pages_sections.size] + get_latest_tweets_from("PICNICfestival",10,false,true) + Member.with_badge(:picnic11_speaker).all).randomize
-  @flipboard_content = []
-  until @flipitems.empty? do
-    template = FlipcolTemplate.new(@flipboard_content.empty? ? 0 : nil)
-    items = []
-    template.flipitems.each do |flipitem_template|
-      @item_queue = []
-      until @flipitems.empty? || FlipcolTemplate.can_display_item?(flipitem = @flipitems.shift, flipitem_template)
-        @item_queue << flipitem
-      end
-      if !@flipitems.empty?
-        items << flipitem
-        @flipitems = @item_queue + @flipitems
-      end
-    end
-    @flipboard_content << [template, items.compact]
-  end
-
-  
-
-=javascript_include_tag('client/jquery.hotkeys')
-
 :javascript
-  var Flipboard = {
-    timer: null,
-    scrolling: 0,
-    direction: 1,
-    hoverOn: function(flip){
-      $('#flipboard .hover.hovering').blindUp().removeClass('hovering');
-      flip.children('.hover').addClass('hovering').blindDown();
-    },
-    hoverOff: function(flip){
-      flip.children('.hover').removeClass('hovering').blindUp();
-    },
-    startScroll: function(){
-      Flipboard.timer = setInterval("Flipboard.scroll()",55);
-    },
-    stopScroll: function(){
-      clearInterval(Flipboard.timer);
-    },
-    scroll: function(){
-      $('#flipboard').css('left', $('#flipboard').position().left - Flipboard.direction);
-    },
-    scrollJump: function(right){
-      if(!Flipboard.scrolling){
-        Flipboard.scrolling = 1;
-        Flipboard.stopScroll()
-        $('#flipboard').animate({'left':(right ? '-' : '+') + '=240'}, 600, function(){
-          Flipboard.scrolling = 0;
-          Flipboard.direction = (right ? 1 : -1);
-          Flipboard.startScroll();
-        });
-      }
-    }
-  };
   $(document).ready(function() {
     $(document).scrollTop(669);
     $('body').bind('keydown','right',function(){Flipboard.scrollJump(1);});
     $('body').bind('keydown','left',function(){Flipboard.scrollJump(0);});
-    $('#flipboard .flip').has('.hover').hover(function(){Flipboard.hoverOn($(this));}, function(){Flipboard.hoverOff($(this));});
+    $('#flipboard .flip').has('.hover').hover(
+      function() {
+        Flipboard.hoverOn($(this));
+      }, function(){
+        Flipboard.hoverOff($(this));
+      });
     //setTimeout("Flipboard.startScroll()",2000);
   });
 #flipboard_wrapper{:style => "display:block"}
   #flipboard_strip
     #flipboard
-      -@flipboard_content.each do |template, items|
+      -flipboard_content.each do |template, items|
         .flipcol
           -template.template.each do |subcol_or_flip_template|
             -if subcol_or_flip_template.dup.flatten == subcol_or_flip_template
@@ -80,5 +29,5 @@
     .row
       .twelvecol
         .fr
-          =link_to_function("Right", "Flipboard.scrollJump(1)", :class=>"fliboard_nav", :id=>"flipboard_left")
-          =link_to_function("Left", "Flipboard.scrollJump(0)", :class=>"fliboard_nav", :id=>"flipboard_right")
+          =link_to_function("Right", "Flipboard.scrollJump(1)", :class => "fliboard_nav", :id => "flipboard_left")
+          =link_to_function("Left", "Flipboard.scrollJump(0)", :class => "fliboard_nav", :id => "flipboard_right")

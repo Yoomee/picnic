@@ -6839,8 +6839,6 @@ span.click_here_beta {
   top:0;
   left:5px;
   margin: 0;
-  
-
 }
 
 #flipboard .flipcol {
@@ -6871,7 +6869,21 @@ span.click_here_beta {
 
 #flipboard h1, #flipboard h3, #flipboard h6 {
   color:#fff;
+  margin-bottom: 5px;
 }
+#flipboard .text1 {
+  font-size: 17px;
+  font-weight: bold;
+}
+#flipboard .text2 {
+  font-size: 16px;
+}
+
+#flipboard .x1 .hover { width:215px;}
+#flipboard .x2 .hover { width:455px;}
+#flipboard .y1 .hover { height:120px;}
+#flipboard .y2 .hover { height:270px;}
+#flipboard .y3 .hover { height:410px;}
 
 #flipboard .x1 {
   width: 230px;
@@ -6879,8 +6891,7 @@ span.click_here_beta {
 #flipboard .x2 {
   width: 470px;
 }
-
-#flipboard .y1 {
+#flipboard .y1, #flipboard .y2 .y1 {
   height: 140px;
 }
 #flipboard .y2 {
@@ -6904,13 +6915,13 @@ span.click_here_beta {
   background:rgba(0,0,0,0.85);
   color:#fff;
 }
-
-#flipboard .x1 .hover { width:215px;}
-#flipboard .x2 .hover { width:455px;}
-#flipboard .y1 .hover { height:120px;}
-#flipboard .y2 .hover { height:265px;}
-#flipboard .y3 .hover { height:410px;}
-
+#flipboard .flip_sponsor {
+  background: #fff;
+  text-align: center;
+}
+#flipboard .flip_sponsor h6 {
+  color: #000;
+}
 /*========== Section Ordering ==========*/
 
 #orderable_page_sections li {
