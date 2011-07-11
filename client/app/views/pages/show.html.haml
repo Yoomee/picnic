@@ -7,26 +7,55 @@
       });
   -title @page.title
   -hide_page_title
-  #page_subnav.twocol
-    =render("pages/subnav", :page => @page)
-  #page_content{:class => "#{@page.slug_in?(%w{the_team advisors picnic11_speakers contributors}) ? 'eightcol last' : 'fivecol'}"}
-    #page_left_col
+  #header_left_col.threecol
+    #top_color_left.top_color
+    .page_header
+      %p.stories_header
+        STORIES 
+        %strong SOCIETY
+    
+  #header_right_col.ninecol.last  
+    #top_color_right.top_color
+    .page_header
       %h1#page_title=@page.title
-      -unless @page.published?
-        %p#page_status=@page.status_string
-      =render('pages/content', :page => @page)
-      -if @page.slug_is(:beta) && @enquiry
-        =render_form @enquiry
-    =render_slug(@page.slug)
+  #page_left_col.threecol
+    tags here
+  #page_right_col.sixcol  
+    %h2 PICNIC is so much more than your average conference, it's a festival! What sets PICNIC apart from the rest? Keep reading to find out more.  
+  #article_image.sevencol.last
+    -if @page.slug_in?(%w{location contact})
+      -location = @page.slug_is?(:contact) ? Location.picnic_hq : Location.picnic_festival
+      =google_map(location, :width => 420, :height => 300, :centre => location.lat_lng || [30,0], :zoom => 11, :disable_default_ui => false, :map_options => "mapTypeControl:false,zoomControl:true,streetViewControl:false")
+    -else
+      =photo_for(@page, '550x')
+    =snippet(@page, :photo_caption)
+    =snippet(@page, :pull_quote)  
+    =snippet(@page, :call_to_action)    
+  -if false  
+    #page_subnav.twocol
+      =render("pages/subnav", :page => @page)
+  .sixcol    
+    =render('pages/content', :page => @page)    
+  %span
+  -if false
+    #page_content{:class => "#{@page.slug_in?(%w{the_team advisors picnic11_speakers contributors}) ? 'eightcol last' : 'fivecol'}"}
+      #page_left_col
+        -if @page.has_photo? || @page.slug_in?(%w{location contact})
+        -unless @page.published?
+          %p#page_status=@page.status_string
+        =render('pages/content', :page => @page)
+        -if @page.slug_is(:beta) && @enquiry
+          =render_form @enquiry
+      =render_slug(@page.slug)
 
-  -if !@page.slug_in?(%w{the_team advisors correspondents picnic11_speakers})
-    #page_right_col
-      =render "pages/right_col", :page => @page
-    -if @page.has_related_items?
-      #related_content.row
-        .twelvecol
-          %h2.title Related content
-        =render_related_items(@page, :limit => 6, :truncate_length => 150)
+    -if !@page.slug_in?(%w{the_team advisors correspondents picnic11_speakers})
+      #page_right_col
+        =render "pages/right_col", :page => @page
+      -if @page.has_related_items?
+        #related_content.row
+          .twelvecol
+            %h2.title Related content
+          =render_related_items(@page, :limit => 6, :truncate_length => 150)
 
 .row        
   -options_panel do

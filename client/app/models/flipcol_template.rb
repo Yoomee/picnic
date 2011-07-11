@@ -10,7 +10,11 @@ class FlipcolTemplate
       when "Struct::Tweet"
         [[2,1],[1,2],[2,2]].include?(template)
       when "Page","Section"
-        [[1,2],[2,2],[2,3]].include?(template)
+        if item.is_sponsor?
+          [[1,1],[1,2]].include?(template)
+        else
+          [[1,2],[2,2],[2,3]].include?(template)
+        end
       else
         true
       end

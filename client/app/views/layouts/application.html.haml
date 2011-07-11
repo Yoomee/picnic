@@ -16,7 +16,7 @@
     %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
     =render("layouts/facebook_sharer_tags")
     = google_javascripts :jquery, :jqueryui
-    = javascript_include_tag 'jrails', 'jquery.cycle', 'tramlines', 'client/tramlines', 'jquery.labelify', 'jquery.fancy_box/jquery.fancybox-1.3.1.pack', 'jquery.fancy_box/jquery.mousewheel-3.0.2.pack.js', 'client/load_fancybox',"client/jquery.facelist_2-0", "jquery.autogrowtextarea.js", "client/like_form", "client/css3-mediaqueries", "timepicker", "jquery.tooltip", :cache => true
+    = javascript_include_tag 'jrails', 'jquery.cycle', 'tramlines', 'client/tramlines', 'jquery.labelify', 'jquery.fancy_box/jquery.fancybox-1.3.1.pack', 'jquery.fancy_box/jquery.mousewheel-3.0.2.pack.js', 'client/load_fancybox',"client/jquery.facelist_2-0", "jquery.autogrowtextarea.js", "client/like_form", "client/css3-mediaqueries", "timepicker", "jquery.tooltip", "client/jquery.hotkeys", :cache => true
     =javascript_include_tag 'jquery.fancy_box/jquery.easing-1.3.pack.js'
     = javascript_include_tag "http://connect.facebook.net/en_US/all.js"
     = stylesheet_link_tag 'http://fast.fonts.com/cssapi/f1269106-f262-440b-b3ce-93423b2eaf06.css'
@@ -62,10 +62,9 @@
   - body_tag do
     #wrapper
       =#render "layouts/beta_bar"
-      =render :partial => 'flipboard/flipboard' if @section.try(:slug) == 'news'
+      =render_flipboard if @section.try(:slug) == 'news'
       #header.container
-        =render :partial => 'layouts/header'
-      #subheader.container                
+        =render :partial => 'layouts/header'                
         =render("layouts/subnav")
       #main.content
         #main_container.container 
