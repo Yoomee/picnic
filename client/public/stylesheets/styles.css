@@ -51,9 +51,9 @@ body span.cal_sheet span.month {
 	background:#87cd29;
 }
 
-h1, h2, h3, h4, h5, h6, #nav, #subnav, #user_links .button, .bring_quote, .cycle_nav a, .call_to_action, #beta_bar {
+h1, h2, h3, h4, h5, h6, #nav, #subnav, #user_links .button, .bring_quote, .cycle_nav a, .call_to_action, #beta_bar, #flipboard {
 	font-family:'VAG Rounded W02 Light', arial, sans-serif;
-		color:black;
+	color:black;
 	font-weight: normal;
 }
 span.click_here_beta, p.club_welcome_intro_text {
@@ -62,10 +62,6 @@ span.click_here_beta, p.club_welcome_intro_text {
 #nav ul li a, a.button {
 	font-family:'VAG Rounded W02 Bold', arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
-
-	
-
-
 }
 
 
@@ -6868,11 +6864,16 @@ span.click_here_beta {
 }
 
 #flipboard h1, #flipboard h3, #flipboard h6 {
-  color:#fff;
+  color:#000;
   margin-bottom: 5px;
+  font-weight: bold;
+}
+#flipboard .flip_tweet h6 {
+  color: #fff;
 }
 #flipboard .text1 {
-  font-size: 17px;
+  font-size: 24px;
+  line-height: 26px;
   font-weight: bold;
 }
 #flipboard .text2 {

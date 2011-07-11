@@ -31,7 +31,6 @@
 .row        
   -options_panel do
     =back_link
-    ="Tagged #{in_tags(@page)}" unless @page.tags.empty?
     =link_if_allowed 'Edit section', edit_section_proc(@page.section)
     =link_if_allowed 'Add page', new_section_page_proc(@page.section)
     =link_if_allowed 'Edit page', edit_page_proc(@page)

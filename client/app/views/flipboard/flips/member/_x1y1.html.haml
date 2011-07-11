@@ -2,10 +2,10 @@
 -y = FlipcolTemplate::Y1
 .flip.x1.y1
   =link_to(image_or_photo_for(flipitem, "#{x}x#{y}#"),flipitem)
-  .hover
+  .hover.flip_info{:style => "background-color:#{flipitem.color}"}
     .padding
       %h6 FESTIVAL 2011
-      .text1
+      .text1{:style => "color:#{complementary_color(flipitem.color)}"}
         Presenting
         %br
         =flipitem

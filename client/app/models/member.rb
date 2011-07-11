@@ -64,7 +64,10 @@ Member.class_eval do
   def blank_what_i_bring?
     what_i_bring.blank? || what_i_bring == '...'
   end
-    
+  
+  def color
+    tags.color_not_null.first.try(:color) || '#E45C96'
+  end
   
   def conference_delegate_id
     conference_delegate.try(:id)
