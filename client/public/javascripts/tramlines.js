@@ -199,5 +199,12 @@ var Flipboard = {
         Flipboard.startSlowScroll();
       });
     }
+  },
+  toggle: function(){
+    if($('body').scrollTop() > 0){      
+      $('body').animate({'scrollTop':0}, 1000);
+    } else {
+      $('body').animate({'scrollTop':617}, 1000);
+    }
   }
 };

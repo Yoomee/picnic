@@ -18,7 +18,7 @@ module FlipboardHelper
     flipboard_content = Rails.cache.fetch("flipboard_content", :expires_in => 1.day) do
       get_flipboard_content
     end
-    render("flipboard/flipboard", :flipboard_content => get_flipboard_content)
+    render("flipboard/flipboard", :flipboard_content => flipboard_content)
   end
   
   def get_flipboard_content
