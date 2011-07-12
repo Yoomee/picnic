@@ -1,7 +1,7 @@
 WallPostsController::HELP_MESSAGE = "Add comment"
 WallPostsController.class_eval do
 
-  super_only :destroy
+  admin_only :destroy
   owner_only :remove, :restore
   
   def show
