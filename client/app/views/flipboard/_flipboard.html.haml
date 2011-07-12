@@ -1,8 +1,20 @@
 :javascript
   $(document).ready(function() {
     $(document).scrollTop(617);
-    $('body').bind('keydown','right',function(){Flipboard.scrollJump(1);});
-    $('body').bind('keydown','left',function(){Flipboard.scrollJump(0);});
+    $('body').bind('keydown','right',function(){
+      Flipboard.direction = 1;
+      Flipboard.startFastScroll();
+    });
+    $('body').bind('keyup','right',function(){
+      Flipboard.startSlowScroll();
+    });
+    $('body').bind('keydown','left',function(){
+      Flipboard.direction = -1;
+      Flipboard.startFastScroll();
+    });
+    $('body').bind('keyup','left',function(){
+      Flipboard.startSlowScroll();
+    });
     $('#flipboard_left').mousedown(function() {
       Flipboard.direction = 1;      
       Flipboard.startFastScroll();

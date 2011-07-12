@@ -28,5 +28,6 @@ PointsEvent::SLUG_POINTS = {
   :friend_on_fb => {:name => "Having friends on Facebook also on PICNIC", :points => 5}, 
   :like_my_profile => {:name => "Having your profile \"thumbed up\"", :points => 2},
   :deleted_posted_shout => {:name => "Deleting a discussion", :points => -10},
-  :set_real_me_tags => {:name => "Set 'About the real me'", :points => 4}
+  :set_real_me_tags => {:name => "Set 'About the real me'", :points => 4},
+  :friend => {:name => "Sitting on someone's blanket", :points => 2}
 }
