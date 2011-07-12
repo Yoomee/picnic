@@ -17,6 +17,8 @@ class ClientEnvironment
       config.gem 'newrelic_rpm'
       config.gem 'geokit'
       config.gem 'googlecharts'      
+      
+      config.cache_store = :mem_cache_store_with_delete_matched
     end
     
   end
