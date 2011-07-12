@@ -25,10 +25,16 @@ Member.class_eval do
   has_one :conference_delegate, :autosave => true
   
   has_many :conference_sessions_members
-  has_many :conference_sessions, :through => :conference_sessions_members
+  has_many :conference_sessions, :through => :conference_sessions_members  
+
+  has_many :subscriptions, :dependent => :destroy
+  has_many :subscription_items, :class_name => "Subscription", :as => :attachable, :dependent => :destroy
+  has_many :subscribers, :through => :subscription_items, :source => :member
 
   named_scope :with_what_i_bring, :conditions => "what_i_bring > '' AND what_i_bring <> '...'"
   named_scope :with_theme_tag, lambda{|tag| {:joins => "INNER JOIN shouts ON shouts.member_id=members.id INNER JOIN taggings ON taggings.taggable_id=shouts.id", :conditions => ["taggings.taggable_type='Shout' AND taggings.tag_id=?", tag.id], :group => "members.id"}}
+  named_scope :subscribed_to_tags, lambda{|tags| {:joins => :subscriptions, :conditions => ["(subscriptions.attachable_type = 'Tag' OR subscriptions.attachable_type = 'ActsAsTaggableOn::Tag') AND subscriptions.attachable_id IN (?)", tags.collect(&:id)], :group => "members.id"}}
+  named_scope :subscribed_to_member, lambda{|member| {:joins => :subscriptions, :conditions => ["subscriptions.attachable_type = 'Member' AND subscriptions.attachable_id = ?", member.id], :group => "members.id"}}
   
   validates_presence_of :email, :unless => :allow_username_instead_of_email?
   
@@ -45,16 +51,32 @@ Member.class_eval do
       (with_theme_tag(tag) + Member.tagged_with(tag)).uniq.randomize
     end
     
+    def show_admins_on_leaderboard
+      true
+    end
+    
   end
   
   def allowed_job_title?
     has_badge?(:picnic11_speaker) || has_badge?(:picnic11_team) || has_badge?(:picnic_advisor)
   end
   
+  def attending?(session)
+    session.attendees.all.include?(self)
+  end
+  
+  def speaking_at?(session)
+    session.speakers.all.include?(self)
+  end
+  
+  
   def blank_what_i_bring?
     what_i_bring.blank? || what_i_bring == '...'
   end
-    
+  
+  def color
+    tags.color_not_null.first.try(:color) || '#E45C96'
+  end
   
   def conference_delegate_id
     conference_delegate.try(:id)
@@ -89,6 +111,14 @@ Member.class_eval do
     skip_news_feed_without_field_blacklist || changed.all? {|attr| attr.in?(Member::NEWS_FEED_FIELD_BLACKLIST)}
   end
   alias_method_chain :skip_news_feed, :field_blacklist
+  
+  def subscription_for(attachable)
+    subscriptions.find_by_attachable_type_and_attachable_id(attachable.class.to_s, attachable.id)
+  end
+
+  def tags_subscribed_to
+    subscriptions.attachable_type_is('Tag').collect(&:attachable)
+  end
 
   def tags_with_other_members
     tags.select {|tag| Member.tagged_with(tag.name).size > 1}

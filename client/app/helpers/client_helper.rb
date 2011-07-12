@@ -9,6 +9,15 @@ module ClientHelper
     end
   end
   
+  def complementary_color(color)
+    case color[1..6].scan(/../).collect(&:hex).inject(0){|sum,val| sum += val}
+    when 510..765
+      '#000000'
+    else
+      '#FFFFFF'
+    end
+  end
+  
   def conference_session_time(session)
     start = session.starts_at.strftime("%H:%M")
     session.ends_at.blank? ? start : "#{start} - #{session.ends_at.strftime("%H:%M")}"
@@ -62,6 +71,7 @@ module ClientHelper
     out = "#{time_ago_in_words(shout.created_at)} ago"
     shout.title.blank? ? out : "#{out}: #{shout.title}"
   end
+
   
   def themes_facelist_javascript(options = {})
     if !request.xhr? && !options[:in_head]
@@ -92,7 +102,7 @@ module ClientHelper
   end
   
   def viewing_club?
-    current_page?(club_path) || current_page?(connections_path) || controller_name == 'leaderboard' || (controller_name == 'members') || controller_name=="tags"
+    controller_name=='club' || controller_name=='leaderboard' || controller_name=='members' || controller_name=="tags"
   end
   alias_method :in_club?, :viewing_club?
   

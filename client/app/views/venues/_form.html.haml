@@ -1,4 +1,6 @@
 -semantic_form_for venue do |f|
-  =f.inputs
+  -f.inputs do
+    =f.input :conference_id, :as => :hidden
+    =f.input :name
   -f.buttons do
     =f.submit "Save"

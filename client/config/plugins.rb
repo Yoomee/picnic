@@ -12,4 +12,5 @@ Tramlines.add_plugin(:friends)
 Tramlines.add_plugin(:picnic_auth)
 Tramlines.add_plugin(:messages) if RAILS_ENV.to_s == 'test'
 Tramlines.add_plugin(:connections)
-#Tramlines.add_plugin(:referrals)
+Tramlines.add_plugin(:referrals)
+Tramlines.add_plugin(:content_flags)

@@ -1,3 +1,5 @@
+-content_for :head do
+  =themes_facelist_javascript(:tag_list => page.tag_list, :intro_text => "e.g. mobility", :prefix => 'page')
 %p
   = "Please enter the details of the #{page.type_name} below."
 -semantic_fields_for page do |fields|
@@ -17,6 +19,10 @@
     =fields.input :small_title, :label => "Small title <span>(optional title to use in menus)</span>"
     =#fields.input :intro, :input_html => {:rows => 5, :cols => 97}
     =fields.input :text, :as => :ck_text
+    %li
+      %label Themes
+    %li.text
+      =text_field_tag :page_themes_text, "", :onkeypress => "return event.keyCode!=13"
     %li=fields.photo_browser_button :photo
   -if page.event
     %li

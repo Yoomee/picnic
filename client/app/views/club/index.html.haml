@@ -1,70 +1,81 @@
 -content_for :head do
   :javascript
-
-    var ClubWelcome = {
-  
-      hide: function() {
+    var Club = {
+      hideWelcome: function() {
         $('#club_welcome').animate(
           {height:'toggle'},
           500,
           function(){$('#show_this').show();$('#hide_this').hide();}
         );
       },
-
-      searchLoading: function() {
-        $('#search_term').addClass('loading');
-      },
-      
-      searchComplete: function() {
-        $('#search_term').removeClass('loading');
-      },
-      
-      show: function() {
+      showWelcome: function() {
         $('#club_welcome').animate(
           {height:'toggle'},
           500,
           function(){$('#show_this').hide();$('#hide_this').show();}
         );
+      },
+      shoutFilter: '#{@filter}',
+      getShouts: function(filter) {
+        $('#filter_loader').show();
+        $.ajax({
+          url: '#{club_path}',
+          data: {
+            filter: filter          },
+          complete: function() {
+            $('#filter_loader').hide();
+          },
+          success: function(html) {
+            $('#club_shouts_container').html(html);
+            FancyboxLoader.loadAll();
+          }
+        });
+      },
+      filterShouts: function(filter) {
+        if(Club.shoutFilter != filter){      
+          this.getShouts(filter);
+          $('.stories_filter li').removeClass('active');
+          $('#filter_'+filter).addClass('active');
+          Club.shoutFilter = filter;
+        }
       }
-  
     };
+
 -no_content_row
-#club_intro_page
-  #club_welcome.row
-    .fivecol
-      =image_tag 'club_intro_image.png'
-    .sixcol
-      %h2
-        Welcome to the PICNIC Club
-      %p.club_welcome_intro_text
-        Find inspiration from speakers, the PICNIC team and advisors. Have fun, experiment and share ideas and conversations with other clubbers. It's open free and open to all. Why not sign up today?
-    .onecol.last
-  #hide_this.row
-    .fivecol
-    .sevencol.last
-      =link_to_function "Hide this", "ClubWelcome.hide()"
-  #show_this.row{:style => "display: none;"}
-    .fivecol
-    .sevencol.last
-      =link_to_function "Show this", "ClubWelcome.show()"
-  #club_intro_connect.row
-    .fivecol
-      %h2 Find someone
-      -semantic_remote_form_for Search.new(:models => ['Member']) do |form|
-        -form.inputs do
-          =form.input :term, :label => false
-          =form.input :models, :as => :hidden
-          =observe_field 'search_term', :url => {:controller => "search", :action => "create", :autocomplete => true, :results_view_path => 'club'}, :frequency => 0.5, :loading => "ClubWelcome.searchLoading()", :complete => "ClubWelcome.searchComplete()", :with => "'search[models][]=Member&search[term]=' + value", :update => 'find_someone_results'
-      %ul#find_someone_results
-        -@find_someone_members.each do |member|
-          =render "find_someone_result", :member => member
-    #map_right_col.sevencol.last
-      %h2 Latest members
-      =google_map(@latest_members, :width => 646, :height => 460, :centre => [30, 0], :zoom => 2, :infoboxes => true)
-      -if false
-        #latest_members_photos
-          -@latest_members.limit(9).each do |member|
-            -link_to member do
-              =image_for member, '70x70#'
-=#image_tag 'club_intro.jpg'
+#club_welcome.row
+  .fivecol
+    =image_tag 'club_intro_image.png'
+  .sixcol
+    %h2
+      Welcome to the PICNIC Club
+    %p.club_welcome_intro_text
+      Find inspiration from speakers, the PICNIC team and advisors. Have fun, experiment and share ideas and conversations with other clubbers. It's open free and open to all. Why not sign up today?
+  .onecol.last
+#hide_this.row
+  .fivecol
+  .sevencol.last
+    =link_to_function "Hide this", "Club.hideWelcome()"
+#show_this.row{:style => "display: none;"}
+  .fivecol
+  .sevencol.last
+    =link_to_function "Show welcome", "Club.showWelcome()"
+.row
+  =render("themes/trending")
+  .tencol.last
+    #posts_header
+      %h4 Latest Posts
+    .stories_filter 
+      =image_tag 'ajax_loader_squares.gif', :id => 'filter_loader', :style => "display:none"
+      Showing:
+      %ul
+        -if logged_in?
+          =li_with_active(@filter == 'blanket', link_to_function('Your blanket', "Club.filterShouts('blanket')"), :id => 'filter_blanket')
+        =li_with_active(@filter == 'latest', link_to_function(logged_in? ? 'Everyone' : 'Latest', "Club.filterShouts('latest')"), :id => 'filter_latest')
+        =li_with_active(@filter == 'popular', link_to_function('Popular', "Club.filterShouts('popular')"), :id => 'filter_popular')
+        =li_with_active(@filter == 'comments', link_to_function('Most commented', "Club.filterShouts('comments')"), :id => 'filter_comments')
+    #club_shouts_container
+      =render_shouts(@shouts, :filter => @filter)
+.row
+  .twelvecol
+    =options_panel
     

@@ -7,31 +7,95 @@
       });
   -title @page.title
   -hide_page_title
-  #page_subnav.twocol
-    =render("pages/subnav", :page => @page)
-  #page_content{:class => "#{@page.slug_in?(%w{the_team advisors picnic11_speakers contributors}) ? 'eightcol last' : 'fivecol'}"}
-    #page_left_col
-      %h1#page_title=@page.title
-      -unless @page.published?
-        %p#page_status=@page.status_string
-      =render('pages/content', :page => @page)
-      -if @page.slug_is(:beta) && @enquiry
-        =render_form @enquiry
-    =render_slug(@page.slug)
+  #header_left_col.threecol
+    #top_color_left.top_color{:style => "background:#{@page.color}"}
+    .page_header
+      -if false
+        %p.stories_header
+          STORIES 
+          %strong SOCIETY  
+      #page_tags
+        =render('themes/list', :tags => @page.tags, :list_id => "page_#{@page.id}_themes")          
 
-  -if !@page.slug_in?(%w{the_team advisors correspondents picnic11_speakers})
-    #page_right_col
-      =render "pages/right_col", :page => @page
-    -if @page.has_related_items?
-      #related_content.row
-        .twelvecol
-          %h2.title Related content
-        =render_related_items(@page, :limit => 6, :truncate_length => 150)
+      -if @page.section == Section.find_by_slug("news")
+        =link_to_function("See all updates", "$('body').animate({'scrollTop':0}, 1000)", :id=>"back_to_updates")  
+      
+  #header_right_col.ninecol.last  
+    #top_color_right.top_color{:style => "background:#{@page.color}"}
+    .page_header
+      %h1#page_title=@page.title
+  #page_left_col.threecol
+    -if @page.section == Section.find_by_slug("news")
+
+    -else
+      #page_subnav
+        =render("pages/subnav", :page => @page)
+    #share_this{:style => "background:#{@page.color}"}
+      %h3{:style => "color:#{complementary_color(@page.color)}"} Share this
+      =link_to "Facebook", "http://facebook.com/sharer.php?u=#{site_url}#{page_path(@page, :host => site_host)}", :popup => ['popUpWindow','height=350,width=600'], :class=>"share_link", :id=>"facebook_share_link" 
+      =#link_to_function "Twitter", "http://twitter.com/home?status=#{page.title} - #{site_url}#{page_path(page, :host => site_host)}", :target => "_blank"
+      =link_to_function "Twitter", "(function(){window.twttr=window.twttr||{};var D=550,A=450,C=screen.height,B=screen.width,H=Math.round((B/2)-(D/2)),G=0,F=document,E;if(C>A){G=Math.round((C/2)-(A/2))}window.twttr.shareWin=window.open('http://twitter.com/share','',',left='+H+',top='+G+',width='+D+',height='+A+',personalbar=0,toolbar=0,scrollbars=1,resizable=1');E=F.createElement('script');E.src='http://platform.twitter.com/bookmarklets/share.js?v=1';F.getElementsByTagName('head')[0].appendChild(E)}())", :class=>"share_link", :id=>"twitter_share_link" 
+
+    #newsletter_signup.last  
+      %h3 
+        Sign up for 
+        %br
+        the PICNIC newsletter
+      %p Get the latest news, announcements, special offers and more from PICNIC and our partners. Sign up today for PICNIC’s monthly newsletter.
+
+      -form_tag("http://picnicnetwork.us1.list-manage.com/subscribe/post?u=f68513e4236c461ff84a35e7a&id=bdfa09384f") do
+        =label_tag("FNAME", "First name")
+        =text_field_tag("FNAME", "", :class=>'labelify', :title=>'First name')
+        =label_tag("FNAME", "Last name")
+        =text_field_tag("LNAME", "", :class=>'labelify', :title=>'Last name')
+        =label_tag("FNAME", "Email")        
+        =text_field_tag("EMAIL", "", :class=>'labelify', :title=>'Email')
+        =submit_tag("Send", :class=>'newsletter_submit')    
+
+  #page_right_col.sixcol  
+    -unless @page.intro.blank?
+      %h2#page_intro
+        =@page.intro
+  #article_image.sevencol.last
+    -if @page.slug_in?(%w{location contact})
+      -location = @page.slug_is?(:contact) ? Location.picnic_hq : Location.picnic_festival
+      =google_map(location, :width => 420, :height => 300, :centre => location.lat_lng || [30,0], :zoom => 11, :disable_default_ui => false, :map_options => "mapTypeControl:false,zoomControl:true,streetViewControl:false")
+    -else
+      =photo_for(@page, '550x')
+    =snippet(@page, :photo_caption)
+  -if false  
+    #page_subnav.twocol
+      =render("pages/subnav", :page => @page)
+  #main_page_content.sixcol    
+    =render('pages/content', :page => @page)
+    =snippet(@page, :call_to_action)
+  -if @page.has_snippet?(:pull_quote)
+    #pull_quote.threecol.last{:style => "background:#{@page.color};color:#{complementary_color(@page.color)}"}  
+      =snippet(@page, :pull_quote)
+  %span
+  -if false
+    #page_content{:class => "#{@page.slug_in?(%w{the_team advisors picnic11_speakers contributors}) ? 'eightcol last' : 'fivecol'}"}
+      #page_left_col
+        -if @page.has_photo? || @page.slug_in?(%w{location contact})
+        -unless @page.published?
+          %p#page_status=@page.status_string
+        =render('pages/content', :page => @page)
+        -if @page.slug_is(:beta) && @enquiry
+          =render_form @enquiry
+      =render_slug(@page.slug)
+
+    -if !@page.slug_in?(%w{the_team advisors correspondents picnic11_speakers})
+      #page_right_col
+        =render "pages/right_col", :page => @page
+      -if @page.has_related_items?
+        #related_content.row
+          .twelvecol
+            %h2.title Related content
+          =render_related_items(@page, :limit => 6, :truncate_length => 150)
 
 .row        
   -options_panel do
     =back_link
-    ="Tagged #{in_tags(@page)}" unless @page.tags.empty?
     =link_if_allowed 'Edit section', edit_section_proc(@page.section)
     =link_if_allowed 'Add page', new_section_page_proc(@page.section)
     =link_if_allowed 'Edit page', edit_page_proc(@page)

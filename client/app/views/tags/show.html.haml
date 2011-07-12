@@ -46,15 +46,23 @@
 
 -no_content_row
 .row
+  #header_left_col.twocol
+    #top_color_left.top_color{:style => "background:#{@tag.color || "#CCC"}"}        
+    .page_header
+    
+    
+  #header_right_col.tencol.last  
+    #top_color_right.top_color{:style => "background:#{@tag.color || "#CCC"}"}
+    .page_header
+      %h1#page_title=@tag
+      =render("subscriptions/link", :attachable => @tag)
+.row
   =render :partial => 'themes/trending'
-  .fourcol
-    %h1.tag=@tag
+  .tencol.last
     -if @tag.official?
       .tag_description
         =read_more_truncate(@tag.description, :length => 500)
-  .five.last
     =image_for(@tag, '335x255#') if @tag.official? && @tag.has_image?
-  .eightcol
     %h3.theme_title
       People
       =link_to 'View all', people_tag_path(@tag), :id => 'view_tag_people_link' if @members.size > 8
@@ -64,7 +72,7 @@
       #tag_member_grid_container
         #member_grid
           %ul.lst
-            -@members.first(8).each do |member|
+            -@members.first(12).each do |member|
               =tag_people_profile_photo(member)
     #posts_header
       %h3.theme_title.fl Posts

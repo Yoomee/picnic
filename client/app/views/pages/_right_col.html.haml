@@ -26,18 +26,7 @@
     //=link_to "RSS", "#", :class=>"rss"
       
 
-#newsletter_signup.fivecol.last  
-  %h3 Sign up for the PICNIC newsletter
-  %p Get the latest news, announcements, special offers and more from PICNIC and our partners. Sign up today for PICNIC’s monthly newsletter.
-  
-  -form_tag("http://picnicnetwork.us1.list-manage.com/subscribe/post?u=f68513e4236c461ff84a35e7a&id=bdfa09384f") do
-    =label_tag("FNAME", "First name")
-    =text_field_tag("FNAME", "", :class=>'labelify', :title=>'First name')
-    =label_tag("FNAME", "Last name")
-    =text_field_tag("LNAME", "", :class=>'labelify', :title=>'Last name')
-    =label_tag("FNAME", "Email")        
-    =text_field_tag("EMAIL", "", :class=>'labelify', :title=>'Email')
-    =submit_tag("Send", :class=>'newsletter_submit')
+
 -if false
   .page_share
     %h2 Share

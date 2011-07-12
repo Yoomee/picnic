@@ -4,6 +4,9 @@ class TagTest < ActiveSupport::TestCase
   should have_db_column(:description).of_type(:text)
   should have_db_column(:image_uid).of_type(:string)
   
+  should have_many(:subscription_items).dependent(:destroy)
+  should have_many(:subscribers).through(:subscription_items)
+  
   context "on call to named_scope top_tags" do
   
     setup do

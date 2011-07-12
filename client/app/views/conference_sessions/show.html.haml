@@ -19,15 +19,25 @@
       =render('themes/list', :tags => @conference_session.tags, :list_id => "conference_session_#{@conference_session.id}_themes")
       %br.flcb  
     =simple_format(@conference_session.description)
-    =render("members/grid", :members => @conference_session.members.alphabetically)
+    -if !@conference_session.speakers.blank?
+      %h4 Speakers
+      =render("members/grid", :members => @conference_session.speakers.alphabetically)
+    %h4 Attendees
+    -if @conference_session.attendees.blank?
+      #member_grid
+        %ul.lst#attendees_list
+    -else
+      =render("members/grid", :members => @conference_session.attendees.alphabetically, :list_id => "attendees_list")
+    
   .fivecol.last
     .call_to_action
       =link_to "View the #{@conference_session.conference} programme", conference_programme_path(@conference_session.conference)
     =image_for(@conference_session, '450x') if @conference_session.has_image?
-
+    =render('conference_sessions/attend_link', :session => @conference_session)
 .row
   .twelvecol
     -options_panel do
       =back_link
       =link_if_allowed "Edit session", edit_conference_session_proc(@conference_session)
       =link_if_allowed "Delete session", conference_session_proc(@conference_session), :method => :delete, :confirm => "Are you sure?"
+      =link_if_allowed "Duplicate session", duplicate_conference_session_proc(@conference_session)

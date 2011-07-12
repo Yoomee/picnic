@@ -9,7 +9,12 @@
       -if notification.wall_posts.empty?
         ="#{link_to_self(shout.member)} posted"
         =link_to("a #{shout.has_attachable? ? shout.attachable_type.titleize.downcase : 'message'}", shout)
-        ="on your profile."
+        -if (shout.recipient != logged_in_member) && !(tags = (logged_in_member.tags_subscribed_to & shout.tags.collect(&:to_tag))).empty?
+          ="about "
+          -tags.each do |tag|
+            =link_to_tag(tag, :li => false)
+        -else
+          ="on #{shout.recipient.nil? ? link_to('their profile', shout.member) : link_to("#{full_name_or_your(shout.recipient)} profile", shout.recipient)}."
       -else
         ="#{member_names_list(notification.wall_post_members, :limit => 1)} commented on"
         ="#{link_to("#{full_name_or_your(shout.member, :owner => (notification.wall_post_members.count > 1 ? nil : shout.member))} discussion", shout_path(shout, :read_notification => true))}."

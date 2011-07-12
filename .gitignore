@@ -7,6 +7,7 @@
 /script
 /test
 /tmp
+/uploads
 /vendor
 /vendor/plugins/acts_as_network
 /vendor/plugins/event_calendar
@@ -26,3 +27,5 @@
 /vendor/plugins/tramlines_walls
 .DS_Store
 config.ru
+.eyrc
+/vendor/plugins/tramlines_content_flags

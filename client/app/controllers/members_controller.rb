@@ -1,6 +1,7 @@
 MembersController.class_eval do
   
-  open_action :show
+  admin_only :admin
+  open_actions :show, :index
 
   skip_before_filter :check_what_i_bring, :only => %w{update what_i_bring me}
   skip_badge_announcement :what_i_bring
@@ -13,13 +14,18 @@ MembersController.class_eval do
   end
   alias_method_chain :change_password, :picnic
   
-  def index
+  def admin
     @members = Member.alphabetically.paginate(:per_page => 20, :page => params[:page])
     sign_up_counts = Member.created_at_gte(2.months.ago).count(:id, :group => "DATE(created_at)")
     @data = []
     (2.months.ago.to_date..Date.today).each do |date|
       @data << [date.strftime("%d/%m/%y"), sign_up_counts[date.to_s].to_i]
     end
+  end
+  
+  def index
+    @latest_members = Member.latest
+    @find_someone_members = Member.with_what_i_bring.with_image.random.limit(4)
   end
 
   def new_with_redirect

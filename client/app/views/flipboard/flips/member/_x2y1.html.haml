@@ -1,0 +1,10 @@
+-x = (FlipcolTemplate::X1 * 2) + FlipcolTemplate::MARGIN
+-y = FlipcolTemplate::Y1
+.flip.x2.y1
+  -link_to(flipitem, :class => "flip_info x2 y1", :style => "background-color:#{flipitem.color}") do
+    .padding
+      %h6 FESTIVAL 2011
+      .text1{:style => "color:#{complementary_color(flipitem.color)}"}
+        Presenting
+        %br
+        =flipitem
