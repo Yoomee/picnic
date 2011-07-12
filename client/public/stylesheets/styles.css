@@ -7065,6 +7065,12 @@ span.click_here_beta {
   float: left;
   clear: both;
 }
+
+#flipboard h6 {
+  font-family: 'VAG Rounded W02 Bold', arial, sans-serif;
+  letter-spacing: 1px;
+  font-size: 13px;
+}
 #flipboard .flip_tweet h6 {
   color: #fff;
 }
