@@ -111,7 +111,7 @@ body, textarea, input {
 div#flipboard_wrapper {
 	padding-top: 14px;
 	padding-bottom: 2px;
-	background: #fff;
+	background: #666;
 
 	
 
@@ -119,9 +119,9 @@ div#flipboard_wrapper {
 }
 #flipboard_wrapper .fr {
 	position: absolute;
-	top: -51px;
+	top: -43px;
 	right: 0px;
-	background: #fff;
+	background: #666;
 	padding: 10px 10px 10px 0;
 	
 
@@ -7142,6 +7142,12 @@ span.click_here_beta {
   float: left;
   clear: both;
 }
+#flipboard .text3 {
+    font-size: 30px;
+  line-height: 36px;
+    float: left;
+  clear: both;		
+}
 
 #flipboard .x1 .hover { width:215px;}
 #flipboard .x2 .hover { width:455px;}
@@ -7168,14 +7174,7 @@ span.click_here_beta {
   padding:10px;
   float:left;
 }
-.flip_border {
-	height: 8px;
-	width: 100%;
-	background: #fff;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-}
+
 #flipboard .hover {
   display:none;
   position:absolute;
