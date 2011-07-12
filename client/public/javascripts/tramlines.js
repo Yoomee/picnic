@@ -140,6 +140,17 @@ var Flipboard = {
     return ($(window).width() - 10 - $('#flipboard').width());
   },
   maxLeft: 10,
+  playPause: function(){
+	if(Flipboard.slow_scrolling){
+		Flipboard.slow_scrolling = false;
+		$('#flipboard_play_pause').removeClass('pause');
+		Flipboard.stopSlowScroll();
+	} else {
+		Flipboard.slow_scrolling = true;
+		$('#flipboard_play_pause').addClass('pause');
+		Flipboard.startSlowScroll();
+	}
+  },
   startFastScroll: function() {
     Flipboard.stopAllScrolling();
     Flipboard.fast_scrolling = true;
