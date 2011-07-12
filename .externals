@@ -121,3 +121,7 @@ path = vendor/plugins/tramlines_walls
 scm = git
 repository = git://git.yoomee.com:4321/plugins/tramlines_walls.git
 
+[vendor/plugins/tramlines_content_flags]
+path = vendor/plugins/tramlines_content_flags
+scm = git
+repository = git://git.yoomee.com:4321/plugins/tramlines_content_flags.git
