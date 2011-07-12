@@ -1,8 +1,34 @@
 :javascript
   $(document).ready(function() {
-    $(document).scrollTop(617);
-    $('body').bind('keydown','right',function(){Flipboard.scrollJump(1);});
-    $('body').bind('keydown','left',function(){Flipboard.scrollJump(0);});
+    $(window).scrollTop(617);
+    $('body').bind('keydown','right',function(){
+      Flipboard.direction = 1;
+      Flipboard.startFastScroll();
+    });
+    $('body').bind('keyup','right',function(){
+      Flipboard.startSlowScroll();
+    });
+    $('body').bind('keydown','left',function(){
+      Flipboard.direction = -1;
+      Flipboard.startFastScroll();
+    });
+    $('body').bind('keyup','left',function(){
+      Flipboard.startSlowScroll();
+    });
+    $('#flipboard_left').mousedown(function() {
+      Flipboard.direction = 1;      
+      Flipboard.startFastScroll();
+    });
+    $('#flipboard_right').mousedown(function() {
+      Flipboard.direction = -1;
+      Flipboard.startFastScroll();
+    });
+    $('#flipboard_left, #flipboard_right').mouseup(function() {
+      Flipboard.startSlowScroll();
+    });
+    $('#flipboard_left, #flipboard_right').mouseleave(function() {
+      Flipboard.startSlowScroll();
+    });
     $('#flipboard .flip').has('.hover').hover(
       function() {
         Flipboard.hoverOn($(this));
@@ -29,5 +55,5 @@
     .row
       .twelvecol
         .fr
-          =link_to_function("Right", "Flipboard.scrollJump(1)", :class => "fliboard_nav", :id => "flipboard_left")
-          =link_to_function("Left", "Flipboard.scrollJump(0)", :class => "fliboard_nav", :id => "flipboard_right")
+          =link_to_function("Right", "Flipboard.scrollJump()", :class => "fliboard_nav", :id => "flipboard_left")
+          =link_to_function("Left", "Flipboard.scrollJump()", :class => "fliboard_nav", :id => "flipboard_right")

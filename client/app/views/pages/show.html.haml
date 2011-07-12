@@ -53,8 +53,9 @@
         =submit_tag("Send", :class=>'newsletter_submit')    
 
   #page_right_col.sixcol  
-    %h2#page_intro
-      =@page.intro
+    -unless @page.intro.blank?
+      %h2#page_intro
+        =@page.intro
   #article_image.sevencol.last
     -if @page.slug_in?(%w{location contact})
       -location = @page.slug_is?(:contact) ? Location.picnic_hq : Location.picnic_festival

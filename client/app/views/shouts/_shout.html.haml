@@ -30,6 +30,9 @@
           .shout_image{:class => "#{shout.attachable_type.underscore}_shout_image"}
             %span.shout_icon
             =render_shout_attachable(shout)
+      .time_ago.fr
+        =time_ago_in_words(shout.created_at)
+        ago
       -if shout.is_rateable? && !compact_view
         .shout_ratings
           =render("shouts/ratings", :shout => shout)

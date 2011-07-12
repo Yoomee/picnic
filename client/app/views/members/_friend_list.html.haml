@@ -1,5 +1,5 @@
 %ul{:id => "friend_list_#{member.id}", :class => "lst member_friend_list"}
-  -member.friends.randomize.first(10).each do |member|
+  -member.friend_requests.sort.first(10).collect{|req| req.member_id == member.id ? req.member_target : req.member}.each do |friend|
     %li.member_friend_item
-      =link_to(image_for(member, '50x50#'), member)
-      =link_to(member.forename, member, :class => "member_name")
+      =link_to(image_for(friend, '50x50#'), friend)
+      =link_to(friend.forename, friend, :class => "member_name")
