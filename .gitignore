@@ -28,3 +28,4 @@
 .DS_Store
 config.ru
 .eyrc
+/vendor/plugins/tramlines_content_flags

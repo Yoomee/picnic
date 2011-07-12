@@ -1,5 +1,7 @@
 ShoutsController.class_eval do
 
+  owner_only :remove, :restore
+
   def create
     @shout = @logged_in_member.shouts.build(params[:shout])
     if @shout.themes_form_step?
@@ -35,6 +37,18 @@ ShoutsController.class_eval do
   def new
     attributes = (params[:shout] || {}).merge(:tag_list => params[:theme])
     render :partial => "themes_form", :locals => {:shout => Shout.new(attributes)}
+  end
+  
+  def remove
+    @shout = Shout.find(params[:id])
+    params[:shout] = {:removed_by => @logged_in_member, :removed_at => Time.now}
+    deal_with_update
+  end
+
+  def restore
+    @shout = Shout.find(params[:id])
+    params[:shout] = {:removed_by => nil, :removed_at => nil}
+    deal_with_update
   end
   
   def older

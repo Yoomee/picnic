@@ -41,7 +41,12 @@
         =link_to("View post &rarr;", shout)
         =link_to(pluralize(shout.comments.count, 'comment'), shout) if !shout.comments.empty?
       -else
+        =content_flag_link(shout, :text => "Report")
         =link_to_box_if_allowed("Edit", edit_shout_proc(shout))
+        -if shout.removed?
+          =link_to_remote_if_allowed("Restore", {:url => restore_shout_proc(shout), :method => :put, :confirm => "Are you sure you want to restore this?"})
+        -else
+          =link_to_remote_if_allowed("Remove", {:url => remove_shout_proc(shout), :method => :delete, :confirm => "Are you sure you want to remove this?"})
         =link_if_allowed("Delete", shout, :method => :delete, :confirm => "Are you sure?")
         -if logged_in? && allowed_to?(wall_wall_posts_proc(shout.wall), :method => :post)
           =link_to_function(WallPostsController::HELP_MESSAGE, "ShoutForm.showCommentForm($(this))", :class => "comment_prompt")

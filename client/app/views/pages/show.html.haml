@@ -69,8 +69,9 @@
   #main_page_content.sixcol    
     =render('pages/content', :page => @page)
     =snippet(@page, :call_to_action)
-  #pull_quote.threecol.last{:style => "background:#{@page.color}"}  
-    =snippet(@page, :pull_quote)
+  -if @page.has_snippet?(:pull_quote)
+    #pull_quote.threecol.last{:style => "background:#{@page.color};color:#{complementary_color(@page.color)}"}  
+      =snippet(@page, :pull_quote)
   %span
   -if false
     #page_content{:class => "#{@page.slug_in?(%w{the_team advisors picnic11_speakers contributors}) ? 'eightcol last' : 'fivecol'}"}
