@@ -23,5 +23,5 @@
                 =li_with_active(viewing_page_or_section?(page_or_section) || (current_page?(root_path) && idx == 0), link_to_self(page_or_section))
               -if current_root_section.slug == "picnic11"
                 =li_with_active(controller_name =~ /programmes|conference_sessions|venues/, link_to("Programme", conference_programme_path(1)))
-            %li#updates_link=link_to_function("&uarr; Show all updates", "$('body').animate({'scrollTop':0}, 1000)")
+            %li#updates_link=link_to_function("Festival updates", "$('body').animate({'scrollTop':0}, 1000)")
             
