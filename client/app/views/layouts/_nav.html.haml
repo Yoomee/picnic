@@ -2,7 +2,5 @@
   %h1#site_logo
     =link_to "PICNIC", root_path
   %ul
-    %li
-      =link_to "Stories", "#"
     -nav_items.each do |item|
       =li_with_active(item[:active], link_to(item[:name], item[:url]))
