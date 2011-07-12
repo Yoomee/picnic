@@ -18,7 +18,8 @@ class ClientEnvironment
       config.gem 'geokit'
       config.gem 'googlecharts'      
       
-      config.cache_store = :mem_cache_store_with_delete_matched
+      #config.cache_store = :mem_cache_store_with_delete_matched
+      Rails.cache.clear
     end
     
   end
