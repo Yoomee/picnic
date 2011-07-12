@@ -201,10 +201,18 @@ var Flipboard = {
     }
   },
   toggle: function(){
-    if($('body').scrollTop() > 0){      
-      $('body').animate({'scrollTop':0}, 1000);
+    if (navigator.appName == "Microsoft Internet Explorer") {
+      if($(window).scrollTop() > 0){      
+        $('html').animate({'scrollTop':0}, 1000);
+      } else {
+        $('html').animate({'scrollTop':617}, 1000);
+      }      
     } else {
-      $('body').animate({'scrollTop':617}, 1000);
+      if($(window).scrollTop() > 0){      
+        $('body').animate({'scrollTop':0}, 1000);
+      } else {
+        $('body').animate({'scrollTop':617}, 1000);
+      }
     }
   }
 };
