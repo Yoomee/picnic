@@ -1448,7 +1448,8 @@ input#search_icon {
   width: 100%;
   background: #000;
   color: #fff;
-
+	position:relative;
+min-height:20px;
  
 }
 #nav ul, #subnav ul {
@@ -1467,10 +1468,12 @@ input#search_icon {
 	text-indent:0;
 }
 #nav ul li {
-
-
-
 	float: left;
+}
+
+#subnav ul li#updates_link {
+  position:absolute;
+  right:0px;
 }
 #nav a {
 	display:block;
