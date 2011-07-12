@@ -3827,6 +3827,14 @@ a.backto {
 	padding: 20px 0 10px;
 }
 
+a#back_to_updates {
+	display: block;
+	float: left;
+	background: url(/images/sprite.png) -100px -1920px no-repeat;
+	padding: 8px 0 2px 30px;
+	
+}
+
 p.stories_header {
 	font-size: 12px;
 	letter-spacing: 1px;
@@ -4773,14 +4781,27 @@ body.controller_badges .badge_members {
 }
 
 #prog_container .prog_arrow a:hover {
-  color:#999;
   text-decoration:none;
   cursor:default;
   
 }
 
-#prog_container .active_arrow a{
+#prog_container .prog_arrow a{
   color:white;
+  background: url(/images/sprite.png) no-repeat -54px -1981px;
+  text-indent: -9000em;
+  display: block;
+  float: left;
+  width: 100%;
+}
+#prog_container .prog_arrow_left.active_arrow a {
+	background-position: 26px -2042px;
+}
+#prog_container .prog_arrow_left a {
+	background-position: -54px -2042px;
+}
+#prog_container .active_arrow.prog_arrow_right a {
+	background-position: 26px -1981px;
 }
 #prog_container .active_arrow a:hover{
   cursor:pointer;
@@ -4930,7 +4951,7 @@ body.controller_badges .badge_members {
   color:black;
   z-index:20;
   -moz-box-shadow:5px 5px 5px #666666;
-	-webkit-box-shadow:5px 5px 5px #666666;
+	-webkit-box-shadow:5px 5px 5px rgba(0,0,0,0.6);
 	box-shadow:5px 5px 5px #666666;
 }
 
