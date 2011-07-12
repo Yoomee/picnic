@@ -1459,7 +1459,7 @@ min-height:20px;
 	margin:0;
 	padding:0;
 	text-indent:0;
-		font-size: 20px;
+	font-size: 20px;
 	line-height: 20px;
 }
 #nav ul li, #subnav ul li {
@@ -1475,6 +1475,12 @@ min-height:20px;
   position:absolute;
   right:0px;
 }
+#subnav ul li#updates_link a{
+  background:url(/images/flipboard_icon.png) no-repeat 0px 1px;
+  padding: 0 0 0 24px;
+  margin:0px;
+}
+
 #nav a {
 	display:block;
 	font-size: 18px;
