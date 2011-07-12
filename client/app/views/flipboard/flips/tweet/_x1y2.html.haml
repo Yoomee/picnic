@@ -2,6 +2,7 @@
   .padding
     .text2
       =highlight_twitter_all(flipitem.text)
+    .text3="Posted on #{flipitem.date.strftime("%a %b %d")}"
   .flip_footer
     TWITTER
-    %strong="#PICNICFESTIVAL"
+    %strong=link_to("@PICNICFESTIVAL", "http://www.twitter.com/picnicfestival", :target => "_blank")

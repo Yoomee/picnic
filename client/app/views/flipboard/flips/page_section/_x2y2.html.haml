@@ -7,3 +7,5 @@
       %h6=flipitem.created_at.strftime("%d %B %Y")
       .text3{:style => "color:#{complementary_color(flipitem.color)}"}
         =auto_link(flipitem.summary(150, :strip_tags => true))
+    .flip_footer{:style => "color:#{complementary_color(flipitem.color)};border-color:#{complementary_color(flipitem.color)}"}
+      FESTIVAL NEWS

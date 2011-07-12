@@ -7125,7 +7125,7 @@ span.click_here_beta {
 #flipboard .flip_footer strong{
   font-family: 'VAG Rounded W02 Bold', arial, sans-serif;
 }
-#flipboard .x2 .flipboard {
+#flipboard .x2 .flip_footer {
   width:430px;
 }
 #flipboard .text1 {
@@ -7139,6 +7139,11 @@ span.click_here_beta {
 #flipboard .text2 {
   font-size: 20px;
   line-height: 27px;
+  float: left;
+  clear: both;
+}
+#flipboard .text4{
+  font-size: 11px;
   float: left;
   clear: both;
 }

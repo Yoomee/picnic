@@ -36,6 +36,7 @@
         Flipboard.hoverOff($(this));
       });
     setTimeout("Flipboard.startSlowScroll();", 2000);
+    $('.flip a').attr('onClick', "Flipboard.stopAllScrolling();return true;");
   });
 #flipboard_wrapper{:style => "display:block"}
   #flipboard_strip
