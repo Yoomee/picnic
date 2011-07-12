@@ -137,7 +137,7 @@ var Flipboard = {
     });
   },
   maxRight: function() {
-    return (window.innerWidth - 10 - $('#flipboard').width());
+    return ($(window).width() - 10 - $('#flipboard').width());
   },
   maxLeft: 10,
   startFastScroll: function() {
