@@ -2181,7 +2181,7 @@ img.wall_profile_img, .news_item img {
 .inner_text p {
 	margin:0;
 }
-div.time_ago, p.wrote {
+p.wrote {
 	color:#999999;
 	font-size:10px;
 }
@@ -3661,8 +3661,9 @@ span.cal_icon span.day {
 	width:370px;
 }
 .time_ago {
-	color:#999999;
-	font-size:11px;
+	color:#BBB;
+/*  float:right;
+*/	font-size:10px;
 }
 /*
 .news_feed_item img{
@@ -3705,8 +3706,8 @@ h2#page_intro {
 }
 #page_subnav {
   float: left;
-  background: #fff;
-  margin: 0 0 20px;
+
+  margin: 0 0 0px;
   width: 100%;
   padding-bottom: 60px;
 
@@ -3720,8 +3721,8 @@ h2#page_intro {
   
 }
 #page_subnav li {
-  margin-bottom: 5px;
-  font-size: 13px;
+  margin-bottom: 3px;
+  font-size: 12px;
   width:100%;
 }
 #page_subnav li a {
@@ -3806,7 +3807,7 @@ a.backto {
 	
 }
 .top_color {
-	background: #ed4287;
+
 	height:8px;
 	margin-top: 10px;
 }
@@ -3835,17 +3836,18 @@ p.stories_header {
 a.share_link {
 	display: block;
 	float: left;
-	width: 30px;
+	width: 28px;
 	height: 30px;
-	margin: 0 5px 5px;
+	margin: 0 0px 5px 0;
 	background: url(/images/sprite_picnic.png) 0px -160px;
 	text-indent: -9000em;
-	clear: both;
+	clear: none;
 	
 	
 }
 a#facebook_share_link {
 	background-position: 0 -200px;
+	margin: 0 7px 5px 0;
 }
 span.share_link_count {
 	float: left;
@@ -3861,6 +3863,7 @@ span.share_link_count {
 }
 #page_left_col {
 	min-height: 1200px;
+	clear: left;
 }
 
 #page_tags {
@@ -3985,13 +3988,17 @@ span.share_link_count {
 	font-size:11px;
 
 }
-.pull_quote {
+#pull_quote {
 	margin: 40px 0;
+	background: #ed4287;	
+	float: left;
+}
+.pull_quote {
 	float: left;
 	text-indent: 0;
-	background: #ed4287;
+
 	padding: 10px;
-	color: #fff;
+
 	font-size: 18px;
 	width: 200px;
 }
@@ -5352,6 +5359,12 @@ li.wall_post {
   color: #999999;
   font-size: 11px;
   margin-left: 5px;
+}
+.wall_post_content p{
+  margin-bottom:5px;
+}
+.wall_post_content .time_ago {
+  float:right;
 }
 
 /*  TODO: remove this */
