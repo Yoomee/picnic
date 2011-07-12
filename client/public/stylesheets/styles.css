@@ -128,7 +128,7 @@ div#flipboard_wrapper {
 	
 	
 }
-.fliboard_nav {
+.flipboard_nav {
 	display: block;
 	background:#000 url(/images/sprite.png) 1px -1941px no-repeat;
 	float: right;
@@ -143,6 +143,13 @@ div#flipboard_wrapper {
 	-webkit-border-radius:3px;
 	-moz-border-radius:3px;
 
+}
+
+#flipboard_play_pause {
+	background-position: -40px -2321px;
+}
+#flipboard_play_pause.pause {
+	background-position: 1px -2321px;
 }
 #flipboard_left {
 	background-position: -40px -1941px;
@@ -4003,6 +4010,7 @@ span.share_link_count {
 	margin: 40px 0;
 	background: #ed4287;	
 	float: left;
+	padding: 0;
 }
 .pull_quote {
 	float: left;

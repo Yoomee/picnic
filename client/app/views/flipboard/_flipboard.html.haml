@@ -55,5 +55,6 @@
     .row
       .twelvecol
         .fr
-          =link_to_function("Right", "Flipboard.scrollJump()", :class => "fliboard_nav", :id => "flipboard_left")
-          =link_to_function("Left", "Flipboard.scrollJump()", :class => "fliboard_nav", :id => "flipboard_right")
+          =link_to_function("Right", "Flipboard.scrollJump()", :class => "flipboard_nav", :id => "flipboard_left")
+          =link_to_function("P/P", "Flipboard.playPause()",:id => "flipboard_play_pause",:class => "flipboard_nav pause")
+          =link_to_function("Left", "Flipboard.scrollJump()", :class => "flipboard_nav", :id => "flipboard_right")
