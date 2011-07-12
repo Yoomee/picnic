@@ -15,10 +15,11 @@ module FlipboardHelper
   
   def render_flipboard
     return "" if Section.find_by_slug(:news).nil?
-    flipboard_content = Rails.cache.fetch("flipboard_content", :expires_in => 1.day) do
-      get_flipboard_content
-    end
-    render("flipboard/flipboard", :flipboard_content => flipboard_content)
+    # flipboard_content = Rails.cache.fetch("flipboard_content", :expires_in => 1.day) do
+    #   get_flipboard_content
+    # end
+    # render("flipboard/flipboard", :flipboard_content => flipboard_content)
+    render("flipboard/flipboard", :flipboard_content => get_flipboard_content)
   end
   
   def get_flipboard_content
