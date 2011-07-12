@@ -1,6 +1,7 @@
 -x = FlipcolTemplate::X1
 -y = FlipcolTemplate::Y1
 .flip.x1.y1
+  .flip_border{:style => "background-color:#{flipitem.color}"}
   =link_to(image_or_photo_for(flipitem, "#{x}x#{y}#"),flipitem)
   -link_to(flipitem, :class => "hover flip_info", :style => "background-color:#{flipitem.color}") do
     .padding
