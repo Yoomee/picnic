@@ -1,5 +1,8 @@
 .flip.flip_tweet.x2.y2
   .padding
-    %h6 TWITTER
     .text2
       =highlight_twitter_all(flipitem.text)
+    .text3="Posted on #{flipitem.date.strftime("%a %b %d")}"  
+  .flip_footer
+    TWITTER
+    %strong="#PICNICFESTIVAL"
