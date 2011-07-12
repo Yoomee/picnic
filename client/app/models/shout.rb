@@ -3,20 +3,22 @@ Shout.class_eval do
   after_create :trigger_points_event, :notify_subscribers
   after_destroy :trigger_reverse_points_event
 
+  belongs_to :removed_by, :class_name => "Member"
+  has_many :wall_posts_not_removed, :through => :wall, :source => :wall_posts, :conditions => {:removed_at => nil}
+
   attr_boolean_accessor :themes_form_step, :delete_attachable
 
   attr_accessor :shout_type
   
   include TramlinesImages
   
-  
   #TODO Investigate if there is max lenght, or performance issues with lots of friends
   named_scope :by_friends_of, lambda {|member| {:joins => "INNER JOIN walls ON (shouts.id = walls.attachable_id AND walls.attachable_type = 'Shout') LEFT OUTER JOIN wall_posts ON (wall_posts.wall_id = walls.id)", :group => "shouts.id", :conditions => ["shouts.member_id IN (:ids) OR wall_posts.member_id IN (:ids)", {:ids => member.friend_ids}]}}
-  
+  named_scope :removed, :conditions => "shouts.removed_at IS NOT NULL"
+  named_scope :not_removed, :conditions => "shouts.removed_at IS NULL"
   
   has_location
   has_permalink
-  
   
   class << self
     def get_shouts(filter_name, member)
@@ -45,6 +47,17 @@ Shout.class_eval do
   
   def related_shouts
     Shout.random.limit(3)
+  end
+  
+  def removed
+    !removed_at.blank?
+  end
+  alias_method :removed?, :removed
+  
+  def text
+    return read_attribute(:text) if !removed?
+    remover = (removed_by == member)? "the user" : "a moderator"
+    "This discussion has been removed by #{remover}." 
   end
   
   def to_s

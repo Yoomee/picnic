@@ -16,6 +16,7 @@ class ClientEnvironment
       config.gem 'contacts'
       config.gem 'newrelic_rpm'
       config.gem 'geokit'
+      config.gem 'googlecharts'      
     end
     
   end

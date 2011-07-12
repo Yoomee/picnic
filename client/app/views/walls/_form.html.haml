@@ -13,7 +13,7 @@
       -form.inputs do
         =#render("walls/rating_form", :form => form) if rating_stars
         =form.input :wall_id, :as => :hidden, :input_html => {:id => "wall_#{wall.id}_wall_post_wall_id_input", :value => wall.id}, :wrapper_html => {:id => "wall_#{wall.id}_wall_post_wall_id_input"}
-        =form.input :text, :as => :text, :required => false, :label => "#{link_to_self(logged_in_member)}<span>right now</span>", :input_html => {:rows => 2, :cols => 50, :id => "wall_#{wall.id}_wall_post_text", :class => "wall_post_text_input"}, :wrapper_html => {:id => "wall_#{wall.id}_wall_post_text_input"}
+        =form.input :text, :as => :text, :required => false, :label => "#{link_to_self(logged_in_member)}", :input_html => {:rows => 2, :cols => 50, :id => "wall_#{wall.id}_wall_post_text", :class => "wall_post_text_input"}, :wrapper_html => {:id => "wall_#{wall.id}_wall_post_text_input"}
         =hidden_field_tag :rating_stars, rating_stars, :id => "wall_#{wall.id}_rating_stars"
         =hidden_field_tag :reverse, reverse, :id => "wall_#{wall.id}_reverse"
         =form.commit_button :label => button_label, :button_html => {:class => 'wall_post_bttn', :id => "wall_post_#{wall.id}_bttn"}
