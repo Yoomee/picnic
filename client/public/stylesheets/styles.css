@@ -3726,7 +3726,7 @@ li.news_feed_item_hovering a.trash {
 h2#page_intro {
 	font-size: 26px;
 	line-height: 32px;
-	margin-bottom: 38px;
+	margin-bottom: 20px;
 }
 #page_subnav {
   float: left;
@@ -3843,7 +3843,7 @@ a.backto {
 }
 
 a#back_to_updates {
-	display: block;
+	display: none;
 	float: left;
 	background: url(/images/sprite.png) -100px -1920px no-repeat;
 	padding: 8px 0 2px 30px;
@@ -3997,9 +3997,7 @@ span.share_link_count {
 }
 #article_image {
 	float:left;
-	
 	height:auto !important;
-	min-height:165px;
 	text-indent:10px;
 	margin-bottom: 5px;
 }
@@ -7159,9 +7157,18 @@ span.click_here_beta {
     font-size: 30px;
   line-height: 36px;
     float: left;
-  clear: both;		
+  clear: both;	
+	
 }
-
+#flipboard .text_small {
+    font-size: 12px;
+  line-height: 18px;
+    float: left;
+  clear: both;
+  margin: 0px 0 0;	
+  color: rgba(255,255,255,0.5);
+	
+}
 #flipboard .x1 .hover { width:215px;}
 #flipboard .x2 .hover { width:455px;}
 #flipboard .y1 .hover { height:120px;}
