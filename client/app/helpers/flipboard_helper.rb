@@ -14,6 +14,7 @@ module FlipboardHelper
   end
   
   def render_flipboard
+    return "" if Section.find_by_slug(:news).nil?
     flipboard_content = Rails.cache.fetch("flipboard_content", :expires_in => 1.day) do
       get_flipboard_content
     end
@@ -22,10 +23,14 @@ module FlipboardHelper
   
   def get_flipboard_content
     sponsors = Page::random_sponsors(3)
-    pages_sections = Section.find_by_slug(:news).all_children(:published_only => true, :latest => true).first(10)
+    pages_sections = Section.find_by_slug(:news).all_children(:published_only => true, :latest => true).first(15)
     tweets = get_latest_tweets_from("PICNICfestival", 5, false, true)
-    speakers = Member.with_badge(:picnic11_speaker).latest.limit(10).all
-    flipitems = (pages_sections + speakers).sort_by(&:created_at)
+    speakers = Member.with_badge(:picnic11_speaker).latest.limit(15).all
+    flipitems = []
+    until pages_sections.empty? && speakers.empty?
+      flipitems << pages_sections.shift unless pages_sections.empty?
+      flipitems << speakers.shift unless speakers.empty?
+    end
     total_size = flipitems.size
     sponsors.each_with_index do |sponsor, index|
       flipitems.insert((index+1)*(total_size /sponsors.size), sponsor)

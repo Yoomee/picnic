@@ -111,8 +111,9 @@ var PhotoGallery = {
 };
 
 var Flipboard = {
-  slow_scrolling: null,
-  fast_scrolling: null,  
+  slow_scroll_timer: null,
+  fast_scroll_timer: null,  
+  fast_scrolling: false,
   scrolling: 0,
   direction: 1,
   allowScrolling: function() {
@@ -141,35 +142,42 @@ var Flipboard = {
   maxLeft: 10,
   startFastScroll: function() {
     Flipboard.stopAllScrolling();
-    Flipboard.fast_scrolling = setInterval("Flipboard.scroll()", 0.1);
+    Flipboard.fast_scrolling = true;
+    Flipboard.fast_scroll_timer = setInterval("Flipboard.scroll(5)", 1);
   },
   startSlowScroll: function() {
-    Flipboard.stopAllScrolling();    
-    Flipboard.slow_scrolling = setInterval("Flipboard.scroll()", 55);
+    Flipboard.stopAllScrolling();
+    Flipboard.slow_scrolling = true;    
+    Flipboard.slow_scroll_timer = setInterval("Flipboard.scroll(1)", 30);
   },
   stopAllScrolling: function(){
     Flipboard.stopSlowScroll();
     Flipboard.stopFastScroll();
   },
   stopFastScroll: function(){
-    clearInterval(Flipboard.fast_scrolling);
+    clearInterval(Flipboard.fast_scroll_timer);
+    Flipboard.fast_scrolling = false;
   },
   stopSlowScroll: function(){
-    clearInterval(Flipboard.slow_scrolling);
+    clearInterval(Flipboard.slow_scroll_timer);
+    Flipboard.slow_scrolling = false;
   },
-  scroll: function() {
-    if (!Flipboard.allowScrolling()) {
-      Flipboard.direction = (Flipboard.direction * -1);
+  scroll: function(speed) {
+    if (!Flipboard.allowScrolling() && Flipboard.fast_scrolling) {
+      Flipboard.stopAllScrolling();
+    } else {
+      if (!Flipboard.allowScrolling()) {
+        Flipboard.direction = (Flipboard.direction * -1);
+      }
+      $('#flipboard').css('left', $('#flipboard').position().left - Flipboard.direction * speed);
     }
-    $('#flipboard').css('left', $('#flipboard').position().left - Flipboard.direction);
   },
-  scrollJump: function(right){
-    Flipboard.direction = (right ? 1 : -1);
+  scrollJump: function(){
     if(!Flipboard.scrolling && Flipboard.allowScrolling()){
       Flipboard.scrolling = 1;
       Flipboard.stopAllScrolling();
       var currentPosition = $('#flipboard').position().left;
-      var newPosition = (right ? (currentPosition - 240) : (currentPosition + 240));
+      var newPosition = (Flipboard.direction==1 ? (currentPosition - 240) : (currentPosition + 240));
       if (newPosition > Flipboard.maxLeft) {
         newPosition = Flipboard.maxLeft;
       } else if (newPosition < Flipboard.maxRight()) {

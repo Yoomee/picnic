@@ -129,10 +129,8 @@ div#flipboard_wrapper {
 	
 }
 .fliboard_nav {
-		display: block;
-
+	display: block;
 	background:#000 url(/images/sprite.png) 1px -1941px no-repeat;
-
 	float: right;
 	font-size: 12px;
 	text-indent: -9000em;
@@ -140,11 +138,7 @@ div#flipboard_wrapper {
 	width: 15px;
 	margin: -2px 0 0 10px;
 	position: relative;
-
-
-
 	color: #fff;
-	
 	border-radius:3px;
 	-webkit-border-radius:3px;
 	-moz-border-radius:3px;
