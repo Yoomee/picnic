@@ -3834,6 +3834,10 @@ a.backto {
 	padding: 20px 0 10px;
 }
 
+.page_header strong {
+  font-family: 'VAG Rounded W02 Bold', arial, sans-serif;
+}
+
 a#back_to_updates {
 	display: block;
 	float: left;
@@ -7128,30 +7132,27 @@ span.click_here_beta {
 #flipboard .x2 .flip_footer {
   width:430px;
 }
-#flipboard .text1 {
-  font-size: 24px;
-  line-height: 26px;
-  font-weight: bold;
-  float: left;
-  clear: both;
-  margin-bottom: 10px;
-}
-#flipboard .text2 {
-  font-size: 20px;
-  line-height: 27px;
+#flipboard .text1, #flipboard .text2, #flipboard .text3, #flipboard .text4 {
   float: left;
   clear: both;
 }
-#flipboard .text4{
+#flipboard .text1{
   font-size: 11px;
   float: left;
   clear: both;
 }
+#flipboard .text2 {
+  font-size: 20px;
+  line-height: 27px;
+}
 #flipboard .text3 {
-    font-size: 30px;
-  line-height: 36px;
-    float: left;
-  clear: both;		
+  font-size: 24px;
+  line-height: 26px;
+  margin-bottom: 10px;
+}
+#flipboard .text4 {
+  font-size: 30px;
+  line-height: 36px;	
 }
 
 #flipboard .x1 .hover { width:215px;}
