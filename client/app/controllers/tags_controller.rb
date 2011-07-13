@@ -2,6 +2,8 @@ TagsController.class_eval do
 
   before_filter :get_tag, :only => %w{destroy edit people show older_shouts update}
 
+  admin_only :edit, :new, :create, :destroy, :update
+
   def autocomplete
     search_term = params[:term].downcase.gsub('_', ' ').gsub(/[^A-Za-z\d\-\s]/, '').strip
     term_list = [*search_term.gsub('-', ' ').split]
