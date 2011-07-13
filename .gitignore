@@ -11,10 +11,12 @@
 /vendor
 /vendor/plugins/acts_as_network
 /vendor/plugins/event_calendar
+/vendor/plugins/johnny_cache
 /vendor/plugins/tramlines_adverts
 /vendor/plugins/tramlines_auth
 /vendor/plugins/tramlines_badges
 /vendor/plugins/tramlines_connections
+/vendor/plugins/tramlines_content_flags
 /vendor/plugins/tramlines_events
 /vendor/plugins/tramlines_friends
 /vendor/plugins/tramlines_locations
@@ -26,6 +28,5 @@
 /vendor/plugins/tramlines_shouts
 /vendor/plugins/tramlines_walls
 .DS_Store
-config.ru
 .eyrc
-/vendor/plugins/tramlines_content_flags
+config.ru

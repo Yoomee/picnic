@@ -1,27 +1,5 @@
 module FlipboardHelper
   
-  def render_flip_item(flipitem, template)
-    if flipitem.is_a?(String)
-      flip_partial = flipitem
-    elsif flipitem.respond_to?(:flip_partial)
-      flip_partial = flipitem.flip_partial
-    elsif flipitem.is_a?(Struct::Tweet)
-      flip_partial = "tweet"
-    else
-      flip_partial = flipitem.class.to_s.underscore
-    end
-    render("flipboard/flips/#{flip_partial}/x#{template[0]}y#{template[1]}.html.haml", :flipitem => flipitem, :x => template[0], :y => template[1])
-  end
-  
-  def render_flipboard
-    return "" if Section.find_by_slug(:news).nil?
-    flipboard_content = Rails.cache.fetch("flipboard_content", :expires_in => 1.day) do
-      get_flipboard_content
-    end
-    render("flipboard/flipboard", :flipboard_content => flipboard_content)
-    #render("flipboard/flipboard", :flipboard_content => get_flipboard_content)
-  end
-  
   def get_flipboard_content
     sponsors = Page::random_sponsors(3)
     pages_sections = Section.find_by_slug(:news).all_children(:published_only => true, :latest => true).first(15)
@@ -62,6 +40,29 @@ module FlipboardHelper
       end
     end
     flipboard_content
+  end
+  
+  def render_flip_item(flipitem, template)
+    if flipitem.is_a?(String)
+      flip_partial = flipitem
+    elsif flipitem.respond_to?(:flip_partial)
+      flip_partial = flipitem.flip_partial
+    elsif flipitem.is_a?(Struct::Tweet)
+      flip_partial = "tweet"
+    else
+      flip_partial = flipitem.class.to_s.underscore
+    end
+    render("flipboard/flips/#{flip_partial}/x#{template[0]}y#{template[1]}.html.haml", :flipitem => flipitem, :x => template[0], :y => template[1])
+  end
+  
+  def render_flipboard
+    puts "IN render_flipboard"
+    return "" if Section.find_by_slug(:news).nil?
+    flipboard_content = Rails.cache.fetch("flipboard_content", :expires_in => 1.day) do
+      get_flipboard_content
+    end
+    render("flipboard/flipboard", :flipboard_content => flipboard_content)
+    #render("flipboard/flipboard", :flipboard_content => get_flipboard_content)
   end
   
 end
