@@ -31,7 +31,7 @@
     
   .fivecol.last
     .call_to_action
-      =link_to "View the #{@conference_session.conference} programme", conference_programme_path(@conference_session.conference)
+      =link_to "View the #{@conference_session.conference} program", conference_programme_path(@conference_session.conference)
     =image_for(@conference_session, '450x') if @conference_session.has_image?
     =render('conference_sessions/attend_link', :session => @conference_session)
 .row

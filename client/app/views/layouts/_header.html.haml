@@ -3,27 +3,22 @@
     =render_flash
   #logo_and_nav.twelvecol.no_padding 
     =render("layouts/nav")
-    -if false
-      #search_box.threecol.last.no_padding 
-        -unless controller_name == 'search'
-          -form_for Search.new do |form|
-            =form.submit "Search", :id => "search_icon"  
-            =form.text_field :term, :title => "Search..."      , :class => "labelify", :id => "search_field" 
       
     #header_right
       -if logged_in?
         .panel
           .logged_in_as
-            =link_to(@logged_in_member, "javascript: void(0)", :class => 'logged_in_member_link')
-            =link_to "Notifications#{current_page?(notifications_path) || @logged_in_member.notifications.unread.empty? ? "" : " <span>#{@logged_in_member.notifications.unread.count}</span>"}", notifications_path, :class => "notifications", :title => "#{pluralize(@logged_in_member.notifications.unread.count, 'new notification')}"
+            =link_to(@logged_in_member, "javascript: void(0)", :class => 'logged_in_member_link button')
+            =link_to "Notifications#{current_page?(notifications_path) || @logged_in_member.notifications.unread.empty? ? "" : " <span>#{@logged_in_member.notifications.unread.count}</span>"}", notifications_path, :class => "notifications button", :title => "#{pluralize(@logged_in_member.notifications.unread.count, 'new notification')}"
             =#link_to "Inbox#{current_page?(messages_path) || !@logged_in_member.has_unread_messages? ? "" : " <span>#{@logged_in_member.unread_message_count}</span>"}", messages_path, :class => "messages", :title => "#{pluralize(@logged_in_member.unread_message_count, 'new messages')}"
-            =link_to('My profile', @logged_in_member, :class=>'profile_link')
-            =link_if_allowed('Admin', admin_proc)
+            =link_to('My profile', @logged_in_member, :class=>'profile_link button')
+            =link_if_allowed('Admin', admin_proc, :class => 'button')
+            =link_to('Search', 'javascript: void(0)', :class => 'button search_link')
           
       -else
         =link_to('Login', new_session_path, :class => 'button')
         =link_to("Signup", new_member_path, :class => 'button')
-        =link_to('Search', '/search', :class => 'button')
+        =link_to('Search', 'javascript: void(0)', :class => 'button search_link')
 
       -if logged_in?
         .logged_in_box
@@ -32,3 +27,9 @@
             %p My profile
           =link_if_allowed "Account settings", edit_member_proc(@logged_in_member)
           =link_to('Logout', session_path, :method => :delete)
+      
+      #search_box_popup    
+        #search_box 
+          -form_for Search.new do |form|          
+            =form.text_field :term, :title => ""      , :class => "labelify", :id => "search_field"     
+            =form.submit "Search", :id => "search_icon", :class=>"button"  

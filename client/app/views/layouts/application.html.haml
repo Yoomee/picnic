@@ -56,6 +56,14 @@
             $(this).addClass("logged_in_member_link_highlight");
           }
         });
+        $("a.search_link").click(function () {
+          if($(this).hasClass('search_link_highlight')){
+            $('#search_box_popup').hide(0, function(){$('a.search_link').removeClass("search_link_highlight");});
+          } else {          
+            $('#search_box_popup').show();
+            $(this).addClass("search_link_highlight");
+          }
+        });
       });
 
     =google_analytics_js

@@ -14,10 +14,10 @@
           =(page_section.is_a?(Page) ? page_section.publish_on : page_section.created_at).strftime("%e %B %Y")  
         %p.blog_like_news_text
           =page_section.is_a?(Page) ? (page_section.intro.blank? ? truncate(page_section.text.strip_tags, :length => 350) : page_section.intro) : page_section.description
-        =link_to "read more", page_section, :class=>'newsbox_arrow'      
+        =#link_to "read more", page_section, :class=>'newsbox_arrow'      
       .blog_like_news_img.threecol  
         -if page_section.has_photo?
-          =link_to(photo_for(page_section, '300x200!'), page_section)
+          =link_to(photo_for(page_section, '300x200#'), page_section)
 
 .twelvecol      
   =will_paginate @pages_sections
