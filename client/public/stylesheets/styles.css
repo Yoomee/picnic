@@ -130,7 +130,7 @@ div#flipboard_wrapper {
 }
 .flipboard_nav {
 	display: block;
-	background:#000 url(/images/sprite.png) 1px -1941px no-repeat;
+	background:#000 url(/images/sprite1.png) 1px -1941px no-repeat;
 	float: right;
 	font-size: 12px;
 	text-indent: -9000em;
@@ -469,7 +469,7 @@ input, textarea {
 	float: left;
 	clear: both;
 	border-color: #ccc;
-	background: #fff url(/images/sprite.png) repeat-x 0 -320px;
+	background: #fff url(/images/sprite1.png) repeat-x 0 -320px;
 }
 #new_enquiry input, #new_enquiry textarea, #new_enquiry input select {
 	width: 100%;	
@@ -532,7 +532,7 @@ p.inline-errors {
    text-shadow:0 1px 0 #cdcdcd;  
 }
 span#page_photo_clear.photo_browser_clear {
-	background: url(/images/sprite.png) no-repeat 0px -175px;
+	background: url(/images/sprite1.png) no-repeat 0px -175px;
 	float: left;
 	margin: 0 0 0 10px;
 	padding: 0 0 0 16px;
@@ -582,7 +582,7 @@ ul.tabs_container li {
 }
 
 ul.tabs_container li a{
-	background: url(/images/sprite.png) no-repeat;
+	background: url(/images/sprite1.png) no-repeat;
 	float:left;
 	margin:0;
 	padding:10px 25px 11px 50px;
@@ -714,7 +714,7 @@ br#pages_tab_links_break, br#sections_tab_links_break {
 	display: block;
 	font-size: 16px;
 	line-height: 16px;
-	background: #c5c7c8 url(/images/sprite.png) repeat-x 0 -80px;
+	background: #c5c7c8 url(/images/sprite1.png) repeat-x 0 -80px;
 	padding: 0;
 	width: 190px;
 
@@ -732,7 +732,7 @@ br#pages_tab_links_break, br#sections_tab_links_break {
 	display: block;
 	padding: 10px 16px 12px 40px;
 	color: #333;
-	background: url(/images/sprite.png) no-repeat;	
+	background: url(/images/sprite1.png) no-repeat;	
 	text-shadow: 0 1px 0 #fff;
 	width: 140px;
 	
@@ -826,11 +826,11 @@ strong.highlight {
 	margin:0 0 0px;
 	float: left;
 	width: 100%;
-	background:url(/images/sprite.png) no-repeat -90px -490px;
+	background:url(/images/sprite1.png) no-repeat -90px -490px;
 	padding:10px 0px 10px 50px;
 }
 #suggest ul li.related_search_result, ul#selected_items li.related_search_selected{
-	background:url(/images/sprite.png) no-repeat 10px -490px;
+	background:url(/images/sprite1.png) no-repeat 10px -490px;
 	border-bottom: 1px solid rgba(255,255,255,0.2);
 	float:left;
 	margin: 0;
@@ -990,7 +990,7 @@ html body form {
 }
 .dash_item li a {
 	display: block;
-	background: url(/images/sprite.png) 0px -137px no-repeat;
+	background: url(/images/sprite1.png) 0px -137px no-repeat;
 	padding: 0 0 0 17px;
 	float: left;
 	clear: both;
@@ -1007,7 +1007,7 @@ html body form {
 .dash_icon {
 	width: 44px;
 	height: 60px;
-	background: url(/images/sprite.png) 120px -940px no-repeat;
+	background: url(/images/sprite1.png) 120px -940px no-repeat;
 	position: absolute;
 	top: 10px;
 	left: 0;
@@ -1046,22 +1046,22 @@ html body form {
 
 /*=========== title icons for different sections  ================*/
 .controller_photo_albums h1#main_page_title, .controller_photos h1#main_page_title {
-	background: url(/images/sprite.png) no-repeat 0px -2430px;
+	background: url(/images/sprite1.png) no-repeat 0px -2430px;
 	padding: 0 0 0 40px;
 	margin: 0 0 20px 0px;
 }
 .controller_documents h1#main_page_title {
-	background: url(/images/sprite.png) no-repeat 0px -2690px;
+	background: url(/images/sprite1.png) no-repeat 0px -2690px;
 	padding: 0 0 0 40px;
 }
 
 .controller_sections.action_index h1#main_page_title {
-	background: url(/images/sprite.png) no-repeat 0px -2190px;
+	background: url(/images/sprite1.png) no-repeat 0px -2190px;
 	padding: 0 0 0 40px;
 }
 
 .controller_enquiries h1#main_page_title {
-	background: url(/images/sprite.png) no-repeat 0px -2990px;
+	background: url(/images/sprite1.png) no-repeat 0px -2990px;
 	padding: 0 0 0 40px;
 }
 
@@ -1288,7 +1288,7 @@ div.logged_in_panel {
 
 .logged_in_as a.logged_in_member_link {
 	font-weight: bold;
-	background: #f5f5f5 url(/images/sprite.png) right -611px no-repeat;
+	background: #f5f5f5 url(/images/sprite1.png) right -611px no-repeat;
 	padding-right: 25px;
 }
 .logged_in_as a.logged_in_member_link:hover {
@@ -1297,7 +1297,7 @@ div.logged_in_panel {
      transition: .0s ease-in;
 }
 .logged_in_as a.logged_in_member_link_highlight {
-	background: #000 url(/images/sprite.png) right -652px no-repeat;
+	background: #000 url(/images/sprite1.png) right -652px no-repeat;
 	color: #fff;
 	border-bottom: 6px solid #000;
 }
@@ -1408,7 +1408,7 @@ fb.fb_login_not_logged_in.FB_login_button {
 	opacity: 1;
 }
 input#search_field {
-	background:url("/images/sprite.png") no-repeat scroll 0 -1px;
+	background:url("/images/sprite1.png") no-repeat scroll 0 -1px;
 	border:medium none;
 	float:left;
 	font-size: 14px;
@@ -1421,7 +1421,7 @@ input#search_field {
 	text-align: left;
 }
 input#search_icon {
-	background:url("/images/sprite.png") no-repeat scroll 0 -1px transparent;
+	background:url("/images/sprite1.png") no-repeat scroll 0 -1px transparent;
 	border:medium none;
 	display:none;
 	float:left;
@@ -3149,7 +3149,7 @@ a.newsbox_arrow {
 	width: 22px;
 	height: 28px;
 	margin: 0 0px 0px 0;
-	background: url(/images/sprite.png) 0 -1640px;
+	background: url(/images/sprite1.png) 0 -1640px;
 	text-indent: -9000em;
 }
 a.newsbox_arrow:hover {
@@ -3849,7 +3849,7 @@ a.backto {
 a#back_to_updates {
 	display: none;
 	float: left;
-	background: url(/images/sprite.png) -100px -1920px no-repeat;
+	background: url(/images/sprite1.png) -100px -1920px no-repeat;
 	padding: 8px 0 2px 30px;
 	
 }
@@ -4152,7 +4152,7 @@ div.page_share {
 	width: 27px;
 	height: 28px;
 	margin: 0 6px 0px 0;
-	background: url(/images/sprite.png) 0 -1680px;
+	background: url(/images/sprite1.png) 0 -1680px;
 	text-indent: -9000em;
 }
 #keep_in_touch li a.twitter:hover {
@@ -4806,7 +4806,7 @@ body.controller_badges .badge_members {
 
 #prog_container .prog_arrow a{
   color:white;
-  background: url(/images/sprite.png) no-repeat -54px -1981px;
+  background: url(/images/sprite1.png) no-repeat -54px -1981px;
   text-indent: -9000em;
   display: block;
   float: left;
@@ -5147,10 +5147,10 @@ div.shout_text p {
 
 }
 .video_shout_image .shout_attachable_icon {
-	background: url(/images/sprite.png) no-repeat -0px -2120px;
+	background: url(/images/sprite1.png) no-repeat -0px -2120px;
 }
 .link_image .shout_attachable_icon {
-	background: url(/images/sprite.png) no-repeat 0px -2180px;
+	background: url(/images/sprite1.png) no-repeat 0px -2180px;
 	left: 50px;
 	top: 33px;
 }
@@ -5291,16 +5291,16 @@ span.shout_type_label {
 }
 
 .like_link {
-  background: url(/images/sprite.png) 0 -60px;
+  background: url(/images/sprite1.png) 0 -60px;
  } 
 .post_to_wall {
   margin-bottom: 20px;
 }
 span.like_link, .unlike_link {
-  background: url(/images/sprite.png) -32px -60px;
+  background: url(/images/sprite1.png) -32px -60px;
 }
 .like_link, .unlike_link, span.disabled_like_link {
-  background: url(/images/sprite.png) 0 -60px;
+  background: url(/images/sprite1.png) 0 -60px;
   clear: left;
   float: left;
   height: 23px;
@@ -5313,10 +5313,10 @@ span.like_link, .unlike_link {
   width: 20px;
 }
 span.dislike_link {
-  background: url(/images/sprite.png) -32px -94px;
+  background: url(/images/sprite1.png) -32px -94px;
 }
 .dislike_link, span.disabled_dislike_link {
-  background: url(/images/sprite.png) 0 -94px;
+  background: url(/images/sprite1.png) 0 -94px;
   clear: left;
   float: left;
   height: 23px;
@@ -5679,7 +5679,7 @@ color: white;
   font-style:italic;
 }
 ul.facelist-selections {
-	/*background: #fff url(/images/sprite.png) repeat-x 0 -320px;*/
+	/*background: #fff url(/images/sprite1.png) repeat-x 0 -320px;*/
 	margin: 0;
 /*	float: left;*/
 	width: 480px;
@@ -6929,7 +6929,7 @@ table#delegates th{
     height: 20px;
     text-indent:-9000em;
     display: block;
-  	background: url(/images/sprite.png) no-repeat -28px -177px;
+  	background: url(/images/sprite1.png) no-repeat -28px -177px;
 }
 
 span.click_here_beta {
