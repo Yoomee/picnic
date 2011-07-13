@@ -62,7 +62,7 @@
   - body_tag do
     #wrapper
       =#render "layouts/beta_bar"
-      =render_flipboard if !action_name.in?(%w{edit new})
+      =render_flipboard if !action_name.in?(%w{edit new}) && !in_moderation? && !controller_name.in?(%w{admin})
       #header.container
         =render :partial => 'layouts/header'
       #subnav_container.container                  

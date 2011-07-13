@@ -184,6 +184,7 @@ body #wrapper .no_padding {
 }
 #header_right {
 	margin-top: 15px;
+	float: right;
 
 	position: relative;
 	
@@ -261,9 +262,16 @@ td, th {
 }
 p#notice {
 	text-align: center;
-	border-bottom: 2px solid #000;
-	padding: 10px 0;
+	background: #ed4287;
+	background: rgba(241, 46, 115, 0.95) ;
+	color: #fff;
+	padding: 5px 0;
 	font-size: 16px;
+	float: left;
+	width: 100%;
+	position: fixed;
+	top: 52px;
+	left: 0;
 }
 p.flash_notice {
 	background: #FFFFAA;
@@ -3718,7 +3726,7 @@ li.news_feed_item_hovering a.trash {
 h2#page_intro {
 	font-size: 26px;
 	line-height: 32px;
-	margin-bottom: 38px;
+	margin-bottom: 20px;
 }
 #page_subnav {
   float: left;
@@ -3839,7 +3847,7 @@ a.backto {
 }
 
 a#back_to_updates {
-	display: block;
+	display: none;
 	float: left;
 	background: url(/images/sprite.png) -100px -1920px no-repeat;
 	padding: 8px 0 2px 30px;
@@ -3993,9 +4001,7 @@ span.share_link_count {
 }
 #article_image {
 	float:left;
-	
 	height:auto !important;
-	min-height:165px;
 	text-indent:10px;
 	margin-bottom: 5px;
 }
@@ -7146,6 +7152,7 @@ span.click_here_beta {
   line-height: 27px;
 }
 #flipboard .text3 {
+<<<<<<< HEAD
   font-size: 24px;
   line-height: 26px;
   margin-bottom: 10px;
@@ -7153,8 +7160,23 @@ span.click_here_beta {
 #flipboard .text4 {
   font-size: 30px;
   line-height: 36px;	
+=======
+    font-size: 30px;
+  line-height: 36px;
+    float: left;
+  clear: both;	
+	
 }
-
+#flipboard .text_small {
+    font-size: 12px;
+  line-height: 18px;
+    float: left;
+  clear: both;
+  margin: 0px 0 0;	
+  color: rgba(255,255,255,0.5);
+	
+>>>>>>> 8d16a4c26b8a78cdfcc3dddf88c0aebb7b8d2f83
+}
 #flipboard .x1 .hover { width:215px;}
 #flipboard .x2 .hover { width:455px;}
 #flipboard .y1 .hover { height:120px;}
@@ -8249,6 +8271,40 @@ ul#content_flags_list a:hover .title span{
 /* ============================= */
 
 @media handheld, only screen and (max-width: 767px) {
+	
+	
+	body {
+	padding: 0;
+}
+	
+	
+	#header {
+	position: relative;
+}
+
+	
+	  #nav {
+	margin: 13px 0;
+}
+
+div#flipboard_wrapper, div#flipboard_strip, #flipboard_wrapper .fr, #subnav ul li#updates_link, a#back_to_updates {
+	display: none;
+	padding: 0;
+	
+}	
+
+#header_right a.button {
+	float: left;
+	margin: 0 10px 0 0;
+}
+
+#header_right {
+  	margin-top: 0px;
+  	float: left;
+  	border-top: 1px solid #ccc ;
+  	width: 100%;
+  	padding: 10px 0;
+  }
   
 	#page_subnav {
   	width: 100%;
@@ -8276,19 +8332,41 @@ ul#content_flags_list a:hover .title span{
   #nav_line_row {
   	position: relative;
   }
-  #search_box {
-  	margin: -40px 0 0 ;
-  	float: right;
-  }
+
+#header_right_col .page_header {
+	padding-top: 0;
+
+}
+#header_right_col h1#page_title {
+	float: left;
+	margin: 20px 0 0 0;
+
+}
+#header_left_col .page_header {
+	border-bottom: none;
+	
+	height: 0px;
+	min-height: 0;
+	margin: 10px 0 0 0;
+	float: right;
+	
+}
+#page_left_col {
+	min-height: 0;
+}
+#page_tags {
+	float: right;
+}
+#top_color_left {
+	display: none;
+}
 
   #user_links {
   	position: absolute;
   	top: 0;
   	right: 0;
   }
-  #header_right {
-  	margin-top: 20px;
-  }
+  
   .logged_in_box {
   	right: 20px;
   }
@@ -8299,7 +8377,7 @@ ul#content_flags_list a:hover .title span{
 	background: none;
 	}
   h1#site_logo a {
-  	margin: 20px 0;
+  	margin: 0px 0;
   }
   .newsbox {
     background: none;
@@ -8322,6 +8400,7 @@ ul#content_flags_list a:hover .title span{
   }
   #page_subnav {
   	background: none;
+  	padding: 0 0 10px;
   }
   #page_content {
   	border-top: 1px solid #000;
@@ -8387,6 +8466,7 @@ ul#content_flags_list a:hover .title span{
 }
 
 @media handheld, only screen and (max-width: 500px) {
+	
 
 
   #search_box {
