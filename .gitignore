@@ -11,7 +11,6 @@
 /vendor
 /vendor/plugins/acts_as_network
 /vendor/plugins/event_calendar
-/vendor/plugins/johnny_cache
 /vendor/plugins/tramlines_adverts
 /vendor/plugins/tramlines_auth
 /vendor/plugins/tramlines_badges

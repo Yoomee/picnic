@@ -51,11 +51,6 @@ path = vendor/plugins/event_calendar
 scm = git
 repository = git://github.com/elevation/event_calendar.git
 
-[vendor/plugins/johnny_cache]
-path = vendor/plugins/johnny_cache
-scm = git
-repository = git://github.com/jlapier/johnny_cache.git
-
 [vendor/plugins/tramlines_adverts]
 path = vendor/plugins/tramlines_adverts
 scm = git
