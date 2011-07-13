@@ -1218,7 +1218,7 @@ h1#site_logo a {
 	padding-left: 23px;
 	margin-left: -24px;
 	display: block;
-	background: url(/images/sprite_picnic.png) no-repeat -6px -1px;
+	background: url(/images/sprite_picnic1.png) no-repeat -6px -1px;
 
 	text-decoration: none;
 
@@ -2776,7 +2776,7 @@ a#yoomee_link {
 }
 a#yoomee_link span.yoomee_logo {
 	display: block;
-	background: url(/images/sprite_picnic.png) 0 -80px;
+	background: url(/images/sprite_picnic1.png) 0 -80px;
 	width: 80px;
 	margin: 2px 0;
 	height: 30px;
@@ -3875,7 +3875,7 @@ a.share_link {
 	width: 28px;
 	height: 30px;
 	margin: 0 0px 5px 0;
-	background: url(/images/sprite_picnic.png) 0px -160px;
+	background: url(/images/sprite_picnic1.png) 0px -160px;
 	text-indent: -9000em;
 	clear: none;
 	
@@ -5716,7 +5716,7 @@ div#new_shout_themes, #new_shout_form {
 
 li.comment_next_link a {
 	float: right;
-	background: url(/images/sprite_picnic.png) 0 -114px;
+	background: url(/images/sprite_picnic1.png) 0 -114px;
 	padding: 0 0 0 25px;
 }
 
