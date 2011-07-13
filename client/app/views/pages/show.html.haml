@@ -10,11 +10,17 @@
   #header_left_col.threecol
     #top_color_left.top_color{:style => "background:#{@page.color}"}
     .page_header 
-      -if @page.section == Section.find_by_slug("news")
-        %p.stories_header
-          FESTIVAL 
+      %p.stories_header
+        -if @page.section == Section.find_by_slug("news")
+          FESTIVAL
           %strong UPDATES
-        =link_to_function("See all updates", "$('body').animate({'scrollTop':0}, 1000)", :id=>"back_to_updates")  
+          =link_to_function("See all updates", "$('body').animate({'scrollTop':0}, 1000)", :id=>"back_to_updates")  
+          -elsif @page.section.parent_at_depth_name(1).split.size > 1
+            =@page.section.parent_at_depth_name(1).split.first
+            %strong=@page.section.parent_at_depth_name(1).gsub(/^\w+/, '')
+          -elsif @page.section.parent_at_depth(1)
+            =@page.section.root.name
+            %strong=@page.section.parent_at_depth(1)
       -if false
         %p.stories_header
           STORIES 
