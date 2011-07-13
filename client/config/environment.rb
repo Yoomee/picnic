@@ -20,6 +20,7 @@ class ClientEnvironment
       config.gem 'inflectious' 
       
       #config.cache_store = :mem_cache_store_with_delete_matched
+      config.cache_store = :file_store, "#{RAILS_ROOT}/tmp/cache"
     end
     
   end

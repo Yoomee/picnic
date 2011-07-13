@@ -1,6 +1,7 @@
 PagesController.class_eval do
 
   before_filter :handle_facelist, :only => [:create, :update]
+  cache_sweeper :page_sweeper
   
   def show_with_contact_form
     show_without_contact_form
