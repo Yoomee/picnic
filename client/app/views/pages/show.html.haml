@@ -16,11 +16,17 @@
           %strong UPDATES
           =link_to_function("See all updates", "$('body').animate({'scrollTop':0}, 1000)", :id=>"back_to_updates")  
           -elsif @page.section.parent_at_depth_name(1).split.size > 1
-            =@page.section.parent_at_depth_name(1).split.first
-            %strong=@page.section.parent_at_depth_name(1).gsub(/^\w+/, '')
+            =@page.section.parent_at_depth_name(1).split.first.upcase
+            %strong=@page.section.parent_at_depth_name(1).gsub(/^\w+/, '').upcase
           -elsif @page.section.parent_at_depth(1)
-            =@page.section.root.name
-            %strong=@page.section.parent_at_depth(1)
+            =@page.section.root.name.upcase
+            %strong=@page.section.parent_at_depth(1).upcase
+          -elsif @page.title.split.size > 1
+            =@page.title.split.first.upcase
+            %strong=@page.title.gsub(/^\w+/, '').upcase
+          -else
+            =@page.section.root.name.upcase
+            %strong=@page.title.upcase
       -if false
         %p.stories_header
           STORIES 
