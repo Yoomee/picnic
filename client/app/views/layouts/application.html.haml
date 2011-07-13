@@ -15,16 +15,16 @@
     %link{ :href => "/images/favicon.ico", :rel => "shortcut icon" }
     %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
     =render("layouts/facebook_sharer_tags")
-    = google_javascripts :jquery, :jqueryui
-    = javascript_include_tag 'jrails', 'jquery.cycle', 'tramlines', 'client/tramlines', 'jquery.labelify', 'jquery.fancy_box/jquery.fancybox-1.3.1.pack', 'jquery.fancy_box/jquery.mousewheel-3.0.2.pack.js', 'client/load_fancybox',"client/jquery.facelist_2-0", "jquery.autogrowtextarea.js", "client/like_form", "client/css3-mediaqueries", "timepicker", "jquery.tooltip", "client/jquery.hotkeys", :cache => true
-    =javascript_include_tag 'jquery.fancy_box/jquery.easing-1.3.pack.js'
-    = javascript_include_tag "http://connect.facebook.net/en_US/all.js"
     = stylesheet_link_tag 'http://fast.fonts.com/cssapi/f1269106-f262-440b-b3ce-93423b2eaf06.css'
     = stylesheet_link_tag "client/facelist_2-0",'jquery.fancybox', 'jquery-ui', 'client/1140.css', 'client/styles', :cache => false
     /[if IE]
       = stylesheet_link_tag 'client/ie.css'
     /[if IE 6]
       = stylesheet_link_tag 'client/ie6.css'
+    = google_javascripts :jquery, :jqueryui
+    = javascript_include_tag 'jrails', 'jquery.cycle', 'tramlines', 'client/tramlines', 'jquery.labelify', 'jquery.fancy_box/jquery.fancybox-1.3.1.pack', 'jquery.fancy_box/jquery.mousewheel-3.0.2.pack.js', 'client/load_fancybox',"client/jquery.facelist_2-0", "jquery.autogrowtextarea.js", "client/like_form", "client/css3-mediaqueries", "timepicker", "jquery.tooltip", "client/jquery.hotkeys", :cache => true
+    =javascript_include_tag 'jquery.fancy_box/jquery.easing-1.3.pack.js'
+    = javascript_include_tag "http://connect.facebook.net/en_US/all.js"
     =# formtastic_stylesheet_link_tag
     = labelify_javascript
     =render_badge_announcement
@@ -62,7 +62,9 @@
   - body_tag do
     #wrapper
       =#render "layouts/beta_bar"
-      =render_flipboard if !action_name.in?(%w{edit new}) && !in_moderation? && !controller_name.in?(%w{admin})
+      -if !action_name.in?(%w{edit new}) && !in_moderation? && controller_name != 'admin'
+        -cache("some_fragment", :time_to_live => 1.hour) do
+          =render_flipboard
       #header.container
         =render :partial => 'layouts/header'
       #subnav_container.container                  
