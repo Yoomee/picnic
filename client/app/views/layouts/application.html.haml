@@ -63,7 +63,7 @@
     #wrapper
       =#render "layouts/beta_bar"
       -if !action_name.in?(%w{edit new}) && !in_moderation? && controller_name != 'admin'
-        -cache("some_fragment", :time_to_live => 1.hour) do
+        -cache("flipboard", :time_to_live => 1.hour) do
           =render_flipboard
       #header.container
         =render :partial => 'layouts/header'
