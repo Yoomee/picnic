@@ -3884,10 +3884,14 @@ a.backto {
 	margin: 0 0 20px;
 	padding: 20px 0 10px;
 }
+.page_header h1#page_title {
+  margin-top: -4px;
+}
 
 .page_header strong {
   font-family: 'VAG Rounded W02 Bold', arial, sans-serif;
 }
+
 
 a#back_to_updates {
 	display: none;

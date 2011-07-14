@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   
-
+  map.resources :front_covers
   map.resources :conference_delegates, :only => [:index]
   
   map.resources :conferences do |conf|
