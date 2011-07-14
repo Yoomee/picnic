@@ -13,7 +13,7 @@ module PagesHelper
       ['Festival', 'Updates']
     when page.section.parent_at_depth_name(1).split.size > 1
       depth_1_name = page.section.parent_at_depth_name(1)
-      [depth_1_name.first, depth_1_name.gsub(/^\w+/, '')]
+      [depth_1_name.split.first, depth_1_name.gsub(/^\w+/, '')]
     when page.section.parent_at_depth(1)
       [page.section.root.name.upcase, page.section.parent_at_depth(1).name]
     when page.title.split.size > 1
