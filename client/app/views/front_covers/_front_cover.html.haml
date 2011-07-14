@@ -1,0 +1,122 @@
+-content_for(:head) do
+  -if false
+    :css
+      #main_container {
+        background: url(#{@front_cover.image.url}) no-repeat;
+        height: #{@front_cover.image.height}px;
+      }
+      #wrapper {
+        margin-top: -30px;
+      }
+  :css
+    #front_cover {
+      min-height: 550px
+    }
+    #supersize {
+      /*position: fixed;*/
+      position: absolute;
+      left: 0;
+      overflow: hidden;
+    }
+
+    #supersize img {
+      height:100%;
+      position:absolute;
+      width:100%;
+      z-index:-1;
+    }
+    #footer {
+      display: none;
+    }
+    
+    #iamsterdam {
+      display: none;
+      position: absolute;
+    }
+    
+    #sponsors {
+      display: none;
+      position: absolute;
+      width: 100%;
+    }
+  :javascript
+    (function($){
+      //Resize image on ready or resize
+      $.fn.supersize = function() {   
+        //Invoke the resizenow() function on document ready
+        $(document).ready(function() {
+          $('#supersize').resizenow(); 
+        });
+        //Invoke the resizenow() function on browser resize
+        $(window).bind("resize", function() {
+          $('#supersize').resizenow(); 
+        });
+      };
+      //Adjust image size
+      $.fn.resizenow = function() {
+        $('#iamsterdam').hide();
+        $('#sponsors').hide();
+        //Define starting width and height values for the original image
+        var startwidth = #{@front_cover.image.width};  
+        var startheight = #{@front_cover.image.height};
+        //Define image ratio
+        var ratio = startheight/startwidth;
+        //Gather browser dimensions
+        var browserwidth = $(window).width();
+        var browserheight = $(window).height();
+        var headerheight = $('#logo_and_nav').height() == 0 ? 104 : 52;
+        var portheight = browserheight - headerheight;
+        if (browserwidth > 770) {
+          $(this).show();
+        } else {
+          $(this).hide();
+        }
+        //Resize image to proper ratio
+        if ((portheight/browserwidth) > ratio) {
+          $(this).height(portheight);
+          $(this).width(portheight / ratio);
+          $(this).children().height(portheight);
+          $(this).children().width(portheight / ratio);
+        } else {
+          $(this).width(browserwidth);
+          $(this).height(browserwidth * ratio);
+          $(this).children().width(browserwidth);
+          $(this).children().height(browserwidth * ratio);
+        }
+        //Make sure the image stays center in the window
+        $(this).children().css('left', (browserwidth - $(this).width())/2);
+        /*$(this).children().css('top', (portheight - $(this).height())/2);*/
+        var calcHeight = ((portheight - $(this).height()) / 2);
+        $(this).css('top', calcHeight < headerheight ? calcHeight : headerheight);
+        $('#iamsterdam').css('top', $(this).height() + $(this).position().top).show();
+        $('#sponsors').css('top', $('#iamsterdam').position().top + $('#iamsterdam').height()).show();
+      };
+    })(jQuery);
+    
+    $(document).ready(function() {
+      $('#supersize').supersize(); 
+    });
+-content_for(:under_header) do
+  #supersize
+    =image_tag @front_cover.image.url
+#front_cover
+  #main_story
+    -unless @front_cover.main_story_small_heading.blank?
+      .small_heading=@front_cover.main_story_small_heading.upcase
+    %h1=@front_cover.main_story_title
+    -unless @front_cover.main_story_subtitle.blank?
+      %h2=@front_cover.main_story_subtitle
+    =simple_format @front_cover.main_story_text
+    -link_to @front_cover.main_story_link_url, :class => 'bttn' do
+      =@front_cover.main_story_link_text
+      %span.arrow
+        &rarr;
+  #small_stories
+    -(1..3).each do |n|
+      .small_story
+        %h2=small_story_title(@front_cover, n)
+        =simple_format small_story_text(@front_cover, n)
+        -link_to small_story_link_url(@front_cover, n), :class => 'bttn' do
+          =small_story_link_text(@front_cover, n)
+          %span.arrow
+            &rarr;

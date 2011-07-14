@@ -70,11 +70,12 @@
   - body_tag do
     #wrapper
       =#render "layouts/beta_bar"
-      -if !action_name.in?(%w{edit new}) && !in_moderation? && controller_name != 'admin'
+      -if !action_name.in?(%w{edit new}) && !in_moderation? && !controller_name.in?(%w(admin front_covers))
         -cache("flipboard", :time_to_live => 1.hour) do
           =render_flipboard
       #header.container
         =render :partial => 'layouts/header'
+      =yield(:under_header)
       #subnav_container.container                  
         =render("layouts/subnav")
       #main.content

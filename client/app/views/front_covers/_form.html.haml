@@ -1,0 +1,19 @@
+-semantic_form_for(front_cover, :html => {:multipart => true}) do |form|
+  -form.inputs do
+    =form.input :name, :label => "Name (this will be used for reference)"
+    =form.input :image, :as => :image, :label => 'Background image'
+  -form.inputs 'Main story', :class => 'with_legend' do
+    =form.input :main_story_small_heading, :label => "Small Heading (this will be shown above the title)"
+    =form.input :main_story_title, :label => 'Title'
+    =form.input :main_story_subtitle, :label => 'Subtitle'
+    =form.input :main_story_text, :label => 'Text', :input_html => {:rows => 3}
+    =form.input :main_story_link_text, :label => 'Link text'
+    =form.input :main_story_link_url, :label => 'Link URL (eg. /club)'
+  -(1..3).each do |n|
+    -form.inputs "Small story #{n}", :class => 'with_legend' do
+      =form.input "small_story#{n}_title", :label => 'Title'
+      =form.input "small_story#{n}_text", :label => 'Text', :input_html => {:rows => 2}
+      =form.input "small_story#{n}_link_text", :label => 'Link text'
+      =form.input "small_story#{n}_link_url", :label => 'Link URL (eg. /club)'
+  -form.buttons do
+    =form.commit_button 'Save'

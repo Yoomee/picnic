@@ -658,6 +658,15 @@ input#page_title {
 	
 
 }
+fieldset.with_legend legend {
+  font-weight: bold;
+  font-size: 18px;
+}
+fieldset.with_legend {
+  border: 1px solid gray;
+  padding: 15px;
+  width: 500px;
+}
 fieldset.buttons {
 	float: left;
 	clear: both;
@@ -8526,6 +8535,64 @@ div#flipboard_wrapper, div#flipboard_strip, #flipboard_wrapper .fr, #subnav ul l
     height: 70px !important;
   }
 
+}
+
+/*========== Front cover ==========*/
+#front_cover #main_story {
+  background: #e48;
+  float: left;
+  width: 220px;
+  padding: 12px 15px;
+}
+#front_cover .small_heading {
+  font-family:'VAG Rounded W02 Bold', arial, sans-serif;
+}
+#front_cover h1 {
+  font-family:'VAG Rounded W02 Light', arial, sans-serif;
+  font-weight: normal;
+  font-size: 35px;
+  line-height: 36px;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  margin: 12px 0;
+}
+#front_cover h2 {
+  font-family:'VAG Rounded W02 Light', arial, sans-serif;
+  font-weight: normal;
+  font-size: 19px;
+  line-height: 22px;
+  -webkit-font-smoothing: antialiased;
+}
+#front_cover p {
+  color: white;
+}
+#front_cover .bttn {
+  background: black;
+  color: white;
+  border: 0px;
+  text-shadow: none;
+  font-weight: normal;
+  padding: 5px 8px;]
+  -webkit-box-shadow:none;
+  -moz-box-shadow:none;
+  box-shadow: none;
+}
+#front_cover .bttn .arrow {
+  color: #808080;
+}
+#front_cover #small_stories {
+  float: left;
+  margin: 0 0 0 5px;
+  width: 250px;
+}
+#front_cover .small_story {
+  background: #1d2226;
+  padding: 20px;
+  margin: 0 0 5px 0;
+  float: left;
+}
+#front_cover .small_story h2 {
+  color: #808080;
 }
 
 @media handheld, only screen and (max-width: 500px) {
