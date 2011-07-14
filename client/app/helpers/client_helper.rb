@@ -51,7 +51,7 @@ module ClientHelper
   end
   
   def nav_items
-    items = Section.root.not_hidden.collect{|section| {
+    items = (Section.root.not_hidden - [Section.find_by_slug('about_us')]).collect{|section| {
       :name => section.name,
       :url => section_path(section),
       :active => current_root_section?(section),
