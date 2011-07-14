@@ -11,26 +11,7 @@
     #top_color_left.top_color{:style => "background:#{@page.color}"}
     .page_header 
       %p.stories_header
-        -if @page.section == Section.find_by_slug("news")
-          FESTIVAL
-          %strong UPDATES
-          =link_to_function("See all updates", "$('body').animate({'scrollTop':0}, 1000)", :id=>"back_to_updates")  
-          -elsif @page.section.parent_at_depth_name(1).split.size > 1
-            =@page.section.parent_at_depth_name(1).split.first.upcase
-            %strong=@page.section.parent_at_depth_name(1).gsub(/^\w+/, '').upcase
-          -elsif @page.section.parent_at_depth(1)
-            =@page.section.root.name.upcase
-            %strong=@page.section.parent_at_depth(1).name.upcase
-          -elsif @page.title.split.size > 1
-            =@page.title.split.first.upcase
-            %strong=@page.title.gsub(/^\w+/, '').upcase
-          -else
-            =@page.section.root.name.upcase
-            %strong=@page.title.upcase
-      -if false
-        %p.stories_header
-          STORIES 
-          %strong SOCIETY
+        =left_hand_subtitle(@page)
       
   #header_right_col.ninecol.last  
     #top_color_right.top_color{:style => "background:#{@page.color}"}
