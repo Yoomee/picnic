@@ -3874,7 +3874,7 @@ a.backto {
 	
 }
 .top_color {
-
+	background: #c9dcdf;
 	height:8px;
 	margin-top: 10px;
 }
@@ -3904,9 +3904,12 @@ a#back_to_updates {
 p.stories_header {
 	font-size: 12px;
 	letter-spacing: 1px;
+	text-transform: uppercase;
 	
 }
-
+p.stories_header a {
+	color: #000;
+}
 #share_this {
 	float: left;
 	width: 74px;
@@ -4051,6 +4054,9 @@ span.share_link_count {
 	height:auto !important;
 	text-indent:10px;
 	margin-bottom: 5px;
+}
+#article_image.photo_view {
+	margin-bottom: 20px;
 }
 #article_image img {
 	float: left;
