@@ -66,8 +66,8 @@ class FrontCoverTest < ActiveSupport::TestCase
   context "on call to activated=(false) when saving" do
     
     setup do
-      @front_cover1 = Factory.create(:front_cover, :activated => true)
-      @front_cover2 = Factory.create(:front_cover)
+      @front_cover1 = Factory.build(:front_cover, :activated => true)
+      @front_cover2 = Factory.build(:front_cover)
       FrontCover.stubs(:active).returns [@front_cover1]
     end
     
@@ -102,8 +102,9 @@ class FrontCoverTest < ActiveSupport::TestCase
       FrontCover.stubs(:active).returns [@front_cover1]
     end
     
-    should "reset activated to false on the other front covers" do
-      @front_cover1.expects(:update_attribute).with(:activated, false)
+    # We can now have multiple active front covers
+    should "NOT reset activated to false on the other front covers" do
+      @front_cover1.expects(:update_attribute).never
       @front_cover2.activated = true
       @front_cover2.save!
     end

@@ -6,4 +6,4 @@
   -if @front_cover.activated?
     =link_to 'Deactivate', deactivate_front_cover_path(@front_cover), :method => :post, :confirm => 'Are you sure you want to deactivate this as the site front page?'
   -else
-    =link_to 'Activate', activate_front_cover_path(@front_cover), :method => :post, :confirm => 'Are you sure you want to set this as the site front page?'
+    =link_to 'Activate', activate_front_cover_path(@front_cover), :method => :post, :confirm => 'Are you sure you want to set this as a site front page?'

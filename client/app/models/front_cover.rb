@@ -2,7 +2,7 @@ class FrontCover < ActiveRecord::Base
 
   include TramlinesImages
 
-  after_validation :update_activation
+  #after_validation :update_activation
   
   validates_presence_of :main_story_background_color,
     :main_story_link_text,

@@ -9,7 +9,9 @@
     These are the most recent front covers. Click on one to view it
   %ul
     -@front_covers.each do |front_cover|
-      %li=link_to_self front_cover
+      %li
+        =link_to_self front_cover
+        =front_cover.activated? ? "(active)" : "(inactive)"
 -options_panel do
   =back_link
-  =link_to 'New front cover'
+  =link_to 'New front cover', new_front_cover_path
