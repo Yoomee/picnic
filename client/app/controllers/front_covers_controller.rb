@@ -1,32 +1,12 @@
 class FrontCoversController < ApplicationController
   
-  admin_only :index, :new, :create, :show, :edit, :update, :destroy
+  admin_only :activate, :create, :deactivate, :destroy, :edit, :index, :new, :show, :update
+
+  before_filter :get_front_cover, :only => %w{edit show update destroy activate deactivate}
   
-  before_filter :get_front_cover, :only => %w{edit show update destroy}
-  
-  def destroy
-    @front_cover.destroy
-    redirect_to front_covers_path
-  end
-  
-  def update
-    if @front_cover.update_attributes(params[:front_cover])
-      flash[:notice] = 'Front cover successfully updated'
-      redirect_to @front_cover
-    else
-      render :action => 'edit'
-    end
-  end
-    
-  def edit
-  end
-  
-  def index
-    @front_covers = FrontCover.latest
-  end
-  
-  def new
-    @front_cover = FrontCover.new
+  def activate
+    @front_cover.activate!
+    redirect_to root_path
   end
   
   def create
@@ -39,12 +19,44 @@ class FrontCoversController < ApplicationController
     end
   end
    
+  def deactivate
+    @front_cover.deactivate!
+    flash[:notice] = 'This front cover has now been deactivated. The default front cover page will be shown instead'
+    redirect_to @front_cover
+  end
+  
+  def destroy
+    @front_cover.destroy
+    redirect_to front_covers_path
+  end
+  
+  def edit
+  end
+  
+  def index
+    @front_covers = FrontCover.latest
+  end
+  
+  def new
+    @front_cover = FrontCover.new
+  end
+  
   def show
   end
   
+  def update
+    if @front_cover.update_attributes(params[:front_cover])
+      flash[:notice] = 'Front cover successfully updated'
+      redirect_to @front_cover
+    else
+      render :action => 'edit'
+    end
+  end
+    
   private
   def get_front_cover
     @front_cover = FrontCover.find(params[:id])   
   end
   
 end
+

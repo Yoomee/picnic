@@ -1,20 +1,20 @@
 module ClientHelper
   
-  def conference_day(date_or_datetime)
-    date = date_or_datetime.to_date
-    if date < Date.parse("2011-09-14") || date > Date.parse("2011-09-16")
-      return nil 
-    else
-      "#{date.day - 13} (#{date.strftime("%a %e %B")})"
-    end
-  end
-  
   def complementary_color(color)
     case color[1..6].scan(/../).collect(&:hex).inject(0){|sum,val| sum += val}
     when 510..765
       '#000000'
     else
       '#FFFFFF'
+    end
+  end
+  
+  def conference_day(date_or_datetime)
+    date = date_or_datetime.to_date
+    if date < Date.parse("2011-09-14") || date > Date.parse("2011-09-16")
+      return nil 
+    else
+      "#{date.day - 13} (#{date.strftime("%a %e %B")})"
     end
   end
   
@@ -42,16 +42,18 @@ module ClientHelper
     "/client/images/marker_heart.png"
   end
   
-  def member_marker_image(member)
-    "/client/images/marker_heart.png"
-  end
-  
   def member_infobox(member)
     render "members/infobox", :member => member
   end
   
+  def member_marker_image(member)
+    "/client/images/marker_heart.png"
+  end
+  
   def nav_items
-    items = (Section.root.not_hidden - [Section.find_by_slug('about_us')]).collect{|section| {
+    sections = Section.root.not_hidden
+    sections -= [Section.find_by_slug('about_us')] if FrontCover.active.empty?
+    items = sections.collect{|section| {
       :name => section.name,
       :url => section_path(section),
       :active => current_root_section?(section),

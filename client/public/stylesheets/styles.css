@@ -2743,7 +2743,7 @@ div#footer_links {
 
 #sponsors {
 	background: #f5f5f5;
-	
+	padding: 0;
 }
 .sponsor a {
 	background: url(/images/sponsors2.jpg) -3px -3px;
@@ -8545,7 +8545,7 @@ div#flipboard_wrapper, div#flipboard_strip, #flipboard_wrapper .fr, #subnav ul l
 
 /*========== Front cover ==========*/
 #front_cover #main_story {
-  background: #e48;
+  background: #D22467;
   float: left;
   width: 220px;
   padding: 12px 15px;
@@ -8596,6 +8596,7 @@ div#flipboard_wrapper, div#flipboard_strip, #flipboard_wrapper .fr, #subnav ul l
   padding: 20px;
   margin: 0 0 5px 0;
   float: left;
+  width: 210px;
 }
 #front_cover .small_story h2 {
   color: #808080;

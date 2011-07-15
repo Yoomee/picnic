@@ -27,3 +27,9 @@ span.end {
 #nav ul li.active, #subnav ul li.active, #page_subnav li.active {
 	background:#fff;
 }
+
+#header {
+  position: absolute;
+  top: 0;
+  z-index: 1000;
+}

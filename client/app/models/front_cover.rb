@@ -1,4 +1,8 @@
 class FrontCover < ActiveRecord::Base
+
+  include TramlinesImages
+
+  after_validation :update_activation
   
   validates_presence_of :main_story_link_text,
     :main_story_link_url, 
@@ -20,6 +24,20 @@ class FrontCover < ActiveRecord::Base
 
   validates_uniqueness_of :name
   
-  include TramlinesImages
+  named_scope :active, :conditions => {:activated => true}
+
+  def activate!
+    update_attributes!(:activated => true)
+  end
+  
+  def deactivate!
+    update_attributes!(:activated => false)
+  end
+
+  private
+  def update_activation
+    # Deactivate other front cover if active - in theory there should only be one of these
+    self.class::active.each {|front_cover| front_cover.update_attribute(:activated, false)} if changes['activated'] == [false, true]
+  end
   
 end
