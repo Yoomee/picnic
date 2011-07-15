@@ -1,13 +1,4 @@
 -content_for(:head) do
-  -if false
-    :css
-      #main_container {
-        background: url(#{@front_cover.image.url}) no-repeat;
-        height: #{@front_cover.image.height}px;
-      }
-      #wrapper {
-        margin-top: -30px;
-      }
   :css
     #front_cover {
       min-height: 550px;
@@ -20,7 +11,7 @@
     }
     #front_cover #main_story {
       background: ##{@front_cover.main_story_background_color};
-      background-color: #{transparent_color(@front_cover.main_story_background_color, 0.8)};
+      background-color: #{transparent_color(@front_cover.main_story_background_color, 0.75)};
     }
     #supersize {
       /*position: fixed;*/
@@ -107,8 +98,9 @@
       $('#supersize').supersize(); 
     });
 -content_for(:under_header) do
-  #supersize
-    =image_tag @front_cover.image.url
+  -unless is_mobile_device?
+    #supersize
+      =image_tag @front_cover.image.url
 #front_cover
   #main_story
     -unless @front_cover.main_story_small_heading.blank?
