@@ -20,23 +20,28 @@ SectionsController.class_eval do
   before_filter :handle_facelist, :only => [:create, :update]
 
   def home
-    if !show_splash_page? && @section = home_section
-      case @section.view
-      when 'latest_stories', 'news_view'
-        @pages_sections = @section.pages.published.latest + @section.children
-        @pages_sections.extend(SectionsController::SortByWeightAndPublished)
-        @pages_sections = @pages_sections.sort_by_weight_and_published.paginate(
-        :page => params[:page],
-        :per_page => (@section.view == 'news_view' ? 7 : (APP_CONFIG[:latest_stories_items_per_page] || 6))
-        )
-        render :action => @section.view
-      when 'first_page'
-        @page = @section.destination
-        render :template => "pages/show"
+    if !show_splash_page? && ((@front_cover = front_cover) || (@section = home_section))
+      if @front_cover
+        # Do nothing
+        render "home/front_cover"
       else
-        # Otherwise use show view
-        @pages = @section.pages.published.weighted.paginate(:page => params[:page], :per_page => (APP_CONFIG[:section_pages_items_per_page] || 10))
-        render :action => 'show'
+        case @section.view
+        when 'latest_stories', 'news_view'
+          @pages_sections = @section.pages.published.latest + @section.children
+          @pages_sections.extend(SectionsController::SortByWeightAndPublished)
+          @pages_sections = @pages_sections.sort_by_weight_and_published.paginate(
+          :page => params[:page],
+          :per_page => (@section.view == 'news_view' ? 7 : (APP_CONFIG[:latest_stories_items_per_page] || 6))
+          )
+          render :action => @section.view
+        when 'first_page'
+          @page = @section.destination
+          render :template => "pages/show"
+        else
+          # Otherwise use show view
+          @pages = @section.pages.published.weighted.paginate(:page => params[:page], :per_page => (APP_CONFIG[:section_pages_items_per_page] || 10))
+          render :action => 'show'
+        end
       end
     else
       seen_splash_page!
@@ -45,25 +50,33 @@ SectionsController.class_eval do
   end
 
   def show
-    case @section.view
-    when 'latest_stories', 'news_view'
-      @pages_sections = @section.pages.published.latest + @section.children.not_hidden
-      @pages_sections.extend(SectionsController::SortByWeightAndPublished)
-      @pages_sections = @pages_sections.sort_by_weight_and_published.paginate(
-      :page => params[:page],
-      :per_page => (@section.view == 'news_view' ? 6 : (APP_CONFIG[:latest_stories_items_per_page] || 6))
-      )
-      render :action => @section.view
-    when 'first_page'
-      redirect_to send("#{@section.destination_type}_path", @section.destination) unless @section.destination == @section
+    if @section.slug == 'news' && !params[:archive] && @page = @section.pages.published.latest.first
+      render :template => 'pages/show'
     else
-      # Otherwise use show view
-      @pages = @section.pages.published.weighted.paginate(:page => params[:page], :per_page => (APP_CONFIG[:section_pages_items_per_page] || 10))
+      case @section.view
+      when 'latest_stories', 'news_view'
+        @pages_sections = @section.pages.published.latest + @section.children.not_hidden
+        @pages_sections.extend(SectionsController::SortByWeightAndPublished)
+        @pages_sections = @pages_sections.sort_by_weight_and_published.paginate(
+        :page => params[:page],
+        :per_page => (@section.view == 'news_view' ? 6 : (APP_CONFIG[:latest_stories_items_per_page] || 6))
+        )
+        render :action => @section.view
+      when 'first_page'
+        redirect_to send("#{@section.destination_type}_path", @section.destination) unless @section.destination == @section
+      else
+        # Otherwise use show view
+        @pages = @section.pages.published.weighted.paginate(:page => params[:page], :per_page => (APP_CONFIG[:section_pages_items_per_page] || 10))
+      end
     end
   end
 
 
   private
+  def front_cover
+    FrontCover.active.first
+  end
+  
   def handle_facelist
     params[:section] ||= {}
     params[:section][:tag_list] = params[:facelist_values_section_themes] if !params[:facelist_values_section_themes].nil?

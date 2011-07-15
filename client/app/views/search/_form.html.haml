@@ -10,15 +10,15 @@
 
 #search_box
   -form_for search, :html => {:id => "search_form"} do |form|
-    =form.text_field :term, :title => "Search...", :class => "labelify", :id => "search_field"
+    =form.text_field :term, :title => "Search again...", :class => "labelify", :id => "search_field"
     =form.submit "Search", :id => "search_icon"
     =hidden_field_tag :search_filter, @search_filter, :id => "search_filter_input"
-    #comments_filter.search_filter
-      %span Filter by
-      =search_filter_link("Everything", :filter_name => "")
-      =search_filter_link("People", :filter_name => "Member")
-      =search_filter_link("Pages", :filter_name => "PagesSection")
-      =search_filter_link("Posts", :filter_name => "Shout")
-      =#search_filter_link("Photos")
-      =#search_filter_link("Videos")
-      =#search_filter_link("Links")
+#comments_filter.search_filter
+  %span Filter by
+  =search_filter_link("Everything", :filter_name => "")
+  =search_filter_link("People", :filter_name => "Member")
+  =search_filter_link("Pages", :filter_name => "PagesSection")
+  =search_filter_link("Posts", :filter_name => "Shout")
+  =#search_filter_link("Photos")
+  =#search_filter_link("Videos")
+  =#search_filter_link("Links")

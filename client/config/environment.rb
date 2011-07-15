@@ -18,8 +18,10 @@ class ClientEnvironment
       config.gem 'geokit'
       config.gem 'googlecharts'     
       config.gem 'inflectious' 
+      config.gem 'factory_girl'
       
       #config.cache_store = :mem_cache_store_with_delete_matched
+      config.cache_store = :file_store, "#{RAILS_ROOT}/tmp/cache"
     end
     
   end

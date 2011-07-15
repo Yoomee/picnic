@@ -4,24 +4,45 @@
       .twelvecol.no_padding
         #subnav
           %ul
-            -if current_page?(root_path)
-            -elsif in_news_network?
-              =li_with_active(current_page?(browse_path), link_to("Browse", browse_path))
-              =li_with_active(current_page?(themes_path), link_to("Themes", themes_path))
-              =li_with_active(current_page?(correspondents_path), link_to("Correspondents", correspondents_path))
-            -elsif in_club?
-              =li_with_active(current_page?(club_path), link_to("Latest", club_path))
-              =li_with_active(controller_name == 'leaderboard', link_to("Leaderboard", leaderboard_path))
-              =li_with_active(current_page?(members_path), link_to("Members", members_path))
-              =li_with_active(current_page?(club_rules_path), link_to("House rules", club_rules_path))
-              -if logged_in?
-                =li_with_active(current_page?(connections_path), link_to("Connections", connections_path))
+            -if false
+              -if current_page?(root_path)
+              -elsif in_news_network?
+                =li_with_active(current_page?(browse_path), link_to("Browse", browse_path))
+                =li_with_active(current_page?(themes_path), link_to("Themes", themes_path))
+                =li_with_active(current_page?(correspondents_path), link_to("Correspondents", correspondents_path))
+              -elsif in_club?
+                =li_with_active(current_page?(club_path), link_to("Latest", club_path))
+                =li_with_active(controller_name == 'leaderboard', link_to("Leaderboard", leaderboard_path))
+                =li_with_active(current_page?(members_path), link_to("Members", members_path))
+                =li_with_active(current_page?(club_rules_path), link_to("House rules", club_rules_path))
+                -if logged_in?
+                  =li_with_active(current_page?(connections_path), link_to("Connections", connections_path))
+                -else
+                  =li_with_active(current_page?(new_member_path), link_to("Join", new_member_path))
               -else
-                =li_with_active(current_page?(new_member_path), link_to("Join", new_member_path))
+                -current_root_section.all_children(:published_only => !admin_logged_in?).each_with_index do |page_or_section, idx|
+                  =li_with_active(viewing_page_or_section?(page_or_section) || (current_page?(root_path) && idx == 0), link_to_self(page_or_section))
+                  -if current_root_section.slug == "picnic11" && idx == 1
+                    =li_with_active(controller_name =~ /programmes|conference_sessions|venues/, link_to("Program", conference_programme_path(1)))
+              %li#updates_link=link_to_function("Festival updates", "Flipboard.toggle()")
             -else
-              -current_root_section.all_children(:published_only => !admin_logged_in?).each_with_index do |page_or_section, idx|
-                =li_with_active(viewing_page_or_section?(page_or_section) || (current_page?(root_path) && idx == 0), link_to_self(page_or_section))
-              -if current_root_section.slug == "picnic11"
-                =li_with_active(controller_name =~ /programmes|conference_sessions|venues/, link_to("Programme", conference_programme_path(1)))
-            %li#updates_link=link_to_function("Festival updates", "Flipboard.toggle()")
-            
+              -# ENABLED SUBNAV FOR HOMEPAGE AND REMOVED ABOUT
+              -if in_news_network?
+                =li_with_active(current_page?(browse_path), link_to("Browse", browse_path))
+                =li_with_active(current_page?(themes_path), link_to("Themes", themes_path))
+                =li_with_active(current_page?(correspondents_path), link_to("Correspondents", correspondents_path))
+              -elsif in_club?
+                =li_with_active(current_page?(club_path), link_to("Latest", club_path))
+                =li_with_active(controller_name == 'leaderboard', link_to("Leaderboard", leaderboard_path))
+                =li_with_active(current_page?(members_path), link_to("Members", members_path))
+                =li_with_active(current_page?(club_rules_path), link_to("House rules", club_rules_path))
+                -if logged_in?
+                  =li_with_active(current_page?(connections_path), link_to("Connections", connections_path))
+                -else
+                  =li_with_active(current_page?(new_member_path), link_to("Join", new_member_path))
+              -else
+                -current_root_section.all_children(:published_only => !admin_logged_in?).each_with_index do |page_or_section, idx|
+                  =li_with_active(viewing_page_or_section_tree?(page_or_section) || (current_page?(root_path) && idx == 0), link_to_self(page_or_section))
+                  -if current_root_section.slug == "picnic11" && idx == 1
+                    =li_with_active(controller_name =~ /programmes|conference_sessions|venues/, link_to("Program", conference_programme_path(1)))
+              %li#updates_link=link_to_function("Festival updates", "Flipboard.toggle()")

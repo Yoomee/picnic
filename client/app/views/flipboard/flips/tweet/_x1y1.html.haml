@@ -1,0 +1,10 @@
+-x = FlipcolTemplate::X1
+-y = FlipcolTemplate::Y1
+.flip.flip_tweet.x1.y1
+  .padding
+    .text2
+      =highlight_twitter_all(flipitem.text)
+    .text1="Posted on #{flipitem.date.strftime("%a %b %d")}"
+  .flip_footer
+    TWITTER
+    %strong=link_to("@PICNICFESTIVAL", "http://www.twitter.com/picnicfestival", :target => "_blank")

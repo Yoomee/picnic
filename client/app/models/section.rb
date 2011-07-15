@@ -16,4 +16,8 @@ Section.class_eval do
     "page_section"
   end
   
+  def is_sponsor?
+    false
+  end
+  
 end

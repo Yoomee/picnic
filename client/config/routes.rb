@@ -1,24 +1,19 @@
 ActionController::Routing::Routes.draw do |map|
   
-
   map.resources :conference_delegates, :only => [:index]
-  
+  map.resources :conference_sessions, :only => [:create, :edit, :destroy, :show, :update], :member => {:duplicate => :get, :attend => :post, :unattend => :delete}
   map.resources :conferences do |conf|
     conf.resources :conference_sessions, :as => 'sessions', :only => [:show, :new]
     conf.resource :programme, :only => [:show]
     conf.resource :venues, :only => [:show, :new]
   end
-  map.resources :conference_sessions, :only => [:create, :edit, :destroy, :show, :update], :member => {:duplicate => :get, :attend => :post, :unattend => :delete}
-  map.resources :venues, :only => [:create, :edit, :destroy, :show, :update]
-  
+  map.resources :front_covers, :member => {:activate => :post, :deactivate => :post}
   map.resources :members, :only => [], :collection => {:admin => :get}
-  
+  map.resources :shouts, :only => [], :member => {:remove => :delete, :restore => :put}
+  map.resources :subscriptions, :only => [:create, :destroy]
   map.resources :tags, :as => "themes", :collection => {:autocomplete => :get}, :member => {:people => :get}
   map.resources :urls
-
-  map.resources :subscriptions, :only => [:create, :destroy]
-
-  map.resources :shouts, :only => [], :member => {:remove => :delete, :restore => :put}
+  map.resources :venues, :only => [:create, :edit, :destroy, :show, :update]
   map.resources :wall_posts, :only => [], :member => {:remove => :delete, :restore => :put}
   
   map.all_time_leaderboard "leaderboard/all_time", :controller => "leaderboard", :action => "all_time"
@@ -32,6 +27,7 @@ ActionController::Routing::Routes.draw do |map|
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.member_older_shouts "/member_older_shouts/:id", :controller => 'members', :action => 'older_shouts'
   map.news_network '/newsnetwork', :controller => 'news_network'
+  map.news_section_archive '/news/archive', :controller => 'sections', :action => 'show', :id => Section.slug(:news).id, :archive => true
   map.register '/register', :controller => 'members', :action => 'new'
   map.tag_older_shouts "/tag_older_shouts/:id", :controller => 'tags', :action => 'older_shouts'
   map.themes '/themes', :controller => 'tags'
@@ -46,4 +42,3 @@ ActionController::Routing::Routes.draw do |map|
   
 end
 
-  
