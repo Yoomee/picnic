@@ -1,3 +1,10 @@
+-content_for(:head) do
+  :javascript
+    $(document).ready(function() {
+      $('#front_cover_main_story_background_color option').each(function(idx, element) {
+        $(element).css('color', '#' + $(element).attr('value')); 
+      });
+    });
 -semantic_form_for(front_cover, :html => {:multipart => true}) do |form|
   -form.inputs do
     =form.input :name, :label => "Name (this will be used for reference)"
@@ -9,6 +16,7 @@
     =form.input :main_story_text, :label => 'Text', :input_html => {:rows => 3}
     =form.input :main_story_link_text, :label => 'Link text'
     =form.input :main_story_link_url, :label => 'Link URL (eg. /club)'
+    =form.input :main_story_background_color, :label => 'Background color', :collection => picnic_color_options, :prompt => false
   -(1..3).each do |n|
     -form.inputs "Small story #{n}", :class => 'with_legend' do
       =form.input "small_story#{n}_title", :label => 'Title'

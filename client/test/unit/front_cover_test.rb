@@ -6,6 +6,7 @@ class FrontCoverTest < ActiveSupport::TestCase
   should have_db_column(:activated).of_type(:boolean).with_options(:default => false)
   should have_db_column(:created_at).of_type(:datetime)
   should have_db_column(:image_uid).of_type(:string)
+  should have_db_column(:main_story_background_color).of_type(:string)
   should have_db_column(:main_story_link_text).of_type(:string).with_options(:default => 'More')
   should have_db_column(:main_story_link_url).of_type(:string)
   should have_db_column(:main_story_small_heading).of_type(:string)
@@ -27,6 +28,7 @@ class FrontCoverTest < ActiveSupport::TestCase
   should have_db_column(:small_story3_title).of_type(:string)
   should have_db_column(:updated_at).of_type(:datetime)
 
+  should validate_presence_of(:main_story_background_color)
   should validate_presence_of(:main_story_link_text)
   should validate_presence_of(:main_story_link_url)
   should validate_presence_of(:main_story_text)
