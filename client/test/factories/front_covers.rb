@@ -1,4 +1,5 @@
 Factory.define(:front_cover) do |f|
+  f.main_story_background_color 'aabbcc'
   f.main_story_link_url 'http://www.google.com'
   f.main_story_text 'Lorem ipsum dolor...'
   f.main_story_title 'The main story'

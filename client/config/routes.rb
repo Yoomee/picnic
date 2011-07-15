@@ -27,6 +27,7 @@ ActionController::Routing::Routes.draw do |map|
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.member_older_shouts "/member_older_shouts/:id", :controller => 'members', :action => 'older_shouts'
   map.news_network '/newsnetwork', :controller => 'news_network'
+  map.news_section_archive '/news/archive', :controller => 'sections', :action => 'show', :id => Section.slug(:news).id, :archive => true
   map.register '/register', :controller => 'members', :action => 'new'
   map.tag_older_shouts "/tag_older_shouts/:id", :controller => 'tags', :action => 'older_shouts'
   map.themes '/themes', :controller => 'tags'

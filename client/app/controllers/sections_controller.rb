@@ -50,20 +50,25 @@ SectionsController.class_eval do
   end
 
   def show
-    case @section.view
-    when 'latest_stories', 'news_view'
-      @pages_sections = @section.pages.published.latest + @section.children.not_hidden
-      @pages_sections.extend(SectionsController::SortByWeightAndPublished)
-      @pages_sections = @pages_sections.sort_by_weight_and_published.paginate(
-      :page => params[:page],
-      :per_page => (@section.view == 'news_view' ? 6 : (APP_CONFIG[:latest_stories_items_per_page] || 6))
-      )
-      render :action => @section.view
-    when 'first_page'
-      redirect_to send("#{@section.destination_type}_path", @section.destination) unless @section.destination == @section
+    puts "params[:archive] = #{params[:archive]}"
+    if @section.slug == 'news' && !params[:archive] && @page = @section.pages.published.latest.first
+      render :template => 'pages/show'
     else
-      # Otherwise use show view
-      @pages = @section.pages.published.weighted.paginate(:page => params[:page], :per_page => (APP_CONFIG[:section_pages_items_per_page] || 10))
+      case @section.view
+      when 'latest_stories', 'news_view'
+        @pages_sections = @section.pages.published.latest + @section.children.not_hidden
+        @pages_sections.extend(SectionsController::SortByWeightAndPublished)
+        @pages_sections = @pages_sections.sort_by_weight_and_published.paginate(
+        :page => params[:page],
+        :per_page => (@section.view == 'news_view' ? 6 : (APP_CONFIG[:latest_stories_items_per_page] || 6))
+        )
+        render :action => @section.view
+      when 'first_page'
+        redirect_to send("#{@section.destination_type}_path", @section.destination) unless @section.destination == @section
+      else
+        # Otherwise use show view
+        @pages = @section.pages.published.weighted.paginate(:page => params[:page], :per_page => (APP_CONFIG[:section_pages_items_per_page] || 10))
+      end
     end
   end
 

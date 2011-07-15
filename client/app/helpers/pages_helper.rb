@@ -3,7 +3,8 @@ module PagesHelper
   def left_hand_subtitle(page)
     parts = left_hand_subtitle_parts(page)
     out = "#{parts[0].upcase} #{content_tag(:strong, parts[1].upcase)}"
-    out << link_to_function("See all updates", "$('body').animate({'scrollTop':0}, 1000)", :id=>"back_to_updates") if page.section == Section.find_by_slug('news')
+    out << link_to_function("See all updates", "$('body').animate({'scrollTop':0}, 1000)", :id=>"back_to_updates") if page.section.slug == 'news'
+    out << link_to("View archive", news_section_archive_path, :id => 'view_archive') if page.section.slug == 'news'
     out
   end
   
