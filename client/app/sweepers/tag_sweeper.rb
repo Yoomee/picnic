@@ -13,7 +13,7 @@ class TagSweeper < ActionController::Caching::Sweeper
   private
   def expire_programmes(tag)
     ConferenceSession.tagged_with(tag).map(&:conference).uniq.each do |conference|
-      expire_page(:controller => 'programmes', :action => 'show', :conference_id => conference.id)
+      expire_fragment("program#{conference.id}")
     end
   end
 

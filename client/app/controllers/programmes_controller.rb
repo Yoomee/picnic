@@ -2,8 +2,6 @@ class ProgrammesController < ApplicationController
   
   before_filter :set_section
 
-  caches_page :show
-  
   def show
     params[:conference_id] ||= 1
     @conference = Conference.find(params[:conference_id])

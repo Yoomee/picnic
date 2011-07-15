@@ -56,57 +56,58 @@
 
 -no_content_row
 -title "Program", :hidden => true
-#prog_container
+-cache("program#{@conference.id}") do
+  #prog_container
+    .row
+      #prog_header
+        #prog_header_left
+          %h5 PROGRAM 2011
+        #prog_header_right
+          .days.fr
+            -@conference.days.each_with_index do |day, idx|
+              =link_to_function("Day #{idx + 1}", "Programme.goToDay(#{idx+1})",:class => "day #{day == @date ? 'active' : ''}", :id => "day_link_#{idx+1}")
+          .dates
+            -@conference.days.each_with_index do |day, idx|
+              .date{:class => day == @date ? 'active' : '', :id => "date_#{idx+1}"}
+                =day.strftime("%A %e %B")
+      #prog_hours
+        .prog_arrow.prog_arrow_left
+          =link_to_function("&larr;", "Programme.scroll(0)");
+        .hours
+          -(9..19).each do |hour|
+            .hour="%d:00" % hour
+        .prog_arrow.prog_arrow_left
+          =link_to_function("&larr;", "Programme.scroll(0)");
+      #prog_wrapper
+        .prog_arrow#top_scroll_right.prog_arrow_right{:class => @venues.size > 4 ? 'active_arrow' : ''}
+          =link_to_function("&rarr;", "Programme.scroll(1)");
+        .prog_arrow#bottom_scroll_right.prog_arrow_right{:class => @venues.size > 4 ? 'active_arrow' : ''}
+          =link_to_function("&rarr;", "Programme.scroll(1)");
+        -@conference.days.each_with_index do |day,idx|
+          .timetable{:style => "display:#{@date == day ? 'block' : 'none'}", :id => "timetable_day_#{idx+1}"}
+            .venue_cols
+              -@venues.each do |venue|
+                .venue_col
+                  .col_title.top=venue
+                  -venue.sessions.on_date(day).each do |session|
+                    -height = (session.duration_in_hours * 100).round - 2
+                    -link_to(session, :class => 'session', :style => "top:#{((session.starts_at_offset(9)*100).round)+40}px;height:#{height}px;background-color:#{session.color};color:#{complementary_color(session.color)}", "data-height" => height) do
+                      .session_content
+                        .title=session
+                      .session_hover{:style=>"border-color:#{complementary_color(session.color)}"}
+                        .title{:style=>"background-color:#{session.color};color:#{complementary_color(session.color)}"}=session
+                        .details
+                          ="#{session.starts_at.strftime("%H:%M")} - #{session.ends_at.strftime("%H:%M")}"
+                          %br
+                          =session.description.word_truncate(150)
+                  .col_title.bottom=venue
   .row
-    #prog_header
-      #prog_header_left
-        %h5 PROGRAM 2011
-      #prog_header_right
-        .days.fr
-          -@conference.days.each_with_index do |day, idx|
-            =link_to_function("Day #{idx + 1}", "Programme.goToDay(#{idx+1})",:class => "day #{day == @date ? 'active' : ''}", :id => "day_link_#{idx+1}")
-        .dates
-          -@conference.days.each_with_index do |day, idx|
-            .date{:class => day == @date ? 'active' : '', :id => "date_#{idx+1}"}
-              =day.strftime("%A %e %B")
-    #prog_hours
-      .prog_arrow.prog_arrow_left
-        =link_to_function("&larr;", "Programme.scroll(0)");
-      .hours
-        -(9..19).each do |hour|
-          .hour="%d:00" % hour
-      .prog_arrow.prog_arrow_left
-        =link_to_function("&larr;", "Programme.scroll(0)");
-    #prog_wrapper
-      .prog_arrow#top_scroll_right.prog_arrow_right{:class => @venues.size > 4 ? 'active_arrow' : ''}
-        =link_to_function("&rarr;", "Programme.scroll(1)");
-      .prog_arrow#bottom_scroll_right.prog_arrow_right{:class => @venues.size > 4 ? 'active_arrow' : ''}
-        =link_to_function("&rarr;", "Programme.scroll(1)");
-      -@conference.days.each_with_index do |day,idx|
-        .timetable{:style => "display:#{@date == day ? 'block' : 'none'}", :id => "timetable_day_#{idx+1}"}
-          .venue_cols
-            -@venues.each do |venue|
-              .venue_col
-                .col_title.top=venue
-                -venue.sessions.on_date(day).each do |session|
-                  -height = (session.duration_in_hours * 100).round - 2
-                  -link_to(session, :class => 'session', :style => "top:#{((session.starts_at_offset(9)*100).round)+40}px;height:#{height}px;background-color:#{session.color};color:#{complementary_color(session.color)}", "data-height" => height) do
-                    .session_content
-                      .title=session
-                    .session_hover{:style=>"border-color:#{complementary_color(session.color)}"}
-                      .title{:style=>"background-color:#{session.color};color:#{complementary_color(session.color)}"}=session
-                      .details
-                        ="#{session.starts_at.strftime("%H:%M")} - #{session.ends_at.strftime("%H:%M")}"
-                        %br
-                        =session.description.word_truncate(150)
-                .col_title.bottom=venue
-.row
-  .twelvecol
-  -options_panel do
-    =back_link
-    =link_if_allowed "Edit conference", edit_conference_proc(@conference)
-    =link_if_allowed "Delete conference", conference_proc(@conference), :method => :delete, :confirm => "Are you sure? All the events at this conference will be deleted."
-    =link_if_allowed "New session at this conference", new_conference_conference_session_proc(@conference)
+    .twelvecol
+    -options_panel do
+      =back_link
+      =link_if_allowed "Edit conference", edit_conference_proc(@conference)
+      =link_if_allowed "Delete conference", conference_proc(@conference), :method => :delete, :confirm => "Are you sure? All the events at this conference will be deleted."
+      =link_if_allowed "New session at this conference", new_conference_conference_session_proc(@conference)
     
   
   

@@ -12,7 +12,7 @@ class ConferenceSessionSweeper < ActionController::Caching::Sweeper
   
   private
   def expire_programme(conference_session)
-    expire_page(:controller => 'programmes', :action => 'show', :conference_id => conference_session.conference_id)
+    expire_fragment("program#{conference_session.conference_id}")
   end
 
 end
