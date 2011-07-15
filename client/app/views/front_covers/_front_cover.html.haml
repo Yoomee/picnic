@@ -68,27 +68,24 @@
         var headerheight = $('#logo_and_nav').height() == 0 ? 104 : 52;
         var portheight = browserheight - headerheight;
         if (browserwidth > 770) {
-          $(this).show();
-        } else {
-          $(this).hide();
+          //Resize image to proper ratio
+          if ((portheight/browserwidth) > ratio) {
+            $(this).height(portheight);
+            $(this).width(portheight / ratio);
+            $(this).children().height(portheight);
+            $(this).children().width(portheight / ratio);
+          } else {
+            $(this).width(browserwidth);
+            $(this).height(browserwidth * ratio);
+            $(this).children().width(browserwidth);
+            $(this).children().height(browserwidth * ratio);
+          }
+          //Make sure the image stays center in the window
+          $(this).children().css('left', (browserwidth - $(this).width())/2);
+          /*$(this).children().css('top', (portheight - $(this).height())/2);*/
+          var calcHeight = ((portheight - $(this).height()) / 2);
+          $(this).css('top', calcHeight < headerheight ? calcHeight : headerheight);
         }
-        //Resize image to proper ratio
-        if ((portheight/browserwidth) > ratio) {
-          $(this).height(portheight);
-          $(this).width(portheight / ratio);
-          $(this).children().height(portheight);
-          $(this).children().width(portheight / ratio);
-        } else {
-          $(this).width(browserwidth);
-          $(this).height(browserwidth * ratio);
-          $(this).children().width(browserwidth);
-          $(this).children().height(browserwidth * ratio);
-        }
-        //Make sure the image stays center in the window
-        $(this).children().css('left', (browserwidth - $(this).width())/2);
-        /*$(this).children().css('top', (portheight - $(this).height())/2);*/
-        var calcHeight = ((portheight - $(this).height()) / 2);
-        $(this).css('top', calcHeight < headerheight ? calcHeight : headerheight);
         $('#iamsterdam').css('top', $(this).height() + $(this).position().top).show();
         $('#sponsors').css('top', $('#iamsterdam').position().top + $('#iamsterdam').height()).show();
       };
