@@ -9,6 +9,7 @@
   -form.inputs do
     =form.input :name, :label => "Name (this will be used for reference)"
     =form.input :image, :as => :image, :label => 'Background image'
+    =form.input :activated, :label => 'Activated? (ie. show on homepage)'
   -form.inputs 'Main story', :class => 'with_legend' do
     =form.input :main_story_small_heading, :label => "Small Heading (this will be shown above the title)"
     =form.input :main_story_title, :label => 'Title'

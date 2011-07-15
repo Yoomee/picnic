@@ -128,7 +128,7 @@ class FrontCoversControllerTest < ActionController::TestCase
          @front_cover.expects(:deactivate!).returns true
        end
 
-       should redirect_to("the front cover") {front_cover_path(@front_cover)}
+       should respond_with(:redirect)
 
      end
 
@@ -193,7 +193,8 @@ class FrontCoversControllerTest < ActionController::TestCase
     
     setup do
       stub_access
-      @front_covers = [Factory.build(:front_cover), Factory.build(:front_cover)]
+      @front_covers = [Factory.build(:front_cover, :id => 123), Factory.build(:front_cover, :id => 456)]
+      FrontCover.any_instance.stubs(:new_record?).returns false
       FrontCover.stubs(:latest).returns @front_covers
     end
     
@@ -229,7 +230,8 @@ class FrontCoversControllerTest < ActionController::TestCase
       end
       
       before_should "initialize the front cover" do
-        FrontCover.expects(:new).returns @front_cover
+        Factory.expects(:build).with(:default_front_cover).returns @front_cover
+        #FrontCover.expects(:new).returns @front_cover
       end
       
       should assign_to(:front_cover).with {@front_cover}
@@ -321,7 +323,7 @@ class FrontCoversControllerTest < ActionController::TestCase
         @front_cover.expects(:update_attributes).with('valid_attributes' => true).returns true
       end
       
-      should redirect_to("the front cover") {front_cover_path(@front_cover)}
+      should respond_with(:redirect)
       
     end
     

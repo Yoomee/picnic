@@ -8603,6 +8603,12 @@ div#flipboard_wrapper, div#flipboard_strip, #flipboard_wrapper .fr, #subnav ul l
 #front_cover .small_story h2 {
   color: #808080;
 }
+table.front_covers td {
+  border: none;
+}
+table.front_covers * {
+  vertical-align: middle;
+}
 
 @media handheld, only screen and (max-width: 500px) {
 	

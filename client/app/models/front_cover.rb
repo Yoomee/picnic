@@ -4,7 +4,7 @@ class FrontCover < ActiveRecord::Base
 
   #after_validation :update_activation
   
-  validates_presence_of :main_story_background_color,
+  validates_presence_of :image, :main_story_background_color,
     :main_story_link_text,
     :main_story_link_url, 
     :main_story_text, 
