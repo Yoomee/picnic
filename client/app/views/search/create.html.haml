@@ -10,7 +10,7 @@
   #search_again.twelvecol.last
     =render :partial => 'form', :locals => {:search => @search}
   #search_results.tencol.last
-    -if @search.empty?(@search_filter)
+    -if @search.empty?(@search_filter) || (@search_filter.blank? && @search.empty?)
       %p
         ="Sorry, no #{search_filter_name(@search_filter, :pluralize => true)} found."
     -else
