@@ -1,4 +1,3 @@
-require 'factory_girl'
 class FrontCoversController < ApplicationController
   
   admin_only :activate, :create, :deactivate, :destroy, :edit, :index, :new, :show, :update
