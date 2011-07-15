@@ -9,6 +9,12 @@ module ClientHelper
     end
   end
   
+  def transparent_color(hex_color, transparency = 0.5)
+    rgb_hex = hex_color.match(/(..)(..)(..)$/)
+    rgb = (1..3).map {|n| rgb_hex[n].hex}
+    "rgba(#{rgb.join(',')}, #{transparency})"
+  end
+  
   def conference_day(date_or_datetime)
     date = date_or_datetime.to_date
     if date < Date.parse("2011-09-14") || date > Date.parse("2011-09-16")

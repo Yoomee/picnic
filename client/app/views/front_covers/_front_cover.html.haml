@@ -10,10 +10,15 @@
       }
   :css
     #front_cover {
-      min-height: 550px
+      min-height: 550px;
+    }
+    #front_cover .small_story {
+      background-color: #1d2226;
+      background-color: #{transparent_color('1d2226', 0.5)};
     }
     #front_cover #main_story {
       background: ##{@front_cover.main_story_background_color};
+      background-color: #{transparent_color(@front_cover.main_story_background_color, 0.8)};
     }
     #supersize {
       /*position: fixed;*/
