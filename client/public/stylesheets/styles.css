@@ -3910,7 +3910,6 @@ a#back_to_updates {
 }
 a#view_archive {
   float: left;
-  /*background: url(/images/sprite1.png) -100px -1920px no-repeat;*/
   padding: 8px 0 2px 0px;
   width: 100%;
 }

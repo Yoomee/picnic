@@ -50,7 +50,6 @@ SectionsController.class_eval do
   end
 
   def show
-    puts "params[:archive] = #{params[:archive]}"
     if @section.slug == 'news' && !params[:archive] && @page = @section.pages.published.latest.first
       render :template => 'pages/show'
     else
