@@ -27,9 +27,9 @@
             %p My profile
           =link_if_allowed "Account settings", edit_member_proc(@logged_in_member)
           =link_to('Logout', session_path, :method => :delete)
-      
-      #search_box_popup    
-        #search_box 
-          -form_for Search.new do |form|          
-            =form.text_field :term, :title => ""      , :class => "labelify", :id => "search_field"     
-            =form.submit "Search", :id => "search_icon", :class=>"button"  
+      -unless controller_name == "search"
+        #search_box_popup    
+          #search_box 
+            -form_for Search.new do |form|          
+              =form.text_field :term, :title => ""      , :class => "labelify", :id => "search_field"     
+              =form.submit "Search", :id => "search_icon", :class=>"button"  

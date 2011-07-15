@@ -62,6 +62,7 @@
           } else {          
             $('#search_box_popup').show();
             $(this).addClass("search_link_highlight");
+            $('#search_box #search_field').focus();
           }
         });
       });
@@ -70,7 +71,7 @@
   - body_tag do
     #wrapper
       =#render "layouts/beta_bar"
-      -if !action_name.in?(%w{edit new}) && !in_moderation? && !controller_name.in?(%w(admin front_covers)) && !@front_cover
+      -if !action_name.in?(%w{edit new}) && !in_moderation? && !controller_name.in?(%w(admin front_covers search)) && !@front_cover
         -cache("flipboard", :time_to_live => 1.hour) do
           =render_flipboard
       #header.container
