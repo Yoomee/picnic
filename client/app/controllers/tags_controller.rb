@@ -4,6 +4,8 @@ TagsController.class_eval do
 
   admin_only :edit, :new, :create, :destroy, :update
 
+  cache_sweeper :tag_sweeper
+
   def autocomplete
     search_term = params[:term].downcase.gsub('_', ' ').gsub(/[^A-Za-z\d\-\s]/, '').strip
     term_list = [*search_term.gsub('-', ' ').split]

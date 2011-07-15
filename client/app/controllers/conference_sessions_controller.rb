@@ -5,6 +5,8 @@ class ConferenceSessionsController < ApplicationController
 
   before_filter :get_conference_session, :only => %w{destroy edit show update attend unattend}
 
+  cache_sweeper :conference_session_sweeper
+
   def attend
     if !logged_in_member.attending?(@conference_session)
       @conference_session.attendees << logged_in_member  
