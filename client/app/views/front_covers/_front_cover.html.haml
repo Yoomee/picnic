@@ -9,9 +9,27 @@
       background-color: #{transparent_color('1d2226', 0.5)};*/
       background: url(/images/black_80.png);
     }
+    #front_cover a.small_story:hover, #front_cover a#main_story:hover {
+      text-decoration:none;
+    }
+    #front_cover a#main_story:hover .small_heading{
+      color:#999;
+      text-decoration:none;
+    }
     #front_cover #main_story {
       background: ##{@front_cover.main_story_background_color};
       background-color: #{transparent_color(@front_cover.main_story_background_color, 0.75)};
+    }
+    #front_cover .bttn{
+      font-family: 'VAG Rounded W02 Bold', arial, sans-serif;
+      letter-spacing: 1px;
+      font-size: 11px;
+      padding: 2px 12px;
+      color: white;
+      line-height:17px;
+      border-radius: 3px;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
     }
     #supersize {
       /*position: fixed;*/
@@ -86,6 +104,7 @@
           var calcHeight = ((portheight - $(this).height()) / 2);
           $(this).css('top', calcHeight < headerheight ? calcHeight : headerheight);
         }
+        console.log($(this).height());
         $('#iamsterdam').css('top', $(this).height() + $(this).position().top).show();
         $('#sponsors').css('top', $('#iamsterdam').position().top + $('#iamsterdam').height()).show();
       };
@@ -99,23 +118,19 @@
     #supersize
       =image_tag @front_cover.image.url
 #front_cover
-  #main_story
+  -link_to(@front_cover.main_story_link_url, :id => "main_story") do
     -unless @front_cover.main_story_small_heading.blank?
       .small_heading=@front_cover.main_story_small_heading.upcase
     %h1=@front_cover.main_story_title
     -unless @front_cover.main_story_subtitle.blank?
       %h2=@front_cover.main_story_subtitle
     =simple_format @front_cover.main_story_text
-    -link_to @front_cover.main_story_link_url, :class => 'bttn' do
-      =@front_cover.main_story_link_text
-      %span.arrow
-        &rarr;
+    .bttn
+      =@front_cover.main_story_link_text.upcase
   #small_stories
     -(1..3).each do |n|
-      .small_story
+      -link_to(small_story_link_url(@front_cover, n), :class => "small_story") do
         %h2=small_story_title(@front_cover, n)
         =simple_format small_story_text(@front_cover, n)
-        -link_to small_story_link_url(@front_cover, n), :class => 'bttn' do
-          =small_story_link_text(@front_cover, n)
-          %span.arrow
-            &rarr;
+        .bttn
+          =small_story_link_text(@front_cover, n).upcase
