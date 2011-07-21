@@ -5399,7 +5399,7 @@ span.dislike_link {
   float: left;
   position: absolute;
   top: 10px;
-  right: -30px;
+  right: -25px;
 }
 .likings_count, .dislikings_count {
   color: black;
@@ -5407,8 +5407,8 @@ span.dislike_link {
   line-height: 12px;
   padding: 3px 6px;
   position: absolute;
-  left: 25px;
-  top: 2px;
+  left: 14px;
+  top: 3px;
   text-align: left;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
 }
