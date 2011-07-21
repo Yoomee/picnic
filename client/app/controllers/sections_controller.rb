@@ -50,9 +50,9 @@ SectionsController.class_eval do
   end
 
   def show
-    if @section.slug == 'news' && !params[:archive] && @page = @section.pages.published.latest.first
-      render :template => 'pages/show'
-    else
+    # if @section.slug == 'news' && !params[:archive] && @page = @section.pages.published.latest.first
+    #   render :template => 'pages/show'
+    # else
       case @section.view
       when 'latest_stories', 'news_view'
         @pages_sections = @section.pages.published.latest + @section.children.not_hidden
@@ -68,7 +68,7 @@ SectionsController.class_eval do
         # Otherwise use show view
         @pages = @section.pages.published.weighted.paginate(:page => params[:page], :per_page => (APP_CONFIG[:section_pages_items_per_page] || 10))
       end
-    end
+    # end
   end
 
 

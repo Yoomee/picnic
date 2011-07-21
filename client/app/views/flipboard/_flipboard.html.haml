@@ -1,6 +1,5 @@
 :javascript
   $(document).ready(function() {
-    $(window).scrollTop(617);
     $('body').bind('keydown','right',function(){
       Flipboard.direction = 1;
       Flipboard.startFastScroll();
@@ -35,9 +34,43 @@
       }, function(){
         Flipboard.hoverOff($(this));
       });
-    setTimeout("Flipboard.startSlowScroll();", 2000);
+    setTimeout("if($(window).scrollTop() < 600){Flipboard.startSlowScroll();}", 5000);
+    $(window).scroll(function(){
+      if ($(window).scrollTop() < 600){
+        Flipboard.startSlowScroll();
+      } else {
+       Flipboard.stopAllScrolling();
+      }
+    });
     $('.flip a').attr('onClick', "Flipboard.stopAllScrolling();return true;");
+    $('#flipboard_wrapper').bind('touchstart',function(e){
+      if(e.originalEvent.touches.length == 1){
+        var touch = e.originalEvent.targetTouches[0];
+        Flipboard.touchStartOffset = $('#flipboard').position().left - touch.pageX;
+      }
+    });    
+    $('#flipboard_wrapper').bind('touchmove',function(e){
+      if(e.originalEvent.touches.length == 1){
+        e.preventDefault();
+        Flipboard.stopAllScrolling();
+        var touch = e.originalEvent.targetTouches[0];                
+        var newPosition = Flipboard.touchStartOffset  + touch.pageX;
+        if ((newPosition <= Flipboard.maxLeft) && (newPosition >= Flipboard.maxRight())) {     
+          $('#flipboard').css('left',newPosition);
+        }
+      }
+    });
+    $('#flipboard_wrapper').bind('touchend',function(e){
+        Flipboard.startSlowScroll();
+    });
+    if(navigator.platform == 'iPad' || navigator.platform == 'iPhone' || navigator.platform == 'iPod'){
+      setTimeout("window.scrollTo(0,617);",100);
+    } else {
+      $(window).scrollTop(617);
+    }
   });
+
+
 #flipboard_wrapper{:style => "display:block"}
   #flipboard_strip
     #flipboard{:style => "width: #{flipboard_content.size*(FlipcolTemplate::X1 + FlipcolTemplate::MARGIN)*2}px"}

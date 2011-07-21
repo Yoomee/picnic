@@ -5,7 +5,8 @@ function externalLink(url) {
 $(document).ready(function() {
   $('.wall_post_text_input').autoGrow();
   $('a[href]').not("[href^='/']").not("[href^='mailto']").not("[href*='#{request.host.gsub(/www\./, '')}']").not("[href^='#']").not("[href^='javascript']").attr('target', '_blank').attr('onClick', "externalLink(this.href);return true;");
-  if(navigator.platform == 'iPad' || navigator.platform == 'iPhone' || navigator.platform == 'iPod'){$("#header").css("position", "static");$('body').css('padding-top',0);};
+  if(navigator.platform == 'iPad' || navigator.platform == 'iPhone' || navigator.platform == 'iPod'){$("#header").css("position", "static");$('body').css('padding-top',0);
+  };
 });
 
 // Shout form javascript
@@ -112,6 +113,7 @@ var PhotoGallery = {
 };
 
 var Flipboard = {
+  startTouch: 0,
   slow_scroll_timer: null,
   fast_scroll_timer: null,  
   fast_scrolling: false,
@@ -182,7 +184,7 @@ var Flipboard = {
   startSlowScroll: function() {
     Flipboard.stopAllScrolling();
     Flipboard.slow_scrolling = true;    
-    Flipboard.slow_scroll_timer = setInterval("Flipboard.scroll(1)", 30);
+    Flipboard.slow_scroll_timer = setInterval("Flipboard.scroll(1)", 50);
   },
   stopAllScrolling: function(){
     Flipboard.stopSlowScroll();
@@ -237,5 +239,6 @@ var Flipboard = {
         $('body').animate({'scrollTop':617}, 1000);
       }
     }
-  }
+  },
+  touchStartOffset:null
 };

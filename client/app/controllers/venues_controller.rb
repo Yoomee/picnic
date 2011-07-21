@@ -3,6 +3,8 @@ class VenuesController < ApplicationController
   admin_only :create, :edit, :destroy, :index, :new, :update
 
   before_filter :get_venue, :only => %w{destroy edit show update}
+
+  cache_sweeper :venue_sweeper
   
   def create
     @venue = Venue.new params[:venue]

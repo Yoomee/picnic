@@ -3,6 +3,8 @@ class ConferencesController < ApplicationController
   admin_only :create, :edit, :destroy, :index, :new, :update
 
   before_filter :get_conference, :only => %w{destroy edit show update}
+
+  cache_sweeper :conference_sweeper
   
   def create
     @conference = Conference.new params[:conference]
