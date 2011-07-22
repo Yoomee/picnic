@@ -2758,7 +2758,7 @@ div#footer_links {
 	
 }
 
-#sponsors_title, #premium_sponsors_title {
+#sponsors_title, #premium_sponsors_title, #sponsors_divider {
 	font-weight: bold;
 	padding-top: 20px;
 	
@@ -2814,6 +2814,15 @@ div#footer_links {
 }
 #logica_sponsor a:hover {
 	background-position: -281px -689px;	
+}
+#microsoft_sponsor a {
+	background-position: -480px -75px;	
+}
+#bmw_sponsor a {
+	background-position: -470px -233px;	
+}
+#bmw_sponsor a:hover {
+	background-position: -470px -153px;	
 }
 
 #footer_copyright p {
