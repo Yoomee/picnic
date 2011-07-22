@@ -2735,7 +2735,7 @@ div#footer_links {
 	margin: 10px 0 5px;
 	height: 30px;
 	text-indent: -9000em;
-	background: url(/images/sponsors2.jpg) -2px -804px;
+	background: url(/images/sponsors3.jpg) -2px -804px;
 }
 #iamsterdam:hover a {
 	background-position: -282px -804px;
@@ -2746,7 +2746,7 @@ div#footer_links {
 	padding: 0;
 }
 .sponsor a {
-	background: url(/images/sponsors2.jpg) -3px -3px;
+	background: url(/images/sponsors3.jpg) -3px -3px;
 	display: block;
 	width: 100%;
 	height: 70px;
