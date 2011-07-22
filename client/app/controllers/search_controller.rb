@@ -3,7 +3,7 @@ SearchController.class_eval do
   def create
     options = {:match_mode => params[:match_mode], :autocomplete => params[:autocomplete], :page => params[:page], :per_page => SearchController::PER_PAGE}
     @search_filter = params[:search_filter]
-    @search = Search.new params[:search].merge(:models => %w{Member Page Section Shout}), options
+    @search = Search.new params[:search].reverse_merge(:models => %w{Member Page Section Shout}), options
     if request.xhr?
       partial_view_path = params[:results_view_path] ? "#{params[:results_view_path]}/" : ""
       return render(:partial => "#{partial_view_path}ajax_search_results", :locals => {:search => @search})

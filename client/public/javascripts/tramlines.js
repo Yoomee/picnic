@@ -129,12 +129,34 @@ var Flipboard = {
     
   },
   hoverOn: function(flip){
+    // if (navigator.appName == "Microsoft Internet Explorer") {
+    //   $('#flipboard .hover').hide(0, function() {
+    //     $('#flipboard .flip_image').show();        
+    //   });
+    //   flip.children('.flip_image').hide(0, function() {
+    //     flip.children('.hover').show();        
+    //   });
+    // } else {
+    //   $('#flipboard .hover').fadeOut(50, function() {
+    //     $(this).removeClass('fading');
+    //   });
+    //   flip.children('.hover:not(.fading)').addClass('fading').fadeIn('fast');
+    // }
     $('#flipboard .hover').fadeOut(50, function() {
       $(this).removeClass('fading');
     });
     flip.children('.hover:not(.fading)').addClass('fading').fadeIn('fast');
   },
   hoverOff: function(flip){
+    // if (navigator.appName == "Microsoft Internet Explorer") {
+    //   flip.children('.hide').hide(0, function() {
+    //     flip.children('.flip_image').show();
+    //   });
+    // } else {
+    //   flip.children('.hover').fadeOut(50, function() {
+    //     $(this).removeClass('fading');
+    //   });
+    // }
     flip.children('.hover').fadeOut(50, function() {
       $(this).removeClass('fading');
     });
