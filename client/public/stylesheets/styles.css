@@ -7315,6 +7315,8 @@ span.click_here_beta {
 }
 #flipboard .flip_sponsor h6 {
   color: #000;
+  width: 210px;
+  text-align: left;
 }
 /*========== Section Ordering ==========*/
 
