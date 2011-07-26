@@ -5,9 +5,9 @@ Page.class_eval do
   class << self
     
     def random_sponsors(limit = 3)
-      sponsors = []
+      sponsors, premiums = [], []
       if section = Section.find_by_slug("premium-sponsors")
-        sponsors += section.pages.published*2
+        premiums += section.pages.published
       end
       if section = Section.find_by_slug("sponsors-sponsors")
         sponsors += section.pages.published
@@ -15,7 +15,8 @@ Page.class_eval do
       if section = Section.find_by_slug("media-sponsors")
         sponsors += section.pages.published
       end
-      limit == 1 ? [sponsors.random_element] : sponsors.random_elements(limit)
+      premium = premiums.random_element || sponsors.delete_at(rand(sponsors.size))
+      limit == 1 ? [premium] : [premium] + sponsors.random_elements(limit - 1)
     end
     
   end
