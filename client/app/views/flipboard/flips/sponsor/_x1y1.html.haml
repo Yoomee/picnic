@@ -2,5 +2,5 @@
 -y = (FlipcolTemplate::Y1 / 2).ceil
 .flip.flip_sponsor.x1.y1
   .padding
-    %h6 FESTIVAL SPONSOR  
+    %h6=flipitem.section.to_s.singularize.upcase
   =link_to(image_or_photo_for(flipitem, "#{x}x#{y}"),flipitem)
