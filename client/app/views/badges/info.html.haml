@@ -9,7 +9,7 @@
           =simple_format(@badge.description)
         -if @badge.members.count > 1
           .badge_members
-            =link_to("#{pluralize(@badge.members.count, 'other member')} have this badge", @badge, :class => "other_member_count")
+            =link_to("#{pluralize((@badge.members.count - 1), 'other member')} have this badge", @badge, :class => "other_member_count")
             %ul.lst
               -@badge.members.random.limit(5).each do |member|
                 %li
