@@ -135,7 +135,7 @@ Member.class_eval do
   def associate_with_delegate
     if conference_delegate.nil? && (new_record? || changed?(&:email))
       if del = ConferenceDelegate.find_by_email_and_member_id(email, nil)
-        del.member = self
+        self.conference_delegate = del
       end
     end
   end
