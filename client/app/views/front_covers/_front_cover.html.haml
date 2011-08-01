@@ -1,10 +1,12 @@
 -content_for(:head) do
   :css
+    body {
+      overflow-x: hidden;
+    }
     #front_cover {
       min-height: 550px;
     }
     #front_cover .small_story {
-      /*
       background-color: #1d2226;
       background-color: #{transparent_color('1d2226', 0.5)};*/
       background: url(/images/black_80.png);
@@ -43,6 +45,7 @@
       position:absolute;
       width:100%;
       z-index:-1;
+      max-width: none;
     }
     #footer {
       display: none;
@@ -59,6 +62,36 @@
       width: 100%;
     }
   :javascript
+    (function($,sr){
+
+      // debouncing function from John Hann
+      // http://unscriptable.com/index.php/2009/03/20/debouncing-javascript-methods/
+      var debounce = function (func, threshold, execAsap) {
+        execAsap = true;
+          var timeout;
+
+          return function debounced () {
+              var obj = this, args = arguments;
+              function delayed () {
+                  if (!execAsap)
+                      func.apply(obj, args);
+                  timeout = null; 
+              };
+
+              if (timeout)
+                  clearTimeout(timeout);
+              else if (execAsap)
+                  func.apply(obj, args);
+
+              timeout = setTimeout(delayed, threshold || 50); 
+          };
+      }
+    	// smartresize 
+    	jQuery.fn[sr] = function(fn){  return fn ? this.bind('resize', debounce(fn)) : this.trigger(sr); };
+
+    })(jQuery,'smartresize');
+  
+  
     (function($){
       //Resize image on ready or resize
       $.fn.supersize = function() {   
@@ -67,7 +100,7 @@
           $('#supersize').resizenow(); 
         });
         //Invoke the resizenow() function on browser resize
-        $(window).bind("resize", function() {
+        $(window).smartresize(function() {
           $('#supersize').resizenow(); 
         });
       };
@@ -103,8 +136,9 @@
           /*$(this).children().css('top', (portheight - $(this).height())/2);*/
           var calcHeight = ((portheight - $(this).height()) / 2);
           $(this).css('top', calcHeight < headerheight ? calcHeight : headerheight);
+        } else {
+          $(this).width(browserwidth);
         }
-        console.log($(this).height());
         $('#iamsterdam').css('top', $(this).height() + $(this).position().top).show();
         $('#sponsors').css('top', $('#iamsterdam').position().top + $('#iamsterdam').height()).show();
       };
