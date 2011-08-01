@@ -1,7 +1,7 @@
 module MobileHelper
   
   def is_mobile_device?
-    request.user_agent.to_s.downcase =~ Regexp.new(MobileHelper::MOBILE_USER_AGENTS)
+    request.user_agent.to_s.downcase =~ Regexp.new(MobileHelper::MOBILE_USER_AGENTS) && !(request.user_agent.to_s.downcase =~ /ipad/)
   end
   
 end
