@@ -14,7 +14,7 @@
           %p=strip_tags description_for(page_section, :length => 140)
           =link_to 'More', page_section, :class => 'newsbox_arrow'
           %p.blog_like_news_date
-            =(page_section.is_a?(Page) ? page_section.publish_on : page_section.created_at).strftime("%e %B %Y")
+            =(page_section.is_a?(Page) ? page_section.publish_on : page_section.created_at).strftime("%e %B %Y") unless @section.slug == "premium-sponsors"
 
 -if @section.slug == "premium-sponsors"
   -@section.parent.children.id_is_not(@section.id).not_hidden.each do |section|
@@ -37,7 +37,6 @@
               %p=strip_tags description_for(page_section, :length => 140)
               =link_to 'More', page_section, :class => 'newsbox_arrow'
               %p.blog_like_news_date
-                =(page_section.is_a?(Page) ? page_section.publish_on : page_section.created_at).strftime("%e %B %Y")
 .row
   .twelvecol
     =will_paginate @pages_sections
