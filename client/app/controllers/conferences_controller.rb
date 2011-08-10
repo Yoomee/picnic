@@ -1,8 +1,8 @@
 class ConferencesController < ApplicationController
   
-  admin_only :create, :edit, :destroy, :index, :new, :update
+  admin_only :create, :edit, :destroy, :index, :new, :update, :order_venues, :update_venue_weights
 
-  before_filter :get_conference, :only => %w{destroy edit show update}
+  before_filter :get_conference, :only => %w{destroy edit show update, order_venues, update_venue_weights}
 
   cache_sweeper :conference_sweeper
   
@@ -31,6 +31,18 @@ class ConferencesController < ApplicationController
   
   def new
     @conference = Conference.new(:starts_on => Date.today, :ends_on => 1.week.from_now)
+  end
+  
+  def order_venues
+    get_conference
+    @venues = @conference.venues
+  end
+  
+  def update_venue_weights
+    params[:venues].each do |index, sortable_hash|
+      Venue.find(sortable_hash["venue_id"]).update_attribute(:weight, index)
+    end
+    redirect_to @conference
   end
   
   def show

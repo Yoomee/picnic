@@ -2,7 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :conference_delegates, :only => [:index]
   map.resources :conference_sessions, :only => [:create, :edit, :destroy, :show, :update], :member => {:duplicate => :get, :attend => :post, :unattend => :delete}
-  map.resources :conferences do |conf|
+  map.resources :conferences, :member => {:order_venues => :get, :update_venue_weights => :post} do |conf|
     conf.resources :conference_sessions, :as => 'sessions', :only => [:show, :new]
     conf.resource :programme, :only => [:show]
     conf.resource :venues, :only => [:show, :new]

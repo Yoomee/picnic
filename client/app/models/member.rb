@@ -36,6 +36,8 @@ Member.class_eval do
   named_scope :subscribed_to_tags, lambda{|tags| {:joins => :subscriptions, :conditions => ["(subscriptions.attachable_type = 'Tag' OR subscriptions.attachable_type = 'ActsAsTaggableOn::Tag') AND subscriptions.attachable_id IN (?)", tags.collect(&:id)], :group => "members.id"}}
   named_scope :subscribed_to_member, lambda{|member| {:joins => :subscriptions, :conditions => ["subscriptions.attachable_type = 'Member' AND subscriptions.attachable_id = ?", member.id], :group => "members.id"}}
   
+  named_scope :alphabetically, :order => "TRIM(LEADING '\221t ' from TRIM(LEADING 'den ' from TRIM(LEADING 'der ' from TRIM(LEADING 'de ' from TRIM(LEADING 'van ' FROM members.surname))))), members.forename"
+  
   validates_presence_of :email, :unless => :allow_username_instead_of_email?
   
   validates_length_of :what_i_bring, :maximum => Member::WHAT_I_BRING_MAX_LENGTH, :on => :update, :allow_blank => true
