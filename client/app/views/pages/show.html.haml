@@ -11,12 +11,14 @@
     #top_color_left.top_color{:style => "background:#{@page.color}"}
     .page_header 
       %p.stories_header
-        =left_hand_subtitle(@page)
         -if @page.section.slug_is(:about_festival)
+          %strong FESTIVAL 2011
           %br
           14-16 September
           %br
           Amsterdam
+        -else
+          =left_hand_subtitle(@page)
       
   #header_right_col.ninecol.last  
     #top_color_right.top_color{:style => "background:#{@page.color}"}
