@@ -12,6 +12,11 @@
     .page_header 
       %p.stories_header
         =left_hand_subtitle(@page)
+        -if @page.section.slug_is(:about_festival)
+          %br
+          14-16 September
+          %br
+          Amsterdam
       
   #header_right_col.ninecol.last  
     #top_color_right.top_color{:style => "background:#{@page.color}"}
