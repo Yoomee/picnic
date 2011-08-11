@@ -147,7 +147,7 @@
       -if !@member.has_image? && @member.fb_connected?
         =image_for(@member, '140x')
       -else
-        =link_to_image("#{image_for(@member, '140x', :url_only => true)}:#{@member.image.try(:url)}",:image_options => {:alt => @member})
+        =link_to_image("#{image_for(@member, '140x', :url_only => true)}:#{@member.image.try(:url)}", :image_options => {:alt => ""})
       =fancybox_edit(@member, :image, :partial => "members/photo_form")
     .friends_list.subrow
       =render("members/friends", :member => @member)
