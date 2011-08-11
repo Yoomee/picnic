@@ -7353,6 +7353,19 @@ span.click_here_beta {
 .profile_info h1.profile_title {
   float: left;
 }
+.subscription_row h3 {
+  margin-bottom: 5px;
+}
+.subscription_row a.unsubscribe_link {
+  margin-left: 5px;
+  color: inherit;
+}
+#subscriptions_for_themes {
+  margin-top: 20px;
+}
+#subscriptions_for_themes a.unsubscribe_link {
+  float: right;
+}
 
 /*========== Tooltips ==========*/
 

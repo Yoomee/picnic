@@ -10,7 +10,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :front_covers, :member => {:activate => :post, :deactivate => :post}
   map.resources :members, :only => [], :collection => {:admin => :get}
   map.resources :shouts, :only => [], :member => {:remove => :delete, :restore => :put}
-  map.resources :subscriptions, :only => [:create, :destroy]
+  map.resources :subscriptions, :only => [:create, :destroy, :index]
   map.resources :tags, :as => "themes", :collection => {:autocomplete => :get}, :member => {:people => :get}
   map.resources :urls
   map.resources :venues, :only => [:create, :edit, :destroy, :show, :update]

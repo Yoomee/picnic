@@ -26,6 +26,7 @@
             =image_for @logged_in_member, '50x50#'
             %p My profile
           =link_if_allowed "Account settings", edit_member_proc(@logged_in_member)
+          =link_to("Manage subscriptions", subscriptions_path)
           =link_to('Logout', session_path, :method => :delete)
       -unless controller_name == "search"
         #search_box_popup    

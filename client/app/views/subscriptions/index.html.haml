@@ -1,0 +1,34 @@
+-no_content_row
+-title "Manage subscriptions"
+
+.row
+  .twelvecol
+    %p Below is a list of all the members and themes you are subscribed to. You will be sent a notification when these members add a post or when anyone posts about these themes.
+    %p Click the x if you would like to unsubscribe.
+
+#subscriptions_for_members.subscription_row.row
+  .twelvecol
+    %h3 Members
+    -if logged_in_member.subscriptions.for_members.empty?
+      %p You are not subscribed to any members.
+    -else
+      %ul.lst
+        -logged_in_member.subscriptions.for_members.each do |subscription|
+          %li{:id => "subscription_#{subscription.id}"}
+            =link_to_self(subscription.attachable)
+            =link_to_remote("x", :url => subscription_path(subscription, :manage_subscriptions => true), :method => :delete, :confirm => "Are you sure you want to unsubscribe to this member?", :html => {:class => "unsubscribe_link"})
+          
+#subscriptions_for_themes.subscription_row.row
+  .twelvecol
+    %h3 Themes
+    -if logged_in_member.subscriptions.for_tags.empty?
+      %p You are not subscribed to any themes.
+    -else
+      %ul.lst
+        -logged_in_member.subscriptions.for_tags.each do |subscription|
+          %li{:id => "subscription_#{subscription.id}"}
+            =link_to_remote("x", :url => subscription_path(subscription, :manage_subscriptions => true), :method => :delete, :confirm => "Are you sure you want to unsubscribe to this theme?", :html => {:class => "unsubscribe_link"})
+            =link_to_tag(subscription.attachable, :li => false)
+.row
+  .twelvecol
+    =options_panel
