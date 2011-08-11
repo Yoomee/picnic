@@ -3901,6 +3901,18 @@ a.backto {
 	border-bottom: 1px solid #000;
 	margin: 0 0 20px;
 	padding: 20px 0 10px;
+	position:relative;
+}
+
+.page_header #page_status {
+  position:absolute;
+  top:0px;
+  right:0px;
+  font-size:15px;
+  padding:5px 10px;
+	background: #ed4287;
+	background: rgba(241, 46, 115, 0.95);
+	margin-top:10px;
 }
 .page_header h1#page_title {
   margin-top: -4px;
