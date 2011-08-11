@@ -12,7 +12,9 @@ class ConferenceSessionsController < ApplicationController
       @conference_session.attendees << logged_in_member  
       render :update do |page|
         page[:attend_link].replace(render("conference_sessions/attend_link", :session => @conference_session))
+        page[:attendees_list_title].show
         page[:attendees_list].prepend(render("members/grid_item", :member => @logged_in_member, :team => false))
+        page << refresh_fb_dom
       end
     else
       render :nothing => true

@@ -22,7 +22,8 @@
     -if !@conference_session.speakers.blank?
       %h4 Speakers
       =render("members/grid", :members => @conference_session.speakers)
-    %h4 Attendees
+    %h4#attendees_list_title{:style => "display:#{@conference_session.attendees.blank? ? 'none' : 'block'}"}
+      Attendees
     -if @conference_session.attendees.blank?
       #member_grid
         %ul.lst#attendees_list
