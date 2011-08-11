@@ -1,7 +1,7 @@
 Shout.class_eval do
 
   after_create :trigger_points_event, :notify_subscribers
-  after_destroy :trigger_reverse_points_event
+  after_destroy :delete_points_transfer
 
   belongs_to :removed_by, :class_name => "Member"
   has_many :wall_posts_not_removed, :through => :wall, :source => :wall_posts, :conditions => {:removed_at => nil}
@@ -123,8 +123,11 @@ Shout.class_eval do
     member.handle_points_event(:post_shout, self, options)
   end
   
-  def trigger_reverse_points_event(options = {})
-    member.handle_points_event(:deleted_posted_shout, nil, options)
+  def delete_points_transfer
+    if points_transfer = member.points_transfers.with_event_slug(:post_shout).attachable_is(self).first
+      member.decrement!(:points, points_transfer.points)
+      points_transfer.destroy
+    end
   end
   
   private
