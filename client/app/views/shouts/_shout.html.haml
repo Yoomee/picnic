@@ -19,6 +19,8 @@
         -if search_term
           =search_summary(shout, search_term)
         -else
+          -if shout.recipient
+            ="To #{link_to(full_name_or_you(shout.recipient), shout.recipient)}"
           =read_more_truncate(shout.text, :length => 300)
       -if !shout.tags.empty?
         .shout_themes.themes_list.flcb
