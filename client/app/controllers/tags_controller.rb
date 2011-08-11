@@ -92,10 +92,9 @@ TagsController.class_eval do
           render :text => @template.render_shouts(shouts, :filter => @filter, :parent => @tag) + @template.javascript_tag(@template.refresh_fb_dom)
         end
       else
-        @stories = Shout.tagged_with(params[:id])
+        @stories = Shout.tagged_with(@tag)
         @members = Member.with_theme_or_member_tag(@tag)
       end
-
     else
       redirect_to tags_path 
     end
