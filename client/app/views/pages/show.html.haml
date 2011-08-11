@@ -24,6 +24,8 @@
     #top_color_right.top_color{:style => "background:#{@page.color}"}
     .page_header
       %h1#page_title=@page.title
+      -if !@page.published?
+        %p#page_status=@page.status_string
   #page_left_col.threecol
     -unless @page.tags.empty?
       #page_tags
