@@ -1,11 +1,11 @@
 ="Hi #{@recipient.forename},"
 -important_email_content do
   %p
-    ="#{@shout.member} posted a #{@shout.has_attachable? ? @shout.attachable_type.titleize.downcase : 'message'}"
+    ="#{link_to(@shout.member, site_url + member_path(@shout.member))} posted a #{@shout.has_attachable? ? @shout.attachable_type.titleize.downcase : 'message'}"
     -if (@shout.recipient != @logged_in_member) && !(tags = (@logged_in_member.tags_subscribed_to.collect(&:name) & @shout.tag_list)).empty?
       ="on the #{tags.count > 1 ? 'themes' : 'theme'}: #{tags.to_sentence}."
     -else
-      ="on #{@shout.recipient.nil? ? 'their profile' : "#{full_name_or_your(@shout.recipient)} profile"}."
+      ="on #{@shout.recipient.nil? ? 'their profile' : link_to("#{full_name_or_your(@shout.recipient)} profile", site_url + member_path(@shout.recipient))}."
   -if !@shout.text.blank?
     %p="\"#{strip_tags(@shout.text)}\""
   %p="#{link_to("Click here", site_url + shout_path(:id => @shout.id, :read_notification => true))} to view it."
