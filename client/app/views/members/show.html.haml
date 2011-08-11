@@ -261,11 +261,12 @@
   .twocol.last
 .row
   .twocol
-    .themes_list
-      %h3.profile_title="Themes"
-      %ul.lst
-        -@member.shout_tags.each do |tag|
-          =link_to_tag(tag)
+    -if !@member.shout_tags.empty?
+      .themes_list
+        %h3.profile_title="Themes"
+        %ul.lst
+          -@member.shout_tags.each do |tag|
+            =link_to_tag(tag)
   #members_shouts.eightcol
     #posts_header
       %h3.profile_title.fl="#{forename_or_your(@member, :capitalize => true)} posts"
