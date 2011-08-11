@@ -37,7 +37,7 @@
     -unless @page.intro.blank?
       %h2#page_intro
         =@page.intro
-  -if !@page.slug_in?(%w{the_team advisors correspondents picnic11_speakers})
+  -if !@page.slug_in?(%w{the_team advisors correspondents picnic11_speakers contributors})
     #article_image.sevencol.last
       -if @page.slug_in?(%w{location contact})
         -location = @page.slug_is?(:contact) ? Location.picnic_hq : Location.picnic_festival
@@ -48,11 +48,11 @@
   -if false  
     #page_subnav.twocol
       =render("pages/subnav", :page => @page)
-  #main_page_content{:class => @page.slug_in?(%w{the_team advisors correspondents picnic11_speakers}) ? "ninecol last" : "sixcol"}    
+  #main_page_content{:class => @page.slug_in?(%w{the_team advisors correspondents picnic11_speakers contributors}) ? "ninecol last" : "sixcol"}    
     =render('pages/content', :page => @page)
     -if @page.slug_is(:beta) && @enquiry
       =render_form @enquiry
-    =render_slug(@page.slug) if @page.slug_in?(%w{the_team advisors correspondents picnic11_speakers})
+    =render_slug(@page.slug) if @page.slug_in?(%w{the_team advisors correspondents picnic11_speakers contributors})
     =snippet(@page, :call_to_action)
   -if @page.has_snippet?(:pull_quote)
     #pull_quote.threecol.last{:style => "background:#{@page.color};color:#{complementary_color(@page.color)}"}  
