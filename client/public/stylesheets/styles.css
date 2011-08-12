@@ -8688,6 +8688,32 @@ div#flipboard_wrapper, div#flipboard_strip, #flipboard_wrapper .fr, #subnav ul l
   width: 220px;
   padding: 12px 15px;
 }
+
+#front_cover #front_cover_left {
+  float:left;
+}
+
+#front_cover #click_through{
+  float: left;
+  clear:left;
+  width: 220px;
+  padding: 12px 15px;
+  background-color: #1d2226;
+  background: url(/images/black_80.png);
+  margin-top:10px;
+  font-family:'VAG Rounded W02 Light', arial, sans-serif;
+  font-weight:normal;
+}
+
+#front_cover a#click_through:hover{
+  text-decoration:none;
+}
+
+#front_cover #click_through h2 {
+  color:#fff;
+  font-size:17px;
+  margin-bottom:0px;
+}
 #front_cover .small_heading {
   font-family:'VAG Rounded W02 Bold', arial, sans-serif;
 }
