@@ -25,7 +25,8 @@ Member.class_eval do
   has_one :conference_delegate, :autosave => true
   
   has_many :conference_sessions_members
-  has_many :conference_sessions, :through => :conference_sessions_members  
+  has_many :conference_sessions, :through => :conference_sessions_members
+  has_many :conference_sessions_speaking_at, :through => :conference_sessions_members, :source => :conference_session, :conditions => "conference_sessions_members.speaker = 1" 
 
   has_many :subscriptions, :dependent => :destroy
   has_many :subscription_items, :class_name => "Subscription", :as => :attachable, :dependent => :destroy

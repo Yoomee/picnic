@@ -8,7 +8,7 @@
         =@conference_session.conference_day
         =bracket(@conference_session.starts_at.strftime("%A %e %B"))
       %dt Time
-      %dd=conference_session_time(@conference_session)
+      %dd=@conference_session.time_string
       -if @conference_session.venue
         %dt Venue
         %dd=link_to_self(@conference_session.venue)

@@ -2407,6 +2407,51 @@ h3.profile_title {
 	font-family:'VAG Rounded W02 Light', arial, sans-serif;
 
 }
+
+#speaking_at {}
+
+.conference_sessions_list {
+  list-style:none;
+}
+
+.conference_sessions_list_item {
+  margin-left:0px;
+  float:left;
+  clear:both;
+  width:100%;
+  margin-bottom:10px;
+}
+
+.conference_sessions_list_item {}
+
+.conference_sessions_list_item .day {
+  float: left;
+  width: 44px;
+  background: pink;
+  text-align: center;
+  line-height: 15px;
+  padding: 8px 0 5px;
+  font-family: 'VAG Rounded W02 Light', arial, sans-serif;
+  font-size: 13px;
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px;
+  border-radius:3px;
+  margin-right:10px;
+}
+
+.conference_sessions_list_item .right {
+  width:576px;
+  float:left;
+  margin-top:3px;
+}
+
+.conference_sessions_list_item .session_name {
+  width:100%;
+  font-size:16px;
+  float:left;
+  line-height:20px;
+}
+
 .friend_request_link a {
 	font-weight: bold;
 }
@@ -4816,6 +4861,10 @@ body.controller_badges .badge_members {
   margin: 0 10px 10px 0;
   overflow: hidden;
 }
+#badge_members .image_link {
+  width: 50px;
+  height: 50px;
+}
 #badge_members li.member_item a {
   float: none;
   display: block;
@@ -5068,6 +5117,11 @@ body.controller_badges .badge_members {
   padding:5px;
 }
 
+.timetable .short .session_content {
+  float:left;
+  padding:0px 5px;
+}
+
 
 
 .timetable .session_hover {
@@ -5089,6 +5143,17 @@ body.controller_badges .badge_members {
 
 .timetable .session_hover .details {
   padding:5px;
+}
+
+.timetable .session_hover .speakers {
+  margin-top:5px;
+}
+
+.timetable .session_hover .speakers img {
+  padding:0px 5px 5px 0px;
+  width:52px;
+  height:52px;
+  float:left;
 }
 
 .timetable a:hover{
@@ -6939,6 +7004,10 @@ a.find_someone_photo {
 }
 #points_transfers ul .points_transfer_top span {
   line-height: 18px;
+}
+
+#points_transfers ul .points_transfer_top a.attachable_link {
+  color:#000;
 }
 #points_transfers .timestamp {
   font-size: 12px;
