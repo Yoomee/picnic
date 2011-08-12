@@ -4939,10 +4939,6 @@ body.controller_badges .badge_members {
   width:955px !important;
 }
 
-#prog_header {
-  width:955px;
-  padding-top:20px;
-}
 #prog_header .day{
 }
 
@@ -5165,6 +5161,44 @@ body.controller_badges .badge_members {
 
 .timetable a:hover{
   text-decoration:none;
+}
+
+#programme_list {
+  
+}
+
+#programme_list .row {
+  border-top:2px solid #f2f2f2;
+}
+
+#programme_list .list_col {
+  background:#f2f2f2;
+  border-radius: 0px;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+}
+
+.programme_list_hour{
+  font-family:'VAG Rounded W02 Light', arial, sans-serif;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 35px ;
+}
+.programme_list_item{
+  border-left: 6px solid;
+  padding: 2px 5px;
+  line-height: 19px;
+  margin: 0px 0px 2px;
+  color:#666;
+  font-size:13px;
+  background:#fff;
+}
+.list_col .last{
+  margin-bottom:0px;
+}
+.programme_list_item a.session_name{
+  font-size: 16px;
+  color:#000;
 }
 
 /*========== Session show ==========*/
