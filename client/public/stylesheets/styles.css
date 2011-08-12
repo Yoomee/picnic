@@ -20,7 +20,7 @@ body, textarea, input {font:12px/1.6 'Helvetica', Arial,'Liberation Sans',FreeSa
 
 /* ======================  CSS3 regularly used stuff ================== */
 
-#main, input, #footer_links, .bx_h, #news_feed_older_btn, .bx_h a, button, .bttn, div#page_related_col, a.backto, #nav a, .logged_in_box, #flipboard_wrapper .fr, #share_this, ul.facelist-selections, #search_box_popup {
+#main, input, #footer_links, .bx_h, #news_feed_older_btn, .bx_h a, button, .bttn, div#page_related_col, a.backto, #nav a, .logged_in_box, #flipboard_wrapper .fr, #share_this, ul.facelist-selections, #search_box_popup, .socialmedia_link {
 	-moz-border-radius:3px;
 	-webkit-border-radius:3px;
 	border-radius:3px;
@@ -193,7 +193,7 @@ body #wrapper .no_padding {
 #header_right a.button {
 		display: block;
 
-	background:#000;
+	background:#808080;
 
 	float: right;
 	font-size: 11px;
@@ -210,6 +210,30 @@ body #wrapper .no_padding {
 	border-radius:3px;
 	-webkit-border-radius:3px;
 	-moz-border-radius:3px;
+}
+#header_right a.button:hover, .socialmedia_link:hover {
+	background-color: #000;
+}
+.socialmedia_link {
+	background: #808080 url(/images/sprite.png) -40px -1680px;
+	width: 20px;
+	height: 21px;
+	float: right;
+	margin: 0 0 0 10px;
+	display: block;
+	text-indent: -9000em;
+}
+a.facebook {
+	background-position: -40px -1720px;
+}
+a.vimeo {
+	background-position: -40px -1760px;
+}
+a.flickr {
+	background-position: -40px -1800px;
+}
+a.linkedin {
+	background-position: -40px -1840px;
 }
  #header_right a.button:hover {
 	text-decoration: none;

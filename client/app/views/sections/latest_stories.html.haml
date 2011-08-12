@@ -17,7 +17,7 @@
         =#link_to "read more", page_section, :class=>'newsbox_arrow'      
       .blog_like_news_img.threecol  
         -if page_section.has_photo?
-          =link_to(photo_for(page_section, '300x200#'), page_section)
+          =link_to(photo_for(page_section, '300x200'), page_section)
 .row
   .twelvecol
     =will_paginate @pages_sections
