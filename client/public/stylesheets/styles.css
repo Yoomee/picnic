@@ -5121,6 +5121,17 @@ body.controller_badges .badge_members {
   padding:5px;
 }
 
+.timetable .session_hover .speakers {
+  margin-top:5px;
+}
+
+.timetable .session_hover .speakers img {
+  padding:0px 5px 5px 0px;
+  width:52px;
+  height:52px;
+  float:left;
+}
+
 .timetable a:hover{
   text-decoration:none;
 }

@@ -100,6 +100,10 @@
                           =session.time_string
                           %br
                           =session.description.word_truncate(150)
+                          -if !session.speakers.blank?
+                            .speakers
+                              -session.speakers.each do |speaker|
+                                =image_for(speaker, "52x52#")
                   .col_title.bottom=venue
   .row
     .twelvecol
