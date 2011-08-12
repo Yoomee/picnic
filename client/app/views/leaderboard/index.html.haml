@@ -28,7 +28,10 @@
             .points_transfer_right
               .points_transfer_top
                 =link_to_self(points_transfer.member, :class => "member_link")
-                %span=points_transfer.points_event_name
+                -if points_transfer.attachable
+                  =link_to(points_transfer.points_event_name, (points_transfer.attachable.is_a?(FriendRequest) ? points_transfer.attachable.friend_of(points_transfer.member) : points_transfer.attachable), :class => "attachable_link")
+                -else
+                  %span=points_transfer.points_event_name
               %span.timestamp
                 =time_ago_in_words(points_transfer.created_at)
                 ago

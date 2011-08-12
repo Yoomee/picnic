@@ -6916,6 +6916,10 @@ a.find_someone_photo {
 #points_transfers ul .points_transfer_top span {
   line-height: 18px;
 }
+
+#points_transfers ul .points_transfer_top a.attachable_link {
+  color:#000;
+}
 #points_transfers .timestamp {
   font-size: 12px;
   color: gray;
