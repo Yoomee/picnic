@@ -1336,7 +1336,7 @@ div.logged_in_panel {
 
 #header_right .logged_in_as a.logged_in_member_link {
 	font-weight: bold;
-	background: #000 url(/images/sprite1.png) right -613px no-repeat;
+	background: #808080 url(/images/sprite1.png) right -613px no-repeat;
 	padding-right: 25px;
 }
 #header_right .logged_in_as a.logged_in_member_link:hover {
@@ -2729,6 +2729,7 @@ ul.action_links li {
 	padding-top: 10px;
 
 }
+
 div#footer_links {
 	float:left;
 	margin:0px 0px 0;
@@ -2761,6 +2762,12 @@ div#footer_links {
 }
 .sitemap_list {
 	margin-bottom: 20px;
+}
+#footer_social_links {
+  padding-top: 2px;
+}
+#footer_social_links .picnic_on{
+  float:right;
 }
 
 #footer_links ul li#site_feedback a {
