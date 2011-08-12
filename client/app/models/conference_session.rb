@@ -39,6 +39,11 @@ class ConferenceSession < ActiveRecord::Base
   end
   alias_method :duration, :duration_in_hours
   
+  def time_string
+    start = starts_at.strftime("%H:%M")
+    ends_at.blank? ? start : "#{start} - #{ends_at.strftime("%H:%M")}"
+  end
+  
   def starts_at_offset(hour)
     return nil if starts_at.nil?
     off = (starts_at.seconds_since_midnight - (hour*3600))/3600

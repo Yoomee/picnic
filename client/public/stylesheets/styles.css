@@ -2383,6 +2383,51 @@ h3.profile_title {
 	font-family:'VAG Rounded W02 Light', arial, sans-serif;
 
 }
+
+#speaking_at {}
+
+.conference_sessions_list {
+  list-style:none;
+}
+
+.conference_sessions_list_item {
+  margin-left:0px;
+  float:left;
+  clear:both;
+  width:100%;
+  margin-bottom:10px;
+}
+
+.conference_sessions_list_item {}
+
+.conference_sessions_list_item .day {
+  float: left;
+  width: 44px;
+  background: pink;
+  text-align: center;
+  line-height: 15px;
+  padding: 8px 0 5px;
+  font-family: 'VAG Rounded W02 Light', arial, sans-serif;
+  font-size: 13px;
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px;
+  border-radius:3px;
+  margin-right:10px;
+}
+
+.conference_sessions_list_item .right {
+  width:576px;
+  float:left;
+  margin-top:3px;
+}
+
+.conference_sessions_list_item .session_name {
+  width:100%;
+  font-size:16px;
+  float:left;
+  line-height:20px;
+}
+
 .friend_request_link a {
 	font-weight: bold;
 }

@@ -97,7 +97,7 @@
                       .session_hover{:style=>"border-color:#{complementary_color(session.color)}"}
                         .title{:style=>"background-color:#{session.color};color:#{complementary_color(session.color)}"}=session
                         .details
-                          ="#{session.starts_at.strftime("%H:%M")} - #{session.ends_at.strftime("%H:%M")}"
+                          =session.time_string
                           %br
                           =session.description.word_truncate(150)
                   .col_title.bottom=venue
