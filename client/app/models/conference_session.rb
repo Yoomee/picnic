@@ -35,7 +35,7 @@ class ConferenceSession < ActiveRecord::Base
   def duration_in_hours
     return 1 if starts_at.nil? || ends_at.nil? || starts_at > ends_at
     dur = ((ends_at - starts_at)/3600)
-    (dur*4).round.to_f/4
+    (dur*12).round.to_f/12
   end
   alias_method :duration, :duration_in_hours
   
@@ -47,7 +47,7 @@ class ConferenceSession < ActiveRecord::Base
   def starts_at_offset(hour)
     return nil if starts_at.nil?
     off = (starts_at.seconds_since_midnight - (hour*3600))/3600
-    (off*4).round.to_f/4
+    (off*12).round.to_f/12
   end
   
   private
