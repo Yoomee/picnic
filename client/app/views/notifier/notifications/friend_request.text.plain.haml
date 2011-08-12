@@ -3,7 +3,7 @@
 ="#{@friend_request.member.full_name} would like to join your picnic.#{@friend_request.message.blank? ? '' : ' They left this message for you:'}"
 -if !@friend_request.message.blank?
   ="\"#{@friend_request.message}\""
-="Use the following link to allow #{@friend_request.member.forename} to sit on your blanket:"
+="Use the following link to view the request:"
 
 =site_url + notifications_path
 

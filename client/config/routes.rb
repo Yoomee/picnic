@@ -2,15 +2,15 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :conference_delegates, :only => [:index]
   map.resources :conference_sessions, :only => [:create, :edit, :destroy, :show, :update], :member => {:duplicate => :get, :attend => :post, :unattend => :delete}
-  map.resources :conferences do |conf|
+  map.resources :conferences, :member => {:order_venues => :get, :update_venue_weights => :post} do |conf|
     conf.resources :conference_sessions, :as => 'sessions', :only => [:show, :new]
-    conf.resource :programme, :only => [:show]
+    conf.resource :programme, :as => "program", :only => [:show]
     conf.resource :venues, :only => [:show, :new]
   end
   map.resources :front_covers, :member => {:activate => :post, :deactivate => :post}
   map.resources :members, :only => [], :collection => {:admin => :get}
   map.resources :shouts, :only => [], :member => {:remove => :delete, :restore => :put}
-  map.resources :subscriptions, :only => [:create, :destroy]
+  map.resources :subscriptions, :only => [:create, :destroy, :index]
   map.resources :tags, :as => "themes", :collection => {:autocomplete => :get}, :member => {:people => :get}
   map.resources :urls
   map.resources :venues, :only => [:create, :edit, :destroy, :show, :update]

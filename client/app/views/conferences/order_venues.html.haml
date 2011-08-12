@@ -1,0 +1,38 @@
+-content_for(:head) do
+  :javascript
+    VenueOrder = {
+      save_order: function() {
+        $('#orderable_venues li').each(function(index) {
+          $('#venue_id_' + index).val($(this).attr('data-venue-id'));
+        });
+      }
+    };
+  
+    $(document).ready(function() {
+      $('#orderable_venues').sortable({
+        axis: "y",
+        handle: ".drag_icon",
+        stop: function(event, ui) {
+          VenueOrder.save_order();
+        }
+      });
+    });
+
+-title "#{@conference} venues"
+
+%p.help
+  Click and drag using the icons on the left. Once you are happy with the order, click "Save order" at the bottom.
+
+%ul#orderable_venues.lst.flcb
+  -@venues.each do |venue|
+    %li{'data-venue-id' => venue.id}
+      =image_tag("drag_icon.png", :class => "drag_icon")
+      %span=venue
+      
+-form_tag("/conferences/#{@conference.id}/update_venue_weights", :class => "flcb") do
+  -@venues.each_with_index do |venue, i|
+    =hidden_field_tag("venues[#{i}][venue_id]", venue.id, :id => "venue_id_#{i}")
+  =submit_tag("Save order")
+
+-options_panel do
+  =back_link

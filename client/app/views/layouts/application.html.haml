@@ -71,7 +71,7 @@
   - body_tag do
     #wrapper
       =#render "layouts/beta_bar"
-      -if !action_name.in?(%w{edit new}) && !in_moderation? && !controller_name.in?(%w(admin front_covers search)) && !@front_cover
+      -if (!action_name.in?(%w{edit new}) && !in_moderation? && !controller_name.in?(%w(admin front_covers search)) && !@front_cover) || current_page?("/register")
         -cache("flipboard", :time_to_live => 1.hour) do
           =render_flipboard
       #header.container

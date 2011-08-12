@@ -7,7 +7,7 @@ class Conference < ActiveRecord::Base
   formatted_date_accessor :starts_on, :ends_on
   
   has_many :sessions, :class_name => "ConferenceSession"
-  has_many :venues
+  has_many :venues, :order => "venues.weight"
   
   def day(date_or_time)
     days.index(date_or_time.to_date) + 1

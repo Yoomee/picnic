@@ -16,9 +16,15 @@
             =link_to('Search', 'javascript: void(0)', :class => 'button search_link')
           
       -else
-        =link_to('Login', new_session_path, :class => 'button')
-        =link_to("Signup", new_member_path, :class => 'button')
+        =link_to "Picnic on LinkedIn", "http://www.linkedin.com/groups?gid=150580", :class=>"linkedin socialmedia_link" , :target=>"blank"
+        =link_to "Picnic on Flickr", "http://www.flickr.com/photos/crossmediaweek", :class=>"flickr socialmedia_link", :target=>"blank"
+        =link_to "Picnic on Vimeo", "http://vimeo.com/picnic", :class=>"vimeo socialmedia_link", :target=>"blank"
+        =link_to "Picnic on Facebook", "http://www.facebook.com/pages/Amsterdam-Netherlands/PICNIC/52555521797", :class=>"facebook socialmedia_link", :target=>"blank"
+        =link_to "Picnic on Twitter", "http://twitter.com/picnicfestival", :class=>"twitter socialmedia_link", :target=>"blank"
         =link_to('Search', 'javascript: void(0)', :class => 'button search_link')
+        =link_to("Signup", new_member_path, :class => 'button')
+        =link_to('Login', new_session_path, :class => 'button')
+        
 
       -if logged_in?
         .logged_in_box
@@ -26,6 +32,7 @@
             =image_for @logged_in_member, '50x50#'
             %p My profile
           =link_if_allowed "Account settings", edit_member_proc(@logged_in_member)
+          =link_to("Manage subscriptions", subscriptions_path)
           =link_to('Logout', session_path, :method => :delete)
       -unless controller_name == "search"
         #search_box_popup    

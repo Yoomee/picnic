@@ -1,7 +1,7 @@
 Shout.class_eval do
 
   after_create :trigger_points_event, :notify_subscribers
-  after_destroy :trigger_reverse_points_event
+  after_destroy :delete_points_transfer
 
   belongs_to :removed_by, :class_name => "Member"
   has_many :wall_posts_not_removed, :through => :wall, :source => :wall_posts, :conditions => {:removed_at => nil}
@@ -16,13 +16,14 @@ Shout.class_eval do
   named_scope :by_friends_of, lambda {|member| {:joins => "INNER JOIN walls ON (shouts.id = walls.attachable_id AND walls.attachable_type = 'Shout') LEFT OUTER JOIN wall_posts ON (wall_posts.wall_id = walls.id)", :group => "shouts.id", :conditions => ["shouts.member_id IN (:ids) OR wall_posts.member_id IN (:ids)", {:ids => member.friend_ids}]}}
   named_scope :removed, :conditions => "shouts.removed_at IS NOT NULL"
   named_scope :not_removed, :conditions => "shouts.removed_at IS NULL"
+  named_scope :member_or_recipient_id_in, lambda {|ids| {:conditions => ["shouts.recipient_id IS NULL OR (shouts.member_id IN (?) OR (shouts.recipient_type = 'Member' AND shouts.recipient_id IN (?)))", ids, ids]}}
   
   has_location
   has_permalink
   
   class << self
     def get_shouts(filter_name, member)
-      case filter_name
+      shouts = case filter_name
       when "latest"
         latest
       when "comments"
@@ -34,6 +35,8 @@ Shout.class_eval do
       else
         latest
       end
+      # if shout has recipient, the author or the recipient must be friends with logged_in_member
+      member.nil? ? shouts : shouts.member_or_recipient_id_in(member.friend_ids + [member.id])
     end
   end
   
@@ -123,8 +126,11 @@ Shout.class_eval do
     member.handle_points_event(:post_shout, self, options)
   end
   
-  def trigger_reverse_points_event(options = {})
-    member.handle_points_event(:deleted_posted_shout, nil, options)
+  def delete_points_transfer
+    if points_transfer = member.points_transfers.with_event_slug(:post_shout).attachable_is(self).first
+      member.decrement!(:points, points_transfer.points)
+      points_transfer.destroy
+    end
   end
   
   private

@@ -26,7 +26,7 @@
     =form.input :description, :input_html => {:rows => 12}
     %li
       %label Speakers
-    =multiple_nested_inputs_for :conference_sessions_members, :form => form, :label => false, :add_link_text => "Add a speaker"
+    =multiple_nested_inputs_for :conference_sessions_members, :collection => conference_session.conference_sessions_members.speaker.sort{|x,y| x.member.surname.sub(/^(van\s)?(de\s)?(\221t\s)?/,'') <=> y.member.surname.sub(/^(van\s)?(de\s)?(\221t\s)?/,'') },:form => form, :label => false, :add_link_text => "Add a speaker"
     
     %li
       %label Themes

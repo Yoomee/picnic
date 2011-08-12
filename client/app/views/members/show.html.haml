@@ -147,7 +147,7 @@
       -if !@member.has_image? && @member.fb_connected?
         =image_for(@member, '140x')
       -else
-        =link_to_image("#{image_for(@member, '140x', :url_only => true)}:#{@member.image.try(:url)}",:image_options => {:alt => @member})
+        =link_to_image("#{image_for(@member, '140x', :url_only => true)}:#{@member.image.try(:url)}", :image_options => {:alt => ""})
       =fancybox_edit(@member, :image, :partial => "members/photo_form")
     .friends_list.subrow
       =render("members/friends", :member => @member)
@@ -170,7 +170,7 @@
               =@member.likings_count_string
     -if !@member.bio.blank? || allowed_to?(edit_member_proc(@member))
       .bio.subrow
-        %span{:id => "members_#{@member.id}_bio"}=simple_format(strip_tags(@member.bio))
+        %span{:id => "members_#{@member.id}_bio"}=read_more_truncate(strip_tags(@member.bio))
         =fancybox_edit(@member, :bio, :label => "Bio", :link_text => (@member.bio.blank? ? "Click here to add your bio and work info": "Edit" ), :input_html => {:rows => 5}, :sf => true)
     .services.subrow
       %ul.lst
@@ -199,6 +199,20 @@
         =fancy_box :title => nil, :id => "url_box", :link => {:content => " + Add a service", :options => {:inline => true, :class => "new_link"}} do
           %h3 Add a URL
           =render('urls/form', :url_object => Url.new(:attachable => @member))      
+    -if @member.has_badge?(:picnic11_speaker) && !@member.conference_sessions_speaking_at.blank?
+      #speaking_at.subrow
+        %h3.profile_title="#{forename_or_you(@member)} is speaking at PICNIC Festival 2011"
+        %ul.conference_sessions_list
+          -@member.conference_sessions_speaking_at.each do |session|
+            %li.conference_sessions_list_item
+              .day{:style=>"background-color:#{session.color};color:#{complementary_color(session.color)}"}
+                DAY
+                %br
+                =session.conference_day
+              .right
+                =link_to_self(session, :class => "session_name")
+                ="#{session.venue}, #{session.time_string}"
+    
     #member_themes.themes_list.subrow
       %h3.profile_title="About the real #{forename_or_me(@member)}"
       -if @member.tags.empty?
@@ -244,12 +258,13 @@
           -if !@member.rank.nil?
             %br
             =link_to("<strong>#{@member.rank.ordinalize}</strong> in the all time leaderboard", all_time_leaderboard_path, :class => 'leaderboard')
-        %h3#badges_title.profile_title="#{forename_or_you(@member, 'has', :capitalize => true)} #{pluralize(@member.badges.count, 'badge')}"
-        %ul.lst
-          -@member.badges.each do |badge|
-            %li
-              =link_to_box(image_for(badge, "60x60", :alt => ""), info_badge_path(badge), :title => "")
-              =link_to_box(badge, info_badge_path(badge), :title => "")
+        -if !@member.badges.empty?
+          %h3#badges_title.profile_title="#{forename_or_you(@member, 'has', :capitalize => true)} #{pluralize(@member.badges.count, 'badge')}"
+          %ul.lst
+            -@member.badges.each do |badge|
+              %li
+                =link_to_box(image_for(badge, "60x60", :alt => ""), info_badge_path(badge), :title => "")
+                =link_to_box(badge, info_badge_path(badge), :title => "")
   .twocol.last
     #member_links
 .row
@@ -260,11 +275,12 @@
   .twocol.last
 .row
   .twocol
-    .themes_list
-      %h3.profile_title="Themes"
-      %ul.lst
-        -@member.shout_tags.each do |tag|
-          =link_to_tag(tag)
+    -if !@member.shout_tags.empty?
+      .themes_list
+        %h3.profile_title="Themes"
+        %ul.lst
+          -@member.shout_tags.each do |tag|
+            =link_to_tag(tag)
   #members_shouts.eightcol
     #posts_header
       %h3.profile_title.fl="#{forename_or_your(@member, :capitalize => true)} posts"

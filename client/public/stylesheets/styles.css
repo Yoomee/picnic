@@ -20,7 +20,7 @@ body, textarea, input {font:12px/1.6 'Helvetica', Arial,'Liberation Sans',FreeSa
 
 /* ======================  CSS3 regularly used stuff ================== */
 
-#main, input, #footer_links, .bx_h, #news_feed_older_btn, .bx_h a, button, .bttn, div#page_related_col, a.backto, #nav a, .logged_in_box, #flipboard_wrapper .fr, #share_this, ul.facelist-selections, #search_box_popup {
+#main, input, #footer_links, .bx_h, #news_feed_older_btn, .bx_h a, button, .bttn, div#page_related_col, a.backto, #nav a, .logged_in_box, #flipboard_wrapper .fr, #share_this, ul.facelist-selections, #search_box_popup, .socialmedia_link {
 	-moz-border-radius:3px;
 	-webkit-border-radius:3px;
 	border-radius:3px;
@@ -193,7 +193,7 @@ body #wrapper .no_padding {
 #header_right a.button {
 		display: block;
 
-	background:#000;
+	background:#808080;
 
 	float: right;
 	font-size: 11px;
@@ -210,6 +210,30 @@ body #wrapper .no_padding {
 	border-radius:3px;
 	-webkit-border-radius:3px;
 	-moz-border-radius:3px;
+}
+#header_right a.button:hover, .socialmedia_link:hover {
+	background-color: #000;
+}
+.socialmedia_link {
+	background: #808080 url(/images/sprite.png) -40px -1680px;
+	width: 20px;
+	height: 21px;
+	float: right;
+	margin: 0 0 0 10px;
+	display: block;
+	text-indent: -9000em;
+}
+a.facebook {
+	background-position: -40px -1720px;
+}
+a.vimeo {
+	background-position: -40px -1760px;
+}
+a.flickr {
+	background-position: -40px -1800px;
+}
+a.linkedin {
+	background-position: -40px -1840px;
 }
  #header_right a.button:hover {
 	text-decoration: none;
@@ -1312,7 +1336,7 @@ div.logged_in_panel {
 
 #header_right .logged_in_as a.logged_in_member_link {
 	font-weight: bold;
-	background: #000 url(/images/sprite1.png) right -613px no-repeat;
+	background: #808080 url(/images/sprite1.png) right -613px no-repeat;
 	padding-right: 25px;
 }
 #header_right .logged_in_as a.logged_in_member_link:hover {
@@ -2383,6 +2407,51 @@ h3.profile_title {
 	font-family:'VAG Rounded W02 Light', arial, sans-serif;
 
 }
+
+#speaking_at {}
+
+.conference_sessions_list {
+  list-style:none;
+}
+
+.conference_sessions_list_item {
+  margin-left:0px;
+  float:left;
+  clear:both;
+  width:100%;
+  margin-bottom:10px;
+}
+
+.conference_sessions_list_item {}
+
+.conference_sessions_list_item .day {
+  float: left;
+  width: 44px;
+  background: pink;
+  text-align: center;
+  line-height: 15px;
+  padding: 8px 0 5px;
+  font-family: 'VAG Rounded W02 Light', arial, sans-serif;
+  font-size: 13px;
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px;
+  border-radius:3px;
+  margin-right:10px;
+}
+
+.conference_sessions_list_item .right {
+  width:576px;
+  float:left;
+  margin-top:3px;
+}
+
+.conference_sessions_list_item .session_name {
+  width:100%;
+  font-size:16px;
+  float:left;
+  line-height:20px;
+}
+
 .friend_request_link a {
 	font-weight: bold;
 }
@@ -2660,6 +2729,7 @@ ul.action_links li {
 	padding-top: 10px;
 
 }
+
 div#footer_links {
 	float:left;
 	margin:0px 0px 0;
@@ -2692,6 +2762,12 @@ div#footer_links {
 }
 .sitemap_list {
 	margin-bottom: 20px;
+}
+#footer_social_links {
+  padding-top: 2px;
+}
+#footer_social_links .picnic_on{
+  float:right;
 }
 
 #footer_links ul li#site_feedback a {
@@ -3901,6 +3977,18 @@ a.backto {
 	border-bottom: 1px solid #000;
 	margin: 0 0 20px;
 	padding: 20px 0 10px;
+	position:relative;
+}
+
+.page_header #page_status {
+  position:absolute;
+  top:0px;
+  right:0px;
+  font-size:15px;
+  padding:5px 10px;
+	background: #ed4287;
+	background: rgba(241, 46, 115, 0.95);
+	margin-top:10px;
 }
 .page_header h1#page_title {
   margin-top: -4px;
@@ -4780,6 +4868,10 @@ body.controller_badges .badge_members {
   margin: 0 10px 10px 0;
   overflow: hidden;
 }
+#badge_members .image_link {
+  width: 50px;
+  height: 50px;
+}
 #badge_members li.member_item a {
   float: none;
   display: block;
@@ -5032,6 +5124,11 @@ body.controller_badges .badge_members {
   padding:5px;
 }
 
+.timetable .short .session_content {
+  float:left;
+  padding:0px 5px;
+}
+
 
 
 .timetable .session_hover {
@@ -5053,6 +5150,17 @@ body.controller_badges .badge_members {
 
 .timetable .session_hover .details {
   padding:5px;
+}
+
+.timetable .session_hover .speakers {
+  margin-top:5px;
+}
+
+.timetable .session_hover .speakers img {
+  padding:0px 5px 5px 0px;
+  width:52px;
+  height:52px;
+  float:left;
 }
 
 .timetable a:hover{
@@ -6904,6 +7012,10 @@ a.find_someone_photo {
 #points_transfers ul .points_transfer_top span {
   line-height: 18px;
 }
+
+#points_transfers ul .points_transfer_top a.attachable_link {
+  color:#000;
+}
 #points_transfers .timestamp {
   font-size: 12px;
   color: gray;
@@ -7352,6 +7464,19 @@ span.click_here_beta {
 }
 .profile_info h1.profile_title {
   float: left;
+}
+.subscription_row h3 {
+  margin-bottom: 5px;
+}
+.subscription_row a.unsubscribe_link {
+  margin-left: 5px;
+  color: inherit;
+}
+#subscriptions_for_themes {
+  margin-top: 20px;
+}
+#subscriptions_for_themes a.unsubscribe_link {
+  float: right;
 }
 
 /*========== Tooltips ==========*/
