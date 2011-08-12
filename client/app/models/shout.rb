@@ -36,7 +36,7 @@ Shout.class_eval do
         latest
       end
       # if shout has recipient, the author or the recipient must be friends with logged_in_member
-      shouts.member_or_recipient_id_in(member.friend_ids + [member.id])
+      member.nil? ? shouts : shouts.member_or_recipient_id_in(member.friend_ids + [member.id])
     end
   end
   
