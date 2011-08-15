@@ -19,7 +19,7 @@ class ClientEnvironment
       config.gem 'googlecharts'     
       config.gem 'inflectious'
       unless RAILS_ENV=='test'
-        config.gem 'factory_girl'
+        config.gem 'factory_girl', :version => '1.3.3'
         config.gem 'lorem'
         config.gem "mocha"
       end

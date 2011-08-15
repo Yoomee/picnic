@@ -2903,6 +2903,7 @@ div#footer_links {
 
 #footer_copyright p {
 	float: left;
+	width: 100%;
 }
 
 a#yoomee_link {
