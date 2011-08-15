@@ -8844,6 +8844,7 @@ table.front_covers * {
 
 #press_form label.checkbox {
   font-weight:normal;
+  width:150px;
 }
 
 #press_form hr{

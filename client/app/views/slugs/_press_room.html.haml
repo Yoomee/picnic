@@ -74,7 +74,7 @@
     %li#primary_interests
       =label_tag "00ND0000003mcsq", "Primary interests"
     -["Infrastructure", "Sustainability", "Society", "Design", "Media", "Business", "Education"].each do |opt|
-      %li
+      %li{:class => cycle('', 'inline')}
         %label.checkbox
           =check_box_tag "00ND0000003mcsq[]", opt
           =opt
