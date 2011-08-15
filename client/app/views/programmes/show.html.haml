@@ -192,7 +192,7 @@
       .row#not_attending
         .twelvecol
           You aren't attending any sessions on this day.
-      -@conference.sessions.ascend_by_time_of_day.group_by{|s|s.starts_at.hour}.each do |hour, sessions|
+      -@conference.sessions.ascend_by_time_of_day_and_venue.group_by{|s|s.starts_at.hour}.each do |hour, sessions|
         .row
           .onecol.programme_list_hour
             =hour

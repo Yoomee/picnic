@@ -21,7 +21,7 @@ class ConferenceSession < ActiveRecord::Base
   
   named_scope :on_date, lambda {|date| {:conditions => ["DATE(conference_sessions.starts_at) = ?", date], :order => "conference_sessions.starts_at"}}
   named_scope :starts_in_hour, lambda {|date| {:conditions => ["HOUR(conference_sessions.starts_at) = ?", date], :order => "conference_sessions.starts_at"}}
-  named_scope :ascend_by_time_of_day, :order => "HOUR(conference_sessions.starts_at) ASC"
+  named_scope :ascend_by_time_of_day_and_venue, :joins => :venue, :order => "TIME(conference_sessions.starts_at), venues.weight"
   
   attr_accessor :duplicate_of
 
