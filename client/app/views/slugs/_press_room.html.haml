@@ -6,8 +6,10 @@
       $('#press_form .error').removeClass('error');
       $('#press_form :input').each(function(index){
         if ($(this).val() == null || $(this).val() == '' || ($(this).attr('id') == '00ND0000003mct9' && $(this).val() == 'None')){
-          $(this).parents('li').addClass('error');
-          valid = false
+          if ($(this).attr('id') != "00ND0000003mct4"){
+            $(this).parents('li').addClass('error');
+            valid = false;
+          }
         }
         if(!$('#primary_interests :checked').length){
           $('#primary_interests').addClass('error');
@@ -21,47 +23,48 @@
       }
       return valid;
     }
+%hr
 -form_tag("https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8", {:onSubmit => "return validatePressForm()", :class => "formtastic", :id => "press_form"}) do
   %ol
     %li=hidden_field_tag 'oid', '00DD0000000m1XL'
     %li=hidden_field_tag 'retURL', 'http://www.picnicnetwork.org/pages/190'
     %li#all_fields{:style => "display:none"}
-      =label_tag "all_fields", "All information is required. Please fill in the fields in red."
+      =label_tag "all_fields", "Please fill in the fields in red."
     %li
       =label_tag "first_name"
-      =text_field_tag("first_name", nil, :maxlength => 40, :size => 20)
+      =text_field_tag("first_name", nil, :maxlength => 40)
       
-    %li.fl
+    %li.inline
       =label_tag"last_name"
-      =text_field_tag("last_name", nil, :maxlength => 80, :size => 20)
+      =text_field_tag("last_name", nil, :maxlength => 80)
       
     %li
       =label_tag"email"
-      =text_field_tag("email", nil, :maxlength => 80, :size => 20)
+      =text_field_tag("email", nil, :maxlength => 80)
 
-    %li
+    %li.inline
       =label_tag"mobile"
-      =text_field_tag("mobile", nil, :maxlength => 40, :size => 20)
+      =text_field_tag("mobile", nil, :maxlength => 40)
     
     %li
       =label_tag "URL", "Website"
-      =text_field_tag("URL", nil, :maxlength => 80, :size => 20)
-      
+      =text_field_tag("URL", nil, :maxlength => 80)
+    %hr
     %li
       =label_tag "city"
-      =text_field_tag("city", nil, :maxlength => 40, :size => 20)
+      =text_field_tag("city", nil, :maxlength => 40)
       
-    %li
+    %li.inline
       =label_tag "country"
-      =text_field_tag("country", nil, :maxlength => 40, :size => 20)
-      
+      =text_field_tag("country", nil, :maxlength => 40)
+    %hr
     %li
       =label_tag "company", "Primary publication"
-      =text_field_tag("company", nil, :maxlength => 40, :size => 20)
+      =text_field_tag("company", nil, :maxlength => 40, :class => 'wide')
     
     %li
-      =label_tag "00ND0000003mct4", "Additional publications"
-      =text_area_tag("00ND0000003mct4", nil, :wrap => "soft")
+      =label_tag "00ND0000003mct4", "Additional publications <em>(optional)</em>"
+      =text_area_tag("00ND0000003mct4", nil, :wrap => "soft", :class => 'wide')
 
     
     %li
@@ -70,12 +73,15 @@
 
     %li#primary_interests
       =label_tag "00ND0000003mcsq", "Primary interests"
-      -["Infrastructure", "Sustainability", "Society", "Design", "Media", "Business", "Education"].each do |opt|
-        =check_box_tag "00ND0000003mcsq[]", opt
-        =opt
-        %br.clear    
+    -["Infrastructure", "Sustainability", "Society", "Design", "Media", "Business", "Education"].each do |opt|
+      %li
+        %label.checkbox
+          =check_box_tag "00ND0000003mcsq[]", opt
+          =opt
       
     %li
       =hidden_field_tag 'lead_source', 'Press Pass Request'
+    
     %li
       =submit_tag "Submit"
+    %hr
