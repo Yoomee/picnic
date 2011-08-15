@@ -73,11 +73,7 @@
       -["Infrastructure", "Sustainability", "Society", "Design", "Media", "Business", "Education"].each do |opt|
         =check_box_tag "00ND0000003mcsq[]", opt
         =opt
-        %br.clear
-    
-    
-    %li=select_tag "00ND0000003mcsq2", options_for_select(["Infrastructure", "Sustainability", "Society", "Design", "Media", "Business", "Education"]), :multiple => true
-    
+        %br.clear    
       
     %li
       =hidden_field_tag 'lead_source', 'Press Pass Request'
