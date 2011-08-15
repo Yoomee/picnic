@@ -8805,6 +8805,12 @@ table.front_covers * {
   vertical-align: middle;
 }
 
+/*========== Press form ==========*/
+#press_form .error label {
+  color:#d91c5c;
+}
+
+
 @media handheld, only screen and (max-width: 500px) {
 	
 
