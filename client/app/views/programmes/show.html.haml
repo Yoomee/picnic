@@ -49,6 +49,9 @@
           $('#day_link_' + day).addClass('active');
           $('#date_' + day).addClass('active');
           
+          $('.programme_list_item.day'+Programme.day).hide();
+          $('.programme_list_item.day'+day).show();
+          
           Programme.day = day;
         }
       }
@@ -105,6 +108,20 @@
                               -session.speakers.each do |speaker|
                                 =image_for(speaker, "52x52#")
                   .col_title.bottom=venue
+    -if false    
+      #programme_list
+        .row
+          -all_sessions = params[:venue].blank? ? @conference.sessions.ascend_by_time_of_day : @conference.sessions.venue_id_is(params[:venue]).ascend_by_time_of_day
+          -all_sessions.group_by{|s|s.starts_at.hour}.each do |hour, sessions|
+            .row
+              .onecol.programme_list_hour
+                =hour
+              .elevencol.list_col.last
+                -sessions.each do |session|
+                  .programme_list_item{:style => "border-left-color:#{session.color};display:#{@date == session.starts_at.to_date ? 'block' : 'none'}", :class => "day#{@conference.day(session.starts_at)} venue#{session.venue.id} #{'last' if session == sessions.last}"}
+                    =link_to_self(session, :class => "session_name")
+                    %br
+                    ="#{session.time_string}, #{session.venue}"
   .row
     .twelvecol
     -options_panel do

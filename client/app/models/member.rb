@@ -21,10 +21,10 @@ Member.class_eval do
   
   rateable_by_member
   has_location
-  has_many :urls, :as => :attachable
-  has_one :conference_delegate, :autosave => true
+  has_many :urls, :as => :attachable, :dependent => :destroy
+  has_one :conference_delegate, :autosave => true, :dependent => :destroy
   
-  has_many :conference_sessions_members
+  has_many :conference_sessions_members, :dependent => :destroy
   has_many :conference_sessions, :through => :conference_sessions_members
   has_many :conference_sessions_speaking_at, :through => :conference_sessions_members, :source => :conference_session, :conditions => "conference_sessions_members.speaker = 1" 
 

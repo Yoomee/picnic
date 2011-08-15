@@ -4940,10 +4940,6 @@ body.controller_badges .badge_members {
   width:955px !important;
 }
 
-#prog_header {
-  width:955px;
-  padding-top:20px;
-}
 #prog_header .day{
 }
 
@@ -5166,6 +5162,44 @@ body.controller_badges .badge_members {
 
 .timetable a:hover{
   text-decoration:none;
+}
+
+#programme_list {
+  
+}
+
+#programme_list .row {
+  border-top:2px solid #f2f2f2;
+}
+
+#programme_list .list_col {
+  background:#f2f2f2;
+  border-radius: 0px;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+}
+
+.programme_list_hour{
+  font-family:'VAG Rounded W02 Light', arial, sans-serif;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 35px ;
+}
+.programme_list_item{
+  border-left: 6px solid;
+  padding: 2px 5px;
+  line-height: 19px;
+  margin: 0px 0px 2px;
+  color:#666;
+  font-size:13px;
+  background:#fff;
+}
+.list_col .last{
+  margin-bottom:0px;
+}
+.programme_list_item a.session_name{
+  font-size: 16px;
+  color:#000;
 }
 
 /*========== Session show ==========*/
@@ -8689,6 +8723,32 @@ div#flipboard_wrapper, div#flipboard_strip, #flipboard_wrapper .fr, #subnav ul l
   width: 220px;
   padding: 12px 15px;
 }
+
+#front_cover #front_cover_left {
+  float:left;
+}
+
+#front_cover #click_through{
+  float: left;
+  clear:left;
+  width: 220px;
+  padding: 12px 15px;
+  background-color: #1d2226;
+  background: url(/images/black_80.png);
+  margin-top:10px;
+  font-family:'VAG Rounded W02 Light', arial, sans-serif;
+  font-weight:normal;
+}
+
+#front_cover a#click_through:hover{
+  text-decoration:none;
+}
+
+#front_cover #click_through h2 {
+  color:#fff;
+  font-size:17px;
+  margin-bottom:0px;
+}
 #front_cover .small_heading {
   font-family:'VAG Rounded W02 Bold', arial, sans-serif;
 }
@@ -8745,6 +8805,53 @@ table.front_covers td {
 table.front_covers * {
   vertical-align: middle;
 }
+
+/*========== Press form ==========*/
+
+#press_form .error label {
+  color:#d91c5c;
+}
+
+#press_form.formtastic li {
+  margin-bottom:7px;
+  margin-right:10px;
+}
+#press_form li.inline {
+  clear:none;
+}
+
+#press_form label{
+  font-size:14px;
+  margin-bottom:2px;
+}
+
+#press_form input, #press_form textarea {
+  font-size:12px;
+  padding:5px;
+  margin-bottom:6px;
+  width:210px;
+}
+#press_form input.wide, #press_form textarea.wide {
+  width:440px;
+}
+#press_form input[type="submit"] {
+  font-size:14px;
+  width:auto;
+  padding: 5px 15px 6px;
+}
+#press_form input[type="checkbox"] {
+  width:auto;
+}
+
+#press_form label.checkbox {
+  font-weight:normal;
+  width:150px;
+}
+
+#press_form hr{
+  margin-bottom:20px;
+}
+
 
 @media handheld, only screen and (max-width: 500px) {
 	
