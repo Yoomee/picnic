@@ -51,7 +51,7 @@ body span.cal_sheet span.month {
 	background:#87cd29;
 }
 
-h1, h2, h3, h4, h5, h6, #nav, .button, .bring_quote, .cycle_nav a, .call_to_action, #beta_bar,  p.stories_header, .pull_quote  {
+h1, h2, h3, h4, h5, h6, #nav, .button, .bring_quote, .cycle_nav a, .call_to_action, #beta_bar,  p.stories_header, .pull_quote, #flipboard .flip_sponsor h6  {
 	font-family:'VAG Rounded W02 Light', arial, sans-serif;
 	color:black;
 	font-weight: normal;
@@ -111,7 +111,7 @@ body, textarea, input {
 div#flipboard_wrapper {
 	padding-top: 14px;
 	padding-bottom: 2px;
-	background: #666;
+	background: #fff;
 
 	
 
@@ -121,12 +121,13 @@ div#flipboard_wrapper {
 	position: absolute;
 	top: -43px;
 	right: 0px;
-	background: #666;
-	padding: 10px 10px 10px 0;
-	
 
-	
-	
+	padding: 10px 10px 10px 0;
+	opacity: 0.2;	
+}
+#flipboard_wrapper .fr:hover {
+	opacity: 1;
+	background: #fff;	
 }
 .flipboard_nav {
 	display: block;
@@ -1204,9 +1205,9 @@ div#top {
 	background: #fff;
 	
 	
-	-webkit-box-shadow:0px 2px 8px rgba(0,0,0,0.2);
-  	-moz-box-shadow:0px 2px 8px rgba(0,0,0,0.2);
-  	box-shadow:0px 2px 8px rgba(0,0,0,0.2);
+	-webkit-box-shadow:0px 2px 8px rgba(0,0,0,0.1), 0px 1px 2px rgba(0,0,0,0.01), 0px -2px 8px rgba(0,0,0,0.1), 0px -1px 2px rgba(0,0,0,0.01);
+  	-moz-box-shadow:0px 2px 8px rgba(0,0,0,0.1), 0px 1px 2px rgba(0,0,0,0.01), 0px -2px 8px rgba(0,0,0,0.1), 0px -1px 2px rgba(0,0,0,0.01);
+  	box-shadow:0px 2px 8px rgba(0,0,0,0.1), 0px 1px 2px rgba(0,0,0,0.01), 0px -2px 8px rgba(0,0,0,0.1), 0px -1px 2px rgba(0,0,0,0.01);
 
 }
 #header .row {
@@ -2903,6 +2904,7 @@ div#footer_links {
 
 #footer_copyright p {
 	float: left;
+	width: 100%;
 }
 
 a#yoomee_link {
@@ -7394,6 +7396,7 @@ span.click_here_beta {
 
 #flipboard .flip a {
   color:#B9B9B9;
+  padding: 0;
 }
 
 #flipboard .flip a:hover {
@@ -7426,12 +7429,13 @@ span.click_here_beta {
   bottom:0px;
   font-size:10px;
   letter-spacing:1px;
+  color: #fff;
 }
 #flipboard .flip_footer strong{
   font-family: 'VAG Rounded W02 Bold', arial, sans-serif;
 }
 #flipboard .x2 .flip_footer {
-  width:430px;
+  width:450px;
 }
 #flipboard .text1, #flipboard .text2, #flipboard .text3, #flipboard .text4 {
   float: left;
@@ -7463,10 +7467,10 @@ span.click_here_beta {
   margin: 0px 0 0;	
   color: rgba(255,255,255,0.5);
 	}
-#flipboard .x1 .hover { width:215px;}
-#flipboard .x2 .hover { width:455px;}
-#flipboard .y1 .hover { height:120px;}
-#flipboard .y2 .hover { height:270px;}
+#flipboard .x1 .hover { width:235px;}
+#flipboard .x2 .hover { width:470px;}
+#flipboard .y1 .hover { height:140px;}
+#flipboard .y2 .hover { height:290px;}
 #flipboard .y3 .hover { height:410px;}
 
 #flipboard .x1 {
@@ -7475,8 +7479,12 @@ span.click_here_beta {
 #flipboard .x2 {
   width: 470px;
 }
-#flipboard .y1, #flipboard .y2 .y1 {
-  height: 140px;
+#flipboard .y1 {
+  height: 140px;	
+}
+#flipboard .y2 .y1, #flipboard .y3 .y1 {
+	height: 150px;	
+	position: relative;
 }
 #flipboard .y2 {
   height: 290px;
@@ -7488,7 +7496,17 @@ span.click_here_beta {
   padding:10px;
   float:left;
 }
-
+span.festival_news_date {
+	float: right;
+}
+.flip_border_top {
+	float: left;
+	width: 100%;
+	height: 10px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
 #flipboard .hover {
   display:none;
   position:absolute;
@@ -7506,6 +7524,7 @@ span.click_here_beta {
 #flipboard a.hover:hover, #flipboard a.flip_info:hover {
   text-decoration: none;
   cursor: pointer;
+
 }
 #flipboard .flip_sponsor {
   background: #fff;
@@ -7515,6 +7534,8 @@ span.click_here_beta {
   color: #000;
   width: 210px;
   text-align: left;
+  font-size: 11px;
+
 }
 /*========== Section Ordering ==========*/
 
