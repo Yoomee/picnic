@@ -5002,7 +5002,7 @@ body.controller_badges .badge_members {
 }
 
 #prog_container #top_scroll_right, #prog_container #bottom_scroll_right {
-  width: 75px;
+  width: 70px;
   position: absolute;
   right: 0px;
   z-index: 20;
@@ -5018,7 +5018,7 @@ body.controller_badges .badge_members {
 }
 
 #prog_wrapper {
-  width:875px;
+  width:870px;
   height:1180px;
   float:left;
   position:relative;
@@ -5050,7 +5050,7 @@ body.controller_badges .badge_members {
 }
 
 #prog_header {
-  width:933px;
+  width:928px;
   padding:10px;
   border:1px solid #000;
   float:left;
@@ -5060,6 +5060,39 @@ body.controller_badges .badge_members {
   font-family:'VAG Rounded W02 Bold', arial, sans-serif;
 	letter-spacing: 1px;
 	text-transform: uppercase;
+	float:left;
+	margin-right:15px;
+}
+
+#prog_header #prog_filters{
+  float:left;
+  margin-top:3px;
+}
+
+#prog_header .prog_filter{
+  padding:2px 8px;
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+}
+
+#prog_filters #prog_filter_my {
+  display:none;
+}
+
+#prog_header a.prog_filter:hover{
+  text-decoration:none;
+  background:#666;
+  color:#fff;
+}
+
+#prog_header_left a.active:hover{
+  background:#000;
+}
+
+#prog_header_left .active {
+  color:#fff;
+  background:#000;
 }
 
 #prog_header_left{
@@ -5081,7 +5114,7 @@ body.controller_badges .badge_members {
 	color:#999;
 }
 
-#prog_header .active{
+#prog_header_right .active{
   color:#000;
 }
 
@@ -5163,8 +5196,26 @@ body.controller_badges .badge_members {
   text-decoration:none;
 }
 
+#programme_calendar {
+  width: 955px;
+}
+
 #programme_list {
-  
+  padding-top:10px;
+  display:none;
+}
+
+#programme_list #not_attending{
+  font-size: 14px;
+  padding:10px;
+}
+
+#programme_venue_selector {
+  display:none;
+  background:black;
+  color:#fff;
+  text-indent: 10px;
+  padding: 5px 0px;
 }
 
 #programme_list .row {
@@ -5176,13 +5227,14 @@ body.controller_badges .badge_members {
   border-radius: 0px;
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
+  margin-bottom:-2px;
 }
 
 .programme_list_hour{
   font-family:'VAG Rounded W02 Light', arial, sans-serif;
   font-weight: normal;
   font-size: 30px;
-  line-height: 35px ;
+  line-height: 35px;
 }
 .programme_list_item{
   border-left: 6px solid;
@@ -8712,6 +8764,51 @@ div#flipboard_wrapper, div#flipboard_strip, #flipboard_wrapper .fr, #subnav ul l
   }
   .photo_gallery_row .photo .photo_description {
     height: 70px !important;
+  }
+  
+  #prog_header {
+    border-left:none;
+    border-right:none;
+    width:100%;
+    padding:10px 0px;
+  }
+  
+  #prog_container .row {
+    width:auto !important;
+  }
+  
+  #programme_list .onecol {
+    padding:5px;
+    border-bottom:2px solid #f2f2f2;
+  }
+  #programme_list .elevencol {
+    padding:0px;
+  }
+  
+  #prog_header #prog_header_left{
+    overflow:visible;
+  }
+  
+  #prog_header #prog_filters {
+    width:250px;
+  }
+  
+  #prog_header .day {
+    margin:0px 7px 0px 0px;
+    font-size:14px;
+  }
+  
+  #prog_header h5{
+    margin-left:5px;
+    margin-bottom:20px;
+    font-size:14px;
+  }
+  
+  #prog_header .date{
+    font-size:11px;
+    line-height:11px;
+    margin-right:10px;
+    margin-top:5px;
   }
 
 }

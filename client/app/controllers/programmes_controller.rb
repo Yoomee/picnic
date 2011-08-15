@@ -12,9 +12,9 @@ class ProgrammesController < ApplicationController
       @time = Time.now
     else
       @date = @conference.starts_on
-    end  
-    @venues = @conference.venues.with_sessions.all
-    
+    end
+    params.delete(:me) if params[:me] && !logged_in?
+    @venues = @conference.venues.with_sessions.descend_by_weight.all
   end
   
   private
