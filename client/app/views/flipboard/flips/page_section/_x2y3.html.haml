@@ -1,10 +1,16 @@
 -x = (FlipcolTemplate::X1 * 2) + FlipcolTemplate::MARGIN
 -y = (FlipcolTemplate::Y1 * 2) + FlipcolTemplate::MARGIN
 .flip.x2.y3
+  .flip_border_top{:style => "background:#{flipitem.color}"}
   -link_to(flipitem, :class => "flip_info x2 y1", :style => "background-color:#{flipitem.color}") do
     .padding
-      %h6=flipitem.created_at.strftime("%d %B %Y")
       .text2{:style => "color:#{complementary_color(flipitem.color)}"}
         =auto_link(flipitem.summary(150, :strip_tags => true))
+    .flip_footer{:style => "color:#{complementary_color(flipitem.color)};border-color:#{complementary_color(flipitem.color)}"}
+      FESTIVAL
+      %strong
+        NEWS
+      %span.festival_news_date  
+        =flipitem.created_at.strftime("%d %B %Y")  
   =link_to(image_or_photo_for(flipitem, "#{x}x#{y}#"),flipitem)
   
