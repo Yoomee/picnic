@@ -16,3 +16,5 @@ Tramlines.add_plugin(:referrals)
 Tramlines.add_plugin(:content_flags)
 
 Tramlines.add_plugin(:slideshows)
+
+Tramlines.add_plugin(:bannings)

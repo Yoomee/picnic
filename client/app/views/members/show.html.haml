@@ -1,301 +1,312 @@
--if allowed_to?(edit_member_proc(@member))
-  -content_for :head do
-    =javascript_include_tag 'jquery.oauthpopup.js'
-    :javascript
-      var response;
-      var locMap;
-      var LocationMap = {
-        editing: 0,
-        savedCenter:null,
-        center: null,
-        toggleEdit: function(map_index) {
-          if(LocationMap.editing){
-            LocationMap.cancelEdit(map_index);
-            LocationMap.editing = 0;
-          } else {
-            LocationMap.startEdit(map_index);
-            LocationMap.editing = 1;
-          }
-        },
-        startEdit: function(map_index) {
-          #{"if(LocationMap.savedCenter == null){LocationMap.savedCenter = new google.maps.LatLng(#{@member.lat},#{@member.lng});}" if @member.has_lat_lng?}
-          $('#edit_map'+map_index+'_link').html('Cancel');
-          if (map_index == 0){map_index = '';}
-          locMap = eval('map'+map_index);
-          var mapCenter = locMap.getCenter();
-          LocationMap.center = mapCenter;
-          $('#member_location').animate({width:'100%'},500);
-          $('#member_location').addClass('editing');
-          $('#map_canvas'+map_index).animate({
-            width:'100%',
-            height:400
-          },750, function(){
-            google.maps.event.trigger(locMap, 'resize');
-            locMap.panTo(mapCenter);
-            $('#save_map_link').fadeIn();
-            $('#member_location p.help').blindRight();
-            locMap.setOptions({
-              zoomControl: true,
-              zoomControlOptions: {style:'LARGE'},
-              scrollwheel: true,
-              draggable: true,
-              disableDoubleClickZoom: false
+-if @member.banned? && !admin_logged_in?
+  %p.member_banned
+    =@member
+    has been removed from the site by the moderator.
+  %p
+    There's nothing to see here. Please click your browser's back button to return, or click
+    =link_to 'here', root_path
+    to go to the homepage.
+-else
+  -if allowed_to?(edit_member_proc(@member))
+    -content_for :head do
+      =javascript_include_tag 'jquery.oauthpopup.js'
+      :javascript
+        var response;
+        var locMap;
+        var LocationMap = {
+          editing: 0,
+          savedCenter:null,
+          center: null,
+          toggleEdit: function(map_index) {
+            if(LocationMap.editing){
+              LocationMap.cancelEdit(map_index);
+              LocationMap.editing = 0;
+            } else {
+              LocationMap.startEdit(map_index);
+              LocationMap.editing = 1;
+            }
+          },
+          startEdit: function(map_index) {
+            #{"if(LocationMap.savedCenter == null){LocationMap.savedCenter = new google.maps.LatLng(#{@member.lat},#{@member.lng});}" if @member.has_lat_lng?}
+            $('#edit_map'+map_index+'_link').html('Cancel');
+            if (map_index == 0){map_index = '';}
+            locMap = eval('map'+map_index);
+            var mapCenter = locMap.getCenter();
+            LocationMap.center = mapCenter;
+            $('#member_location').animate({width:'100%'},500);
+            $('#member_location').addClass('editing');
+            $('#map_canvas'+map_index).animate({
+              width:'100%',
+              height:400
+            },750, function(){
+              google.maps.event.trigger(locMap, 'resize');
+              locMap.panTo(mapCenter);
+              $('#save_map_link').fadeIn();
+              $('#member_location p.help').blindRight();
+              locMap.setOptions({
+                zoomControl: true,
+                zoomControlOptions: {style:'LARGE'},
+                scrollwheel: true,
+                draggable: true,
+                disableDoubleClickZoom: false
+              });
             });
+          },
+          updateAddress: function(){
+            var url = '#{geocode_path}?lat_lng=' + LocationMap.center.lat() + ',' + LocationMap.center.lng();
+            $.get(url, function(data){
+              $('#member_city').val(data.city);
+              $('#member_country').val(data.country);
+            });
+          },
+          updateLatLng: function(latLng) {
+            LocationMap.center = latLng;
+            $('#member_lat').val(latLng.lat());
+            $('#member_lng').val(latLng.lng());
+          },
+          cancelEdit: function(map_index){
+            if(LocationMap.savedCenter != null){locMap.panTo(LocationMap.savedCenter);}
+            LocationMap.stopEdit(map_index);
+          },
+          save: function(map_index) {
+            $('#member_location form#edit_member_#{@member.id}').trigger('onsubmit');
+            $('#member_address').html(''+$('#member_city').val()+', '+$('#member_country').val());
+            LocationMap.savedCenter = locMap.getCenter();
+            LocationMap.stopEdit(map_index);
+          },
+          stopEdit: function(map_index) {
+            $('#edit_map'+map_index+'_link').html('Edit')
+            if (map_index == 0){map_index = '';}
+            locMap = eval('map'+map_index);
+            locMap.setOptions({
+              zoomControl: false,
+              scrollwheel: false,
+              draggable: false,
+              disableDoubleClickZoom: true
+            });
+            var mapCenter = locMap.getCenter();
+            $('#member_location p.help').hide();
+            $('#member_location').animate({width:'50%'},500);
+            $('#member_location').removeClass('editing');
+            $('#save_map_link').fadeOut();
+            $('#map_canvas'+map_index).animate({
+              width:300,
+              height:200
+            },750, function(){
+              google.maps.event.trigger(locMap, 'resize');
+              locMap.panTo(mapCenter);
+              if(LocationMap.savedCenter == null){$('#map_canvas'+map_index).hide();}
+            });
+          }
+        };
+
+  -content_for(:head) do
+    :javascript
+      var MemberShouts = {
+
+        getShouts: function(filter) {
+          $('#filter_loader').show();
+          $.ajax({
+            url: '#{member_path(@member)}',
+            data: {
+              filter: filter,
+              wants: 'shouts'
+            },
+            complete: function() {
+              $('#filter_loader').hide();
+            },
+            success: function(html) {
+              $('#shouts_container').html(html);
+              FancyboxLoader.loadAll();
+            }
           });
         },
-        updateAddress: function(){
-          var url = '#{geocode_path}?lat_lng=' + LocationMap.center.lat() + ',' + LocationMap.center.lng();
-          $.get(url, function(data){
-            $('#member_city').val(data.city);
-            $('#member_country').val(data.country);
-          });
+    
+        latest: function() {
+          $('.stories_filter li').removeClass('active');
+          $('#latest_shouts').addClass('active');
+          this.getShouts('latest');
+        }, 
+    
+        popular: function() {
+          $('.stories_filter li').removeClass('active');
+          $('#popular_shouts').addClass('active');
+          this.getShouts('popular');
         },
-        updateLatLng: function(latLng) {
-          LocationMap.center = latLng;
-          $('#member_lat').val(latLng.lat());
-          $('#member_lng').val(latLng.lng());
-        },
-        cancelEdit: function(map_index){
-          if(LocationMap.savedCenter != null){locMap.panTo(LocationMap.savedCenter);}
-          LocationMap.stopEdit(map_index);
-        },
-        save: function(map_index) {
-          $('#member_location form#edit_member_#{@member.id}').trigger('onsubmit');
-          $('#member_address').html(''+$('#member_city').val()+', '+$('#member_country').val());
-          LocationMap.savedCenter = locMap.getCenter();
-          LocationMap.stopEdit(map_index);
-        },
-        stopEdit: function(map_index) {
-          $('#edit_map'+map_index+'_link').html('Edit')
-          if (map_index == 0){map_index = '';}
-          locMap = eval('map'+map_index);
-          locMap.setOptions({
-            zoomControl: false,
-            scrollwheel: false,
-            draggable: false,
-            disableDoubleClickZoom: true
-          });
-          var mapCenter = locMap.getCenter();
-          $('#member_location p.help').hide();
-          $('#member_location').animate({width:'50%'},500);
-          $('#member_location').removeClass('editing');
-          $('#save_map_link').fadeOut();
-          $('#map_canvas'+map_index).animate({
-            width:300,
-            height:200
-          },750, function(){
-            google.maps.event.trigger(locMap, 'resize');
-            locMap.panTo(mapCenter);
-            if(LocationMap.savedCenter == null){$('#map_canvas'+map_index).hide();}
-          });
+      
+        received: function() {
+          $('.stories_filter li').removeClass('active');
+          $('#received_shouts').addClass('active');
+          this.getShouts('received');
+        }       
+    
+      };
+    
+      var TagShouts = {
+        latest: function() {/*dummy*/},
+        addProfilePhoto: function(id, html) {/*dummy*/
         }
       };
 
--content_for(:head) do
-  :javascript
-    var MemberShouts = {
-
-      getShouts: function(filter) {
-        $('#filter_loader').show();
-        $.ajax({
-          url: '#{member_path(@member)}',
-          data: {
-            filter: filter,
-            wants: 'shouts'
-          },
-          complete: function() {
-            $('#filter_loader').hide();
-          },
-          success: function(html) {
-            $('#shouts_container').html(html);
-            FancyboxLoader.loadAll();
-          }
-        });
-      },
-    
-      latest: function() {
-        $('.stories_filter li').removeClass('active');
-        $('#latest_shouts').addClass('active');
-        this.getShouts('latest');
-      }, 
-    
-      popular: function() {
-        $('.stories_filter li').removeClass('active');
-        $('#popular_shouts').addClass('active');
-        this.getShouts('popular');
-      },
-      
-      received: function() {
-        $('.stories_filter li').removeClass('active');
-        $('#received_shouts').addClass('active');
-        this.getShouts('received');
-      }       
-    
-    };
-    
-    var TagShouts = {
-      latest: function() {/*dummy*/},
-      addProfilePhoto: function(id, html) {/*dummy*/
-      }
-    };
-
--no_content_row
--title @member.full_name, :hidden => true
-.row
-  .twocol
-    .profile_photo.subrow
-      -if !@member.has_image? && @member.fb_connected?
-        =image_for(@member, '140x')
-      -else
-        =link_to_image("#{image_for(@member, '140x', :url_only => true)}:#{@member.image.try(:url)}", :image_options => {:alt => ""})
-      =fancybox_edit(@member, :image, :partial => "members/photo_form")
-    .friends_list.subrow
-      =render("members/friends", :member => @member)
-      -if logged_in_as?(@member)
-        =link_to("Invite friends", new_referral_path, :id => "invite_friends_link")
-  .eightcol
-    .profile_info.subrow
-      %h1.profile_title
-        =@member.full_name
-      =render("subscriptions/link", :attachable => @member)
-    -if logged_in_as?(@member) || !(@member.what_i_bring.blank? || @member.what_i_bring == '...')
-      .what_i_bring.subrow
-        %strong I bring
-        %span{:id => "members_#{@member.id}_what_i_bring"}=@member.what_i_bring || "..."
-        =fancybox_edit(@member, :what_i_bring, :partial => "members/what_i_bring", :fancy => true)
-        -if !logged_in_as?(@member) && !@member.what_i_bring.blank? && @member.what_i_bring != '...'
-          .what_i_bring_like
-            =render_like_link_for(@member, :ajax_loader => "ajax_loader_arrows.gif", :disable_if_logged_out => true, :allow_unlike => false)
-            %span.likings_count{:id => "likings_count_#{unique_rating_string(@member)}", :class => "#{@member.been_liked? ? '' : 'no_ratings'}"}
-              =@member.likings_count_string
-    -if !@member.bio.blank? || allowed_to?(edit_member_proc(@member))
-      .bio.subrow
-        %span{:id => "members_#{@member.id}_bio"}=simple_format(strip_tags(@member.bio))
-        =fancybox_edit(@member, :bio, :label => "Bio", :link_text => (@member.bio.blank? ? "Click here to add your bio and work info": "Edit" ), :input_html => {:rows => 5}, :sf => true)
-    .services.subrow
-      %ul.lst
-        -if @member.fb_connected?
-          %li
-            =favicon("http://www.facebook.com")
-            =link_to("Facebook", @member.fb_profile_url, :target => "_blank")
-        -if @member.twitter_connected?
-          %li
-            =favicon("http://www.twitter.com")
-            =link_to("Twitter (@#{@member.twitter_username})", @member.twitter_profile_url, :target => "_blank")
-        -if !@member.linked_in_profile_url.blank?
-          %li
-            =favicon("http://www.linkedin.com")
-            =link_to("LinkedIn", @member.linked_in_profile_url, :target => "_blank")
-        -@member.urls.each do |url|
-          %li{:id => "url_#{url.id}"}
-            =image_tag(url.favicon)
-            =link_to_url(url.url, :class => url.host, :http => false)
-            =link_to_remote_if_allowed('x', {:url => url_proc(url), :method => :delete, :confirm => 'Are you sure you want to delete this url?'}, :class => "delete_link")
-            
-      -if @member == logged_in_member
-        =fancy_box :title => nil, :id => "url_box", :link => {:content => " + Add a service", :options => {:inline => true, :class => "new_link"}} do
-          =render('urls/add_service', :url_object => Url.new)
-      -elsif allowed_to?(edit_member_proc(@member))
-        =fancy_box :title => nil, :id => "url_box", :link => {:content => " + Add a service", :options => {:inline => true, :class => "new_link"}} do
-          %h3 Add a URL
-          =render('urls/form', :url_object => Url.new(:attachable => @member))      
-    #member_themes.themes_list.subrow
-      %h3.profile_title="About the real #{forename_or_me(@member)}"
-      -if @member.tags.empty?
-        -if logged_in_as?(@member)
-          %p You haven't added any tags yet so we've made some up.
-        %ul.lst{:id => "member_#{@member.id}_themes"}
-          -Tag::FUN_TAGS.random_elements(3).each do |tag_name|
-            %li
-              -link_to("##{tag_name.fully_underscore}_fancybox", :class => "fancy tag") do
-                %span=tag_name
-              =render("tags/fun_tag", :tag_name => tag_name)
-      -else
-        =render('themes/list', :tags => @member.tags, :list_id => "member_#{@member.id}_themes")
-      =fancybox_edit(@member, :tags_list, :partial => "members/themes_form", :link_text => (@member.tags.empty? && logged_in_as?(@member) ? "Click here to add your own" : "Edit"))
-        
-    .subrow
-      #member_location
-        %h3.profile_title Location:
-        -if allowed_to?(edit_member_proc(@member))
-          -semantic_remote_form_for @member do |form|        
-            %p#member_address=render_address(@member.location) unless @member.location.unknown?
-            -form.inputs :id => "member_address_inputs" do
-              =form.input :city, :label => false, :input_html => {:value => @member.location.unknown? ? 'Amsterdam' : nil}
-              =form.input :country, :label => false, :input_html => {:value => @member.location.unknown? ? 'Netherlands' : nil}
-            -location = @member.location.try(:unknown?) ? Location.new(:lat => 52.374551, :lng =>4.898529) : @member.location
-            %p.help{:style=>"display:none"}
-              Drag the map to set your location
-            =google_map(location, :width => 380, :height => 200, :other => "google.maps.event.addListener(map#{@map_index}, 'center_changed', function(){mapCenter=map#{@map_index}.getCenter();marker0.setPosition(mapCenter);LocationMap.updateLatLng(mapCenter);});google.maps.event.addListener(map#{@map_index}, 'dragend', function(){LocationMap.updateAddress();});google.maps.event.addListener(map#{@map_index}, 'zoom_changed', function(){LocationMap.updateAddress();});", :interactive => false, :style => "display:#{@member.has_lat_lng? ? 'block' : 'none'}")
-            =link_to_function("#{@member.location.unknown? ? 'Add your location' : 'Edit'}", "LocationMap.toggleEdit(#{@map_index})", :id => "edit_map#{@map_index}_link", :class => "edit_member_location_link")
-            =link_to_function("Update location", "LocationMap.save(#{@map_index})", :id => "save_map_link", :class => "bttn_l")
-            %div{:style => "display:none"}
-              =form.input :lat, :as => :hidden
-              =form.input :lng, :as => :hidden
-              =form.commit_button "Save"
+  -no_content_row
+  -title @member.full_name, :hidden => true
+  .row
+    .twocol
+      .profile_photo.subrow
+        -if !@member.has_image? && @member.fb_connected?
+          =image_for(@member, '140x')
         -else
-          %p=@member.location.try(:unknown?) ? 'Unknown' : render_address(@member.location)
-          =google_map(@member.location, :width => 380, :height => 200) unless @member.location.try(:unknown?)
-      #member_badges
-        -link_to(member_points_transfers_path(@member), :class => 'fancy points_link') do
-          %h3.profile_title="#{forename_or_you(@member, 'has', :capitalize => true)} #{pluralize(@member.points, 'club point')}"
-        -if !@member.rank_this_month.nil?
-          =link_to("<strong>#{@member.rank_this_month.ordinalize}</strong> in this month's leaderboard", leaderboard_path, :class => "leaderboard")
-          -if !@member.rank.nil?
-            %br
-            =link_to("<strong>#{@member.rank.ordinalize}</strong> in the all time leaderboard", all_time_leaderboard_path, :class => 'leaderboard')
-        -if !@member.badges.empty?
-          %h3#badges_title.profile_title="#{forename_or_you(@member, 'has', :capitalize => true)} #{pluralize(@member.badges.count, 'badge')}"
-          %ul.lst
-            -@member.badges.each do |badge|
-              %li
-                =link_to_box(image_for(badge, "60x60", :alt => ""), info_badge_path(badge), :title => "")
-                =link_to_box(badge, info_badge_path(badge), :title => "")
-  .twocol.last
-    #member_links
-.row
-  .twocol
-  .eightcol
-    =#render("shouts/form", :shout => @member.received_shouts.build)
-  .clear
-  .twocol.last
-.row
-  .twocol
-    -if !@member.shout_tags.empty?
-      .themes_list
-        %h3.profile_title="Themes"
+          =link_to_image("#{image_for(@member, '140x', :url_only => true)}:#{@member.image.try(:url)}", :image_options => {:alt => ""})
+        =fancybox_edit(@member, :image, :partial => "members/photo_form")
+      .friends_list.subrow
+        =render("members/friends", :member => @member)
+        -if logged_in_as?(@member)
+          =link_to("Invite friends", new_referral_path, :id => "invite_friends_link")
+    .eightcol
+      .profile_info.subrow
+        %h1.profile_title
+          =@member.full_name
+        =render("subscriptions/link", :attachable => @member)
+      -if logged_in_as?(@member) || !(@member.what_i_bring.blank? || @member.what_i_bring == '...')
+        .what_i_bring.subrow
+          %strong I bring
+          %span{:id => "members_#{@member.id}_what_i_bring"}=@member.what_i_bring || "..."
+          =fancybox_edit(@member, :what_i_bring, :partial => "members/what_i_bring", :fancy => true)
+          -if !logged_in_as?(@member) && !@member.what_i_bring.blank? && @member.what_i_bring != '...'
+            .what_i_bring_like
+              =render_like_link_for(@member, :ajax_loader => "ajax_loader_arrows.gif", :disable_if_logged_out => true, :allow_unlike => false)
+              %span.likings_count{:id => "likings_count_#{unique_rating_string(@member)}", :class => "#{@member.been_liked? ? '' : 'no_ratings'}"}
+                =@member.likings_count_string
+      -if !@member.bio.blank? || allowed_to?(edit_member_proc(@member))
+        .bio.subrow
+          %span{:id => "members_#{@member.id}_bio"}=simple_format(strip_tags(@member.bio))
+          =fancybox_edit(@member, :bio, :label => "Bio", :link_text => (@member.bio.blank? ? "Click here to add your bio and work info": "Edit" ), :input_html => {:rows => 5}, :sf => true)
+      .services.subrow
         %ul.lst
-          -@member.shout_tags.each do |tag|
-            =link_to_tag(tag)
-  #members_shouts.eightcol
-    #posts_header
-      %h3.profile_title.fl="#{forename_or_your(@member, :capitalize => true)} posts"
-      .fr.post_to_wall
-        -if logged_in_as?(@member)
-          =link_to_box("Post something", new_shout_path, :class => "bttn_l new_comment_link", :scrolling => false) 
-        -elsif logged_in? && !@member.no_wall_posts_from_others?
-          =link_to_box("Post something", new_shout_path(:shout => {:recipient_id => @member.id, :recipient_type => 'Member'}), :class => 'bttn_l new_comment_link', :scrolling => false)
-    .stories_filter 
-      =image_tag 'ajax_loader_squares.gif', :id => 'filter_loader', :style => "display:none"
-      Showing:
-      %ul
-        =li_with_active default_to_latest_shouts?, link_to_function('Latest', 'MemberShouts.latest()'), :id => 'latest_shouts'
-        =li_with_active false, link_to_function('Popular', 'MemberShouts.popular()'), :id => 'popular_shouts'
-        =li_with_active default_to_received_shouts?, link_to_function('From others', 'MemberShouts.received()'), :id => 'received_shouts'
-    #shouts_container
-      -if default_to_latest_shouts? 
-        -if @member.recipientless_shouts.empty?
-          =not_posted_yet_message(@member)
+          -if @member.fb_connected?
+            %li
+              =favicon("http://www.facebook.com")
+              =link_to("Facebook", @member.fb_profile_url, :target => "_blank")
+          -if @member.twitter_connected?
+            %li
+              =favicon("http://www.twitter.com")
+              =link_to("Twitter (@#{@member.twitter_username})", @member.twitter_profile_url, :target => "_blank")
+          -if !@member.linked_in_profile_url.blank?
+            %li
+              =favicon("http://www.linkedin.com")
+              =link_to("LinkedIn", @member.linked_in_profile_url, :target => "_blank")
+          -@member.urls.each do |url|
+            %li{:id => "url_#{url.id}"}
+              =image_tag(url.favicon)
+              =link_to_url(url.url, :class => url.host, :http => false)
+              =link_to_remote_if_allowed('x', {:url => url_proc(url), :method => :delete, :confirm => 'Are you sure you want to delete this url?'}, :class => "delete_link")
+            
+        -if @member == logged_in_member
+          =fancy_box :title => nil, :id => "url_box", :link => {:content => " + Add a service", :options => {:inline => true, :class => "new_link"}} do
+            =render('urls/add_service', :url_object => Url.new)
+        -elsif allowed_to?(edit_member_proc(@member))
+          =fancy_box :title => nil, :id => "url_box", :link => {:content => " + Add a service", :options => {:inline => true, :class => "new_link"}} do
+            %h3 Add a URL
+            =render('urls/form', :url_object => Url.new(:attachable => @member))      
+      #member_themes.themes_list.subrow
+        %h3.profile_title="About the real #{forename_or_me(@member)}"
+        -if @member.tags.empty?
+          -if logged_in_as?(@member)
+            %p You haven't added any tags yet so we've made some up.
+          %ul.lst{:id => "member_#{@member.id}_themes"}
+            -Tag::FUN_TAGS.random_elements(3).each do |tag_name|
+              %li
+                -link_to("##{tag_name.fully_underscore}_fancybox", :class => "fancy tag") do
+                  %span=tag_name
+                =render("tags/fun_tag", :tag_name => tag_name)
         -else
-          =render_shouts(@member.recipientless_shouts, :show_member => true, :parent => @member, :filter => 'latest')
-      -else
-        =render_shouts(@member.received_shouts, :show_member => true, :parent => @member, :filter => 'received')
-  .twocol.last
-.row
-  -options_panel do
-    =back_link
-    =link_if_allowed "Edit", edit_member_proc(@member)
-    =link_to_box_if_allowed "Award badge", unawarded_member_badges_proc(@member)
-    =link_to_box_if_allowed "Remove badge", awarded_member_badges_proc(@member)
-    =content_flag_link(@member, :text => "Report this member") unless logged_in_as?(@member)
-    =link_if_allowed 'Delete member', member_proc(@member), :method => :delete, :confirm => 'Are you sure you want to delete this member from the site? There is no undo!'
+          =render('themes/list', :tags => @member.tags, :list_id => "member_#{@member.id}_themes")
+        =fancybox_edit(@member, :tags_list, :partial => "members/themes_form", :link_text => (@member.tags.empty? && logged_in_as?(@member) ? "Click here to add your own" : "Edit"))
+        
+      .subrow
+        #member_location
+          %h3.profile_title Location:
+          -if allowed_to?(edit_member_proc(@member))
+            -semantic_remote_form_for @member do |form|        
+              %p#member_address=render_address(@member.location) unless @member.location.unknown?
+              -form.inputs :id => "member_address_inputs" do
+                =form.input :city, :label => false, :input_html => {:value => @member.location.unknown? ? 'Amsterdam' : nil}
+                =form.input :country, :label => false, :input_html => {:value => @member.location.unknown? ? 'Netherlands' : nil}
+              -location = @member.location.try(:unknown?) ? Location.new(:lat => 52.374551, :lng =>4.898529) : @member.location
+              %p.help{:style=>"display:none"}
+                Drag the map to set your location
+              =google_map(location, :width => 380, :height => 200, :other => "google.maps.event.addListener(map#{@map_index}, 'center_changed', function(){mapCenter=map#{@map_index}.getCenter();marker0.setPosition(mapCenter);LocationMap.updateLatLng(mapCenter);});google.maps.event.addListener(map#{@map_index}, 'dragend', function(){LocationMap.updateAddress();});google.maps.event.addListener(map#{@map_index}, 'zoom_changed', function(){LocationMap.updateAddress();});", :interactive => false, :style => "display:#{@member.has_lat_lng? ? 'block' : 'none'}")
+              =link_to_function("#{@member.location.unknown? ? 'Add your location' : 'Edit'}", "LocationMap.toggleEdit(#{@map_index})", :id => "edit_map#{@map_index}_link", :class => "edit_member_location_link")
+              =link_to_function("Update location", "LocationMap.save(#{@map_index})", :id => "save_map_link", :class => "bttn_l")
+              %div{:style => "display:none"}
+                =form.input :lat, :as => :hidden
+                =form.input :lng, :as => :hidden
+                =form.commit_button "Save"
+          -else
+            %p=@member.location.try(:unknown?) ? 'Unknown' : render_address(@member.location)
+            =google_map(@member.location, :width => 380, :height => 200) unless @member.location.try(:unknown?)
+        #member_badges
+          -link_to(member_points_transfers_path(@member), :class => 'fancy points_link') do
+            %h3.profile_title="#{forename_or_you(@member, 'has', :capitalize => true)} #{pluralize(@member.points, 'club point')}"
+          -if !@member.rank_this_month.nil?
+            =link_to("<strong>#{@member.rank_this_month.ordinalize}</strong> in this month's leaderboard", leaderboard_path, :class => "leaderboard")
+            -if !@member.rank.nil?
+              %br
+              =link_to("<strong>#{@member.rank.ordinalize}</strong> in the all time leaderboard", all_time_leaderboard_path, :class => 'leaderboard')
+          -if !@member.badges.empty?
+            %h3#badges_title.profile_title="#{forename_or_you(@member, 'has', :capitalize => true)} #{pluralize(@member.badges.count, 'badge')}"
+            %ul.lst
+              -@member.badges.each do |badge|
+                %li
+                  =link_to_box(image_for(badge, "60x60", :alt => ""), info_badge_path(badge), :title => "")
+                  =link_to_box(badge, info_badge_path(badge), :title => "")
+    .twocol.last
+      #member_links
+  .row
+    .twocol
+    .eightcol
+      =#render("shouts/form", :shout => @member.received_shouts.build)
+    .clear
+    .twocol.last
+  .row
+    .twocol
+      -if !@member.shout_tags.empty?
+        .themes_list
+          %h3.profile_title="Themes"
+          %ul.lst
+            -@member.shout_tags.each do |tag|
+              =link_to_tag(tag)
+    #members_shouts.eightcol
+      #posts_header
+        %h3.profile_title.fl="#{forename_or_your(@member, :capitalize => true)} posts"
+        .fr.post_to_wall
+          -if logged_in_as?(@member)
+            =link_to_box("Post something", new_shout_path, :class => "bttn_l new_comment_link", :scrolling => false) 
+          -elsif logged_in? && !@member.no_wall_posts_from_others?
+            =link_to_box("Post something", new_shout_path(:shout => {:recipient_id => @member.id, :recipient_type => 'Member'}), :class => 'bttn_l new_comment_link', :scrolling => false)
+      .stories_filter 
+        =image_tag 'ajax_loader_squares.gif', :id => 'filter_loader', :style => "display:none"
+        Showing:
+        %ul
+          =li_with_active default_to_latest_shouts?, link_to_function('Latest', 'MemberShouts.latest()'), :id => 'latest_shouts'
+          =li_with_active false, link_to_function('Popular', 'MemberShouts.popular()'), :id => 'popular_shouts'
+          =li_with_active default_to_received_shouts?, link_to_function('From others', 'MemberShouts.received()'), :id => 'received_shouts'
+      #shouts_container
+        -if default_to_latest_shouts? 
+          -if @member.recipientless_shouts.empty?
+            =not_posted_yet_message(@member)
+          -else
+            =render_shouts(@member.recipientless_shouts, :show_member => true, :parent => @member, :filter => 'latest')
+        -else
+          =render_shouts(@member.received_shouts, :show_member => true, :parent => @member, :filter => 'received')
+    .twocol.last
+  .row
+    .twelvecol
+      -options_panel do
+        =back_link
+        =link_if_allowed "Edit", edit_member_proc(@member)
+        =link_to_box_if_allowed "Award badge", unawarded_member_badges_proc(@member)
+        =link_to_box_if_allowed "Remove badge", awarded_member_badges_proc(@member)
+        =content_flag_link(@member, :text => "Report this member") unless logged_in_as?(@member)
+        =link_if_allowed 'Delete member', member_proc(@member), :method => :delete, :confirm => 'Are you sure you want to delete this member from the site? There is no undo!'
+        =render_ban_link(@member)

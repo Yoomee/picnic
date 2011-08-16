@@ -250,10 +250,7 @@ td, th {
 .options_panel a {
 	display: block;
 	padding: 3px 3px;
-	margin: 0 10px 0 0;
-
-
-	
+	margin: 0 10px 0 0;	
 	border-radius:2px;
 	-moz-border-radius:2px;
 	-webkit-border-radius:2px;		
