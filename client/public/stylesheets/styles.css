@@ -5130,10 +5130,15 @@ form.conference_session ul.facelist-selections li{
   border-top: 3px solid #E8E8E8;
   width: 80%
 }
+body.controller_pages #no_posts {
+  border: none;
+}
 .shout {
   width: 100%;
   margin-bottom: 15px;
-
+}
+body.controller_pages .shout {
+  width: 95%;
 }
 #edit_shout_form {
  height: 350px;
@@ -5222,7 +5227,9 @@ div.shout_text p {
   float: left;
   position: relative;
 }
-
+body.controller_pages .shout_recipient, body.controller_members .shout_recipient {
+  display:none;
+}
 .shout_attachable_icon {
 	display: block;
 	width: 55px;
@@ -8648,6 +8655,169 @@ table.front_covers td {
 table.front_covers * {
   vertical-align: middle;
 }
+
+/*========== Slideshow ==========*/
+
+.formtastic fieldset.slideshow_active_wrapper {
+  margin-bottom: 0;
+}
+.formtastic fieldset.slideshow_active_wrapper li.slideshow_active_label {
+  float: left;
+}
+.formtastic fieldset.slideshow_active_wrapper ol li {
+  float: left;
+  clear: none;
+  padding: 0;
+  margin: 0;
+}
+.formtastic fieldset.slideshow_active_wrapper ol li input {
+  margin-bottom: 0;
+}
+.formtastic fieldset.slideshow_active_wrapper ol li fieldset {
+  float: left;
+  clear: none;
+  padding: 0;
+  margin: 0;
+}
+.formtastic fieldset.slideshow_item_form {
+  float: left;
+  clear: both;
+  margin: 10px 0 0 0;
+  padding: 20px 0 0 0;
+  border-top: 1px solid white;
+  width: 100%;
+  position: relative;
+}
+.formtastic fieldset.slideshow_item_form ol.image_or_video {
+  float: left;
+  margin-right: 2%;
+  clear: none;
+  width: 33%;
+}
+.formtastic fieldset.slideshow_item_form ol.image_or_video input {
+  width: 95%;
+}
+.formtastic fieldset.slideshow_item_form li.ck_text {
+  float: left;
+  clear: none;
+  width: 65%;
+}
+.formtastic fieldset.slideshow_item_form .draggable_position {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+.formtastic fieldset.slideshow_item_form .draggable_position span {
+  float: right;
+  margin-right: 10px;
+  visibility: hidden;
+}
+.formtastic fieldset.slideshow_item_form .draggable_position img {
+  float: right;
+}
+.formtastic fieldset.slideshow_item_form .draggable_position:hover {
+  cursor: move;
+}
+.formtastic fieldset.slideshow_item_form .draggable_position:hover span {
+  visibility: visible;
+}
+.formtastic fieldset.slideshow_item_form .slideshow_item_errors {
+	color:#DA1C5A;
+}
+.formtastic fieldset.slideshow_item_form a.image_input_link,  .formtastic fieldset.slideshow_item_form a.video_input_link{
+  background: url(/images/camera_thumb.png) no-repeat transparent 50% 0%;
+  float: left;
+  margin-right: 30px;
+  width: 100px;
+  height: 15px;
+  padding-top: 75px;
+  text-align: center;
+  color: white;
+  margin-bottom: 10px;
+}
+.formtastic fieldset.slideshow_item_form a.video_input_link {
+  background: url(/images/video_thumb.png) no-repeat transparent 50% 15%;
+  margin: 0px;  
+}
+.formtastic fieldset.slideshow_item_form .delete_slide_link {
+  float: left;
+  clear: both;
+  width: 100%;
+  margin: 0;
+}
+.formtastic fieldset.slideshow_item_form .delete_slide_link a {
+  float: right;
+}
+.formtastic .add_slide_link {
+  width: 100%;
+  float: left;
+  clear: both;
+  margin-top: 10px;  
+  text-align: center;  
+}
+.formtastic .add_slide_link a {
+  padding: 5px 10px;
+  background-color: white;
+  color: #000;
+  font-size: 16px;
+}
+
+.slideshow {
+  width: 100%;
+  float: left;
+  clear: both;
+  background-color: #000;
+  color: #fff;
+  padding-top: 20px;
+}
+.slideshow .slideshow_cycle {
+  text-align: center;
+  height: 470px;
+  width: 100%;
+}
+.slideshow .slideshow_cycle .slideshow_slide {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+.slideshow .slideshow_cycle .slideshow_slide object {
+  display: inline;
+}
+.slideshow .slideshow_bottom {
+  margin: 20px;
+  padding-top: 10px;
+  border-top: 1px solid #fff;
+}
+.slideshow .slideshow_bottom .slideshow_item_text {
+  width: 90%;
+  min-height: 50px;  
+  float: left;
+}
+.slideshow .slideshow_bottom .slideshow_item_text span {
+  display:none;
+}
+.slideshow .slideshow_bottom .slideshow_nav {
+  width: 10%;
+  float: right;
+}
+.slideshow .slideshow_nav .slideshow_prev, .slideshow .slideshow_nav .slideshow_next {
+  float: right;
+  padding: 1px 8px;
+  background-color: white;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+}
+.slideshow .slideshow_nav .slideshow_prev {
+  margin-right: 5px;
+}
+
+#slideshow_row {
+  margin-bottom: 20px;
+}
+
 
 @media handheld, only screen and (max-width: 500px) {
 	

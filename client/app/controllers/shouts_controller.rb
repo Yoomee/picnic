@@ -36,7 +36,9 @@ ShoutsController.class_eval do
   
   def new
     attributes = (params[:shout] || {}).merge(:tag_list => params[:theme])
-    render :partial => "themes_form", :locals => {:shout => Shout.new(attributes)}
+    shout = Shout.new(attributes)
+    partial_name = shout.recipient.is_a?(Page) ? "shouts/form" : "shouts/themes_form"
+    render :partial => partial_name, :locals => {:shout => shout}
   end
   
   def remove
@@ -82,10 +84,13 @@ ShoutsController.class_eval do
   def deal_with_create
     render(:update) do |page|
       if @shout.save
-        if @shout.recipient
+        if @shout.recipient_type=="Member"
           # shouts = @shout.recipient.received_shouts
-          # page[:shouts_container].replace_html(render_shouts(shouts))
+          # page[:shouts_container].replace_html(render_shouts(shouts))          
           page << "MemberShouts.received();"
+        elsif !@shout.recipient_type.blank?
+          page << "RecipientShouts.url = '#{shouts_path(:parent_type => @shout.recipient_type, :parent_id => @shout.recipient_id)}';"
+          page << "RecipientShouts.latest();"
         else
           # shouts = logged_in_member.shouts
           # page[:shouts_container].replace_html(render_shouts(shouts))
@@ -124,7 +129,6 @@ ShoutsController.class_eval do
   end
   
   def deal_with_themes
-    puts params.inspect
     @shout.tag_list = params[:facelist_values_themes]
     render :update do |page|
       if @shout.has_valid_tags?
