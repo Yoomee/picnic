@@ -5261,6 +5261,11 @@ body.controller_badges .badge_members {
   float:left;
 }
 
+.programme_list_link {
+  margin:5px 0px 0px 10px;
+  float:right;
+}
+
 .list_item_spacer {
   height: 40px;
   margin-bottom:0px;
