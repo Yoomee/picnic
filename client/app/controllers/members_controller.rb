@@ -64,6 +64,9 @@ MembersController.class_eval do
         render :text => @template.render_shouts(shouts, :parent => @member, :filter => @filter) + @template.javascript_tag(@template.refresh_fb_dom)
       end
     else
+      if @member.banned? && admin_logged_in?
+        flash.now[:notice] = "This member is currently banned"
+      end
       show_without_shout_filtering
     end
   end

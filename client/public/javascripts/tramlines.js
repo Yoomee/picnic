@@ -242,3 +242,40 @@ var Flipboard = {
   },
   touchStartOffset:null
 };
+
+var RecipientShouts = {
+  url: '',
+  getShouts: function(filter) {
+    $('#filter_loader').show();
+    $.ajax({
+      url: RecipientShouts.url,
+      data: {
+        filter: filter,
+        wants: 'shouts'
+      },
+      complete: function() {
+        $('#filter_loader').hide();
+      },
+      success: function(html) {
+        $('#shouts_container').html(html);
+        FancyboxLoader.loadAll();
+      }
+    });
+  },
+  latest: function() {
+    $('.stories_filter li').removeClass('active');
+    $('#latest_shouts').addClass('active');
+    this.getShouts('latest');
+  }, 
+  popular: function() {
+    $('.stories_filter li').removeClass('active');
+    $('#popular_shouts').addClass('active');
+    this.getShouts('popular');
+  },
+  received: function() {
+    $('.stories_filter li').removeClass('active');
+    $('#received_shouts').addClass('active');
+    this.getShouts('received');
+  }       
+
+};
