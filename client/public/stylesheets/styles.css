@@ -3161,6 +3161,11 @@ p.nextLink {
   width:100%;
 
 }
+
+.ninecol .item_inner {
+  min-height:300px;
+  height:300px;
+}
 #index_view .item_right {
   margin-right: 0px;
 
@@ -4278,6 +4283,11 @@ div.article_image {
 	border-bottom-color:#fff;
 }
 #page_right_col img{
+}
+
+.back_to_sponsors_link {
+  margin-bottom:10px;
+  float:left;
 }
 
 #pull_quote_large h3 {
