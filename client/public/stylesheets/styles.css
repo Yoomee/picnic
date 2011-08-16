@@ -4125,8 +4125,7 @@ span.share_link_count {
   margin-top: 10px;
   margin-right: 10px;
   text-align: center;
-  width: 100px;
-  height: 150px;
+  width: 130px;
 }
 #tag_member_grid_container #member_grid li {
   width: 49px;
@@ -4142,8 +4141,24 @@ span.share_link_count {
   margin-right: 0;
 }
 #member_grid .member_grid_info {
-  height: 40px;
+  height: 36px;
   overflow: hidden;
+  line-height: 10px;
+  padding-top: 0px;
+}
+
+#member_grid .member_grid_info a {
+  overflow:hidden;
+  font-weight:bold;
+  color:#000;
+  white-space:nowrap;
+  width:100%;
+  float:left;
+  line-height:15px;
+}
+#member_grid .member_grid_info span {
+  font-size:11px;
+  color:#999;
 }
 #pull_quote_large_image {
 	background:none repeat scroll 0 0 #CCCCCC;
