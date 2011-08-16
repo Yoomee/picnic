@@ -5247,12 +5247,24 @@ body.controller_badges .badge_members {
   font-size:13px;
   background:#fff;
 }
-.list_col .last{
-  margin-bottom:0px;
-}
 .programme_list_item a.session_name{
   font-size: 16px;
   color:#000;
+}
+
+#attending_list, #speaking_list {
+  float:left;
+  background:#f2f2f2;
+}
+#attending_list .programme_list_item, #speaking_list .programme_list_item {
+  width:299px;
+  float:left;
+}
+
+.list_item_spacer {
+  height: 40px;
+  margin-bottom:0px;
+  border-color:#fff;
 }
 
 /*========== Session show ==========*/

@@ -198,10 +198,8 @@
             =hour
           .elevencol.list_col.last
             -sessions.each do |session|
-              .programme_list_item{:style => "border-left-color:#{session.color};display:none", :class => "day#{@conference.day(session.starts_at)} venue#{session.venue.id} #{'last' if session == sessions.last}", :id => "conference_session_#{session.id}"}
-                =link_to_self(session, :class => "session_name")
-                %br
-                ="#{session.time_string}, #{session.venue}"
+              =render('programmes/list_item', :session => session, :show_day => false, :hidden => true)
+
   .row
     .twelvecol
     -options_panel do

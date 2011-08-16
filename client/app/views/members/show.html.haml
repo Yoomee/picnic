@@ -201,18 +201,22 @@
           =render('urls/form', :url_object => Url.new(:attachable => @member))      
     -if @member.has_badge?(:picnic11_speaker) && !@member.conference_sessions_speaking_at.blank?
       #speaking_at.subrow
-        %h3.profile_title="#{forename_or_you(@member)} is speaking at PICNIC Festival 2011"
-        %ul.conference_sessions_list
-          -@member.conference_sessions_speaking_at.each do |session|
-            %li.conference_sessions_list_item
-              .day{:style=>"background-color:#{session.color};color:#{complementary_color(session.color)}"}
-                DAY
-                %br
-                =session.conference_day
-              .right
-                =link_to_self(session, :class => "session_name")
-                ="#{session.venue}, #{session.time_string}"
-    
+        %h3.profile_title="#{forename_or_you(@member, "is", :capitalize => true)} speaking at PICNIC Festival 2011"
+        #speaking_list
+          -@member.conference_sessions_speaking_at.each_with_index do |session, idx|
+            =render("programmes/list_item", :session => session, :show_day => true, :hidden => idx > 5)
+          -if @member.conference_sessions_speaking_at.count.odd?
+            .programme_list_item.list_item_spacer{:style => "display:#{@member.conference_sessions_attending.count > 6 ? 'none' : 'block'}"}
+        =link_to_function("View more", "$('#speaking_list .programme_list_item').show(); $(this).remove()", :class => "fr") if @member.conference_sessions_speaking_at.count > 6
+    -if !@member.conference_sessions_attending.blank?
+      #attending.subrow
+        %h3.profile_title="#{forename_or_you(@member, "is", :capitalize => true)} attending PICNIC Festival 2011"
+        #attending_list
+          -@member.conference_sessions_attending.each_with_index do |session, idx|
+            =render("programmes/list_item", :session => session, :show_day => true, :hidden => idx > 5)
+          -if @member.conference_sessions_attending.count.odd?
+            .programme_list_item.list_item_spacer{:style => "display:#{@member.conference_sessions_attending.count > 6 ? 'none' : 'block'}"}
+        =link_to_function("View more", "$('#attending_list .programme_list_item').show(); $(this).remove()", :class => "fr") if @member.conference_sessions_attending.count > 6
     #member_themes.themes_list.subrow
       %h3.profile_title="About the real #{forename_or_me(@member)}"
       -if @member.tags.empty?
