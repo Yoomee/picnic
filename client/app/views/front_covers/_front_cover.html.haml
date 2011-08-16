@@ -152,15 +152,18 @@
     #supersize
       =image_tag @front_cover.image.url
 #front_cover
-  -link_to(@front_cover.main_story_link_url, :id => "main_story") do
-    -unless @front_cover.main_story_small_heading.blank?
-      .small_heading=@front_cover.main_story_small_heading.upcase
-    %h1=@front_cover.main_story_title
-    -unless @front_cover.main_story_subtitle.blank?
-      %h2=@front_cover.main_story_subtitle
-    =simple_format @front_cover.main_story_text
-    .bttn
-      =@front_cover.main_story_link_text.upcase
+  #front_cover_left
+    -link_to(@front_cover.main_story_link_url, :id => "main_story") do
+      -unless @front_cover.main_story_small_heading.blank?
+        .small_heading=@front_cover.main_story_small_heading.upcase
+      %h1=@front_cover.main_story_title
+      -unless @front_cover.main_story_subtitle.blank?
+        %h2=@front_cover.main_story_subtitle
+      =simple_format @front_cover.main_story_text
+      .bttn
+        =@front_cover.main_story_link_text.upcase
+    -link_to('/news', :id => "click_through") do
+      %h2 Click through to the website &rarr;
   #small_stories
     -(1..3).each do |n|
       -link_to(small_story_link_url(@front_cover, n), :class => "small_story") do

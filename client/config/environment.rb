@@ -20,7 +20,7 @@ class ClientEnvironment
       config.gem 'inflectious'
       config.gem 'acts_as_list'
       unless RAILS_ENV=='test'
-        config.gem 'factory_girl'
+        config.gem 'factory_girl', :version => '1.3.3'
         config.gem 'lorem'
         config.gem "mocha"
       end

@@ -1,22 +1,58 @@
--@page_title = @section.name
 -no_content_row
--unless @section.description.nil?
+-if @section.parent.slug == "sponsors"
+  -hidden_title @section.name
   .row
-    %p.section_description
-      =@section.description
-#index_view.row
-  -@pages_sections.each_with_col_name do |page_section, col_name|
-    .item.fourcol{:class => "item_#{col_name}"}
-      .item_border
-        .item_inner
-          %h3=link_to page_section, page_section
-          =link_to(photo_for(page_section, "330x180#"), page_section, :class => 'item_img')
-          %p=strip_tags description_for(page_section, :length => 140)
-          =link_to 'More', page_section, :class => 'newsbox_arrow'
-          %p.blog_like_news_date
-            =(page_section.is_a?(Page) ? page_section.publish_on : page_section.created_at).strftime("%e %B %Y") unless @section.slug == "premium-sponsors"
+    #header_left_col.threecol
+      #top_color_left.top_color{:style => "background:#C9DCDF"}
+      .page_header 
+        %p.stories_header
+          FESTIVAL
+          %strong PARTNERS
+      
+    #header_right_col.ninecol.last  
+      #top_color_right.top_color{:style => "background:#C9DCDF"}
+      .page_header
+        %h1#page_title=@section.name
+  -unless @section.description.nil?
+    .row
+      %p.section_description
+        =@section.description
+  #index_view.row
+    .threecol
+      #page_subnav
+        %ul.lst
+          -@section.parent.children.each do |section|
+            =li_with_active(viewing_page_or_section?(section), link_to_self(section))
+      =render("layouts/share_this")
+    .ninecol.last
+      -@pages_sections.each_with_col_name do |page_section, col_name|
+        .item.threecol{:class => "item_#{col_name}"}
+          .item_border
+            .item_inner
+              %h3=link_to page_section, page_section
+              =link_to(photo_for(page_section, "330x180#"), page_section, :class => 'item_img')
+              %p=strip_tags description_for(page_section, :length => 140)
+              =link_to 'More', page_section, :class => 'newsbox_arrow'
+              %p.blog_like_news_date
+-else
+  -@page_title = @section.name
+  -unless @section.description.nil?
+    .row
+      %p.section_description
+        =@section.description
+  #index_view.row
+    -@pages_sections.each_with_col_name do |page_section, col_name|
+      .item.fourcol{:class => "item_#{col_name}"}
+        .item_border
+          .item_inner
+            %h3=link_to page_section, page_section
+            =link_to(photo_for(page_section, "330x180#"), page_section, :class => 'item_img')
+            %p=strip_tags description_for(page_section, :length => 140)
+            =link_to 'More', page_section, :class => 'newsbox_arrow'
+            %p.blog_like_news_date
+              =(page_section.is_a?(Page) ? page_section.publish_on : page_section.created_at).strftime("%e %B %Y") unless @section.slug == "premium-sponsors"
 
--if @section.slug == "premium-sponsors"
+-if false && @section.slug == "premium-sponsors"
   -@section.parent.children.id_is_not(@section.id).not_hidden.each do |section|
     .row
       %h1=section

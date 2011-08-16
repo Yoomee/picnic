@@ -24,10 +24,6 @@ module ClientHelper
     end
   end
   
-  def conference_session_time(session)
-    start = session.starts_at.strftime("%H:%M")
-    session.ends_at.blank? ? start : "#{start} - #{session.ends_at.strftime("%H:%M")}"
-  end
   
   def fancybox_edit(object, input, options ={})
     options.reverse_merge!(:link_text => "Edit")

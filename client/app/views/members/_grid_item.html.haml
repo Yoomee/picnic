@@ -1,5 +1,5 @@
 %li{:id => "grid_item_member_#{member.id}"}
-  =link_to(image_for(member, "100x100#"), member, :class => 'member_grid_image')
+  =link_to(image_for(member, "100x100#", :width => 100, :height => 100), member, :class => 'member_grid_image')
   .member_grid_info
     =link_to_self(member)
     =member.job_title if team
