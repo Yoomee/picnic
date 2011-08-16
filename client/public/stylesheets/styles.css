@@ -5259,6 +5259,11 @@ body.controller_badges .badge_members {
 #attending_list .programme_list_item, #speaking_list .programme_list_item {
   width:299px;
   float:left;
+  overflow:hidden;
+}
+
+#attending_list .programme_list_item a.session_name, #attending_list .programme_list_item a.session_name{
+  white-space:nowrap;
 }
 
 .programme_list_link {
