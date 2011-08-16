@@ -87,7 +87,7 @@
             =li_with_active false, link_to_function('Popular', 'RecipientShouts.popular()'), :id => 'popular_shouts'
         #shouts_container
           -if @page.shouts.empty?
-            =not_recieved_yet_message(@page)
+            =not_received_yet_message(@page)
           -else
             =render_shouts(@page)
   %span
