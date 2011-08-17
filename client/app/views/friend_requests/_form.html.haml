@@ -6,6 +6,6 @@
   -semantic_remote_form_for(friend_request) do |form|
     -form.inputs do
       =form.input :member_id_target, :as => :hidden
-      =form.input :message, :label => false, :input_html => {:cols => 10, :rows => 5, :class => "labelify", :title => "Add an option message here"}
+      =form.input :message, :label => false, :input_html => {:cols => 10, :rows => 5, :class => "labelify", :title => "Add an optional message here"}
     -form.buttons do
       =form.commit_button "Send"
