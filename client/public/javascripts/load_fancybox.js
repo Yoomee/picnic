@@ -18,11 +18,11 @@
 
 var FancyboxLoader = {
   loadAll: function() {
-    
+    var iOS = navigator.userAgent.match(/like Mac OS X/i) != null;
     $('a.fancy-img').fancybox({
       'hideOnOverlayClick': false,
       type: 'image',
-      'centerOnScroll': true
+      'centerOnScroll': !iOS
     });
     
     $(".gallery a").fancybox();
@@ -30,7 +30,7 @@ var FancyboxLoader = {
     $('a.fancy').fancybox({
       'hideOnOverlayClick': false,
       'autoScale': false,
-      'centerOnScroll': true
+      'centerOnScroll': !iOS
     });
     
     $('a.fancy-video').fancybox({
@@ -39,13 +39,13 @@ var FancyboxLoader = {
       'autoDimensions': false,
       'width': 600,
       'height': 400,
-      'centerOnScroll': true      
+      'centerOnScroll': !iOS     
     });
     
     $("a.iframe").fancybox({
       'frameWidth': 800,
       'frameHeight': 600,
-      'centerOnScroll': true      
+      'centerOnScroll': !iOS      
     });
   }
 };
