@@ -1642,7 +1642,9 @@ min-height:20px;
 	background: url(/images/buy_tickets.png) no-repeat 0px -2px;
 	z-index: 10;	
 }
-
+#buy_tickets.no_subnav {
+	top: -30px;
+}
 
 /* ====================  homepage  ===================== */
 div.big_message {

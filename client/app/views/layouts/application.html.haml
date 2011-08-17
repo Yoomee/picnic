@@ -92,7 +92,7 @@
       #main.content
         #main_container.container
           -unless @page.try(:slug_is?, :registration) || (logged_in? && logged_in_member.has_badge?(:picnic11_attendee))
-            =link_to_slug ("Buy Tickets", :registration, :id=>"buy_tickets")
+            =link_to_slug ("Buy Tickets", :registration, :id=>"buy_tickets", :class => "#{'no_subnav' if @no_subnav}")
           -unless hide_page_title?
             .row
               .twelvecol                
