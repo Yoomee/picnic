@@ -63,14 +63,6 @@
     $('#flipboard_wrapper').bind('touchend',function(e){
         Flipboard.startSlowScroll();
     });
-    if (#{!current_page?('/news')}){
-      if(navigator.platform == 'iPad' || navigator.platform == 'iPhone' || navigator.platform == 'iPod'){
-        setTimeout("window.scrollTo(0,617);",100);
-      } else {
-        $(window).scrollTop(617);
-      }
-    }
-
   });
 
 
