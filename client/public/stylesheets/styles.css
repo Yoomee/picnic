@@ -187,7 +187,7 @@ body #wrapper .no_padding {
 #header_right {
 	margin-top: 15px;
 	float: right;
-	width: 600px;
+	width: 523px;
 	position: relative;
 	
 }
@@ -637,7 +637,9 @@ ul.tabs_container li.active {
 	margin-bottom: -2px;
 	text-shadow: 0px -1px 0px #496b7b;
 	z-index: 13;
-
+}
+ul.tabs_container li#pages_slideshow_link a {
+ background-position: 12px -690px;
 }
 
 ul.tabs_container li#pages_details_link a, ul.tabs_container li#sections_details_link a {
@@ -1221,6 +1223,7 @@ div#top {
 	float: left;
 	width: 100%;
 	margin: 0 0 20px;
+
 }
 #subnav_container {
 	float: left;
@@ -1629,6 +1632,20 @@ min-height:20px;
 	min-height: 500px;
 }
 
+#buy_tickets {
+	display: block;
+	position: absolute;
+	top: -20px;
+	width: 160px;
+	height: 160px;
+	right: 0px;
+	text-indent: -9000em;
+	background: url(/images/buy_tickets.png) no-repeat 0px -2px;
+	z-index: 10;	
+}
+#buy_tickets.no_subnav {
+	top: -30px;
+}
 
 /* ====================  homepage  ===================== */
 div.big_message {
@@ -6171,6 +6188,8 @@ ul.facelist-selections li.facelist-selection-item {
 #bring_wrapper {
 	position: relative;
 	margin: 0 0 40px;
+		position: relative;
+	z-index: 20;
 
 }
 #bring_carousel {
@@ -6370,6 +6389,7 @@ div.connection_box {
 h2.connection_title {
 	margin-bottom: 10px;
 	font-size: 24px;
+
 	
 }
 
