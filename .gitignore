@@ -29,3 +29,5 @@
 .DS_Store
 .eyrc
 config.ru
+/vendor/plugins/tramlines_slideshows
+/vendor/plugins/tramlines_bannings

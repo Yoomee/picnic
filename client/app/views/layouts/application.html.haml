@@ -74,6 +74,16 @@
       -if (!action_name.in?(%w{edit new}) && !in_moderation? && !controller_name.in?(%w(admin front_covers search)) && !@front_cover) || current_page?("/register")
         -cache("flipboard", :time_to_live => 1.hour) do
           =render_flipboard
+        -if !current_slug?(:overview)
+          :javascript
+            $(document).ready(function() {
+              if(navigator.platform == 'iPad' || navigator.platform == 'iPhone' || navigator.platform == 'iPod'){
+                setTimeout("window.scrollTo(0,617);",100);
+              } else {
+                $(window).scrollTop(617);
+              }
+            });
+
       #header.container
         =render :partial => 'layouts/header'
       =yield(:under_header)

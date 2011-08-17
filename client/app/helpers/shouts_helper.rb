@@ -11,18 +11,6 @@ ShoutsHelper.module_eval do
   def default_to_received_shouts?
     !default_to_latest_shouts?
   end
-  
-  def not_posted_yet_message(member)
-    content_tag(:p, :id => 'no_posts') do
-      "#{forename_or_you(member, "hasn't", :capitalize => true)} posted anything yet"
-    end
-  end
-  
-  def not_received_yet_message(member)
-    content_tag(:p, :id => 'no_posts') do
-      "No-one has posted on #{forename_or_your(member)} profile yet"
-    end
-  end
 
   def older_shouts_link(name, url_options = {})
     out = link_to_remote(name, :url => older_shouts_link_url(url_options), :method => :get, :html => {:id => "older_shouts_link"}, :loading => "$('#older_shouts_link').hide();$('#older_shouts_loader').show()", :complete => "$('#older_shouts_link').show();$('#older_shouts_loader').hide()")

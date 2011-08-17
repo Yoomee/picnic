@@ -1,0 +1,4 @@
+.programme_list_item{:style => "border-left-color:#{session.color};display:#{hidden ? 'none' : 'block'}", :class => "day#{session.conference_day} venue#{session.venue.id}", :id => "conference_session_#{session.id}"}
+  =link_to_self(session, :class => "session_name")
+  %br
+  ="#{"Day #{session.conference_day}, " if show_day}#{session.time_string}, #{session.venue}"
