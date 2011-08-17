@@ -109,5 +109,10 @@ module ClientHelper
     controller_name=='club' || controller_name=='leaderboard' || controller_name=='members' || controller_name=="tags"
   end
   alias_method :in_club?, :viewing_club?
+
+  def viewing_stories?
+    current_root_section.nil? ? false : current_root_section.slug_is?(:stories)
+  end
+  alias_method :in_stories?, :viewing_stories?
   
 end
