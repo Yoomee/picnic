@@ -432,6 +432,7 @@ a.bttn_l:hover, .join_activity_link:hover {
 	padding:6px 8px;
 	float:left;
 	text-shadow: 0 1px 0 #fff;
+	cursor:pointer;
 	
 	-moz-border-radius:4px;
 	-webkit-border-radius:4px;
@@ -5300,14 +5301,10 @@ body.controller_badges .badge_members {
 }
 
 /*========== Session show ==========*/
-.controller_conference_sessions .call_to_action, .controller_conferences .call_to_action {
-  margin:0;
-  border:none;
-}
 
 .controller_conference_sessions ul.themes_list {
   float:left;
-  margin-left:10px;
+  margin-bottom:10px;
 }
 
 .controller_conference_sessions ul.themes_list li{
@@ -5316,15 +5313,74 @@ body.controller_badges .badge_members {
   margin-right: 10px;
 }
 
-dt {
+#session_image {
+  margin-bottom:20px;
+  float:left;
+  width:210px;
+}
+.controller_conference_sessions .datetime {
+  width:500px;
+  float:left;
+  font-size:16px;
+}
+.controller_conference_sessions #attend_link {
+  width:210px;
+  float:left;
+}
+.controller_conference_sessions #attend_link a{
+  float:right;
+  clear:both;
+  margin-bottom:3px;
+}
+.controller_conference_sessions dt {
   float:left;
   clear:both;
   font-weight:bold;
   margin-right:5px;
   width:60px;
 }
- dd {
+ .controller_conference_sessions dd {
   float:left;
+}
+
+.controller_conference_sessions .threecol h5 {
+  margin-bottom:0px;
+}
+
+.speaker_list_item {
+  float:left;
+  clear:both;
+  margin-bottom:5px;
+  padding-top:5px;
+  border-top: 1px solid #f5f5f5;
+
+}
+
+.speaker_list_item img{
+  float:left;
+  width:50px;
+  height:50px;
+  margin-right:5px;
+}
+
+.speaker_list_item .right{
+  float:right;  
+  width:170px;
+  padding-top:5px;
+  font-size:13px;
+  line-height: 16px;
+}
+
+.speaker_list_item .right a{  
+  overflow: hidden;
+  font-weight: bold;
+  color: black;
+  width: 100%;
+  float: left;
+}
+
+.speaker_list_item .right  span {
+  color:#999;
 }
 
 form.conference_session ul.facelist-selections{
@@ -5339,6 +5395,16 @@ form.conference_session ul.facelist-selections{
   border-radius: 4px;
   
   
+}
+
+#attendees_list a.attendee {
+  float:left;
+  width:50px;
+  height:50px;
+}
+#attendees_list img{
+  width:50px;
+  height:50px;
 }
 
 form.conference_session ul.facelist-selections input{

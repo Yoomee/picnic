@@ -12,8 +12,8 @@ class ConferenceSessionsController < ApplicationController
       @conference_session.attendees << logged_in_member  
       render :update do |page|
         page[:attend_link].replace(render("conference_sessions/attend_link", :session => @conference_session))
-        page[:attendees_list_title].show
-        page[:attendees_list].prepend(render("members/grid_item", :member => @logged_in_member, :team => false))
+        page[:attendees_list].prepend(link_to(image_for(@logged_in_member, "50x50#"), @logged_in_member, :title => @logged_in_member, :id => "attendee_#{@logged_in_member.id}", :class => "attendee"))
+        page[:no_one_attending].remove
         page << refresh_fb_dom
       end
     else
@@ -26,7 +26,7 @@ class ConferenceSessionsController < ApplicationController
       @conference_session.attendees.delete(logged_in_member)
       render :update do |page|
         page[:attend_link].replace(render("conference_sessions/attend_link", :session => @conference_session))
-        page << "$('#grid_item_member_#{logged_in_member.id}').fadeOut('slow', function(){$(this).remove();});"
+        page << "$('#attendee_#{logged_in_member.id}').fadeOut('slow', function(){$(this).remove();});"
       end
     else
       render :nothing => true

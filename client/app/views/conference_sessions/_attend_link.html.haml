@@ -1,7 +1,8 @@
 -if logged_in_member && !logged_in_member.speaking_at?(session)
   #attend_link
     -if logged_in_member.attending?(session)
-      %strong You are attending this session.
+      =link_to("View in my programme &rarr;", conference_programme_path(session.conference, :day => session.conference_day), :class => "bttn")
+      %br.clear
       =link_to_remote("I'm not going any more", :url => unattend_conference_session_path(session), :method => :delete)
     -else
       =link_to_remote("I'm going to this", :url => attend_conference_session_path(session), :html => {:class => "bttn_l"})

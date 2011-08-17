@@ -1,10 +1,41 @@
 -no_content_row
--title @conference_session
+-hidden_title @conference_session
 .row
-  .sevencol
-    %dl
-      %dt Day
+
+  #header_left_col.threecol
+    #top_color_left.top_color{:style => "background:#{@conference_session.color}"}
+    .page_header 
+      %p.stories_header
+        PICNIC
+        %strong SESSION
+        %br
+        =link_to("VIEW PROGRAM", conference_programme_path(@conference_session.conference), :id => "view_archive")
+
+    
+  #header_right_col.ninecol.last  
+    #top_color_right.top_color{:style => "background:#{@conference_session.color}"}
+    .page_header 
+      %h1#page_title=@conference_session
+.row
+      
+  .threecol
+    =image_for(@conference_session, '450x', :id => "session_image") if @conference_session.has_image?
+    =render('themes/list', :tags => @conference_session.tags, :list_id => "conference_session_#{@conference_session.id}_themes")
+    %br.clear
+    -if !@conference_session.speakers.blank?
+      %h5 Speakers
+      %ul.lst
+        -@conference_session.speakers.each do |speaker|
+          %li.speaker_list_item
+            =link_to(image_for(speaker, "60x60#"), speaker)
+            .right
+              =link_to_self(speaker)
+              %span=speaker.job_title
+  .ninecol.last
+    %dl.datetime
+      %dt Date
       %dd
+        Day
         =@conference_session.conference_day
         =bracket(@conference_session.starts_at.strftime("%A %e %B"))
       %dt Time
@@ -12,29 +43,21 @@
       -if @conference_session.venue
         %dt Venue
         %dd=link_to_self(@conference_session.venue)
-    %br.flcb
-    %br.flcb  
-    -if !@conference_session.tags.empty?
-      %h6.fl Themes
-      =render('themes/list', :tags => @conference_session.tags, :list_id => "conference_session_#{@conference_session.id}_themes")
-      %br.clear  
-    =simple_format(@conference_session.description)
-    -if !@conference_session.speakers.blank?
-      %h4 Speakers
-      =render("members/grid", :members => @conference_session.speakers)
-    %h4#attendees_list_title{:style => "display:#{@conference_session.attendees.blank? ? 'none' : 'block'}"}
-      Attendees
-    -if @conference_session.attendees.blank?
-      #member_grid
-        %ul.lst#attendees_list
-    -else
-      =render("members/grid", :members => @conference_session.attendees, :list_id => "attendees_list")
-    
-  .fivecol.last
-    .call_to_action
-      =link_to "View the #{@conference_session.conference} program", conference_programme_path(@conference_session.conference)
-    =image_for(@conference_session, '450x') if @conference_session.has_image?
     =render('conference_sessions/attend_link', :session => @conference_session)
+    %br.clear
+    =simple_format(@conference_session.description)
+    %hr
+    %h5#attendees_list_title
+      Attendees
+    #attendees_list
+      -if @conference_session.attendees.blank?
+        #no_one_attending
+          No one has said that they are attending yet.
+          =link_to_remote("Be the first!", :url => attend_conference_session_path(session))
+      -else
+        -@conference_session.attendees.random.limit(42).each do |member|
+          =link_to(image_for(member, "50x50#"), member, :title => member, :id => "attendee_#{member.id}", :class => "attendee")
+    
 .row
   .twelvecol
     -options_panel do
