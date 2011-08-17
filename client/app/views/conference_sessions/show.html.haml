@@ -53,7 +53,7 @@
       -if @conference_session.attendees.blank?
         #no_one_attending
           No one has said that they are attending yet.
-          =link_to_remote("Be the first!", :url => attend_conference_session_path(session))
+          =link_to_remote("Be the first!", :url => attend_conference_session_path(session)) if logged_in?
       -else
         -@conference_session.attendees.random.limit(42).each do |member|
           =link_to(image_for(member, "50x50#"), member, :title => member, :id => "attendee_#{member.id}", :class => "attendee")
