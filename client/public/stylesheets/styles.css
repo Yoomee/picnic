@@ -636,7 +636,9 @@ ul.tabs_container li.active {
 	margin-bottom: -2px;
 	text-shadow: 0px -1px 0px #496b7b;
 	z-index: 13;
-
+}
+ul.tabs_container li#pages_slideshow_link a {
+ background-position: 12px -690px;
 }
 
 ul.tabs_container li#pages_details_link a, ul.tabs_container li#sections_details_link a {
