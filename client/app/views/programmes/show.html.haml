@@ -21,14 +21,28 @@
           }
          $(this).children('.session_hover').css('top',(e.pageY - sessPos.top) + 15);
       });
+      if(!(navigator.platform == 'iPad' || navigator.platform == 'iPhone' || navigator.platform == 'iPod')){
+        $('.programme_list_item').hover(
+          function(){$(this).children('.tags').addClass('hover');},
+          function(){$(this).children('.tags').removeClass('hover');
+        });
+      }
       Programme.initialise();
     });
     var Programme = {
       initialise: function(){
+        var dayMatch = document.location.hash.match(/\d/);
+        if(dayMatch)
+          Programme.day = parseInt(dayMatch[0]);
+        var venMatch = document.location.hash.match(/v(\d)/);
+        if(venMatch){
+          Programme.venue = parseInt(venMatch[1]);
+          $('#programme_venue_id').val(Programme.venue);
+        }
         Programme.setAttending();
-        if (#{params[:me] ? true : false}){
+        if (document.location.hash.match(/me/)){
           Programme.showMyProgramme();
-        } else if($(window).width() < 768){
+        } else if(document.location.hash.match(/lst/) || ($(window).width() < 768)){
           Programme.showList();
         } else {
           Programme.showCalendar();
@@ -44,9 +58,10 @@
           });
         }
       },
-      showingAttending: false,
+      showingMe: false,
+      showingList: false,
       venue: 0,
-      day: #{@conference.day(@date)},
+      day: 1,
       days: [#{@conference.days.collect{|d|d.strftime("\'%A %e %B\'")}.join(',')}],
       scroll: function(right) {
         var newLeft = (right ? Programme.left - 160 : Programme.left + 160)
@@ -64,34 +79,48 @@
       minLeft: #{(@venues.size - 5)*-160},
       goToDay: function(day) {
         if ((day > 0) && (day < #{@conference.days.count + 1}) && (day != Programme.day) ) {
-          $('#timetable_day_'+Programme.day).hide();
-          $('.venue_cols').css('left',0);
-          $('#timetable_day_'+day).show();
-          
-          $('#prog_header_right .active').removeClass('active');
-          $('#day_link_' + day).addClass('active');
-          $('#date_' + day).addClass('active');
-          
           Programme.showDay(day);
-          Programme.day = day;
         }
+      },
+      setHash: function(){
+        var hash = '';
+        if(Programme.showingList){
+          hash = 'lst' + Programme.day; 
+        } else if (Programme.showingMe){
+          hash = 'me' + Programme.day; 
+        } else {
+          hash = Programme.day; 
+        }
+        if(Programme.venue != 0)
+          hash = hash + 'v' + Programme.venue;
+        document.location.hash = hash;
+        setWaypoint();
       },
       showDay: function(day){
         if(day == null)
           day = Programme.day;
+        
+        $('#timetable_day_'+Programme.day).hide();
+        $('.venue_cols').css('left',0);
+        $('#timetable_day_'+day).show();
+        $('#prog_header_right .active').removeClass('active');
+        $('#day_link_' + day).addClass('active');
+        $('#date_' + day).addClass('active');
+        
         $('.programme_list_item').hide();
         var selector = '.programme_list_item.day'+day;
-        if (Programme.showingAttending)
+        if (Programme.showingMe)
           selector = selector + '.attending';
         if (Programme.venue != 0)
           selector = selector + '.venue' + Programme.venue;
-        console.log(selector);
         $(selector).show();
         $('#programme_list .row').show();
         $('#programme_list .row:not(:has(.programme_list_item:visible))').hide();
-        if(Programme.showingAttending && !$('#programme_list .row:has(.programme_list_item:visible)').length){
+        if(Programme.showingMe && !$('#programme_list .row:has(.programme_list_item:visible)').length){
           $('#not_attending').show();
         }
+        Programme.day = day;
+        Programme.setHash();
       },
       showCalendar: function(){
         $('.prog_filter').removeClass('active');
@@ -99,7 +128,10 @@
         $('#programme_list').hide();
         $('#programme_calendar').show();
         $('#programme_venue_selector').hide();
-        Programme.showingAttending = false;
+        Programme.venue = 0;
+        Programme.showingMe = false;
+        Programme.showingList = false;
+        document.location.hash = Programme.day;
       },
       showList: function(){
         $('.prog_filter').removeClass('active');
@@ -107,9 +139,8 @@
         $('#programme_calendar').hide();
         $('#programme_list').show();
         $('#programme_venue_selector').show();
-        Programme.venue = 0;
-        $('#programme_venue_id').val(0);
-        Programme.showingAttending = false;
+        Programme.showingMe = false;
+        Programme.showingList = true;
         Programme.showDay();
       },
       showMyProgramme: function(){
@@ -118,7 +149,9 @@
         $('#programme_calendar').hide();
         $('#programme_list').show();
         $('#programme_venue_selector').hide();
-        Programme.showingAttending = true;
+        Programme.venue = 0;
+        Programme.showingMe = true;
+        Programme.showingList = false;
         Programme.venue = 0;
         Programme.showDay();
       },
@@ -183,6 +216,11 @@
                               .speakers
                                 -session.speakers.each do |speaker|
                                   =image_for(speaker, "52x52#")
+                          -if !session.tags.empty?
+                            .footer
+                              -session.tags.first(3).each do |tag|
+                                %span.tag{:style => "background:#{tag.color || '#ccc'}"}=tag
+                            
                     .col_title.bottom=venue
     .row
       .twelvecol#programme_venue_selector
