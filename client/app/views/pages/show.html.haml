@@ -20,86 +20,96 @@
           Amsterdam
         -else
           =left_hand_subtitle(@page)
-      
+    
   #header_right_col.ninecol.last  
     #top_color_right.top_color{:style => "background:#{@page.color}"}
     .page_header
       %h1#page_title=@page.title
       -if !@page.published?
         %p#page_status=@page.status_string
-  -if @page.has_slideshow?
-    #slideshow_row.twelvecol.last
-      =render_slideshow(@page.slideshow)
-  #page_left_col.threecol
-    -unless @page.tags.empty?
-      #page_tags
-        =render('themes/list', :tags => @page.tags, :list_id => "page_#{@page.id}_themes")
-    -if @page.section != Section.find_by_slug("news")
-      #page_subnav
-        -if @page.section.try(:parent).try(:slug) == "sponsors"
-          %ul.lst
-            -@page.section.parent.children.each do |section|
-              =li_with_active(viewing_page_or_section?(section), link_to_self(section))
+  -if @page.slug_is?(:swag) && !(admin_logged_in? || (logged_in? && logged_in_member.has_badge?(:picnic11_attendee)))
+    #page_left_col.threecol
+    #page_right_col.sixcol
+      .register_box
+        %p Sorry, the swag is only available to Festival attendees.
+        -if logged_in?
+          %p=link_to('Click here to go to the registration page and book your tickets', 'http://www.eventpartners04.nl/picnic', :target => '_blank')
         -else
-          =render("pages/subnav", :page => @page)
-    =render("layouts/share_this", :color => @page.color)
-    =render("layouts/newsletter_signup")
-  #page_right_col.sixcol
-    =link_to("&larr; All #{@page.section}", @page.section, :class => "back_to_sponsors_link") if @page.section.try(:parent).try(:slug) == "sponsors"
-    -unless @page.intro.blank?
-      %h2#page_intro
-        =@page.intro
-  -if @page.slug_in?(%w{the_team advisors correspondents picnic11_speakers contributors})
-    #main_page_content.ninecol.last
-      =render('pages/content', :page => @page)
-      =render_slug(@page.slug)
-      =snippet(@page, :call_to_action)
+          %p=link_to("Click here to signup", new_member_path)
   -else
-    -if !@page.has_slideshow?
-      #article_image.sevencol.last
-        -if @page.slug_in?(%w{location contact})
-          -location = @page.slug_is?(:contact) ? Location.picnic_hq : Location.picnic_festival
-          =google_map(location, :width => 420, :height => 300, :centre => location.lat_lng || [30,0], :zoom => 11, :disable_default_ui => false, :map_options => "mapTypeControl:false,zoomControl:true,streetViewControl:false")
-        -elsif @page.has_photo?
-          =photo_for(@page, '550x')
-        =snippet(@page, :photo_caption)
-    #main_page_content.sixcol
-      =render('pages/content', :page => @page)
-      -if @page.slug_is(:beta) && @enquiry
-        =render_form @enquiry
-      =render_slug(@page.slug) if @page.slug_is?(:press_room)
-      =snippet(@page, :call_to_action)
-    -if @page.has_snippet?(:pull_quote)
-      #pull_quote.threecol.last{:style => "background:#{@page.color};color:#{complementary_color(@page.color)}"}  
-        =snippet(@page, :pull_quote)
-    -if @page.root_slug_is?(:stories)
-      #page_shouts.ninecol.last
-        #posts_header
-          %h3.profile_title.fl Posts
-          .fr.post_to_wall
-            -if logged_in?
-              =link_to_box("Post something", new_shout_path(:shout => {:recipient_id => @page.id, :recipient_type => 'Page'}), :class => 'bttn_l new_comment_link', :scrolling => false)
-        .stories_filter 
-          =image_tag 'ajax_loader_squares.gif', :id => 'filter_loader', :style => "display:none"
-          Showing:
-          %ul
-            =li_with_active default_to_latest_shouts?, link_to_function('Latest', 'RecipientShouts.latest()'), :id => 'latest_shouts'
-            =li_with_active false, link_to_function('Popular', 'RecipientShouts.popular()'), :id => 'popular_shouts'
-        #shouts_container
-          -if @page.shouts.empty?
-            =not_received_yet_message(@page)
+    -if @page.has_slideshow?
+      #slideshow_row.twelvecol.last
+        =render_slideshow(@page.slideshow)
+    #page_left_col.threecol
+      -unless @page.tags.empty?
+        #page_tags
+          =render('themes/list', :tags => @page.tags, :list_id => "page_#{@page.id}_themes")
+      -if @page.section != Section.find_by_slug("news")
+        #page_subnav
+          -if @page.section.try(:parent).try(:slug) == "sponsors"
+            %ul.lst
+              -@page.section.parent.children.each do |section|
+                =li_with_active(viewing_page_or_section?(section), link_to_self(section))
           -else
-            =render_shouts(@page)
-  %span
-  -if false
-    -if !@page.slug_in?(%w{the_team advisors correspondents picnic11_speakers})
-      #page_right_col
-        =render "pages/right_col", :page => @page
-      -if @page.has_related_items?
-        #related_content.row
-          .twelvecol
-            %h2.title Related content
-          =render_related_items(@page, :limit => 6, :truncate_length => 150)
+            =render("pages/subnav", :page => @page)
+      =render("layouts/share_this", :color => @page.color)
+      =render("layouts/newsletter_signup")
+    #page_right_col.sixcol
+      =link_to("&larr; All #{@page.section}", @page.section, :class => "back_to_sponsors_link") if @page.section.try(:parent).try(:slug) == "sponsors"
+      -unless @page.intro.blank?
+        %h2#page_intro
+          =@page.intro
+    -if @page.slug_in?(%w{the_team advisors correspondents picnic11_speakers contributors})
+      #main_page_content.ninecol.last
+        =render('pages/content', :page => @page)
+        =render_slug(@page.slug)
+        =snippet(@page, :call_to_action)
+    -else
+      -if !@page.has_slideshow?
+        #article_image.sevencol.last
+          -if @page.slug_in?(%w{location contact})
+            -location = @page.slug_is?(:contact) ? Location.picnic_hq : Location.picnic_festival
+            =google_map(location, :width => 420, :height => 300, :centre => location.lat_lng || [30,0], :zoom => 11, :disable_default_ui => false, :map_options => "mapTypeControl:false,zoomControl:true,streetViewControl:false")
+          -elsif @page.has_photo?
+            =photo_for(@page, '550x')
+          =snippet(@page, :photo_caption)
+      #main_page_content.sixcol
+        =render('pages/content', :page => @page)
+        -if @page.slug_is(:beta) && @enquiry
+          =render_form @enquiry
+        =render_slug(@page.slug) if @page.slug_is?(:press_room)
+        =snippet(@page, :call_to_action)
+      -if @page.has_snippet?(:pull_quote)
+        #pull_quote.threecol.last{:style => "background:#{@page.color};color:#{complementary_color(@page.color)}"}  
+          =snippet(@page, :pull_quote)
+      -if @page.root_slug_is?(:stories)
+        #page_shouts.ninecol.last
+          #posts_header
+            %h3.profile_title.fl Posts
+            .fr.post_to_wall
+              -if logged_in?
+                =link_to_box("Post something", new_shout_path(:shout => {:recipient_id => @page.id, :recipient_type => 'Page'}), :class => 'bttn_l new_comment_link', :scrolling => false)
+          .stories_filter 
+            =image_tag 'ajax_loader_squares.gif', :id => 'filter_loader', :style => "display:none"
+            Showing:
+            %ul
+              =li_with_active default_to_latest_shouts?, link_to_function('Latest', 'RecipientShouts.latest()'), :id => 'latest_shouts'
+              =li_with_active false, link_to_function('Popular', 'RecipientShouts.popular()'), :id => 'popular_shouts'
+          #shouts_container
+            -if @page.shouts.empty?
+              =not_received_yet_message(@page)
+            -else
+              =render_shouts(@page)
+    %span
+    -if false
+      -if !@page.slug_in?(%w{the_team advisors correspondents picnic11_speakers})
+        #page_right_col
+          =render "pages/right_col", :page => @page
+        -if @page.has_related_items?
+          #related_content.row
+            .twelvecol
+              %h2.title Related content
+            =render_related_items(@page, :limit => 6, :truncate_length => 150)
 
 .row        
   -options_panel do
