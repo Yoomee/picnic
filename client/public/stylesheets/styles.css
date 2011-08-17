@@ -1223,6 +1223,7 @@ div#top {
 	float: left;
 	width: 100%;
 	margin: 0 0 20px;
+
 }
 #subnav_container {
 	float: left;
@@ -1629,6 +1630,18 @@ min-height:20px;
 #main_container {
 	margin-top: 30px;
 	min-height: 500px;
+}
+
+#buy_tickets {
+	display: block;
+	position: absolute;
+	top: -20px;
+	width: 160px;
+	height: 160px;
+	right: 0px;
+	text-indent: -9000em;
+	background: url(/images/buy_tickets.png) no-repeat 0px -2px;
+	z-index: 10;	
 }
 
 
@@ -6054,6 +6067,8 @@ ul.facelist-selections li.facelist-selection-item {
 #bring_wrapper {
 	position: relative;
 	margin: 0 0 40px;
+		position: relative;
+	z-index: 20;
 
 }
 #bring_carousel {
@@ -6253,6 +6268,7 @@ div.connection_box {
 h2.connection_title {
 	margin-bottom: 10px;
 	font-size: 24px;
+
 	
 }
 
