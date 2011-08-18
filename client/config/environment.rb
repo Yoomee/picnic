@@ -27,6 +27,7 @@ class ClientEnvironment
       config.gem "sqlite3"
       #config.cache_store = :mem_cache_store_with_delete_matched
       config.cache_store = :file_store, "#{RAILS_ROOT}/tmp/cache"
+      config.time_zone = "Amsterdam"
     end
     
   end
