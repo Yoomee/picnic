@@ -7117,10 +7117,12 @@ a.find_someone_photo {
 .find_someone_result .details p {
   color: #979797;
 }
+#latest_members_header {
+  float: left;
+}
 #all_members_link {
   float: right;
-  clear: both;
-  margin-top: 20px;
+  margin-top: 6px;
 }
 #latest_members_photos {
   float: left;

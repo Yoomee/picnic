@@ -1,6 +1,7 @@
 MembersController.class_eval do
   
   admin_only :admin
+  member_only :all
   open_actions :show, :index
 
   skip_before_filter :check_what_i_bring, :only => %w{update what_i_bring me}
