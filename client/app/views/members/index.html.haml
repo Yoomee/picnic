@@ -24,6 +24,7 @@
   #map_right_col.sevencol.last
     %h2 Latest members
     =google_map(@latest_members, :width => 646, :height => 460, :centre => [30, 0], :zoom => 2, :infoboxes => true)
+    =link_to("View all members", all_members_path, :id => "all_members_link", :class => "bttn")
     -if false
       #latest_members_photos
         -@latest_members.limit(9).each do |member|

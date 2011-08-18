@@ -7117,6 +7117,11 @@ a.find_someone_photo {
 .find_someone_result .details p {
   color: #979797;
 }
+#all_members_link {
+  float: right;
+  clear: both;
+  margin-top: 20px;
+}
 #latest_members_photos {
   float: left;
   width: 100%;
@@ -9321,6 +9326,21 @@ table.front_covers * {
   margin-bottom:20px;
 }
 
+/*========== Member Filter A-Z ==========*/
+
+#member_filter_a_z {
+  font-size: 14px;
+  margin-bottom: 20px;
+  padding-left: 10px;
+  color: #ddd;
+}
+#member_filter_a_z a {
+  margin: 0 5px;
+  font-weight: bold;
+}
+#member_filter_a_z a.active {
+  color: black;
+}
 
 @media handheld, only screen and (max-width: 500px) {
 	

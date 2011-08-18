@@ -34,7 +34,7 @@
               -elsif in_club?
                 =li_with_active(current_page?(club_path), link_to("Latest", club_path))
                 =li_with_active(controller_name == 'leaderboard', link_to("Leaderboard", leaderboard_path))
-                =li_with_active(current_page?(members_path), link_to("Members", members_path))
+                =li_with_active(current_page?(members_path) || current_page?(all_members_path), link_to("Members", members_path))
                 =li_with_active(current_page?(club_rules_path), link_to("House rules", club_rules_path))
                 -if logged_in?
                   =li_with_active(current_page?(connections_path), link_to("Connections", connections_path))

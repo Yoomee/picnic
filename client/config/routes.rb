@@ -8,7 +8,7 @@ ActionController::Routing::Routes.draw do |map|
     conf.resource :venues, :only => [:show, :new]
   end
   map.resources :front_covers, :member => {:activate => :post, :deactivate => :post}
-  map.resources :members, :only => [], :collection => {:admin => :get}
+  map.resources :members, :only => [], :collection => {:admin => :get, :all => :get}
   map.resources :shouts, :only => [], :member => {:remove => :delete, :restore => :put}
   map.resources :subscriptions, :only => [:create, :destroy, :index]
   map.resources :tags, :as => "themes", :collection => {:autocomplete => :get}, :member => {:people => :get}
