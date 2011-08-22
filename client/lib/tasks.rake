@@ -16,8 +16,8 @@ namespace :picnic do
 
     #Create Venues
     puts "Exporting venues."
-    Venue.all.each_with_index do |venue, idx|
-      db.execute2("INSERT INTO ZVENUE VALUES (#{venue.id},2,1,'#{venue}',#{idx})")
+    Venue.all.each do |venue|
+      db.execute2("INSERT INTO ZVENUE VALUES (#{venue.id},2,1,'#{venue}',#{venue.weight})")
     end
     #Create ConferenceSessions and Members
     inserted_speakers = []
@@ -39,11 +39,12 @@ namespace :picnic do
 end
 
 def quote_string(s)
+  return '' if s.blank?
   s.strip_tags.gsub(/\\/, '\&\&').gsub(/'/, "''")
 end
 
 def timestamp(time)
-  "%9.5f" % time.to_f
+  "%9.5f" % (time.to_f + 1.hour)
 end
 
 def hex_to_rgb(hexcolor)
