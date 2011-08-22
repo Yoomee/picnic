@@ -1635,12 +1635,12 @@ min-height:20px;
 #buy_tickets {
 	display: block;
 	position: absolute;
-	top: -20px;
-	width: 160px;
-	height: 160px;
-	right: 0px;
+	top: 0px;
+	width: 190px;
+	height: 190px;
+	right: 20px;
 	text-indent: -9000em;
-	background: url(/images/buy_tickets.png) no-repeat 0px -2px;
+	background: url(/images/buy_tickets_circle.png) no-repeat 0px -2px;
 	z-index: 10;	
 }
 #buy_tickets.no_subnav {
