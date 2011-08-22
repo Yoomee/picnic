@@ -29,6 +29,10 @@ Page.class_eval do
     tags.color_not_null.first.try(:color) || '#C9DCDF'
   end
   
+  def expires?
+    expires_on.try(:year) != 2035
+  end
+  
   def flip_partial
     if is_sponsor?
       "sponsor"

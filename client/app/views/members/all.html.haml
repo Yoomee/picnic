@@ -1,0 +1,17 @@
+-no_content_row
+-title "All members"
+
+.row
+  .twelvecol
+    #member_filter_a_z
+      -('A'..'Z').each do |letter|
+        =link_to_function(letter, "MemberFilterAZ.update_members({letter:'#{letter}'})", :id => "member_filter_#{letter}", :class => "#{params[:letter]==letter ? 'active' : ''}")
+        ="|" if letter != 'Z'
+      #member_filter_loader{:style => "display:none"}=image_tag("ajax_loader_squares.gif")
+.row
+  .twelvecol
+    #member_grid_container
+      =render("members/grid", :members => @members)
+.row
+  .twelvecol
+    =options_panel

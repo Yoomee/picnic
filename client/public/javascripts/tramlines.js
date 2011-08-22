@@ -279,3 +279,26 @@ var RecipientShouts = {
   }       
 
 };
+
+var MemberFilterAZ = {
+  finished_ajax: false,
+  show_loader: function() {
+    if (!MemberFilterAZ.finished_ajax) {
+      $('#member_filter_loader').fadeIn();
+    }
+  },
+  update_members: function(data) {
+    $('#member_filter_a_z a').removeClass('active');
+    $('#member_filter_' + data.letter).addClass('active');
+    MemberFilterAZ.finished_ajax = false;
+    setTimeout("MemberFilterAZ.show_loader();", 700);
+    $('#member_grid_container').animate({opacity:0}, 500, function() {
+      $('#member_grid_container').load('/members/all', data, function() {
+        FB.XFBML.parse();
+        MemberFilterAZ.finished_ajax = true;
+        $('#member_grid_container').animate({opacity:1}, 300);
+        $('#member_filter_loader').hide();
+      });      
+    });
+  }
+};

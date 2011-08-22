@@ -1,12 +1,25 @@
 MembersController.class_eval do
   
   admin_only :admin
+  member_only :all
   open_actions :show, :index
 
   skip_before_filter :check_what_i_bring, :only => %w{update what_i_bring me}
   skip_badge_announcement :what_i_bring
   
   member_only :what_i_bring
+
+  def all
+    params[:letter] ||= 'A'
+    @members = Member.ascend_by_surname.surname_begins_with(params[:letter])
+    if request.xhr?
+      if @members.empty?
+        return render(:text => "<p>No members found for '#{params[:letter]}'<p>")
+      else
+        return render(:partial => "members/grid", :locals => {:members => @members})
+      end
+    end
+  end
 
   def change_password_with_picnic
     @member.skip_what_i_bring_validation = true
@@ -24,7 +37,7 @@ MembersController.class_eval do
   end
   
   def index
-    @latest_members = Member.latest
+    @latest_members = Member.latest.with_lat_lng.limit(100)
     @find_someone_members = Member.with_what_i_bring.with_image.random.limit(4)
   end
 
