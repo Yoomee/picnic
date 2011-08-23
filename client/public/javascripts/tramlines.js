@@ -302,3 +302,21 @@ var MemberFilterAZ = {
     });
   }
 };
+
+var BuyTickets = {
+	animate: function(){
+		setTimeout("BuyTickets.showMessage(2)", 2000);
+	},
+	showMessage: function(message){
+		var other = (message == 1 ? 2 : 1);
+		$(".ticket_message_"+other).animate({opacity:"0"}, 500, function(){
+			$(".ticket_message_"+message).animate({opacity:"1"}, 500, function(){
+				setTimeout("BuyTickets.showMessage("+other+")", 2000);
+			});
+		});	
+	}
+};
+
+
+
+
