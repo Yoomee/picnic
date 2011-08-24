@@ -16,10 +16,8 @@ var ShareThis = {
   },
   interval: null,
   scrollTop: 0,
-  minTop: 405,
-  maxTop: null,
   checkScroll: function(){
-    if (Math.abs($(window).scrollTop() - ShareThis.scrollTop) < 15){
+    if (Math.abs($(window).scrollTop() - ShareThis.scrollTop) == 0){
       clearInterval(ShareThis.interval);
       ShareThis.interval = null;
       ShareThis.move();
@@ -30,10 +28,11 @@ var ShareThis = {
   move: function(){
     if ($('#share_this').length == 0)
       return nil;      
-    var top = $(window).scrollTop();
-    var maxTop = $('#footer').offset().top - 250;
-    if (top < ShareThis.minTop)
-      top = ShareThis.minTop;
+    var top = $(window).scrollTop() - $('#main').offset().top + 100;
+    var minTop = $('#page_subnav').outerHeight() + 170;
+    var maxTop = $('#footer').offset().top - $('#main').offset().top - 150;
+    if (top < minTop)
+      top = minTop;
     else if (top > maxTop)
       top = maxTop;
     $('#share_this').animate({'top':top}, 500, 'easeOutQuint');
