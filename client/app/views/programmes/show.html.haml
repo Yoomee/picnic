@@ -13,7 +13,6 @@
       $('.session').mousemove(function(e){
           var sessPos = $(this).offset();
           var colPos = $(this).parents('.venue_col').position().left + $(this).parents('.venue_cols').position().left;
-          console.log(colPos);
           if(colPos <= 480){
             $(this).children('.session_hover').css('left',(e.pageX - sessPos.left) + 15);
           } else {
@@ -101,7 +100,6 @@
           day = Programme.day;
         
         $('#timetable_day_'+Programme.day).hide();
-        $('.venue_cols').css('left',0);
         $('#timetable_day_'+day).show();
         $('#prog_header_right .active').removeClass('active');
         $('#day_link_' + day).addClass('active');
@@ -186,7 +184,7 @@
           .prog_arrow.prog_arrow_left
             =link_to_function("&larr;", "Programme.scroll(0)");
           .hours
-            -(9..19).each do |hour|
+            -(9..21).each do |hour|
               .hour="%d:00" % hour
           .prog_arrow.prog_arrow_left
             =link_to_function("&larr;", "Programme.scroll(0)");
@@ -202,8 +200,8 @@
                   .venue_col
                     .col_title.top=venue
                     -venue.sessions.on_date(day).each do |session|
-                      -height = (session.duration_in_hours * 100).round - 2
-                      -link_to(session, :class => "session #{'short' if session.duration < 0.17}", :style => "top:#{((session.starts_at_offset(9)*100).round)+40}px;height:#{height}px;background-color:#{session.color};color:#{complementary_color(session.color)}", "data-height" => height) do
+                      -height = (session.duration_in_hours * 100).round - 1
+                      -link_to(session, :class => "session #{'short' if session.duration < 0.17}", :style => "top:#{((session.starts_at_offset(9)*100).round)+40}px;height:#{height}px;background-color:#{session.color};color:#{complementary_color(session.color)}", "data-offset" => session.starts_at_offset(9)*100) do
                         .session_content
                           .title=session
                         .session_hover{:style=>"border-color:#{complementary_color(session.color)}"}

@@ -5083,7 +5083,7 @@ body.controller_badges .badge_members {
 
 #prog_wrapper {
   width:870px;
-  height:1180px;
+  height:1380px;
   float:left;
   position:relative;
   overflow:hidden;
@@ -5215,6 +5215,8 @@ body.controller_badges .badge_members {
 .timetable .session_content {
   float:left;
   padding:5px;
+  font-size:11px;
+  line-height:14px;
 }
 
 .timetable .short .session_content {
