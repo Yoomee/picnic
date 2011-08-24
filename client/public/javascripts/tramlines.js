@@ -7,7 +7,44 @@ $(document).ready(function() {
   $('a[href]').not("[href^='/']").not("[href^='mailto']").not("[href*='#{request.host.gsub(/www\./, '')}']").not("[href^='#']").not("[href^='javascript']").attr('target', '_blank').attr('onClick', "externalLink(this.href);return true;");
   if(navigator.platform == 'iPad' || navigator.platform == 'iPhone' || navigator.platform == 'iPod'){$("#header").css("position", "static");$('body').css('padding-top',0);
   };
+  ShareThis.init();
 });
+
+var ShareThis = {
+  init: function(){
+    $(document).scroll(function(){ShareThis.scrolled();});
+  },
+  interval: null,
+  scrollTop: 0,
+  minTop: 405,
+  maxTop: null,
+  checkScroll: function(){
+    if (Math.abs($(window).scrollTop() - ShareThis.scrollTop) < 15){
+      clearInterval(ShareThis.interval);
+      ShareThis.interval = null;
+      ShareThis.move();
+    } else {
+      ShareThis.scrollTop = $(window).scrollTop();
+    }
+  },
+  move: function(){
+    if ($('#share_this').length == 0)
+      return nil;      
+    var top = $(window).scrollTop();
+    var maxTop = $('#footer').offset().top - 250;
+    if (top < ShareThis.minTop)
+      top = ShareThis.minTop;
+    else if (top > maxTop)
+      top = maxTop;
+    $('#share_this').animate({'top':top}, 500, 'easeOutQuint');
+  },
+  scrolled: function(){
+    if(ShareThis.interval == null){
+      ShareThis.scrollTop = $(window).scrollTop();
+      ShareThis.interval = setInterval("ShareThis.checkScroll()", 100);
+    }
+  }
+};
 
 // Shout form javascript
 var ShoutForm = {
