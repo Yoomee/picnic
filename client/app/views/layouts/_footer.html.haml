@@ -1,6 +1,10 @@
+#footer_line.container
+  .row
 #footer.container
   .row
     #footer_sitemap.twelvecol.last
+    #picnic_section.sitemap_list.fourcol
+      =render("layouts/newsletter_signup")
     #picnic_section.sitemap_list.twocol
       %h3=link_to 'Festival', '#'
       %ul 
@@ -34,13 +38,13 @@
           =link_to_slug("Stay in touch", :stay_in_touch)
         %li
           =link_to_slug("Contact", :contact)
-    #footer_social_links.sitemap_list.sixcol.last
-      =link_to "Picnic on LinkedIn", "http://www.linkedin.com/groups?gid=150580", :class=>"linkedin socialmedia_link" , :target=>"blank"
-      =link_to "Picnic on Flickr", "http://www.flickr.com/photos/crossmediaweek", :class=>"flickr socialmedia_link", :target=>"blank"
-      =link_to "Picnic on Vimeo", "http://vimeo.com/picnic", :class=>"vimeo socialmedia_link", :target=>"blank"
-      =link_to "Picnic on Facebook", "http://www.facebook.com/pages/Amsterdam-Netherlands/PICNIC/52555521797", :class=>"facebook socialmedia_link", :target=>"blank"
+    #footer_social_links.sitemap_list.twocol.last
+      %h3 Keep in touch
       =link_to "Picnic on Twitter", "http://twitter.com/picnicfestival", :class=>"twitter socialmedia_link", :target=>"blank"
-      %h6.picnic_on Keep in touch with PICNIC
+      =link_to "Picnic on Facebook", "http://www.facebook.com/pages/Amsterdam-Netherlands/PICNIC/52555521797", :class=>"facebook socialmedia_link", :target=>"blank"
+      =link_to "Picnic on Vimeo", "http://vimeo.com/picnic", :class=>"vimeo socialmedia_link", :target=>"blank"
+      =link_to "Picnic on Flickr", "http://www.flickr.com/photos/crossmediaweek", :class=>"flickr socialmedia_link", :target=>"blank"
+      =link_to "Picnic on LinkedIn", "http://www.linkedin.com/groups?gid=150580", :class=>"linkedin socialmedia_link" , :target=>"blank"
 #iamsterdam.container
   .row          
     .twelvecol.last.no_padding
@@ -48,7 +52,9 @@
 #sponsors.container      
   .row      
     #premium_sponsors_title.twelvecol.last      
-      %p Premium Sponsors
+      %h6
+        PREMIUM
+        %strong SPONSORS
     #lottery_sponsor.sponsor.twocol
       =link_to_slug('Postcodeloterij', :npl)
       =#link_to 'Postcodeloterij', 'http://www.postcodeloterij.nl/', :target=>'blank'  
@@ -59,7 +65,8 @@
       =link_to_slug('Waag Society', :waag_society)  
     
     #sponsors_title.twelvecol.last      
-      %p Sponsors
+      %h6
+        %strong SPONSORS
     #upc_sponsor.sponsor.twocol
       =link_to_slug('UPC', :upc)
       =#link_to 'UPC', 'http://www.upc.nl/', :target=>'blank'

@@ -53,7 +53,6 @@
           -else
             =render("pages/subnav", :page => @page)
       =render("layouts/share_this", :color => @page.color)
-      =render("layouts/newsletter_signup")
     #page_right_col.sixcol
       =link_to("&larr; All #{@page.section}", @page.section, :class => "back_to_sponsors_link") if @page.section.try(:parent).try(:slug) == "sponsors"
       -unless @page.intro.blank?
