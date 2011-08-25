@@ -1648,6 +1648,10 @@ min-height:20px;
 	line-height: 100%;
 	font-size: 22px;
 }
+
+#buy_tickets.speaker_profile {
+  top:45px;
+}
 #buy_tickets:hover {
 	text-decoration: none;
 }

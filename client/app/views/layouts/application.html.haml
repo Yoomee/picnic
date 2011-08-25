@@ -95,7 +95,7 @@
       #main.content
         #main_container.container
           -unless @page.try(:slug_is?, :registration) || (logged_in? && logged_in_member.has_badge?(:picnic11_attendee)) || controller_name == "programmes"
-            -link_to_slug(:registration, :id=>"buy_tickets", :class => "#{'no_subnav' if @no_subnav}") do
+            -link_to_slug(:registration, :id=>"buy_tickets", :class => "#{'no_subnav' if @no_subnav}#{'speaker_profile' if @member.try(:has_badge?,:picnic11_speaker)}") do
               .ticket_message_1
                 Buy<br/>tickets<br/>now
               .ticket_message_2
