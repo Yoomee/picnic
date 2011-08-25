@@ -4138,6 +4138,9 @@ span.share_link_count {
 #page_left_col.with_slideshow{
   min-height: 600px;
 }
+#page_shouts {
+  float:right;
+}
 #page_tags {
 	float: left;
 	width: 100%;
