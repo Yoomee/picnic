@@ -7,7 +7,8 @@ $(document).ready(function() {
   $('a[href]').not("[href^='/']").not("[href^='mailto']").not("[href*='#{request.host.gsub(/www\./, '')}']").not("[href^='#']").not("[href^='javascript']").attr('target', '_blank').attr('onClick', "externalLink(this.href);return true;");
   if(navigator.platform == 'iPad' || navigator.platform == 'iPhone' || navigator.platform == 'iPod'){$("#header").css("position", "static");$('body').css('padding-top',0);
   };
-  ShareThis.init();
+  if ($('#share_this').length != 0)
+    ShareThis.init();
 });
 
 var ShareThis = {
@@ -28,8 +29,6 @@ var ShareThis = {
     }
   },
   move: function(animated){
-    if ($('#share_this').length == 0)
-      return nil;      
     var top = $(window).scrollTop() - $('#main').offset().top + 100;
     var minTop = $('#page_subnav').outerHeight() + 170;
     var maxTop = $('#footer').offset().top - $('#main').offset().top - 150;
