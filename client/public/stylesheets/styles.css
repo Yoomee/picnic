@@ -3211,6 +3211,7 @@ p.nextLink {
 }
 .item .newsbox_arrow {
 	right: 10px;
+	display: none;
 }
 #index_view .item_left {
   margin-left: 0px;
