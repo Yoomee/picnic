@@ -40,7 +40,7 @@
     -if @page.has_slideshow?
       #slideshow_row.twelvecol.last
         =render_slideshow(@page.slideshow)
-    #page_left_col.threecol
+    #page_left_col.threecol.with_slideshow
       -unless @page.tags.empty?
         #page_tags
           =render('themes/list', :tags => @page.tags, :list_id => "page_#{@page.id}_themes")
