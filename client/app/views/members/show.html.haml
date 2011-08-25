@@ -279,7 +279,8 @@
                   =link_to_box(image_for(badge, "60x60", :alt => ""), info_badge_path(badge), :title => "")
                   =link_to_box(badge, info_badge_path(badge), :title => "")
     .twocol.last
-      #member_links
+      #all_members_link
+        =link_to_slug("View all speakers", :picnic11_speakers, :class => 'bttn') if @member.has_badge?(:picnic11_speaker)
   .row
     .twocol
     .eightcol
