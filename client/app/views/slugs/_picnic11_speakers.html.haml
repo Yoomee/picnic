@@ -1,1 +1,18 @@
-=render("members/grid", :members => Member.with_badge(:picnic11_speaker).alphabetically, :list_id => "speakers_grid", :team => true)
+#speaker_tag_filters
+  %ul.lst
+    %li
+      %b Filter by theme
+      %li#speaker_tag_filter_all.speaker_tag_filter.active
+        =link_to_function(content_tag(:span, "All"), "SpeakerTagFilter.filter()", :class => "tag")
+      -Tag.for_members_with_badge(:picnic11_speaker).find(:all, :conditions => "tags.color IS NOT NULL", :order => "tags.name").each do |tag|
+        %li.speaker_tag_filter{:id => "speaker_tag_filter_#{tag.name.parameterize("_")}"}
+          =link_to_function(content_tag(:span, tag), "SpeakerTagFilter.filter('#{tag.name.parameterize("_")}')", :class => "tag", :style => "background:#{tag.color}")
+
+#member_grid.speaker_grid
+  %ul.lst
+    -Member.with_badge(:picnic11_speaker).alphabetically.each do |member|
+      %li{:id => "grid_item_member_#{member.id}", :class => member.tags.color_not_null.collect{|t|"tag_#{t.name.parameterize("_")}"}.join(' ')}
+        =link_to(image_for(member, "130x130#", :width => 130, :height => 130), member, :class => 'member_grid_image')
+        .member_grid_info
+          =link_to_self(member, :title => member)
+          =content_tag(:span, member.job_title)

@@ -12,6 +12,8 @@ $(document).ready(function() {
 
 var ShareThis = {
   init: function(){
+    $('#share_this').css('position', 'absolute');
+    ShareThis.move(false);
     $(document).scroll(function(){ShareThis.scrolled();});
   },
   interval: null,
@@ -20,12 +22,12 @@ var ShareThis = {
     if (Math.abs($(window).scrollTop() - ShareThis.scrollTop) == 0){
       clearInterval(ShareThis.interval);
       ShareThis.interval = null;
-      ShareThis.move();
+      ShareThis.move(true);
     } else {
       ShareThis.scrollTop = $(window).scrollTop();
     }
   },
-  move: function(){
+  move: function(animated){
     if ($('#share_this').length == 0)
       return nil;      
     var top = $(window).scrollTop() - $('#main').offset().top + 100;
@@ -35,7 +37,10 @@ var ShareThis = {
       top = minTop;
     else if (top > maxTop)
       top = maxTop;
-    $('#share_this').animate({'top':top}, 500, 'easeOutQuint');
+    if(animated)
+      $('#share_this').animate({'top':top}, 500, 'easeOutQuint');
+    else
+      $('#share_this').css('top',top);
   },
   scrolled: function(){
     if(ShareThis.interval == null){
@@ -351,6 +356,19 @@ var BuyTickets = {
 			});
 		});	
 	}
+};
+
+var SpeakerTagFilter = {
+  filter: function(tag){
+    if(tag == null || tag == ''){
+      $('#member_grid').css('border-color', $('#speaker_tag_filter_all .tag').css('background-color'));
+      $('.speaker_grid li').fadeIn();
+    } else {
+      $('#member_grid').css('border-color', $('#speaker_tag_filter_'+tag+' .tag').css('background-color'));
+      $('.speaker_grid li').fadeOut();
+      $('.speaker_grid .tag_'+tag).fadeIn();
+    }
+  }
 };
 
 
