@@ -40,8 +40,8 @@ Shout.class_eval do
     end
   end
   
-  def has_image?
-    attachable.try(:has_image?)
+  def has_image?(image_attr = 'image_uid')
+    attachable.try(:has_image?, image_attr)
   end
   
   def image
