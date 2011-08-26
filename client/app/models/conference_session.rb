@@ -12,6 +12,8 @@ class ConferenceSession < ActiveRecord::Base
   has_many :attendees, :through => :conference_sessions_members, :source => :member, :conditions => "conference_sessions_members.speaker = 0", :order => "TRIM(LEADING '\221t ' from TRIM(LEADING 'den ' from TRIM(LEADING 'der ' from TRIM(LEADING 'de ' from TRIM(LEADING 'van ' FROM members.surname))))), members.forename", :uniq => true
   
   before_create :duplicate_image
+  after_save :bump_program_version
+  after_destroy :bump_program_version  
   
   accepts_nested_attributes_for :conference_sessions_members, :allow_destroy => true
   
@@ -25,12 +27,30 @@ class ConferenceSession < ActiveRecord::Base
   
   attr_accessor :duplicate_of
 
+  def as_json(options = nil)
+    {
+      :conference_session => {
+        :id => id,
+        :name => name,
+        :text => description,
+        :day => conference_day,
+        :starts_at => "%9.5f" % starts_at.to_f,
+        :ends_at => "%9.5f" % ends_at.to_f,
+        :timestamp => "%9.5f" % created_at.to_f
+      }.merge(color_hash).as_json(options)
+    }
+  end
+  
   def conference_day
     conference.days.to_a.index(starts_at.to_date) + 1
   end
   
   def color
     tags.color_not_null.first.try(:color) || '#000000'
+  end
+  
+  def color_hash
+    Tag::color_hash(color)
   end
   
   def duration_in_hours
@@ -52,6 +72,10 @@ class ConferenceSession < ActiveRecord::Base
   end
   
   private
+  def bump_program_version
+    conference.bump_version!
+  end
+  
   def duplicate_image
     return true unless image_uid.blank? && original = ConferenceSession.find_by_id(duplicate_of)
     self.image_uid = original.image_uid

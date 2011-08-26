@@ -24,10 +24,10 @@ Member.class_eval do
   has_many :urls, :as => :attachable, :dependent => :destroy
   has_one :conference_delegate, :autosave => true, :dependent => :destroy
   
-  has_many :conference_sessions_members, :dependent => :destroy
-  has_many :conference_sessions, :through => :conference_sessions_members, :order => "conference_sessions.starts_at"
-  has_many :conference_sessions_speaking_at, :through => :conference_sessions_members, :source => :conference_session, :conditions => "conference_sessions_members.speaker = 1", :order => "conference_sessions.starts_at"
-  has_many :conference_sessions_attending, :through => :conference_sessions_members, :source => :conference_session, :conditions => "conference_sessions_members.speaker = 0", :order => "conference_sessions.starts_at"
+  has_many :conference_sessions_members, :dependent => :destroy, :uniq => true
+  has_many :conference_sessions, :through => :conference_sessions_members, :order => "conference_sessions.starts_at", :uniq => true
+  has_many :conference_sessions_speaking_at, :through => :conference_sessions_members, :source => :conference_session, :conditions => "conference_sessions_members.speaker = 1", :order => "conference_sessions.starts_at", :uniq => true
+  has_many :conference_sessions_attending, :through => :conference_sessions_members, :source => :conference_session, :conditions => "conference_sessions_members.speaker = 0", :order => "conference_sessions.starts_at", :uniq => true
   
 
   has_many :subscriptions, :dependent => :destroy
@@ -61,6 +61,24 @@ Member.class_eval do
     end
     
   end
+  
+  def as_json_with_api(options = nil)
+    if options[:api]
+      {
+        :member => {
+          :id => id,
+          :forename => forename,
+          :surname => surname,
+          :bio => bio,
+          :is_speaker => true,
+          :session_ids => conference_sessions_speaking_at_ids
+        }.as_json(options)
+      }
+    else
+      as_json_without_api(options)
+    end
+  end
+  alias_method_chain :as_json, :api
   
   def allowed_job_title?
     has_badge?(:picnic11_speaker) || has_badge?(:picnic11_team) || has_badge?(:picnic_advisor)

@@ -14,6 +14,20 @@ Tag.class_eval do
   
     named_scope :for_members_with_badge, lambda {|badge_ref| {:joins => :taggings, :conditions => ["taggings.taggable_type = 'Member' AND taggings.taggable_id IN (?)", Member.with_badge(badge_ref).collect(&:id)], :group => "tags.id"}}
   
+  class << self
+    
+    def color_hash(color)
+      hexcolor = color.sub(/#/,"")
+      arr = hexcolor.scan(/../).collect{|str| "%.2f" % (str.hex.to_f/255)}
+      {:color_r => arr[0], :color_b => arr[1], :color_g => arr[2]}
+    end
+    
+  end    
+    
+  def color_hash
+    self.class::color_hash(color || "#CCCCCC")
+  end
+  
   def official?
     !description.blank?
   end

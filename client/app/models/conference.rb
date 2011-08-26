@@ -8,6 +8,12 @@ class Conference < ActiveRecord::Base
   
   has_many :sessions, :class_name => "ConferenceSession"
   has_many :venues, :order => "venues.weight"
+
+  before_save :bump_version
+  
+  def bump_version!
+    self.increment!(:version)
+  end
   
   def day(date_or_time)
     days.index(date_or_time.to_date) + 1
@@ -18,6 +24,10 @@ class Conference < ActiveRecord::Base
   end
   
   private
+  def bump_version
+    self.increment(:version) unless changed.include?("version")
+  end
+  
   def end_is_on_or_after_start
     if ends_on < starts_on
       self.errors.add(:formatted_ends_on, "cannot be before the start date.")
