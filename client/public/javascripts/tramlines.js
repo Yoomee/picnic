@@ -31,7 +31,7 @@ var ShareThis = {
     }
   },
   move: function(animated){
-    var top = $(window).scrollTop() - $('#page_left_col').offset().top + 100;
+    var top = $(window).scrollTop() - $('.threecol').has('#share_this').offset().top + 100;
     var minTop = $('#page_subnav').outerHeight()+ 10;
     var maxTop = $('#footer').offset().top - $('#main').offset().top - 150;
     if (top < ShareThis.minTop)
