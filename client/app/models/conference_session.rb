@@ -8,8 +8,8 @@ class ConferenceSession < ActiveRecord::Base
   
   has_many :conference_sessions_members
   has_many :members, :through => :conference_sessions_members
-  has_many :speakers, :through => :conference_sessions_members, :source => :member,  :conditions => "conference_sessions_members.speaker = 1", :order => "TRIM(LEADING '\221t ' from TRIM(LEADING 'den ' from TRIM(LEADING 'der ' from TRIM(LEADING 'de ' from TRIM(LEADING 'van ' FROM members.surname))))), members.forename"
-  has_many :attendees, :through => :conference_sessions_members, :source => :member, :conditions => "conference_sessions_members.speaker = 0", :order => "TRIM(LEADING '\221t ' from TRIM(LEADING 'den ' from TRIM(LEADING 'der ' from TRIM(LEADING 'de ' from TRIM(LEADING 'van ' FROM members.surname))))), members.forename"
+  has_many :speakers, :through => :conference_sessions_members, :source => :member,  :conditions => "conference_sessions_members.speaker = 1", :order => "TRIM(LEADING '\221t ' from TRIM(LEADING 'den ' from TRIM(LEADING 'der ' from TRIM(LEADING 'de ' from TRIM(LEADING 'van ' FROM members.surname))))), members.forename", :uniq => true
+  has_many :attendees, :through => :conference_sessions_members, :source => :member, :conditions => "conference_sessions_members.speaker = 0", :order => "TRIM(LEADING '\221t ' from TRIM(LEADING 'den ' from TRIM(LEADING 'der ' from TRIM(LEADING 'de ' from TRIM(LEADING 'van ' FROM members.surname))))), members.forename", :uniq => true
   
   before_create :duplicate_image
   
