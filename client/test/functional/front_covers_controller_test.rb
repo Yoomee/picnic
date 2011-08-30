@@ -230,8 +230,7 @@ class FrontCoversControllerTest < ActionController::TestCase
       end
       
       before_should "initialize the front cover" do
-        Factory.expects(:build).with(:default_front_cover).returns @front_cover
-        #FrontCover.expects(:new).returns @front_cover
+        FrontCover.expects(:new).returns @front_cover
       end
       
       should assign_to(:front_cover).with {@front_cover}
