@@ -5,6 +5,7 @@ SessionsController.class_eval do
   
   def create
     if @logged_in_member
+      logger.info "Found member #{@logged_in_member}"
       if params[:signature]
         conference_delegate = ConferenceDelegate.find_by_signature(params[:signature])
         if conference_delegate && conference_delegate.member.nil? && !logged_in_member.conference_delegate.nil?
@@ -16,6 +17,7 @@ SessionsController.class_eval do
       end
       login_member!(@logged_in_member)
     else
+      logger.info "Member not found"
       #flash[:error] = "Login details not found. Please try again."
       set_login_redirect_message("Login details not found. Please try again.")
       render :action => 'new'
