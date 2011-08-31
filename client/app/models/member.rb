@@ -65,15 +65,13 @@ Member.class_eval do
   def as_json_with_api(options = nil)
     if options[:api]
       {
-        :member => {
-          :id => id,
-          :forename => forename,
-          :surname => surname,
-          :bio => bio,
-          :is_speaker => true,
-          :session_ids => conference_sessions_speaking_at_ids
-        }.as_json(options)
-      }
+        :id => id,
+        :forename => forename.to_s.toutf8,
+        :surname => surname.to_s.toutf8,
+        :bio => bio.to_s.strip_tags.toutf8,
+        :is_speaker => true,
+        :session_ids => conference_sessions_speaking_at_ids
+      }.as_json(options)
     else
       as_json_without_api(options)
     end

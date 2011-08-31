@@ -15,8 +15,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :urls
   map.resources :venues, :only => [:create, :edit, :destroy, :show, :update]
   map.resources :wall_posts, :only => [], :member => {:remove => :delete, :restore => :put}
-  
+
   map.connect 'api/program/:version', :controller => "api", :action => "program"
+  map.connect 'api/program', :controller => "api", :action => "program"  
   
   map.all_time_leaderboard "leaderboard/all_time", :controller => "leaderboard", :action => "all_time"
   map.browse '/browse', :controller => 'browse'

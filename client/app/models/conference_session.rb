@@ -24,21 +24,21 @@ class ConferenceSession < ActiveRecord::Base
   named_scope :on_date, lambda {|date| {:conditions => ["DATE(conference_sessions.starts_at) = ?", date], :order => "conference_sessions.starts_at"}}
   named_scope :starts_in_hour, lambda {|date| {:conditions => ["HOUR(conference_sessions.starts_at) = ?", date], :order => "conference_sessions.starts_at"}}
   named_scope :ascend_by_time_of_day_and_venue, :joins => :venue, :order => "TIME(conference_sessions.starts_at), venues.weight"
+  named_scope :with_tags, :joins => :taggings, :group => "conference_sessions.id"
   
   attr_accessor :duplicate_of
 
   def as_json(options = nil)
     {
-      :conference_session => {
-        :id => id,
-        :name => name,
-        :text => description,
-        :day => conference_day,
-        :starts_at => "%9.5f" % starts_at.to_f,
-        :ends_at => "%9.5f" % ends_at.to_f,
-        :timestamp => "%9.5f" % created_at.to_f
-      }.merge(color_hash).as_json(options)
-    }
+      :id => id,
+      :name => name.to_s.toutf8,
+      :text => description.to_s.strip_tags.toutf8,
+      :venue_id => venue_id,
+      :day => conference_day,
+      :starts_at => "%9.5f" % starts_at.to_f,
+      :ends_at => "%9.5f" % ends_at.to_f,
+      :timestamp => "%9.5f" % created_at.to_f
+    }.merge(color_hash).as_json(options)
   end
   
   def conference_day
