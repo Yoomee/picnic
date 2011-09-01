@@ -15,7 +15,7 @@ class Venue < ActiveRecord::Base
   def as_json(options = nil)
     {
       :id => id,
-      :name => name.to_s.toutf8,
+      :name => name.to_s,
       :order => weight
     }.as_json(options)
   end

@@ -66,9 +66,9 @@ Member.class_eval do
     if options[:api]
       {
         :id => id,
-        :forename => forename.to_s.toutf8,
-        :surname => surname.to_s.toutf8,
-        :bio => bio.to_s.strip_tags.toutf8,
+        :forename => forename.to_s,
+        :surname => surname.to_s,
+        :bio => bio.to_s.strip_tags,
         :is_speaker => true,
         :session_ids => conference_sessions_speaking_at_ids
       }.as_json(options)

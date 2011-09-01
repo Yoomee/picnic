@@ -4,8 +4,9 @@ class ApiController < ApplicationController
     conference = Conference.first
     if params[:version].to_i < conference.version
       out = {:update => 1, :version => conference.version, :venues => conference.venues, :conference_sessions => conference.sessions.with_tags, :members => Member.with_badge(:picnic11_speaker)}
+      #out = {:update => 1, :version => conference.version, :conference_sessions => conference.sessions.with_tags}
       out = out.to_json(:api => true)
-      render :json => out
+      render :json => out.gsub(/\222/, "'").gsub(/[\x80-\xFF]/,"")
     else
       render :json => {:update => 0}
     end

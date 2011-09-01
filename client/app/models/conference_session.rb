@@ -31,8 +31,8 @@ class ConferenceSession < ActiveRecord::Base
   def as_json(options = nil)
     {
       :id => id,
-      :name => name.to_s.toutf8,
-      :text => description.to_s.strip_tags.toutf8,
+      :name => name.to_s,
+      :text => description.to_s.strip_tags,
       :venue_id => venue_id,
       :day => conference_day,
       :starts_at => "%9.5f" % starts_at.to_f,
