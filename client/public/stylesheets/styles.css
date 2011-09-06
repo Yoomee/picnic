@@ -9442,6 +9442,13 @@ table.front_covers * {
   color: black;
 }
 
+/*========== Picnic inspires ==========*/
+
+#picnic_inspires_iframe {
+  width: 100%;
+  height: 600px;
+}
+
 @media handheld, only screen and (max-width: 500px) {
 	
 
