@@ -72,8 +72,8 @@
       %ul
         -if logged_in?
           =li_with_active(@filter == 'blanket', link_to_function('Your blanket', "Club.filterShouts('blanket')"), :id => 'filter_blanket')
-        =li_with_active(@filter == 'latest', link_to_function(logged_in? ? 'Everyone' : 'Latest', "Club.filterShouts('latest')"), :id => 'filter_latest')
         =li_with_active(@filter == 'popular', link_to_function('Popular', "Club.filterShouts('popular')"), :id => 'filter_popular')
+        =li_with_active(@filter == 'latest', link_to_function(logged_in? ? 'Everyone' : 'Latest', "Club.filterShouts('latest')"), :id => 'filter_latest')
         =li_with_active(@filter == 'comments', link_to_function('Most commented', "Club.filterShouts('comments')"), :id => 'filter_comments')
     #club_shouts_container
       =render_shouts(@shouts, :filter => @filter)
