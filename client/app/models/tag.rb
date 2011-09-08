@@ -22,7 +22,15 @@ Tag.class_eval do
       {:color_r => arr[0], :color_g => arr[1], :color_b => arr[2]}
     end
     
-  end    
+  end  
+  
+  def as_json(options = nil)
+    {
+      :id => id,
+      :name => name.to_s,
+      :session_ids => ConferenceSession.tagged_with(self).collect(&:id)
+    }.merge(color_hash).as_json(options)
+  end  
     
   def color_hash
     self.class::color_hash(color || "#CCCCCC")

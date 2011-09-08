@@ -19,6 +19,7 @@ class ClientEnvironment
       config.gem 'googlecharts'     
       config.gem 'inflectious'
       config.gem 'acts_as_list'
+      config.gem 'encryptor'
       unless RAILS_ENV=='test'
         config.gem 'factory_girl', :version => '1.3.3'
         config.gem 'lorem'

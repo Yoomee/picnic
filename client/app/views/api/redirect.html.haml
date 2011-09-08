@@ -1,0 +1,8 @@
+-content_for(:head) do
+  :javascript
+    $(document).ready(function() {
+      window.location.href = "picnic://api/#{logged_in_member.api_key}";
+    });
+-hidden_title "Opening PICNIC Festival app"
+
+%h4 Opening the PICNIC Festival app...

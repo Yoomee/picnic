@@ -17,6 +17,16 @@ ApplicationController.class_eval do
     section
   end
 
+  def login_member_with_api_auth!(member, options = {})
+    if session.delete(:api_auth)
+      login_member_without_api_auth!(member, :redirect => false)
+      redirect_to :controller => "api", :action => "redirect"
+    else
+      login_member_without_api_auth!(member, options)
+    end
+  end
+  alias_method_chain :login_member!, :api_auth
+
   protected
   def check_what_i_bring
     return redirect_to(what_i_bring_path) if logged_in_member && logged_in_member.blank_what_i_bring? && !logged_in_member.force_password_change?

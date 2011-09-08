@@ -1,5 +1,6 @@
 Member::WHAT_I_BRING_MAX_LENGTH = 100
 Member::NEWS_FEED_FIELD_BLACKLIST = %w{bio}
+Member::API_SECRET = "'?8vR3Y?hYM#T@i7-(isU!7AQ8FVQyT"
 Member.class_eval do
 
   acts_as_textcaptcha({
@@ -51,6 +52,15 @@ Member.class_eval do
   # validates_presence_of :country, :unless => Proc.new {|member| !member.new_record? || member.twitter_connected? || member.linked_in_connected? || member.facebook_connected?}
 
   class << self
+    def find_by_api_key(api_key)
+      return nil if api_key.blank?
+      find_by_id(
+        Encryptor.decrypt(
+          Base64.decode64(api_key.tr("-_","+/")),
+          :key => Digest::SHA256.hexdigest(Member::API_SECRET)
+        )
+      )
+    end
     
     def with_theme_or_member_tag(tag)
       (with_theme_tag(tag) + Member.tagged_with(tag)).uniq.randomize
@@ -80,6 +90,15 @@ Member.class_eval do
   
   def allowed_job_title?
     has_badge?(:picnic11_speaker) || has_badge?(:picnic11_team) || has_badge?(:picnic_advisor)
+  end
+  
+  def api_key
+    Base64.encode64(
+      Encryptor.encrypt(
+        id.to_s,
+        :key => Digest::SHA256.hexdigest(Member::API_SECRET)
+      )
+    ).strip.tr("+/","-_")
   end
   
   def attending?(session)

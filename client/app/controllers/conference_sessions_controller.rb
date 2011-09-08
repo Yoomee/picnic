@@ -23,7 +23,7 @@ class ConferenceSessionsController < ApplicationController
 
   def unattend
     if logged_in_member.attending?(@conference_session)
-      @conference_session.attendees.delete(logged_in_member)
+      ConferenceSessionsMember.destroy_all(:conference_session_id => @conference_session.id, :member_id => logged_in_member.id)
       render :update do |page|
         page[:attend_link].replace(render("conference_sessions/attend_link", :session => @conference_session))
         page << "$('#attendee_#{logged_in_member.id}').fadeOut('slow', function(){$(this).remove();});"

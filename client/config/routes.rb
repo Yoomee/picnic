@@ -18,6 +18,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.connect 'api/program/:version', :controller => "api", :action => "program"
   map.connect 'api/program', :controller => "api", :action => "program"  
+  map.connect 'api/:action', :controller => "api"
   
   map.all_time_leaderboard "leaderboard/all_time", :controller => "leaderboard", :action => "all_time"
   map.browse '/browse', :controller => 'browse'
