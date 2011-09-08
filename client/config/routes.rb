@@ -16,6 +16,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :venues, :only => [:create, :edit, :destroy, :show, :update]
   map.resources :wall_posts, :only => [], :member => {:remove => :delete, :restore => :put}
 
+  map.inpires "picnic-inspires/:id", :controller => "inspires", :action => "show"
+
   map.connect 'api/program/:version', :controller => "api", :action => "program"
   map.connect 'api/program', :controller => "api", :action => "program"  
   map.connect 'api/:action', :controller => "api"

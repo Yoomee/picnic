@@ -32,7 +32,7 @@ var ShareThis = {
   },
   move: function(animated){
     var top = $(window).scrollTop() - $('.threecol').has('#share_this').offset().top + 100;
-    var minTop = $('#page_subnav').outerHeight()+ 10;
+    var minTop = $('#page_subnav').outerHeight() + $('#latest_story_box').outerHeight()+ 10;
     var maxTop = $('#footer').offset().top - $('#main').offset().top - 150;
     if (top < ShareThis.minTop)
       top = ShareThis.minTop;

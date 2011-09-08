@@ -15,8 +15,8 @@ class ClubController< ApplicationController
   end
   
   def index
-    @filter = params[:filter] || (logged_in? ? "blanket" : "latest")
-    @filter = "latest" if !%w{latest comments popular blanket}.include?(@filter) || @filter == "blanket" && !logged_in?
+    @filter = params[:filter] || (logged_in? ? "blanket" : "popular")
+    @filter = "popular" if !%w{latest comments popular blanket}.include?(@filter) || @filter == "blanket" && !logged_in?
     @shouts = Shout.get_shouts(@filter, @logged_in_member)
     if request.xhr?
       render :text => @template.render_shouts(@shouts, :filter => @filter) + @template.javascript_tag(@template.refresh_fb_dom)

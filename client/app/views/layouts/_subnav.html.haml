@@ -1,4 +1,4 @@
--if in_news_network? || in_club? || in_stories? || (!current_root_section.nil? && (current_root_section.page_and_section_descendant_generations > 1))
+-if controller_name=="inspires" || in_news_network? || in_club? || (!current_root_section.nil? && (current_root_section.page_and_section_descendant_generations > 1))
   #subnav_row
     .row            
       .twelvecol.no_padding
@@ -40,7 +40,7 @@
                   =li_with_active(current_page?(connections_path), link_to("Connections", connections_path))
                 -else
                   =li_with_active(current_page?(new_member_path), link_to("Join", new_member_path))
-              -else
+              -elsif current_root_section
                 -current_root_section.all_children(:published_only => !admin_logged_in?).each_with_index do |page_or_section, idx|
                   =li_with_active(viewing_page_or_section_tree?(page_or_section) || (current_page?(root_path) && idx == 0), link_to_self(page_or_section))
                   -if current_root_section.slug == "picnic11" && idx == 1

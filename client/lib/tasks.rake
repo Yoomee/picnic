@@ -35,7 +35,42 @@ namespace :picnic do
       end
     end
 
-  end  
+  end
+  
+  desc "Migrate all dragonfly attachments to S3 storage"
+  task :migrate_to_s3 do
+    require 'aws/s3'
+    AWS::S3::Base.establish_connection!(
+      :access_key_id => 'AKIAJC5MUJGGJC6YYRDQ',
+      :secret_access_key => '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'
+    )
+    base_path = "#{RAILS_ROOT}/public/dragonfly/"
+    file_names = Dir.glob("#{base_path}*/**/*")
+    file_names.reject! {|file_name| File.directory?(file_name)}
+    file_names.each do |file_name|
+      relative_file_name = file_name.gsub(/^#{base_path}/, '')
+      puts "Moving #{relative_file_name} to picnic-images"
+      AWS::S3::S3Object.store(
+        relative_file_name,
+        File.open(file_name),
+        'picnic-images',
+        :access => :private
+      )
+    end  
+    base_path = "#{RAILS_ROOT}/uploads/"
+    file_names = Dir.glob("#{base_path}/*/**/*")
+    file_names.reject! {|file_name| File.directory?(file_name)}
+    file_names.each do |file_name|
+      relative_file_name = file_name.gsub(/^#{base_path}/, '')
+      puts "Moving #{relative_file_name} to picnic-attachments"
+      AWS::S3::S3Object.store(
+        relative_file_name,
+        File.open(file_name),
+        'picnic-attachments',
+        :access => :private
+      )
+    end  
+  end
 end
 
 def quote_string(s)
