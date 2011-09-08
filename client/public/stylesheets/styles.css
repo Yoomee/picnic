@@ -1276,7 +1276,9 @@ h1#site_logo a {
 
 #home h1#site_logo a {
 }
-h1#site_logo a:active {
+h1#site_logo a.active {
+	color: #000;
+	background-position: -6px -35px ;
 }
 
 #user_links p {
@@ -8933,256 +8935,6 @@ ul#content_flags_list a:hover .title span{
 }
 
 
-/* ============================= */
-/* ! Layout for mobile version   */
-/* ============================= */
-
-@media handheld, only screen and (max-width: 767px) {
-	
-	
-	body {
-	padding: 0;
-}
-	
-	
-	#header {
-	position: relative;
-}
-
-	
-	  #nav {
-	margin: 13px 0;
-}
-
-div#flipboard_wrapper, div#flipboard_strip, #flipboard_wrapper .fr, #subnav ul li#updates_link, a#back_to_updates, #newsletter_signup, #share_this, #page_left_col {
-	display: none;
-	padding: 0;
-	
-}	
-
-#header_right a.button {
-	float: left;
-	margin: 0 10px 0 0;
-}
-
-#header_right {
-  	margin-top: 0px;
-  	float: left;
-  	border-top: 1px solid #ccc ;
-  	width: 100%;
-  	padding: 10px 0;
-  }
-  
-	#page_subnav {
-  	width: 100%;
-  	font-size: 19px;
-	}
-	body #user_links .panel {
-  	position: absolute;
-  	top: 0;
-  	right: 0;
-  	margin: 0;
-  }
-  #user_links .button {
-  	width: 80px;
-  	padding: 4px ;
-  	font-size: 15px;
-  	margin: 0 10px 0 0;
-  }
-  .splash .tag_line {
-    font-size: 20px;
-  } 
- .splash_inner .heading .fr {
-	 float: left;
-	 clear: both;
-  }
-  #nav_line_row {
-  	position: relative;
-  }
-
-#header_right_col .page_header {
-	padding-top: 0;
-	clear: both;
-	border-bottom: none;
-
-}
-#header_right_col h1#page_title {
-	float: left;
-	margin: 20px 0 0 0;
-
-}
-#header_left_col .page_header {
-	border-bottom: none;
-	
-	height: 0px;
-	min-height: 0;
-	margin: 10px 0 0 0;
-	float: right;
-	
-}
-#page_left_col {
-	min-height: 0;
-}
-#page_tags {
-	float: right;
-}
-#top_color_left {
-	display: none;
-}
-
-  #user_links {
-  	position: absolute;
-  	top: 0;
-  	right: 0;
-  }
-  
-  .logged_in_box {
-  	right: 20px;
-  }
-	#fancybox-inner {
-    overflow:auto !important;
-  }
-  .newsbox {
-	background: none;
-	}
-  h1#site_logo a {
-  	margin: 0px 0;
-  }
-  .newsbox {
-    background: none;
-  }
-  .newsbox p {
-  	float: left;
-  }
-  .newsbox img {
-  	margin-bottom: 10px;
-  }
-  #main_container {
-  	margin-top: 20px;
-  }
-  #page_content {
-  	min-height: 0;
-  }
-  .splash_inner .advert {
-  	float: left;
-  	position: relative;
-  }
-  #page_subnav {
-  	background: none;
-  	padding: 0 0 10px;
-  }
-  #page_content {
-  	border-top: 1px solid #000;
-  }
-  #page_content, #page_left_col, #page_right_col, #keep_in_touch, #article_image {
-  	clear: both;
-  	float: left;
-  	width: 100%;
-  }  
-  #sponsors .sponsor a {
-  	width: 200px;
-  }
-  .shout_right {
-  	width: 80%;
-  }
-  .item_border {
-  	border: none;
-  	height: auto;
-  }
-  .item_inner {
-  	margin: 0px;
-  }
-  .item {
-  	padding-bottom: 30px;
-  	border-bottom: 1px solid #ccc;
-  }
-  #leaderboard_left .pagination, #leaderboard_left .leaderboard_loader {
-    margin-right: 0%;
-  }
-  .row #leaderboard_left.sevencol {
-    width:100%;
-  }
-  #club_intro_page h2 {
-  	margin-top: 20px;
-  }
-  li.bring_item .bring_quote {
-  	font-size: 14px;
-  }
-  li.bring_item a.member_name {
-  	font-size: 10px;
-  	line-height: 10px;
-  	float: left;
-  }
-  li.bring_item{
-  	min-height: 180px;
-  }
-  #bring_wrapper {
-  	height: 230px;
-  }
-  #fancybox-wrap {
-  	padding: 0;
-  }
-  .photo_gallery_row .threecol {
-    float: left;
-  }
-  .photo_gallery_row .photo {
-    height: 220px;
-  }
-  .photo_gallery_row .photo .photo_description {
-    height: 70px !important;
-  }
-  
-  #prog_header {
-    border-left:none;
-    border-right:none;
-    width:100%;
-    padding:10px 0px;
-  }
-  
-  #prog_container .row {
-    width:auto !important;
-  }
-  
-  #programme_list .onecol {
-    padding:5px;
-    border-bottom:2px solid #f2f2f2;
-  }
-  #programme_list .elevencol {
-    padding:0px;
-  }
-  
-  #prog_header #prog_header_left{
-    overflow:visible;
-  }
-  
-  #prog_header #prog_filters {
-    width:250px;
-  }
-  
-  #prog_header .day {
-    margin:0px 7px 0px 0px;
-    font-size:14px;
-  }
-  
-  #prog_header h5{
-    margin-left:5px;
-    margin-bottom:20px;
-    font-size:14px;
-  }
-  
-  #prog_header .date{
-    font-size:11px;
-    line-height:11px;
-    margin-right:10px;
-    margin-top:5px;
-  }
-  
-  #buy_tickets{
-    display:none;
-  }
-
-}
-
 /*========== Front cover ==========*/
 #front_cover #main_story {
   float: left;
@@ -9503,6 +9255,258 @@ table.front_covers * {
   height: 600px;
 }
 
+
+/* ============================= */
+/* ! Layout for mobile version   */
+/* ============================= */
+
+@media handheld, only screen and (max-width: 767px) {
+	
+	
+	body {
+	padding: 0;
+}
+	
+	
+	#header {
+	position: relative;
+}
+
+	
+	  #nav {
+	margin: 13px 0;
+}
+
+div#flipboard_wrapper, div#flipboard_strip, #flipboard_wrapper .fr, #subnav ul li#updates_link, a#back_to_updates, #newsletter_signup, #share_this, #page_left_col {
+	display: none;
+	padding: 0;
+	
+}	
+
+#header_right a.button {
+	float: left;
+	margin: 0 10px 0 0;
+}
+
+#header_right {
+  	margin-top: 0px;
+  	float: left;
+  	border-top: 1px solid #ccc ;
+  	width: 100%;
+  	padding: 10px 0;
+  }
+  
+	#page_subnav {
+  	width: 100%;
+  	font-size: 19px;
+	}
+	body #user_links .panel {
+  	position: absolute;
+  	top: 0;
+  	right: 0;
+  	margin: 0;
+  }
+  #user_links .button {
+  	width: 80px;
+  	padding: 4px ;
+  	font-size: 15px;
+  	margin: 0 10px 0 0;
+  }
+  .splash .tag_line {
+    font-size: 20px;
+  } 
+ .splash_inner .heading .fr {
+	 float: left;
+	 clear: both;
+  }
+  #nav_line_row {
+  	position: relative;
+  }
+
+#header_right_col .page_header {
+	padding-top: 0;
+	clear: both;
+	border-bottom: none;
+
+}
+#header_right_col h1#page_title {
+	float: left;
+	margin: 20px 0 0 0;
+
+}
+#header_left_col .page_header {
+	border-bottom: none;
+	
+	height: 0px;
+	min-height: 0;
+	margin: 10px 0 0 0;
+	float: right;
+	
+}
+#page_left_col {
+	min-height: 0;
+}
+#page_tags {
+	float: right;
+}
+#top_color_left {
+	display: none;
+}
+
+  #user_links {
+  	position: absolute;
+  	top: 0;
+  	right: 0;
+  }
+  
+  .logged_in_box {
+  	right: 20px;
+  }
+	#fancybox-inner {
+    overflow:auto !important;
+  }
+  .newsbox {
+	background: none;
+	}
+  h1#site_logo a {
+  	margin: 0px 0;
+  }
+  .newsbox {
+    background: none;
+  }
+  .newsbox p {
+  	float: left;
+  }
+  .newsbox img {
+  	margin-bottom: 10px;
+  }
+  #main_container {
+  	margin-top: 20px;
+  }
+  #page_content {
+  	min-height: 0;
+  }
+  .splash_inner .advert {
+  	float: left;
+  	position: relative;
+  }
+  #page_subnav {
+  	background: none;
+  	padding: 0 0 10px;
+  }
+  #page_content {
+  	border-top: 1px solid #000;
+  }
+  #page_content, #page_left_col, #page_right_col, #keep_in_touch, #article_image {
+  	clear: both;
+  	float: left;
+  	width: 100%;
+  }  
+  #sponsors .sponsor a {
+  	width: 200px;
+  }
+  .shout_right {
+  	width: 80%;
+  }
+  .item_border {
+  	border: none;
+  	height: auto;
+  }
+  .item_inner {
+  	margin: 0px;
+  }
+  .item {
+  	padding-bottom: 30px;
+  	border-bottom: 1px solid #ccc;
+  }
+  #leaderboard_left .pagination, #leaderboard_left .leaderboard_loader {
+    margin-right: 0%;
+  }
+  .row #leaderboard_left.sevencol {
+    width:100%;
+  }
+  #club_intro_page h2 {
+  	margin-top: 20px;
+  }
+  li.bring_item .bring_quote {
+  	font-size: 14px;
+  }
+  li.bring_item a.member_name {
+  	font-size: 10px;
+  	line-height: 10px;
+  	float: left;
+  }
+  li.bring_item{
+  	min-height: 180px;
+  }
+  #bring_wrapper {
+  	height: 230px;
+  }
+  #fancybox-wrap {
+  	padding: 0;
+  }
+  .photo_gallery_row .threecol {
+    float: left;
+  }
+  .photo_gallery_row .photo {
+    height: 220px;
+  }
+  .photo_gallery_row .photo .photo_description {
+    height: 70px !important;
+  }
+  
+  #prog_header {
+    border-left:none;
+    border-right:none;
+    width:100%;
+    padding:10px 0px;
+  }
+  
+  #prog_container .row {
+    width:auto !important;
+  }
+  
+  #programme_list .onecol {
+    padding:5px;
+    border-bottom:2px solid #f2f2f2;
+  }
+  #programme_list .elevencol {
+    padding:0px;
+  }
+  
+  #prog_header #prog_header_left{
+    overflow:visible;
+  }
+  
+  #prog_header #prog_filters {
+    width:250px;
+  }
+  
+  #prog_header .day {
+    margin:0px 7px 0px 0px;
+    font-size:14px;
+  }
+  
+  #prog_header h5{
+    margin-left:5px;
+    margin-bottom:20px;
+    font-size:14px;
+  }
+  
+  #prog_header .date{
+    font-size:11px;
+    line-height:11px;
+    margin-right:10px;
+    margin-top:5px;
+  }
+  
+  #buy_tickets{
+    display:none;
+  }
+
+}
+
+
 @media handheld, only screen and (max-width: 500px) {
 	
 
@@ -9578,7 +9582,6 @@ table.front_covers * {
   }
 
 }
-
 
 /* ========================================== */
 /* ! Provide higher res assets for iPhone 4   */
