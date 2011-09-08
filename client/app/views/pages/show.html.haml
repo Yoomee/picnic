@@ -61,7 +61,7 @@
             =render("pages/subnav", :page => @page)
       -if !in_stories? && @latest_story.present?
         #latest_story_box
-          =link_to (image_for(@latest_story, "90x80#"), @latest_story, :id=>"latest_story_image")
+          =link_to (photo_for(@latest_story, "90x80#"), @latest_story, :id=>"latest_story_image")
           %p.latest_story_title
             LATEST STORY
           =link_to_self(@latest_story, :id=> "latest_story_title")
