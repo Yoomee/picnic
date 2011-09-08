@@ -25,6 +25,8 @@ SectionsController.class_eval do
         # Do nothing
         render "home/front_cover"
       else
+        # Redirect to festival news
+        return redirect_to("/#{@section.permalink_name}")
         case @section.view
         when 'latest_stories', 'news_view'
           @pages_sections = @section.pages.published.latest + @section.children
