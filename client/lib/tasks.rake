@@ -59,7 +59,6 @@ namespace :picnic do
     end  
     base_path = "#{RAILS_ROOT}/uploads/"
     file_names = Dir.glob("#{base_path}/*/**/*")
-    y file_names
     file_names.reject! {|file_name| File.directory?(file_name)}
     file_names.each do |file_name|
       relative_file_name = file_name.gsub(/^#{base_path}/, '')
