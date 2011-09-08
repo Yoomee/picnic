@@ -18,6 +18,8 @@
           14-16 September
           %br
           Amsterdam
+        -elsif @page.section.slug_is(:stories)
+          =link_to "View all stories", "/stories", :id=>"stories_link"
         -else
           =left_hand_subtitle(@page)
     
@@ -50,8 +52,20 @@
             %ul.lst
               -@page.section.parent.children.each do |section|
                 =li_with_active(viewing_page_or_section?(section), link_to_self(section))
+          -elsif in_stories?
+            %h3 Other stories
+            %ul.lst
+              -@page.section.pages.id_is_not(@page.id).latest.first(5).each do |story|
+                %li=link_to_self(story)
           -else
             =render("pages/subnav", :page => @page)
+      -if !in_stories? && @latest_story.present?
+        #latest_story_box
+          =link_to (image_for(@latest_story, "90x80#"), @latest_story, :id=>"latest_story_image")
+          %p.latest_story_title
+            LATEST STORY
+          =link_to_self(@latest_story, :id=> "latest_story_title")
+        
       =render("layouts/share_this", :color => @page.color)
     #page_right_col.sixcol
       =link_to("&larr; All #{@page.section}", @page.section, :class => "back_to_sponsors_link") if @page.section.try(:parent).try(:slug) == "sponsors"

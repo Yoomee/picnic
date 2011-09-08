@@ -1,5 +1,5 @@
 -no_content_row
--if @section.parent.slug == "sponsors"
+-if @section.parent.try(:slug) == "sponsors"
   -hidden_title @section.name
   .row
     #header_left_col.threecol

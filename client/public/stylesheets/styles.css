@@ -56,7 +56,7 @@ h1, h2, h3, h4, h5, h6, #nav, .button, .bring_quote, .cycle_nav a, .call_to_acti
 	color:black;
 	font-weight: normal;
 }
-span.click_here_beta, p.club_welcome_intro_text, #flipboard, h2.blog_like_news_title a {
+span.click_here_beta, p.club_welcome_intro_text, #flipboard, h2.blog_like_news_title a, p.latest_story_title, a#latest_story_title {
 	font-family:'VAG Rounded W02 Thin', arial, sans-serif;
 }
 #nav a, a.button, h1#page_title, input#search_icon, #buy_tickets {
@@ -4094,11 +4094,65 @@ p.stories_header {
 	font-size: 12px;
 	letter-spacing: 1px;
 	text-transform: uppercase;
+	position: relative;
 	
 }
+
+#latest_story_box {
+	float: left;
+	height: 100px;
+
+}
+
+
+a#stories_link {
+	display: block;
+	background: url(/images/view_all_stories.png) no-repeat 0 0;
+	width: 100%;
+	text-indent: -9000em;
+	height: 120px;
+	position: absolute;
+	top: -19px;
+	left: 0;
+	
+}
+
+
+
 p.stories_header a {
 	color: #000;
 }
+
+a#latest_story_image {
+	display: block;
+	width: 90px;
+	margin: 0 10px 20px 0;
+	float: left;
+	
+}
+a#latest_story_image img {
+	margin: 0;
+	padding: 0;
+}
+p.latest_story_title {
+	float: left;
+	font-size: 12px;
+	display: block;
+	width: 90px;
+	margin: 0;
+	
+}
+
+a#latest_story_title {
+	float: left;
+	width: 110px;
+	font-size: 17px;
+	line-height: 19px;
+	color: #000;
+	
+}
+
+
 #share_this {
 	float: left;
 	width: 74px;
