@@ -93,7 +93,7 @@ TagsController.class_eval do
         end
       else
         @shouts = Shout.tagged_with(@tag)
-        @stories = Page.tagged_with(@tag).select {|page| page.published? && page.root_section_slug == 'stories'}
+        @stories = Page.latest.tagged_with(@tag).select {|page| page.published? && page.root_section_slug == 'stories'}
         @members = Member.with_theme_or_member_tag(@tag)
       end
     else
@@ -102,7 +102,7 @@ TagsController.class_eval do
   end
   
   def stories
-    @stories = Page.tagged_with(@tag).select {|page| page.published? && page.root_section_slug == 'stories'}
+    @stories = Page.latest.tagged_with(@tag).select {|page| page.published? && page.root_section_slug == 'stories'}
   end
 
   def update

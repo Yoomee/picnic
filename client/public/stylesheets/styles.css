@@ -4214,6 +4214,26 @@ span.share_link_count {
   position:absolute;
   right: 0;
 }
+#page_like_links .with_rating {
+  width:30px;
+}
+.disabled_with_rating {
+  position:absolute;
+  width:30px;
+  right:0;
+}
+#page_like_links .disabled_with_rating .disabled_like_link {
+  position:absolute;
+  right: 10px;
+}
+.disabled_with_rating .likings_count {
+  position:absolute;
+  right:0;
+}
+#page_like_links .disabled_like_link {
+  position:absolute;
+  right:0;
+}
 #page_tags {
 	float: left;
 	width: 100%;
