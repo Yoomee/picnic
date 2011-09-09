@@ -1,0 +1,10 @@
+-unique_rating = unique_rating_string(rating)
+.like_form{:id => "like_form_#{unique_rating}", :class => (rating.rateable.is_a?(Page) && !rating.rateable.likings_count_string.blank? ? 'with_rating' : '')}
+  .like_links
+    =rating_link(rating, polarized, allow_unlike)
+  .like_loader{:style => "display:none"}=image_tag(ajax_loader)
+  =render("ratings/form", :rating => rating, :polarized => polarized, :allow_unlike => allow_unlike)
+  -if rating.rateable.is_a?(Page)
+    %span.likings_count{:id => "likings_count_#{unique_rating_string(rating.rateable)}", :class => "#{rating.rateable.been_liked? ? '' : 'no_ratings'}"}
+      =rating.rateable.likings_count_string
+    
