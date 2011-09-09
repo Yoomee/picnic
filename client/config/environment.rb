@@ -7,6 +7,7 @@ class ClientEnvironment
     def setup(config)
       config.gem 'searchlogic'
       config.gem 'facebooker2'
+      config.gem 'oa-basic', :version => '0.1.6', :lib => 'omniauth/basic'
       config.gem 'oa-openid', :version => "0.1.6", :lib => "omniauth/openid"
       config.gem 'oa-oauth', :version => "0.1.6", :lib => "omniauth/oauth"
       config.gem 'oa-core', :version => "0.1.6", :lib => "omniauth/core"
