@@ -36,7 +36,7 @@ class ApiController < ApplicationController
     if (params[:version].to_i < conference.version) || (@member && (params[:my_program_version].to_i <  @member.my_program_version))
       out = {:update => 1}
       if params[:version].to_i < conference.version
-        out.merge!(:version => conference.version, :venues => conference.venues, :conference_sessions => conference.sessions.with_tags, :members => Member.with_badge(:picnic11_speaker),:tags => Tag.color_not_null)
+        out.merge!(:version => conference.version, :venues => conference.venues, :conference_sessions => conference.sessions.with_tags, :members => Member.with_badge(:picnic11_speaker),:tags => Tag.find(:all, :conditions => "tags.color IS NOT NULL"))
       end
       if (@member && (params[:my_program_version].to_i <  @member.my_program_version))
         out.merge!(:my_program_version => @member.my_program_version, :my_session_ids => @member.conference_sessions_attending.collect(&:id))
