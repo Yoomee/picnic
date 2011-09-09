@@ -136,6 +136,7 @@ Shout.class_eval do
   private
   def notify_subscribers
     subscribers = Member.subscribed_to_tags(tags) + Member.subscribed_to_member(member)
+    puts "subscribers = #{subscribers.inspect}"
     subscribers.uniq.each do |subscriber|
       subscriber.notifications.create(:attachable => self) unless subscriber.in?([member, recipient])
     end

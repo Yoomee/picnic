@@ -15,4 +15,13 @@ PointsTransfer.class_eval do
     
   end
   
+  def points_event_name_with_stories
+    if points_event.try(:slug) == 'post_shout' && attachable.is_a?(Shout) && attachable.recipient.is_a?(Page)
+      "Commenting on a story"
+    else
+      points_event_name_without_stories
+    end
+  end    
+  alias_method_chain :points_event_name, :stories
+  
 end

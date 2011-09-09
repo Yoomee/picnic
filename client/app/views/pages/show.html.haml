@@ -96,12 +96,15 @@
         #pull_quote.threecol.last{:style => "background:#{@page.color};color:#{complementary_color(@page.color)}"}  
           =snippet(@page, :pull_quote)
       -if @page.root_slug_is?(:stories)
+        .elevencol
+        #page_like_links.onecol.last
+          =render_like_link_for(@page, :ajax_loader => "ajax_loader_arrows.gif", :polarized => false, :allow_unlike => false, :disable_if_logged_out => true)
         #page_shouts.ninecol.last
           #posts_header
-            %h3.profile_title.fl Posts
+            %h3.profile_title.fl Comments
             .fr.post_to_wall
               -if logged_in?
-                =link_to_box("Post something", new_shout_path(:shout => {:recipient_id => @page.id, :recipient_type => 'Page'}), :class => 'bttn_l new_comment_link', :scrolling => false)
+                =link_to_box("Comment", new_shout_path(:shout => {:recipient_id => @page.id, :recipient_type => 'Page'}), :class => 'bttn_l new_comment_link', :scrolling => false)
           .stories_filter 
             =image_tag 'ajax_loader_squares.gif', :id => 'filter_loader', :style => "display:none"
             Showing:

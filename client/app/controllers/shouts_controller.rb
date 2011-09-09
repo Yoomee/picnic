@@ -31,7 +31,9 @@ ShoutsController.class_eval do
   end
   
   def edit
-    render :partial => "themes_form", :locals => {:shout => Shout.find(params[:id])}
+    shout = Shout.find(params[:id])
+    partial_name = shout.recipient.is_a?(Page) ? "shouts/form" : "shouts/themes_form"
+    render :partial => partial_name, :locals => {:shout => shout}
   end
   
   def new

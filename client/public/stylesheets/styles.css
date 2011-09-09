@@ -4118,7 +4118,9 @@ a#stories_link {
 	left: 0;
 	
 }
-
+#stories_like_links {
+  float: right;
+}
 
 
 p.stories_header a {
@@ -4200,7 +4202,17 @@ span.share_link_count {
   min-height: 600px;
 }
 #page_shouts {
+  clear:both;
   float:right;
+}
+#page_like_links {
+  margin-bottom: 20px;
+  position:relative;
+  height: 40px;
+}
+#page_like_links .like_form {
+  position:absolute;
+  right: 0;
 }
 #page_tags {
 	float: left;
