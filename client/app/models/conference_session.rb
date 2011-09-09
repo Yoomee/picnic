@@ -6,7 +6,7 @@ class ConferenceSession < ActiveRecord::Base
   validates_presence_of :name, :conference, :venue
   validate :time_is_within_conference_dates, :ends_after_start
   
-  has_many :conference_sessions_members
+  has_many :conference_sessions_members, :conditions => "conference_sessions_members.attending = 1"
   has_many :members, :through => :conference_sessions_members
   has_many :speakers, :through => :conference_sessions_members, :source => :member,  :conditions => "conference_sessions_members.speaker = 1", :order => "TRIM(LEADING '\221t ' from TRIM(LEADING 'den ' from TRIM(LEADING 'der ' from TRIM(LEADING 'de ' from TRIM(LEADING 'van ' FROM members.surname))))), members.forename", :uniq => true
   has_many :attendees, :through => :conference_sessions_members, :source => :member, :conditions => "conference_sessions_members.speaker = 0", :order => "TRIM(LEADING '\221t ' from TRIM(LEADING 'den ' from TRIM(LEADING 'der ' from TRIM(LEADING 'de ' from TRIM(LEADING 'van ' FROM members.surname))))), members.forename", :uniq => true
@@ -39,6 +39,18 @@ class ConferenceSession < ActiveRecord::Base
       :ends_at => "%9.5f" % ends_at.to_f,
       :timestamp => "%9.5f" % created_at.to_f
     }.merge(color_hash).as_json(options)
+  end
+  
+  def attend!(member)
+    csm = ConferenceSessionsMember.find_or_initialize_by_conference_session_id_and_member_id_and_speaker(self.id, member.id, false)
+    csm.attending = true
+    csm.save
+  end
+  
+  def unattend!(member)
+    if csm = ConferenceSessionsMember.find_by_conference_session_id_and_member_id_and_speaker(self.id, member.id, false)
+      csm.update_attribute(:attending, false)
+    end
   end
   
   def conference_day

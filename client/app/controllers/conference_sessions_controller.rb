@@ -9,7 +9,7 @@ class ConferenceSessionsController < ApplicationController
 
   def attend
     if !logged_in_member.attending?(@conference_session)
-      @conference_session.attendees << logged_in_member  
+      @conference_session.attend!(logged_in_member)
       render :update do |page|
         page[:attend_link].replace(render("conference_sessions/attend_link", :session => @conference_session))
         page[:attendees_list].prepend(link_to(image_for(@logged_in_member, "50x50#"), @logged_in_member, :title => @logged_in_member, :id => "attendee_#{@logged_in_member.id}", :class => "attendee"))
@@ -23,7 +23,7 @@ class ConferenceSessionsController < ApplicationController
 
   def unattend
     if logged_in_member.attending?(@conference_session)
-      ConferenceSessionsMember.destroy_all(:conference_session_id => @conference_session.id, :member_id => logged_in_member.id)
+      @conference_session.unattend!(logged_in_member)
       render :update do |page|
         page[:attend_link].replace(render("conference_sessions/attend_link", :session => @conference_session))
         page << "$('#attendee_#{logged_in_member.id}').fadeOut('slow', function(){$(this).remove();});"

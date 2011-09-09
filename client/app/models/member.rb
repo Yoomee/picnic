@@ -27,8 +27,8 @@ Member.class_eval do
   
   has_many :conference_sessions_members, :dependent => :destroy, :uniq => true
   has_many :conference_sessions, :through => :conference_sessions_members, :order => "conference_sessions.starts_at", :uniq => true
-  has_many :conference_sessions_speaking_at, :through => :conference_sessions_members, :source => :conference_session, :conditions => "conference_sessions_members.speaker = 1", :order => "conference_sessions.starts_at", :uniq => true
-  has_many :conference_sessions_attending, :through => :conference_sessions_members, :source => :conference_session, :conditions => "conference_sessions_members.speaker = 0", :order => "conference_sessions.starts_at", :uniq => true
+  has_many :conference_sessions_speaking_at, :through => :conference_sessions_members, :source => :conference_session, :conditions => "conference_sessions_members.speaker = 1 AND conference_sessions_members.attending = 1", :order => "conference_sessions.starts_at", :uniq => true
+  has_many :conference_sessions_attending, :through => :conference_sessions_members, :source => :conference_session, :conditions => "conference_sessions_members.speaker = 0 AND conference_sessions_members.attending = 1", :order => "conference_sessions.starts_at", :uniq => true
   
 
   has_many :subscriptions, :dependent => :destroy
