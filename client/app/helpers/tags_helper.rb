@@ -19,6 +19,10 @@ module TagsHelper
   def tag_people_profile_photo(member)
     render "tags/people_profile_photo", :member => member
   end
+  
+  def tag_story_photo(story)
+    render "tags/story_photo", :story => story
+  end
 
   def url_to_tag(tag, options = {})
     url_for({:controller => "tags", :action => "show", :id => u(tag)}.merge(options))

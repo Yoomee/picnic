@@ -1,0 +1,4 @@
+#story_grid
+  %ul.lst
+    -stories.each do |story|
+      =render("stories/grid_item", :story => story)

@@ -74,6 +74,15 @@
           %ul.lst
             -@members.first(12).each do |member|
               =tag_people_profile_photo(member)
+    -unless @stories.empty?
+      %h3.theme_title
+        Stories
+        =link_to 'View all', stories_tag_path(@tag), :id => 'view_tag_stories_link' if @stories.size > 3
+      #tag_story_grid_container
+        #story_grid
+          %ul.lst
+            -@stories.first(3).each do |story|
+              =tag_story_photo(story)
     #posts_header
       %h3.theme_title.fl Posts
       .fr.post_to_wall
@@ -85,10 +94,10 @@
         =li_with_active default_to_latest_shouts?, link_to_function('Latest', 'TagShouts.latest()'), :id => 'latest_shouts'
         =li_with_active false, link_to_function('Popular', 'TagShouts.popular()'), :id => 'popular_shouts'
     #shouts_container
-      -if @stories.empty?
+      -if @shouts.empty?
         %p Don't be boring, post something here!
       -else
-        =render_shouts(@stories, :show_member => true, :parent => @tag, :filter => 'latest')
+        =render_shouts(@shouts, :show_member => true, :parent => @tag, :filter => 'latest')
         
 .row
   -options_panel do

@@ -1,0 +1,7 @@
+-title "Stories about #{@tag}", :hidden => true
+%h1
+  Stories about
+  =link_to_self @tag
+=render("stories/grid", :stories => @stories)
+-options_panel do
+  =back_link
