@@ -5,14 +5,16 @@ class LeaderboardController < ApplicationController
   def index
     @ranked_members = Member.ranked_since(1.month.ago)
     @top_posters = Member.top_posters_since(1.month.ago)
-    @top_tags = Tag.top_tags_since(1.month.ago).limit(15)
+    #@top_tags = Tag.top_tags_since(1.month.ago).limit(15)
+    @top_tags = @template.trending_tags_including_conference(10)
     paginate_and_render
   end
   
   def all_time
     @ranked_members = Member.ranked
     @top_posters = Member.top_posters
-    @top_tags = Tag.top_tags.limit(15)
+    #@top_tags = Tag.top_tags.limit(15)
+    @top_tags = @template.top_tags_including_conference(10)
     paginate_and_render
   end
   
