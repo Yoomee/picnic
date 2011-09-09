@@ -4,7 +4,7 @@ class ClientEnvironment
     
     def setup_production(config)
       # Only do if *really* production (ie. not staging)
-      if false && RAILS_ROOT =~ /picnic_static/
+      if RAILS_ROOT =~ /picnic_static/
         config.after_initialize do
           Dragonfly::App.send(:apps).each do |app_name, app|
             app.datastore = Dragonfly::DataStorage::S3DataStore.new
