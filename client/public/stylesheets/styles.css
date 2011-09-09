@@ -4118,7 +4118,9 @@ a#stories_link {
 	left: 0;
 	
 }
-
+#stories_like_links {
+  float: right;
+}
 
 
 p.stories_header a {
@@ -4200,7 +4202,37 @@ span.share_link_count {
   min-height: 600px;
 }
 #page_shouts {
+  clear:both;
   float:right;
+}
+#page_like_links {
+  margin-bottom: 20px;
+  position:relative;
+  height: 40px;
+}
+#page_like_links .like_form {
+  position:absolute;
+  right: 0;
+}
+#page_like_links .with_rating {
+  width:30px;
+}
+.disabled_with_rating {
+  position:absolute;
+  width:30px;
+  right:0;
+}
+#page_like_links .disabled_with_rating .disabled_like_link {
+  position:absolute;
+  right: 10px;
+}
+.disabled_with_rating .likings_count {
+  position:absolute;
+  right:0;
+}
+#page_like_links .disabled_like_link {
+  position:absolute;
+  right:0;
 }
 #page_tags {
 	float: left;
@@ -4268,6 +4300,12 @@ span.share_link_count {
   width: 49px;
   height: 100px;
 }
+#tag_member_grid_container #member_grid .member_grid_info {
+  height:45px;
+}
+#tag_member_grid_container #member_grid .member_grid_info a {
+  white-space:normal;
+}
 #tag_member_grid_container #member_grid {
   margin-bottom: 20px;
 }
@@ -4307,10 +4345,44 @@ span.share_link_count {
 #member_grid.speaker_grid li {
   margin:5px 6px;
 }
-
+#tag_story_grid_container #story_grid {
+  margin-bottom: 20px;
+  
+}
+#story_grid {
+  clear:both;
+  float:left;
+  width:100%;
+}
+#tag_story_grid_container #story_grid li {
+  width: 226px;
+  height: 276px;
+}
+#story_grid li {
+  float:left;
+  clear:none;
+  margin-top:10px;
+  margin-right:10px;
+  text-align:center;
+}
 .speaker_grid li img{
   width:130px;
   height:130px;
+}
+#story_grid .story_grid_info {
+  height: 36px;
+  overflow: hidden;
+  line-height: 10px;
+  padding-top: 0px;
+}
+
+#story_grid .story_grid_info a {
+  overflow:hidden;
+  font-weight:bold;
+  color:#000;
+  width:100%;
+  float:left;
+  line-height:15px;
 }
 
 #speaker_tag_filters ul.lst li {
@@ -6038,10 +6110,13 @@ li.wall_post {
   margin: 0;
   clear: none;
 }
-#view_tag_people_link {
+#view_tag_people_link, #view_tag_stories_link {
   float: right;
   font-size: 12px;
   text-decoration: underline;
+}
+#story_grid li.grid_item_story {
+  width:226px;
 }
 #trending_themes {
   min-height: 250px;

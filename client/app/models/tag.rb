@@ -12,7 +12,8 @@ Tag.class_eval do
   
   validates_format_of :color, :with => /#([0-9A-Fa-f]){6}/, :allow_blank => true, :message => "e.g. #FFFFFF"
   
-    named_scope :for_members_with_badge, lambda {|badge_ref| {:joins => :taggings, :conditions => ["taggings.taggable_type = 'Member' AND taggings.taggable_id IN (?)", Member.with_badge(badge_ref).collect(&:id)], :group => "tags.id"}}
+  named_scope :for_members_with_badge, lambda {|badge_ref| {:joins => :taggings, :conditions => ["taggings.taggable_type = 'Member' AND taggings.taggable_id IN (?)", Member.with_badge(badge_ref).collect(&:id)], :group => "tags.id"}}
+  named_scope :conference, :conditions => "color IS NOT NULL AND color <> ''"
   
   class << self
     

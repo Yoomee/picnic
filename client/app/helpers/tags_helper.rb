@@ -8,8 +8,20 @@ module TagsHelper
     shared_tag_link_lis(member1.shout_tags & member2.shout_tags)
   end
 
+  def top_tags_including_conference(top_tags_limit = 10)
+    (Tag.top_tags.limit(top_tags_limit) + Tag.conference).uniq.randomize
+  end
+
+  def trending_tags_including_conference(top_tags_limit = 10)
+    (Tag.top_tags_since(1.month.ago).limit(top_tags_limit) + Tag.conference).uniq.randomize
+  end
+
   def tag_people_profile_photo(member)
     render "tags/people_profile_photo", :member => member
+  end
+  
+  def tag_story_photo(story)
+    render "tags/story_photo", :story => story
   end
 
   def url_to_tag(tag, options = {})

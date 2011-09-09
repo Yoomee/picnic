@@ -1,6 +1,6 @@
 TagsController.class_eval do
 
-  before_filter :get_tag, :only => %w{destroy edit people show older_shouts update}
+  before_filter :get_tag, :only => %w{destroy edit older_shouts people show stories update}
 
   admin_only :edit, :new, :create, :destroy, :update
 
@@ -92,12 +92,17 @@ TagsController.class_eval do
           render :text => @template.render_shouts(shouts, :filter => @filter, :parent => @tag) + @template.javascript_tag(@template.refresh_fb_dom)
         end
       else
-        @stories = Shout.tagged_with(@tag)
+        @shouts = Shout.tagged_with(@tag)
+        @stories = Page.latest.tagged_with(@tag).select {|page| page.published? && page.root_section_slug == 'stories'}
         @members = Member.with_theme_or_member_tag(@tag)
       end
     else
       redirect_to tags_path 
     end
+  end
+  
+  def stories
+    @stories = Page.latest.tagged_with(@tag).select {|page| page.published? && page.root_section_slug == 'stories'}
   end
 
   def update

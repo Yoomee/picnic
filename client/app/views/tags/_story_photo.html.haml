@@ -1,0 +1,4 @@
+%li{:id => "story_photo#{story.id}"}
+  =link_to(photo_for(story, "226x226#"), story, :class => 'story_grid_image')
+  .story_grid_info
+    =link_to_self(story)

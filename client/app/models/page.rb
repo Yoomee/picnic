@@ -2,7 +2,8 @@ Page::FORM_TABS = %w{details snippets slideshow publishing related_items}
 Page.class_eval do
 
   has_many :shouts, :as => :recipient, :dependent => :destroy
-  
+
+  rateable_by_member
   acts_as_taggable_on :tags
   has_slideshow
   
