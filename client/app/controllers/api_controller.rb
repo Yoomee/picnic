@@ -54,9 +54,6 @@ class ApiController < ApplicationController
         if webSession = ConferenceSession.find_by_id(appSession["id"])
           csm = ConferenceSessionsMember.find_or_initialize_by_conference_session_id_and_member_id(webSession.id, @member.id)
           appAttending = !appSession["attending"].zero?
-          puts "\n\n\n\n\n\n\nDIFFERENCE"
-          puts appSession["timestamp"].to_f - csm.updated_at.to_f
-          puts "\n\n\n\n\n\n\nDIFFERENCE"
           if csm.new_record? || (appSession["timestamp"].to_f > csm.updated_at.to_f)
             csm.attending = appAttending
           end

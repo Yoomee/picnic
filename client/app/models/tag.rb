@@ -34,7 +34,7 @@ Tag.class_eval do
   end  
     
   def color_hash
-    self.class::color_hash(color || "#CCCCCC")
+    self.class::color_hash(color.blank? ? "#CCCCCC" : color)
   end
   
   def official?
