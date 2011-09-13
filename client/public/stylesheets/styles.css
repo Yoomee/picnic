@@ -5690,6 +5690,8 @@ form.conference_session ul.facelist-selections{
 }
 #attendees_list {
   margin-bottom: 30px;
+  float: left;
+  clear: both;
 }
 #attendees_list a.attendee {
   float:left;
