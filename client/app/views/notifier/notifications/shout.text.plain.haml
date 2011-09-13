@@ -1,12 +1,12 @@
 ="Hi #{@recipient.forename},"
 
-="#{@shout.member} posted a #{@shout.has_attachable? ? @shout.attachable_type.titleize.downcase : 'message'}"
--if (@shout.recipient != @logged_in_member) && !(tags = (@logged_in_member.tags_subscribed_to.collect(&:name) & @shout.tag_list)).empty?
-  ="on the #{tags.count > 1 ? 'themes' : 'theme'}: #{tags.to_sentence}."
+-if (@shout.recipient != @recipient) && !(tags = (@recipient.tags_subscribed_to.collect(&:name) & @shout.tag_list)).empty?
+  -suffix = " on the #{tags.count > 1 ? 'themes' : 'theme'}: #{tags.to_sentence}."
 -elsif @shout.recipient.is_a?(Member)
-  ="on #{@shout.recipient.nil? ? 'their profile' : "#{full_name_or_your(@shout.recipient)} profile"}."
--else
-  ="on #{@shout.recipient}."
+  -suffix = " on #{@shout.recipient.nil? ? 'their profile' : "#{full_name_or_your(@shout.recipient)} profile"}."
+-elsif @shout.recipient
+  -suffix = " on #{@shout.recipient}."
+="#{@shout.member} posted a #{@shout.has_attachable? ? @shout.attachable_type.titleize.downcase : 'message'}#{suffix}."
 -if !@shout.text.blank?
   ="\"#{strip_tags(@shout.text)}\""
 

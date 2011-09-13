@@ -5165,7 +5165,7 @@ body.controller_badges .badge_members {
 	overflow: hidden;
 	height: 350px;
 }
-#filter_loader {
+#filter_loader, #shouts_filter_loader {
   width: 43px;
   position: absolute;
   right: 0px;
@@ -5688,11 +5688,13 @@ form.conference_session ul.facelist-selections{
   
   
 }
-
+#attendees_list {
+  margin-bottom: 30px;
+}
 #attendees_list a.attendee {
   float:left;
   width:50px;
-  height:50px;
+  height:50px;;
 }
 #attendees_list img{
   width:50px;
@@ -5712,8 +5714,8 @@ form.conference_session ul.facelist-selections li{
  {
   clear: left;
   float: left;
-  padding-top: 30px;
-  border-top: 3px solid #E8E8E8;
+/*  padding-top: 30px;
+  border-top: 3px solid #E8E8E8;*/
   width: 80%
 }
 body.controller_pages #no_posts {
@@ -5723,7 +5725,7 @@ body.controller_pages #no_posts {
   width: 100%;
   margin-bottom: 15px;
 }
-body.controller_pages .shout {
+body.controller_pages .shout, body.controller_conference_sessions .shout, body.controller_tags .shout {
   width: 95%;
 }
 #edit_shout_form {

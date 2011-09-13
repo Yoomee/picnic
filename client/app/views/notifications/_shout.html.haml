@@ -13,8 +13,10 @@
           ="about "
           -tags.each do |tag|
             =link_to_tag(tag, :li => false)
-        -else
+        -elsif shout.recipient.is_a?(Member)
           ="on #{shout.recipient.nil? ? link_to('their profile', shout.member) : link_to("#{full_name_or_your(shout.recipient)} profile", shout.recipient)}."
+        -elsif shout.recipient
+          ="on #{link_to_self(shout.recipient)}."
       -else
         ="#{member_names_list(notification.wall_post_members, :limit => 1)} commented on"
         ="#{link_to("#{full_name_or_your(shout.member, :owner => (notification.wall_post_members.count > 1 ? nil : shout.member))} discussion", shout_path(shout, :read_notification => true))}."

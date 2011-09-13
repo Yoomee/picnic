@@ -57,7 +57,17 @@
       -else
         -@conference_session.attendees.random.limit(42).each do |member|
           =link_to(image_for(member, "50x50#"), member, :title => member, :id => "attendee_#{member.id}", :class => "attendee")
-    
+    #posts_header
+      %h3.theme_title.fl Comments
+      .fr.post_to_wall
+        -if logged_in?
+          =link_to_box("Comment", new_shout_path(:shout => {:recipient_id => @conference_session.id, :recipient_type => 'ConferenceSession'}), :class => 'bttn_l new_comment_link')
+    =render_shouts_filter(@conference_session, %w{latest popular}, :active => "latest")
+    -if @conference_session.shouts.latest.empty?
+      #shout_wall
+        =not_received_yet_message(@conference_session)
+    -else
+      =render_shouts(@conference_session, :per_page => 5, :filter => "latest")
 .row
   .twelvecol
     -options_panel do
