@@ -8,6 +8,9 @@ module FlipboardHelper
     tweets = get_latest_tweets_from("PICNICfestival", 5, false, true)
     speakers = Member.with_badge(:picnic11_speaker).latest.limit(15).all
     flipitems = []
+    if (photo_dispatch_item = get_photo_dispatch_item)
+      flipitems << photo_dispatch_item
+    end
     until pages_sections.empty? && speakers.empty?
       flipitems << pages_sections.shift unless pages_sections.empty?
       flipitems << speakers.shift unless speakers.empty?
@@ -44,6 +47,21 @@ module FlipboardHelper
     flipboard_content
   end
   
+  def get_photo_dispatch_item
+    begin
+      Rails.logger.info("Getting latest photo dispatch")
+      rss = RSS::Parser.parse(open("http://photodispatch.nl/rss/picnic11").read, false)
+      item = rss.items.last
+      {:flip_partial => "photo_dispatch", :image_url => item.enclosure.url, :text => item.title, :color => "#C9DCDF"}
+    rescue => e
+      Rails.logger.info("FAILED to fetch latest photo dispatch. Error: #{e}")
+      nil
+    rescue Timeout::Error => e
+      Rails.logger.info("FAILED to fetch latest photo dispatch. Error: #{e}")
+      nil
+    end
+  end
+  
   def render_flip_item(flipitem, template)
     if flipitem.is_a?(String)
       flip_partial = flipitem
@@ -51,6 +69,8 @@ module FlipboardHelper
       flip_partial = flipitem.flip_partial
     elsif flipitem.is_a?(Struct::Tweet)
       flip_partial = "tweet"
+    elsif flipitem.is_a?(Hash)
+      flip_partial = flipitem[:flip_partial]
     else
       flip_partial = flipitem.class.to_s.underscore
     end

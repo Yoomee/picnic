@@ -99,8 +99,9 @@
               .ticket_message_1
                 Buy<br/>tickets<br/>now
               .ticket_message_2
-                -if Date.today < Date.parse("09/14/2011")
-                  ="#{((Date.parse("09/14/2011")-Date.today))}<br/>days to<br/>go"
+                -days_to_go = Date.parse("09/14/2011") - Date.today
+                -if days_to_go > 0
+                  ="#{days_to_go}<br/>day#{days_to_go==1 ? '' : 's'} to<br/>go"
                 -else
                   Buy<br/>tickets<br/>now
                 

@@ -15,6 +15,8 @@ class FlipcolTemplate
         else
           [[1,2],[2,2],[2,3]].include?(template)
         end
+      when "Hash"
+        template == [2,2]
       else
         true
       end
