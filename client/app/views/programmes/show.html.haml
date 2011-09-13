@@ -171,6 +171,8 @@
             =link_to_function("Calendar", "Programme.showCalendar()", :class => "prog_filter", :id => "prog_filter_cal")
             =link_to_function("List view", "Programme.showList()", :class => "prog_filter", :id => "prog_filter_list")
             =link_to_function("My program", "Programme.showMyProgramme()", :class => "prog_filter", :id => "prog_filter_my")
+            =link_to("Download PDF", Document.find_by_id(9), :class => "prog_filter", :id => "prog_filter_pdf")
+            =link_to("Get the app", "http://itunes.apple.com/us/app/picnic-festival/id456286423?mt=8&uo=4" , :class => "prog_filter", :id => "prog_filter_app", :target => "itunes_store")
         #prog_header_right
           .days.fr
             -@conference.days.each_with_index do |day, idx|

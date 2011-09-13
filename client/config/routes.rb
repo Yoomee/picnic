@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   
   map.resources :conference_delegates, :only => [:index]
-  map.resources :conference_sessions, :only => [:create, :edit, :destroy, :show, :update], :member => {:duplicate => :get, :attend => :post, :unattend => :delete}
+  map.resources :conference_sessions, :member => {:duplicate => :get, :attend => :post, :unattend => :delete}
   map.resources :conferences, :member => {:order_venues => :get, :update_venue_weights => :post} do |conf|
     conf.resources :conference_sessions, :as => 'sessions', :only => [:show, :new]
     conf.resource :programme, :as => "program", :only => [:show]
@@ -17,6 +17,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :wall_posts, :only => [], :member => {:remove => :delete, :restore => :put}
 
   map.inpires "picnic-inspires/:id", :controller => "inspires", :action => "show"
+  map.photo_dispatch "picnic-photos/:id", :controller => "inspires", :action => "photo_dispatch"
 
   map.connect 'api/program/:version', :controller => "api", :action => "program"
   map.connect 'api/program', :controller => "api", :action => "program"  

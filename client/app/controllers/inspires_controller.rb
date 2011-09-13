@@ -4,4 +4,8 @@ class InspiresController < ApplicationController
     
   end
   
+  def photo_dispatch
+    
+  end
+  
 end

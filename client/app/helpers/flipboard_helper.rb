@@ -2,7 +2,9 @@ module FlipboardHelper
   
   def get_flipboard_content
     sponsors = Page::random_sponsors(3)
-    pages_sections = Section.find_by_slug(:news).all_children(:published_only => true, :latest => true).first(15)
+    pages_sections = Section.find_by_slug(:news).all_children(:published_only => true, :latest => true).first(5)
+    pages_sections += Section.find_by_slug(:stories).all_children(:published_only => true, :latest => true).first(20)
+    pages_sections = pages_sections.randomize
     tweets = get_latest_tweets_from("PICNICfestival", 5, false, true)
     speakers = Member.with_badge(:picnic11_speaker).latest.limit(15).all
     flipitems = []
