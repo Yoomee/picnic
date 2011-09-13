@@ -1,6 +1,13 @@
--@page_title = @section.name
+-if @section.slug_is?(:stories)
+  .row
+    .tencol
+      =image_tag("picnic_stories.png")
+      %hr
+-else
+  -@page_title = @section.name
+
 -no_content_row
--unless @section.description.nil?
+-unless @section.description.blank?
   .row
     %p.section_description
       =@section.description
