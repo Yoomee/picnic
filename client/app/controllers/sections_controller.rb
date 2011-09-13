@@ -57,11 +57,18 @@ SectionsController.class_eval do
     # else
       case @section.view
       when 'latest_stories', 'news_view'
+        if @section.slug_is(:news)
+          per_page_amount = 20
+        elsif @section.view == "news_view"
+          per_page_amount = @section.parent.try(:slug) == "sponsors" ? 1000 : 6
+        else
+          per_page_amount = APP_CONFIG[:latest_stories_items_per_page] || 6         
+        end
         @pages_sections = @section.pages.published.latest + @section.children.not_hidden
         @pages_sections.extend(SectionsController::SortByWeightAndPublished)
         @pages_sections = @pages_sections.sort_by_weight_and_published.paginate(
         :page => params[:page],
-        :per_page => (@section.view == 'news_view' ? (@section.parent.try(:slug) == "sponsors" ? 1000 : 6) : (APP_CONFIG[:latest_stories_items_per_page] || 6))
+        :per_page => per_page_amount
         )
         render :action => @section.view
       when 'first_page'
