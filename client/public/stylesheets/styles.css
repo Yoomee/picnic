@@ -9325,7 +9325,7 @@ table.front_covers * {
 
 /*========== Picnic inspires ==========*/
 
-#picnic_inspires_iframe {
+.picnic_iframe {
   width: 100%;
   height: 600px;
 }
