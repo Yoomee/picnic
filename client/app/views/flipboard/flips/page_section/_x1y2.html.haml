@@ -1,6 +1,6 @@
 -x = FlipcolTemplate::X1
 -y = (FlipcolTemplate::Y1 * 2) + FlipcolTemplate::MARGIN
-.flip.x1.y2
+.flip.flip_page_section.x1.y2
   .flip_border_top{:style => "background:#{flipitem.color}"}
   =link_to(image_or_photo_for(flipitem, "#{x}x#{y}#"),flipitem)
   -link_to(flipitem, :class => "hover flip_info", :style => "background-color:#{flipitem.color}") do
@@ -8,8 +8,11 @@
       .text2{:style => "color:#{complementary_color(flipitem.color)}"}
         =auto_link(flipitem.summary(150, :strip_tags => true))
     .flip_footer{:style => "color:#{complementary_color(flipitem.color)};border-color:#{complementary_color(flipitem.color)}"}
-      FESTIVAL
-      %strong
-        NEWS
+      -if flipitem.root_slug_is?(:stories)
+        STORIES
+      -else
+        FESTIVAL
+        %strong
+          NEWS
       %span.festival_news_date  
         =flipitem.created_at.strftime("%d %B %Y")        
