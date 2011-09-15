@@ -33,6 +33,9 @@ class ApiController < ApplicationController
   
   def program
     conference = Conference.first
+    if @member
+      @member.update_attribute(:api_authenticated, true) unless @member.api_authenticated?
+    end
     if (params[:version].to_i < conference.version) || (@member && (params[:my_program_version].to_i <  @member.my_program_version))
       out = {:update => 1}
       if params[:version].to_i < conference.version
