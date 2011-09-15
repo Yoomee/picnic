@@ -39,7 +39,7 @@ ShoutsController.class_eval do
   def new
     attributes = (params[:shout] || {}).merge(:tag_list => params[:theme])
     shout = Shout.new(attributes)
-    partial_name = shout.recipient.is_a?(Page) ? "shouts/form" : "shouts/themes_form"
+    partial_name = shout.recipient_type.in?(%w{Page ConferenceSession}) ? "shouts/form" : "shouts/themes_form"
     render :partial => partial_name, :locals => {:shout => shout}
   end
   
@@ -90,9 +90,11 @@ ShoutsController.class_eval do
           # shouts = @shout.recipient.received_shouts
           # page[:shouts_container].replace_html(render_shouts(shouts))          
           page << "MemberShouts.received();"
-        elsif !@shout.recipient_type.blank?
+        elsif @shout.recipient_type=="Page"
           page << "RecipientShouts.url = '#{shouts_path(:parent_type => @shout.recipient_type, :parent_id => @shout.recipient_id)}';"
           page << "RecipientShouts.latest();"
+        elsif @shout.recipient_type=="ConferenceSession"
+          page << "$('#shouts_filter_latest a').click();"
         else
           # shouts = logged_in_member.shouts
           # page[:shouts_container].replace_html(render_shouts(shouts))

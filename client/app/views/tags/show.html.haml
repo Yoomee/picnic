@@ -86,7 +86,8 @@
     #posts_header
       %h3.theme_title.fl Posts
       .fr.post_to_wall
-        =link_to_box("Post something", new_shout_path(:theme => @tag.name), :class => 'bttn_l new_comment_link', :scrolling => false)
+        -if logged_in?
+          =link_to_box("Post something", new_shout_path(:theme => @tag.name), :class => 'bttn_l new_comment_link', :scrolling => false)
     .stories_filter 
       =image_tag 'ajax_loader_squares.gif', :id => 'filter_loader', :style => "display:none"
       Showing:

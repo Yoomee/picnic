@@ -6,7 +6,6 @@
     two words at most. Choose from existing tags or feel free to create new ones.
   =error_message_on(:shout, :base)
   -semantic_remote_form_for(shout) do |form|
-    =shout.tag_list
     -form.inputs do
       %li{:style => "display:none"}=hidden_field_tag(:redirect_to, params[:redirect_to])
       =form.input :themes_form_step, :as => :hidden, :value => true

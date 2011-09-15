@@ -135,7 +135,10 @@ Shout.class_eval do
   
   private
   def notify_subscribers
-    subscribers = Member.subscribed_to_tags(tags) + Member.subscribed_to_member(member)
+    subscribers = Member.subscribed_to_tags(Tag.with_name_in(tag_list)) + Member.subscribed_to_member(member)
+    if recipient.is_a?(ConferenceSession)
+      subscribers += recipient.attendees
+    end
     subscribers.uniq.each do |subscriber|
       subscriber.notifications.create(:attachable => self) unless subscriber.in?([member, recipient])
     end
