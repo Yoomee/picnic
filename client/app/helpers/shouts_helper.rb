@@ -2,7 +2,7 @@ ShoutsHelper.module_eval do
 
   def default_to_latest_shouts?
     if @member
-      @member.has_recipientless_shouts? || !@member.has_received_shouts?
+      !@member.shouts_without_member_recipient.empty? || !@member.has_received_shouts?
     else
       true
     end

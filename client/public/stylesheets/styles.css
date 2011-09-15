@@ -5817,7 +5817,7 @@ div.shout_text p {
   float: left;
   position: relative;
 }
-body.controller_pages .shout_recipient, body.controller_members .shout_recipient {
+body.controller_pages .shout_recipient, body.controller_conference_sessions .shout_recipient, body.controller_members .shout_member_recipient {
   display:none;
 }
 .shout_attachable_icon {

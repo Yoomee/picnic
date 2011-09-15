@@ -116,9 +116,9 @@ MembersController.class_eval do
     @filter = params[:filter]
     case @filter
     when 'popular'
-      @member.recipientless_shouts.top_rated
+      @member.shouts_without_member_recipient.top_rated
     when 'latest'
-      @member.recipientless_shouts
+      @member.shouts_without_member_recipient
     when 'received'
       @member.received_shouts
     end

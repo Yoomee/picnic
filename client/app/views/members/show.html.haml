@@ -312,10 +312,10 @@
           =li_with_active default_to_received_shouts?, link_to_function('From others', 'MemberShouts.received()'), :id => 'received_shouts'
       #shouts_container
         -if default_to_latest_shouts? 
-          -if @member.recipientless_shouts.empty?
+          -if @member.shouts_without_member_recipient.empty?
             =not_posted_yet_message(@member)
           -else
-            =render_shouts(@member.recipientless_shouts, :show_member => true, :parent => @member, :filter => 'latest')
+            =render_shouts(@member.shouts_without_member_recipient, :show_member => true, :parent => @member, :filter => 'latest')
         -else
           =render_shouts(@member.received_shouts, :show_member => true, :parent => @member, :filter => 'received')
     .twocol.last
