@@ -20,6 +20,7 @@ SectionsController.class_eval do
   before_filter :handle_facelist, :only => [:create, :update]
 
   def home
+    #return home_from_site if request.referrer =~ /localhost|picnicnetwork/
     if !show_splash_page? && ((@front_cover = front_cover) || (@section = home_section))
       if @front_cover
         # Do nothing
@@ -90,7 +91,21 @@ SectionsController.class_eval do
     params[:section] ||= {}
     params[:section][:tag_list] = params[:facelist_values_section_themes] if !params[:facelist_values_section_themes].nil?
   end
-  
+
+  def home_from_site
+    destination = Section.find_by_slug('about_us').destination
+    if destination.is_a?(Section)
+      @section = destination
+      return show
+    else
+      @page = destination
+      if !@page.section.slug_is?(:stories) && stories_section = Section.find_by_slug(:stories)
+        @latest_story = stories_section.pages.latest.first
+      end
+      return render('pages/show')
+    end
+  end
+
   def seen_splash_page!
     if splash_page_advert
       session[:viewed_splash_pages] ||= []

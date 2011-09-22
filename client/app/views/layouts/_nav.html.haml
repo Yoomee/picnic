@@ -1,7 +1,8 @@
 #nav
   %h1#site_logo
     =#link_to "PICNIC", nav_items[0][:url]
-    =link_to 'PICNIC', Section.find_by_slug('about_us'), :class => (current_root_section?(Section.find_by_slug('about_us')) ? 'active' : '')
+    =#link_to 'PICNIC', Section.find_by_slug('about_us'), :class => (current_root_section?(Section.find_by_slug('about_us')) ? 'active' : '')
+    =link_to 'PICNIC', root_path, :class => current_root_section?(Section.find_by_slug('about_us')) ? 'active' : ''
   %ul
     -nav_items.each do |item|
       =li_with_active(item[:active], link_to(item[:name], item[:url]))
