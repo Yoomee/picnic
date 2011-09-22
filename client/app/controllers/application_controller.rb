@@ -13,7 +13,7 @@ ApplicationController.class_eval do
     # while section.destination.is_a?(Section) && section.destination != section do
     #   section = section.destination 
     # end
-    section = Section.find_by_slug("news")
+    section = Section.find_by_slug("stories")
     section
   end
 
