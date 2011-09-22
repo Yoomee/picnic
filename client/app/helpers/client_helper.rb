@@ -61,13 +61,13 @@ module ClientHelper
       :active => current_root_section?(section),
       :weight => section.weight
     }}
-    items << {
+    items.sort{|x,y| x[:weight] <=> y[:weight]}
+    club_pos = items.size > 2 ? -2 : items.size
+    items.insert(club_pos, {
       :name => "Club",
       :url => club_path,
       :active => viewing_club?,
-      :weight => 100
-    }    
-    items.sort{|x,y| x[:weight] <=> y[:weight]}
+    })
   end
   
   def shout_title(shout)
