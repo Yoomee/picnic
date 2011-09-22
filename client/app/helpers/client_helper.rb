@@ -62,7 +62,7 @@ module ClientHelper
       :weight => section.weight
     }}
     items.sort{|x,y| x[:weight] <=> y[:weight]}
-    club_pos = items.size > 2 ? -2 : items.size
+    club_pos = items.size >= 2 ? -2 : items.size
     items.insert(club_pos, {
       :name => "Club",
       :url => club_path,
