@@ -1,4 +1,3 @@
-run "cd #{current_path} && rake ts:stop RAILS_ENV=#{environment} -t"
 run "rm -rf #{release_path}/public/uploads"
 (2010..Time.now.year).each do |year|
   release_year_path = "#{release_path}/public/dragonfly/#{year}"
@@ -28,3 +27,7 @@ end
 run "rm #{release_path}/public/404.html; ln -nfs #{release_path}/client/public/404.html #{release_path}/public/404.html"
 run "rm #{release_path}/public/500.html; ln -nfs #{release_path}/client/public/500.html #{release_path}/public/500.html"
 
+# Setup sphinx
+run "rm -rf #{release_path}/db/sphinx"
+run "mkdir -p #{shared_path}/sphinx"
+run "ln -nfs #{shared_path}/sphinx #{release_path}/db/sphinx"
