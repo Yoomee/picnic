@@ -1,0 +1,11 @@
+!!! Strict
+%html{"xml:lang" => "en", :lang => "en", :xmlns => "http://www.w3.org/1999/xhtml"}
+  %head  
+    %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "Content-Type" }  
+    %title The essence of Picnic
+    %style{:type => "text/css"}
+      html {overflow: auto;} 
+      html, body, div, iframe {margin: 0px; padding: 0px; height: 100%; border: none;} 
+      iframe {display: block; width: 100%; border: none; overflow-y: auto; overflow-x: hidden;} 
+  %body
+    %iframe{:id => "tree", :name => "tree", :src => "http://www.popaquestion.nl/q/picnic", :frameborder => "0", :marginheight => "0", :marginwidth => "0", :width => "100%", :height => "100%", :scrolling => "auto"}
