@@ -40,6 +40,7 @@ ActionController::Routing::Routes.draw do |map|
   map.themes '/themes', :controller => 'tags'
   map.verify_delegate '/delegate/verify/:signature', :controller => 'conference_delegates', :action => 'verify'
   map.what_i_bring "/what_i_bring", :controller => 'members', :action => 'what_i_bring'
+  map.essence '/essence', :controller => 'essence', :action => 'show'
   
   map.connect '/delegate/receive', :controller => 'delegate_receiver', :action => 'receive'
   map.connect '/delegate/test', :controller => 'delegate_receiver', :action => 'test'
