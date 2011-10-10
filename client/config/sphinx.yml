@@ -4,3 +4,8 @@ development:
 production:
   min_prefix_len: 1
   port: 9314
+  config_file: /data/picnic_static/shared/production.sphinx.conf
+  searchd_file_path: /data/picnic_static/shared/sphinx
+  searchd_log_path: /data/picnic_static/shared/searchd.log
+  query_log_file: /data/picnic_static/shared/searchd.query.log
+  pid_file: /data/picnic_static/shared/searchd.production.pid
