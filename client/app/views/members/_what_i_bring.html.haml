@@ -1,4 +1,5 @@
 -content_for(:head) do
+  =themes_facelist_javascript(:tag_list => object.tag_list, :intro_text => "e.g. creativity", :prefix => 'member')
   :javascript
 
     var WhatIBringForm = {
@@ -9,10 +10,36 @@
         if (characters_left < 0) {
           $('#characters_left').addClass('negative');
           WhatIBringForm.valid = 0;
+        } else if ($('#member_what_i_bring').val().length == 0) {
+          $('#characters_left').removeClass('negative');
+          WhatIBringForm.valid = 0;
         } else {
           $('#characters_left').removeClass('negative');
           WhatIBringForm.valid = 1;
-
+        }
+      },
+      hasTags: function() {
+        if ($('.facelist-values').val().length > 0) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      checkValid: function() {
+        if (WhatIBringForm.valid && WhatIBringForm.hasTags()) {
+          return true;
+        } else {
+          if (!WhatIBringForm.valid) {
+            $('#member_what_i_bring_input').addClass('error');
+          } else {
+            $('#member_what_i_bring_input').removeClass('error');
+          }
+          if (!WhatIBringForm.hasTags()) {
+            $('.profile_tags_input').addClass('invalid');
+          } else {
+            $('.profile_tags_input').removeClass('invalid');
+          }
+          return false;
         }
       }
   
@@ -36,7 +63,7 @@
     -form.buttons do
       =form.commit_button 'Save'
 -else
-  -semantic_form_for object, :html => {:onsubmit => "if(WhatIBringForm.valid){return true;}else{return false;}"} do |form|
+  -semantic_form_for object, :html => {:onsubmit => "return WhatIBringForm.checkValid();"} do |form|
     -form.inputs(:id => 'what_i_bring_inputs') do
       =form.input :what_i_bring, :as => :text, :input_html => {:rows => 2, :value => object.what_i_bring == '...' ? '' : object.what_i_bring}, :label => 'I bring...'
       %li#characters_left_container
@@ -44,5 +71,8 @@
     .clear
     .small_print
       =(small_print ||= small_print)
+    .profile_tags_input
+      %h4="Also tell us what you're about - choose from existing themes or feel free to create new ones."
+      =text_field_tag :member_themes_text, "", :onkeypress => "return event.keyCode!=13"
     -form.buttons do
       =form.commit_button 'Finish'

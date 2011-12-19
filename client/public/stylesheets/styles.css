@@ -2070,30 +2070,24 @@ span.cal_sheet span.day {
 	-webkit-border-radius:18px;
 	-moz-border-radius:18px;
 	border-radius:18px;		
-
 }
 #login_services .auth_link {
 	margin: 0 0 20px;
 	clear:both;
 	width:100%;
 }
-
 #not_registered {
 	float: left;
 	clear: left;
 	padding: 20px 0;
 	width: 600px;
-	
 	font-size: 18px;
-	
 }
-
 #login_old_way {
 	float: left;
 	width: 256px;
 	padding: 20px 0;
 	border-right: 1px solid #000;
-	
 }
 #login_old_way p {
 	float: left;
@@ -2113,19 +2107,13 @@ span.cal_sheet span.day {
 #login_old_way input#login_password {
 	margin: 0;
 }
-
-
-
 .forgotten_password {
 	float: left;
 	clear: left;
 	font-size: 12px;
 	margin: 5px 0 0 0;
 	width: 100%;
-	
 }
-
-
 #login_old_way input#login_bttn {
 	width: 80px;
 	float: left;
@@ -6125,7 +6113,7 @@ li.wall_post {
 #trending_themes {
   min-height: 250px;
 }
-a.tag, .no_member_themes_fancybox .tag, .controller_tags h1.tag {
+a.tag, .no_member_themes_fancybox .tag, .controller_tags h1.tag, body.action_what_i_bring span.tag {
   	display: block;
 
 	background:#ccc;
@@ -6146,6 +6134,26 @@ a.tag, .no_member_themes_fancybox .tag, .controller_tags h1.tag {
 	border-radius:3px;
 	-webkit-border-radius:3px;
 	-moz-border-radius:3px;
+}
+body.action_what_i_bring span.tag {
+  float: left;
+  margin-right: 5px;
+  font-size: 10px;
+  padding: 2px 5px;
+}
+body.action_what_i_bring .profile_tags_input {
+  float: left;
+  clear: both;
+  margin-top: 20px;
+}
+body.action_what_i_bring .profile_tags_input ul.facelist-selections {
+  border-color: #CCC;
+}
+body.action_what_i_bring .invalid ul.facelist-selections {
+  border-color: #D91C5C;
+}
+body.action_what_i_bring h4 {
+  font-size: 18px;
 }
 .controller_tags h1.tag {
   font-size: 34px;

@@ -1,5 +1,5 @@
 -if search.term.blank?
-  -Member.with_what_i_bring.with_image.random.limit(4).each do |member|
+  -Member.active.with_image.random.limit(4).each do |member|
     =render "members/find_someone_result", :member => member
 -elsif search.results.empty?
   %li.no_results

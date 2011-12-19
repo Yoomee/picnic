@@ -1,5 +1,7 @@
 TagsController.class_eval do
 
+  skip_before_filter :check_what_i_bring, :only => %w{autocomplete}
+
   before_filter :get_tag, :only => %w{destroy edit older_shouts people show stories update}
 
   admin_only :edit, :new, :create, :destroy, :update

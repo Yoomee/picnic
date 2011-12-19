@@ -11,7 +11,7 @@ MembersController.class_eval do
 
   def all
     params[:letter] ||= 'A'
-    @members = Member.ascend_by_surname.surname_begins_with(params[:letter])
+    @members = Member.active.ascend_by_surname.surname_begins_with(params[:letter])
     if request.xhr?
       if @members.empty?
         return render(:text => "<p>No members found for '#{params[:letter]}'<p>")
@@ -37,8 +37,8 @@ MembersController.class_eval do
   end
   
   def index
-    @latest_members = Member.latest.with_lat_lng.limit(100)
-    @find_someone_members = Member.with_what_i_bring.with_image.random.limit(4)
+    @latest_members = Member.latest.active.with_lat_lng.limit(100)
+    @find_someone_members = Member.active.with_image.random.limit(4)
   end
 
   def new_with_redirect
