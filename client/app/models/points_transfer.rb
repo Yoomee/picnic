@@ -1,4 +1,6 @@
 PointsTransfer.class_eval do
+
+  named_scope :for_active_members, :joins => :member, :conditions => ["members.banned_at IS NULL AND members.what_i_bring > '' AND members.what_i_bring <> '...' AND (members.created_at < ? OR EXISTS (SELECT * FROM taggings WHERE taggings.taggable_type = 'Member' AND taggings.taggable_id = members.id))", Date.new(2011, 10, 1)], :group => "members.id"
   
   class << self
     

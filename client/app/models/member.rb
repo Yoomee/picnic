@@ -30,13 +30,12 @@ Member.class_eval do
   has_many :conference_sessions_speaking_at, :through => :conference_sessions_members, :source => :conference_session, :conditions => "conference_sessions_members.speaker = 1 AND conference_sessions_members.attending = 1", :order => "conference_sessions.starts_at", :uniq => true
   has_many :conference_sessions_attending, :through => :conference_sessions_members, :source => :conference_session, :conditions => "conference_sessions_members.speaker = 0 AND conference_sessions_members.attending = 1", :order => "conference_sessions.starts_at", :uniq => true
   
-
   has_many :subscriptions, :dependent => :destroy
   has_many :subscription_items, :class_name => "Subscription", :as => :attachable, :dependent => :destroy
   has_many :subscribers, :through => :subscription_items, :source => :member
 
   # non-banned members with what_i_bring set and with profile tags (unless they registered before 1/10/2011)
-  named_scope :active, :joins => "LEFT OUTER JOIN taggings ON (taggings.taggable_type = 'Member' AND taggings.taggable_id = members.id)", :conditions => ["banned_at IS NULL AND what_i_bring > '' AND what_i_bring <> '...' AND (taggings.id IS NOT NULL OR members.created_at < ?)", Date.new(2011, 10, 1)], :group => "members.id"
+  named_scope :active, :conditions => ["banned_at IS NULL AND what_i_bring > '' AND what_i_bring <> '...' AND (members.created_at < ? OR EXISTS (SELECT * FROM taggings WHERE taggings.taggable_type = 'Member' AND taggings.taggable_id = members.id))", Date.new(2011, 10, 1)], :group => "members.id"
   named_scope :with_theme_tag, lambda{|tag| {:joins => "INNER JOIN shouts ON shouts.member_id=members.id INNER JOIN taggings ON taggings.taggable_id=shouts.id", :conditions => ["taggings.taggable_type='Shout' AND taggings.tag_id=?", tag.id], :group => "members.id"}}
   named_scope :subscribed_to_tags, lambda{|tags| {:joins => :subscriptions, :conditions => ["(subscriptions.attachable_type = 'Tag' OR subscriptions.attachable_type = 'ActsAsTaggableOn::Tag') AND subscriptions.attachable_id IN (?)", tags.collect(&:id)], :group => "members.id"}}
   named_scope :subscribed_to_member, lambda{|member| {:joins => :subscriptions, :conditions => ["subscriptions.attachable_type = 'Member' AND subscriptions.attachable_id = ?", member.id], :group => "members.id"}}

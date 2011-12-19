@@ -3,16 +3,16 @@ class LeaderboardController < ApplicationController
   before_filter :get_points_transfers
   
   def index
-    @ranked_members = Member.ranked_since(1.month.ago)
-    @top_posters = Member.top_posters_since(1.month.ago)
+    @ranked_members = Member.ranked_since(1.month.ago).active
+    @top_posters = Member.top_posters_since(1.month.ago).active
     #@top_tags = Tag.top_tags_since(1.month.ago).limit(15)
     @top_tags = @template.trending_tags_including_conference(10)
     paginate_and_render
   end
   
   def all_time
-    @ranked_members = Member.ranked
-    @top_posters = Member.top_posters
+    @ranked_members = Member.ranked.active
+    @top_posters = Member.top_posters.active
     #@top_tags = Tag.top_tags.limit(15)
     @top_tags = @template.top_tags_including_conference(10)
     paginate_and_render
@@ -20,7 +20,7 @@ class LeaderboardController < ApplicationController
   
   private
   def get_points_transfers
-    @points_transfers = PointsTransfer.latest.limit(18)
+    @points_transfers = PointsTransfer.latest.for_active_members.limit(18)
   end
   
   def paginate_and_render
