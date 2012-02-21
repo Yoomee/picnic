@@ -2,9 +2,11 @@ module FlipboardHelper
   
   def get_flipboard_content
     sponsors = Page::random_sponsors(3)
-    pages_sections = Section.find_by_slug(:news).all_children(:published_only => true, :latest => true).first(5)
-    pages_sections += Section.find_by_slug(:stories).all_children(:published_only => true, :latest => true).first(20)
-    pages_sections = pages_sections.randomize
+    pages_sections = Section.find_by_slug(:news).all_children(:published_only => true, :latest => true)#.first(5)
+    pages_sections += Section.find_by_slug(:stories).all_children(:published_only => true, :latest => true)#.first(20)
+    pages_sections.extend(SectionsController::SortByWeightAndPublished)
+    pages_sections.sort_by_weight_and_published
+    #pages_sections = pages_sections.randomize
     tweets = get_latest_tweets_from("PICNICfestival", 5, false, true)
     speakers = Member.with_badge(:picnic11_speaker).latest.limit(15).all
     flipitems = []
@@ -22,6 +24,7 @@ module FlipboardHelper
     tweets.each_with_index do |tweet, index|
       flipitems.insert((index+1)*(total_size/tweets.size), tweet)
     end
+    puts "flipitems.size = #{flipitems.size}"
     flipboard_content = []
     template_id = 0
     until flipitems.empty? do
