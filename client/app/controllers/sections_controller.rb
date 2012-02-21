@@ -7,9 +7,20 @@ module SectionsController::SortByWeightAndPublished
     item_b.publish_on <=> item_a.publish_on
   end
 
+  def compare_published(item_a, item_b)
+    return 0 if !item_a.respond_to?(:publish_on) || !item_b.respond_to?(:publish_on)
+    item_b.publish_on <=> item_a.publish_on
+  end
+
   def sort_by_weight_and_published
     sort do |item_a, item_b|
       compare_weight_and_published(item_a, item_b)
+    end
+  end
+
+  def sort_by_published
+    sort do |item_a, item_b|
+      compare_published(item_a, item_b)
     end
   end
 

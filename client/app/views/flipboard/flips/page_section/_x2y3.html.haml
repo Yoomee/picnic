@@ -16,6 +16,6 @@
         %strong
           NEWS
       %span.festival_news_date  
-        =flipitem.created_at.strftime("%d %B %Y")  
+        =flipitem.publish_on.strftime("%d %B %Y")  
   =link_to(image_or_photo_for(flipitem, "#{x}x#{y}#"),flipitem)
   
