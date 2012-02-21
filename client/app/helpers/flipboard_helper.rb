@@ -1,3 +1,5 @@
+require 'hpricot'
+require 'open-uri'
 module FlipboardHelper
   
   def get_flipboard_content
@@ -9,6 +11,7 @@ module FlipboardHelper
     #pages_sections = pages_sections.randomize
     tweets = get_latest_tweets_from("PICNICfestival", 5, false, true)
     speakers = Member.with_badge(:picnic11_speaker).latest.limit(15).all
+    flickr_photos = get_latest_flickr_photos
     flipitems = []
     if (photo_dispatch_item = get_photo_dispatch_item)
       flipitems << photo_dispatch_item
@@ -23,6 +26,9 @@ module FlipboardHelper
     end
     tweets.each_with_index do |tweet, index|
       flipitems.insert((index+1)*(total_size/tweets.size), tweet)
+    end
+    flickr_photos.each_with_index do |flickr_photo, index|
+      flipitems.insert((index + 1) * (total_size / flickr_photos.size), flickr_photo)
     end
     flipboard_content = []
     template_id = 0
@@ -49,6 +55,21 @@ module FlipboardHelper
     flipboard_content
   end
   
+  def get_latest_flickr_photos
+    begin
+      Rails.logger.info("Getting latest Flickr Photos")
+      #rss = RSS::Parser.parse(open("http://api.flickr.com/services/feeds/photos_public.gne?id=30196297@N07&lang=en-us&format=rss_200"))
+      doc = Hpricot.XML open("http://api.flickr.com/services/feeds/photos_public.gne?id=30196297@N07&lang=en-us&format=rss_200"), :fixup_tags => true
+      items = doc.search("//item")
+      items.map {|item| {:flip_partial => 'flickr_photo', :image_url => item.at("media:content")['url'], :text => item.at("title").inner_html, :color => '#C9DCDF', :url => item.at('link').inner_html}}
+    rescue => e
+      Rails.logger.info("FAILED to fetch latest flickr photo. Error: #{e}")
+      nil
+    rescue Timeout::Error => e
+      Rails.logger.info("FAILED to fetch latest flickr photo. Error: #{e}")
+      nil
+    end
+  end
   
   def get_photo_dispatch_item
     begin
