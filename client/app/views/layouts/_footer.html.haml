@@ -6,23 +6,37 @@
     #picnic_section.sitemap_list.fourcol
       =render("layouts/newsletter_signup")
     #picnic_section.sitemap_list.twocol
-      %h3=link_to 'Festival', '#'
-      %ul 
-        %li
-          =link_to_slug("News", :news)
-        %li
-          =link_to_slug("Overview", :overview)
-        %li
-          =link_to_slug("Themes", :themes)
-        %li
-          =link_to_slug("Registration", :registration)
+      %h3=link_to_slug "Events", :picnic_events
+      %ul
+        %li=link_to_slug 'Mash Up', :mash_up
+        %li=link_to_slug "Festival '12", :picnic12
+        %li=link_to_slug "PICNIC '11", :picnic11
+        %li=link_to_slug "PICNIC '10", :picnic10
+        %li=link_to_slug "Mini-Salon Dortmund", :mini_salon_dortmund
+        %li=link_to_slug 'PICNIC@WCIT', :picnic_wcit_2010
+        %li=link_to_slug "PICNIC '09", :picnic09
+        %li=link_to_slug 'NYC Salon', :picnic_new_york_salon
+        %li=link_to_slug "PICNIC '08", :picnic08
+        %li=link_to_slug "PICNIC '07", :picnic07
+        %li=link_to_slug "PICNIC '06", :picnic06
+      -if false
+        %h3=link_to 'Festival', '#'
+        %ul 
+          %li
+            =link_to_slug("News", :news)
+          %li
+            =link_to_slug("Overview", :overview)
+          %li
+            =link_to_slug("Themes", :themes)
+          %li
+            =link_to_slug("Registration", :registration)
       =link_to(image_tag("http://ax.phobos.apple.com.edgesuite.net/images/web/linkmaker/badge_appstore-lrg.gif", :title => "PICNIC Festival - Yoomee Digital", :style => "border: 0;"), "http://itunes.apple.com/us/app/picnic-festival/id456286423?mt=8&uo=4", :target => "itunes_store")
         
     #club.sitemap_list.twocol
-      %h3=link_to 'Club', '#'
+      %h3=link_to 'Community', club_path
       %ul 
         %li
-          =link_to "Intro", "/club"
+          =link_to "Intro", club_path
         %li
           =link_to "Connections", "/connections"
         %li
@@ -32,14 +46,11 @@
     #about.sitemap_list.twocol
       %h3=link_to 'About', '#'
       %ul 
-        %li
-          =link_to_slug("What is PICNIC", :what_is_picnic)
-        %li
-          =link_to_slug("Press room", :press_room)
-        %li
-          =link_to_slug("Stay in touch", :stay_in_touch)
-        %li
-          =link_to_slug("Contact", :contact)
+        %li=link_to_slug("Mission", :what_is_picnic)
+        %li=link_to_slug("History", :history)
+        %li=link_to_slug("Team: Board and Staff", :the_team)
+        %li=link_to_slug('Quotes', :quotes)
+        %li=link_to_slug("Contact", :contact)
     #footer_social_links.sitemap_list.twocol.last
       %h3 Keep in touch
       =link_to "Picnic on Twitter", "http://twitter.com/picnicfestival", :class=>"twitter socialmedia_link", :target=>"blank"

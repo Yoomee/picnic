@@ -56,10 +56,10 @@ h1, h2, h3, h4, h5, h6, #nav, .button, .bring_quote, .cycle_nav a, .call_to_acti
 	color:black;
 	font-weight: normal;
 }
-span.click_here_beta, p.club_welcome_intro_text, #flipboard, h2.blog_like_news_title a, p.latest_story_title, a#latest_story_title {
+#nav a, span.click_here_beta, p.club_welcome_intro_text, #flipboard, h2.blog_like_news_title a, p.latest_story_title, a#latest_story_title {
 	font-family:'VAG Rounded W02 Thin', arial, sans-serif;
 }
-#nav a, a.button, h1#page_title, input#search_icon, #buy_tickets {
+a.button, h1#page_title, input#search_icon, #buy_tickets, #nav h1 a {
 	font-family:'VAG Rounded W02 Bold', arial, sans-serif;
 	letter-spacing: 1px;
 }
@@ -187,7 +187,7 @@ body #wrapper .no_padding {
 #header_right {
 	margin-top: 15px;
 	float: right;
-	width: 523px;
+	width: 440px;
 	position: relative;
 	
 }
@@ -1577,13 +1577,11 @@ min-height:20px;
 
 #nav a {
 	display:block;
-	font-size: 18px;
+	font-size: 17px;
 	line-height: 100%;
 	color: #808080;
-	text-transform: uppercase;
-	letter-spacing: 1px;
-	
-
+	/*text-transform: uppercase;
+	letter-spacing: 1px;*/
 	float:left;
 	margin:0px 0px 0 0;
 	padding:5px 13px 5px;

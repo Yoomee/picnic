@@ -73,7 +73,7 @@
   - body_tag do
     #wrapper
       =#render "layouts/beta_bar"
-      -if (!action_name.in?(%w{create edit new update}) && !in_moderation? && !controller_name.in?(%w(admin front_covers search)) && !@front_cover) || current_page?("/register")
+      -if show_flipboard? || (false && (!action_name.in?(%w{create edit new update}) && !in_moderation? && !controller_name.in?(%w(admin front_covers search)) && !@front_cover) || current_page?("/register"))
         -cache("flipboard", :time_to_live => 1.hour) do
           =render_flipboard
         -scroll_top_pixels = current_slug?(:overview) ? 517 : 617
@@ -93,22 +93,23 @@
       #subnav_container.container                  
         =render("layouts/subnav")
       #main.content
-        #main_container.container
-          -unless true || @page.try(:slug_is?, :registration) || (logged_in? && logged_in_member.has_badge?(:picnic11_attendee)) || controller_name == "programmes"
-            -link_to_slug(:registration, :id=>"buy_tickets", :class => "#{'no_subnav' if @no_subnav}#{'speaker_profile' if @member.try(:has_badge?,:picnic11_speaker)}") do
-              .ticket_message_1
-                Buy<br/>tickets<br/>now
-              .ticket_message_2
-                -days_to_go = Date.parse("09/14/2011") - Date.today
-                -if days_to_go > 0
-                  ="#{days_to_go}<br/>day#{days_to_go==1 ? '' : 's'} to<br/>go"
-                -else
+        -unless show_flipboard?
+          #main_container.container
+            -unless true || @page.try(:slug_is?, :registration) || (logged_in? && logged_in_member.has_badge?(:picnic11_attendee)) || controller_name == "programmes"
+              -link_to_slug(:registration, :id=>"buy_tickets", :class => "#{'no_subnav' if @no_subnav}#{'speaker_profile' if @member.try(:has_badge?,:picnic11_speaker)}") do
+                .ticket_message_1
                   Buy<br/>tickets<br/>now
+                .ticket_message_2
+                  -days_to_go = Date.parse("09/14/2011") - Date.today
+                  -if days_to_go > 0
+                    ="#{days_to_go}<br/>day#{days_to_go==1 ? '' : 's'} to<br/>go"
+                  -else
+                    Buy<br/>tickets<br/>now
                 
-          -unless hide_page_title?
-            .row
-              .twelvecol                
-                %h1#page_title=page_title
-          =content_for_layout
+            -unless hide_page_title?
+              .row
+                .twelvecol                
+                  %h1#page_title=page_title
+            =content_for_layout
       =render :partial => 'layouts/footer'
     %div{:id => "fb-root"}        

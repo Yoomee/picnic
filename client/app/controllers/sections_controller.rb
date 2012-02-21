@@ -26,25 +26,26 @@ SectionsController.class_eval do
         # Do nothing
         render "home/front_cover"
       else
-        # Redirect to festival news
-        return redirect_to("/#{@section.permalink_name}")
-        case @section.view
-        when 'latest_stories', 'news_view'
-          @pages_sections = @section.pages.published.latest + @section.children
-          @pages_sections.extend(SectionsController::SortByWeightAndPublished)
-          @pages_sections = @pages_sections.sort_by_weight_and_published.paginate(
-          :page => params[:page],
-          :per_page => (@section.view == 'news_view' ? 7 : (APP_CONFIG[:latest_stories_items_per_page] || 6))
-          )
-          render :action => @section.view
-        when 'first_page'
-          @page = @section.destination
-          render :template => "pages/show"
-        else
-          # Otherwise use show view
-          @pages = @section.pages.published.weighted.paginate(:page => params[:page], :per_page => (APP_CONFIG[:section_pages_items_per_page] || 10))
-          render :action => 'show'
-        end
+        @show_flipboard = true
+        # # Redirect to festival news
+        # return redirect_to("/#{@section.permalink_name}")
+        # case @section.view
+        # when 'latest_stories', 'news_view'
+        #   @pages_sections = @section.pages.published.latest + @section.children
+        #   @pages_sections.extend(SectionsController::SortByWeightAndPublished)
+        #   @pages_sections = @pages_sections.sort_by_weight_and_published.paginate(
+        #   :page => params[:page],
+        #   :per_page => (@section.view == 'news_view' ? 7 : (APP_CONFIG[:latest_stories_items_per_page] || 6))
+        #   )
+        #   render :action => @section.view
+        # when 'first_page'
+        #   @page = @section.destination
+        #   render :template => "pages/show"
+        # else
+        #   # Otherwise use show view
+        #   @pages = @section.pages.published.weighted.paginate(:page => params[:page], :per_page => (APP_CONFIG[:section_pages_items_per_page] || 10))
+        #   render :action => 'show'
+        # end
       end
     else
       seen_splash_page!

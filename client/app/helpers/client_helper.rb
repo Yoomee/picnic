@@ -54,7 +54,7 @@ module ClientHelper
   
   def nav_items
     sections = Section.root.not_hidden
-    sections -= [Section.find_by_slug('about_us')] if FrontCover.active.empty?
+    #sections -= [Section.find_by_slug('about_us')] if FrontCover.active.empty?
     items = sections.collect{|section| {
       :name => section.name,
       :url => section_path(section),
@@ -62,12 +62,11 @@ module ClientHelper
       :weight => section.weight
     }}
     items.sort{|x,y| x[:weight] <=> y[:weight]}
-    club_pos = items.size >= 2 ? -2 : items.size
-    items.insert(club_pos, {
-      :name => "Club",
+    items << {
+      :name => "Community",
       :url => club_path,
-      :active => viewing_club?,
-    })
+      :active => viewing_community?,
+    }
   end
   
   def shout_title(shout)
@@ -75,7 +74,10 @@ module ClientHelper
     out = "#{time_ago_in_words(shout.created_at)} ago"
     shout.title.blank? ? out : "#{out}: #{shout.title}"
   end
-
+  
+  def show_flipboard?
+    @show_flipboard
+  end
   
   def themes_facelist_javascript(options = {})
     if !request.xhr? && !options[:in_head]
@@ -105,10 +107,10 @@ module ClientHelper
     end
   end
   
-  def viewing_club?
+  def viewing_community?
     controller_name=='club' || controller_name=='leaderboard' || controller_name=='members' || controller_name=="tags"
   end
-  alias_method :in_club?, :viewing_club?
+  alias_method :in_community?, :viewing_community?
 
   def viewing_stories?
     current_root_section.nil? ? false : current_root_section.slug_is?(:stories)

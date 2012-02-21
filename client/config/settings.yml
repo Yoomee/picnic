@@ -5,5 +5,5 @@ site_url: http://picnicnetwork.org
 webthumb_key: ff1e5c1f36807f9e87868f9c01c33dbb
 google_analytics: UA-1779729-1
 development:
-  site_url: http://ymlocal.com:3000
+  #site_url: http://ymlocal.com:3000
   site_email: development@picnicnetwork.org

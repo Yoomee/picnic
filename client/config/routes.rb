@@ -26,7 +26,8 @@ ActionController::Routing::Routes.draw do |map|
   map.all_time_leaderboard "leaderboard/all_time", :controller => "leaderboard", :action => "all_time"
   map.browse '/browse', :controller => 'browse'
   map.close_beta_bar '/close_beta_bar', :controller => 'home', :action => 'close_beta_bar'
-  map.club '/club', :controller => 'club', :action => 'index'
+  map.club '/community', :controller => 'club', :action => 'index'
+  map.connect '/club', :controller => 'club', :action => 'index'
   map.club_rules "/club/rules", :controller => 'club', :action => 'rules'
   map.connections "/connections", :controller => 'club', :action => 'connections'
   map.correspondents '/correspondents', :controller => 'correspondents'

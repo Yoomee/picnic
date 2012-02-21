@@ -1,4 +1,4 @@
--if controller_name=="inspires" || in_news_network? || in_club? || (!current_root_section.nil? && (current_root_section.page_and_section_descendant_generations > 1))
+-if controller_name=="inspires" || in_news_network? || in_community? || (!current_root_section.nil? && (current_root_section.page_and_section_descendant_generations > 1))
   #subnav_row
     .row            
       .twelvecol.no_padding
@@ -10,7 +10,7 @@
                 =li_with_active(current_page?(browse_path), link_to("Browse", browse_path))
                 =li_with_active(current_page?(themes_path), link_to("Themes", themes_path))
                 =li_with_active(current_page?(correspondents_path), link_to("Correspondents", correspondents_path))
-              -elsif in_club?
+              -elsif in_community?
                 =li_with_active(current_page?(club_path), link_to("Latest", club_path))
                 =li_with_active(controller_name == 'leaderboard', link_to("Leaderboard", leaderboard_path))
                 =li_with_active(current_page?(members_path), link_to("Members", members_path))
@@ -31,7 +31,7 @@
                 =li_with_active(current_page?(browse_path), link_to("Browse", browse_path))
                 =li_with_active(current_page?(themes_path), link_to("Themes", themes_path))
                 =li_with_active(current_page?(correspondents_path), link_to("Correspondents", correspondents_path))
-              -elsif in_club?
+              -elsif in_community?
                 =li_with_active(current_page?(club_path), link_to("Latest", club_path))
                 =li_with_active(controller_name == 'leaderboard', link_to("Leaderboard", leaderboard_path))
                 =li_with_active(current_page?(members_path) || current_page?(all_members_path), link_to("Members", members_path))
