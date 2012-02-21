@@ -76,7 +76,8 @@
       -if show_flipboard? || (false && (!action_name.in?(%w{create edit new update}) && !in_moderation? && !controller_name.in?(%w(admin front_covers search)) && !@front_cover) || current_page?("/register"))
         -cache("flipboard", :time_to_live => 1.hour) do
           =render_flipboard
-        -scroll_top_pixels = current_slug?(:overview) ? 517 : 617
+        -#scroll_top_pixels = current_slug?(:overview) ? 517 : 617
+        -scroll_top_pixels = 0
         :javascript
           $(document).ready(function() {
             if(navigator.platform == 'iPad' || navigator.platform == 'iPhone' || navigator.platform == 'iPod'){
