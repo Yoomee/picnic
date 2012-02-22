@@ -1,4 +1,7 @@
-.flip.flip_photo_dispatch.x2.y1
+-x = (FlipcolTemplate::X1 * 2) + FlipcolTemplate::MARGIN
+-y = (FlipcolTemplate::Y1 * 2) + FlipcolTemplate::MARGIN
+.flip.flip_page_section.x2.y1
+  =link_to(image_or_photo_for(flipitem, "#{x}x#{y}#"),flipitem)
   -link_to(flipitem, :class => "hover flip_info", :style => "background-color:#{flipitem.color}", :target => '_blank') do
     .padding
       .text2{:style => "color:#{complementary_color(flipitem.color)}"}
