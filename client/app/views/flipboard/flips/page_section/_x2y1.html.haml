@@ -1,0 +1,16 @@
+.flip.flip_photo_dispatch.x2.y1
+  -link_to(flipitem, :class => "hover flip_info", :style => "background-color:#{flipitem.color}", :target => '_blank') do
+    .padding
+      .text2{:style => "color:#{complementary_color(flipitem.color)}"}
+        =auto_link(flipitem.summary(150, :strip_tags => true))
+    .flip_footer{:style => "color:#{complementary_color(flipitem.color)};border-color:#{complementary_color(flipitem.color)}"}
+      -if flipitem.root_slug_is?(:stories)
+        PICNIC
+        %strong
+          STORIES
+      -else
+        FESTIVAL
+        %strong
+          NEWS
+      %span.festival_news_date  
+        =flipitem.publish_on.strftime("%d %B %Y")

@@ -6,7 +6,7 @@
   -link_to(flipitem, :class => "hover flip_info", :style => "background-color:#{flipitem.color}") do
     .padding
       .text2{:style => "color:#{complementary_color(flipitem.color)}"}
-        =auto_link(flipitem.summary(150, :strip_tags => true))
+        =auto_link(flipitem.title.word_truncate(80))
     .flip_footer{:style => "color:#{complementary_color(flipitem.color)};border-color:#{complementary_color(flipitem.color)}"}
       -if flipitem.root_slug_is?(:stories)
         PICNIC

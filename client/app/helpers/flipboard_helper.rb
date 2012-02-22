@@ -36,23 +36,52 @@ module FlipboardHelper
       template = FlipcolTemplate.new(template_id)
       items = []
       template.flipitems.each do |flipitem_template|
-        item_queue = []
-        until flipitems.empty? || FlipcolTemplate.can_display_item?(flipitem = flipitems.shift, flipitem_template)
-          item_queue << flipitem
-        end
-        if !flipitems.empty?
+        candidates = flipitems.dup
+        flipitem = get_suitable_flipitem(candidates, flipitem_template)
+        if flipitem
+          flipitems.delete(flipitem)
           items << flipitem
-          flipitems = item_queue + flipitems
         end
       end
       flipboard_content << [template, items.compact]
-      if (template_id+1 == FlipcolTemplate::TEMPLATES.size)
+      if (template_id + 1 == FlipcolTemplate::TEMPLATES.size)
         template_id = 0
       else
         template_id += 1
       end
     end
+          
+    # until flipitems.empty? do
+    #   template = FlipcolTemplate.new(template_id)
+    #   items = []
+    #   template.flipitems.each do |flipitem_template|
+    #     item_queue = []
+    #     until flipitems.empty? || FlipcolTemplate.can_display_item?(flipitem = flipitems.shift, flipitem_template)
+    #       item_queue << flipitem
+    #     end
+    #     if !flipitems.empty?
+    #       items << flipitem
+    #       flipitems = item_queue + flipitems
+    #     end
+    #   end
+    #   flipboard_content << [template, items.compact]
+    #   if (template_id+1 == FlipcolTemplate::TEMPLATES.size)
+    #     template_id = 0
+    #   else
+    #     template_id += 1
+    #   end
+    # end
     flipboard_content
+  end
+  
+  def get_suitable_flipitem(candidates, template)
+    return nil if candidates.empty?
+    flipitem = candidates.shift
+    if FlipcolTemplate.can_display_item?(flipitem, template)
+      flipitem
+    else
+      get_suitable_flipitem(candidates, template)
+    end
   end
   
   def get_latest_flickr_photos
@@ -87,6 +116,8 @@ module FlipboardHelper
   end
   
   def render_flip_item(flipitem, template)
+    @flipitem_count ||= 0
+    @flipitem_count += 1
     if flipitem.is_a?(String)
       flip_partial = flipitem
     elsif flipitem.respond_to?(:flip_partial)

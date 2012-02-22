@@ -1,0 +1,10 @@
+.flip.flip_photo_dispatch.x2.y1
+  =link_to(image_tag(flipitem[:image_url], :width => x), flipitem[:url], :target => '_blank')
+  -link_to(flipitem[:url], :class => "hover flip_info", :style => "background-color:#{flipitem[:color]}", :target => '_blank') do
+    .padding
+      .text4{:style => "color:#{complementary_color(flipitem[:color])}"}
+        =auto_link(truncate(strip_tags(flipitem[:text]), :length => 150))
+    .flip_footer{:style => "color:#{complementary_color(flipitem[:color])};border-color:#{complementary_color(flipitem[:color])}"}
+      PICNIC
+      %strong
+        FLICKR STREAM

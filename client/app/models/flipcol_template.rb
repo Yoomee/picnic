@@ -13,7 +13,7 @@ class FlipcolTemplate
         if item.is_sponsor?
           [[1,1],[1,2]].include?(template)
         else
-          [[1,2],[2,2],[2,3]].include?(template)
+          [[1,2],[2,2],[2,3],[2,1], [1,1]].include?(template)
         end
       when "Hash"
         template == [2,2]
