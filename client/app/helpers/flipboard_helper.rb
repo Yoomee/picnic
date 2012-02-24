@@ -7,7 +7,7 @@ module FlipboardHelper
     pages_sections = Section.find_by_slug(:news).all_children(:published_only => true, :latest => true)#.first(5)
     pages_sections += Section.find_by_slug(:stories).all_children(:published_only => true, :latest => true)#.first(20)
     pages_sections.extend(SectionsController::SortByWeightAndPublished)
-    pages_sections = pages_sections.sort_by_published
+    pages_sections = pages_sections.sort_by_published.select(&:has_photo?)
     #pages_sections = pages_sections.randomize
     tweets = get_latest_tweets_from("PICNICfestival", 5, false, true)
     speakers = Member.with_badge(:picnic11_speaker).latest.limit(15).all
@@ -93,10 +93,10 @@ module FlipboardHelper
       items.map {|item| {:flip_partial => 'flickr_photo', :image_url => item.at("media:content")['url'], :text => item.at("title").inner_html, :color => '#C9DCDF', :url => item.at('link').inner_html}}
     rescue => e
       Rails.logger.info("FAILED to fetch latest flickr photo. Error: #{e}")
-      nil
+      []
     rescue Timeout::Error => e
       Rails.logger.info("FAILED to fetch latest flickr photo. Error: #{e}")
-      nil
+      []
     end
   end
   
