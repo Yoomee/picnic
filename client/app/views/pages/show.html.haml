@@ -55,7 +55,7 @@
           -elsif in_stories?
             %h3 Other stories
             %ul.lst
-              -@page.section.pages.id_is_not(@page.id).latest.first(5).each do |story|
+              -@page.section.latest_pages.published.id_is_not(@page.id).latest.first(5).each do |story|
                 %li=link_to_self(story)
           -else
             =render("pages/subnav", :page => @page)
