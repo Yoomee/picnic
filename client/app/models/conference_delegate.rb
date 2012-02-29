@@ -6,7 +6,7 @@ class ConferenceDelegate < ActiveRecord::Base
   
   belongs_to :member
   after_create :send_club_invite
-  after_save :add_badge
+  #after_save :add_badge
   
   class << self
     def create_from_params!(params)
