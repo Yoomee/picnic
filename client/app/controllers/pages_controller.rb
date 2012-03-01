@@ -21,7 +21,7 @@ PagesController.class_eval do
   
   def get_latest_story
     if !@page.section.slug_is?(:stories) && stories_section = Section.find_by_slug(:stories)
-      @latest_story = stories_section.pages.latest.first
+      @latest_story = stories_section.latest_pages.first
     end
   end
   
