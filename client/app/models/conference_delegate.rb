@@ -57,6 +57,20 @@ class ConferenceDelegate < ActiveRecord::Base
       end
     end
   end
+  
+  def ticket_description
+    if ticket_wed
+      "the PICNIC Innovation Mash Up that will take place on May 15th"
+    elsif ticket_3
+      "PICNIC Festival '12 that will take place on September 17th and 18th"
+    elsif ticket_thu
+      "Day 1 of PICNIC Festival '12 that will take place on September 17th"
+    elsif ticket_fri
+      "Day 2 of PICNIC Festival '12 that will take place on September 18th"
+    else
+      "a PICNIC event"
+    end
+  end
 
   def add_badge
     puts "member_id = #{member_id}"
