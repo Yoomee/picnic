@@ -46,6 +46,8 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/delegate/receive', :controller => 'delegate_receiver', :action => 'receive'
   map.connect '/delegate/test', :controller => 'delegate_receiver', :action => 'test'
   map.connect "tags/autocomplete", :controller => "tags", :action => "autocomplete"
+
+  map.carousel '/carousel', :controller => 'sections', :action => 'home', :show_carousel => true
   
   map.root :controller => 'sections', :action => 'home'
   

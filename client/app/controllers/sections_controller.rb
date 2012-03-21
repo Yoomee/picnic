@@ -33,7 +33,7 @@ SectionsController.class_eval do
   def home
     #return home_from_site if request.referrer =~ /localhost|picnicnetwork/
     if !show_splash_page? && ((@front_cover = front_cover) || (@section = home_section))
-      if @front_cover
+      if @front_cover && !params[:show_carousel]
         # Do nothing
         render "home/front_cover"
       else
