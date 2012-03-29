@@ -46,6 +46,6 @@
                   -if current_root_section.slug == "picnic11" && idx == 1
                     =li_with_active(controller_name =~ /programmes|conference_sessions|venues/, link_to("Program", conference_programme_path(1)))
               -#%li#updates_link=link_to_function("Festival updates", "Flipboard.toggle()")
-              %li#updates_link=link_to("Stories", Section.slug(:stories))
+              %li#updates_link=link_to("Stories", "/carousel")
 -else
   -@no_subnav = true

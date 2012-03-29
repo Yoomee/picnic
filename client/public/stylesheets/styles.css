@@ -187,7 +187,7 @@ body #wrapper .no_padding {
 #header_right {
 	margin-top: 15px;
 	float: right;
-	width: 440px;
+	width: 260px;
 	position: relative;
 	
 }
@@ -1223,12 +1223,17 @@ div#top {
 	float: left;
 	width: 100%;
 	margin: 0 0 20px;
+	position: fixed;
+	top: 51px;
+	left: 0;
+	z-index: 101;
 
 }
 #subnav_container {
 	float: left;
 	width: 100%;
 	padding: 0;
+	height: 50px;
 }
 #header_inside {
 	clear: both;
@@ -9364,7 +9369,7 @@ table.front_covers * {
 	margin: 13px 0;
 }
 
-div#flipboard_wrapper, div#flipboard_strip, #flipboard_wrapper .fr, #subnav ul li#updates_link, a#back_to_updates, #newsletter_signup, #share_this, #page_left_col {
+div#flipboard_wrapper, div#flipboard_strip, #flipboard_wrapper .fr, #subnav ul li#updates_link, a#back_to_updates, #newsletter_signup, #share_this {
 	display: none;
 	padding: 0;
 	
@@ -9590,6 +9595,16 @@ div#flipboard_wrapper, div#flipboard_strip, #flipboard_wrapper .fr, #subnav ul l
   #buy_tickets{
     display:none;
   }
+    #subnav_row {
+  position: relative;
+}
+#subnav_container {
+  height: auto;
+}
+#page_left_col {
+  float: left;
+  margin-top: 40px;
+}
 
 }
 
@@ -9667,6 +9682,8 @@ div#flipboard_wrapper, div#flipboard_strip, #flipboard_wrapper .fr, #subnav ul l
   ul#facelist-selections-themes.facelist-selections {
   	width: 360px;
   }
+
+
 
 }
 

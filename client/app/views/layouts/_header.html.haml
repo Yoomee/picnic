@@ -8,21 +8,22 @@
       -if logged_in?
         .panel
           .logged_in_as
-            =link_to(@logged_in_member, "javascript: void(0)", :class => 'logged_in_member_link button')
-            =link_to "Notifications#{current_page?(notifications_path) || @logged_in_member.notifications.unread.empty? ? "" : " <span>#{@logged_in_member.notifications.unread.count}</span>"}", notifications_path, :class => "notifications button", :title => "#{pluralize(@logged_in_member.notifications.unread.count, 'new notification')}"
+            =link_to("Profile", "javascript: void(0)", :class => 'logged_in_member_link button')
+            =link_to "Activity#{current_page?(notifications_path) || @logged_in_member.notifications.unread.empty? ? "" : " <span>#{@logged_in_member.notifications.unread.count}</span>"}", notifications_path, :class => "notifications button", :title => "#{pluralize(@logged_in_member.notifications.unread.count, 'new notification')}"
             =#link_to "Inbox#{current_page?(messages_path) || !@logged_in_member.has_unread_messages? ? "" : " <span>#{@logged_in_member.unread_message_count}</span>"}", messages_path, :class => "messages", :title => "#{pluralize(@logged_in_member.unread_message_count, 'new messages')}"
             =#link_to('My profile', @logged_in_member, :class=>'profile_link button')
-            =link_if_allowed('Admin', admin_proc, :class => 'button')
+            
             =link_to('Search', 'javascript: void(0)', :class => 'button search_link')
           
       -else
-        =link_to "Picnic on LinkedIn", "http://www.linkedin.com/groups?gid=150580", :class=>"linkedin socialmedia_link" , :target=>"blank"
-        =link_to "Picnic on Flickr", "http://www.flickr.com/photos/crossmediaweek", :class=>"flickr socialmedia_link", :target=>"blank"
-        =link_to "Picnic on Vimeo", "http://vimeo.com/picnic", :class=>"vimeo socialmedia_link", :target=>"blank"
-        =link_to "Picnic on Facebook", "http://www.facebook.com/pages/Amsterdam-Netherlands/PICNIC/52555521797", :class=>"facebook socialmedia_link", :target=>"blank"
-        =link_to "Picnic on Twitter", "http://twitter.com/picnicfestival", :class=>"twitter socialmedia_link", :target=>"blank"
+        -if false
+          =link_to "Picnic on LinkedIn", "http://www.linkedin.com/groups?gid=150580", :class=>"linkedin socialmedia_link" , :target=>"blank"
+          =link_to "Picnic on Flickr", "http://www.flickr.com/photos/crossmediaweek", :class=>"flickr socialmedia_link", :target=>"blank"
+          =link_to "Picnic on Vimeo", "http://vimeo.com/picnic", :class=>"vimeo socialmedia_link", :target=>"blank"
+          =link_to "Picnic on Facebook", "http://www.facebook.com/pages/Amsterdam-Netherlands/PICNIC/52555521797", :class=>"facebook socialmedia_link", :target=>"blank"
+          =link_to "Picnic on Twitter", "http://twitter.com/picnicfestival", :class=>"twitter socialmedia_link", :target=>"blank"
         =link_to('Search', 'javascript: void(0)', :class => 'button search_link')
-        =link_to("Signup", new_member_path, :class => 'button')
+        =link_to("Signup", "/members/new", :class => 'button')
         =link_to('Login', new_session_path, :class => 'button')
         
 
@@ -30,8 +31,9 @@
         .logged_in_box
           -link_to @logged_in_member, :class=>'my_profile_link' do
             =image_for @logged_in_member, '50x50#'
-            %p My profile
-          =link_if_allowed "Account settings", edit_member_proc(@logged_in_member)
+            %p=@logged_in_member
+          =link_if_allowed('Admin', admin_proc)
+          =link_if_allowed "Account settings", edit_member_proc(@logged_in_member)          
           =link_to("Manage subscriptions", subscriptions_path)
           =link_to('Logout', session_path, :method => :delete)
       -unless controller_name == "search"
