@@ -30,10 +30,10 @@ class ConferenceDelegate < ActiveRecord::Base
     end
     
     def nice_fields_in_order_for_year(year)
-      if year == 2012
-        ConferenceDelegate::FIELDS_IN_ORDER
-      else
+      if year.to_i == 2012
         ConferenceDelegate::FIELDS_IN_ORDER_2012
+      else
+        ConferenceDelegate::FIELDS_IN_ORDER
       end
     end
     
