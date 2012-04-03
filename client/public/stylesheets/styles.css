@@ -25,7 +25,6 @@ body, textarea, input {font:12px/1.6 'Helvetica', Arial,'Liberation Sans',FreeSa
 	-webkit-border-radius:3px;
 	border-radius:3px;
 	-o-border-radius:3px;
-	
 }
 
 .bx_h {
@@ -7630,8 +7629,20 @@ table#delegates th{
 
 #conference_delegates_row{
   max-width:none;
+  width:100%;
+  margin:0;
 }
 
+#conference_delegates_row .twelvecol {
+  width:100%;
+}
+#conference_delegate_years a,
+#conference_delegate_years b{
+  float:right;
+  margin-left:10px;
+  font-size:20px;
+  line-height:40px;
+}
 /*========== beta bar ==========*/
 #beta_bar {
   background: black;

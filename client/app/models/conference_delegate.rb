@@ -3,10 +3,13 @@ require 'base64'
 class ConferenceDelegate < ActiveRecord::Base
   
   ConferenceDelegate::FIELDS_IN_ORDER = %w{REGDATE PRESENT TYPE PROMO FIRSTNAME LASTNAME GENDER ORGANISATION BRANCH FUNCTION EMAIL TWITTER TICKET_WED TICKET_THU TICKET_FRI TICKET_3 DINNER_WED DINNER_THU SIGNATURE EVP_ID}
-  
+  ConferenceDelegate::FIELDS_IN_ORDER_2012 = %w{REGDATE PRESENT TYPE PROMO FIRSTNAME LASTNAME GENDER ORGANISATION BRANCH FUNCTION EMAIL TWITTER MASH_UP FESTIVAL_1 FESTIVAL_2 FESTIVAL_ALL DINNER_WED DINNER_THU SIGNATURE EVP_ID}
+
   belongs_to :member
   after_create :send_club_invite
   after_save :add_badge
+  
+  named_scope :for_year, lambda {|year| {:conditions => ["YEAR(created_at) = ?",year]}}
   
   class << self
     def create_from_params!(params)
@@ -25,6 +28,15 @@ class ConferenceDelegate < ActiveRecord::Base
       delegate_params[:member] = Member.find_by_email(delegate_params[:email])
       create!(delegate_params)
     end
+    
+    def nice_fields_in_order_for_year(year)
+      if year == 2012
+        ConferenceDelegate::FIELDS_IN_ORDER
+      else
+        ConferenceDelegate::FIELDS_IN_ORDER_2012
+      end
+    end
+    
   end
   
   def authentic?

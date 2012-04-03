@@ -1,12 +1,23 @@
 -no_content_row
+.row
+  .sevencol
+    %h1
+      Conference Delegates from Eventpartners for
+      =params[:year]
+  .fivecol.last
+    #conference_delegate_years
+      -(2011..Date.today.year).each do |year|
+        -if year == params[:year].to_i
+          %b=year
+        -else
+          =link_to(year,year_conference_delegates_path(year))
 #conference_delegates_row.row
   .twelvecol
-    %h1 Conference Delegates from Eventpartners
     %table#delegates
       %tbody
         %tr.header
           %th="CLUB MEMBER".split(//).join("<br/>")
-          - ConferenceDelegate::FIELDS_IN_ORDER.each do |field|
+          - ConferenceDelegate.nice_fields_in_order_for_year(params[:year]).each do |field|
             %th=field.gsub('_', ' ').split(//).join("<br/>")
           %th="AUTHENTIC".split(//).join("<br/>")
         -@conference_delegates.each do |del|

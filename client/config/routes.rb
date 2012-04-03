@@ -1,6 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
   
   map.resources :conference_delegates, :only => [:index]
+  map.year_conference_delegates 'conference_delegates/:year', :controller => "conference_delegates", :action => "index"
+  
   map.resources :conference_sessions, :member => {:duplicate => :get, :attend => :post, :unattend => :delete}
   map.resources :conferences, :member => {:order_venues => :get, :update_venue_weights => :post} do |conf|
     conf.resources :conference_sessions, :as => 'sessions', :only => [:show, :new]
