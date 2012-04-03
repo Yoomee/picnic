@@ -6,7 +6,7 @@ class ConferenceDelegate < ActiveRecord::Base
   
   belongs_to :member
   after_create :send_club_invite
-  #after_save :add_badge
+  after_save :add_badge
   
   class << self
     def create_from_params!(params)
@@ -73,8 +73,12 @@ class ConferenceDelegate < ActiveRecord::Base
   end
 
   def add_badge
-    puts "member_id = #{member_id}"
-    Member.find(member_id).award_badge!(:picnic11_attendee) unless member_id.nil?
+    return true unless member_id && created_at.year == 2012
+    if ticket_wed
+      Member.find(member_id).award_badge!(:picnic_innovation_mash_up_2012)
+    elsif ticket_3 || ticket_thu || ticket_fri
+      Member.find(member_id).award_badge!(:picnic_festival_2012)
+    end
   end
     
   
