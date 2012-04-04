@@ -21,7 +21,7 @@
     .threecol
       #page_subnav
         %ul.lst
-          -@section.parent.children.each do |section|
+          -@section.parent.children.not_hidden.each do |section|
             =li_with_active(viewing_page_or_section?(section), link_to_self(section))
       =render("layouts/share_this")
     .ninecol.last
