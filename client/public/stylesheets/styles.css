@@ -39,7 +39,7 @@ a.backto {
 }
 
 .map_canvas img{
-  max-width:auto;
+  max-width:none;
 }
 
 a, p.inline-errors, .formError {
