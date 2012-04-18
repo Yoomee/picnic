@@ -38,6 +38,9 @@ a.backto {
 	box-shadow:1px 1px 0 #7F7367;		
 }
 
+.map_canvas img{
+  max-width:auto;
+}
 
 a, p.inline-errors, .formError {
 	color:#999;
