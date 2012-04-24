@@ -48,7 +48,7 @@
           =render('themes/list', :tags => @page.tags, :list_id => "page_#{@page.id}_themes")
       -if @page.section != Section.find_by_slug("news")
         #page_subnav
-          -if @page.section.try(:parent).try(:slug) == "sponsors"
+          -if @page.section.try(:parent).try(:slug) =~ /^sponsors/
             %ul.lst
               -@page.section.parent.children.each do |section|
                 =li_with_active(viewing_page_or_section?(section), link_to_self(section))
@@ -68,7 +68,7 @@
         
       =render("layouts/share_this", :color => @page.color)
     #page_right_col.sixcol
-      =link_to("&larr; All #{@page.section}", @page.section, :class => "back_to_sponsors_link") if @page.section.try(:parent).try(:slug) == "sponsors"
+      =link_to("&larr; All #{@page.section}", @page.section, :class => "back_to_sponsors_link") if @page.section.try(:parent).try(:slug) =~ /^sponsors/
       -unless @page.intro.blank?
         %h2#page_intro
           =@page.intro

@@ -73,7 +73,7 @@ SectionsController.class_eval do
         if @section.slug_is(:news)
           per_page_amount = 20
         elsif @section.view == "news_view"
-          per_page_amount = (@section.slug == "network_partners" || @section.parent.try(:slug) == "sponsors")? 1000 : 6
+          per_page_amount = (@section.slug == "network_partners" || (@section.parent.try(:slug) =~ /^sponsors/)) ? 1000 : 6
         else
           per_page_amount = APP_CONFIG[:latest_stories_items_per_page] || 6         
         end

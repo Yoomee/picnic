@@ -1,12 +1,12 @@
 -no_content_row
--if @section.slug_is?("network_partners") || @section.parent.try(:slug) == "sponsors"
+-if @section.slug_is?("network_partners") || @section.parent.try(:slug) =~ /^sponsors/
   -hidden_title @section.name
   .row
     #header_left_col.threecol
       #top_color_left.top_color{:style => "background:#C9DCDF"}
       .page_header 
         %p.stories_header
-          =@section.slug_is?("network_partners") ? 'NETWORK' : 'FESTIVAL'
+          =@section.parent.try(:slug) == "sponsors_2012" ? 'NETWORK' : 'FESTIVAL'
           %strong PARTNERS
       
     #header_right_col.ninecol.last  
