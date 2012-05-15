@@ -2884,7 +2884,7 @@ div#footer_links {
 
 
 
-#sponsors_title, #premium_sponsors_title {
+#sponsors_title, #premium_sponsors_title, #media_partners {
 	border-bottom:1px solid #aaa;
 	padding-top: 20px;
 	margin-bottom:15px;
@@ -2968,7 +2968,10 @@ div#footer_links {
 #bmw_sponsor a:hover {
 	background-position: -470px -153px;	
 }
-
+#wired_sponsor a {
+	background: url(/images/wired.png) no-repeat 0 7px;
+  
+}
 #footer_copyright p {
 	float: left;
 	width: 100%;
