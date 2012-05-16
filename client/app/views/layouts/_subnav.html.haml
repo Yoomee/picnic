@@ -1,4 +1,4 @@
--if controller_name=="inspires" || in_news_network? || in_community? || (!current_root_section.nil? && (current_root_section.page_and_section_descendant_generations > 1))
+-if controller_name=="inspires" || in_news_network? || in_community? || (!current_root_section.nil? && (current_root_section.page_and_section_descendant_generations > 1) && current_root_section.all_children(:published_only => !admin_logged_in?).size < 15)
   #subnav_row
     .row            
       .twelvecol.no_padding
