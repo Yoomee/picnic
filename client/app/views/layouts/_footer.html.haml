@@ -71,43 +71,49 @@
     #lottery_sponsor.sponsor.twocol
       =link_to_slug('Postcodeloterij', :npl)
       =#link_to 'Postcodeloterij', 'http://www.postcodeloterij.nl/', :target=>'blank'  
-    #vodaphone_sponsor.sponsor.twocol  
-      =link_to_slug('Vodaphone', :vodaphone)
-      =#link_to 'Vodaphone', 'http://www.vodafone.nl/', :target=>'blank'  
     #waag_sponsor.sponsor.twocol  
       =link_to_slug('Waag Society', :waag_society)  
     
     #sponsors_title.twelvecol.last      
       %h6
         %strong SPONSORS
+    #vodaphone_sponsor.sponsor.twocol  
+      =link_to_slug('Vodaphone', :vodaphone)
+      =#link_to 'Vodaphone', 'http://www.vodafone.nl/', :target=>'blank'          
     #upc_sponsor.sponsor.twocol
       =link_to_slug('UPC', :upc)
       =#link_to 'UPC', 'http://www.upc.nl/', :target=>'blank'
     #chamber_sponsor.sponsor.twocol
       =link_to_slug('Dutch Chamber of Commerce', :chamber_of_commerce)
       =#link_to 'Dutch Chamber of Commerce', 'http://www.kvk.nl/', :target=>'blank'
-    #rtl_sponsor.sponsor.threecol  
-      =link_to_slug('RTL', :rtl)
-      =#link_to 'RTL', 'http://www.rtl.nl/service/rtlnederland/home/', :target=>'blank'
-    #sii_sponsor.sponsor.twocol   
-      =link_to_slug('SII', :sii)
-      =#link_to 'SII', 'http://www.si-i.nl/', :target=>'blank'
-    #logica_sponsor.sponsor.twocol.last   
-      =link_to_slug('Logica', :logica)
-      =#link_to 'Logica', 'http://www.logica.com/', :target=>'blank'
+    #hogeschool_sponsor.sponsor.twocol
+      =link_to('hogeschool', "#")
     #sponsors_divider.twelvecol.last      
-    #microsoft_sponsor.sponsor.twocol.last
-      =link_to_slug('Microsoft', :microsoft)
-    #bmw_sponsor.sponsor.twocol.last
-      =link_to_slug('BMW', :bmw)
+
     #media_partners.twelvecol.last      
       %h6
         %strong MEDIA PARTNERS
     #wired_sponsor.sponsor.threecol.last          
       =link_to_slug('wired', :wired)
+    #nrc_media_sponsor.sponsor.threecol.last          
+      =link_to_slug('NRC Media', :nrc_media)      
     #footer_copyright.twelvecol.last
       %p
         ©2011 PICNIC. All rights reserved.
         =link_to("Legal stuff", Page.slug(:legal))
         =link_to "<span class='yoomee_text'>Online platform by</span><span class='yoomee_logo'>yoomee</span>", 'http://www.yoomee.com/', :target=>'blank', :id=>'yoomee_link'
+-if false
+  old sponsors...
+  #sii_sponsor.sponsor.twocol   
+    =link_to_slug('SII', :sii)
+    =#link_to 'SII', 'http://www.si-i.nl/', :target=>'blank'
+  #bmw_sponsor.sponsor.twocol.last
+    =link_to_slug('BMW', :bmw)    
+  #microsoft_sponsor.sponsor.twocol.last
+    =link_to_slug('Microsoft', :microsoft)
+  #rtl_sponsor.sponsor.threecol  
+    =link_to_slug('RTL', :rtl)
+    =#link_to 'RTL', 'http://www.rtl.nl/service/rtlnederland/home/', :target=>'blank'    
+  #logica_sponsor.sponsor.twocol.last   
+    =link_to_slug('Logica', :logica)  
         

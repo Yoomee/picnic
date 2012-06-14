@@ -2938,8 +2938,12 @@ div#footer_links {
 #chamber_sponsor a {
 	background-position: -1px -387px;	
 }
-#chamber_sponsor a:hover {
-	background-position: -281px -387px;	
+#hogeschool_sponsor a {
+	background:url(/images/hogeschool.png) no-repeat 0 7px;
+	width: 230px;	
+}
+#chamber_sponsor a {
+	background-position: -1px -387px;	
 }
 #rtl_sponsor a {
 	background-position: -1px -487px;	
@@ -2972,6 +2976,15 @@ div#footer_links {
 	background: url(/images/wired.png) no-repeat 0 7px;
   
 }
+#nrc_media_sponsor a {
+	background: url(/images/nrc_media.png) no-repeat 0 0px;
+	height: 40px;
+	margin: -4px 0 0 -3px;
+  
+}
+#nrc_media_sponsor a:hover {
+  background-position: 0 -57px;
+} 
 #footer_copyright p {
 	float: left;
 	width: 100%;
