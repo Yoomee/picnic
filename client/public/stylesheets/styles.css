@@ -2935,9 +2935,6 @@ div#footer_links {
 #inholland_sponsor a:hover {
 	background-position: -281px -300px;	
 }
-#chamber_sponsor a {
-	background-position: -1px -387px;	
-}
 #hogeschool_sponsor {
   width: 260px;
 }
@@ -2947,6 +2944,10 @@ div#footer_links {
 }
 #chamber_sponsor a {
 	background-position: -1px -387px;	
+}
+
+#chamber_sponsor a:hover {
+	background-position: -281px -387px;	
 }
 #rtl_sponsor a {
 	background-position: -1px -487px;	
