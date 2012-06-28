@@ -88,6 +88,8 @@
       =#link_to 'Dutch Chamber of Commerce', 'http://www.kvk.nl/', :target=>'blank'
     #hogeschool_sponsor.sponsor.twocol
       =link_to('hogeschool', "#")
+    #syntens_sponsor.sponsor.twocol
+      =link_to_slug('Syntens', :syntens)      
     #sponsors_divider.twelvecol.last      
 
     #media_partners.twelvecol.last      
@@ -96,7 +98,7 @@
     #wired_sponsor.sponsor.threecol.last          
       =link_to_slug('wired', :wired)
     #nrc_media_sponsor.sponsor.threecol.last          
-      =link_to_slug('NRC Media', :nrc_media)      
+      =link_to_slug('NRC Media', :nrc_media)
     #footer_copyright.twelvecol.last
       %p
         ©2011 PICNIC. All rights reserved.

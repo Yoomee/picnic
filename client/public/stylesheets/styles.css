@@ -2938,6 +2938,9 @@ div#footer_links {
 #chamber_sponsor a {
 	background-position: -1px -387px;	
 }
+#hogeschool_sponsor {
+  width: 260px;
+}
 #hogeschool_sponsor a {
 	background:url(/images/hogeschool.png) no-repeat 0 7px;
 	width: 230px;	
@@ -2975,6 +2978,12 @@ div#footer_links {
 #wired_sponsor a {
 	background: url(/images/wired.png) no-repeat 0 7px;
   
+}
+#syntens_sponsor a {
+	background: url(/images/syntens.png) no-repeat 0 0px;
+}
+#syntens_sponsor a:hover {
+	background-position: 0 -71px;
 }
 #nrc_media_sponsor a {
 	background: url(/images/nrc_media.png) no-repeat 0 0px;
