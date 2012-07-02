@@ -89,7 +89,7 @@ Member.class_eval do
   alias_method_chain :as_json, :api
   
   def allowed_job_title?
-    has_badge?(:picnic11_speaker) || has_badge?(:picnic11_team) || has_badge?(:picnic_advisor)
+    true #has_badge?(:picnic11_speaker) || has_badge?(:picnic11_team) || has_badge?(:picnic_advisor)
   end
   
   def api_key
