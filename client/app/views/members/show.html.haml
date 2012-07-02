@@ -207,25 +207,47 @@
           =fancy_box :title => nil, :id => "url_box", :link => {:content => " + Add a service", :options => {:inline => true, :class => "new_link"}} do
             %h3 Add a URL
             =render('urls/form', :url_object => Url.new(:attachable => @member))
-      -if @member.has_badge?(:picnic11_speaker) && !@member.conference_sessions_speaking_at.blank?
+      
+      -if @member.has_badge?(:picnic12_speaker) && !@member.conference_sessions_speaking_at.conference_id_is(2).blank?
         #speaking_at.subrow
-          %h3.profile_title="#{forename_or_you(@member, "is", :capitalize => true)} speaking at PICNIC Festival 2011"
+          %h3.profile_title="#{forename_or_you(@member, "is", :capitalize => true)} speaking at PICNIC Festival 2012"
           #speaking_list
-            -@member.conference_sessions_speaking_at.each_with_index do |session, idx|
+            -@member.conference_sessions_speaking_at.conference_id_is(2).each_with_index do |session, idx|
               =render("programmes/list_item", :session => session, :show_day => true, :hidden => idx > 5)
-            -if @member.conference_sessions_speaking_at.count.odd?
+            -if @member.conference_sessions_speaking_at.conference_id_is(2).count.odd?
               .programme_list_item.list_item_spacer{:style => "display:#{@member.conference_sessions_attending.count > 6 ? 'none' : 'block'}"}
-          =link_to_function("View more", "$('#speaking_list .programme_list_item').show(); $(this).remove()", :class => "programme_list_link") if @member.conference_sessions_speaking_at.count > 6
-      -if !@member.conference_sessions_attending.blank?
+          =link_to_function("View more", "$('#speaking_list .programme_list_item').show(); $(this).remove()", :class => "programme_list_link") if @member.conference_sessions_speaking_at.conference_id_is(2).count > 6
+      -if !@member.conference_sessions_attending.conference_id_is(2).blank?
         #attending.subrow
-          %h3.profile_title="#{forename_or_you(@member, "is", :capitalize => true)} attending PICNIC Festival 2011"
+          %h3.profile_title="#{forename_or_you(@member, "is", :capitalize => true)} attending PICNIC Festival 2012"
           #attending_list
-            -@member.conference_sessions_attending.each_with_index do |session, idx|
+            -@member.conference_sessions_attending.conference_id_is(2).each_with_index do |session, idx|
               =render("programmes/list_item", :session => session, :show_day => true, :hidden => idx > 5)
-            -if @member.conference_sessions_attending.count.odd?
+            -if @member.conference_sessions_attending.conference_id_is(2).count.odd?
+              .programme_list_item.list_item_spacer{:style => "display:#{@member.conference_sessions_attending.count > 6 ? 'none' : 'block'}"}
+          =link_to("View my program", conference_programme_path(Conference.find(2), :me => 1), :class => "programme_list_link") if @logged_in_member == @member
+          =link_to_function("View more", "$('#attending_list .programme_list_item').show(); $(this).remove()", :class => "programme_list_link") if @member.conference_sessions_attending.conference_id_is(2).count > 6
+      
+      -if @member.has_badge?(:picnic11_speaker) && !@member.conference_sessions_speaking_at.conference_id_is(1).blank?
+        #speaking_at.subrow
+          %h3.profile_title="#{forename_or_you(@member, '', :capitalize => true)} spoke at PICNIC Festival 2011"
+          #speaking_list
+            -@member.conference_sessions_speaking_at.conference_id_is(1).each_with_index do |session, idx|
+              =render("programmes/list_item", :session => session, :show_day => true, :hidden => idx > 5)
+            -if @member.conference_sessions_speaking_at.conference_id_is(1).count.odd?
+              .programme_list_item.list_item_spacer{:style => "display:#{@member.conference_sessions_attending.count > 6 ? 'none' : 'block'}"}
+          =link_to_function("View more", "$('#speaking_list .programme_list_item').show(); $(this).remove()", :class => "programme_list_link") if @member.conference_sessions_speaking_at.conference_id_is(1).count > 6
+      -if !@member.conference_sessions_attending.conference_id_is(1).blank?
+        #attending.subrow
+          %h3.profile_title="#{forename_or_you(@member, '', :capitalize => true)} attended PICNIC Festival 2011"
+          #attending_list
+            -@member.conference_sessions_attending.conference_id_is(1).each_with_index do |session, idx|
+              =render("programmes/list_item", :session => session, :show_day => true, :hidden => idx > 5)
+            -if @member.conference_sessions_attending.conference_id_is(1).count.odd?
               .programme_list_item.list_item_spacer{:style => "display:#{@member.conference_sessions_attending.count > 6 ? 'none' : 'block'}"}
           =link_to("View my program", conference_programme_path(Conference.first, :me => 1), :class => "programme_list_link") if @logged_in_member == @member
-          =link_to_function("View more", "$('#attending_list .programme_list_item').show(); $(this).remove()", :class => "programme_list_link") if @member.conference_sessions_attending.count > 6
+          =link_to_function("View more", "$('#attending_list .programme_list_item').show(); $(this).remove()", :class => "programme_list_link") if @member.conference_sessions_attending.conference_id_is(1).count > 6
+      
       #member_themes.themes_list.subrow
         %h3.profile_title="About the real #{forename_or_me(@member)}"
         -if @member.tags.empty?
