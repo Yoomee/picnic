@@ -67,7 +67,8 @@ class ConferenceSessionsController < ApplicationController
   end
   
   def new
-    @conference_session = ConferenceSession.new(:conference => Conference.find(params[:conference_id]), :starts_at =>DateTime.parse("2011-09-14T09:00"), :ends_at => DateTime.parse("2011-09-14T10:00"))
+    conference = Conference.find(params[:conference_id])
+    @conference_session = ConferenceSession.new(:conference => conference, :starts_at =>DateTime.parse(conference.days.first.strftime("%Y-%m-%dT09:00")), :ends_at => DateTime.parse(conference.days.first.strftime("%Y-%m-%dT11:00")))
   end
   
   def show
