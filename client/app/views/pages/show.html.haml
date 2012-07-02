@@ -72,7 +72,7 @@
       -unless @page.intro.blank?
         %h2#page_intro
           =@page.intro
-    -if @page.slug_in?(%w{the_team advisors correspondents picnic11_speakers contributors})
+    -if @page.slug_in?(%w{the_team advisors correspondents picnic11_speakers picnic12_speakers contributors})
       #main_page_content.ninecol.last
         =render('pages/content', :page => @page)
         =render_slug(@page.slug)
