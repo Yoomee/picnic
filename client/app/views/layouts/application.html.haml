@@ -96,12 +96,12 @@
       #main.content
         -unless show_flipboard?
           #main_container.container
-            -unless true || @page.try(:slug_is?, :registration) || (logged_in? && logged_in_member.has_badge?(:picnic11_attendee)) || controller_name == "programmes"
-              -link_to_slug(:registration, :id=>"buy_tickets", :class => "#{'no_subnav' if @no_subnav}#{'speaker_profile' if @member.try(:has_badge?,:picnic11_speaker)}") do
+            -unless @page.try(:slug_is?, :registration12) || (logged_in? && logged_in_member.has_badge?(:picnic12_attendee)) || controller_name == "programmes"
+              -link_to_slug(:registration12, :id=>"buy_tickets", :class => "#{'no_subnav' if @no_subnav}#{'speaker_profile' if @member.try(:has_badge?,:picnic12_speaker)}") do
                 .ticket_message_1
                   Buy<br/>tickets<br/>now
                 .ticket_message_2
-                  -days_to_go = Date.parse("09/14/2011") - Date.today
+                  -days_to_go = Date.parse("09/17/2012") - Date.today
                   -if days_to_go > 0
                     ="#{days_to_go}<br/>day#{days_to_go==1 ? '' : 's'} to<br/>go"
                   -else
