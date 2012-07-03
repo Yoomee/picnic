@@ -10,7 +10,7 @@ module FlipboardHelper
     pages_sections = pages_sections.sort_by_published.select(&:has_photo?)
     #pages_sections = pages_sections.randomize
     tweets = get_latest_tweets_from("PICNICfestival", 5, false, true)
-    speakers = Member.with_badge(:picnic11_speaker).latest.limit(15).all
+    speakers = Member.with_badge(:picnic12_speaker).latest.limit(15).all
     flickr_photos = get_latest_flickr_photos
     flipitems = []
     if (photo_dispatch_item = get_photo_dispatch_item)
