@@ -105,7 +105,8 @@ module FlipboardHelper
       Rails.logger.info("Getting latest photo dispatch")
       rss = RSS::Parser.parse(open("http://photodispatch.nl/rss/picnic11").read, false)
       item = rss.items.first
-      {:flip_partial => "photo_dispatch", :image_url => item.enclosure.url, :text => item.title, :color => "#C9DCDF"}
+      url = item.enclosure.url.gsub(/photodispatch\.nl/, "photodispatch.net")
+      {:flip_partial => "photo_dispatch", :image_url => url, :text => item.title, :color => "#C9DCDF"}
     rescue => e
       Rails.logger.info("FAILED to fetch latest photo dispatch. Error: #{e}")
       nil
