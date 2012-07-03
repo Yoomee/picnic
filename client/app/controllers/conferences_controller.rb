@@ -2,7 +2,7 @@ class ConferencesController < ApplicationController
   
   admin_only :create, :edit, :destroy, :index, :new, :update, :order_venues, :update_venue_weights
 
-  before_filter :get_conference, :only => %w{destroy edit show update, order_venues, update_venue_weights}
+  before_filter :get_conference, :only => %w{destroy edit show update order_venues update_venue_weights}
 
   cache_sweeper :conference_sweeper
   
