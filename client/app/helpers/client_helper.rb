@@ -1,6 +1,7 @@
 module ClientHelper
   
   def complementary_color(color)
+    return nil if color.nil?
     case color[1..6].scan(/../).collect(&:hex).inject(0){|sum,val| sum += val}
     when 510..765
       '#000000'
