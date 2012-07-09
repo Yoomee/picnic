@@ -4,7 +4,7 @@
       %b Filter by theme
       %li#speaker_tag_filter_all.speaker_tag_filter.active
         =link_to_function(content_tag(:span, "All"), "SpeakerTagFilter.filter()", :class => "tag")
-      -Tag.for_members_with_badge(:picnic12_speaker).find(:all, :conditions => "tags.color IS NOT NULL", :order => "tags.name").each do |tag|
+      -Tag.for_members_with_badge(:picnic12_speaker).find(:all, :conditions => "tags.color IS NOT NULL AND tags.color != ''", :order => "tags.name").each do |tag|
         %li.speaker_tag_filter{:id => "speaker_tag_filter_#{tag.name.parameterize("_")}"}
           =link_to_function(content_tag(:span, tag), "SpeakerTagFilter.filter('#{tag.name.parameterize("_")}')", :class => "tag", :style => "background:#{tag.color}")
 
