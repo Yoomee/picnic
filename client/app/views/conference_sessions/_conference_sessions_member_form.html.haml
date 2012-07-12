@@ -2,6 +2,6 @@
 -hide_delete_link ||= false
 -form.semantic_fields_for :conference_sessions_members, conference_sessions_member do |fields|
   -fields.inputs do
-    =fields.input :member, :label => false, :collection => Member.with_badge(:picnic11_speaker).alphabetically
+    =fields.input :member, :label => false, :collection => Member.with_badge(:picnic12_speaker).alphabetically
     =fields.input :speaker, :as => :hidden, :input_html => {:value => 1}
     =multiple_nested_delete_link_for(:conference_sessions_member, :form => fields, :parent_name => parent_name) unless hide_delete_link
