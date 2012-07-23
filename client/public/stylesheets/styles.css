@@ -2992,6 +2992,12 @@ div#footer_links {
 	margin: -4px 0 0 -3px;
   
 }
+#lab_kultur_media_sponsor a {
+	background: url(/images/lab_kultur.png) no-repeat 0 0px;
+	height: 40px;
+	margin: 7px 0 0 24px;
+  
+}
 #nrc_media_sponsor a:hover {
   background-position: 0 -57px;
 } 
