@@ -19,7 +19,7 @@ class ProgrammesController < ApplicationController
   
   private
   def set_section
-    @section = Section.find_by_slug("picnic11")
+    @section = Section.find_by_slug("picnic12")
   end
   
   
