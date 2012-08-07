@@ -3001,6 +3001,14 @@ div#footer_links {
 #nrc_media_sponsor a:hover {
   background-position: 0 -57px;
 } 
+#akqa_sponsor a {
+	background:url(/images/sponsor_akqa.png) no-repeat 0 25px;
+	width: 110px;	
+}
+#tno_sponsor a {
+	background:url(/images/sponsor_tno.png) no-repeat 0 25px;
+	width: 210px;	
+}
 #footer_copyright p {
 	float: left;
 	width: 100%;
