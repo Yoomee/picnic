@@ -53,5 +53,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.root :controller => 'sections', :action => 'home'
   
+  map.connect 'program', :controller => "programmes", :action => "show", :conference_id => "2"
+  
 end
 

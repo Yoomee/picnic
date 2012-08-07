@@ -161,6 +161,9 @@
 
 -no_content_row
 -title "Program", :hidden => true
+-if @conference.id == 2
+  .row
+    %p The program is subject to change.
 -cache("program#{@conference.id}", :time_to_live => 1.year) do
   #prog_container
     .row
