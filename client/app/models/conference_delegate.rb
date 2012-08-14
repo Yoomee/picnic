@@ -89,7 +89,7 @@ class ConferenceDelegate < ActiveRecord::Base
     if ticket_wed
       Member.find(member_id).award_badge!(:picnic_innovation_mash_up_2012)
     elsif ticket_3 || ticket_thu || ticket_fri
-      Member.find(member_id).award_badge!(:picnic_festival_2012)
+      Member.find(member_id).award_badge!(:picnic12_attendee)
     end
   end
     
