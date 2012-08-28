@@ -87,7 +87,7 @@ class ConferenceSessionsController < ApplicationController
   private
   def get_conference_session
     @conference_session = ConferenceSession.find(params[:id])
-    @section = Section.find_by_slug("picnic11")
+    @section = Section.find_by_slug("picnic12")
   end
   
   def handle_facelist

@@ -48,7 +48,7 @@ class VenuesController < ApplicationController
   private
   def get_venue
     @venue = Venue.find(params[:id])
-    @section = Section.find_by_slug("picnic11")
+    @section = Section.find_by_slug("picnic12")
   end
   
 end
