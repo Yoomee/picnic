@@ -2995,7 +2995,16 @@ div#footer_links {
 #lab_kultur_media_sponsor a {
 	background: url(/images/lab_kultur.png) no-repeat 0 0px;
 	height: 40px;
+	width: 150px;
 	margin: 7px 0 0 24px;
+  
+}
+
+#co_create_media_sponsor a {
+	background: url(/images/co_create.png) no-repeat 0 0px;
+	height: 60px;
+	width: 100px;
+	margin: 0px 0 0 0px;
   
 }
 #nrc_media_sponsor a:hover {
