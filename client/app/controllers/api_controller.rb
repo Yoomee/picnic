@@ -32,7 +32,7 @@ class ApiController < ApplicationController
   end
   
   def program
-    conference = Conference.first
+    conference = Conference.find_by_id(params[:conference_id]) || Conference.first
     if @member
       @member.update_attribute(:api_authenticated, true) unless @member.api_authenticated?
     end
