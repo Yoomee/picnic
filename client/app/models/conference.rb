@@ -12,7 +12,7 @@ class Conference < ActiveRecord::Base
   before_save :bump_version
   
   def bump_version!
-    self.increment!(:version)
+    self.update_attribute(:version, latest_version + 1)
   end
   
   def day(date_or_time)
@@ -25,13 +25,18 @@ class Conference < ActiveRecord::Base
   
   private
   def bump_version
-    self.increment(:version) unless changed.include?("version")
+    self.version = (latest_version + 1) unless changed.include?("version")
   end
   
   def end_is_on_or_after_start
     if ends_on < starts_on
       self.errors.add(:formatted_ends_on, "cannot be before the start date.")
     end
+  end
+
+  def latest_version
+    # also checks for latest version across all previous conferences
+    Conference.created_at_lte(created_at || Time.now).maximum(:version) || 0
   end
   
 end

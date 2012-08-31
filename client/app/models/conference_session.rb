@@ -59,7 +59,7 @@ class ConferenceSession < ActiveRecord::Base
   end
   
   def color
-    tags.color_not_null.first.try(:color) || '#000000'
+    tags.color_not_blank.first.try(:color) || '#000000'
   end
   
   def color_hash
