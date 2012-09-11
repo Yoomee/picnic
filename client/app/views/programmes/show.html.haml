@@ -217,7 +217,7 @@
                           .details
                             =session.time_string
                             %br
-                            =session.description.word_truncate(150)
+                            =session.description.strip_tags.word_truncate(150)
                             -if !session.speakers.blank?
                               .speakers
                                 -session.speakers.each do |speaker|
