@@ -16,6 +16,7 @@ class ClientEnvironment
       config.gem 'acts_as_textcaptcha', :version => '2.1.3'
       config.gem 'contacts'
       config.gem 'newrelic_rpm'
+      congig.gem 'ey_config'
       config.gem 'geokit'
       config.gem 'googlecharts'     
       config.gem 'inflectious'
