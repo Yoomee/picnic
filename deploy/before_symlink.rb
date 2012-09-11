@@ -2,7 +2,7 @@ run "rm -rf #{release_path}/public/uploads"
 (2010..Time.now.year+5).each do |year|
   release_year_path = "#{release_path}/public/dragonfly/#{year}"
   shared_year_path = "#{shared_path}/dragonfly/#{year}"
-  run "rm -rf #{release_year_path}" if File.exists?(release_year_path)
+  run "rm -rf #{release_year_path}" if File.exists?(release_year_path) && !File.symlink?(release_year_path)
   run "mkdir -p #{shared_year_path}" unless File.exists?(shared_year_path)
   run "ln -nfs #{shared_year_path} #{release_year_path}"
 end
