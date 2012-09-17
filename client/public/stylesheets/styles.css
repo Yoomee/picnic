@@ -1667,7 +1667,6 @@ min-height:20px;
 	position: absolute;
 	left: 39px;
 	top: 63px;
-	
 }
 .ticket_message_2 {
 	width: 120px;
@@ -1676,6 +1675,12 @@ min-height:20px;
 	top: 63px;
 	opacity: 0;
 }
+
+.ticket_sold_out {
+	left: 36px;
+	top: 78px;
+}
+
 #buy_tickets.no_subnav {
 	top: -30px;
 }
