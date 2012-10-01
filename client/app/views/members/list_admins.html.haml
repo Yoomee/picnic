@@ -1,0 +1,7 @@
+-title "Admins"
+%ul
+  -@members.each do |member|
+    %li
+      =link_to member.full_name, member
+-options_panel do
+  =back_link

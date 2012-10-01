@@ -1,6 +1,6 @@
 MembersController.class_eval do
   
-  admin_only :admin
+  admin_only :admin, :list_admins
   member_only :all
   open_actions :show, :index
 
@@ -34,6 +34,10 @@ MembersController.class_eval do
     (2.months.ago.to_date..Date.today).each do |date|
       @data << [date.strftime("%d/%m/%y"), sign_up_counts[date.to_s].to_i]
     end
+  end
+  
+  def list_admins
+    @members = Member.is_admin.alphabetically.reject(&:yoomee_staff?)
   end
   
   def index
