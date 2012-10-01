@@ -96,7 +96,7 @@
       #main.content
         -unless show_flipboard?
           #main_container.container
-            -unless @page.try(:slug_is?, :registration12) || (logged_in? && logged_in_member.has_badge?(:picnic12_attendee)) || controller_name == "programmes"
+            -if false #unless @page.try(:slug_is?, :registration12) || (logged_in? && logged_in_member.has_badge?(:picnic12_attendee)) || controller_name == "programmes"
               -link_to_slug(:registration12, :id=>"buy_tickets", :class => "#{'no_subnav' if @no_subnav}#{'speaker_profile' if @member.try(:has_badge?,:picnic12_speaker)}") do
                 .ticket_message_1.ticket_sold_out
                   Sold<br/>out
