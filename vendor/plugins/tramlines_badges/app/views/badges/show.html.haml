@@ -1,0 +1,36 @@
+-no_content_row
+-title "#{@badge} badge", :hidden => true
+
+.row
+  .twocol  
+    =image_for(@badge, '140x', :class => "badge_photo")
+  .tencol.last
+    %h1=@badge.name
+    =read_more_truncate(@badge.description)
+    -if logged_in? && logged_in_member.has_badge?(@badge)
+      %p
+        You were awarded this badge on
+        ="<strong>#{time_without_current_year(logged_in_member.awarded_date_for_badge(@badge), "%a %b %d")}</strong>."
+    -if allowed_to?(edit_badge_proc(@badge)) && @badge.has_trigger?
+      %p
+        ="Automatically awarded when a member reaches <strong>#{pluralize(@badge.trigger_num, @badge.trigger_name.singularize.titleize.downcase)}</strong>."
+.row
+  #badge_members.twelvecol.last
+    -if @badge.members.empty?
+      %p No members have this badge.
+    -else
+      %h2="#{full_pluralize('There is', @badge.members.count, 'person')} with this badge."
+      %ul.lst.small_list
+        -@badge_members.each do |member|
+          %li{:class => "small_list_item member_item"}
+            =link_to(image_for(member, "50x50#"), member, :class => "image_link")
+            =link_to_self(member, :class => "member_link")
+      =will_paginate(@badge_members)
+
+.row
+  .twelvecol.last
+    -options_panel do
+      =back_link
+      =link_if_allowed("Edit badge", edit_badge_proc(@badge))
+      =link_if_allowed("Create a badge", new_badge_proc)
+      =link_to("View all badges", badges_path)

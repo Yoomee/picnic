@@ -1,0 +1,10 @@
+-title "Slideshows"
+
+-if @slideshows.empty?
+  %p There are no slideshows yet.
+-else
+  %ul.lst
+    -@slideshows.each do |slideshow|
+      %li=link_to_self(slideshow)
+    
+=options_panel(:slideshow, :only => [:back, :new])

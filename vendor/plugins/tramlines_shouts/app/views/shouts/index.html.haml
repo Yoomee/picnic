@@ -1,0 +1,8 @@
+-title "Discussions"
+
+-if allowed_to?(new_shout_proc)
+  =link_to_box("Start a discussion", new_shout_path, :class => "bttn_l new_shout_link", :scrolling => false)
+-else
+  =link_to_login_fancybox("Start a discussion", :url => new_shout_path, :class => "bttn_l new_shout_link")
+
+=render_shouts(@shouts)

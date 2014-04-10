@@ -1,0 +1,10 @@
+#share_shout
+  %h2 Share this discussion
+  %ul.lst.share_url
+    %li.label=label_tag 'share_shout_url', 'Link'
+    %li.input=text_field_tag 'share_shout_url', @short_url, :onclick => "this.select()", :readonly => true
+    %li.flash=clippy('share_shout_url')
+  %ul.social_links.lst
+    %li.email_link=link_to("Email your friends", {:controller => :share, :action => :new, :model_name => "shout", :id => @shout})
+    %li.facebook_link=facebook_sharer_link("Post to Facebook", @short_url)#shout_url(@shout))
+    %li.twitter_link=twitter_share_link("Tweet about this", @short_url, "Join the discussion on #{@shout.tag_list.to_sentence}", "vbigmouth,vinspired")

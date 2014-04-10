@@ -1,0 +1,10 @@
+%p.ban_intro
+  Sorry, you were banned from the site by a moderator on
+  ="#{@banning.created_at.to_s(:short_date)}."
+  Details are given below:
+%p.ban_details
+  =simple_format @banning.message
+%p
+  Please email
+  =mail_to(site_email)
+  if you would like to contact us regarding this.

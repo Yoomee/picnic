@@ -1,0 +1,13 @@
+#unawarded_badges
+  %h2="Remove a badge from #{forename_or_you(@member)}"
+  %p
+    ="Click on a badge below to remove it from  #{forename_or_you(@member)}."
+  -if @badges.empty?
+    %p
+      ="There are no badges to remove."
+  -else
+    %ul.lst.small_list
+      -@badges.each do |badge|
+        %li{:class => "badge_item"}
+          =link_to(image_for(badge, "25x"), badge, :class => "image_link")
+          =link_to(badge, remove_member_badge_path(@member, badge), :method => :delete, :confirm => "Are you sure?")

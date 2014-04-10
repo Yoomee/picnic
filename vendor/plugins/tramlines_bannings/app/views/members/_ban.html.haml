@@ -1,0 +1,9 @@
+%span#ban
+  -if member.banned?
+    =#full_name_or_you(member, "is currently banned.")
+    -if !logged_in_as?(member) && allowed_to?({:controller => 'bannings', :action => 'destroy', :id => member})
+      =link_to_remote "Unban #{member.forename}", :url => banning_path(:id => member.id), :method => :delete, :confirm => "Are you sure you want to unban #{member.forename}?"
+  -elsif !logged_in_as?(member) && !member.is_admin? && allowed_to?(:controller => 'bannings', :action => 'create')
+    =link_to "Ban #{member.forename}", "#ban_form", :class => 'fancy'
+    %div{:style => 'display:none'}
+      =render("bannings/form", :banning => Banning.new(:member => member, :banner => logged_in_member))

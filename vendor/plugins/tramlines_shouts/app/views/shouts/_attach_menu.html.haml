@@ -1,0 +1,13 @@
+-active ||= shout.attachable_type
+%li.conversation_types
+  %span Attach
+  -if shout.can_attach?(:photo)
+    =link_to_function("Photo", "ShoutForm.toggle_attachable('Photo', '#{shout.try(:id)}')", :class => "attach_photo conversation_type #{'active' if active == 'Photo'}")
+  -if shout.can_attach?(:link)
+    =link_to_function("Link", "ShoutForm.toggle_attachable('Link', '#{shout.try(:id)}')", :class => "attach_link conversation_type #{'active' if active == 'Link'}")
+  -if shout.can_attach?(:video)
+    =link_to_function("Video", "ShoutForm.toggle_attachable('Video', '#{shout.try(:id)}')", :class => "attach_video conversation_type #{'active' if active == 'Video'}")
+  -if shout.can_attach?(:document)
+    =link_to_function("Document", "ShoutForm.toggle_attachable('Document', '#{shout.try(:id)}')", :class => "attach_document conversation_type #{'active' if active == 'Document'}")
+  -if admin_logged_in? && shout.can_attach?(:poll_question)
+    =link_to_function("Poll", "ShoutForm.toggle_attachable('PollQuestion', '#{shout.try(:id)}')", :class => "attach_poll conversation_type #{'active' if active == 'PollQuestion'}")

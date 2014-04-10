@@ -1,0 +1,34 @@
+-title @advert.to_s
+
+=image_for(@advert, '300x')
+
+%ul.lst
+  %li
+    -if @advert.active?
+      %span.advert_active Active
+    -else
+      Not active
+  %li
+    %strong Campaign
+    =@advert.campaign
+  %li
+    %strong Url
+    =@advert.url
+  %li
+    %strong Impressions
+    =@advert.impression_count
+    ="/#{@advert.max_impression_count}" if @advert.has_max_impression_count?
+  %li
+    %strong Clicks
+    =@advert.click_count
+    ="/#{@advert.max_click_count}" if @advert.has_max_click_count?
+  -if @advert.has_active_dates?
+    %li
+      %strong Active Dates
+      ="from #{@advert.active_from.to_s(:short_date)}" if !@advert.active_from.blank?
+      ="until #{@advert.active_until.to_s(:short_date)}" if !@advert.active_until.blank?
+      
+-options_panel do
+  =back_link
+  =link_if_allowed("Edit", edit_advert_proc(@advert))
+  =link_if_allowed("Delete", @advert, :method => :delete, :confirm => "Are you sure?")

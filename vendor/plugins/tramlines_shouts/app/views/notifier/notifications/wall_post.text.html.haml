@@ -1,0 +1,14 @@
+="Hi #{@recipient.forename},"
+-important_email_content do
+  %p
+    ="#{@wall_post.member} commented on"
+    ="#{full_name_or_your(@wall_post.member, :owner => @wall_post.attachable_member)} discussion:"
+  %p="\"#{strip_tags(@wall_post.text)}\""
+  %p="#{link_to("Click here", site_url + shout_path(:id => @wall_post.attachable, :read_notification => true, :anchor => "reply#{@wall_post.id}"))} to view the comment."
+
+%p
+  Thanks,
+  %br
+  ="The #{site_name} team,"
+  %br
+  =site_url

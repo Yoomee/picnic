@@ -1,0 +1,19 @@
+#contacts_results
+  %h1 Load your contacts
+  
+  .list_wrapper
+    %ul.lst
+      %li.select_all
+        =check_box_tag "select_all", 1, false, :onclick => "$('.contacts_list input[type=\"checkbox\"]').attr('checked',$('#select_all').is(':checked'));"
+        =label_tag "select_all", "<span class='name'>Select all</span>"
+  
+    .contacts_list
+      %ul.lst
+        -contacts.each_with_index do |contact, num|
+          -name, email = contact
+          %li{:class => contacts.last == contact ? 'bottom' : '' }
+            =check_box_tag "contact_#{num}", email
+            =label_tag "contact_#{num}", "<span class='name'>#{name}</span><span class='email'>#{email}</span>"
+  %br.clear
+  =link_to_function("Cancel", "$.fancybox.close()")
+  =link_to_function("Choose contacts", "$('#referral_recipients').val($('#referral_recipients').val()+ $.map($('#contacts_results .contacts_list input:checked'),function(n, i){return n.value;}).join(', '));$.fancybox.close()", :class => "bttn_l")

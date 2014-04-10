@@ -1,0 +1,12 @@
+-form.inputs :class => "slideshow_active_wrapper" do
+  %li.slideshow_active_label
+    %label Slideshow is
+  =form.input :active, :as => :radio, :label => false, :collection => [["On", true], ["Off", false]], :selected => form.object.active?
+-form.inputs :id => "slideshow_item_forms" do
+  -form.object.slideshow_items.each do |slideshow_item|
+    =render("slideshow_items/form", :slideshow_form => form, :slideshow_item => slideshow_item)
+.add_slide_link
+  =link_to_function("Add slide &darr;", "SlideshowForm.addSlideshowItem()")
+-#attachable.slideshow.slideshow_items.build
+:javascript
+  SlideshowForm.formHtml = "#{escape_javascript(render("slideshow_items/form", :slideshow_form => form, :slideshow_item => form.object.slideshow_items.build))}";

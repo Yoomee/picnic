@@ -1,0 +1,33 @@
+-content_for(:head) do
+  :javascript
+    $(document).ready(function() {
+      $('#orderable_slides').sortable({
+        handle: ".drag_icon",
+        stop: function(event, ui) {
+          SlideshowForm.save_order();
+          SlideshowForm.updateNumbers();
+        }
+      });
+    });
+
+-title 'Reorder slides'
+
+%p.help
+  Click and drag the images. Once you are happy with the order, click "Save order" at the bottom.
+
+%ul#orderable_slides.lst.flcb
+  -@slideshow.slideshow_items.each_with_index do |slideshow_item,idx|
+    %li{'data-sortable-id' => slideshow_item.id}
+      .number=idx+1
+      =photo_for(slideshow_item, '240x160#', :class => 'drag_icon')
+      .details
+        %strong=slideshow_item.title  
+        =truncate(slideshow_item.text.strip_tags,50)
+      
+-form_tag("/slideshows/#{@slideshow.id}/update_weights", :class => "flcb") do
+  -@slideshow.slideshow_items.each_with_index do |sortable, i|
+    =hidden_field_tag("slideshow_items[#{i}][sortable_id]", sortable.id, :id => "sortable_id_#{i}")
+  =submit_tag("Save order", :class => "btn")
+
+-options_panel do
+  =back_link

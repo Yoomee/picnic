@@ -1,0 +1,10 @@
+TramlinesMessages
+=================
+
+Uses tramlines_mail_response plugin if it's installed.
+
+The following are needed, which are found in tramlines_messages/public
+
+- jquery.facelist_2-0.js
+- autoresize.jquery.min.js
+- facelist_2-0.css

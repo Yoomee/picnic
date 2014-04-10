@@ -1,0 +1,18 @@
+:javascript
+  $(document).ready(function() {
+    $.fancybox.resize();
+  });
+#points_transfers
+  %ul.lst
+    -@points_transfers.each do |points_transfer|
+      %li.points_transfer
+        -link_to(points_transfer.attachable, :class => "points_transfer_link") do
+          .points=points_transfer.points_string
+          .points_transfer_right
+            .points_transfer_top
+              %span=points_transfer.points_event_name
+            %span.timestamp
+              =time_ago_in_words(points_transfer.created_at)
+              ago
+  =will_paginate(@points_transfers, :update => "fancybox-inner")
+    

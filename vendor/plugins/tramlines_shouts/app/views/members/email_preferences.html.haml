@@ -1,0 +1,11 @@
+-title "Email preferences#{logged_in_as?(@member) ? "" : " for #{@member}"}"
+
+%p If we’re being too noisy in your inbox, then you can turn us down by adjusting your email settings below:
+
+-semantic_form_for(@member, :url => save_email_preferences_member_path(@member)) do |form|
+  -form.inputs do
+    =form.input :email_for_profile_shouts, :label => "Email me when people post on my profile"
+    =form.input :email_for_my_shouts, :label => "Email me when people comment on my posts"
+    =form.input :email_for_my_comments, :label => "Email me when people comment on stuff I've also commented on"
+  -form.buttons do
+    =form.commit_button "Save"

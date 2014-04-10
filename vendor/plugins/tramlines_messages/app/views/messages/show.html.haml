@@ -1,0 +1,16 @@
+- title @message.subject
+=render "message_nav"
+#inbox_message
+  #recipient_list
+    ="Between #{message_recipient_list(@message)}"
+  -@messages.each do |message|
+    =render("message", :message => message)
+  #reply_form.inbox_message
+    .author
+      .author_image
+        =link_to(image_for(logged_in_member, "60x60#"), logged_in_member)
+      .author_name
+        =link_to(full_name_or_you(logged_in_member), logged_in_member)
+    =render("form", :message => @message.build_reply(:member => logged_in_member), :reply => true)
+- options_panel do
+  =back_link

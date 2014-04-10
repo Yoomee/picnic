@@ -1,0 +1,17 @@
+-title "All Badges"
+
+%p
+  Badges are awarded for completing various tasks on the site. Here are the ones available.
+
+%ul#badge_list.lst
+  -@badges.each do |badge|
+    %li{:class => "small_list_item"}
+      =image_for(badge, "60x60#", :class => "image_link")
+      -if allowed_to?(edit_badge_proc(badge))
+        =link_to(badge.name, badge, :class => 'title')
+      -else
+        =link_to(badge.name, info_badge_path(badge), :class => 'title fancy_badge_link')
+
+-options_panel do
+  =back_link
+  =link_if_allowed("Create a badge", new_badge_proc)

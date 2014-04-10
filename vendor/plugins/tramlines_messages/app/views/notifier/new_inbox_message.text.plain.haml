@@ -1,0 +1,15 @@
+="Dear #{@recipient.forename},"
+
+="#{@message.author} sent #{message_recipient_list(@message, :use_links => false, :capitalize => false, :include_author => false)} a message:"
+
+="\"#{@message.text}\""
+-if @accepts_mail_response
+  You can reply to this message by replying to this email.
+  
+To see the message, go to your inbox: 
+
+=site_url + url_for(@message)
+
+Thanks,
+="The #{site_name} team,"
+=site_url

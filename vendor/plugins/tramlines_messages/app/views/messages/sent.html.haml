@@ -1,0 +1,15 @@
+- title "Sent Messages"
+=render "message_nav", :active => "sentbox"
+#inbox
+  - if @messages.empty?
+    %p.no_messages_yet
+      You have no sent messages.
+  -else
+    =render "message_bottom_nav", {:active => "inbox", :sent => true}
+    -form_tag "#{url_for(:controller => 'messages', :action => '')}", :id => 'inbox_message_checkboxes_form' do
+      %table.inbox
+        -@messages.each do |message|
+          =render("message_row", :message => message, :sent => true)
+    =will_paginate @messages
+-options_panel do
+  =back_link

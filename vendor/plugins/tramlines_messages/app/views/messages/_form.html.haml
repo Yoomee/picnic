@@ -1,0 +1,23 @@
+-reply ||= false
+=error_message_on(message, :base)
+-semantic_form_for message do |form|
+  -form.inputs do
+    =form.input :member_id, :as => :hidden
+    =form.input :parent_id, :as => :hidden
+    %li#message_recipients
+      -form.object.recipient_ids.each do |recipient_id|
+        =hidden_field_tag "message[recipient_ids][]", recipient_id
+    -if reply
+      =form.input :subject, :as => :hidden
+    -else
+      %li#message_to_label
+        =label_tag :message_to, "To "
+      %li#message_to_input.text
+        %span.message_help
+          Type the name of someone in your network
+        =text_field_tag :message_to, "", :onkeypress => "return event.keyCode!=13"
+      =form.input :subject
+    =form.input :text, :label => (reply ? false : "Message"), :input_html => {:cols => 5, :rows => 10}
+    -form.buttons do
+      =form.commit_button reply ? "#{form.object.multiple_recipients? ? "Reply to all" : "Reply"}" : "Send"
+    

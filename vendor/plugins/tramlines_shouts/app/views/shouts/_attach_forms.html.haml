@@ -1,0 +1,16 @@
+-shout = form.object
+
+-if shout.can_attach?(:video)
+  =form.input :video_url, :label => "Video URL", :as => "string", :required => false, :input_html => {:size => 37, :value => shout.video_url || "http://", :tabindex => 2}, :wrapper_html => {:class => "form_type_input", :style => "#{'display:none' unless shout.attachable_type == 'Video'}"}
+
+-if shout.can_attach?(:link)
+  =form.input :link_url, :label => "Link URL", :as => "string", :required => false, :input_html => {:size => nil, :value => shout.link_url || "http://", :tabindex => 2}, :wrapper_html => {:class => "form_type_input", :style => "#{'display:none' unless shout.attachable_type == 'Link'}"}
+
+-if shout.can_attach?(:photo)
+  =form.input :photo_image, :label => "Upload a photo", :as => :file, :input_html => {:size => 20, :tabindex => 2}, :wrapper_html => {:class => "form_type_input", :style => "#{'display:none' unless shout.attachable_type == 'Photo'}"}
+
+-if shout.can_attach?(:document)
+  =render("shouts/document_form", :form => form)
+
+-if admin_logged_in? && shout.can_attach?(:poll_question)
+  =render("poll_questions/shout_form", :form => form)

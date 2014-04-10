@@ -1,0 +1,35 @@
+-if shout.attachable.is_a?(Link) && !shout.attachable.has_image? && !shout.attachable.url_error?
+  -content_for :head do
+    =javascript_tag("$(document).ready(function() {#{save_site_info_javascript(shout.attachable, :image_size => "150x125#")}});")
+.shout{:id => "shout_#{shout.id}"}
+  =link_to(image_for(shout.member, "50x50#"), shout.member, :class => "profile_photo_50") if shout.member
+  .shout_inner
+    .shout_main
+      .shout_intro
+        =link_to_self(shout.member)
+        =intro
+        -if !shout.tags.blank?
+          on
+          -shout.tags.each do |tag|
+            =link_to_tag(tag, :li => false)
+      .shout_text
+        -if search_term.blank?
+          =read_more_truncate(shout.text)
+        -else
+          =search_summary(shout, search_term)
+      -if shout.attachable && !compact_view && !shout.removed?
+        .shout_image{:class => "#{shout.attachable_type.underscore}_shout_image"}
+          %span.shout_type_label
+            =shout.attachable_type.underscore.humanize
+          =render_shout_attachable(shout)
+    %span.posted_when
+      ="#{time_ago_in_words(shout.created_at)} ago"
+    -if compact_view && !shout.removed?
+      .shout_actions
+        =link_to("View discussion", shout)
+    -else
+      .shout_actions
+        =render("shouts/actions", :shout => shout)
+      .shout_ratings
+        =render("shouts/ratings", :shout => shout) if shout.is_rateable?
+  =render_shout_comments(shout) if shout.is_commentable? && !compact_view

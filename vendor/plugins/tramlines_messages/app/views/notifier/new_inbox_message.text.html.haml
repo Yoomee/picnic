@@ -1,0 +1,16 @@
+="Dear #{@recipient.forename},"
+-important_email_content do
+  %p
+    ="#{@message.author} sent #{message_recipient_list(@message, :use_links => false, :capitalize => false, :include_author => false)} a message:"
+  ="#{simple_format("\"#{@message.text}\"")}"
+-if @accepts_mail_response
+  %p You can reply to this message by replying to this email.
+%p
+  To see the message, go to
+  =link_to("your inbox", site_url + url_for(@message))
+%p 
+  Thanks,
+  %br
+  ="The #{site_name} team,"
+  %br
+  =site_url

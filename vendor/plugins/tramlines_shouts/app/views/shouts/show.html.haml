@@ -1,0 +1,27 @@
+-content_for :head do
+  =facebook_sharer_tags(:title => "Post about #{@shout.tag_list.to_sentence} on #{site_name}", :description => @shout.text.word_truncate(300), :image => @shout.has_attachable? ? image_for(@shout.attachable, '150x', :url_only => true) : "")
+  =labelify_javascript
+  :javascript
+    $(document).ready(function(){
+      var stripped_url = document.location.toString().split('#');
+      if (stripped_url.length > 1) {
+        $('a[name="' + stripped_url[1] + '"]').parent().addClass('selected');
+      }
+    });
+-hide_page_title
+#left_col
+  -if @shout.recipient_type=="Member"
+    =link_to("&larr; View #{full_name_or_your(@shout.recipient)} profile", @shout.recipient, :id => "tag_back_to_link")
+  -else
+    =link_to("&larr; View all discussions", discussions_path, :id => "tag_back_to_link")
+  -if @shout.recipient_type=="Member"
+    %h2#comments_title="Posted on #{forename_or_your(@shout.recipient).capitalize} wall"
+  -else
+    %h2#comments_title="#{forename_or_your(@shout.member).capitalize} discussion"
+  #add_comment_link
+    -if @logged_in_member
+      =link_to_box("Start your own discussion", new_shout_path(:issue => @shout.tag_list), :class => "bttn_l new_comment_link", :scrolling => false)
+    -else
+      =link_to_login_fancybox("Start your own discussion", :url => shout_path(@shout, :add_comment => true), :class => "bttn_l new_comment_link")
+  #display_comment
+    =render_news_feed_item(@shout.news_feed_item, :class => "conversation")

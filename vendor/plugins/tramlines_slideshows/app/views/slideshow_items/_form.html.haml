@@ -1,0 +1,30 @@
+-show_image_input = !slideshow_item.errors[:photo].blank? || (slideshow_item.errors[:video_url].blank? && slideshow_item.photo)
+-show_video_input = !show_image_input && (!slideshow_item.video_url.blank? || !slideshow_item.errors[:video_url].blank?)
+-slideshow_form.semantic_fields_for(:slideshow_items, slideshow_item) do |item_form|
+  -item_form.inputs(:class => "slideshow_item_form", :syle => "display:#{slideshow_item.marked_for_destruction? ? 'none' : 'block'}") do
+    %ol.image_or_video
+      %li
+        %label Content
+      -if !show_video_input && !show_image_input
+        %li
+          %p.help Select an image or a video
+        %li.image_or_video_input_links
+          =link_to_function("Image", "SlideshowForm.showImageInput($(this))", :class => "image_input_link")
+          =link_to_function("Video", "SlideshowForm.showVideoInput($(this))", :class => "video_input_link")
+        -if !slideshow_item.errors.on(:base).blank?
+          %li
+            %p.slideshow_item_errors=slideshow_item.errors.on(:base)
+      %ol.image_input_container{:style => "display:#{show_image_input ? 'block' : 'none'}"}
+        %li=item_form.photo_browser_button :photo
+        =item_form.input :delete_photo, :as => :hidden, :input_html => {:class => "delete_image_input"}
+        %li=link_to_function("Choose video instead", "SlideshowForm.showVideoInput($(this))")
+      %ol.video_input_container{:style => "display:#{show_video_input ? 'block' : 'none'}"}
+        -if slideshow_item.has_image?(:video_image)
+          %li=image_for(slideshow_item, "120x100#", :method => :video_image, :class => "video_thumb flcb")
+        =item_form.input :video_url, :label => !slideshow_item.has_image?(:video_image), :input_html => {:size => 28, :class => "labelify", :title => "URL from YouTube or Vimeo"}
+        =item_form.input :delete_video, :as => :hidden, :input_html => {:class => "delete_video_input"}
+        %li=link_to_function("Choose image instead", "SlideshowForm.showImageInput($(this))", :class => "flcb")
+    =item_form.input :text, :as => :ck_text, :label => "Description", :input_html => {:height => 100, :width => 480}
+    =item_form.input :position, :as => :hidden, :input_html => {:class => "position_input"}
+    =item_form.input :_destroy, :as => :hidden, :input_html => {:class => "destroy_slideshow_item"}
+    %li.delete_slide_link=link_to_function("x Delete slide", "SlideshowForm.deleteSlide($(this))")

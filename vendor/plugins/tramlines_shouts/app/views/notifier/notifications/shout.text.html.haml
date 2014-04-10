@@ -1,0 +1,14 @@
+="Hi #{@recipient.forename},"
+-important_email_content do
+  %p
+    ="#{@shout.member} posted a #{@shout.has_attachable? ? @shout.attachable_type.titleize.downcase : 'message'} on your profile."
+  -if !@shout.text.blank?
+    %p="\"#{strip_tags(@shout.text)}\""
+  %p="#{link_to("Click here", site_url + shout_path(:id => @shout.id, :read_notification => true))} to view it."
+
+%p
+  Thanks,
+  %br
+  ="The #{site_name} team,"
+  %br
+  =site_url

@@ -1,0 +1,13 @@
+="Hi #{@recipient.forename},"
+
+="#{@shout.member} posted a #{@shout.has_attachable? ? @shout.attachable_type.titleize.downcase : 'message'} on your profile."
+-if !@shout.text.blank?
+  ="\"#{strip_tags(@shout.text)}\""
+
+Use the following link to view it:
+
+=site_url + shout_path(:id => @shout.id, :read_notification => true)
+
+Thanks,
+="The #{site_name} team,"
+=site_url

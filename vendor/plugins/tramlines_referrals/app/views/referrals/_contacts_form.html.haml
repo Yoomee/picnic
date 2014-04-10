@@ -1,0 +1,9 @@
+#contacts_form
+  %h1 Login to your email account
+  -semantic_remote_form_for(contacts_request, :url => '/referrals/fetch_contacts') do |form|
+    -form.inputs do
+      =form.input :email_prefix, :label => "Email"
+      =form.input :service_and_suffix, :as => :select, :collection => contacts_email_suffix_options, :include_blank => false, :selected => "gmail:gmail.com", :label => "@", :wrapper_html => {:class => "inline-fields"}
+      =form.input :email_password, :label => "Password"
+    -form.buttons do
+      =form.commit_button "Login"

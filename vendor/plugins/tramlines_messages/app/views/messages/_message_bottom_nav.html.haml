@@ -1,0 +1,13 @@
+-sent ||= nil
+#message_bottom_nav
+  -if sent == true
+    =link_to_function ('Delete', "$('#inbox_message_checkboxes_form').attr('action','/messages/destroy_selected_messages/?sent=true'); if (confirm('Are you sure you wish to delete the selected messages? This will delete all the messages in the thread.')) $('#inbox_message_checkboxes_form').submit()")
+  -else
+    =link_to_function ('Delete', "$('#inbox_message_checkboxes_form').attr('action','/messages/destroy_selected_messages'); if (confirm('Are you sure you wish to delete the selected messages? This will delete all the messages in the thread.')) $('#inbox_message_checkboxes_form').submit()")
+  -unless sent == true
+    =link_to_function('Mark as Read', "$('#inbox_message_checkboxes_form').attr('action','/messages/set_messages_to_read'); $('#inbox_message_checkboxes_form').submit()")
+    = link_to_function('Mark as Unread', "$('#inbox_message_checkboxes_form').attr('action','/messages/set_messages_to_unread'); $('#inbox_message_checkboxes_form').submit()")
+  %span#inbox_message_select_all
+    =link_to_function ('Select all messages', "$('.check').each(function(){this.checked=true}); $('#inbox_message_select_all').hide(); $('#inbox_message_unselect_all').show(); return false;")    
+  %span#inbox_message_unselect_all{:style => 'display:none'}
+    =link_to_function ('Unselect all messages', "$('.check').each(function(){this.checked=false}); $('#inbox_message_unselect_all').hide(); $('#inbox_message_select_all').show(); return false;")    

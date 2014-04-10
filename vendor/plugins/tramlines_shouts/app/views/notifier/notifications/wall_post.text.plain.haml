@@ -1,0 +1,14 @@
+="Hi #{@recipient.forename},"
+
+="#{@wall_post.member} commented on"
+="#{full_name_or_your(@wall_post.member, :owner => @wall_post.attachable_member)} discussion:"
+
+="\"#{strip_tags(@wall_post.text)}\""
+
+Use the following link to view the comment:
+
+=site_url + shout_path(:id => @wall_post.attachable, :read_notification => true, :anchor => "reply#{@wall_post.id}")
+
+Thanks,
+="The #{site_name} team,"
+=site_url

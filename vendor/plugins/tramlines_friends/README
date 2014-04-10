@@ -1,0 +1,8 @@
+TramlinesFriends
+================
+
+Requires acts_as_network plugin
+
+  git://github.com/sjlombardo/acts_as_network.git
+  
+Requires tramlines_notifications plugin

@@ -1,0 +1,29 @@
+.shout_form{:id => "#{shout.new_record? ? 'new_shout_form' : "edit_shout_form"}"}
+  -semantic_form_for(shout, :html => {:onSubmit => shout_on_submit(shout), :multipart => true}) do |form|
+    =hidden_field_tag :redirect_to, params[:redirect_to]
+    -form.inputs do
+      =form.input :tag_list, :as => :hidden
+      =form.input :recipient_type, :as => :hidden
+      =form.input :recipient_id, :as => :hidden
+      =form.input :attach_type, :as => :hidden
+      =form.input :text, :label => "What do you want to say?", :input_html => {:cols => 35, :rows => 4, :class => "shout_text_input", :tabindex => 1}
+      -if shout.has_attachable? && shout.attachable.valid?
+        =form.input :delete_attachable, :as => :hidden
+        -if !shout.delete_attachable?
+          %li.attachable_preview
+            %span.shout_type_label
+              =shout.attachable_type.underscore.humanize
+            -if shout.attachable_type=="Document"
+              =render("shouts/document_form", :form => form)
+            -else
+              =image_for(shout.attachable, "150x", :alt => '') if shout.attachable.has_image?
+              =link_to(shout.attachable.title, shout.attachable.url, :target => "_blank", :class => "attachable_link_url") if shout.attachable.is_a?(Link)
+            =link_to_function("x remove #{shout.attachable_type.downcase}", "ShoutForm.remove_attachable('#{shout.try(:id)}')", :class => "remove_link")
+        =form.commit_button :label => "Share", :button_html => {:class =>'shout_share_button'}
+      -else
+        =render "shouts/attach_menu", :shout => shout
+        =form.commit_button :label => "#{shout.new_record? ? 'Post' : 'Update'}", :button_html => {:class =>'shout_share_button'}
+        =render("shouts/attach_forms", :form => form)
+      =image_tag "ajax_loader_squares.gif", :style => "display: none;", :class => "shout_form_submit_loader"
+  %div{:style => "display:none"}
+    =content_tag(:iframe, '', :id => 'photo_upload_iframe', :name => 'photo_upload_iframe')

@@ -1,0 +1,6 @@
+.shouts_filter
+  =image_tag 'ajax_loader_squares.gif', :id => 'shouts_filter_loader', :style => "display:none"
+  Showing:
+  %ul
+    -filter_names.each_with_index do |filter_name, index|
+      =shouts_filter_link(parent_or_string, filter_name, filter_options.merge(:active => filter_name==active_filter))

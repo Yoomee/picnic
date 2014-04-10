@@ -1,0 +1,9 @@
+%p
+  ="Dear #{@banning.member_forename},"
+=simple_format(@banning.message_text.gsub(/((http(s?)\:\/\/){1}\S+)/,'<a href=\'\1\'>\1</a>'))
+%p
+  Regards,
+  %br
+  The
+  =APP_CONFIG[:site_name]
+  Team

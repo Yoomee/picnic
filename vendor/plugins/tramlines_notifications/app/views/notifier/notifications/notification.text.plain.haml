@@ -1,0 +1,13 @@
+="Hi #{@recipient.forename},"
+
+You have a new notification:
+
+="\"#{strip_tags(@notification.text)}\""
+
+Use the following link to view the notification:
+
+=site_url + notifications_path
+
+Thanks,
+="The #{site_name} team,"
+=site_url

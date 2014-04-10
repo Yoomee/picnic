@@ -1,0 +1,4 @@
+-shout = form.object
+%ol#shout_document_input.form_type_input{:style => "#{'display:none' unless shout.attachable_type == 'Document'}"}
+  =form.input :document_name, :label => "Upload a document", :input_html => {:size => 20, :tabindex => 2, :title => "e.g. Useful Info.pdf", :class => "labelify"}
+  =form.input :document_file, :label => false, :as => :file, :input_html => {:size => 20, :tabindex => 3}

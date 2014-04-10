@@ -1,0 +1,11 @@
+#friend_request_form
+  =labelify_javascript
+  %h3="Become friends with #{friend_request.member_target.forename}"
+  %p
+    ="Click 'Send' and we'll ask #{friend_request.member_target.forename} for permission."
+  -semantic_remote_form_for(friend_request) do |form|
+    -form.inputs do
+      =form.input :member_id_target, :as => :hidden
+      =form.input :message, :label => false, :input_html => {:cols => 10, :rows => 5, :class => "labelify", :title => "Add an option message here"}
+    -form.buttons do
+      =form.commit_button "Send"

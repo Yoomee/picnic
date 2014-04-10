@@ -1,0 +1,11 @@
+%div{:id => "notification_#{notification.id}", :class => "notification #{notification.read? ? 'read' : 'unread'}"}
+  .member_image
+    =link_to(image_for(friend_request.member, "50x50#"), friend_request.member)
+  .notification_content      
+    %p="#{link_to(friend_request.member, friend_request.member)} has requested to be your friend."
+    %p
+      -separate_links do
+        =link_to("Accept", accept_friend_request_path(friend_request), :method => :put)
+        =link_to("Reject", friend_request, :method => :delete, :confirm => "Are you sure?")
+  .delete_link
+    =link_to("x", friend_request, :method => :delete, :confirm => "Are you sure?")

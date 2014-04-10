@@ -1,0 +1,34 @@
+-content_for :head do
+  =javascript_include_tag("client/jquery.facelist_2-0")
+  =stylesheet_link_tag("client/facelist_2-0")
+  :javascript
+    var MessageForm = {
+      save_recipients: function() {
+        recipient_ids = $('#facelist-values-recipient-ids').attr('value').split(",");
+        $('#message_recipients').html("");
+        $.each(recipient_ids, function(index, value) {
+          if (value != '') {
+            $('#message_recipients').append("<input type='hidden' name='message[recipient_ids][]' value='" + value + "'/>");
+          }
+        });
+      }
+    };
+    $(document).ready(function() {
+      $("#message_to").faceList("#{autocomplete_members_path}", {
+        returnID: "recipient-ids",
+        minChars: 2,
+        intro_text: "",
+        queryParam: "term",
+        extraParams: "&friends_only=0",
+        searchObj: "name",
+        selectedItem: "name",
+        selectedValues: "id",
+        start_value: #{@message.recipients.collect{|m| {:id => m.id.to_s, :name => m.full_name}}.to_json}
+      });
+      $('#new_message').attr('onSubmit', "MessageForm.save_recipients();")
+    });
+- title "New Message"
+= render "message_nav", :active => "new_msg"
+= render("form", :message => @message)
+-options_panel do
+  =back_link

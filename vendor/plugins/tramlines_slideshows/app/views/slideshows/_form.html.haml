@@ -1,0 +1,12 @@
+-content_for(:head) do
+  =javascript_include_tag 'jquery.autocomplete'
+  =stylesheet_link_tag 'jquery.autocomplete'
+  =javascript_include_tag :ckeditor
+  :javascript
+    $(document).ready(function() {
+      SlideshowForm.initForm();
+    });
+-semantic_form_for(slideshow) do |form|
+  =render("slideshows/fields", :form => form)
+  -form.buttons do
+    =form.commit_button "Save"

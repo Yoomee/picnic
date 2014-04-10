@@ -1,0 +1,14 @@
+-title "#{full_name_or_your(@member).titleize} friends"
+
+%p="#{forename_or_you(@member, "hasn't", :capitalize => true)} got any friends on the site yet. Be the first."
+=render_add_friend_link(@member, :text => "Add #{forename_or_you(@member)} as a friend")
+
+%ul.lst
+  -@member.friends.each do |friend|
+    %li
+      =link_to(image_for(friend, "50x50#"), friend)
+      =link_to_self(friend)
+
+-options_panel do
+  =back_link
+  

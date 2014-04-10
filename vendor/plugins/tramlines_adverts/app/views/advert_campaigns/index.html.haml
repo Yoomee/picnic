@@ -1,0 +1,12 @@
+-title "Campaigns"
+
+-if @campaigns.empty?
+  %p There are no advert campaigns.
+-else
+  %ul
+    -@campaigns.each do |campaign|
+      %li=link_to_self campaign
+
+-options_panel do
+  =back_link
+  =link_if_allowed("New campaign", new_advert_campaign_proc)

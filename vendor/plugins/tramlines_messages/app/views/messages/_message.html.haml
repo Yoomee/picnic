@@ -1,0 +1,11 @@
+.inbox_message{:class => message.read_by?(logged_in_member) ? "read" : "unread"}
+  .author
+    .author_image
+      =link_to(image_for(message.author, "60x60#"), message.author)
+    .author_name
+      %span.name=link_to(full_name_or_you(message.author), message.author)
+      %span.sent_time=message.sent_time
+  .content
+    =simple_format(message.text)
+    
+  

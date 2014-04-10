@@ -1,0 +1,7 @@
+%li
+  .connection_profile_photo
+    =link_to image_for(connection.member, '50x50#'), connection.member 
+  .name_and_tag
+    =link_to_self connection.member, :class => 'member_name'
+    %p.relevant_description
+      =render "connections/#{connection.name}_connection_text", :connection => connection

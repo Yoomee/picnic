@@ -1,0 +1,37 @@
+-content_for(:head) do
+  :javascript
+    $(document).ready(function() {
+      $('#slideshow_#{slideshow.id} .slideshow_cycle').cycle({
+        fx: 'scrollHorz',
+        timeout: 0,
+        prev: "#slideshow_#{slideshow.id} .slideshow_prev",
+        next: "#slideshow_#{slideshow.id} .slideshow_next",
+        before: function(currSlideElement, nextSlideElement, options, forwardFlag) {
+          var slideshowItemId = $(nextSlideElement).attr("data-slideshow-item-id");
+          $(".slideshow_item_text span").hide();
+          $("#slideshow_item_text_" + slideshowItemId).fadeIn();
+        }
+      });
+      #{'$(".slideshow_item_text span").show();'if slideshow.slideshow_items.size == 1}
+    });
+    
+.slideshow{:id => "slideshow_#{slideshow.id}"}
+  .slideshow_cycle
+    -slideshow.slideshow_items.each do |slideshow_item|
+      -if !slideshow_item.video_url.blank?
+        .slideshow_slide{"data-slideshow-item-id" => slideshow_item.id}
+          =slideshow_item.reformatted_video_html(:width => 900, :height => 470)
+      -elsif slideshow_item.photo
+        .slideshow_slide{"data-slideshow-item-id" => slideshow_item.id, :style => "background-image: url(#{slideshow_item.photo.image.process(:thumb, "900x470>").url})"}
+        =#image_for(slideshow_item, "900x470>")
+  .slideshow_bottom
+    .slideshow_item_text
+      -slideshow.slideshow_items.each_with_index do |slideshow_item, index|
+        %span{:id => "slideshow_item_text_#{slideshow_item.id}"}
+          -if slideshow_item.title.present?
+            %h2=slideshow_item.title
+          =slideshow_item.text
+    -if slideshow.slideshow_items.size > 1
+      .slideshow_nav
+        .slideshow_next >    
+        .slideshow_prev <

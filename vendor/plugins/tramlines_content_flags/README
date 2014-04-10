@@ -1,0 +1,6 @@
+TramlinesContentFlags
+
+Needs:
+config.gem 'googlecharts'      
+config.gem 'inflectious'      
+

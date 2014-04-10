@@ -1,0 +1,13 @@
+="Hi #{@recipient.forename},"
+-important_email_content do
+  %p
+    ="#{@friend_request.member.full_name} would like to be friends with you.#{@friend_request.message.blank? ? '' : ' They left this message for you:'}"
+  -if !@friend_request.message.blank?
+    %p="\"#{@friend_request.message}\""
+  %p="#{link_to("Click here", site_url + notifications_path)} to view the friend request."
+%p 
+  Thanks,
+  %br
+  ="The #{site_name} team,"
+  %br
+  =site_url

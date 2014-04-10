@@ -1,0 +1,19 @@
+%div{:id => "notification_#{notification.id}", :class => "notification #{notification.read? ? 'read' : 'unread'}"}
+  .member_image
+    -if notification.wall_posts.empty?
+      =link_to(image_for(shout.member, "50x50#"), shout.member)
+    -else
+      =link_to(image_for(notification.wall_post_members.first, "50x50#"), notification.wall_post_members.first)
+  .notification_content
+    %p
+      -if notification.wall_posts.empty?
+        ="#{link_to_self(shout.member)} posted"
+        =link_to("a #{shout.has_attachable? ? shout.attachable_type.titleize.downcase : 'message'}", shout)
+        ="on your wall."
+      -else
+        ="#{member_names_list(notification.wall_post_members, :limit => 1)} commented on"
+        ="#{link_to("#{full_name_or_your(shout.member, :owner => (notification.wall_post_members.count > 1 ? nil : shout.member))} discussion", shout_path(shout, :read_notification => true))}."
+    %p.posted_when
+      ="#{time_ago_in_words(notification.created_at)} ago"
+  .delete_link
+    =link_to("x", notification, :method => :delete, :confirm => "Are you sure?")

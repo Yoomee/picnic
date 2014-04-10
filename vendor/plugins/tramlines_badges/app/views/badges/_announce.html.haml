@@ -1,0 +1,34 @@
+-if badges.size > 1
+  -content_for(:head) do
+    :javascript
+      $('#badge_announcements').cycle({ 
+          fx: 'scrollLeft',
+          timeout: 0,
+          next: '#badge_announcement_next',
+          nowrap: 1,
+          after: function(curr, next, opts) {
+            var index = opts.currSlide;
+            if (index == opts.slideCount - 1) {
+              $('#badge_announcement_next').hide();
+              $('#badge_announcement_close').show();
+            }
+          }
+      });
+#badge_announcement_wrapper
+  %h2.badge_announcement_title
+    You won
+    =badges.size > 1 ? "#{badges.size} new badges!" : "a new badge!"
+  #badge_announcements
+    -badges.each_with_index do |badge, index|
+      .badge_announcement
+        =image_for(badge, "120x120", :class => "badge_image")
+        .badge_info
+          %h3=badge.name
+          .badge_description
+            =simple_format(badge.award_message.blank? ? badge.description : badge.award_message)
+          -if badge.members.count > 1
+            .badge_members
+              =link_to("#{pluralize(badge.members.count, 'other member')} have this badge", badge, :class => "other_member_count")
+  #badge_announcement_links
+    =link_to("Next", "#", :id => "badge_announcement_next") if badges.size > 1
+    =link_to_function("Close", "$.fancybox.close();", :id => "badge_announcement_close", :style => "display:#{badges.size > 1 ? 'none' : 'block'}")

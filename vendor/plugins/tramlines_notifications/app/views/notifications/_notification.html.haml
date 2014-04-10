@@ -1,0 +1,5 @@
+%div{:id => "notification_#{notification.id}", :class => "notification #{notification.read? ? 'read' : 'unread'}"}
+  .notification_content
+    %p=notification.text
+  .delete_link
+    =link_to("x", notification, :method => :delete, :confirm => "Are you sure?")

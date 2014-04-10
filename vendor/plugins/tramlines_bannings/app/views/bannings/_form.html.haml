@@ -1,0 +1,23 @@
+#ban_form
+  %h1
+    ="Ban #{banning.member}"
+  -semantic_remote_form_for(banning) do |form|
+    %p
+      Please set a message to be sent to 
+      =banning.member_forename
+      and click 'Ban'.
+    -form.inputs do 
+      =form.input :member_id, :as => :hidden
+      =form.input :banner_id, :as => :hidden
+      =form.input :message_subject
+      %li
+        ="Dear #{banning.member_forename},"
+      =form.input :message_text, :as => :text, :input_html => {:rows => 5}
+      %li
+        Regards,
+        %br
+        The
+        =APP_CONFIG[:site_name]
+        Team
+    -form.buttons do
+      =form.submit 'Ban', :onclick => "$.fancybox.showActivity()"

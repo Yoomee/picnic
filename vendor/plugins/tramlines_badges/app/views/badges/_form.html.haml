@@ -1,0 +1,32 @@
+-content_for(:head) do
+  :javascript
+    var BadgeForm = {
+      toggle_badge_trigger: function() {
+        if ($('#badge_has_trigger').is(':checked')) {
+          $('#badge_trigger_inputs').show();
+        } else {
+          $('#badge_trigger_inputs').hide();
+        }
+      }
+    };
+    $(function() {
+      BadgeForm.toggle_badge_trigger();
+      $('#badge_has_trigger').click(function() {
+        BadgeForm.toggle_badge_trigger();
+      });
+    });
+-semantic_form_for(badge, :html => {:multipart => true}) do |form|
+  -form.inputs do
+    -if yoomee_staff_logged_in?
+      =form.input :ref, :required => false
+    =form.input :name
+    =form.input :has_trigger, :label => "Automatically award this badge", :as => :boolean
+    %li#badge_trigger_inputs.input
+      =form.label :trigger_name, "when a member reaches a total of"
+      =form.text_field :trigger_num, :size => 5
+      =form.select :trigger_name, options_for_select(badge_trigger_options, badge.trigger_name), {:include_blank => true}
+    =form.input :description, :input_html => {:cols => 50, :rows => 5}
+    =form.input :award_message, :help => "Award message will default to the description if left blank.", :input_html => {:cols => 50, :rows => 5}
+    =form.input :image, :as => :image
+  -form.buttons do
+    =form.commit_button "Submit"

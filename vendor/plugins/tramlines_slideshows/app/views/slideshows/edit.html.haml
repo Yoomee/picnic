@@ -1,0 +1,6 @@
+-title "Edit Slideshow"
+%strong=link_to('Edit slide order', order_slideshow_path(@slideshow), :class => 'fr')
+%br.clear
+=render("form", :slideshow => @slideshow)
+
+=options_panel

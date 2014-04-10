@@ -1,0 +1,20 @@
+:javascript
+  $(document).ready(function() {
+    SlideshowForm.initForm();
+  });
+-semantic_fields_for(attachable) do |attachable_form|
+  -attachable_form.semantic_fields_for(:slideshow) do |slideshow_form|
+    =render("slideshows/fields", :form => slideshow_form)
+    
+    -if false
+      -slideshow_form.inputs :class => "slideshow_active_wrapper" do
+        %li.slideshow_active_label
+          %label Slideshow is
+        =slideshow_form.input :active, :as => :radio, :label => false, :collection => [["On", true], ["Off", false]]
+      -slideshow_form.inputs :id => "slideshow_item_forms" do
+        -attachable.slideshow.slideshow_items.each do |slideshow_item|
+          =render("slideshow_items/form", :slideshow_form => slideshow_form, :slideshow_item => slideshow_item)
+      .add_slide_link
+        =link_to_function("Add slide &darr;", "SlideshowForm.addSlideshowItem()")
+      :javascript
+        SlideshowForm.formHtml = "#{escape_javascript(render("slideshow_items/form", :slideshow_form => slideshow_form, :slideshow_item => attachable.slideshow.slideshow_items.build))}";

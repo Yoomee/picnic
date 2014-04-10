@@ -1,0 +1,19 @@
+-title @campaign.to_s
+
+-if @campaign.adverts.empty?
+  %p This campaign has no adverts.
+-else
+  %ul.lst.advert_list
+    -@campaign.adverts.each do |advert|
+      %li
+        .advert_title
+          =link_to_self(advert)
+          -if advert.active?
+            %span.advert_active Active
+        .advert_image
+          =link_to(image_for(advert, '300x'), advert)
+
+-options_panel do
+  =back_link
+  =link_if_allowed("Edit campaign", edit_advert_campaign_proc(@campaign))
+  =link_if_allowed("New advert", new_advert_campaign_advert_proc(@campaign))

@@ -1,0 +1,2 @@
+=link_to_box("Share", share_shout_path(shout), :scrolling => false)
+=link_to_box("Edit", edit_shout_path(shout), :scrolling => false) if allowed_to?(edit_shout_proc(shout))

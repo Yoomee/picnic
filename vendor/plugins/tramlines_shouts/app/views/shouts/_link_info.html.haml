@@ -1,0 +1,9 @@
+.link_info_loader{:id => "link_info_loader_#{link.id}", :style => "display:none"}
+  =image_tag("ajax_loader_squares.gif")
+  %span Retrieving site info
+.link_image{:id => "link_image_#{link.id}"}
+  =link_to(content_tag(:span, '', :class => 'shout_attachable_icon') + image_for(link, "150x125#"), link.url, :target => "_blank") if link.has_image?
+.link_description
+  %div{:id => "link_title_#{link.id}"}=link_to(link.title, link.url, :target => "_blank")
+  %div{:id => "link_description_#{link.id}"}
+    =read_more_truncate(link.description) unless link.description_blank?

@@ -1,0 +1,18 @@
+-content_for :head do
+  :javascript
+    var FriendRequest = {
+      loading: function() {
+        $('#friend_request_#{member.id}_link').hide(0, function() {
+          $('#friend_request_#{member.id}_loader').show();
+        });
+      },
+      complete: function() {
+        $('#friend_request_#{member.id}_loader').hide(0, function() {
+          $('#friend_request_#{member.id}_link').show();
+        });
+      }
+    };
+.new_friend_request{:id => "friend_request_#{member.id}"}
+  =render("friend_requests/add_friend_link", options.merge(:member => member))
+  %div{:id => "friend_request_#{member.id}_loader", :style => "display:none"}
+    =image_tag(ajax_loader)

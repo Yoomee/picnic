@@ -1,0 +1,7 @@
+-semantic_form_for(points_event) do |form|
+  -form.inputs do
+    =form.input :slug
+    =form.input :name
+    =form.input :points
+  -form.buttons do
+    =form.commit_button "Save"

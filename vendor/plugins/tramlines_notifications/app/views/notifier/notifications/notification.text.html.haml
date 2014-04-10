@@ -1,0 +1,11 @@
+="Hi #{@recipient.forename},"
+-important_email_content do
+  %p You have a new notification:
+  %p="\"#{strip_links(@notification.text)}\""
+  %p="#{link_to("Click here", site_url + notifications_path)} to view the notification."
+%p 
+  Thanks,
+  %br
+  ="The #{site_name} team,"
+  %br
+  =site_url

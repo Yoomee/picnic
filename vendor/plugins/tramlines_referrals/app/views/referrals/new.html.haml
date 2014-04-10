@@ -1,0 +1,29 @@
+-no_content_row
+-title "Invite your friends"
+.row
+  .twelvecol.last
+.row
+  .sixcol
+    %h2 Invite by email
+    -semantic_form_for(@referral) do |f|
+      -f.inputs do
+        =f.input :recipients, :as => :text, :input_html => {:rows => 3}
+        %li
+          %p
+            Enter up to 10 email addresses above, separated by commas.
+        %li
+          =link_to_box("Load contacts from your email account", contacts_new_referral_path, :class => "bttn_s")
+        =f.input :medium, :as => :hidden, :value => 'email'
+        =f.input :subject
+        =f.input :message, :as => :text, :input_html => {:rows => 12}
+        =f.input :code_string, :as => :hidden
+        =f.input :member_id, :as => :hidden
+      -f.buttons do
+        =f.submit_tag 'Send'
+  .sixcol.last
+    %h2 Invite by Twitter or Facebook
+    =twitter_share_link 'Share on Twitter', @referral.url, @referral.twitter_message
+    =facebook_sharer_link 'Share on Facebook', @referral.url
+    =#link_to 'Share on Twitter', "http://twitter.com?status=#{u(@referral.twitter_message)}", :target => '_blank'
+    =#link_to 'Share on Facebook', "http://facebook.com/sharer.php?u=#{@referral.url}", :popup => ['popUpWindow','height=350,width=600'] 
+  

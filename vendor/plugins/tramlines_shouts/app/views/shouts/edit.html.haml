@@ -1,0 +1,7 @@
+-title "Edit story"
+
+=render("shouts/form", :shout => @shout)
+
+-options_panel do
+  =back_link
+  =link_if_allowed("Delete", @shout, :method => :delete, :confirm => "Are you sure?")

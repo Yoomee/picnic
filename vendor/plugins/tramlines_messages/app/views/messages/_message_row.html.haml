@@ -1,0 +1,19 @@
+-sent ||= false
+-member = message.member_thats_not(logged_in_member) || logged_in_member
+%tr.message_row{:id => "message_row_#{message.id}", :class => message.thread_read_by?(logged_in_member) ? "read" : "unread"}
+  %td.author
+    .author_image
+      =link_to(image_for(member, "60x60#"), member)
+    .author_name
+      %span.name
+        ="To: " if sent
+        =link_to(full_name_or_you(member), member)
+        =" and others" if message.multiple_recipients?
+      %span.sent_time=message.sent_time
+  %td.subject
+    =link_to(truncate(message.subject, :length => 100), message)
+    -newest_child = sent ? message.newest_child_sent_by(logged_in_member) : message.newest_child
+    %p=truncate(newest_child.text, :length => 300)
+  %td.delete
+    =link_to("x", message_path(message, :sent => sent), :method => :delete, :title => "Delete this message", :confirm => "Are you sure? This will delete all the messages in the thread.")
+    =check_box "selected_messages", message.id, :class => "check"

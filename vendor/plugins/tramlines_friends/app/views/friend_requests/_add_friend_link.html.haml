@@ -1,0 +1,12 @@
+-if !@logged_in_member.friends_with?(member)
+  %div{:id => "friend_request_#{member.id}_link"}
+    -if @logged_in_member.sent_friend_request_to?(member)
+      ="Your friend request has been sent. Awaiting approval from #{forename_or_you(member)}."
+    -elsif @logged_in_member.has_pending_friend_request_from?(member)
+      %p="#{member.full_name} has sent you a friend request."
+      =link_to_remote("Accept", :url => accept_friend_request_path(@logged_in_member.friend_request_from(member)), :method => :put, :loading => "FriendRequest.loading()", :complete => "FriendRequest.complete()", :html => {:class => "accept_link"})
+      =link_to_remote("Reject", :url => friend_request_path(@logged_in_member.friend_request_from(member)), :method => :delete, :confirm => "Are you sure you don't want to be friends with #{forename_or_you(member)}?", :loading => "FriendRequest.loading()", :complete => "FriendRequest.complete()", :html => {:class => "reject_link"})
+    -elsif @logged_in_member.can_request_friendship_with?(member)
+      -# fancybox with message
+        =#link_to_box(text, new_friend_request_path(:member_id => member.id))
+      =link_to_remote(text, :url => {:controller => "friend_requests", :action => "create", :member_id => member}, :method => :post, :loading => "FriendRequest.loading()", :complete => "FriendRequest.complete()")

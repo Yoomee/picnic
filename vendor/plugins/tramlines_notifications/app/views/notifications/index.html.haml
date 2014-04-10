@@ -1,0 +1,14 @@
+-title "Notifications"
+#notifications
+  -if @unread_notifications.empty? && @read_notifications.empty?
+    %p You have no notifications.
+  -else
+    #unread_notifications
+      -@unread_notifications.each do |notification|
+        =render_notification(notification)
+    #read_notifications
+      -@read_notifications.each do |notification|
+        =render_notification(notification)
+  
+-options_panel do
+  =back_link

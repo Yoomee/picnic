@@ -1,0 +1,16 @@
+#unawarded_badges
+  %h2="Award a badge to #{forename_or_you(@member)}"
+  %p
+    ="Click on a badge below to award it to  #{forename_or_you(@member)}."
+  -if @badges.empty?
+    %p
+      ="There are no badges to award to #{@member}."
+  -else
+    %ul.lst.small_list
+      -@badges.each do |badge|
+        %li{:class => "badge_item"}
+          =link_to(image_for(badge, "25x"), badge, :class => "image_link")
+          =link_to(badge, award_member_badge_path(@member, badge), :method => :post, :confirm => "Are you sure?")
+  -if allowed_to?(new_badge_proc)
+    #unawarded_badges_links
+      =link_to("Create a badge", new_badge_path)
